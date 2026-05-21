@@ -1,0 +1,402 @@
+﻿/* ============================================================
+   FormSuscripcion.css
+   Los estilos base están en EstilosPaginas/Shared.css
+   ============================================================ */
+
+.suscripcion-layout {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 20px;
+    align-items: start;
+}
+
+.suscripcion-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.suscripcion-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ============================================================
+   CARD PLAN ACTIVO
+   ============================================================ */
+.plan-activo-card {
+    padding: 28px 32px;
+}
+
+.plan-activo-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.plan-eyebrow {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.plan-nombre {
+    display: block;
+    font-family: var(--font-title);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1;
+}
+
+.plan-detalles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px 0;
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    margin-bottom: 20px;
+}
+
+.plan-detalle-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.pd-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+.pd-valor {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-main);
+    display: block;
+}
+
+.pd-precio {
+    font-family: var(--font-title);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.plan-acciones {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-cancelar {
+    background: transparent;
+    color: #993C1D;
+    border: 0.5px solid #F5C4B3;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: background 0.12s;
+}
+
+    .btn-cancelar:hover {
+        background: #FEF0F0;
+    }
+
+/* ============================================================
+   MODAL PAGO INLINE
+   ============================================================ */
+.modal-pago-card {
+    padding: 24px 28px;
+}
+
+.modal-titulo {
+    font-family: var(--font-title);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+/* ============================================================
+   TABLA COMPARATIVA DE PLANES
+   ============================================================ */
+.planes-comparativa {
+    margin-top: 20px;
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.comp-fila {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1.2fr 1fr;
+    border-bottom: 0.5px solid var(--border);
+}
+
+    .comp-fila:last-child {
+        border-bottom: none;
+    }
+
+.comp-header {
+    background: #FAFAF8;
+}
+
+.comp-footer {
+    background: #FAFAF8;
+}
+
+.comp-feature {
+    padding: 13px 16px;
+    font-size: 13px;
+    color: var(--text-sub);
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    border-right: 0.5px solid var(--border);
+}
+
+.comp-header .comp-feature {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.comp-plan {
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    border-right: 0.5px solid var(--border);
+    text-align: center;
+}
+
+    .comp-plan:last-child {
+        border-right: none;
+    }
+
+.comp-plan-destacado {
+    background: #F8F5F0;
+    position: relative;
+}
+
+.comp-plan-badge {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 100px;
+    padding: 2px 8px;
+    margin-bottom: 2px;
+    white-space: nowrap;
+}
+
+.comp-plan-nombre {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.comp-plan-precio {
+    font-family: var(--font-title);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1;
+}
+
+    .comp-plan-precio span {
+        font-size: 11px;
+        font-weight: 400;
+        color: var(--text-muted);
+        font-family: var(--font-body);
+    }
+
+.comp-valor {
+    padding: 12px 8px;
+    font-size: 13px;
+    color: var(--text-sub);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 0.5px solid var(--border);
+}
+
+    .comp-valor:last-child {
+        border-right: none;
+    }
+
+.comp-destacado {
+    background: #F8F5F0;
+}
+
+.comp-no {
+    color: var(--text-light);
+}
+
+.comp-action {
+    padding: 14px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 0.5px solid var(--border);
+}
+
+    .comp-action:last-child {
+        border-right: none;
+    }
+
+.btn-plan-sel {
+    background: transparent;
+    color: var(--text-sub);
+    border: 0.5px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: background 0.12s;
+    white-space: nowrap;
+}
+
+    .btn-plan-sel:hover {
+        background: var(--bg-paper);
+    }
+
+.btn-plan-actual {
+    background: var(--text-main);
+    color: var(--bg-paper);
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: var(--font-body);
+    cursor: not-allowed;
+    white-space: nowrap;
+    opacity: 0.7;
+}
+
+/* ============================================================
+   CARD USO DEL PERÍODO
+   ============================================================ */
+.uso-card {
+    padding: 18px 20px;
+}
+
+.uso-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 0.5px solid #EDE8E0;
+    gap: 8px;
+}
+
+.uso-label {
+    font-size: 12px;
+    color: var(--text-sub);
+}
+
+.uso-valor {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-main);
+    font-family: var(--font-title);
+}
+
+/* ============================================================
+   AVISO CARD
+   ============================================================ */
+.aviso-card {
+    padding: 18px 20px;
+    text-align: center;
+    background: #FAFAF8;
+}
+
+.aviso-icon {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.aviso-titulo {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 6px;
+}
+
+.aviso-texto {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.accesos-titulo {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+/* ============================================================
+   MODAL DE CANCELACIÓN
+   ============================================================ */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(27,42,59,0.55);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-card {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 36px 44px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.modal-icono {
+    font-size: 36px;
+}
+
+.modal-card-titulo {
+    font-family: var(--font-title);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.modal-card-texto {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    display: block;
+    margin-bottom: 4px;
+}

@@ -1,0 +1,361 @@
+﻿/* ============================================================
+   FormExportarReporte.css
+   Los estilos base están en EstilosPaginas/Shared.css
+   ============================================================ */
+
+/* Layout dos columnas */
+.exportar-layout {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 20px;
+    align-items: start;
+}
+
+.exportar-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.exportar-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ============================================================
+   CARDS DE DOCUMENTO
+   ============================================================ */
+.documentos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.doc-card {
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    background: var(--surface);
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+
+    .doc-card:hover {
+        background: #FDFCFA;
+        border-color: #B0A99E;
+    }
+
+    .doc-card.seleccionado {
+        border: 1.5px solid var(--text-main);
+        background: #F8F5F0;
+    }
+
+.doc-icono {
+    font-size: 26px;
+    line-height: 1;
+}
+
+.doc-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.doc-tipo {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.doc-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    display: block;
+}
+
+/* Badges de estado del documento */
+.doc-badge {
+    font-size: 11px;
+    font-weight: 500;
+    border-radius: 100px;
+    padding: 3px 10px;
+    display: inline-block;
+    background: #F1EFE8;
+    border: 0.5px solid #D3D1C7;
+    color: #5F5E5A;
+    margin-top: 2px;
+    width: fit-content;
+}
+
+.doc-badge-ok {
+    background: var(--success-bg);
+    border-color: var(--success-border);
+    color: var(--success-text);
+}
+
+.doc-badge-pendiente {
+    background: #FAEEDA;
+    border-color: #FAC775;
+    color: #633806;
+}
+
+.doc-badge-no-disponible {
+    background: #FEF0F0;
+    border-color: #F5C4B3;
+    color: #993C1D;
+}
+
+.doc-check {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-size: 16px;
+    color: var(--border);
+    transition: color 0.15s;
+}
+
+.doc-card.seleccionado .doc-check {
+    color: var(--text-main);
+}
+
+/* Botón exportar */
+.btn-exportar {
+    min-width: 160px;
+}
+
+/* ============================================================
+   PREVIEW DEL DOCUMENTO
+   ============================================================ */
+.preview-card {
+    padding: 24px;
+}
+
+.preview-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.preview-documento {
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--surface);
+}
+
+/* Membrete */
+.prev-membrete {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: var(--text-main);
+}
+
+.prev-logo {
+    font-family: var(--font-title);
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--bg-paper);
+    letter-spacing: -0.5px;
+}
+
+.prev-membrete-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+.prev-meta-txt {
+    font-size: 11px;
+    color: #8FAFC8;
+    display: block;
+}
+
+.prev-sep {
+    height: 0.5px;
+    background: var(--border);
+}
+
+/* Info del paciente */
+.prev-paciente-info {
+    padding: 14px 20px;
+}
+
+.prev-paciente-nombre {
+    display: block;
+    font-family: var(--font-title);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 3px;
+}
+
+.prev-paciente-meta {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* Contenido con blur */
+.prev-contenido {
+    padding: 16px 20px 20px;
+}
+
+.prev-seccion-titulo {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 14px;
+}
+
+.prev-texto-blur {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.blur-linea {
+    height: 10px;
+    background: #DDD7CE;
+    border-radius: 3px;
+    filter: blur(2px);
+}
+
+.bl-100 {
+    width: 100%;
+}
+
+.bl-85 {
+    width: 85%;
+}
+
+.bl-90 {
+    width: 90%;
+}
+
+.bl-70 {
+    width: 70%;
+}
+
+.bl-95 {
+    width: 95%;
+}
+
+.bl-60 {
+    width: 60%;
+}
+
+.prev-encriptado-aviso {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 10px;
+    background: #F8F5F0;
+    border-radius: 5px;
+    border: 0.5px solid var(--border);
+}
+
+/* ============================================================
+   HISTORIAL DE EXPORTACIONES (aside)
+   ============================================================ */
+.historial-exportaciones-card {
+    padding: 18px 20px;
+}
+
+.exp-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 0.5px solid #EDE8E0;
+}
+
+    .exp-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+.exp-icono {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.exp-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.exp-tipo {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.exp-paciente {
+    font-size: 11px;
+    color: var(--text-sub);
+}
+
+.exp-fecha {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.sin-perfiles-txt {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: italic;
+    display: block;
+    padding: 6px 0;
+}
+
+/* ============================================================
+   AVISO CARD (compartido)
+   ============================================================ */
+.aviso-card {
+    padding: 18px 20px;
+    text-align: center;
+    background: #FAFAF8;
+}
+
+.aviso-icon {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.aviso-titulo {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 6px;
+}
+
+.aviso-texto {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.accesos-titulo {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 10px;
+}
