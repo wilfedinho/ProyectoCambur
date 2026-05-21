@@ -1,0 +1,693 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ============================================================
+   VARIABLES GLOBALES — PALETA CAMBUR
+   ============================================================ */
+:root {
+    --bg-paper: #F2EEE8;
+    --sidebar-dark: #1B2A3B;
+    --sidebar-mid: #243A4E;
+    --sidebar-hover: #2E5068;
+    --accent: #E8455A;
+    --text-main: #1B2A3B;
+    --text-sub: #3D566E;
+    --text-muted: #6B8BA4;
+    --text-light: #9AABBF;
+    --border: #DDD7CE;
+    --surface: #FFFFFF;
+    --success: #2A9D8F;
+    --success-bg: #EAF7F5;
+    --success-border: #9FE1CB;
+    --success-text: #085041;
+    --font-title: 'Barlow Condensed', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --sidebar-w: 240px;
+    --header-h: 64px;
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg-paper);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ============================================================
+   LAYOUT FORM
+   ============================================================ */
+#form1 {
+    display: flex;
+    width: 100%;
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.sidebar {
+    width: var(--sidebar-w);
+    min-width: var(--sidebar-w);
+    background: var(--sidebar-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.sidebar-logo {
+    padding: 28px 24px 20px;
+    border-bottom: 0.5px solid #2E4D65;
+}
+
+    .sidebar-logo .logotype {
+        font-family: var(--font-title);
+        font-weight: 800;
+        font-size: 30px;
+        color: var(--bg-paper);
+        letter-spacing: -0.5px;
+        line-height: 1;
+    }
+
+        .sidebar-logo .logotype span {
+            color: var(--accent);
+        }
+
+    .sidebar-logo .tagline {
+        font-size: 10px;
+        color: var(--text-muted);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-top: 3px;
+    }
+
+.sidebar-nav {
+    flex: 1;
+    padding: 12px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    overflow-y: auto;
+}
+
+/* Ítem de navegación */
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 22px;
+    font-size: 13px;
+    color: #8FAFC8;
+    font-weight: 400;
+    transition: background 0.12s, color 0.12s;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    /* Emoji como ícono outline */
+    font-style: normal;
+}
+
+/* Forzar emojis en escala de grises / sin color */
+.nav-item {
+    filter: none;
+}
+
+    .nav-item:hover {
+        background: var(--sidebar-mid);
+        color: var(--bg-paper);
+    }
+
+    .nav-item.active {
+        background: var(--sidebar-mid);
+        color: var(--bg-paper);
+        border-left-color: var(--accent);
+        font-weight: 500;
+    }
+
+.sidebar-footer {
+    padding: 10px 0;
+    border-top: 0.5px solid #2E4D65;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.nav-logout {
+    color: #D88A93;
+}
+
+    .nav-logout:hover {
+        background: #2A1820;
+        color: var(--accent);
+    }
+
+/* ============================================================
+   ÁREA PRINCIPAL
+   ============================================================ */
+.main-wrap {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ============================================================
+   HEADER SUPERIOR
+   ============================================================ */
+.top-header {
+    height: var(--header-h);
+    background: var(--surface);
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.header-section {
+    color: var(--text-muted);
+}
+
+.header-sep {
+    color: var(--border);
+}
+
+.header-page {
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.header-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--sidebar-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--bg-paper);
+    font-family: var(--font-title);
+    letter-spacing: 0.5px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+    line-height: 1.2;
+}
+
+.user-role {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+/* ============================================================
+   CONTENIDO
+   ============================================================ */
+.page-content {
+    padding: 32px;
+    flex: 1;
+}
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+.content-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 32px;
+}
+
+.mt-24 {
+    margin-top: 24px;
+}
+
+/* Header de card con título + badges en la misma fila */
+.card-header-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.card-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.card-header {
+    margin-bottom: 4px;
+}
+
+.card-title {
+    font-family: var(--font-title);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1.1;
+}
+
+.card-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* ============================================================
+   BADGES
+   ============================================================ */
+.badges-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.badge-activos {
+    background: var(--success-bg);
+    border: 0.5px solid var(--success-border);
+    color: var(--success-text);
+    border-radius: 100px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.badge-inactivos {
+    background: #FEF0F0;
+    border: 0.5px solid #F5C4B3;
+    color: #993C1D;
+    border-radius: 100px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* ============================================================
+   SEPARADORES DE SECCIÓN
+   ============================================================ */
+.section-sep {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+    margin: 24px 0 14px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+    .section-sep::after {
+        content: '';
+        flex: 1;
+        height: 0.5px;
+        background: var(--border);
+    }
+
+/* ============================================================
+   GRILLAS
+   ============================================================ */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 14px;
+}
+
+/* ============================================================
+   CAMPOS
+   ============================================================ */
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+    .field label {
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--text-sub);
+        letter-spacing: 0.2px;
+    }
+
+        .field label sup {
+            color: var(--accent);
+            font-size: 11px;
+        }
+
+    /* ============================================================
+   INPUTS, SELECTS, TEXTAREAS
+   ============================================================ */
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="password"],
+    .field input[type="number"],
+    .field input[type="date"],
+    .field textarea,
+    .field select {
+        background: #FAFAF8;
+        border: 0.5px solid var(--border);
+        border-radius: 6px;
+        padding: 10px 14px;
+        font-size: 14px;
+        color: var(--text-main);
+        font-family: var(--font-body);
+        outline: none;
+        width: 100%;
+        transition: border-color 0.15s;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+        .field input::placeholder,
+        .field textarea::placeholder {
+            color: #B8B2A8;
+            font-size: 13px;
+        }
+
+        .field input:focus,
+        .field textarea:focus,
+        .field select:focus {
+            border-color: var(--text-main);
+            background: var(--surface);
+        }
+
+    .field select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231B2A3B' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        background-color: #FAFAF8;
+        padding-right: 36px;
+        cursor: pointer;
+    }
+
+    .field textarea {
+        resize: vertical;
+        min-height: 90px;
+        line-height: 1.6;
+    }
+
+/* ============================================================
+   RADIO BUTTONS
+   ============================================================ */
+.radio-group {
+    display: flex;
+    gap: 16px;
+    padding: 10px 0 6px;
+    flex-wrap: wrap;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-main);
+    cursor: pointer;
+    font-weight: 400;
+}
+
+/* ============================================================
+   MENSAJES
+   ============================================================ */
+.field-error {
+    font-size: 11px;
+    color: var(--accent);
+    display: block;
+    margin-top: 2px;
+}
+
+.server-error {
+    background: #FEF0F0;
+    border: 0.5px solid #F5C4B3;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 13px;
+    color: #993C1D;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.server-success {
+    background: var(--success-bg);
+    border: 0.5px solid var(--success-border);
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 13px;
+    color: var(--success-text);
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* ============================================================
+   BOTONES PRINCIPALES
+   ============================================================ */
+.btn-primary,
+input[type="submit"].btn-primary {
+    background: var(--text-main);
+    color: var(--bg-paper);
+    border: none;
+    border-radius: 6px;
+    padding: 11px 28px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: background 0.15s;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+    .btn-primary:hover,
+    input[type="submit"].btn-primary:hover {
+        background: var(--sidebar-mid);
+    }
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-sub);
+    border: 0.5px solid var(--border);
+    border-radius: 6px;
+    padding: 11px 24px;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: background 0.12s;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+    .btn-secondary:hover {
+        background: var(--bg-paper);
+    }
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 0.5px solid var(--border);
+}
+
+/* ============================================================
+   TABLA DE DATOS
+   ============================================================ */
+.table-wrap {
+    overflow-x: auto;
+    margin-top: 16px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+    .data-table th {
+        text-align: left;
+        padding: 10px 14px;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        border-bottom: 0.5px solid var(--border);
+        background: #FAFAF8;
+        white-space: nowrap;
+    }
+
+    .data-table td {
+        padding: 13px 14px;
+        color: var(--text-main);
+        border-bottom: 0.5px solid #EDE8E0;
+        vertical-align: middle;
+    }
+
+.table-row-alt td {
+    background: #FDFCFA;
+}
+
+.th-left {
+    text-align: left !important;
+}
+
+.th-centro {
+    text-align: center !important;
+}
+
+.td-centro {
+    text-align: center;
+    color: var(--text-sub);
+}
+
+/* Columna acciones — botones en fila */
+.td-acciones {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.empty-row td {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 40px 0;
+    font-size: 13px;
+    font-style: italic;
+}
+
+/* ============================================================
+   BOTONES DE TABLA
+   ============================================================ */
+.tbl-btn {
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 5px;
+    padding: 5px 11px;
+    display: inline-block;
+    cursor: pointer;
+    transition: opacity 0.12s;
+    margin-left: 6px;
+    white-space: nowrap;
+    text-decoration: none;
+    border: 0.5px solid transparent;
+}
+
+    .tbl-btn:hover {
+        opacity: 0.8;
+    }
+
+/* Ver */
+.tbl-btn-ver {
+    color: var(--text-sub);
+    border-color: var(--border);
+    background: var(--surface);
+}
+
+/* Modificar */
+.tbl-btn-mod {
+    color: #0C447C;
+    border-color: #B5D4F4;
+    background: #E6F1FB;
+}
+
+/* Dar de baja */
+.tbl-btn-baja {
+    color: #993C1D;
+    border-color: #F5C4B3;
+    background: #FEF0F0;
+}
+
+/* Reactivar */
+.tbl-btn-reactivar {
+    color: var(--success-text);
+    border-color: var(--success-border);
+    background: var(--success-bg);
+}
+
+/* Oculto (para mostrar/ocultar condicionalmente) */
+.tbl-btn-hidden {
+    display: none !important;
+}
+
+/* ============================================================
+   BADGE ESTADO EN TABLA
+   ============================================================ */
+.badge-estado {
+    font-size: 11px;
+    font-weight: 500;
+    border-radius: 100px;
+    padding: 3px 10px;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+    .badge-estado.activo {
+        background: var(--success-bg);
+        color: var(--success-text);
+        border: 0.5px solid var(--success-border);
+    }
+
+    .badge-estado.inactivo {
+        background: #F1EFE8;
+        color: #5F5E5A;
+        border: 0.5px solid #D3D1C7;
+    }
