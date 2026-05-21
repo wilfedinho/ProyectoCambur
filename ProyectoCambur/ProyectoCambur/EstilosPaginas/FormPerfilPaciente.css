@@ -1,0 +1,512 @@
+﻿/* ============================================================
+   FormPerfilPaciente.css
+   Los estilos base están en EstilosPaginas/Shared.css
+   ============================================================ */
+
+/* Layout selección */
+.perfil-layout {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 20px;
+    align-items: start;
+}
+
+.perfil-form-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.perfil-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Header paciente */
+.paciente-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 18px;
+    border-bottom: 0.5px solid var(--border);
+    margin-bottom: 4px;
+}
+
+.paciente-header-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #E8EFF5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-title);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-sub);
+    flex-shrink: 0;
+}
+
+.paciente-header-info {
+    flex: 1;
+}
+
+.paciente-header-nombre {
+    display: block;
+    font-family: var(--font-title);
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+.paciente-header-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.meta-sep {
+    color: var(--border);
+}
+
+/* Badge aviso IA */
+.ia-badge-aviso {
+    background: #F0F9F5;
+    border: 0.5px solid #9FE1CB;
+    border-left: 3px solid #1D9E75;
+    border-radius: 6px;
+    padding: 11px 16px;
+    font-size: 13px;
+    color: #085041;
+    margin: 16px 0 4px 0;
+    line-height: 1.6;
+}
+
+.hint-text {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-bottom: 14px;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* ============================================================
+   GRILLA DE MODELOS
+   ============================================================ */
+.modelos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+    /* Últimas 2 cards centradas en su fila */
+    .modelos-grid .modelo-card:nth-child(4),
+    .modelos-grid .modelo-card:nth-child(5) {
+        /* ocupan posición normal en grilla de 3 col;
+       el JS y CSS se encargan del centrado visual */
+    }
+
+.modelo-card {
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    background: var(--surface);
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+
+    .modelo-card:hover {
+        background: #FDFCFA;
+        border-color: #B0A99E;
+    }
+
+    .modelo-card.seleccionado {
+        border: 1.5px solid var(--text-main);
+        background: #F8F5F0;
+    }
+
+.modelo-icono {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.modelo-info {
+    flex: 1;
+}
+
+.modelo-nombre {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 6px;
+}
+
+.modelo-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.55;
+}
+
+.modelo-check {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-size: 16px;
+    color: var(--border);
+    transition: color 0.15s;
+}
+
+.modelo-card.seleccionado .modelo-check {
+    color: var(--text-main);
+}
+
+/* ── Botón IA ── */
+.btn-ia {
+    background: var(--text-main) !important;
+}
+
+/* ============================================================
+   CARD MODELO SELECCIONADO (aside)
+   ============================================================ */
+.modelo-seleccionado-card {
+    padding: 18px 20px;
+}
+
+.modelo-sel-vacio {
+    font-size: 12px;
+    color: var(--text-light);
+    font-style: italic;
+    padding: 8px 0;
+}
+
+.modelo-sel-activo {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 4px 0;
+}
+
+.ms-icono {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.ms-nombre {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 3px;
+}
+
+.ms-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ============================================================
+   CARD PERFILES ANTERIORES (aside)
+   ============================================================ */
+.perfiles-anteriores-card {
+    padding: 18px 20px;
+}
+
+.perfil-anterior-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 0.5px solid #EDE8E0;
+    gap: 8px;
+}
+
+    .perfil-anterior-item:last-child {
+        border-bottom: none;
+    }
+
+.pa-modelo {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-sub);
+}
+
+.pa-fecha {
+    font-size: 11px;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.sin-perfiles-txt {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: italic;
+    display: block;
+    padding: 6px 0;
+}
+
+/* ============================================================
+   AVISO CARD (compartido)
+   ============================================================ */
+.aviso-card {
+    padding: 18px 20px;
+    text-align: center;
+    background: #FAFAF8;
+}
+
+.aviso-icon {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.aviso-titulo {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 6px;
+}
+
+.aviso-texto {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ============================================================
+   OVERLAY DE CARGA
+   ============================================================ */
+.carga-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(27,42,59,0.55);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carga-card {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 40px 48px;
+    text-align: center;
+    min-width: 320px;
+}
+
+.carga-spinner {
+    width: 44px;
+    height: 44px;
+    border: 3px solid #EDE8E0;
+    border-top-color: var(--text-main);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.carga-titulo {
+    font-family: var(--font-title);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.carga-subtitulo {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ============================================================
+   RESULTADO DEL PERFIL
+   ============================================================ */
+.resultado-layout {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 20px;
+    align-items: start;
+}
+
+.resultado-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.resultado-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.resultado-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+
+.resultado-header-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+/* Badge modelo usado */
+.modelo-usado-badge {
+    display: inline-flex;
+    margin-bottom: 12px;
+}
+
+.modelo-badge-texto {
+    background: #E8EFF5;
+    border: 0.5px solid #B5D4F4;
+    border-radius: 100px;
+    padding: 5px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #0C447C;
+    display: inline-block;
+}
+
+/* Badge resultado IA */
+.ia-badge-resultado {
+    background: #F0F9F5;
+    border: 0.5px solid #9FE1CB;
+    border-left: 3px solid #1D9E75;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #085041;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* Secciones del perfil */
+.perfil-secciones {
+    display: flex;
+    flex-direction: column;
+}
+
+.perfil-seccion {
+    padding: 18px 0;
+    border-bottom: 0.5px solid #EDE8E0;
+    margin-bottom: 4px;
+}
+
+.ps-titulo {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ps-icono {
+    font-size: 14px;
+}
+
+.ps-texto {
+    display: block;
+    font-size: 14px;
+    color: var(--text-sub);
+    line-height: 1.75;
+    white-space: pre-line;
+}
+
+/* Nota al pie */
+.perfil-nota-pie {
+    margin-top: 20px;
+    padding: 12px 16px;
+    background: #FEF0F0;
+    border: 0.5px solid #F5C4B3;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #993C1D;
+    line-height: 1.6;
+}
+
+/* ── Meta card resultado ── */
+.meta-resultado-card {
+    padding: 18px 20px;
+}
+
+.meta-fila {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 0;
+    border-bottom: 0.5px solid #EDE8E0;
+}
+
+    .meta-fila:last-child {
+        border-bottom: none;
+    }
+
+.meta-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.meta-valor {
+    font-size: 13px;
+    color: var(--text-main);
+    font-weight: 500;
+    display: block;
+}
+
+/* ── Accesos card ── */
+.accesos-card {
+    padding: 18px 20px;
+}
+
+.accesos-titulo {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.acceso-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--text-sub);
+    transition: background 0.12s;
+    margin-bottom: 2px;
+    text-decoration: none;
+}
+
+    .acceso-item:hover {
+        background: var(--bg-paper);
+        color: var(--text-main);
+    }

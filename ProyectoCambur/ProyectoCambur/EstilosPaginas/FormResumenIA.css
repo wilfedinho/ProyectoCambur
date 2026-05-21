@@ -1,0 +1,317 @@
+﻿/* ============================================================
+   FormResumenIA.css
+   Estilos específicos de Resumen Clínico Asistido por IA.
+   Los estilos base están en EstilosPaginas/Shared.css
+   ============================================================ */
+
+/* ============================================================
+   BADGE AVISO IA (filtros)
+   ============================================================ */
+.ia-badge-aviso {
+    background: #F0F4FA;
+    border: 0.5px solid #B5D4F4;
+    border-left: 3px solid #378ADD;
+    border-radius: 6px;
+    padding: 11px 16px;
+    font-size: 13px;
+    color: #0C447C;
+    margin: 18px 0 4px 0;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   TABLA DE CONSULTAS — columnas específicas
+   ============================================================ */
+.th-check, .td-check {
+    width: 40px;
+    text-align: center !important;
+    padding-left: 14px !important;
+}
+
+.td-fecha {
+    color: var(--text-main) !important;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.td-dur {
+    color: var(--text-muted) !important;
+    white-space: nowrap;
+}
+
+.td-mod {
+    white-space: nowrap;
+}
+
+.td-resumen {
+    color: var(--text-sub);
+    font-size: 13px;
+}
+
+/* Badges de modalidad */
+.badge-modalidad {
+    font-size: 11px;
+    font-weight: 500;
+    border-radius: 100px;
+    padding: 3px 10px;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+    .badge-modalidad.presencial {
+        background: #EAF3DE;
+        color: #27500A;
+        border: 0.5px solid #C0DD97;
+    }
+
+    .badge-modalidad.virtual {
+        background: #E6F1FB;
+        color: #0C447C;
+        border: 0.5px solid #B5D4F4;
+    }
+
+    .badge-modalidad.telefonica {
+        background: #F1EFE8;
+        color: #444441;
+        border: 0.5px solid #D3D1C7;
+    }
+
+/* Rango de búsqueda en el header */
+.rango-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    margin-top: 6px;
+}
+
+/* Botón IA con distinción visual */
+.btn-ia {
+    background: #1B2A3B !important;
+    position: relative;
+    padding-left: 20px;
+}
+
+/* ============================================================
+   OVERLAY DE CARGA
+   ============================================================ */
+.carga-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(27, 42, 59, 0.55);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carga-card {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 40px 48px;
+    text-align: center;
+    min-width: 320px;
+}
+
+.carga-spinner {
+    width: 44px;
+    height: 44px;
+    border: 3px solid #EDE8E0;
+    border-top-color: var(--text-main);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.carga-titulo {
+    font-family: var(--font-title);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.carga-subtitulo {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ============================================================
+   LAYOUT DEL RESUMEN GENERADO
+   ============================================================ */
+.resumen-layout {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 20px;
+    align-items: start;
+    margin-top: 0;
+}
+
+.resumen-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.resumen-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Header del resumen con acciones */
+.resumen-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+
+.resumen-header-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+/* Badge IA en el resultado */
+.ia-badge-resultado {
+    background: #FAEEDA;
+    border: 0.5px solid #FAC775;
+    border-left: 3px solid #EF9F27;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #633806;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   SECCIONES DEL RESUMEN
+   ============================================================ */
+.resumen-seccion {
+    padding: 18px 0;
+    border-bottom: 0.5px solid #EDE8E0;
+    margin-bottom: 4px;
+}
+
+.resumen-seccion-titulo {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.resumen-seccion-icono {
+    font-size: 14px;
+}
+
+.resumen-seccion-texto {
+    display: block;
+    font-size: 14px;
+    color: var(--text-sub);
+    line-height: 1.75;
+    white-space: pre-line;
+}
+
+/* ============================================================
+   CARD META DEL RESUMEN (aside)
+   ============================================================ */
+.resumen-meta-card {
+    padding: 18px 20px;
+}
+
+.meta-fila {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 0;
+    border-bottom: 0.5px solid #EDE8E0;
+}
+
+    .meta-fila:last-child {
+        border-bottom: none;
+    }
+
+.meta-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.meta-valor {
+    font-size: 13px;
+    color: var(--text-main);
+    font-weight: 500;
+    display: block;
+}
+
+/* ============================================================
+   CARDS COMPARTIDAS (también usadas en otras pantallas)
+   ============================================================ */
+.aviso-card {
+    padding: 18px 20px;
+    text-align: center;
+    background: #FAFAF8;
+}
+
+.aviso-icon {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.aviso-titulo {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 6px;
+}
+
+.aviso-texto {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.accesos-card {
+    padding: 18px 20px;
+}
+
+.accesos-titulo {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.acceso-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--text-sub);
+    transition: background 0.12s;
+    margin-bottom: 2px;
+    text-decoration: none;
+}
+
+    .acceso-item:hover {
+        background: var(--bg-paper);
+        color: var(--text-main);
+    }

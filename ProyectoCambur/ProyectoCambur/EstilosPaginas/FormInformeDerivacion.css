@@ -1,0 +1,281 @@
+﻿/* ============================================================
+   FormInformeDerivacion.css
+   Los estilos base están en EstilosPaginas/Shared.css
+   ============================================================ */
+
+/* ── Layout formulario ── */
+.derivacion-layout {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 20px;
+    align-items: start;
+}
+
+.derivacion-form-col { display: flex; flex-direction: column; }
+.derivacion-aside    { display: flex; flex-direction: column; gap: 16px; }
+
+/* ── Header paciente ── */
+.paciente-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 18px;
+    border-bottom: 0.5px solid var(--border);
+    margin-bottom: 4px;
+}
+
+.paciente-header-avatar {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: #E8EFF5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-title);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-sub);
+    flex-shrink: 0;
+}
+
+.paciente-header-info { flex: 1; }
+.paciente-header-nombre {
+    display: block;
+    font-family: var(--font-title);
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 4px;
+}
+
+.paciente-header-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.meta-item { font-size: 13px; color: var(--text-muted); }
+.meta-sep  { color: var(--border); }
+
+/* ── Campo full width en grid-2 ── */
+.full-col { grid-column: 1 / -1; }
+
+/* ── Aviso IA ── */
+.ia-aviso-derivacion {
+    display: flex;
+    gap: 14px;
+    background: #F0F4FA;
+    border: 0.5px solid #B5D4F4;
+    border-left: 3px solid #378ADD;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 20px 0 4px 0;
+    align-items: flex-start;
+}
+
+.ia-aviso-icono { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
+.ia-aviso-texto {
+    font-size: 13px;
+    color: #0C447C;
+    line-height: 1.6;
+}
+
+.ia-aviso-detalle {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    color: #185FA5;
+    font-style: italic;
+}
+
+/* ── Info card (aside) ── */
+.info-card { padding: 18px 20px; }
+
+.info-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 8px 0;
+    border-bottom: 0.5px solid #EDE8E0;
+    font-size: 13px;
+}
+
+.info-item:last-child { border-bottom: none; padding-bottom: 0; }
+.info-item-texto { color: var(--text-sub); line-height: 1.5; }
+
+/* ── Aviso card (compartido) ── */
+.aviso-card { padding: 18px 20px; text-align: center; background: #FAFAF8; }
+.aviso-icon    { font-size: 22px; margin-bottom: 6px; }
+.aviso-titulo  { font-size: 13px; font-weight: 500; color: var(--text-main); margin-bottom: 6px; }
+.aviso-texto   { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+/* ── Botón IA ── */
+.btn-ia { background: var(--text-main) !important; }
+
+/* ── Overlay de carga ── */
+.carga-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(27, 42, 59, 0.55);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carga-card {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 40px 48px;
+    text-align: center;
+    min-width: 320px;
+}
+
+.carga-spinner {
+    width: 44px; height: 44px;
+    border: 3px solid #EDE8E0;
+    border-top-color: var(--text-main);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.carga-titulo    { font-family: var(--font-title); font-size: 20px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; }
+.carga-subtitulo { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+/* ============================================================
+   AUDITORÍA DEL INFORME
+   ============================================================ */
+.auditoria-layout {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 20px;
+    align-items: start;
+}
+
+.auditoria-form-col { display: flex; flex-direction: column; }
+.auditoria-aside    { display: flex; flex-direction: column; gap: 16px; }
+
+/* Header auditoría */
+.auditoria-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+
+/* Badge pendiente de revisión */
+.badge-pendiente-revision {
+    font-size: 11px;
+    font-weight: 500;
+    border-radius: 100px;
+    padding: 5px 14px;
+    background: #FAEEDA;
+    border: 0.5px solid #FAC775;
+    color: #633806;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: inline-block;
+    margin-top: 4px;
+}
+
+/* Badge resultado IA */
+.ia-badge-resultado {
+    background: #FAEEDA;
+    border: 0.5px solid #FAC775;
+    border-left: 3px solid #EF9F27;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #633806;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* Secciones del informe */
+.auditoria-secciones {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 4px;
+}
+
+/* ── Botones de auditoría ── */
+.btn-success,
+input[type="submit"].btn-success {
+    background: var(--success);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 11px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.btn-success:hover { background: #1D8070; }
+
+.btn-danger,
+input[type="submit"].btn-danger {
+    background: transparent;
+    color: #993C1D;
+    border: 0.5px solid #F5C4B3;
+    border-radius: 6px;
+    padding: 11px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.btn-danger:hover { background: #FEF0F0; }
+
+/* ── Meta card (aside auditoría) ── */
+.meta-card { padding: 18px 20px; }
+
+.meta-fila {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 0;
+    border-bottom: 0.5px solid #EDE8E0;
+}
+
+.meta-fila:last-child { border-bottom: none; }
+
+.meta-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.meta-valor {
+    font-size: 13px;
+    color: var(--text-main);
+    font-weight: 500;
+    display: block;
+}
+
+/* Accesos título genérico */
+.accesos-titulo {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 10px;
+}
