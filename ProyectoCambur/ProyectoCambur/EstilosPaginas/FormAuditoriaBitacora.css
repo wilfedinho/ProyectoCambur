@@ -1,0 +1,216 @@
+﻿/* ============================================================
+   FormAuditoriaBitacora.css
+   Los estilos base están en EstilosPaginas/Shared.css
+   ============================================================ */
+
+/* ── Sidebar admin ── */
+.tagline-admin {
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 3px;
+}
+
+.user-avatar-admin {
+    background: #3A2A4E !important;
+}
+
+.admin-role {
+    color: var(--accent) !important;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+/* ── Panel de filtros ── */
+.filtros-card {
+    padding: 24px 28px;
+}
+
+.filtros-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+}
+
+.fecha-range {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.filtro-input {
+    background: #FAFAF8;
+    border: 0.5px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 13px;
+    color: var(--text-main);
+    font-family: var(--font-body);
+    outline: none;
+    flex: 1;
+    min-width: 0;
+    -webkit-appearance: none;
+}
+
+    .filtro-input:focus {
+        border-color: var(--text-main);
+    }
+
+.filtro-sep {
+    font-size: 12px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.filtros-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 0.5px solid var(--border);
+}
+
+/* ── Columnas específicas de la tabla ── */
+.td-fecha-bit {
+    font-size: 12px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    font-family: monospace;
+}
+
+.td-desc {
+    font-size: 13px;
+    color: var(--text-sub);
+    max-width: 340px;
+}
+
+/* ── Badges de criticidad ── */
+.badge-criticidad {
+    font-size: 11px;
+    font-weight: 500;
+    border-radius: 100px;
+    padding: 3px 12px;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.crit-1 {
+    background: #FEF0F0;
+    border: 0.5px solid #F5C4B3;
+    color: #993C1D;
+}
+
+.crit-2 {
+    background: #FAEEDA;
+    border: 0.5px solid #FAC775;
+    color: #633806;
+}
+
+.crit-3 {
+    background: #F1EFE8;
+    border: 0.5px solid #D3D1C7;
+    color: #5F5E5A;
+}
+
+/* ── Paginación del GridView ── */
+.grid-pager td {
+    padding: 12px 0 4px;
+    text-align: center;
+}
+
+.grid-pager a,
+.grid-pager span {
+    display: inline-block;
+    padding: 5px 11px;
+    margin: 0 2px;
+    font-size: 12px;
+    border-radius: 5px;
+    border: 0.5px solid var(--border);
+    color: var(--text-sub);
+    text-decoration: none;
+    background: var(--surface);
+}
+
+.grid-pager span {
+    background: var(--text-main);
+    color: var(--bg-paper);
+    border-color: var(--text-main);
+    font-weight: 500;
+}
+
+/* ── Panel de detalle ── */
+.detalle-card {
+    padding: 24px 28px;
+}
+
+.detalle-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.btn-sm-det {
+    padding: 7px 16px !important;
+    font-size: 12px !important;
+}
+
+.detalle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+}
+
+.detalle-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 16px;
+    border-bottom: 0.5px solid #EDE8E0;
+    border-right: 0.5px solid #EDE8E0;
+}
+
+    .detalle-item:nth-child(3n) {
+        border-right: none;
+    }
+
+    .detalle-item:nth-last-child(-n+3):not(.detalle-item-full) {
+        border-bottom: none;
+    }
+
+.detalle-item-full {
+    grid-column: 1 / -1;
+    border-right: none;
+    border-bottom: none;
+}
+
+.det-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.det-valor {
+    font-size: 14px;
+    color: var(--text-main);
+    font-weight: 500;
+    display: block;
+    line-height: 1.5;
+}
+
+/* Estado vacío */
+.timeline-vacio {
+    display: block;
+    text-align: center;
+    padding: 48px 20px;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-style: italic;
+}

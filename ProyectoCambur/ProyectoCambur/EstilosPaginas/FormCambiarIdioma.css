@@ -1,0 +1,236 @@
+﻿/* ============================================================
+   FormCambiarIdioma.css
+   Los estilos base están en EstilosPaginas/Shared.css
+   ============================================================ */
+
+/* Layout */
+.idioma-layout {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 20px;
+    align-items: start;
+}
+
+.idioma-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.idioma-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ── Card de idioma activo ── */
+.idioma-activo-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #F8F5F0;
+    border: 0.5px solid var(--border);
+    border-left: 3px solid var(--success);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 4px;
+}
+
+.ia-flag {
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.ia-info {
+    flex: 1;
+}
+
+.ia-nombre {
+    display: block;
+    font-family: var(--font-title);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1.1;
+}
+
+.ia-codigo {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ── Grilla de idiomas ── */
+.idiomas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+.idioma-card {
+    border: 0.5px solid var(--border);
+    border-radius: 9px;
+    padding: 16px 14px;
+    background: var(--surface);
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+}
+
+    .idioma-card:hover {
+        background: #FDFCFA;
+        border-color: #B0A99E;
+    }
+
+.idioma-card-activo {
+    border: 1.5px solid var(--success);
+    background: var(--success-bg);
+    cursor: default;
+}
+
+.idioma-card-seleccionado {
+    border: 1.5px solid var(--text-main);
+    background: #F8F5F0;
+}
+
+.idioma-flag {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.idioma-card-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.idioma-card-nombre {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.idioma-card-codigo {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+.idioma-check {
+    font-size: 16px;
+    color: var(--border);
+    flex-shrink: 0;
+    transition: color 0.15s;
+}
+
+.idioma-card-activo .idioma-check {
+    color: var(--success);
+}
+
+.idioma-card-seleccionado .idioma-check {
+    color: var(--text-main);
+}
+
+.idioma-badge-inactivo {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background: #FEF0F0;
+    border: 0.5px solid #F5C4B3;
+    color: #993C1D;
+    border-radius: 100px;
+    padding: 2px 8px;
+}
+
+/* Tarjeta con idioma no disponible: opacidad reducida */
+.idioma-card:has(.idioma-badge-inactivo) {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* ── Card lateral: idioma seleccionado ── */
+.sel-card {
+    padding: 18px 20px;
+}
+
+.sel-vacio {
+    font-size: 12px;
+    color: var(--text-light);
+    font-style: italic;
+    padding: 6px 0;
+}
+
+.sel-activo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 0;
+}
+
+.sel-flag {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.sel-nombre {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 2px;
+}
+
+.sel-codigo {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ── Aviso cards ── */
+.aviso-card {
+    padding: 18px 20px;
+    text-align: center;
+    background: #FAFAF8;
+}
+
+.aviso-icon {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.aviso-titulo {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 6px;
+}
+
+.aviso-texto {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Accesos título genérico */
+.accesos-titulo {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 10px;
+}

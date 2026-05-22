@@ -1,0 +1,393 @@
+﻿/* ============================================================
+   FormBackupRestore.css
+   Los estilos base están en EstilosPaginas/Shared.css
+   ============================================================ */
+
+/* ── Sidebar admin (compartido con bitácora) ── */
+.tagline-admin {
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 3px;
+}
+
+.user-avatar-admin {
+    background: #3A2A4E !important;
+}
+
+.admin-role {
+    color: var(--accent) !important;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+/* ── Aviso crítico ── */
+.aviso-critico {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: #FEF0F0;
+    border: 0.5px solid #F5C4B3;
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+}
+
+.aviso-crit-icono {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.aviso-crit-titulo {
+    font-size: 14px;
+    font-weight: 500;
+    color: #993C1D;
+    margin-bottom: 4px;
+}
+
+.aviso-crit-texto {
+    font-size: 13px;
+    color: #993C1D;
+    line-height: 1.6;
+    opacity: 0.85;
+}
+
+/* ── Layout dos columnas ── */
+.br-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.br-col {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Card de operación ── */
+.br-card {
+    padding: 28px;
+}
+
+.br-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 4px;
+}
+
+.br-icono-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.br-icono-backup {
+    background: var(--success-bg);
+}
+
+.br-icono-restore {
+    background: #FAEEDA;
+}
+
+/* ── Grid de info del backup ── */
+.br-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.br-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 12px 14px;
+    border-bottom: 0.5px solid var(--border);
+    border-right: 0.5px solid var(--border);
+}
+
+    .br-info-item:nth-child(even) {
+        border-right: none;
+    }
+
+    .br-info-item:nth-last-child(-n+2) {
+        border-bottom: none;
+    }
+
+.br-info-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.br-info-valor {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+    font-family: monospace;
+    display: block;
+}
+
+/* Preview nombre archivo */
+.br-nombre-preview {
+    background: #F8F5F0;
+    border: 0.5px solid var(--border);
+    border-radius: 6px;
+    padding: 11px 14px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.br-nombre-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.br-nombre-valor {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+    font-family: monospace;
+}
+
+/* Botón backup */
+.btn-backup {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+/* ── Resultado de operación ── */
+.resultado-backup {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--success-bg);
+    border: 0.5px solid var(--success-border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-top: 16px;
+}
+
+.resultado-icono {
+    width: 28px;
+    height: 28px;
+    background: var(--success);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.resultado-titulo {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--success-text);
+    margin-bottom: 2px;
+}
+
+.resultado-texto {
+    font-size: 12px;
+    color: var(--success-text);
+    display: block;
+    font-family: monospace;
+    opacity: 0.85;
+}
+
+/* ── Lista de archivos .bak ── */
+.archivos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.archivo-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 0.5px solid var(--border);
+    border-radius: 7px;
+    padding: 12px 14px;
+    background: #FAFAF8;
+    cursor: pointer;
+    transition: border-color 0.12s, background 0.12s;
+}
+
+    .archivo-item:hover {
+        border-color: #B0A99E;
+        background: var(--surface);
+    }
+
+.archivo-sel {
+    border: 1.5px solid var(--text-main) !important;
+    background: #F8F5F0 !important;
+}
+
+.archivo-icono {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.archivo-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.archivo-nombre {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+    font-family: monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.archivo-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.archivo-check {
+    font-size: 16px;
+    color: var(--border);
+    flex-shrink: 0;
+    transition: color 0.12s;
+}
+
+.archivo-sel .archivo-check {
+    color: var(--text-main);
+}
+
+/* Botón restore */
+.btn-restore {
+    width: 100%;
+    background: transparent;
+    color: var(--text-main);
+    border: 0.5px solid var(--text-main);
+    border-radius: 6px;
+    padding: 11px 0;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: background 0.12s;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+    .btn-restore:hover {
+        background: var(--bg-paper);
+    }
+
+/* Panel de confirmación de restore */
+.confirm-restore-panel {
+    background: #FEF0F0;
+    border: 0.5px solid #F5C4B3;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+}
+
+.confirm-restore-aviso {
+    font-size: 13px;
+    color: #993C1D;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.confirm-restore-archivo {
+    font-size: 12px;
+    color: #993C1D;
+    margin-bottom: 14px;
+}
+
+.confirm-archivo-nombre {
+    font-family: monospace;
+    font-weight: 500;
+    font-size: 13px;
+    color: #993C1D;
+    display: inline;
+}
+
+.confirm-restore-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+/* Botón confirmar restore */
+.btn-danger-solid,
+input[type="submit"].btn-danger-solid {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: opacity 0.15s;
+    white-space: nowrap;
+}
+
+    .btn-danger-solid:hover {
+        opacity: 0.88;
+    }
+
+/* ── Historial de operaciones ── */
+.badge-op {
+    font-size: 11px;
+    font-weight: 500;
+    border-radius: 100px;
+    padding: 3px 12px;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.op-backup {
+    background: var(--success-bg);
+    border: 0.5px solid var(--success-border);
+    color: var(--success-text);
+}
+
+.op-restore {
+    background: #FAEEDA;
+    border: 0.5px solid #FAC775;
+    color: #633806;
+}
+
+.td-mono {
+    font-family: monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+}

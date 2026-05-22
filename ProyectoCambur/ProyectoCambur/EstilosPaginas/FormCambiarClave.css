@@ -1,0 +1,167 @@
+﻿/* ============================================================
+   FormCambiarClave.css
+   Los estilos base están en EstilosPaginas/Shared.css
+   ============================================================ */
+
+/* Layout */
+.clave-layout {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 20px;
+    align-items: start;
+}
+
+.clave-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.clave-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ── Input de contraseña con botón toggle ── */
+.pass-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+    .pass-wrap input[type="password"],
+    .pass-wrap input[type="text"] {
+        width: 100%;
+        background: #FAFAF8;
+        border: 0.5px solid var(--border);
+        border-radius: 6px;
+        padding: 10px 44px 10px 14px;
+        font-size: 14px;
+        color: var(--text-main);
+        font-family: var(--font-body);
+        outline: none;
+        transition: border-color 0.15s;
+        -webkit-appearance: none;
+    }
+
+    .pass-wrap input::placeholder {
+        color: #B8B2A8;
+        font-size: 13px;
+    }
+
+    .pass-wrap input:focus {
+        border-color: var(--text-main);
+        background: var(--surface);
+    }
+
+.pass-toggle {
+    position: absolute;
+    right: 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    color: var(--text-muted);
+    padding: 0;
+    line-height: 1;
+    transition: color 0.12s;
+}
+
+    .pass-toggle:hover {
+        color: var(--text-main);
+    }
+
+/* ── Indicador de fortaleza ── */
+.strength-bars {
+    display: flex;
+    gap: 4px;
+    margin-top: 6px;
+}
+
+.strength-bar {
+    height: 3px;
+    flex: 1;
+    border-radius: 2px;
+    background: var(--border);
+    transition: background 0.2s;
+}
+
+.strength-label {
+    font-size: 11px;
+    margin-top: 4px;
+    display: none;
+}
+
+/* ── Card de política ── */
+.politica-card {
+    padding: 18px 20px;
+}
+
+.politica-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    border-bottom: 0.5px solid #EDE8E0;
+}
+
+    .politica-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+.pol-icono {
+    font-size: 13px;
+    flex-shrink: 0;
+    transition: color 0.2s;
+    width: 14px;
+}
+
+.pol-pendiente {
+    color: var(--border);
+}
+
+.pol-ok {
+    color: var(--success);
+}
+
+.pol-texto {
+    font-size: 12px;
+    color: var(--text-sub);
+    line-height: 1.4;
+}
+
+/* ── Aviso cards ── */
+.aviso-card {
+    padding: 18px 20px;
+    text-align: center;
+    background: #FAFAF8;
+}
+
+.aviso-icon {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.aviso-titulo {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 6px;
+}
+
+.aviso-texto {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Accesos título genérico */
+.accesos-titulo {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 10px;
+}
