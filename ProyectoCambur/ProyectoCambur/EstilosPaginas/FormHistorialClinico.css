@@ -1,10 +1,4 @@
-﻿/* ============================================================
-   FormHistorialClinico.css
-   Estilos específicos de la pantalla Historial Clínico.
-   Los estilos base están en EstilosPaginas/Shared.css
-   ============================================================ */
-
-/* Layout dos columnas */
+﻿
 .historial-layout {
     display: grid;
     grid-template-columns: 1fr 260px;
@@ -15,9 +9,7 @@
 .historial-form-col { display: flex; flex-direction: column; }
 .historial-info-col { display: flex; flex-direction: column; gap: 16px; }
 
-/* ============================================================
-   HEADER DEL PACIENTE (dentro del card)
-   ============================================================ */
+
 .paciente-header {
     display: flex;
     align-items: center;
@@ -72,7 +64,7 @@
 
 .paciente-header-actions { flex-shrink: 0; }
 
-/* Badge estado del historial en el header */
+
 .badge-historial-completo {
     font-size: 11px;
     font-weight: 500;
@@ -97,7 +89,7 @@
     display: inline-block;
 }
 
-/* Hint bajo el separador */
+
 .hint-text {
     font-size: 12px;
     color: var(--text-light);
@@ -106,9 +98,7 @@
     font-style: italic;
 }
 
-/* ============================================================
-   SECCIONES COLAPSABLES
-   ============================================================ */
+
 .seccion-colapsable {
     border: 0.5px solid var(--border);
     border-radius: 8px;
@@ -155,7 +145,7 @@
     transition: transform 0.2s;
 }
 
-/* Badge de estado de la sección */
+
 .badge-seccion {
     font-size: 11px;
     font-weight: 500;
@@ -173,7 +163,7 @@
     color: var(--success-text);
 }
 
-/* Cuerpo colapsable */
+
 .seccion-body {
     max-height: 0;
     overflow: hidden;
@@ -182,12 +172,10 @@
 }
 
 .seccion-colapsable.abierto .seccion-body {
-    /* JS maneja el max-height dinámico */
+   
 }
 
-/* ============================================================
-   CARD DE PROGRESO (columna derecha)
-   ============================================================ */
+
 .progreso-card { padding: 20px; }
 
 .progreso-titulo {
@@ -256,9 +244,7 @@
     color: var(--text-sub);
 }
 
-/* ============================================================
-   CARD AVISO ENCRIPTACIÓN
-   ============================================================ */
+
 .aviso-card {
     padding: 18px 20px;
     text-align: center;
@@ -269,9 +255,7 @@
 .aviso-titulo  { font-size: 13px; font-weight: 500; color: var(--text-main); margin-bottom: 6px; }
 .aviso-texto   { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
 
-/* ============================================================
-   CARD ACCESOS RÁPIDOS
-   ============================================================ */
+
 .accesos-card { padding: 18px 20px; }
 
 .accesos-titulo {

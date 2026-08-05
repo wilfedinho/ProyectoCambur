@@ -1,10 +1,4 @@
-﻿/* ============================================================
-   FormLineaTemporal.css
-   Estilos de la Línea Temporal Clínica.
-   Los estilos base están en EstilosPaginas/Shared.css
-   ============================================================ */
-
-/* Layout dos columnas */
+﻿
 .temporal-layout {
     display: grid;
     grid-template-columns: 1fr 240px;
@@ -24,9 +18,7 @@
     gap: 16px;
 }
 
-/* ============================================================
-   HEADER DEL PACIENTE (reutiliza clases de Shared)
-   ============================================================ */
+
 .paciente-header {
     display: flex;
     align-items: center;
@@ -80,9 +72,7 @@
     color: var(--border);
 }
 
-/* ============================================================
-   FILTROS
-   ============================================================ */
+
 .filtros-row {
     display: flex;
     align-items: center;
@@ -164,7 +154,7 @@
     font-size: 13px !important;
 }
 
-/* Stats y leyenda bajo filtros */
+
 .filtros-stats {
     display: flex;
     align-items: center;
@@ -204,15 +194,13 @@
         color: #854F0B;
     }
 
-/* ============================================================
-   TIMELINE VERTICAL ALTERNADO
-   ============================================================ */
+
 .timeline-wrap {
     position: relative;
     padding: 20px 0 10px;
 }
 
-/* Línea central vertical */
+
 .timeline-linea {
     position: absolute;
     left: 50%;
@@ -224,7 +212,7 @@
     z-index: 0;
 }
 
-/* Cada ítem de la timeline */
+
 .timeline-item {
     display: flex;
     align-items: flex-start;
@@ -233,21 +221,21 @@
     z-index: 1;
 }
 
-    /* Ítems del lado izquierdo */
+    
     .timeline-item.izq {
         flex-direction: row;
         justify-content: flex-end;
         padding-right: calc(50% + 28px);
     }
 
-    /* Ítems del lado derecho */
+    
     .timeline-item.der {
         flex-direction: row-reverse;
         justify-content: flex-end;
         padding-left: calc(50% + 28px);
     }
 
-/* Punto central */
+
 .timeline-punto {
     position: absolute;
     left: 50%;
@@ -280,7 +268,7 @@
     font-size: 15px;
 }
 
-/* Card del evento */
+
 .timeline-card {
     background: var(--surface);
     border: 0.5px solid var(--border);
@@ -294,7 +282,7 @@
         border-color: #B0A99E;
     }
 
-/* Borde izquierdo coloreado según tipo */
+
 .consulta-card {
     border-left: 3px solid #185FA5;
 }
@@ -307,7 +295,7 @@
     border-left: 3px solid #854F0B;
 }
 
-/* Header de la card */
+
 .timeline-card-header {
     display: flex;
     align-items: center;
@@ -323,7 +311,7 @@
     flex-wrap: wrap;
 }
 
-/* Badge de tipo */
+
 .tc-tipo-badge {
     font-size: 10px;
     font-weight: 500;
@@ -385,7 +373,7 @@
     margin: 0;
 }
 
-/* Detalle expandible */
+
 .tc-detalle {
     margin-top: 10px;
 }
@@ -412,7 +400,7 @@
     color: var(--text-muted);
 }
 
-/* Estado vacío */
+
 .timeline-vacio {
     display: block;
     text-align: center;
@@ -422,9 +410,7 @@
     font-style: italic;
 }
 
-/* ============================================================
-   CARD DE ESTADÍSTICAS (aside)
-   ============================================================ */
+
 .stats-card {
     padding: 20px;
 }
@@ -463,9 +449,7 @@
     letter-spacing: 0.3px;
 }
 
-/* ============================================================
-   ACCESOS RÁPIDOS
-   ============================================================ */
+
 .accesos-card {
     padding: 18px 20px;
 }

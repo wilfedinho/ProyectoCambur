@@ -1,8 +1,6 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
-/* ============================================================
-   VARIABLES
-   ============================================================ */
+
 :root {
     --bg-paper: #F2EEE8;
     --sidebar-dark: #1B2A3B;
@@ -23,9 +21,7 @@
     --font-body: 'DM Sans', sans-serif;
 }
 
-/* ============================================================
-   RESET
-   ============================================================ */
+
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -53,14 +49,12 @@ a {
     justify-content: center;
 }
 
-/* ============================================================
-   FONDO
-   ============================================================ */
+
 .login-bg {
     width: 100%;
     min-height: 100vh;
     background: var(--bg-paper);
-    /* Textura sutil de grano */
+   
     background-image: radial-gradient(ellipse at 20% 80%, rgba(27,42,59,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(232,69,90,0.05) 0%, transparent 60%);
     display: flex;
     align-items: center;
@@ -68,9 +62,7 @@ a {
     padding: 32px 20px;
 }
 
-/* ============================================================
-   CARD CENTRAL
-   ============================================================ */
+
 .login-card {
     display: flex;
     width: 100%;
@@ -81,9 +73,7 @@ a {
     box-shadow: 0 24px 64px rgba(27, 42, 59, 0.18), 0 4px 16px rgba(27, 42, 59, 0.10);
 }
 
-/* ============================================================
-   MITAD IZQUIERDA — BRANDING
-   ============================================================ */
+
 .card-brand {
     width: 42%;
     min-width: 300px;
@@ -96,7 +86,7 @@ a {
     overflow: hidden;
 }
 
-/* Círculos decorativos de fondo */
+
 .deco-circle {
     position: absolute;
     border-radius: 50%;
@@ -134,7 +124,7 @@ a {
     z-index: 1;
 }
 
-/* Logo */
+
 .logotype {
     font-family: var(--font-title);
     font-weight: 800;
@@ -157,7 +147,6 @@ a {
     margin-top: 4px;
 }
 
-/* Hero text */
 .brand-titulo {
     font-family: var(--font-title);
     font-weight: 800;
@@ -180,7 +169,6 @@ a {
     font-weight: 300;
 }
 
-/* Pills */
 .brand-pills {
     display: flex;
     flex-wrap: wrap;
@@ -197,9 +185,7 @@ a {
     letter-spacing: 0.3px;
 }
 
-/* ============================================================
-   MITAD DERECHA — FORMULARIO
-   ============================================================ */
+
 .card-form {
     flex: 1;
     background: var(--surface);
@@ -209,7 +195,7 @@ a {
     justify-content: center;
 }
 
-/* Encabezado del form */
+
 .form-header {
     margin-bottom: 24px;
 }
@@ -237,9 +223,7 @@ a {
     color: var(--text-muted);
 }
 
-/* ============================================================
-   CAMPOS
-   ============================================================ */
+
 .field {
     display: flex;
     flex-direction: column;
@@ -260,7 +244,7 @@ a {
             font-size: 10px;
         }
 
-/* Input con icono izquierdo */
+
 .input-wrap {
     position: relative;
     display: flex;
@@ -302,7 +286,6 @@ a {
     background: var(--surface);
 }
 
-/* Botón de mostrar contraseña */
 .password-toggle {
     position: absolute;
     right: 12px;
@@ -320,9 +303,7 @@ a {
         color: var(--text-main);
     }
 
-/* ============================================================
-   MENSAJES
-   ============================================================ */
+
 .field-error {
     font-size: 11px;
     color: var(--accent);
@@ -353,7 +334,7 @@ a {
     display: block;
 }
 
-/* Panel de bloqueo */
+
 .bloqueo-panel {
     display: flex;
     align-items: flex-start;
@@ -387,7 +368,7 @@ a {
     opacity: 0.85;
 }
 
-/* Panel intentos */
+
 .intentos-panel {
     background: #FAEEDA;
     border: 0.5px solid #FAC775;
@@ -404,9 +385,7 @@ a {
     line-height: 1.5;
 }
 
-/* ============================================================
-   BOTÓN PRINCIPAL
-   ============================================================ */
+
 .btn-login,
 input[type="submit"].btn-login {
     width: 100%;
@@ -428,9 +407,7 @@ input[type="submit"].btn-login {
         background: var(--sidebar-mid);
     }
 
-/* ============================================================
-   FOOTER DEL FORMULARIO
-   ============================================================ */
+
 .form-divider {
     height: 0.5px;
     background: var(--border);

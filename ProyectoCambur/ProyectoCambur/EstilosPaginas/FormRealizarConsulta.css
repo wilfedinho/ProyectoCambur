@@ -1,10 +1,4 @@
-﻿/* ============================================================
-   FormRealizarConsulta.css
-   Estilos específicos de la pantalla Realizar Consulta.
-   Los estilos base están en EstilosPaginas/Shared.css
-   ============================================================ */
-
-/* Layout de dos columnas: formulario + sidebar de paciente */
+﻿
 .consulta-layout {
     display: grid;
     grid-template-columns: 1fr 280px;
@@ -24,16 +18,14 @@
     gap: 16px;
 }
 
-/* Grid de una sola columna para textareas */
+
 .grid-1 {
     display: grid;
     grid-template-columns: 1fr;
     gap: 14px;
 }
 
-/* ============================================================
-   CARD DEL PACIENTE SELECCIONADO
-   ============================================================ */
+
 .paciente-card {
     text-align: center;
     padding: 24px 20px;
@@ -58,7 +50,7 @@
     color: var(--text-sub);
     font-family: var(--font-title);
     letter-spacing: 1px;
-    /* Forzar display flex para el label de ASP.NET */
+   
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -94,7 +86,6 @@
     margin: 16px 0;
 }
 
-/* Estadísticas del paciente */
 .paciente-stat-row {
     display: flex;
     justify-content: space-around;
@@ -130,9 +121,7 @@
     letter-spacing: 0.5px;
 }
 
-/* ============================================================
-   CARD DE AVISO ENCRIPTACIÓN
-   ============================================================ */
+
 .aviso-card {
     padding: 18px 20px;
     text-align: center;
@@ -157,9 +146,7 @@
     line-height: 1.6;
 }
 
-/* ============================================================
-   CARD DE HISTORIAL RECIENTE
-   ============================================================ */
+
 .historial-card {
     padding: 18px 20px;
 }

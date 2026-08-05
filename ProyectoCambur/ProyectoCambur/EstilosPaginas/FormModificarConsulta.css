@@ -1,10 +1,4 @@
-﻿/* ============================================================
-   FormModificarConsulta.css
-   Estilos específicos de Modificar Consulta.
-   Los estilos base están en EstilosPaginas/Shared.css
-   ============================================================ */
-
-/* Layout dos columnas */
+﻿
 .modificar-layout {
     display: grid;
     grid-template-columns: 1fr 260px;
@@ -15,16 +9,14 @@
 .modificar-form-col { display: flex; flex-direction: column; }
 .modificar-info-col { display: flex; flex-direction: column; gap: 16px; }
 
-/* Grid de una columna para textareas */
+
 .grid-1-col {
     display: grid;
     grid-template-columns: 1fr;
     gap: 14px;
 }
 
-/* ============================================================
-   HEADER DE SOLO LECTURA (datos de la consulta)
-   ============================================================ */
+
 .consulta-readonly-header {
     display: flex;
     align-items: center;
@@ -86,7 +78,7 @@
 
 .cr-meta-sep { color: var(--border); font-size: 13px; }
 
-/* Badge de plazo */
+
 .badge-plazo-ok {
     font-size: 11px;
     font-weight: 500;
@@ -113,7 +105,7 @@
     flex-shrink: 0;
 }
 
-/* Aviso campos de solo lectura */
+
 .aviso-readonly {
     background: #F8F5F0;
     border: 0.5px solid #DDD7CE;
@@ -126,9 +118,7 @@
     line-height: 1.6;
 }
 
-/* ============================================================
-   CARD PLAZO VENCIDO (panel bloqueado)
-   ============================================================ */
+
 .plazo-vencido-card {
     display: flex;
     align-items: center;
@@ -156,9 +146,7 @@
     opacity: 0.8;
 }
 
-/* ============================================================
-   CARD DE PLAZO DE EDICIÓN (columna derecha)
-   ============================================================ */
+
 .plazo-card { padding: 20px; }
 
 .plazo-card-titulo {
@@ -201,7 +189,7 @@
     position: relative;
 }
 
-/* El fill se setea inline desde el code-behind */
+
 .plazo-fill {
     position: absolute;
     left: 0; top: 0; bottom: 0;
@@ -217,9 +205,7 @@
     display: block;
 }
 
-/* ============================================================
-   CARD HISTORIAL DE CAMBIOS
-   ============================================================ */
+
 .ultima-mod-card { padding: 18px 20px; }
 
 .mod-item {
@@ -250,9 +236,7 @@
     display: block;
 }
 
-/* ============================================================
-   CARDS COMPARTIDAS
-   ============================================================ */
+
 .aviso-card {
     padding: 18px 20px;
     text-align: center;

@@ -1,9 +1,4 @@
-﻿/* ============================================================
-   FormCambiarClave.css
-   Los estilos base están en EstilosPaginas/Shared.css
-   ============================================================ */
-
-/* Layout */
+﻿
 .clave-layout {
     display: grid;
     grid-template-columns: 1fr 240px;
@@ -22,7 +17,7 @@
     gap: 16px;
 }
 
-/* ── Input de contraseña con botón toggle ── */
+
 .pass-wrap {
     position: relative;
     display: flex;
@@ -71,7 +66,7 @@
         color: var(--text-main);
     }
 
-/* ── Indicador de fortaleza ── */
+
 .strength-bars {
     display: flex;
     gap: 4px;
@@ -92,7 +87,6 @@
     display: none;
 }
 
-/* ── Card de política ── */
 .politica-card {
     padding: 18px 20px;
 }
@@ -131,7 +125,7 @@
     line-height: 1.4;
 }
 
-/* ── Aviso cards ── */
+
 .aviso-card {
     padding: 18px 20px;
     text-align: center;
@@ -156,7 +150,7 @@
     line-height: 1.6;
 }
 
-/* Accesos título genérico */
+
 .accesos-titulo {
     font-size: 11px;
     letter-spacing: 2px;

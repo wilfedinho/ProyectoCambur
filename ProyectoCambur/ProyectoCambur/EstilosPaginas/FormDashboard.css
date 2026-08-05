@@ -1,9 +1,4 @@
-﻿/* ============================================================
-   FormDashboard.css
-   Los estilos base están en EstilosPaginas/Shared.css
-   ============================================================ */
-
-/* ── Fila superior: bienvenida + selector período ── */
+﻿
 .dash-top-row {
     display: flex;
     align-items: center;
@@ -60,9 +55,7 @@
         font-weight: 500;
     }
 
-/* ============================================================
-   KPIs
-   ============================================================ */
+
 .kpi-grid {
     display: grid;
     gap: 14px;
@@ -200,9 +193,7 @@
     line-height: 1;
 }
 
-/* ============================================================
-   FILA PRINCIPAL
-   ============================================================ */
+
 .dash-main-row {
     display: grid;
     grid-template-columns: 1fr 360px;
@@ -211,7 +202,7 @@
     align-items: start;
 }
 
-/* ── Gráfico ── */
+
 .grafico-card {
     padding: 24px 28px;
 }
@@ -296,7 +287,7 @@
     white-space: nowrap;
 }
 
-/* ── Últimas consultas ── */
+
 .ultimas-card {
     padding: 24px 24px 16px;
 }
@@ -314,9 +305,7 @@
         color: var(--text-main);
     }
 
-/* ============================================================
-   PACIENTES ACTIVOS — CHIPS
-   ============================================================ */
+
 .pacientes-activos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));

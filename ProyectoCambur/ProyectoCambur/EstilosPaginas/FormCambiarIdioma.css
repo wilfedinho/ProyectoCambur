@@ -1,9 +1,4 @@
-﻿/* ============================================================
-   FormCambiarIdioma.css
-   Los estilos base están en EstilosPaginas/Shared.css
-   ============================================================ */
-
-/* Layout */
+﻿
 .idioma-layout {
     display: grid;
     grid-template-columns: 1fr 240px;
@@ -22,7 +17,6 @@
     gap: 16px;
 }
 
-/* ── Card de idioma activo ── */
 .idioma-activo-card {
     display: flex;
     align-items: center;
@@ -62,7 +56,7 @@
     text-transform: uppercase;
 }
 
-/* ── Grilla de idiomas ── */
+
 .idiomas-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -156,13 +150,13 @@
     padding: 2px 8px;
 }
 
-/* Tarjeta con idioma no disponible: opacidad reducida */
+
 .idioma-card:has(.idioma-badge-inactivo) {
     opacity: 0.55;
     cursor: not-allowed;
 }
 
-/* ── Card lateral: idioma seleccionado ── */
+
 .sel-card {
     padding: 18px 20px;
 }
@@ -200,7 +194,7 @@
     text-transform: uppercase;
 }
 
-/* ── Aviso cards ── */
+
 .aviso-card {
     padding: 18px 20px;
     text-align: center;
@@ -225,7 +219,7 @@
     line-height: 1.6;
 }
 
-/* Accesos título genérico */
+
 .accesos-titulo {
     font-size: 11px;
     letter-spacing: 2px;

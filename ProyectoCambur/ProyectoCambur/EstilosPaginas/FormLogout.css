@@ -32,7 +32,7 @@ body {
     justify-content: center;
 }
 
-/* Card central */
+
 .logout-wrap {
     display: flex;
     align-items: center;
@@ -53,7 +53,7 @@ body {
     gap: 24px;
 }
 
-/* Logo */
+
 .logout-logo {
     font-family: var(--font-title);
     font-weight: 800;
@@ -66,7 +66,7 @@ body {
         color: var(--accent);
     }
 
-/* Estados */
+
 .logout-estado {
     display: flex;
     flex-direction: column;
@@ -75,7 +75,7 @@ body {
     width: 100%;
 }
 
-/* Spinner */
+
 .logout-spinner {
     width: 40px;
     height: 40px;
@@ -92,7 +92,7 @@ body {
     }
 }
 
-/* Iconos de estado */
+
 .logout-icono-error {
     font-size: 36px;
     margin-bottom: 4px;
@@ -126,7 +126,7 @@ body {
     display: block;
 }
 
-/* Botón ir al login (en caso de error) */
+
 .btn-ir-login {
     display: inline-block;
     margin-top: 10px;

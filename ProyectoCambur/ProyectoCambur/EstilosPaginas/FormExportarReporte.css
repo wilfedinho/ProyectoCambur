@@ -1,9 +1,4 @@
-﻿/* ============================================================
-   FormExportarReporte.css
-   Los estilos base están en EstilosPaginas/Shared.css
-   ============================================================ */
-
-/* Layout dos columnas */
+﻿
 .exportar-layout {
     display: grid;
     grid-template-columns: 1fr 240px;
@@ -22,9 +17,7 @@
     gap: 16px;
 }
 
-/* ============================================================
-   CARDS DE DOCUMENTO
-   ============================================================ */
+
 .documentos-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -79,7 +72,7 @@
     display: block;
 }
 
-/* Badges de estado del documento */
+
 .doc-badge {
     font-size: 11px;
     font-weight: 500;
@@ -124,14 +117,12 @@
     color: var(--text-main);
 }
 
-/* Botón exportar */
+
 .btn-exportar {
     min-width: 160px;
 }
 
-/* ============================================================
-   PREVIEW DEL DOCUMENTO
-   ============================================================ */
+
 .preview-card {
     padding: 24px;
 }
@@ -151,7 +142,6 @@
     background: var(--surface);
 }
 
-/* Membrete */
 .prev-membrete {
     display: flex;
     align-items: center;
@@ -186,7 +176,7 @@
     background: var(--border);
 }
 
-/* Info del paciente */
+
 .prev-paciente-info {
     padding: 14px 20px;
 }
@@ -206,7 +196,7 @@
     color: var(--text-muted);
 }
 
-/* Contenido con blur */
+
 .prev-contenido {
     padding: 16px 20px 20px;
 }
@@ -268,9 +258,7 @@
     border: 0.5px solid var(--border);
 }
 
-/* ============================================================
-   HISTORIAL DE EXPORTACIONES (aside)
-   ============================================================ */
+
 .historial-exportaciones-card {
     padding: 18px 20px;
 }
@@ -324,9 +312,7 @@
     padding: 6px 0;
 }
 
-/* ============================================================
-   AVISO CARD (compartido)
-   ============================================================ */
+
 .aviso-card {
     padding: 18px 20px;
     text-align: center;

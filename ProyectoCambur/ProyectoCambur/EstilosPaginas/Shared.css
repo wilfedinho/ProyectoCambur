@@ -1,8 +1,6 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
 
-/* ============================================================
-   VARIABLES GLOBALES — PALETA CAMBUR
-   ============================================================ */
+
 :root {
     --bg-paper: #F2EEE8;
     --sidebar-dark: #1B2A3B;
@@ -25,9 +23,7 @@
     --header-h: 64px;
 }
 
-/* ============================================================
-   RESET
-   ============================================================ */
+
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -47,17 +43,13 @@ a {
     color: inherit;
 }
 
-/* ============================================================
-   LAYOUT FORM
-   ============================================================ */
+
 #form1 {
     display: flex;
     width: 100%;
 }
 
-/* ============================================================
-   SIDEBAR
-   ============================================================ */
+
 .sidebar {
     width: var(--sidebar-w);
     min-width: var(--sidebar-w);
@@ -106,7 +98,7 @@ a {
     overflow-y: auto;
 }
 
-/* Ítem de navegación */
+
 .nav-item {
     display: flex;
     align-items: center;
@@ -119,11 +111,11 @@ a {
     border-left: 3px solid transparent;
     cursor: pointer;
     white-space: nowrap;
-    /* Emoji como ícono outline */
+   
     font-style: normal;
 }
 
-/* Forzar emojis en escala de grises / sin color */
+
 .nav-item {
     filter: none;
 }
@@ -157,9 +149,7 @@ a {
         color: var(--accent);
     }
 
-/* ============================================================
-   ÁREA PRINCIPAL
-   ============================================================ */
+
 .main-wrap {
     margin-left: var(--sidebar-w);
     flex: 1;
@@ -168,9 +158,7 @@ a {
     min-height: 100vh;
 }
 
-/* ============================================================
-   HEADER SUPERIOR
-   ============================================================ */
+
 .top-header {
     height: var(--header-h);
     background: var(--surface);
@@ -242,17 +230,13 @@ a {
     color: var(--text-muted);
 }
 
-/* ============================================================
-   CONTENIDO
-   ============================================================ */
+
 .page-content {
     padding: 32px;
     flex: 1;
 }
 
-/* ============================================================
-   CARDS
-   ============================================================ */
+
 .content-card {
     background: var(--surface);
     border: 0.5px solid var(--border);
@@ -264,7 +248,7 @@ a {
     margin-top: 24px;
 }
 
-/* Header de card con título + badges en la misma fila */
+
 .card-header-row {
     display: flex;
     align-items: flex-start;
@@ -297,9 +281,7 @@ a {
     margin-top: 4px;
 }
 
-/* ============================================================
-   BADGES
-   ============================================================ */
+
 .badges-row {
     display: flex;
     align-items: center;
@@ -328,9 +310,7 @@ a {
     white-space: nowrap;
 }
 
-/* ============================================================
-   SEPARADORES DE SECCIÓN
-   ============================================================ */
+
 .section-sep {
     font-size: 10px;
     letter-spacing: 2.5px;
@@ -350,9 +330,7 @@ a {
         background: var(--border);
     }
 
-/* ============================================================
-   GRILLAS
-   ============================================================ */
+
 .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -371,9 +349,7 @@ a {
     gap: 14px;
 }
 
-/* ============================================================
-   CAMPOS
-   ============================================================ */
+
 .field {
     display: flex;
     flex-direction: column;
@@ -392,9 +368,7 @@ a {
             font-size: 11px;
         }
 
-    /* ============================================================
-   INPUTS, SELECTS, TEXTAREAS
-   ============================================================ */
+    
     .field input[type="text"],
     .field input[type="email"],
     .field input[type="password"],
@@ -444,9 +418,7 @@ a {
         line-height: 1.6;
     }
 
-/* ============================================================
-   RADIO BUTTONS
-   ============================================================ */
+
 .radio-group {
     display: flex;
     gap: 16px;
@@ -464,9 +436,7 @@ a {
     font-weight: 400;
 }
 
-/* ============================================================
-   MENSAJES
-   ============================================================ */
+
 .field-error {
     font-size: 11px;
     color: var(--accent);
@@ -496,9 +466,7 @@ a {
     display: block;
 }
 
-/* ============================================================
-   BOTONES PRINCIPALES
-   ============================================================ */
+
 .btn-primary,
 input[type="submit"].btn-primary {
     background: var(--text-main);
@@ -549,9 +517,7 @@ input[type="submit"].btn-primary {
     border-top: 0.5px solid var(--border);
 }
 
-/* ============================================================
-   TABLA DE DATOS
-   ============================================================ */
+
 .table-wrap {
     overflow-x: auto;
     margin-top: 16px;
@@ -600,7 +566,7 @@ input[type="submit"].btn-primary {
     color: var(--text-sub);
 }
 
-/* Columna acciones — botones en fila */
+
 .td-acciones {
     text-align: right;
     white-space: nowrap;
@@ -614,9 +580,7 @@ input[type="submit"].btn-primary {
     font-style: italic;
 }
 
-/* ============================================================
-   BOTONES DE TABLA
-   ============================================================ */
+
 .tbl-btn {
     font-size: 12px;
     font-weight: 500;
@@ -635,42 +599,39 @@ input[type="submit"].btn-primary {
         opacity: 0.8;
     }
 
-/* Ver */
+
 .tbl-btn-ver {
     color: var(--text-sub);
     border-color: var(--border);
     background: var(--surface);
 }
 
-/* Modificar */
+
 .tbl-btn-mod {
     color: #0C447C;
     border-color: #B5D4F4;
     background: #E6F1FB;
 }
 
-/* Dar de baja */
+
 .tbl-btn-baja {
     color: #993C1D;
     border-color: #F5C4B3;
     background: #FEF0F0;
 }
 
-/* Reactivar */
 .tbl-btn-reactivar {
     color: var(--success-text);
     border-color: var(--success-border);
     background: var(--success-bg);
 }
 
-/* Oculto (para mostrar/ocultar condicionalmente) */
+
 .tbl-btn-hidden {
     display: none !important;
 }
 
-/* ============================================================
-   BADGE ESTADO EN TABLA
-   ============================================================ */
+
 .badge-estado {
     font-size: 11px;
     font-weight: 500;

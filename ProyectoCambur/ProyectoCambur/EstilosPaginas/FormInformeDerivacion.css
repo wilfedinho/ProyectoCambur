@@ -1,9 +1,4 @@
-﻿/* ============================================================
-   FormInformeDerivacion.css
-   Los estilos base están en EstilosPaginas/Shared.css
-   ============================================================ */
-
-/* ── Layout formulario ── */
+﻿
 .derivacion-layout {
     display: grid;
     grid-template-columns: 1fr 240px;
@@ -14,7 +9,7 @@
 .derivacion-form-col { display: flex; flex-direction: column; }
 .derivacion-aside    { display: flex; flex-direction: column; gap: 16px; }
 
-/* ── Header paciente ── */
+
 .paciente-header {
     display: flex;
     align-items: center;
@@ -57,10 +52,9 @@
 .meta-item { font-size: 13px; color: var(--text-muted); }
 .meta-sep  { color: var(--border); }
 
-/* ── Campo full width en grid-2 ── */
+
 .full-col { grid-column: 1 / -1; }
 
-/* ── Aviso IA ── */
 .ia-aviso-derivacion {
     display: flex;
     gap: 14px;
@@ -89,7 +83,7 @@
     font-style: italic;
 }
 
-/* ── Info card (aside) ── */
+
 .info-card { padding: 18px 20px; }
 
 .info-item {
@@ -104,16 +98,16 @@
 .info-item:last-child { border-bottom: none; padding-bottom: 0; }
 .info-item-texto { color: var(--text-sub); line-height: 1.5; }
 
-/* ── Aviso card (compartido) ── */
+
 .aviso-card { padding: 18px 20px; text-align: center; background: #FAFAF8; }
 .aviso-icon    { font-size: 22px; margin-bottom: 6px; }
 .aviso-titulo  { font-size: 13px; font-weight: 500; color: var(--text-main); margin-bottom: 6px; }
 .aviso-texto   { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
 
-/* ── Botón IA ── */
+
 .btn-ia { background: var(--text-main) !important; }
 
-/* ── Overlay de carga ── */
+
 .carga-overlay {
     position: fixed;
     inset: 0;
@@ -146,9 +140,7 @@
 .carga-titulo    { font-family: var(--font-title); font-size: 20px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; }
 .carga-subtitulo { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
 
-/* ============================================================
-   AUDITORÍA DEL INFORME
-   ============================================================ */
+
 .auditoria-layout {
     display: grid;
     grid-template-columns: 1fr 240px;
@@ -159,7 +151,7 @@
 .auditoria-form-col { display: flex; flex-direction: column; }
 .auditoria-aside    { display: flex; flex-direction: column; gap: 16px; }
 
-/* Header auditoría */
+
 .auditoria-header {
     display: flex;
     align-items: flex-start;
@@ -169,7 +161,7 @@
     flex-wrap: wrap;
 }
 
-/* Badge pendiente de revisión */
+
 .badge-pendiente-revision {
     font-size: 11px;
     font-weight: 500;
@@ -184,7 +176,7 @@
     margin-top: 4px;
 }
 
-/* Badge resultado IA */
+
 .ia-badge-resultado {
     background: #FAEEDA;
     border: 0.5px solid #FAC775;
@@ -197,7 +189,7 @@
     line-height: 1.6;
 }
 
-/* Secciones del informe */
+
 .auditoria-secciones {
     display: flex;
     flex-direction: column;
@@ -205,7 +197,7 @@
     margin-bottom: 4px;
 }
 
-/* ── Botones de auditoría ── */
+
 .btn-success,
 input[type="submit"].btn-success {
     background: var(--success);
@@ -242,7 +234,7 @@ input[type="submit"].btn-danger {
 
 .btn-danger:hover { background: #FEF0F0; }
 
-/* ── Meta card (aside auditoría) ── */
+
 .meta-card { padding: 18px 20px; }
 
 .meta-fila {
@@ -270,7 +262,7 @@ input[type="submit"].btn-danger {
     display: block;
 }
 
-/* Accesos título genérico */
+
 .accesos-titulo {
     font-size: 11px;
     letter-spacing: 2px;

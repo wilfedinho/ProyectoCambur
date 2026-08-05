@@ -1,9 +1,4 @@
-﻿/* ============================================================
-   FormAuditoriaBitacora.css
-   Los estilos base están en EstilosPaginas/Shared.css
-   ============================================================ */
-
-/* ── Sidebar admin ── */
+﻿
 .tagline-admin {
     font-size: 10px;
     color: var(--accent);
@@ -23,7 +18,6 @@
     font-weight: 500;
 }
 
-/* ── Panel de filtros ── */
 .filtros-card {
     padding: 24px 28px;
 }
@@ -75,7 +69,6 @@
     border-top: 0.5px solid var(--border);
 }
 
-/* ── Columnas específicas de la tabla ── */
 .td-fecha-bit {
     font-size: 12px;
     color: var(--text-muted);
@@ -89,7 +82,7 @@
     max-width: 340px;
 }
 
-/* ── Badges de criticidad ── */
+
 .badge-criticidad {
     font-size: 11px;
     font-weight: 500;
@@ -117,7 +110,7 @@
     color: #5F5E5A;
 }
 
-/* ── Paginación del GridView ── */
+
 .grid-pager td {
     padding: 12px 0 4px;
     text-align: center;
@@ -143,7 +136,6 @@
     font-weight: 500;
 }
 
-/* ── Panel de detalle ── */
 .detalle-card {
     padding: 24px 28px;
 }
@@ -205,7 +197,7 @@
     line-height: 1.5;
 }
 
-/* Estado vacío */
+
 .timeline-vacio {
     display: block;
     text-align: center;

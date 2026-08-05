@@ -1,9 +1,4 @@
-﻿/* ============================================================
-   FormRegistroPaciente.css — estilos específicos de esta pantalla
-   Los estilos base están en EstilosPaginas/Shared.css
-   ============================================================ */
-
-/* Iniciales del paciente en tabla */
+﻿
 .paciente-avatar {
     display: inline-flex;
     align-items: center;

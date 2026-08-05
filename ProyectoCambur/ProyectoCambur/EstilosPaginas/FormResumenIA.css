@@ -1,12 +1,4 @@
-﻿/* ============================================================
-   FormResumenIA.css
-   Estilos específicos de Resumen Clínico Asistido por IA.
-   Los estilos base están en EstilosPaginas/Shared.css
-   ============================================================ */
-
-/* ============================================================
-   BADGE AVISO IA (filtros)
-   ============================================================ */
+﻿
 .ia-badge-aviso {
     background: #F0F4FA;
     border: 0.5px solid #B5D4F4;
@@ -19,9 +11,6 @@
     line-height: 1.6;
 }
 
-/* ============================================================
-   TABLA DE CONSULTAS — columnas específicas
-   ============================================================ */
 .th-check, .td-check {
     width: 40px;
     text-align: center !important;
@@ -48,7 +37,7 @@
     font-size: 13px;
 }
 
-/* Badges de modalidad */
+
 .badge-modalidad {
     font-size: 11px;
     font-weight: 500;
@@ -76,7 +65,7 @@
         border: 0.5px solid #D3D1C7;
     }
 
-/* Rango de búsqueda en el header */
+
 .rango-label {
     font-size: 12px;
     color: var(--text-muted);
@@ -84,16 +73,14 @@
     margin-top: 6px;
 }
 
-/* Botón IA con distinción visual */
+
 .btn-ia {
     background: #1B2A3B !important;
     position: relative;
     padding-left: 20px;
 }
 
-/* ============================================================
-   OVERLAY DE CARGA
-   ============================================================ */
+
 .carga-overlay {
     position: fixed;
     inset: 0;
@@ -142,9 +129,7 @@
     line-height: 1.6;
 }
 
-/* ============================================================
-   LAYOUT DEL RESUMEN GENERADO
-   ============================================================ */
+
 .resumen-layout {
     display: grid;
     grid-template-columns: 1fr 260px;
@@ -164,7 +149,7 @@
     gap: 16px;
 }
 
-/* Header del resumen con acciones */
+
 .resumen-header {
     display: flex;
     align-items: flex-start;
@@ -180,7 +165,7 @@
     flex-shrink: 0;
 }
 
-/* Badge IA en el resultado */
+
 .ia-badge-resultado {
     background: #FAEEDA;
     border: 0.5px solid #FAC775;
@@ -193,9 +178,7 @@
     line-height: 1.6;
 }
 
-/* ============================================================
-   SECCIONES DEL RESUMEN
-   ============================================================ */
+
 .resumen-seccion {
     padding: 18px 0;
     border-bottom: 0.5px solid #EDE8E0;
@@ -224,9 +207,7 @@
     white-space: pre-line;
 }
 
-/* ============================================================
-   CARD META DEL RESUMEN (aside)
-   ============================================================ */
+
 .resumen-meta-card {
     padding: 18px 20px;
 }
@@ -258,9 +239,7 @@
     display: block;
 }
 
-/* ============================================================
-   CARDS COMPARTIDAS (también usadas en otras pantallas)
-   ============================================================ */
+
 .aviso-card {
     padding: 18px 20px;
     text-align: center;

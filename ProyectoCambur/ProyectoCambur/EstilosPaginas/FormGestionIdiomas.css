@@ -1,9 +1,4 @@
-﻿/* ============================================================
-   FormGestionIdiomas.css
-   Los estilos base están en EstilosPaginas/Shared.css
-   ============================================================ */
-
-/* Sidebar admin */
+﻿
 .tagline-admin {
     font-size: 10px;
     color: var(--accent);
@@ -23,7 +18,7 @@
     font-weight: 500;
 }
 
-/* Layout */
+
 .gi-layout {
     display: grid;
     grid-template-columns: 1fr 220px;
@@ -42,14 +37,13 @@
     gap: 16px;
 }
 
-/* ── Botón pequeño ── */
 .btn-sm-gi {
     padding: 8px 16px !important;
     font-size: 13px !important;
     white-space: nowrap;
 }
 
-/* ── Columnas específicas ── */
+
 .td-flag {
     font-size: 20px;
     text-align: center;
@@ -61,7 +55,7 @@
     font-weight: 500;
 }
 
-/* ── Card alta de idioma ── */
+
 .alta-idioma-card {
     padding: 24px 28px;
 }
@@ -85,7 +79,7 @@
     margin: 16px 0 4px 0;
 }
 
-/* ── Grilla de traducciones ── */
+
 .idioma-editando {
     font-family: var(--font-title);
     font-size: 20px;
@@ -123,7 +117,6 @@
         background: var(--surface);
     }
 
-/* Paginación */
 .grid-pager td {
     padding: 12px 0 4px;
     text-align: center;
@@ -148,7 +141,7 @@
     font-weight: 500;
 }
 
-/* ── Info card lateral ── */
+
 .gi-info-card {
     padding: 18px 20px;
 }
@@ -177,7 +170,6 @@
     line-height: 1.55;
 }
 
-/* Aviso card */
 .aviso-card {
     padding: 18px 20px;
     text-align: center;
