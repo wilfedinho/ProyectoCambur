@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
 
-        <!-- SIDEBAR -->
+      
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
@@ -34,10 +34,10 @@
             </div>
         </aside>
 
-        <!-- ÁREA PRINCIPAL -->
+    
         <div class="main-wrap">
 
-            <!-- HEADER -->
+        
             <header class="top-header">
                 <div class="header-title">
                     <span class="header-section">Pacientes</span>
@@ -57,19 +57,19 @@
                 </div>
             </header>
 
-            <!-- CONTENIDO -->
+     
             <div class="page-content">
 
                 <asp:Label ID="lblMensaje" runat="server"
                     Visible="false" CssClass="server-error" />
 
-                <!-- LAYOUT DOS COLUMNAS -->
+             
                 <div class="temporal-layout">
 
-                    <!-- COLUMNA PRINCIPAL -->
+                   
                     <div class="temporal-main">
 
-                        <!-- Card: paciente + filtros -->
+                    
                         <div class="content-card">
                             <div class="paciente-header">
                                 <div class="paciente-header-avatar">
@@ -92,7 +92,7 @@
                                 </div>
                             </div>
 
-                            <!-- Filtros -->
+                     
                             <div class="filtros-row">
                                 <div class="filtros-tipos">
                                     <span class="filtro-label">Tipo:</span>
@@ -143,15 +143,15 @@
                             </div>
                         </div>
 
-                        <!-- Card: línea temporal -->
+                     
                         <div class="content-card mt-24">
 
-                            <%-- Sin registros --%>
+                
                             <asp:Label ID="lblSinRegistros" runat="server"
                                 CssClass="timeline-vacio" Visible="false"
                                 Text="No se encontraron registros clínicos para los filtros seleccionados." />
 
-                            <%-- Timeline --%>
+                       
                             <div class="timeline-wrap">
                                 <div class="timeline-linea"></div>
 
@@ -161,14 +161,14 @@
 
                                         <div class='<%# "timeline-item " + Eval("LadoCss") %>'>
 
-                                            <!-- Punto central -->
+                                   
                                             <div class='<%# "timeline-punto " + Eval("TipoCss") %>'>
                                                 <span class="timeline-punto-icono">
                                                     <%# Eval("Icono") %>
                                                 </span>
                                             </div>
 
-                                            <!-- Card del evento -->
+                                      
                                             <div class='<%# "timeline-card " + Eval("TipoCss") + "-card" %>'>
                                                 <div class="timeline-card-header">
                                                     <div class="tc-header-left">
@@ -188,14 +188,14 @@
                                                 </div>
                                                 <p class="tc-resumen"><%# Eval("Resumen") %></p>
 
-                                                <!-- Panel de detalle (se abre/cierra con JS) -->
+                                             
                                                 <div class="tc-detalle" id='<%# "detalle_" + Eval("IdEvento") %>'
                                                      style="display:none;">
                                                     <div class="tc-detalle-sep"></div>
                                                     <p class="tc-detalle-texto">
                                                         <%# Eval("Detalle") %>
                                                     </p>
-                                                    <%-- Datos extra solo para consultas --%>
+                                                 
                                                     <asp:Panel ID="pnlDatosConsulta" runat="server"
                                                         Visible='<%# Eval("Tipo").ToString() == "CONSULTA" %>'
                                                         CssClass="tc-detalle-extra">
@@ -215,10 +215,10 @@
                         </div>
                     </div>
 
-                    <!-- COLUMNA LATERAL -->
+                   
                     <div class="temporal-aside">
 
-                        <!-- Resumen estadístico -->
+                     
                         <div class="content-card stats-card">
                             <p class="accesos-titulo">Resumen del tratamiento</p>
                             <div class="stat-item">
@@ -243,7 +243,7 @@
                             </div>
                         </div>
 
-                        <!-- Accesos rápidos -->
+                   
                         <div class="content-card accesos-card">
                             <p class="accesos-titulo">Acciones relacionadas</p>
                             <a href="FormRealizarConsulta.aspx"   class="acceso-item">🗒️ <span>Nueva consulta</span></a>
@@ -260,7 +260,7 @@
     </form>
 
     <script type="text/javascript">
-        /* Expandir / colapsar detalle de un evento */
+       
         function toggleDetalle(idEvento, btn) {
             var panel = document.getElementById('detalle_' + idEvento);
             if (!panel) return;
@@ -269,7 +269,7 @@
             btn.textContent     = abierto ? 'Ver detalle' : 'Ocultar';
         }
 
-        /* Vincular botones "Ver detalle" al toggle JS post-carga */
+      
         window.addEventListener('DOMContentLoaded', function () {
             document.querySelectorAll('.tc-btn-ver').forEach(function (btn) {
                 btn.addEventListener('click', function (e) {

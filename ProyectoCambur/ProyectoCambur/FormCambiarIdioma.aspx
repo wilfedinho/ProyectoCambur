@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
 
-        <!-- SIDEBAR -->
+       
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
@@ -34,10 +34,10 @@
             </div>
         </aside>
 
-        <!-- ÁREA PRINCIPAL -->
+     
         <div class="main-wrap">
 
-            <!-- HEADER -->
+         
             <header class="top-header">
                 <div class="header-title">
                     <span class="header-section">Configuración</span>
@@ -55,14 +55,14 @@
                 </div>
             </header>
 
-            <!-- CONTENIDO -->
+       
             <div class="page-content">
 
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" CssClass="server-error" />
 
                 <div class="idioma-layout">
 
-                    <!-- COLUMNA PRINCIPAL -->
+               
                     <div class="idioma-main">
                         <div class="content-card">
 
@@ -73,7 +73,7 @@
 
                             <div class="section-sep">Idioma actual</div>
 
-                            <!-- Card del idioma activo -->
+                        
                             <div class="idioma-activo-card">
                                 <div class="ia-flag">
                                     <asp:Label ID="lblIdiomaActivoFlag" runat="server" Text="" />
@@ -90,11 +90,10 @@
 
                             <div class="section-sep">Idiomas disponibles</div>
 
-                            <%-- Hidden field para el idioma seleccionado --%>
                             <asp:HiddenField ID="hfIdiomaSeleccionado" runat="server"
                                 Value="" ClientIDMode="Static" />
 
-                            <!-- Grilla de idiomas -->
+                      
                             <div class="idiomas-grid">
                                 <asp:Repeater ID="rptIdiomas" runat="server">
                                     <ItemTemplate>
@@ -109,7 +108,7 @@
                                             <div class="idioma-check">
                                                 <%# (bool)Eval("EsActual") ? "●" : "○" %>
                                             </div>
-                                            <%-- Badge inactivo si corresponde --%>
+                                          
                                             <asp:Panel runat="server"
                                                 Visible='<%# !(bool)Eval("Activo") %>'
                                                 CssClass="idioma-badge-inactivo">
@@ -132,7 +131,6 @@
                         </div>
                     </div>
 
-                    <!-- COLUMNA LATERAL -->
                     <div class="idioma-aside">
 
                         <div class="content-card sel-card">
@@ -170,7 +168,7 @@
         };
 
         function seleccionarIdioma(card, codigo) {
-            /* Si está marcado como no disponible, ignorar click */
+         
             if (card.querySelector('.idioma-badge-inactivo')) return;
 
             document.querySelectorAll('.idioma-card').forEach(function (c) {
@@ -187,7 +185,7 @@
             var hf = document.getElementById('hfIdiomaSeleccionado');
             if (hf) hf.value = codigo;
 
-            /* Actualizar card lateral */
+           
             var info   = IDIOMAS_INFO[codigo] || { nombre: codigo, flag: '🌐' };
             var panel  = document.getElementById('seleccionadoInfo');
             if (panel) {

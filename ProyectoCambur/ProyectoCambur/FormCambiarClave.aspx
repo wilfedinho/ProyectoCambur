@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
 
-        <!-- SIDEBAR -->
+       
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
@@ -34,10 +34,10 @@
             </div>
         </aside>
 
-        <!-- ÁREA PRINCIPAL -->
+       
         <div class="main-wrap">
 
-            <!-- HEADER -->
+       
             <header class="top-header">
                 <div class="header-title">
                     <span class="header-section">Configuración</span>
@@ -55,14 +55,14 @@
                 </div>
             </header>
 
-            <!-- CONTENIDO -->
+     
             <div class="page-content">
 
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" CssClass="server-error" />
 
                 <div class="clave-layout">
 
-                    <!-- COLUMNA PRINCIPAL -->
+               
                     <div class="clave-main">
                         <div class="content-card">
 
@@ -73,7 +73,6 @@
 
                             <div class="section-sep">Verificación de identidad</div>
 
-                            <!-- Clave actual -->
                             <div class="field">
                                 <label for="txtClaveActual">Contraseña actual <sup>*</sup></label>
                                 <div class="pass-wrap">
@@ -93,7 +92,7 @@
 
                             <div class="section-sep">Nueva contraseña</div>
 
-                            <!-- Nueva clave -->
+                        
                             <div class="field">
                                 <label for="txtClaveNueva">Nueva contraseña <sup>*</sup></label>
                                 <div class="pass-wrap">
@@ -105,7 +104,7 @@
                                     <button type="button" class="pass-toggle"
                                             onclick="toggleField('txtClaveNueva', this)">👁</button>
                                 </div>
-                                <!-- Indicador de fortaleza -->
+                        
                                 <div class="strength-bars">
                                     <div class="strength-bar" id="bar1"></div>
                                     <div class="strength-bar" id="bar2"></div>
@@ -119,7 +118,7 @@
                                     ValidationGroup="vgClave" />
                             </div>
 
-                            <!-- Confirmar nueva clave -->
+                         
                             <div class="field" style="margin-top:4px;">
                                 <label for="txtClaveConfirmacion">Confirmar nueva contraseña <sup>*</sup></label>
                                 <div class="pass-wrap">
@@ -155,10 +154,10 @@
                         </div>
                     </div>
 
-                    <!-- COLUMNA LATERAL -->
+                 
                     <div class="clave-aside">
 
-                        <!-- Política de contraseña -->
+               
                         <div class="content-card politica-card">
                             <p class="accesos-titulo">Política de contraseña</p>
                             <div class="politica-item" id="polLong">
@@ -204,14 +203,14 @@
     </form>
 
     <script type="text/javascript">
-        /* Mostrar/ocultar campo de contraseña */
+      
         function toggleField(id, btn) {
             var input = document.getElementById(id);
             if (!input) return;
             input.type = input.type === 'password' ? 'text' : 'password';
         }
 
-        /* Indicador de fortaleza + política */
+      
         function checkStrength(val) {
             var b1  = document.getElementById('bar1');
             var b2  = document.getElementById('bar2');
@@ -247,13 +246,13 @@
             actualizarPolitica(val);
         }
 
-        /* Actualizar checklist de política */
+       
         function actualizarPolitica(val) {
             marcarPol('polLong', val && val.length >= 7);
             marcarPol('polMay',  val && /[A-Z]/.test(val));
             marcarPol('polMin',  val && /[a-z]/.test(val));
             marcarPol('polEsp',  val && /[^a-zA-Z0-9]/.test(val));
-            /* polDif solo se puede verificar server-side */
+           
         }
 
         function marcarPol(id, ok) {

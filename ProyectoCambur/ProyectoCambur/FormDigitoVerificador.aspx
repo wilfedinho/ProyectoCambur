@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
 
-        <!-- SIDEBAR ADMIN -->
+     
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
@@ -32,10 +32,10 @@
             </div>
         </aside>
 
-        <!-- ÁREA PRINCIPAL -->
+
         <div class="main-wrap">
 
-            <!-- HEADER -->
+       
             <header class="top-header">
                 <div class="header-title">
                     <span class="header-section">Administración</span>
@@ -53,17 +53,17 @@
                 </div>
             </header>
 
-            <!-- CONTENIDO -->
+     
             <div class="page-content">
 
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" CssClass="server-error" />
 
                 <div class="dv-layout">
 
-                    <!-- COLUMNA PRINCIPAL -->
+                
                     <div class="dv-main">
 
-                        <!-- Panel estado inicial / antes de ejecutar -->
+                
                         <asp:Panel ID="pnlInicial" runat="server" CssClass="content-card">
 
                             <div class="card-header">
@@ -108,14 +108,14 @@
 
                         </asp:Panel>
 
-                        <!-- Panel procesando (visible mientras carga) -->
+                     
                         <div class="content-card procesando-card" id="procesandoCard" style="display:none;">
                             <div class="procesando-spinner"></div>
                             <p class="procesando-titulo">Verificando integridad...</p>
                             <p class="procesando-sub">Recorriendo tablas y recalculando dígitos verificadores</p>
                         </div>
 
-                        <!-- Panel resultado: sin inconsistencias -->
+                 
                         <asp:Panel ID="pnlResultadoOk" runat="server"
                             CssClass="content-card resultado-ok-card" Visible="false">
                             <div class="resultado-ok-icono">✓</div>
@@ -142,7 +142,7 @@
                                 CausesValidation="false" />
                         </asp:Panel>
 
-                        <!-- Panel resultado: con inconsistencias -->
+                
                         <asp:Panel ID="pnlResultadoError" runat="server"
                             CssClass="content-card resultado-error-card" Visible="false">
 
@@ -204,7 +204,7 @@
 
                     </div>
 
-                    <!-- COLUMNA LATERAL -->
+            
                     <div class="dv-aside">
 
                         <div class="content-card dv-info-card">

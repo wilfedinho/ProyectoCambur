@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
 
-        <!-- SIDEBAR -->
+       
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
@@ -34,10 +34,10 @@
             </div>
         </aside>
 
-        <!-- ÁREA PRINCIPAL -->
+
         <div class="main-wrap">
 
-            <!-- HEADER -->
+         
             <header class="top-header">
                 <div class="header-title">
                     <span class="header-section">Inicio</span>
@@ -55,10 +55,10 @@
                 </div>
             </header>
 
-            <!-- CONTENIDO -->
+    
             <div class="page-content">
 
-                <!-- BIENVENIDA + SELECTOR DE PERÍODO -->
+               
                 <div class="dash-top-row">
                     <div class="dash-bienvenida">
                         <asp:Label ID="lblBienvenida" runat="server"
@@ -90,7 +90,7 @@
                     </div>
                 </div>
 
-                <!-- FILA 1: KPIs principales -->
+            
                 <div class="kpi-grid kpi-grid-4">
 
                     <div class="kpi-card">
@@ -131,7 +131,7 @@
 
                 </div>
 
-                <!-- FILA 2: KPIs IA -->
+        
                 <div class="kpi-grid kpi-grid-3" style="margin-top:12px;">
 
                     <div class="kpi-card kpi-card-ia">
@@ -157,10 +157,9 @@
 
                 </div>
 
-                <!-- FILA 3: Gráfico + Últimas consultas -->
                 <div class="dash-main-row">
 
-                    <!-- Gráfico de actividad mensual -->
+           
                     <div class="content-card grafico-card">
                         <div class="grafico-header">
                             <h3 class="grafico-titulo">Actividad mensual</h3>
@@ -169,7 +168,7 @@
                         </div>
                         <div class="grafico-wrap">
                             <div class="grafico-barras" id="graficoBars">
-                                <!-- Las barras se generan desde el code-behind via Repeater -->
+                              
                                 <asp:Repeater ID="rptGrafico" runat="server">
                                     <ItemTemplate>
                                         <div class="barra-col">
@@ -188,7 +187,7 @@
                         </div>
                     </div>
 
-                    <!-- Últimas consultas -->
+            
                     <div class="content-card ultimas-card">
                         <div class="card-header-row">
                             <div class="card-header-left">
@@ -235,7 +234,7 @@
 
                 </div>
 
-                <!-- FILA 4: Pacientes activos recientes -->
+        
                 <div class="content-card" style="margin-top:20px;">
                     <div class="card-header-row">
                         <div class="card-header-left">

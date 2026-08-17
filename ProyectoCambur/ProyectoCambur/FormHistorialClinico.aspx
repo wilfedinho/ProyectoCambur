@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
 
-        <!-- SIDEBAR -->
+      
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
@@ -34,10 +34,10 @@
             </div>
         </aside>
 
-        <!-- ÁREA PRINCIPAL -->
+      
         <div class="main-wrap">
 
-            <!-- HEADER -->
+            
             <header class="top-header">
                 <div class="header-title">
                     <span class="header-section">Pacientes</span>
@@ -55,20 +55,20 @@
                 </div>
             </header>
 
-            <!-- CONTENIDO -->
+            
             <div class="page-content">
 
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" CssClass="server-error" />
 
-                <!-- LAYOUT DOS COLUMNAS -->
+             
                 <div class="historial-layout">
 
-                    <!-- COLUMNA IZQUIERDA: secciones colapsables -->
+              
                     <div class="historial-form-col">
 
                         <div class="content-card">
 
-                            <!-- Header del paciente -->
+                    
                             <div class="paciente-header">
                                 <div class="paciente-header-avatar">
                                     <asp:Label ID="lblPacienteIniciales" runat="server" Text="MG" />
@@ -93,7 +93,7 @@
                             <div class="section-sep" style="margin-top:20px;">Información clínica persistente</div>
                             <p class="hint-text">Esta información no proviene de una consulta específica sino del contexto general del paciente. Expandí cada sección para completarla.</p>
 
-                            <!-- ── SECCIÓN 1: Hábitos nocivos ── -->
+                           
                             <div class="seccion-colapsable">
                                 <div class="seccion-header" onclick="toggleSeccion(this)">
                                     <div class="seccion-header-left">
@@ -116,7 +116,7 @@
                                 </div>
                             </div>
 
-                            <!-- ── SECCIÓN 2: Contexto familiar ── -->
+                          
                             <div class="seccion-colapsable">
                                 <div class="seccion-header" onclick="toggleSeccion(this)">
                                     <div class="seccion-header-left">
@@ -139,7 +139,7 @@
                                 </div>
                             </div>
 
-                            <!-- ── SECCIÓN 3: Antecedentes familiares ── -->
+                            
                             <div class="seccion-colapsable">
                                 <div class="seccion-header" onclick="toggleSeccion(this)">
                                     <div class="seccion-header-left">
@@ -162,7 +162,7 @@
                                 </div>
                             </div>
 
-                            <!-- ── SECCIÓN 4: Antecedentes médicos ── -->
+                      
                             <div class="seccion-colapsable">
                                 <div class="seccion-header" onclick="toggleSeccion(this)">
                                     <div class="seccion-header-left">
@@ -185,7 +185,7 @@
                                 </div>
                             </div>
 
-                            <!-- ── SECCIÓN 5: Situación laboral ── -->
+                          
                             <div class="seccion-colapsable">
                                 <div class="seccion-header" onclick="toggleSeccion(this)">
                                     <div class="seccion-header-left">
@@ -208,7 +208,7 @@
                                 </div>
                             </div>
 
-                            <!-- ── SECCIÓN 6: Eventos traumáticos ── -->
+                       
                             <div class="seccion-colapsable">
                                 <div class="seccion-header" onclick="toggleSeccion(this)">
                                     <div class="seccion-header-left">
@@ -231,7 +231,7 @@
                                 </div>
                             </div>
 
-                            <!-- Botones -->
+                         
                             <div class="form-actions">
                                 <a href="FormRegistroPaciente.aspx" class="btn-secondary">Volver a pacientes</a>
                                 <asp:Button ID="btnGuardar" runat="server"
@@ -243,10 +243,10 @@
                         </div>
                     </div>
 
-                    <!-- COLUMNA DERECHA: resumen de completitud -->
+              
                     <div class="historial-info-col">
 
-                        <!-- Progreso del historial -->
+                    
                         <div class="content-card progreso-card">
                             <p class="progreso-titulo">Completitud del historial</p>
                             <div class="progreso-barra-wrap">
@@ -283,14 +283,14 @@
                             </div>
                         </div>
 
-                        <!-- Aviso encriptación -->
+                   
                         <div class="content-card aviso-card">
                             <div class="aviso-icon">🔒</div>
                             <p class="aviso-titulo">Datos encriptados</p>
                             <p class="aviso-texto">El historial clínico se encripta con AES antes de persistirse, cumpliendo la Ley 25.326.</p>
                         </div>
 
-                        <!-- Accesos rápidos -->
+                    
                         <div class="content-card accesos-card">
                             <p class="accesos-titulo">Accesos rápidos</p>
                             <a href='FormRealizarConsulta.aspx' class="acceso-item">
@@ -313,7 +313,7 @@
     </form>
 
     <script type="text/javascript">
-        /* ── Toggle de secciones colapsables ── */
+       
         function toggleSeccion(header) {
             var seccion = header.parentElement;
             var body    = seccion.querySelector('.seccion-body');
@@ -333,7 +333,7 @@
             }
         }
 
-        /* ── Actualizar badge de sección al escribir ── */
+       
         function actualizarBadge(textarea, badgeId) {
             var badge = document.getElementById(badgeId);
             if (!badge) return;
@@ -343,7 +343,7 @@
             actualizarProgreso();
         }
 
-        /* ── Calcular progreso general ── */
+       
         function actualizarProgreso() {
             var campos = [
                 { id: 'txtHabitosNocivos',         piId: 'pi-habitos'  },
@@ -375,11 +375,11 @@
             if (pctEl) pctEl.textContent = pct + '%';
         }
 
-        /* ── Inicializar progreso al cargar ── */
+      
         window.addEventListener('DOMContentLoaded', function () {
             actualizarProgreso();
 
-            /* Abrir automáticamente secciones que ya tienen contenido */
+            
             var campos = [
                 'txtHabitosNocivos', 'txtContextoFamiliar',
                 'txtAntecedentesFamiliares', 'txtAntecedentesMedicos',

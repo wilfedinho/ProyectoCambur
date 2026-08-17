@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
 
-        <!-- SIDEBAR -->
+      
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
@@ -34,10 +34,10 @@
             </div>
         </aside>
 
-        <!-- ÁREA PRINCIPAL -->
+     
         <div class="main-wrap">
 
-            <!-- HEADER -->
+      
             <header class="top-header">
                 <div class="header-title">
                     <span class="header-section">Consultas</span>
@@ -55,18 +55,18 @@
                 </div>
             </header>
 
-            <!-- CONTENIDO -->
+           
             <div class="page-content">
 
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" CssClass="server-error" />
 
-                <!-- LAYOUT DOS COLUMNAS: formulario + card paciente -->
+              
                 <div class="consulta-layout">
 
-                    <!-- ── COLUMNA IZQUIERDA: Formulario ── -->
+                  
                     <div class="consulta-form-col">
 
-                        <!-- Selector de paciente -->
+                    
                         <div class="content-card">
                             <div class="card-header">
                                 <h2 class="card-title">Nueva consulta</h2>
@@ -201,7 +201,7 @@
                                 </div>
                             </div>
 
-                            <!-- Botones -->
+                      
                             <div class="form-actions">
                                 <a href="FormDashboard.aspx" class="btn-secondary">Cancelar</a>
                                 <asp:Button ID="btnRegistrar" runat="server"
@@ -214,10 +214,10 @@
                         </div>
                     </div>
 
-                    <!-- ── COLUMNA DERECHA: Card paciente seleccionado ── -->
+                   
                     <div class="consulta-info-col">
 
-                        <!-- Card paciente -->
+                   
                         <div class="content-card paciente-card">
                             <div class="paciente-avatar-grande">
                                 <asp:Label ID="lblPacienteIniciales" runat="server" Text="--" CssClass="avatar-circulo" />
@@ -241,14 +241,14 @@
                             </div>
                         </div>
 
-                        <!-- Card aviso encriptación -->
+                     
                         <div class="content-card aviso-card">
                             <div class="aviso-icon">🔒</div>
                             <p class="aviso-titulo">Datos encriptados</p>
                             <p class="aviso-texto">El contenido clínico se encripta con AES antes de persistirse, cumpliendo la Ley 25.326.</p>
                         </div>
 
-                        <!-- Card consultas recientes del paciente -->
+                     
                         <div class="content-card historial-card">
                             <p class="historial-titulo">Últimas consultas</p>
                             <asp:Repeater ID="rptUltimasConsultas" runat="server">

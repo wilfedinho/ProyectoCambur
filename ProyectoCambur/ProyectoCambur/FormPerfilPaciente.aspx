@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
 
-        <!-- SIDEBAR -->
+      
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
@@ -34,10 +34,10 @@
             </div>
         </aside>
 
-        <!-- ÁREA PRINCIPAL -->
+        
         <div class="main-wrap">
 
-            <!-- HEADER -->
+         
             <header class="top-header">
                 <div class="header-title">
                     <span class="header-section">Perfilación</span>
@@ -57,22 +57,19 @@
                 </div>
             </header>
 
-            <!-- CONTENIDO -->
+            
             <div class="page-content">
 
                 <asp:Label ID="lblMensaje" runat="server"
                     Visible="false" CssClass="server-error" />
 
-                <!-- ================================================
-                     ESTADO 1 — SELECCIÓN DE MODELO
-                     ================================================ -->
+             
                 <asp:Panel ID="pnlSeleccion" runat="server">
                     <div class="perfil-layout">
 
-                        <!-- COLUMNA PRINCIPAL -->
                         <div class="perfil-form-col">
 
-                            <!-- Header paciente -->
+                       
                             <div class="content-card">
                                 <div class="paciente-header">
                                     <div class="paciente-header-avatar">
@@ -98,11 +95,11 @@
                                 <div class="section-sep">Seleccioná el modelo de evaluación</div>
                                 <p class="hint-text">Elegí el marco de evaluación pertinente para este proceso de perfilación. Podés generar múltiples perfiles con distintos modelos.</p>
 
-                                <!-- HIDDEN FIELD para el modelo seleccionado -->
+                            
                                 <asp:HiddenField ID="hfModeloSeleccionado" runat="server"
                                     Value="" ClientIDMode="Static" />
 
-                                <!-- GRILLA DE MODELOS (3+2) -->
+                          
                                 <div class="modelos-grid">
 
                                     <div class="modelo-card" id="cardBigFive"
@@ -170,7 +167,7 @@
                             </div>
                         </div>
 
-                        <!-- COLUMNA LATERAL -->
+                  
                         <div class="perfil-aside">
 
                             <div class="content-card modelo-seleccionado-card">
@@ -206,7 +203,7 @@
                     </div>
                 </asp:Panel>
 
-                <!-- Overlay de carga -->
+             
                 <div class="carga-overlay" id="cargaOverlay" style="display:none;">
                     <div class="carga-card">
                         <div class="carga-spinner"></div>
@@ -215,13 +212,10 @@
                     </div>
                 </div>
 
-                <!-- ================================================
-                     ESTADO 2 — RESULTADO DEL PERFIL
-                     ================================================ -->
+           
                 <asp:Panel ID="pnlResultado" runat="server"
                     CssClass="resultado-layout" Visible="false">
 
-                    <!-- COLUMNA PRINCIPAL -->
                     <div class="resultado-main">
                         <div class="content-card">
 
@@ -245,18 +239,18 @@
                                 </div>
                             </div>
 
-                            <!-- Badge modelo usado -->
+                  
                             <div class="modelo-usado-badge">
                                 <asp:Label ID="lblModeloUsado" runat="server"
                                     CssClass="modelo-badge-texto" Text="" />
                             </div>
 
-                            <!-- Badge aviso no diagnóstico -->
+              
                             <div class="ia-badge-resultado">
                                 🧠 Perfil orientativo generado por IA · No diagnóstico · Solo representación descriptiva contextual · Revisión profesional recomendada
                             </div>
 
-                            <!-- Secciones del perfil -->
+             
                             <div class="perfil-secciones">
 
                                 <div class="perfil-seccion">
@@ -293,7 +287,7 @@
 
                             </div>
 
-                            <!-- Nota al pie -->
+                   
                             <div class="perfil-nota-pie">
                                 ⚠️ Esta perfilación es orientativa y no constituye diagnóstico clínico. El profesional es el único responsable de la interpretación y uso de esta información.
                             </div>
@@ -301,7 +295,7 @@
                         </div>
                     </div>
 
-                    <!-- COLUMNA LATERAL -->
+         
                     <div class="resultado-aside">
 
                         <div class="content-card meta-resultado-card">
@@ -362,24 +356,24 @@
         };
 
         function seleccionarModelo(card, codigo) {
-            /* Quitar selección anterior */
+            
             document.querySelectorAll('.modelo-card').forEach(function (c) {
                 c.classList.remove('seleccionado');
                 var chk = c.querySelector('.modelo-check');
                 if (chk) chk.textContent = '○';
             });
 
-            /* Marcar la nueva */
+            
             card.classList.add('seleccionado');
             var chk = card.querySelector('.modelo-check');
             if (chk) chk.textContent = '●';
 
-            /* Guardar en hidden field */
+            
             modeloActual = codigo;
             var hf = document.getElementById('hfModeloSeleccionado');
             if (hf) hf.value = codigo;
 
-            /* Actualizar card de modelo seleccionado */
+            
             var info = MODELOS_INFO[codigo];
             var panel = document.getElementById('modeloSeleccionadoInfo');
             if (panel && info) {

@@ -10,13 +10,13 @@
 <body>
     <form id="form1" runat="server">
 
-        <!-- FONDO CON TEXTURA -->
+      
         <div class="login-bg">
 
-            <!-- CARD CENTRAL -->
+        
             <div class="login-card">
 
-                <!-- ── MITAD IZQUIERDA: BRANDING ── -->
+           
                 <div class="card-brand">
                     <div class="brand-top">
                         <div class="logotype">CAM<span>BUR</span></div>
@@ -30,13 +30,13 @@
                             Accedé a tu entorno clínico seguro. Toda tu información encriptada y disponible cuando la necesitás.
                         </p>
                     </div>
-                    <!-- Círculos decorativos -->
+                
                     <div class="deco-circle deco-1"></div>
                     <div class="deco-circle deco-2"></div>
                     <div class="deco-circle deco-3"></div>
                 </div>
 
-                <!-- ── MITAD DERECHA: FORMULARIO ── -->
+          
                 <div class="card-form">
 
                     <div class="form-header">
@@ -45,11 +45,11 @@
                         <p class="form-subtitle">Ingresá tus credenciales para continuar</p>
                     </div>
 
-                    <%-- Mensajes de servidor --%>
+                  
                     <asp:Label ID="lblMensaje" runat="server"
                         Visible="false" CssClass="server-error" />
 
-                    <%-- Panel bloqueo --%>
+              
                     <asp:Panel ID="pnlBloqueado" runat="server"
                         CssClass="bloqueo-panel" Visible="false">
                         <span class="bloqueo-icono">🔒</span>
@@ -60,14 +60,14 @@
                         </div>
                     </asp:Panel>
 
-                    <%-- Advertencia de intentos --%>
+               
                     <asp:Panel ID="pnlIntentos" runat="server"
                         CssClass="intentos-panel" Visible="false">
                         <asp:Label ID="lblIntentos" runat="server"
                             CssClass="intentos-texto" Text="" />
                     </asp:Panel>
 
-                    <!-- Campo email -->
+                 
                     <div class="field">
                         <label for="txtEmail">Correo electrónico <sup>*</sup></label>
                         <div class="input-wrap">
@@ -84,7 +84,7 @@
                             ValidationGroup="vgLogin" />
                     </div>
 
-                    <!-- Campo contraseña -->
+               
                     <div class="field">
                         <label for="txtPassword">Contraseña <sup>*</sup></label>
                         <div class="input-wrap">
@@ -104,7 +104,7 @@
                             ValidationGroup="vgLogin" />
                     </div>
 
-                    <!-- Botón principal -->
+                 
                     <asp:Button ID="btnLogin" runat="server"
                         Text="Iniciar sesión →"
                         CssClass="btn-login"
@@ -113,7 +113,7 @@
 
                     <div class="form-divider"></div>
 
-                    <!-- Link registro -->
+              
                     <p class="link-registro">
                         ¿Aún no tenés cuenta?
                         <a href="FormRegistroProfesional.aspx">Registrarse</a>

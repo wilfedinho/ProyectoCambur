@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
 
-        <!-- SIDEBAR ADMIN -->
+    
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
@@ -32,10 +32,10 @@
             </div>
         </aside>
 
-        <!-- ÁREA PRINCIPAL -->
+     
         <div class="main-wrap">
 
-            <!-- HEADER -->
+            
             <header class="top-header">
                 <div class="header-title">
                     <span class="header-section">Administración</span>
@@ -53,19 +53,17 @@
                 </div>
             </header>
 
-            <!-- CONTENIDO -->
+  
             <div class="page-content">
 
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" CssClass="server-error" />
 
                 <div class="gi-layout">
 
-                    <!-- ============================================
-                         COLUMNA IZQUIERDA: Grilla de idiomas
-                         ============================================ -->
+                 
                     <div class="gi-main">
 
-                        <!-- Card: lista de idiomas -->
+                   
                         <div class="content-card">
                             <div class="card-header-row">
                                 <div class="card-header-left">
@@ -137,7 +135,7 @@
                             </div>
                         </div>
 
-                        <!-- Panel: Alta de nuevo idioma -->
+                      
                         <asp:Panel ID="pnlAltaIdioma" runat="server"
                             CssClass="content-card alta-idioma-card mt-24" Visible="false">
 
@@ -201,7 +199,7 @@
 
                         </asp:Panel>
 
-                        <!-- Panel: Grilla de traducciones del idioma seleccionado -->
+                       
                         <asp:Panel ID="pnlTraducciones" runat="server"
                             CssClass="content-card mt-24" Visible="false">
 
@@ -274,7 +272,7 @@
 
                     </div>
 
-                    <!-- COLUMNA LATERAL -->
+                    
                     <div class="gi-aside">
 
                         <div class="content-card gi-info-card">

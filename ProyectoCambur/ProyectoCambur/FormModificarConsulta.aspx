@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
 
-        <!-- SIDEBAR -->
+     
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
@@ -34,10 +34,10 @@
             </div>
         </aside>
 
-        <!-- ÁREA PRINCIPAL -->
+      
         <div class="main-wrap">
 
-            <!-- HEADER -->
+          
             <header class="top-header">
                 <div class="header-title">
                     <span class="header-section">Consultas</span>
@@ -55,12 +55,12 @@
                 </div>
             </header>
 
-            <!-- CONTENIDO -->
+       
             <div class="page-content">
 
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" CssClass="server-error" />
 
-                <!-- PANEL: Vencimiento bloqueado -->
+             
                 <asp:Panel ID="pnlBloqueado" runat="server" CssClass="content-card plazo-vencido-card" Visible="false">
                     <div class="plazo-icono">🔒</div>
                     <div class="plazo-info">
@@ -71,14 +71,14 @@
                     <a href="FormRealizarConsulta.aspx" class="btn-secondary">Volver a consultas</a>
                 </asp:Panel>
 
-                <!-- LAYOUT DOS COLUMNAS -->
+          
                 <asp:Panel ID="pnlFormulario" runat="server" CssClass="modificar-layout">
 
-                    <!-- COLUMNA IZQUIERDA: formulario editable -->
+                   
                     <div class="modificar-form-col">
                         <div class="content-card">
 
-                            <!-- Header con datos de solo lectura -->
+                            
                             <div class="consulta-readonly-header">
                                 <div class="consulta-readonly-paciente">
                                     <div class="cr-avatar">
@@ -104,7 +104,7 @@
                                     CssClass="badge-plazo-ok" Text="" />
                             </div>
 
-                            <!-- Aviso campos no editables -->
+                            
                             <div class="aviso-readonly">
                                 ✏️ Solo podés modificar los campos clínicos. La fecha, duración, paciente y modalidad no son editables.
                             </div>
@@ -179,10 +179,10 @@
                         </div>
                     </div>
 
-                    <!-- COLUMNA DERECHA: info y plazo -->
+                  
                     <div class="modificar-info-col">
 
-                        <!-- Card plazo de edición -->
+                      
                         <div class="content-card plazo-card">
                             <p class="plazo-card-titulo">Plazo de edición</p>
                             <div class="plazo-dias-wrap">
@@ -200,7 +200,7 @@
                                 CssClass="plazo-fecha-limite" Text="" />
                         </div>
 
-                        <!-- Card última modificación -->
+                   
                         <div class="content-card ultima-mod-card">
                             <p class="accesos-titulo">Historial de cambios</p>
                             <div class="mod-item">
@@ -221,7 +221,7 @@
                             </div>
                         </div>
 
-                        <!-- Aviso encriptación -->
+               
                         <div class="content-card aviso-card">
                             <div class="aviso-icon">🔒</div>
                             <p class="aviso-titulo">Datos encriptados</p>

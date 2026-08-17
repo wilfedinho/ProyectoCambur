@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
 
-        <!-- SIDEBAR ADMIN -->
+
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
@@ -32,10 +32,10 @@
             </div>
         </aside>
 
-        <!-- ÁREA PRINCIPAL -->
+       
         <div class="main-wrap">
 
-            <!-- HEADER -->
+          
             <header class="top-header">
                 <div class="header-title">
                     <span class="header-section">Administración</span>
@@ -53,12 +53,12 @@
                 </div>
             </header>
 
-            <!-- CONTENIDO -->
+            
             <div class="page-content">
 
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" CssClass="server-error" />
 
-                <!-- AVISO CRÍTICO -->
+              
                 <div class="aviso-critico">
                     <span class="aviso-crit-icono">⚠️</span>
                     <div>
@@ -69,9 +69,7 @@
 
                 <div class="br-layout">
 
-                    <!-- ============================================
-                         COLUMNA IZQUIERDA: GENERAR BACKUP
-                         ============================================ -->
+                    
                     <div class="br-col">
                         <div class="content-card br-card">
                             <div class="br-card-header">
@@ -104,7 +102,7 @@
                                 </div>
                             </div>
 
-                            <!-- Nombre del archivo que se generará -->
+                           
                             <div class="br-nombre-preview">
                                 <span class="br-nombre-label">Archivo que se generará:</span>
                                 <asp:Label ID="lblNombreArchivo" runat="server"
@@ -118,7 +116,7 @@
                                 CausesValidation="false"
                                 OnClientClick="return confirm('¿Confirmar generación de backup? Se creará un nuevo archivo .bak en la carpeta BackupsSQL.');" />
 
-                            <!-- Resultado del backup -->
+                        
                             <asp:Panel ID="pnlResultadoBackup" runat="server"
                                 CssClass="resultado-backup" Visible="false">
                                 <div class="resultado-icono">✓</div>
@@ -132,9 +130,7 @@
                         </div>
                     </div>
 
-                    <!-- ============================================
-                         COLUMNA DERECHA: RESTAURAR BACKUP
-                         ============================================ -->
+                 
                     <div class="br-col">
                         <div class="content-card br-card">
                             <div class="br-card-header">
@@ -147,7 +143,7 @@
 
                             <div class="section-sep">Archivos disponibles</div>
 
-                            <!-- Listado de archivos .bak -->
+                        
                             <div class="archivos-lista">
                                 <asp:Repeater ID="rptArchivos" runat="server">
                                     <ItemTemplate>
@@ -171,7 +167,7 @@
                             <asp:HiddenField ID="hfArchivoSeleccionado" runat="server"
                                 Value="" ClientIDMode="Static" />
 
-                            <!-- Confirmación de restore -->
+                       
                             <asp:Panel ID="pnlConfirmRestore" runat="server"
                                 CssClass="confirm-restore-panel" Visible="false">
                                 <div class="confirm-restore-aviso">
@@ -198,14 +194,14 @@
                                 </div>
                             </asp:Panel>
 
-                            <!-- Botón iniciar restore -->
+                           
                             <asp:Button ID="btnIniciarRestore" runat="server"
                                 Text="Seleccionar archivo y restaurar →"
                                 CssClass="btn-restore"
                                 OnClick="btnIniciarRestore_Click"
                                 CausesValidation="false" />
 
-                            <!-- Resultado del restore -->
+                         
                             <asp:Panel ID="pnlResultadoRestore" runat="server"
                                 CssClass="resultado-backup" Visible="false">
                                 <div class="resultado-icono">✓</div>
@@ -221,7 +217,7 @@
 
                 </div>
 
-                <!-- HISTORIAL DE OPERACIONES -->
+              
                 <div class="content-card mt-24">
                     <div class="card-header">
                         <h3 class="card-title" style="font-size:18px;">Historial de operaciones</h3>

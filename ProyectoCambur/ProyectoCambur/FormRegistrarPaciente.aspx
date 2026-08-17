@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
 
-        <!-- SIDEBAR -->
+       
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
@@ -34,10 +34,9 @@
             </div>
         </aside>
 
-        <!-- ÁREA PRINCIPAL -->
+     
         <div class="main-wrap">
 
-            <!-- HEADER -->
             <header class="top-header">
                 <div class="header-title">
                     <span class="header-section">Pacientes</span>
@@ -55,12 +54,11 @@
                 </div>
             </header>
 
-            <!-- CONTENIDO -->
+    
             <div class="page-content">
 
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" CssClass="server-error" />
 
-                <!-- PANEL: Formulario -->
                 <div class="content-card">
                     <div class="card-header">
                         <h2 class="card-title">Nuevo paciente</h2>
@@ -163,7 +161,7 @@
                     </div>
                 </div>
 
-                <!-- PANEL: Tabla de pacientes -->
+               
                 <div class="content-card mt-24">
 
                     <div class="card-header-row">
@@ -196,7 +194,7 @@
                                 <asp:BoundField  DataField="FechaRegistro"  HeaderText="Registrado"    HeaderStyle-CssClass="th-centro" ItemStyle-CssClass="td-centro"
                                     DataFormatString="{0:dd/MM/yyyy}" />
 
-                                <%-- Columna Estado (Activo / Inactivo) --%>
+                             
                                 <asp:TemplateField HeaderText="Estado" HeaderStyle-CssClass="th-centro" ItemStyle-CssClass="td-centro">
                                     <ItemTemplate>
                                         <span class='<%# (bool)Eval("Activo") ? "badge-estado activo" : "badge-estado inactivo" %>'>
@@ -205,23 +203,22 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
-                                <%-- Columna Acciones --%>
+                            
                                 <asp:TemplateField HeaderText="Acciones" HeaderStyle-CssClass="th-centro" ItemStyle-CssClass="td-acciones">
                                     <ItemTemplate>
 
-                                        <%-- Ver --%>
+                                    
                                         <a href='FormHistorialClinico.aspx?id=<%# Eval("IdPaciente") %>' class="tbl-btn tbl-btn-ver" title="Ver detalle">
                                             👁️ Ver
                                         </a>
 
-                                        <%-- Modificar --%>
                                         <asp:LinkButton ID="lbModificar" runat="server"
                                             CommandName="Modificar"
                                             CommandArgument='<%# Eval("IdPaciente") %>'
                                             CssClass="tbl-btn tbl-btn-mod"
                                             Text="✏️ Modificar" />
 
-                                        <%-- Dar de baja (solo si activo) --%>
+                                       
                                         <asp:LinkButton ID="lbBaja" runat="server"
                                             CommandName="DarBaja"
                                             CommandArgument='<%# Eval("IdPaciente") %>'
@@ -229,7 +226,7 @@
                                             Text="🚫 Dar de baja"
                                             OnClientClick="return confirm('¿Confirmás dar de baja a este paciente?');" />
 
-                                        <%-- Reactivar (solo si inactivo) --%>
+                                      
                                         <asp:LinkButton ID="lbReactivar" runat="server"
                                             CommandName="Reactivar"
                                             CommandArgument='<%# Eval("IdPaciente") %>'

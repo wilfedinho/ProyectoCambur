@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
 
-        <!-- SIDEBAR -->
+   
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
@@ -34,10 +34,10 @@
             </div>
         </aside>
 
-        <!-- ÁREA PRINCIPAL -->
+        
         <div class="main-wrap">
 
-            <!-- HEADER -->
+          
             <header class="top-header">
                 <div class="header-title">
                     <span class="header-section">IA Asistiva</span>
@@ -55,14 +55,12 @@
                 </div>
             </header>
 
-            <!-- CONTENIDO -->
+            
             <div class="page-content">
 
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" CssClass="server-error" />
 
-                <!-- ================================================
-                     ESTADO 1 — FILTROS
-                     ================================================ -->
+             
                 <asp:Panel ID="pnlFiltros" runat="server" CssClass="content-card">
 
                     <div class="card-header">
@@ -121,9 +119,7 @@
 
                 </asp:Panel>
 
-                <!-- ================================================
-                     ESTADO 2 — LISTA DE CONSULTAS ENCONTRADAS
-                     ================================================ -->
+              
                 <asp:Panel ID="pnlConsultas" runat="server" CssClass="content-card mt-24" Visible="false">
 
                     <div class="card-header-row">
@@ -153,7 +149,7 @@
                             </thead>
                         </table>
 
-                        <%-- Repeater que llena el tbody --%>
+                     
                         <table class="data-table" style="margin-top:-1px; border-top:none;">
                             <asp:Repeater ID="rptConsultas" runat="server">
                                 <ItemTemplate>
@@ -195,9 +191,6 @@
 
                 </asp:Panel>
 
-                <!-- ================================================
-                     ESTADO 2.5 — ANIMACIÓN DE CARGA
-                     ================================================ -->
                 <div class="carga-overlay" id="cargaOverlay" style="display:none;">
                     <div class="carga-card">
                         <div class="carga-spinner"></div>
@@ -206,12 +199,10 @@
                     </div>
                 </div>
 
-                <!-- ================================================
-                     ESTADO 3 — RESUMEN GENERADO
-                     ================================================ -->
+               
                 <asp:Panel ID="pnlResumen" runat="server" CssClass="resumen-layout" Visible="false">
 
-                    <!-- Columna principal: resumen -->
+            
                     <div class="resumen-main">
                         <div class="content-card">
 
@@ -238,7 +229,7 @@
                                 🤖 Generado por IA Asistiva · Solo organizativo · No diagnóstico · Revisión profesional recomendada
                             </div>
 
-                            <!-- Sección 1: Contexto general -->
+                        
                             <div class="resumen-seccion">
                                 <div class="resumen-seccion-titulo">
                                     <span class="resumen-seccion-icono">📌</span> Contexto general del período
@@ -247,7 +238,7 @@
                                     CssClass="resumen-seccion-texto" Text="" />
                             </div>
 
-                            <!-- Sección 2: Evolución observada -->
+                    
                             <div class="resumen-seccion">
                                 <div class="resumen-seccion-titulo">
                                     <span class="resumen-seccion-icono">📈</span> Evolución observada
@@ -256,7 +247,7 @@
                                     CssClass="resumen-seccion-texto" Text="" />
                             </div>
 
-                            <!-- Sección 3: Temas recurrentes -->
+                 
                             <div class="resumen-seccion">
                                 <div class="resumen-seccion-titulo">
                                     <span class="resumen-seccion-icono">🔁</span> Temas recurrentes
@@ -265,7 +256,7 @@
                                     CssClass="resumen-seccion-texto" Text="" />
                             </div>
 
-                            <!-- Sección 4: Intervenciones destacadas -->
+                
                             <div class="resumen-seccion">
                                 <div class="resumen-seccion-titulo">
                                     <span class="resumen-seccion-icono">🛠️</span> Intervenciones destacadas
@@ -274,7 +265,7 @@
                                     CssClass="resumen-seccion-texto" Text="" />
                             </div>
 
-                            <!-- Sección 5: Observaciones del período -->
+            
                             <div class="resumen-seccion" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
                                 <div class="resumen-seccion-titulo">
                                     <span class="resumen-seccion-icono">💡</span> Observaciones del período
@@ -286,7 +277,7 @@
                         </div>
                     </div>
 
-                    <!-- Columna lateral: info -->
+ 
                     <div class="resumen-aside">
 
                         <div class="content-card resumen-meta-card">
@@ -332,20 +323,20 @@
     </form>
 
     <script type="text/javascript">
-        /* Seleccionar / deseleccionar todas las consultas */
+      
         function toggleTodas(chkTodas) {
             var checks = document.querySelectorAll('.chk-consulta input[type="checkbox"]');
             checks.forEach(function (c) { c.checked = chkTodas.checked; });
         }
 
-        /* Mostrar overlay de carga antes del postback */
+      
         function mostrarCarga() {
             var overlay = document.getElementById('cargaOverlay');
             if (overlay) overlay.style.display = 'flex';
             return true;
         }
 
-        /* Ocultar overlay al cargar la página (por si volvió de postback) */
+   
         window.addEventListener('DOMContentLoaded', function () {
             var overlay = document.getElementById('cargaOverlay');
             if (overlay) overlay.style.display = 'none';

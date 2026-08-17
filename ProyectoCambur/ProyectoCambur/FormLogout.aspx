@@ -13,14 +13,14 @@
             <div class="logout-card">
                 <div class="logout-logo">CAM<span>BUR</span></div>
 
-                <%-- Estado normal: cerrando sesión --%>
+           
                 <asp:Panel ID="pnlCerrando" runat="server" CssClass="logout-estado">
                     <div class="logout-spinner"></div>
                     <p class="logout-titulo">Cerrando sesión...</p>
                     <p class="logout-subtitulo">Limpiando datos de sesión de forma segura.</p>
                 </asp:Panel>
 
-                <%-- Estado de error al cerrar sesión --%>
+         
                 <asp:Panel ID="pnlError" runat="server" CssClass="logout-estado" Visible="false">
                     <div class="logout-icono-error">⚠️</div>
                     <p class="logout-titulo">Error al cerrar sesión</p>
@@ -29,7 +29,7 @@
                     <a href="FormLogin.aspx" class="btn-ir-login">Ir al inicio de sesión</a>
                 </asp:Panel>
 
-                <%-- Estado de éxito --%>
+             
                 <asp:Panel ID="pnlExito" runat="server" CssClass="logout-estado" Visible="false">
                     <div class="logout-icono-ok">✓</div>
                     <p class="logout-titulo">Sesión cerrada</p>

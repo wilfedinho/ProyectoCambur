@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
 
-        <!-- SIDEBAR — ROL ADMINISTRADOR -->
+        
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
@@ -32,10 +32,10 @@
             </div>
         </aside>
 
-        <!-- ÁREA PRINCIPAL -->
+        
         <div class="main-wrap">
 
-            <!-- HEADER -->
+            
             <header class="top-header">
                 <div class="header-title">
                     <span class="header-section">Administración</span>
@@ -53,12 +53,12 @@
                 </div>
             </header>
 
-            <!-- CONTENIDO -->
+            
             <div class="page-content">
 
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" CssClass="server-error" />
 
-                <!-- PANEL DE FILTROS -->
+                
                 <div class="content-card filtros-card">
                     <div class="filtros-header">
                         <h2 class="card-title">Registro de bitácora</h2>
@@ -128,7 +128,7 @@
                     </div>
                 </div>
 
-                <!-- TABLA DE REGISTROS -->
+               
                 <div class="content-card mt-24">
 
                     <asp:Label ID="lblVacio" runat="server"
@@ -197,7 +197,7 @@
                     </div>
                 </div>
 
-                <!-- PANEL DE DETALLE DEL REGISTRO -->
+                
                 <asp:Panel ID="pnlDetalle" runat="server"
                     CssClass="content-card detalle-card mt-24" Visible="false">
 

@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
 
-        <!-- SIDEBAR -->
+    
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
@@ -34,10 +34,10 @@
             </div>
         </aside>
 
-        <!-- ÁREA PRINCIPAL -->
+
         <div class="main-wrap">
 
-            <!-- HEADER -->
+      
             <header class="top-header">
                 <div class="header-title">
                     <span class="header-section">Documentación</span>
@@ -57,7 +57,7 @@
                 </div>
             </header>
 
-            <!-- CONTENIDO -->
+         
             <div class="page-content">
 
                 <asp:Label ID="lblMensaje" runat="server"
@@ -65,10 +65,9 @@
 
                 <div class="exportar-layout">
 
-                    <!-- COLUMNA PRINCIPAL -->
+              
                     <div class="exportar-main">
 
-                        <!-- Selector de paciente -->
                         <div class="content-card">
                             <div class="card-header">
                                 <h2 class="card-title">Exportar reporte clínico</h2>
@@ -90,13 +89,13 @@
 
                             <div class="section-sep">Tipo de documento</div>
 
-                            <%-- Hidden field para el tipo seleccionado --%>
+                        
                             <asp:HiddenField ID="hfTipoSeleccionado" runat="server"
                                 Value="" ClientIDMode="Static" />
 
                             <div class="documentos-grid">
 
-                                <!-- Resumen Clínico -->
+                              
                                 <div class="doc-card" id="docResumen"
                                      onclick="seleccionarDoc(this, 'RESUMEN')">
                                     <div class="doc-icono">🤖</div>
@@ -110,7 +109,7 @@
                                     <div class="doc-check">○</div>
                                 </div>
 
-                                <!-- Informe de Derivación -->
+                          
                                 <div class="doc-card" id="docDerivacion"
                                      onclick="seleccionarDoc(this, 'DERIVACION')">
                                     <div class="doc-icono">📤</div>
@@ -124,7 +123,7 @@
                                     <div class="doc-check">○</div>
                                 </div>
 
-                                <!-- Perfil Evolutivo -->
+                    
                                 <div class="doc-card" id="docPerfil"
                                      onclick="seleccionarDoc(this, 'PERFIL')">
                                     <div class="doc-icono">🧠</div>
@@ -151,7 +150,7 @@
                             </div>
                         </div>
 
-                        <!-- Preview del documento -->
+                   
                         <asp:Panel ID="pnlPreview" runat="server"
                             CssClass="content-card preview-card mt-24" Visible="false">
 
@@ -166,7 +165,7 @@
                             </div>
 
                             <div class="preview-documento">
-                                <!-- Membrete -->
+                              
                                 <div class="prev-membrete">
                                     <div class="prev-logo">CAMBUR</div>
                                     <div class="prev-membrete-right">
@@ -184,7 +183,7 @@
                                         CssClass="prev-paciente-meta" Text="" />
                                 </div>
                                 <div class="prev-sep"></div>
-                                <!-- Contenido encriptado / blur -->
+                               
                                 <div class="prev-contenido">
                                     <div class="prev-seccion-titulo">
                                         <asp:Label ID="lblPrevTipoDoc" runat="server" Text="" />

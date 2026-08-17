@@ -10,7 +10,7 @@
 <body>
     <form id="form1" runat="server">
 
-        <!-- COLUMNA IZQUIERDA — BRANDING -->
+        
         <div class="col-brand">
             <div class="brand-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <!-- COLUMNA DERECHA — FORMULARIO -->
+       
         <div class="col-form">
 
             <div class="form-header">
@@ -34,10 +34,10 @@
                 <h1 class="form-title">Crear cuenta</h1>
             </div>
 
-            <!-- Mensaje de error/éxito del servidor -->
+          
             <asp:Label ID="lblMensaje" runat="server" CssClass="server-error" Visible="false" />
 
-            <!-- SECCIÓN: Datos personales -->
+          
             <div class="section-sep">Datos personales</div>
 
             <div class="grid-2">
@@ -142,7 +142,7 @@
 
             </div>
 
-            <!-- SECCIÓN: Plan de suscripción -->
+          
             <div class="section-sep">Plan de suscripción</div>
 
             <asp:HiddenField ID="hfPlanSeleccionado" runat="server" Value="2" ClientIDMode="Static" />
@@ -166,7 +166,7 @@
                 </div>
             </div>
 
-            <!-- SECCIÓN: Datos de pago -->
+           
             <div class="section-sep">Datos de pago</div>
 
             <div class="field mb-14">
@@ -224,7 +224,7 @@
                 </div>
             </div>
 
-            <!-- FOOTER -->
+         
             <div class="form-footer">
                 <div class="login-link">
                     ¿Ya tenés cuenta? <a href="FormLogin.aspx">Iniciar sesión</a>
@@ -244,13 +244,13 @@
 
         </div>
 
-        <!-- Toast de éxito -->
+    
         <div class="toast" id="toastExito">Cuenta creada correctamente. Redirigiendo...</div>
 
     </form>
 
     <script type="text/javascript">
-        /* Selección de plan — actualiza el HiddenField */
+     
         function selectPlan(card, planId) {
             document.querySelectorAll('.plan-card').forEach(function (c) {
                 c.classList.remove('selected');
@@ -260,7 +260,6 @@
             if (hf) hf.value = planId;
         }
 
-        /* Indicador de fortaleza de contraseña */
         function checkStrength(val) {
             var b1 = document.getElementById('bar1');
             var b2 = document.getElementById('bar2');
@@ -290,7 +289,7 @@
             }
         }
 
-        /* Formato número de tarjeta */
+
         function formatCardNumber(input) {
             var v = input.value.replace(/\D/g, '').substring(0, 16);
             input.value = v.replace(/(.{4})/g, '$1 ').trim();
@@ -302,13 +301,12 @@
             else brand.textContent = 'TARJETA';
         }
 
-        /* Formato vencimiento MM/AA */
         function formatExpiry(input) {
             var v = input.value.replace(/\D/g, '').substring(0, 4);
             input.value = v.length >= 3 ? v.substring(0, 2) + '/' + v.substring(2) : v;
         }
 
-        /* Mostrar toast si el servidor lo solicitó */
+       
         window.addEventListener('DOMContentLoaded', function () {
             var mostrar = document.getElementById('hfMostrarToast');
             if (mostrar && mostrar.value === '1') {

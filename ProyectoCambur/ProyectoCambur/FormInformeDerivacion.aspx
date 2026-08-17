@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
 
-        <!-- SIDEBAR -->
+      
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
@@ -34,10 +34,10 @@
             </div>
         </aside>
 
-        <!-- ÁREA PRINCIPAL -->
+     
         <div class="main-wrap">
 
-            <!-- HEADER -->
+   
             <header class="top-header">
                 <div class="header-title">
                     <span class="header-section">Derivaciones</span>
@@ -57,23 +57,21 @@
                 </div>
             </header>
 
-            <!-- CONTENIDO -->
+        
             <div class="page-content">
 
                 <asp:Label ID="lblMensaje" runat="server"
                     Visible="false" CssClass="server-error" />
 
-                <!-- ================================================
-                     ESTADO 1 — FORMULARIO DE DERIVACIÓN
-                     ================================================ -->
+             
                 <asp:Panel ID="pnlFormulario" runat="server">
                     <div class="derivacion-layout">
 
-                        <!-- COLUMNA PRINCIPAL -->
+                  
                         <div class="derivacion-form-col">
                             <div class="content-card">
 
-                                <!-- Header paciente -->
+                    
                                 <div class="paciente-header">
                                     <div class="paciente-header-avatar">
                                         <asp:Label ID="lblPacienteIniciales"
@@ -152,7 +150,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Aviso de qué usará la IA -->
+                          
                                 <div class="ia-aviso-derivacion">
                                     <div class="ia-aviso-icono">🤖</div>
                                     <div class="ia-aviso-texto">
@@ -175,7 +173,7 @@
                             </div>
                         </div>
 
-                        <!-- COLUMNA LATERAL -->
+                  
                         <div class="derivacion-aside">
                             <div class="content-card info-card">
                                 <p class="accesos-titulo">Información que se incluirá</p>
@@ -208,7 +206,7 @@
                     </div>
                 </asp:Panel>
 
-                <!-- Overlay de carga -->
+           
                 <div class="carga-overlay" id="cargaOverlay" style="display:none;">
                     <div class="carga-card">
                         <div class="carga-spinner"></div>
@@ -217,15 +215,11 @@
                     </div>
                 </div>
 
-                <!-- ================================================
-                     ESTADO 2 — AUDITORÍA DEL INFORME GENERADO
-                     redirige a FormAuditoriaDerivacion.aspx en prod.
-                     En demo se muestra inline.
-                     ================================================ -->
+              
                 <asp:Panel ID="pnlAuditoria" runat="server"
                     CssClass="auditoria-layout" Visible="false">
 
-                    <!-- COLUMNA PRINCIPAL: informe editable -->
+                   
                     <div class="auditoria-form-col">
                         <div class="content-card">
 
@@ -323,7 +317,7 @@
                         </div>
                     </div>
 
-                    <!-- COLUMNA LATERAL: acciones -->
+          
                     <div class="auditoria-aside">
 
                         <div class="content-card meta-card">

@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
 
-        <!-- SIDEBAR -->
+ 
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
@@ -34,10 +34,10 @@
             </div>
         </aside>
 
-        <!-- ÁREA PRINCIPAL -->
+    
         <div class="main-wrap">
 
-            <!-- HEADER -->
+    
             <header class="top-header">
                 <div class="header-title">
                     <span class="header-section">Cuenta</span>
@@ -55,17 +55,17 @@
                 </div>
             </header>
 
-            <!-- CONTENIDO -->
+  
             <div class="page-content">
 
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" CssClass="server-error" />
 
                 <div class="suscripcion-layout">
 
-                    <!-- COLUMNA PRINCIPAL -->
+        
                     <div class="suscripcion-main">
 
-                        <!-- Card: plan activo -->
+
                         <div class="content-card plan-activo-card">
                             <div class="plan-activo-header">
                                 <div>
@@ -115,7 +115,7 @@
                             </div>
                         </div>
 
-                        <!-- Modal actualizar pago (inline, controlado por Panel) -->
+                    
                         <asp:Panel ID="pnlActualizarPago" runat="server"
                             CssClass="content-card modal-pago-card mt-24" Visible="false">
                             <h3 class="modal-titulo">Actualizar medio de pago</h3>
@@ -168,7 +168,7 @@
                             </div>
                         </asp:Panel>
 
-                        <!-- Tabla comparativa de planes -->
+                 
                         <div class="content-card mt-24">
                             <div class="card-header">
                                 <h2 class="card-title">Cambiar de plan</h2>
@@ -177,7 +177,7 @@
 
                             <div class="planes-comparativa">
 
-                                <!-- Encabezados -->
+            
                                 <div class="comp-fila comp-header">
                                     <div class="comp-feature"></div>
                                     <div class="comp-plan">
@@ -195,7 +195,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Filas de características -->
+                     
                                 <div class="comp-fila">
                                     <div class="comp-feature">Pacientes</div>
                                     <div class="comp-valor">Hasta 20</div>
@@ -239,7 +239,7 @@
                                     <div class="comp-valor">Prioritario</div>
                                 </div>
 
-                                <!-- Botones -->
+                    
                                 <div class="comp-fila comp-footer">
                                     <div class="comp-feature"></div>
                                     <div class="comp-action">
@@ -273,7 +273,7 @@
                         </div>
                     </div>
 
-                    <!-- COLUMNA LATERAL -->
+           
                     <div class="suscripcion-aside">
 
                         <div class="content-card uso-card">
@@ -316,7 +316,7 @@
             </div>
         </div>
 
-        <!-- MODAL DE CANCELACIÓN (overlay) -->
+    
         <asp:Panel ID="pnlModalCancelacion" runat="server"
             CssClass="modal-overlay" Visible="false">
             <div class="modal-card">
