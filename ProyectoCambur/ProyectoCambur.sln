@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ProyectoCambur", "ProyectoCambur\", "{5FCA0721-9465-4EBE-CBCD-7543950EF13A}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
+		ProjectReferences = "{1802f314-034c-4270-a8b5-fa294d019133}|BLL.dll;{d63d9f56-27e7-4a08-a39d-c3023f813400}|BE.dll;{5edfe2fa-2f8e-4956-9216-3d7fa9e253c5}|SERVICIOS.dll;{6242c7f1-1061-40b8-9258-73dadaf140b6}|DAL.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_60405"
 		Debug.AspNetCompiler.PhysicalPath = "ProyectoCambur\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_60405\"

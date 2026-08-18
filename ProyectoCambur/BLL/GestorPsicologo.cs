@@ -1,9 +1,8 @@
 ﻿using BE;
 using DAL;
+using SERVICIOS;
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace BLL
@@ -22,7 +21,7 @@ namespace BLL
                 throw new InvalidOperationException("Ya existe un profesional registrado con ese email.");
             }
 
-            psicologoAlta.Contrasena = HashearContrasena(psicologoAlta.Contrasena);
+            psicologoAlta.Contrasena = Cifrador.GestorCifrador.EncriptarIrreversible(psicologoAlta.Contrasena);
             psicologoAlta.Activo = true;
             psicologoAlta.FechaRegistro = DateTime.Now;
 
@@ -64,7 +63,7 @@ namespace BLL
                 throw new InvalidOperationException("No se encontro el profesional.");
             }
 
-            if (psicologo.Contrasena != HashearContrasena(contrasenaActual))
+            if (psicologo.Contrasena != Cifrador.GestorCifrador.EncriptarIrreversible(contrasenaActual))
             {
                 throw new InvalidOperationException("La contrasena actual no es correcta.");
             }
@@ -74,10 +73,10 @@ namespace BLL
                 throw new ArgumentException("La contrasena nueva no cumple con el formato requerido (minimo 8 caracteres, una mayuscula, un numero).");
             }
 
-            psicologoDAL.CambiarContrasena(idPsicologo, HashearContrasena(contrasenaNueva));
+            psicologoDAL.CambiarContrasena(idPsicologo, Cifrador.GestorCifrador.EncriptarIrreversible(contrasenaNueva));
         }
 
-        // Se usa desde el modulo de Login. Devuelve el Psicologo si las credenciales son validas, null en caso contrario.
+        
         public Psicologo ValidarCredenciales(string email, string contrasena)
         {
             PsicologoDAL psicologoDAL = new PsicologoDAL();
@@ -88,7 +87,7 @@ namespace BLL
                 return null;
             }
 
-            if (psicologo.Contrasena != HashearContrasena(contrasena))
+            if (psicologo.Contrasena != Cifrador.GestorCifrador.EncriptarIrreversible(contrasena))
             {
                 return null;
             }
@@ -159,32 +158,12 @@ namespace BLL
 
         public bool VerificarFormatoContrasena(string contrasena)
         {
-            // Minimo 7 caracteres, al menos una mayuscula y al menos un numero
+            
             Regex rgx = new Regex(@"^(?=.*[A-Z])(?=.*[0-9]).{7,}$");
             return rgx.IsMatch(contrasena);
         }
 
         #endregion
 
-        #region Utilidades
-
-        // NOTA: hash provisorio con SHA-256 directo. Cuando se arme la capa de servicios de
-        // seguridad (equivalente a Cifrador490WC) este metodo se va a reemplazar por esa clase,
-        // que ademas deberia incorporar salt.
-        private string HashearContrasena(string contrasenaPlana)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(contrasenaPlana));
-                StringBuilder builder = new StringBuilder();
-                foreach (byte b in bytes)
-                {
-                    builder.Append(b.ToString("x2"));
-                }
-                return builder.ToString();
-            }
-        }
-
-        #endregion
     }
 }
