@@ -1,0 +1,67 @@
+﻿.menu-tile-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 8px;
+}
+
+.menu-tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color .15s ease, transform .15s ease;
+}
+
+    .menu-tile:hover {
+        border-color: var(--accent);
+        transform: translateY(-2px);
+    }
+
+.menu-tile-icono {
+    font-size: 28px;
+}
+
+.menu-tile-titulo {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--text-main);
+}
+
+.menu-tile-desc {
+    font-size: 14px;
+    color: var(--text-sub);
+    line-height: 1.4;
+}
+
+.rol-banner {
+    background: var(--sidebar-dark);
+    color: #fff;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rol-banner-titulo {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.rol-banner-sub {
+    font-size: 13px;
+    color: var(--text-light);
+}
+
+@media (max-width: 900px) {
+    .menu-tile-grid {
+        grid-template-columns: 1fr;
+    }
+}

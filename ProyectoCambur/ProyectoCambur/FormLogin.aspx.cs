@@ -6,7 +6,7 @@ using System.Web.UI;
 
 public partial class FormLogin : System.Web.UI.Page
 {
-
+   
     protected void Page_Load(object sender, EventArgs e)
     {
         Page.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
@@ -36,6 +36,7 @@ public partial class FormLogin : System.Web.UI.Page
         string email = txtEmail.Text.Trim().ToLower();
         string password = txtPassword.Text;
 
+        
 
         GestorPsicologo gestorPsicologo = new GestorPsicologo();
         Psicologo psicologoLogueado;
@@ -45,8 +46,8 @@ public partial class FormLogin : System.Web.UI.Page
         {
             case ResultadoLogin.Ok:
                 GestorSesion.Login(psicologoLogueado);
-               
-                Response.Redirect("FormDashboard.aspx");
+                // TODO: cuando se arme Bitacora en SERVICIOS, registrar aca el evento de login.
+                Response.Redirect(DestinoSegunRol(psicologoLogueado.RolPermiso));
                 return;
 
             case ResultadoLogin.CuentaBloqueada:
@@ -70,7 +71,7 @@ public partial class FormLogin : System.Web.UI.Page
         }
     }
 
-  
+    
     private void MostrarError(string msg)
     {
         lblMensaje.Text = msg;
@@ -89,6 +90,20 @@ public partial class FormLogin : System.Web.UI.Page
     {
         pnlBloqueado.Visible = true;
         lblMensajeBloqueado.Text = msg;
-        btnLogin.Enabled = false;
+        
+    }
+
+    private string DestinoSegunRol(string rolPermiso)
+    {
+        switch (rolPermiso)
+        {
+            case "Administrador":
+                return "FormMenuAdministrador.aspx";
+            case "Web Master":
+                return "FormMenuWebMaster.aspx";
+            default:
+                // Free, Profesional, Premium -> psicologos "de a pie"
+                return "FormMenuProfesional.aspx";
+        }
     }
 }
