@@ -9,6 +9,12 @@ namespace BLL
 {
     public class GestorPsicologo
     {
+       
+        private const int MAX_INTENTOS = 3;
+
+       
+        private const int MINUTOS_DECAIMIENTO_INTENTOS = 10;
+
         #region Operaciones Psicologo
 
         public int Alta(Psicologo psicologoAlta)
@@ -38,6 +44,34 @@ namespace BLL
         {
             PsicologoDAL psicologoDAL = new PsicologoDAL();
             psicologoDAL.Activar(idPsicologo);
+        }
+
+        public void Habilitar(int idPsicologo)
+        {
+            PsicologoDAL psicologoDAL = new PsicologoDAL();
+            psicologoDAL.Habilitar(idPsicologo);
+        }
+
+        public void Deshabilitar(int idPsicologo)
+        {
+            PsicologoDAL psicologoDAL = new PsicologoDAL();
+            psicologoDAL.Deshabilitar(idPsicologo);
+        }
+
+        
+        public void Desbloquear(int idPsicologo)
+        {
+            PsicologoDAL psicologoDAL = new PsicologoDAL();
+            Psicologo psicologo = psicologoDAL.BuscarPorId(idPsicologo);
+            if (psicologo == null)
+            {
+                throw new InvalidOperationException("No se encontro el profesional.");
+            }
+
+            string contrasenaTemporal = psicologo.Dni + psicologo.Email;
+            string hashTemporal = Cifrador.GestorCifrador.EncriptarIrreversible(contrasenaTemporal);
+
+            psicologoDAL.Desbloquear(idPsicologo, hashTemporal);
         }
 
         public void Modificar(Psicologo psicologoModificado)
@@ -76,23 +110,66 @@ namespace BLL
             psicologoDAL.CambiarContrasena(idPsicologo, Cifrador.GestorCifrador.EncriptarIrreversible(contrasenaNueva));
         }
 
-        
-        public Psicologo ValidarCredenciales(string email, string contrasena)
+       
+        public ResultadoLogin ValidarCredenciales(string email, string contrasena, out Psicologo psicologoLogueado)
         {
+            psicologoLogueado = null;
             PsicologoDAL psicologoDAL = new PsicologoDAL();
             Psicologo psicologo = psicologoDAL.BuscarPorEmail(email);
 
-            if (psicologo == null || !psicologo.Activo)
+            if (psicologo == null)
             {
-                return null;
+                return ResultadoLogin.CredencialesInvalidas;
+            }
+
+            if (!psicologo.Activo)
+            {
+                return ResultadoLogin.CuentaInactiva;
+            }
+
+            if (!psicologo.IsHabilitado)
+            {
+                return ResultadoLogin.CuentaDeshabilitada;
+            }
+
+            
+            if (psicologo.Intentos > 0 && psicologo.Intentos < MAX_INTENTOS)
+            {
+                double minutosTranscurridos = (DateTime.Now - psicologo.HoraUltimaSesion).TotalMinutes;
+                if (minutosTranscurridos > MINUTOS_DECAIMIENTO_INTENTOS)
+                {
+                    psicologo.Intentos = 0;
+                    psicologoDAL.ActualizarIntentos(psicologo.IdPsicologo, 0, DateTime.Now);
+                }
+            }
+
+            if (psicologo.IsBloqueado)
+            {
+                return ResultadoLogin.CuentaBloqueada;
             }
 
             if (psicologo.Contrasena != Cifrador.GestorCifrador.EncriptarIrreversible(contrasena))
             {
-                return null;
+                int intentosNuevos = psicologo.Intentos + 1;
+
+                if (intentosNuevos >= MAX_INTENTOS)
+                {
+                    psicologoDAL.ActualizarIntentos(psicologo.IdPsicologo, intentosNuevos, DateTime.Now);
+                    psicologoDAL.Bloquear(psicologo.IdPsicologo);
+                    return ResultadoLogin.CuentaBloqueada;
+                }
+
+                psicologoDAL.ActualizarIntentos(psicologo.IdPsicologo, intentosNuevos, DateTime.Now);
+                return ResultadoLogin.CredencialesInvalidas;
             }
 
-            return psicologo;
+            
+            psicologoDAL.ActualizarIntentos(psicologo.IdPsicologo, 0, DateTime.Now);
+            psicologo.Intentos = 0;
+            psicologo.HoraUltimaSesion = DateTime.Now;
+
+            psicologoLogueado = psicologo;
+            return ResultadoLogin.Ok;
         }
 
         #endregion
@@ -164,6 +241,5 @@ namespace BLL
         }
 
         #endregion
-
     }
 }

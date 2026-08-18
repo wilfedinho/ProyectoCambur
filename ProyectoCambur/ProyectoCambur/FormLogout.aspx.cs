@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using SERVICIOS;
+using System;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 public partial class FormLogout : System.Web.UI.Page
 {
@@ -13,18 +11,15 @@ public partial class FormLogout : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Page.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-        // Validar que haya sesión activa antes de proceder
-        // TODO: en producción verificar Session["IdProfesional"] != null
-        //bool sesionActiva = (Session["IdProfesional"] != null);
 
-        //if (!sesionActiva)
-        //{
-        //    // No hay sesión: redirigir directo al login
-        //    Response.Redirect("FormLogin.aspx");
-        //    return;
-        //}
+        if (!GestorSesion.EstaAutenticado)
+        {
+            // No hay sesion activa: no tiene sentido mostrar la pantalla de logout
+            Response.Redirect("FormLogin.aspx");
+            return;
+        }
 
-        //EjecutarLogout();
+        EjecutarLogout();
     }
 
     // =========================================================
@@ -34,49 +29,28 @@ public partial class FormLogout : System.Web.UI.Page
     {
         try
         {
-            // ── PASO 1: Recuperar datos antes de limpiar ───────
-            // TODO: obtener idProfesional de Session para registrar en bitácora
-            int idProfesional = Session["IdProfesional"] != null
-                ? (int)Session["IdProfesional"]
-                : 0;
+            // ── PASO 1: Recuperar datos antes de limpiar, para bitacora ──
+            int idPsicologo = GestorSesion.PsicologoActual.IdPsicologo;
 
-            // ── PASO 2: Registrar evento en bitácora ───────────
-            // TODO: reemplazar por:
-            //   BLL.BitacoraBLL.Registrar(idProfesional, "Logout", "Cierre de sesión", criticidad: 3);
+            // TODO: cuando se arme Bitacora en SERVICIOS, registrar aca el evento de logout:
+            //   Bitacora.Registrar(idPsicologo, "Logout", "Cierre de sesion");
 
-            // ── PASO 3: Recalcular dígitos verificadores ───────
-            // TODO: reemplazar por:
-            //   BLL.DigitoVerificadorBLL.RecalcularPorProfesional(idProfesional);
+            // TODO: cuando se arme DigitoVerificador en SERVICIOS, recalcular aca si corresponde.
 
-            // ── PASO 4: Limpiar datos de sesión ────────────────
-            Session.Clear();
-            Session.Abandon();
+            // ── PASO 2: Limpiar la sesion ─────────────────────────────────
+            GestorSesion.Logout();
 
-            // Limpiar cookie de sesión ASP.NET
-            if (Request.Cookies["ASP.NET_SessionId"] != null)
-            {
-                var cookie = new HttpCookie("ASP.NET_SessionId", "");
-                cookie.Expires = DateTime.Now.AddDays(-1);
-                Response.Cookies.Add(cookie);
-            }
-
-            // ── PASO 5: Mostrar estado de éxito y redirigir ────
+            // ── PASO 3: Mostrar estado de exito y redirigir ──────────────
             pnlCerrando.Visible = false;
             pnlExito.Visible = true;
 
-            // Redirigir al login después de 1.5 segundos
-            // (meta-refresh client-side para dar tiempo al spinner)
             Response.Write("<meta http-equiv='refresh' content='1;url=FormLogin.aspx?logout=ok'/>");
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            // ── FLUJO ALTERNATIVO 2.1: Error al limpiar sesión ─
-            // En caso de fallo, forzar cierre parcial y redirigir
-
             try
             {
-                // Intento forzado de cierre
-                Session.Abandon();
+                HttpContext.Current.Session.Abandon();
             }
             catch { /* Ignorar errores secundarios */ }
 
@@ -87,7 +61,6 @@ public partial class FormLogout : System.Web.UI.Page
                                       "de que la sesión quedó terminada.";
 
             // TODO: registrar el error en log del sistema
-            // Logger.Error("Error en logout: " + ex.Message);
         }
     }
 }

@@ -16,8 +16,8 @@ namespace DAL
             using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
             {
                 cone.Open();
-                string query = "INSERT INTO Profesional (nombre, apellido, dni, email, contrasena, id_idioma, rol_permiso, activo, fecha_registro, digito_verificador) " +
-                               "VALUES (@nombre, @apellido, @dni, @email, @contrasena, @id_idioma, @rol_permiso, @activo, @fecha_registro, @digito_verificador); " +
+                string query = "INSERT INTO Profesional (nombre, apellido, dni, email, contrasena, idioma, rol, activo, is_habilitado, is_bloqueado, intentos, hora_ultima_sesion, fecha_registro, digito_verificador) " +
+                               "VALUES (@nombre, @apellido, @dni, @email, @contrasena, @idioma, @rol, @activo, @is_habilitado, @is_bloqueado, @intentos, @hora_ultima_sesion, @fecha_registro, @digito_verificador); " +
                                "SELECT CAST(SCOPE_IDENTITY() AS INT)";
 
                 using (SqlCommand comando = new SqlCommand(query, cone))
@@ -27,14 +27,21 @@ namespace DAL
                     comando.Parameters.AddWithValue("@dni", nuevoPsicologo.Dni);
                     comando.Parameters.AddWithValue("@email", nuevoPsicologo.Email);
                     comando.Parameters.AddWithValue("@contrasena", nuevoPsicologo.Contrasena);
-                    comando.Parameters.AddWithValue("@id_idioma", nuevoPsicologo.IdIdioma);
-                    comando.Parameters.AddWithValue("@rol_permiso", nuevoPsicologo.RolPermiso);
+                    comando.Parameters.AddWithValue("@idioma", nuevoPsicologo.Idioma);
+                    comando.Parameters.AddWithValue("@rol", nuevoPsicologo.RolPermiso);
                     comando.Parameters.AddWithValue("@activo", nuevoPsicologo.Activo);
+                    comando.Parameters.AddWithValue("@is_habilitado", true);
+                    comando.Parameters.AddWithValue("@is_bloqueado", false);
+                    comando.Parameters.AddWithValue("@intentos", 0);
+                    comando.Parameters.AddWithValue("@hora_ultima_sesion", DateTime.Now);
                     comando.Parameters.AddWithValue("@fecha_registro", nuevoPsicologo.FechaRegistro);
                     comando.Parameters.AddWithValue("@digito_verificador", (object)nuevoPsicologo.DigitoVerificador ?? DBNull.Value);
 
                     int idGenerado = Convert.ToInt32(comando.ExecuteScalar());
                     nuevoPsicologo.IdPsicologo = idGenerado;
+                    nuevoPsicologo.IsHabilitado = true;
+                    nuevoPsicologo.IsBloqueado = false;
+                    nuevoPsicologo.Intentos = 0;
                     return idGenerado;
                 }
             }
@@ -76,7 +83,7 @@ namespace DAL
             {
                 cone.Open();
                 string query = "UPDATE Profesional SET nombre = @nombre, apellido = @apellido, dni = @dni, email = @email, " +
-                               "idioma_id = @idioma_id, rol_permiso = @rol_permiso, digito_verificador = @digito_verificador " +
+                               "idioma = @idioma, rol = @rol, digito_verificador = @digito_verificador " +
                                "WHERE id_profesional = @id_profesional";
                 using (SqlCommand comando = new SqlCommand(query, cone))
                 {
@@ -85,15 +92,15 @@ namespace DAL
                     comando.Parameters.AddWithValue("@apellido", psicologoModificado.Apellido);
                     comando.Parameters.AddWithValue("@dni", psicologoModificado.Dni);
                     comando.Parameters.AddWithValue("@email", psicologoModificado.Email);
-                    comando.Parameters.AddWithValue("@idioma_id", psicologoModificado.IdIdioma);
-                    comando.Parameters.AddWithValue("@rol_permiso", psicologoModificado.RolPermiso);
+                    comando.Parameters.AddWithValue("@idioma", psicologoModificado.Idioma);
+                    comando.Parameters.AddWithValue("@rol", psicologoModificado.RolPermiso);
                     comando.Parameters.AddWithValue("@digito_verificador", (object)psicologoModificado.DigitoVerificador ?? DBNull.Value);
                     comando.ExecuteNonQuery();
                 }
             }
         }
 
-       
+        
         public void CambiarContrasena(int idPsicologo, string nuevaContrasenaHash)
         {
             using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
@@ -104,6 +111,89 @@ namespace DAL
                 {
                     comando.Parameters.AddWithValue("@id_profesional", idPsicologo);
                     comando.Parameters.AddWithValue("@contrasena", nuevaContrasenaHash);
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
+
+        #endregion
+
+        #region Control de acceso (intentos, bloqueo, habilitado)
+
+        public void ActualizarIntentos(int idPsicologo, int intentos, DateTime horaUltimaSesion)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "UPDATE Profesional SET intentos = @intentos, hora_ultima_sesion = @hora_ultima_sesion WHERE id_profesional = @id_profesional";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_profesional", idPsicologo);
+                    comando.Parameters.AddWithValue("@intentos", intentos);
+                    comando.Parameters.AddWithValue("@hora_ultima_sesion", horaUltimaSesion);
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void Bloquear(int idPsicologo)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "UPDATE Profesional SET is_bloqueado = @is_bloqueado WHERE id_profesional = @id_profesional";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_profesional", idPsicologo);
+                    comando.Parameters.AddWithValue("@is_bloqueado", true);
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
+
+        
+        public void Desbloquear(int idPsicologo, string nuevaContrasenaHash)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "UPDATE Profesional SET is_bloqueado = @is_bloqueado, intentos = @intentos, contrasena = @contrasena WHERE id_profesional = @id_profesional";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_profesional", idPsicologo);
+                    comando.Parameters.AddWithValue("@is_bloqueado", false);
+                    comando.Parameters.AddWithValue("@intentos", 0);
+                    comando.Parameters.AddWithValue("@contrasena", nuevaContrasenaHash);
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void Habilitar(int idPsicologo)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "UPDATE Profesional SET is_habilitado = @is_habilitado WHERE id_profesional = @id_profesional";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_profesional", idPsicologo);
+                    comando.Parameters.AddWithValue("@is_habilitado", true);
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void Deshabilitar(int idPsicologo)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "UPDATE Profesional SET is_habilitado = @is_habilitado WHERE id_profesional = @id_profesional";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_profesional", idPsicologo);
+                    comando.Parameters.AddWithValue("@is_habilitado", false);
                     comando.ExecuteNonQuery();
                 }
             }
@@ -204,9 +294,13 @@ namespace DAL
                 reader["dni"].ToString(),
                 reader["email"].ToString(),
                 reader["contrasena"].ToString(),
-                Convert.ToInt32(reader["id_idioma"]),
-                reader["rol_permiso"].ToString(),
+                reader["idioma"].ToString(),
+                reader["rol"].ToString(),
                 Convert.ToBoolean(reader["activo"]),
+                Convert.ToBoolean(reader["is_habilitado"]),
+                Convert.ToBoolean(reader["is_bloqueado"]),
+                Convert.ToInt32(reader["intentos"]),
+                Convert.ToDateTime(reader["hora_ultima_sesion"]),
                 Convert.ToDateTime(reader["fecha_registro"]),
                 reader["digito_verificador"] == DBNull.Value ? null : reader["digito_verificador"].ToString()
             );

@@ -14,9 +14,13 @@ namespace BE
         public string Dni { get; set; }
         public string Email { get; set; }
         public string Contrasena { get; set; }
-        public int IdIdioma { get; set; }
+        public string Idioma { get; set; }
         public string RolPermiso { get; set; }
         public bool Activo { get; set; }
+        public bool IsHabilitado { get; set; }
+        public bool IsBloqueado { get; set; }
+        public int Intentos { get; set; }
+        public DateTime HoraUltimaSesion { get; set; }
         public DateTime FechaRegistro { get; set; }
         public string DigitoVerificador { get; set; }
 
@@ -24,17 +28,21 @@ namespace BE
         {
         }
 
-        public Psicologo(int nIdPsicologo, string nNombre, string nApellido, string nDni, string nEmail, string nContrasenia, int nIdIdioma, string nRolPermiso, bool nActivo, DateTime nFechaRegistro, string nDigitoVerificador = null)
+        public Psicologo(int nIdPsicologo, string nNombre, string nApellido, string nDni, string nEmail, string nContrasena, string nIdioma, string nRolPermiso, bool nActivo, bool nIsHabilitado, bool nIsBloqueado, int nIntentos, DateTime nHoraUltimaSesion, DateTime nFechaRegistro, string nDigitoVerificador = null)
         {
             IdPsicologo = nIdPsicologo;
             Nombre = nNombre;
             Apellido = nApellido;
             Dni = nDni;
             Email = nEmail;
-            Contrasena = nContrasenia;
-            IdIdioma = nIdIdioma;
+            Contrasena = nContrasena;
+            Idioma = nIdioma;
             RolPermiso = nRolPermiso;
             Activo = nActivo;
+            IsHabilitado = nIsHabilitado;
+            IsBloqueado = nIsBloqueado;
+            Intentos = nIntentos;
+            HoraUltimaSesion = nHoraUltimaSesion;
             FechaRegistro = nFechaRegistro;
             DigitoVerificador = nDigitoVerificador;
         }
