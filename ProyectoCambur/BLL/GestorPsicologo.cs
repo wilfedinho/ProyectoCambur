@@ -9,17 +9,20 @@ namespace BLL
 {
     public class GestorPsicologo
     {
-       
         private const int MAX_INTENTOS = 3;
-
-       
         private const int MINUTOS_DECAIMIENTO_INTENTOS = 10;
+        private const string TABLA = "Profesional";
 
         #region Operaciones Psicologo
 
         public int Alta(Psicologo psicologoAlta)
         {
             ValidarDatosPsicologo(psicologoAlta);
+
+            if (!VerificarFormatoContrasena(psicologoAlta.Contrasena))
+            {
+                throw new ArgumentException("La contrasena no cumple con el formato requerido (minimo 8 caracteres, una mayuscula, un numero).");
+            }
 
             PsicologoDAL psicologoDAL = new PsicologoDAL();
             if (psicologoDAL.ExisteEmail(psicologoAlta.Email))
@@ -31,34 +34,41 @@ namespace BLL
             psicologoAlta.Activo = true;
             psicologoAlta.FechaRegistro = DateTime.Now;
 
-            return psicologoDAL.Alta(psicologoAlta);
+            int idGenerado = psicologoDAL.Alta(psicologoAlta);
+
+            new DigitoVerificador().ActualizarDVH(psicologoAlta, TABLA);
+
+            return idGenerado;
         }
 
         public void Baja(int idPsicologo)
         {
             PsicologoDAL psicologoDAL = new PsicologoDAL();
             psicologoDAL.Baja(idPsicologo);
+            RecalcularDVHDe(idPsicologo);
         }
 
         public void Activar(int idPsicologo)
         {
             PsicologoDAL psicologoDAL = new PsicologoDAL();
             psicologoDAL.Activar(idPsicologo);
+            RecalcularDVHDe(idPsicologo);
         }
 
         public void Habilitar(int idPsicologo)
         {
             PsicologoDAL psicologoDAL = new PsicologoDAL();
             psicologoDAL.Habilitar(idPsicologo);
+            RecalcularDVHDe(idPsicologo);
         }
 
         public void Deshabilitar(int idPsicologo)
         {
             PsicologoDAL psicologoDAL = new PsicologoDAL();
             psicologoDAL.Deshabilitar(idPsicologo);
+            RecalcularDVHDe(idPsicologo);
         }
 
-        
         public void Desbloquear(int idPsicologo)
         {
             PsicologoDAL psicologoDAL = new PsicologoDAL();
@@ -72,6 +82,7 @@ namespace BLL
             string hashTemporal = Cifrador.GestorCifrador.EncriptarIrreversible(contrasenaTemporal);
 
             psicologoDAL.Desbloquear(idPsicologo, hashTemporal);
+            RecalcularDVHDe(idPsicologo);
         }
 
         public void Modificar(Psicologo psicologoModificado)
@@ -86,6 +97,7 @@ namespace BLL
             }
 
             psicologoDAL.Modificar(psicologoModificado);
+            RecalcularDVHDe(psicologoModificado.IdPsicologo);
         }
 
         public void CambiarContrasena(int idPsicologo, string contrasenaActual, string contrasenaNueva)
@@ -108,9 +120,9 @@ namespace BLL
             }
 
             psicologoDAL.CambiarContrasena(idPsicologo, Cifrador.GestorCifrador.EncriptarIrreversible(contrasenaNueva));
+            RecalcularDVHDe(idPsicologo);
         }
 
-       
         public ResultadoLogin ValidarCredenciales(string email, string contrasena, out Psicologo psicologoLogueado)
         {
             psicologoLogueado = null;
@@ -132,7 +144,6 @@ namespace BLL
                 return ResultadoLogin.CuentaDeshabilitada;
             }
 
-            
             if (psicologo.Intentos > 0 && psicologo.Intentos < MAX_INTENTOS)
             {
                 double minutosTranscurridos = (DateTime.Now - psicologo.HoraUltimaSesion).TotalMinutes;
@@ -163,7 +174,6 @@ namespace BLL
                 return ResultadoLogin.CredencialesInvalidas;
             }
 
-            
             psicologoDAL.ActualizarIntentos(psicologo.IdPsicologo, 0, DateTime.Now);
             psicologo.Intentos = 0;
             psicologo.HoraUltimaSesion = DateTime.Now;
@@ -235,9 +245,22 @@ namespace BLL
 
         public bool VerificarFormatoContrasena(string contrasena)
         {
-            
-            Regex rgx = new Regex(@"^(?=.*[A-Z])(?=.*[0-9]).{7,}$");
+            Regex rgx = new Regex(@"^(?=.*[A-Z])(?=.*[0-9]).{8,}$");
             return rgx.IsMatch(contrasena);
+        }
+
+        #endregion
+
+        #region Digito Verificador
+
+        private void RecalcularDVHDe(int idPsicologo)
+        {
+            PsicologoDAL psicologoDAL = new PsicologoDAL();
+            Psicologo psicologoActualizado = psicologoDAL.BuscarPorId(idPsicologo);
+            if (psicologoActualizado != null)
+            {
+                new DigitoVerificador().ActualizarDVH(psicologoActualizado, TABLA);
+            }
         }
 
         #endregion

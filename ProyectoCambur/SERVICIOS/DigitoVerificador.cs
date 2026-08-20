@@ -30,7 +30,7 @@ namespace SERVICIOS
                 sb.Append(psicologo.IsHabilitado);
             }
 
-            
+        
 
             return Cifrador.GestorCifrador.EncriptarIrreversible(sb.ToString());
         }
@@ -59,7 +59,7 @@ namespace SERVICIOS
 
         #region Actualizacion (se llama despues de cada alta/modificacion legitima)
 
-        
+       
         public void ActualizarDVH(object entidad, string nombreTabla)
         {
             string dvh = CalcularDVH(entidad);
@@ -103,7 +103,7 @@ namespace SERVICIOS
             return CalcularDVV(nombreTabla) == digitoVerificadorDAL.ObtenerDVV(nombreTabla);
         }
 
-        
+    
         public List<string> VerificarIntegridadTodasLasTablas()
         {
             List<string> inconsistencias = new List<string>();
@@ -116,13 +116,17 @@ namespace SERVICIOS
                     PsicologoDAL psicologoDAL = new PsicologoDAL();
                     List<Psicologo> psicologos = psicologoDAL.ObtenerTodos();
 
+                    bool huboInconsistenciaDeRegistro = false;
+
                     foreach (Psicologo psicologo in psicologos)
                     {
                         if (!VerificarIntegridadDVH(psicologo))
                         {
+                            huboInconsistenciaDeRegistro = true;
                             inconsistencias.Add(
                                 "Tabla Profesional: el registro de \"" + psicologo.Nombre + " " + psicologo.Apellido +
-                                "\" (" + psicologo.Email + ") fue modificado por fuera del sistema.");
+                                "\" (" + psicologo.Email + ") presenta una inconsistencia " +
+                                "(fue modificado directamente en la base, o insertado sin pasar por el sistema).");
                         }
                     }
 
@@ -144,7 +148,7 @@ namespace SERVICIOS
                             "Tabla Profesional: hay " + sobrantes + " registro" + (sobrantes == 1 ? "" : "s") +
                             " de más respecto de lo esperado (posible inserción directa en la base de datos).");
                     }
-                    else if (!VerificarIntegridadDVV(tabla))
+                    else if (!huboInconsistenciaDeRegistro && !VerificarIntegridadDVV(tabla))
                     {
                         
                         inconsistencias.Add("Tabla Profesional: se detectó una alteración que no pudo asociarse a un registro puntual.");
@@ -166,7 +170,7 @@ namespace SERVICIOS
 
         #region Recalculo total (uso administrativo / puesta al dia inicial)
 
-        
+   
         public void RecalcularTodo()
         {
             foreach (string tabla in TablasControladas)

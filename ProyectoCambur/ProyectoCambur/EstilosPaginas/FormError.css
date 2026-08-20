@@ -1,0 +1,43 @@
+﻿html, body {
+    height: 100%;
+    margin: 0;
+}
+
+    body.pagina-centrada {
+        background: var(--bg-app);
+    }
+        body.pagina-centrada form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+.error-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 48px 40px;
+    max-width: 440px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.error-icono {
+    font-size: 42px;
+}
+
+.error-mensaje {
+    color: var(--text-sub);
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 6px 0 10px;
+}
+
+.error-volver {
+    text-decoration: none;
+    display: inline-block;
+}

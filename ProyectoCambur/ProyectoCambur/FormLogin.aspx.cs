@@ -2,6 +2,7 @@
 using BLL;
 using SERVICIOS;
 using System;
+using System.Collections.Generic;
 using System.Web.UI;
 
 public partial class FormLogin : System.Web.UI.Page
@@ -24,7 +25,7 @@ public partial class FormLogin : System.Web.UI.Page
         }
     }
 
-   
+    
     protected void btnLogin_Click(object sender, EventArgs e)
     {
         lblMensaje.Visible = false;
@@ -36,8 +37,6 @@ public partial class FormLogin : System.Web.UI.Page
         string email = txtEmail.Text.Trim().ToLower();
         string password = txtPassword.Text;
 
-        
-
         GestorPsicologo gestorPsicologo = new GestorPsicologo();
         Psicologo psicologoLogueado;
         ResultadoLogin resultado = gestorPsicologo.ValidarCredenciales(email, password, out psicologoLogueado);
@@ -45,9 +44,7 @@ public partial class FormLogin : System.Web.UI.Page
         switch (resultado)
         {
             case ResultadoLogin.Ok:
-                GestorSesion.Login(psicologoLogueado);
-                // TODO: cuando se arme Bitacora en SERVICIOS, registrar aca el evento de login.
-                Response.Redirect(DestinoSegunRol(psicologoLogueado.RolPermiso));
+                ProcesarLoginExitoso(psicologoLogueado);
                 return;
 
             case ResultadoLogin.CuentaBloqueada:
@@ -72,6 +69,40 @@ public partial class FormLogin : System.Web.UI.Page
     }
 
     
+    private void ProcesarLoginExitoso(Psicologo psicologoLogueado)
+    {
+        DigitoVerificador digitoVerificador = new DigitoVerificador();
+        List<string> inconsistencias = digitoVerificador.VerificarIntegridadTodasLasTablas();
+
+        if (inconsistencias.Count > 0)
+        {
+            switch (psicologoLogueado.RolPermiso)
+            {
+                case "Web Master":
+                    
+                    GestorSesion.Login(psicologoLogueado);
+                    Response.Redirect("FormDigitoVerificador.aspx");
+                    return;
+
+                case "Administrador":
+                    
+                    Response.Redirect("FormError.aspx?codigo=inconsistencia_bd");
+                    return;
+
+                default:
+                    
+                    Response.Redirect("FormError.aspx?codigo=no_disponible");
+                    return;
+            }
+        }
+
+       
+        GestorSesion.Login(psicologoLogueado);
+        
+        Response.Redirect(DestinoSegunRol(psicologoLogueado.RolPermiso));
+    }
+
+    
     private void MostrarError(string msg)
     {
         lblMensaje.Text = msg;
@@ -93,6 +124,7 @@ public partial class FormLogin : System.Web.UI.Page
         
     }
 
+    
     private string DestinoSegunRol(string rolPermiso)
     {
         switch (rolPermiso)
@@ -102,7 +134,7 @@ public partial class FormLogin : System.Web.UI.Page
             case "Web Master":
                 return "FormMenuWebMaster.aspx";
             default:
-                // Free, Profesional, Premium -> psicologos "de a pie"
+                
                 return "FormMenuProfesional.aspx";
         }
     }
