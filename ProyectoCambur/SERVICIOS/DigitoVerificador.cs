@@ -184,6 +184,8 @@ namespace SERVICIOS
                     }
                 }
             }
+
+            new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_ADMINISTRACION, EventosBitacora.DESC_RECALCULO_DVH, EventosBitacora.CRIT_RECALCULO_DVH);
         }
 
         #endregion

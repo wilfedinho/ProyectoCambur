@@ -37,6 +37,7 @@ namespace BLL
             int idGenerado = psicologoDAL.Alta(psicologoAlta);
 
             new DigitoVerificador().ActualizarDVH(psicologoAlta, TABLA);
+            new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_PROFESIONALES, EventosBitacora.DESC_REGISTRO_PROFESIONAL, EventosBitacora.CRIT_REGISTRO_PROFESIONAL);
 
             return idGenerado;
         }
@@ -69,6 +70,7 @@ namespace BLL
             RecalcularDVHDe(idPsicologo);
         }
 
+        
         public Psicologo CambiarIdioma(int idPsicologo, string nuevoIdioma)
         {
             if (string.IsNullOrWhiteSpace(nuevoIdioma))
@@ -100,6 +102,7 @@ namespace BLL
             psicologo.Idioma = nuevoIdioma;
 
             new DigitoVerificador().ActualizarDVH(psicologo, "Profesional");
+            new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_CONFIGURACION, EventosBitacora.DESC_CAMBIO_IDIOMA, EventosBitacora.CRIT_CAMBIO_IDIOMA);
 
             return psicologo;
         }
@@ -118,6 +121,7 @@ namespace BLL
 
             psicologoDAL.Desbloquear(idPsicologo, hashTemporal);
             RecalcularDVHDe(idPsicologo);
+            new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_AUTENTICACION, EventosBitacora.DESC_DESBLOQUEO_MANUAL, EventosBitacora.CRIT_DESBLOQUEO_MANUAL);
         }
 
         public void Modificar(Psicologo psicologoModificado)
@@ -156,6 +160,7 @@ namespace BLL
 
             psicologoDAL.CambiarContrasena(idPsicologo, Cifrador.GestorCifrador.EncriptarIrreversible(contrasenaNueva));
             RecalcularDVHDe(idPsicologo);
+            new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_CONFIGURACION, EventosBitacora.DESC_CAMBIO_CLAVE, EventosBitacora.CRIT_CAMBIO_CLAVE);
         }
 
         public ResultadoLogin ValidarCredenciales(string email, string contrasena, out Psicologo psicologoLogueado)

@@ -8,7 +8,6 @@ public partial class FormLogout : GUI.PaginaBase
    
     protected void Page_Load(object sender, EventArgs e)
     {
-      
         AplicarTraducciones();
 
         if (!GestorSesion.EstaAutenticado)
@@ -30,17 +29,15 @@ public partial class FormLogout : GUI.PaginaBase
         lblSubtituloExito.Text = Traducir("logout_exito_sub");
     }
 
-
+   
     private void EjecutarLogout()
     {
         try
         {
             int idPsicologo = GestorSesion.PsicologoActual.IdPsicologo;
-
-     
-
+            string emailPsicologo = GestorSesion.PsicologoActual.Email;
+            new GestorBitacora().RegistrarEvento(emailPsicologo, EventosBitacora.MOD_AUTENTICACION, EventosBitacora.DESC_CIERRE_SESION, EventosBitacora.CRIT_CIERRE_SESION);
             GestorSesion.Logout();
-
             pnlCerrando.Visible = false;
             pnlExito.Visible = true;
 
@@ -52,7 +49,7 @@ public partial class FormLogout : GUI.PaginaBase
             {
                 HttpContext.Current.Session.Abandon();
             }
-            catch {  }
+            catch { }
 
             pnlCerrando.Visible = false;
             pnlError.Visible = true;

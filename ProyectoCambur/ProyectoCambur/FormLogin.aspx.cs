@@ -64,7 +64,6 @@ public partial class FormLogin : GUI.PaginaBase
         }
     }
 
-  
     private void ProcesarLoginExitoso(Psicologo psicologoLogueado)
     {
         DigitoVerificador digitoVerificador = new DigitoVerificador();
@@ -90,7 +89,7 @@ public partial class FormLogin : GUI.PaginaBase
         }
 
         GestorSesion.Login(psicologoLogueado);
-       
+        new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_AUTENTICACION, EventosBitacora.DESC_INICIO_SESION, EventosBitacora.CRIT_INICIO_SESION);
         Response.Redirect(DestinoSegunRol(psicologoLogueado.RolPermiso));
     }
 

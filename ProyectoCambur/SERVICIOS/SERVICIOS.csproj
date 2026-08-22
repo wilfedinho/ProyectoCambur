@@ -44,10 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bitacora.cs" />
     <Compile Include="Cifrador.cs" />
     <Compile Include="DigitoVerificador.cs" />
+    <Compile Include="EventosBitacora.cs" />
     <Compile Include="ExceptionTraducible.cs" />
+    <Compile Include="GestorBitacora.cs" />
     <Compile Include="GestorIdioma.cs" />
     <Compile Include="GestorSesion.cs" />
     <Compile Include="InconsistenciaDetectada.cs" />

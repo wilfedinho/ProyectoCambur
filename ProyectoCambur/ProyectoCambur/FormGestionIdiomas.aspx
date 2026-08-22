@@ -44,6 +44,7 @@
 
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" />
 
+       
                 <div class="content-card">
                     <div class="card-header">
                         <h2 class="card-title"><asp:Label ID="lblTituloNuevoIdioma" runat="server" Text="" /></h2>
@@ -72,7 +73,7 @@
                     </div>
                 </div>
 
-          
+            
                 <div id="overlayGenerandoIdioma" class="overlay-carga" style="display:none;">
                     <div class="overlay-carga-card">
                         <div class="overlay-spinner"></div>
@@ -81,7 +82,6 @@
                     </div>
                 </div>
 
-         
                 <div class="content-card mt-24">
                     <div class="card-header">
                         <h2 class="card-title"><asp:Label ID="lblTituloIdiomasSistema" runat="server" Text="" /></h2>
@@ -135,7 +135,6 @@
                     </div>
                 </div>
 
-         
                 <asp:Panel ID="pnlTraducciones" runat="server" CssClass="content-card mt-24" Visible="false">
                     <div class="card-header">
                         <h2 class="card-title"><asp:Label ID="lblTituloTraducciones" runat="server" Text="" /> — <asp:Label ID="lblIdiomaSeleccionado" runat="server" Text="" /></h2>
@@ -199,7 +198,6 @@
         var CONFIRM_ALTA_IDIOMA_TEXTO = "<%= Traducir("confirm_alta_idioma").Replace("\"", "\\\"") %>";
 
         function confirmarYMostrarOverlay() {
-          
             if (typeof (Page_ClientValidate) === 'function') {
                 if (!Page_ClientValidate('vgIdioma')) {
                     return false;

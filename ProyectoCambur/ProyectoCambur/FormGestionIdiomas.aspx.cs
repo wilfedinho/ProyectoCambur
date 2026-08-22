@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 public partial class FormGestionIdiomas : GUI.PaginaBase
 {
-    
+  
     private class IdiomaCandidato
     {
         public string Nombre;
@@ -45,6 +45,7 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
 
         Psicologo psicologoActual = GestorSesion.PsicologoActual;
 
+      
         if (psicologoActual.RolPermiso != "Administrador")
         {
             Response.Redirect("FormLogin.aspx");
@@ -224,7 +225,6 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
         {
             gestorIdioma.ModificarTraduccion(idTraduccion, txtTexto.Text);
 
-           
             RefrescarTraducciones();
             AplicarTraducciones();
 

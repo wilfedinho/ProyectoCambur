@@ -1,248 +1,213 @@
-﻿using System;
+﻿using BE;
+using BLL;
+using SERVICIOS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
-using System.Data;
-
-public partial class FormAuditoriaBitacora : System.Web.UI.Page
+public partial class FormAuditoriaBitacora : GUI.PaginaBase
 {
-    // =========================================================
-    // PAGE LOAD
-    // =========================================================
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!GestorSesion.EstaAutenticado)
+        {
+            Response.Redirect("FormLogin.aspx");
+            return;
+        }
+        Psicologo psicologoActual = GestorSesion.PsicologoActual;
+        if (psicologoActual.RolPermiso != "Web Master")
+        {
+            Response.Redirect("FormLogin.aspx");
+            return;
+        }
+        AplicarTraducciones();
         if (!IsPostBack)
         {
-            CargarAdminDemo();
-            CargarFiltroUsuarios();
-            CargarBitacora(null, null, null, null, null);
+            CargarCombosDeFiltros();
+            CargarGrilla();
+            new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_ADMINISTRACION, EventosBitacora.DESC_CONSULTA_BITACORA, EventosBitacora.CRIT_CONSULTA_BITACORA);
         }
     }
 
-    // =========================================================
-    // ADMINISTRADOR (demo)
-    // TODO: reemplazar por Session["Administrador"]
-    // =========================================================
-    private void CargarAdminDemo()
+    private void AplicarTraducciones()
     {
-        lblNombreAdmin.Text = "Web Master";
-        lblIniciales.Text = "WM";
+        lblTaglineSidebar.Text = Traducir("tagline_panel_tecnico");
+        lblMenuInicio.Text = Traducir("menu_inicio");
+        lblMenuProfesionales.Text = Traducir("menu_profesionales");
+        lblMenuIntegridad.Text = Traducir("menu_integridad");
+        lblMenuBackupRestore.Text = Traducir("menu_backup_restore");
+        lblMenuBitacora.Text = Traducir("menu_bitacora");
+        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+
+        lblHeaderSeccion.Text = Traducir("header_web_master");
+        lblHeaderPagina.Text = Traducir("menu_bitacora");
+
+        lblTituloFiltros.Text = Traducir("titulo_filtros_bitacora");
+        lblSubtituloFiltros.Text = Traducir("subtitulo_filtros_bitacora");
+        lblEtiquetaFechaInicio.Text = Traducir("lbl_fecha_inicio");
+        lblEtiquetaFechaFin.Text = Traducir("lbl_fecha_fin");
+        lblEtiquetaModulo.Text = Traducir("lbl_modulo");
+        lblEtiquetaUsuario.Text = Traducir("lbl_usuario_email");
+        lblEtiquetaCriticidad.Text = Traducir("lbl_criticidad");
+        btnLimpiarFiltros.Text = Traducir("btn_limpiar_filtros");
+        btnFiltrar.Text = Traducir("btn_filtrar");
+
+        lblTituloEventos.Text = Traducir("titulo_eventos_registrados");
+
+        gvBitacora.Columns[0].HeaderText = Traducir("lbl_usuario_email");
+        gvBitacora.Columns[1].HeaderText = Traducir("lbl_modulo");
+        gvBitacora.Columns[2].HeaderText = Traducir("col_descripcion");
+        gvBitacora.Columns[3].HeaderText = Traducir("lbl_criticidad");
+        gvBitacora.Columns[4].HeaderText = Traducir("col_fecha_evento");
+        gvBitacora.EmptyDataText = Traducir("empty_bitacora");
+
+        lblTituloDetalle.Text = Traducir("titulo_detalle_profesional");
+        lblDetEtiquetaNombre.Text = Traducir("col_nombre_completo");
+        lblDetEtiquetaDni.Text = Traducir("lbl_dni");
+        lblDetEtiquetaEmail.Text = Traducir("lbl_correo");
+        lblDetEtiquetaRol.Text = Traducir("lbl_rol_plan");
+        lblDetEtiquetaEstado.Text = Traducir("col_estado");
+        lblDetalleNoEncontrado.Text = Traducir("msg_profesional_no_encontrado_por_email");
     }
 
-    // =========================================================
-    // DROPDOWN USUARIOS (demo)
-    // TODO: reemplazar por BLL.ProfesionalBLL.ObtenerTodos()
-    // =========================================================
-    private void CargarFiltroUsuarios()
-    {
-        ddlFiltroUsuario.Items.Clear();
-        ddlFiltroUsuario.Items.Add(new ListItem("Todos los usuarios", ""));
-        ddlFiltroUsuario.Items.Add(new ListItem("Lucía Martínez", "lucia@consultorio.com"));
-        ddlFiltroUsuario.Items.Add(new ListItem("Carlos Rodríguez", "carlos@consultorio.com"));
-        ddlFiltroUsuario.Items.Add(new ListItem("Admin Sistema", "admin@cambur.com"));
-    }
 
-    // =========================================================
-    // CARGA DE BITÁCORA CON FILTROS
-    // TODO: reemplazar por BLL.BitacoraBLL.ObtenerFiltrado(usuario, modulo, criticidad, desde, hasta)
-    // =========================================================
-    private void CargarBitacora(string usuario, string modulo,
-                                 string criticidad, DateTime? desde, DateTime? hasta)
+    private void CargarCombosDeFiltros()
     {
-        var todos = ObtenerRegistrosDemo();
-        var filtrados = new List<RegistroBitacora>();
+        GestorBitacora gestorBitacora = new GestorBitacora();
 
-        foreach (var r in todos)
+        ddlModulo.Items.Clear();
+        ddlModulo.Items.Add(new ListItem(Traducir("opt_todos"), ""));
+        foreach (string modulo in gestorBitacora.ObtenerModulosRegistrados())
         {
-            bool pasaUsuario = string.IsNullOrEmpty(usuario) || r.Usuario.Contains(usuario);
-            bool pasaModulo = string.IsNullOrEmpty(modulo) || r.Modulo == modulo;
-            bool pasaCriticidad = string.IsNullOrEmpty(criticidad) || r.Criticidad.ToString() == criticidad;
-            bool pasaDesde = !desde.HasValue || r.FechaEvento >= desde.Value;
-            bool pasaHasta = !hasta.HasValue || r.FechaEvento <= hasta.Value;
-
-            if (pasaUsuario && pasaModulo && pasaCriticidad && pasaDesde && pasaHasta)
-                filtrados.Add(r);
+            ddlModulo.Items.Add(new ListItem(modulo, modulo));
         }
 
-        if (filtrados.Count == 0)
+        ddlUsuario.Items.Clear();
+        ddlUsuario.Items.Add(new ListItem(Traducir("opt_todos"), ""));
+        foreach (string usuario in gestorBitacora.ObtenerUsuariosRegistrados())
         {
-            gvBitacora.Visible = false;
-            lblVacio.Visible = true;
-            lblTotalRegistros.Visible = false;
-            lblFiltroActivo.Visible = false;
-            return;
+            ddlUsuario.Items.Add(new ListItem(usuario, usuario));
         }
 
-        gvBitacora.Visible = true;
-        lblVacio.Visible = false;
-
-        // Convertir a DataTable
-        DataTable dt = new DataTable();
-        dt.Columns.Add("IdBitacora", typeof(int));
-        dt.Columns.Add("FechaEvento", typeof(DateTime));
-        dt.Columns.Add("Usuario", typeof(string));
-        dt.Columns.Add("Modulo", typeof(string));
-        dt.Columns.Add("Criticidad", typeof(int));
-        dt.Columns.Add("CriticidadLabel", typeof(string));
-        dt.Columns.Add("Descripcion", typeof(string));
-
-        foreach (var r in filtrados)
-            dt.Rows.Add(r.IdBitacora, r.FechaEvento, r.Usuario,
-                        r.Modulo, r.Criticidad, r.CriticidadLabel, r.Descripcion);
-
-        gvBitacora.DataSource = dt;
-        gvBitacora.DataBind();
-
-        // Badges de conteo
-        lblTotalRegistros.Text = filtrados.Count + " registros";
-        lblTotalRegistros.Visible = true;
-
-        bool hayFiltro = !string.IsNullOrEmpty(usuario) || !string.IsNullOrEmpty(modulo) ||
-                         !string.IsNullOrEmpty(criticidad) || desde.HasValue || hasta.HasValue;
-        lblFiltroActivo.Text = hayFiltro ? "Filtro activo" : "";
-        lblFiltroActivo.Visible = hayFiltro;
+        ddlCriticidad.Items.Clear();
+        ddlCriticidad.Items.Add(new ListItem(Traducir("opt_todos"), ""));
+        foreach (int criticidad in gestorBitacora.ObtenerCriticidadesRegistradas())
+        {
+            ddlCriticidad.Items.Add(new ListItem(criticidad + " - " + TextoCriticidad(criticidad), criticidad.ToString()));
+        }
     }
 
-    // =========================================================
-    // EVENTO: APLICAR FILTROS
-    // =========================================================
     protected void btnFiltrar_Click(object sender, EventArgs e)
     {
-        lblMensaje.Visible = false;
-        pnlDetalle.Visible = false;
         gvBitacora.PageIndex = 0;
-
-        DateTime? desde = null, hasta = null;
-        DateTime d, h;
-        if (DateTime.TryParse(txtFechaDesde.Text, out d)) desde = d;
-        if (DateTime.TryParse(txtFechaHasta.Text, out h)) hasta = h.AddDays(1).AddSeconds(-1);
-
-        if (desde.HasValue && hasta.HasValue && desde.Value > hasta.Value)
-        {
-            MostrarError("La fecha de inicio debe ser anterior a la fecha de fin.");
-            return;
-        }
-
-        CargarBitacora(
-            ddlFiltroUsuario.SelectedValue,
-            ddlFiltroModulo.SelectedValue,
-            ddlFiltroCriticidad.SelectedValue,
-            desde, hasta);
+        pnlDetalle.Visible = false;
+        CargarGrilla();
     }
 
-    // =========================================================
-    // EVENTO: LIMPIAR FILTROS
-    // =========================================================
-    protected void btnLimpiar_Click(object sender, EventArgs e)
+    protected void btnLimpiarFiltros_Click(object sender, EventArgs e)
     {
-        lblMensaje.Visible = false;
-        pnlDetalle.Visible = false;
+        txtFechaInicio.Text = string.Empty;
+        txtFechaFin.Text = string.Empty;
+        ddlModulo.SelectedValue = "";
+        ddlUsuario.SelectedValue = "";
+        ddlCriticidad.SelectedValue = "";
         gvBitacora.PageIndex = 0;
-
-        ddlFiltroUsuario.SelectedIndex = 0;
-        ddlFiltroModulo.SelectedIndex = 0;
-        ddlFiltroCriticidad.SelectedIndex = 0;
-        txtFechaDesde.Text = string.Empty;
-        txtFechaHasta.Text = string.Empty;
-
-        CargarBitacora(null, null, null, null, null);
+        pnlDetalle.Visible = false;
+        CargarGrilla();
     }
 
-    // =========================================================
-    // EVENTO: PAGINACIÓN
-    // =========================================================
+    private void CargarGrilla()
+    {
+        DateTime? fechaInicio = null;
+        DateTime? fechaFin = null;
+        DateTime parseado;
+
+        if (DateTime.TryParse(txtFechaInicio.Text, out parseado)) fechaInicio = parseado;
+        if (DateTime.TryParse(txtFechaFin.Text, out parseado)) fechaFin = parseado;
+
+        string modulo = ddlModulo.SelectedValue;
+        string usuario = ddlUsuario.SelectedValue;
+        int? criticidad = string.IsNullOrEmpty(ddlCriticidad.SelectedValue) ? (int?)null : Convert.ToInt32(ddlCriticidad.SelectedValue);
+
+        GestorBitacora gestorBitacora = new GestorBitacora();
+        List<Bitacora> eventos = gestorBitacora.ObtenerPorFiltros(fechaInicio, fechaFin, modulo, usuario, criticidad);
+
+        gvBitacora.DataSource = eventos;
+        gvBitacora.DataBind();
+
+        bool sinFiltrosAplicados = fechaInicio == null && fechaFin == null &&
+            string.IsNullOrEmpty(modulo) && string.IsNullOrEmpty(usuario) && criticidad == null;
+
+        lblCantidadResultados.Text = eventos.Count + (sinFiltrosAplicados ? " (" + Traducir("hint_ultimos_dias") + ")" : "");
+    }
+
     protected void gvBitacora_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         gvBitacora.PageIndex = e.NewPageIndex;
-        btnFiltrar_Click(sender, EventArgs.Empty);
+        CargarGrilla();
     }
 
-    // =========================================================
-    // EVENTO: VER DETALLE DE REGISTRO
-    // =========================================================
-    protected void gvBitacora_SelectedIndexChanged(object sender, EventArgs e)
+    protected void gvBitacora_RowDataBound(object sender, GridViewRowEventArgs e)
     {
-        GridViewRow fila = gvBitacora.SelectedRow;
-        if (fila == null) return;
+        if (e.Row.RowType != DataControlRowType.DataRow) return;
 
-        lblDetId.Text = fila.Cells[0].Text; // no visible directo, usamos DataKeys
-        lblDetFecha.Text = fila.Cells[0].Text;
-        lblDetUsuario.Text = fila.Cells[1].Text;
-        lblDetModulo.Text = fila.Cells[2].Text;
-        lblDetDescripcion.Text = fila.Cells[4].Text;
+        Bitacora evento = e.Row.DataItem as Bitacora;
+        if (evento == null) return;
 
-        // Criticidad la buscamos del registro demo
-        int idReg = 0;
-        var lbDet = (LinkButton)fila.FindControl("lbDetalle");
-        if (lbDet != null) int.TryParse(lbDet.CommandArgument, out idReg);
-
-        var reg = ObtenerRegistrosDemo().Find(r => r.IdBitacora == idReg);
-        if (reg != null)
+        Label lblCriticidad = e.Row.FindControl("lblCriticidad") as Label;
+        if (lblCriticidad != null)
         {
-            lblDetId.Text = reg.IdBitacora.ToString();
-            lblDetFecha.Text = reg.FechaEvento.ToString("dd/MM/yyyy HH:mm:ss");
-            lblDetUsuario.Text = reg.Usuario;
-            lblDetModulo.Text = reg.Modulo;
-            lblDetCriticidad.Text = reg.Criticidad + " — " + reg.CriticidadLabel;
-            lblDetDescripcion.Text = reg.Descripcion;
+            lblCriticidad.Text = evento.Criticidad + " - " + TextoCriticidad(evento.Criticidad);
+            lblCriticidad.CssClass = "badge-criticidad badge-criticidad-" + evento.Criticidad;
         }
 
+        LinkButton lbVerDetalle = e.Row.FindControl("lbVerDetalle") as LinkButton;
+        if (lbVerDetalle != null) lbVerDetalle.Text = "🔍 " + Traducir("btn_ver_detalle");
+    }
+
+    protected void gvBitacora_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName != "VerDetalle") return;
+
+        string email = e.CommandArgument.ToString();
         pnlDetalle.Visible = true;
-    }
 
-    // =========================================================
-    // EVENTO: CERRAR DETALLE
-    // =========================================================
-    protected void btnCerrarDetalle_Click(object sender, EventArgs e)
-    {
-        pnlDetalle.Visible = false;
-    }
+        GestorPsicologo gestorPsicologo = new GestorPsicologo();
+        Psicologo psicologo = gestorPsicologo.BuscarPorEmail(email);
 
-    // =========================================================
-    // DATOS DEMO
-    // TODO: reemplazar por BLL.BitacoraBLL.ObtenerTodos()
-    // =========================================================
-    private List<RegistroBitacora> ObtenerRegistrosDemo()
-    {
-        return new List<RegistroBitacora>
+        if (psicologo == null)
         {
-            new RegistroBitacora(11, new DateTime(2026,5,20,14,25,03),"carlos@consultorio.com", "Pacientes",      3, "Baja",  "Registro de nuevo paciente."),
-            new RegistroBitacora(12, new DateTime(2026,5,20,14,40,29),"carlos@consultorio.com", "Consultas",      3, "Baja",  "Registro de consulta clínica."),
-            new RegistroBitacora(13, new DateTime(2026,5,20,15,10,44),"carlos@consultorio.com", "IA Asistiva",    2, "Media", "Perfilación de paciente con modelo Big Five (BFI)."),
-            new RegistroBitacora(14, new DateTime(2026,5,20,15,55,12),"carlos@consultorio.com", "Logout",         1, "Alta",  "Cierre de sesión."),
-            new RegistroBitacora(15, new DateTime(2026,5,19,8,30,00), "admin@cambur.com",        "Administración", 1, "Alta",  "Backup completo de base de datos generado: Backup_20260519_083000.bak"),
-            new RegistroBitacora(16, new DateTime(2026,5,19,8,35,22), "admin@cambur.com",        "Administración", 1, "Alta",  "Recálculo de dígitos verificadores completado."),
-        };
-    }
-
-    // =========================================================
-    // CLASE AUXILIAR
-    // =========================================================
-    private class RegistroBitacora
-    {
-        public int IdBitacora { get; set; }
-        public DateTime FechaEvento { get; set; }
-        public string Usuario { get; set; }
-        public string Modulo { get; set; }
-        public int Criticidad { get; set; }
-        public string CriticidadLabel { get; set; }
-        public string Descripcion { get; set; }
-
-        public RegistroBitacora(int id, DateTime fecha, string usuario,
-            string modulo, int crit, string critLabel, string desc)
-        {
-            IdBitacora = id; FechaEvento = fecha; Usuario = usuario;
-            Modulo = modulo; Criticidad = crit; CriticidadLabel = critLabel; Descripcion = desc;
+            pnlDetalleEncontrado.Visible = false;
+            pnlDetalleNoEncontrado.Visible = true;
+            return;
         }
-    }
 
-    private void MostrarError(string msg)
+        pnlDetalleEncontrado.Visible = true;
+        pnlDetalleNoEncontrado.Visible = false;
+
+        lblDetNombre.Text = psicologo.Nombre + " " + psicologo.Apellido;
+        lblDetDni.Text = psicologo.Dni;
+        lblDetEmail.Text = psicologo.Email;
+        lblDetRol.Text = psicologo.RolPermiso;
+
+        lblDetActivo.Text = psicologo.Activo ? Traducir("estado_disponible") : Traducir("estado_desactivado");
+        lblDetActivo.CssClass = psicologo.Activo ? "badge-estado activo" : "badge-estado inactivo";
+
+        lblDetHabilitado.Text = psicologo.IsHabilitado ? Traducir("btn_habilitar") : Traducir("btn_deshabilitar");
+        lblDetHabilitado.CssClass = psicologo.IsHabilitado ? "badge-estado activo" : "badge-estado inactivo";
+
+        lblDetBloqueado.Visible = psicologo.IsBloqueado;
+        lblDetBloqueado.Text = Traducir("estado_bloqueado");
+    }
+    private string TextoCriticidad(int criticidad)
     {
-        lblMensaje.Text = msg;
-        lblMensaje.CssClass = "server-error";
-        lblMensaje.Visible = true;
+        switch (criticidad)
+        {
+            case 1: return Traducir("criticidad_alta");
+            case 2: return Traducir("criticidad_media");
+            case 3: return Traducir("criticidad_baja");
+            default: return criticidad.ToString();
+        }
     }
 }

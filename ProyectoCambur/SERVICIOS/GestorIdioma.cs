@@ -74,9 +74,8 @@ namespace SERVICIOS
                     true
                 ));
             }
-
-
             traduccionDAL.AltaMasiva(traduccionesNuevas);
+            new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_GESTION_IDIOMAS, EventosBitacora.DESC_ALTA_IDIOMA, EventosBitacora.CRIT_ALTA_IDIOMA);
         }
 
         public void Activar(string nombreIdioma)
@@ -98,6 +97,7 @@ namespace SERVICIOS
 
             idiomaDAL.ActualizarIsOcupadoCache(nombreIdioma, false);
             idiomaDAL.Desactivar(nombreIdioma);
+            new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_GESTION_IDIOMAS, EventosBitacora.DESC_BAJA_IDIOMA, EventosBitacora.CRIT_BAJA_IDIOMA);
         }
 
         #endregion
@@ -113,6 +113,7 @@ namespace SERVICIOS
 
             TraduccionDAL traduccionDAL = new TraduccionDAL();
             traduccionDAL.ModificarTexto(idTraduccion, nuevoTexto);
+            new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_GESTION_IDIOMAS, EventosBitacora.DESC_MODIF_TRADUCCION, EventosBitacora.CRIT_MODIF_TRADUCCION);
         }
 
         public List<Traduccion> ObtenerTraduccionesDe(string nombreIdioma)
