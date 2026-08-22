@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 namespace GUI
 {
-   
     public class PaginaBase : System.Web.UI.Page, IObservadorIdioma
     {
         protected Dictionary<string, string> Traducciones { get; private set; }
@@ -13,6 +12,7 @@ namespace GUI
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
+            UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
 
             SujetoIdioma sujetoIdioma = new SujetoIdioma();
             sujetoIdioma.Suscribir(this);
@@ -24,17 +24,19 @@ namespace GUI
             Traducciones = traducciones;
         }
 
-   
-        protected string Traducir(string clave)
+  
+        public string Traducir(string clave)
         {
             if (Traducciones != null && Traducciones.ContainsKey(clave))
             {
                 return Traducciones[clave];
             }
 
-          
+       
             return clave;
         }
+
+
         protected string TraducirExcepcion(ExcepcionTraducible ex)
         {
             string plantilla = Traducir(ex.Clave);
@@ -53,6 +55,7 @@ namespace GUI
                     return psicologoActual.Idioma;
                 }
             }
+
             return "Español";
         }
     }

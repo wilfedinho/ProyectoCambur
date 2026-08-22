@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FormDigitoVerificador.aspx.cs" Inherits="FormDigitoVerificador" %>
+<%@ Register Src="~/UserControls/HeaderUsuario.ascx" TagPrefix="uc" TagName="HeaderUsuario" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -6,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Cambur — Integridad del sistema</title>
     <link href="EstilosPaginas/Shared.css"               rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/HeaderUsuario.css"        rel="stylesheet" type="text/css"/>
     <link href="EstilosPaginas/FormDigitoVerificador.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
@@ -37,15 +39,7 @@
                     <span class="header-sep">/</span>
                     <span class="header-page">Integridad del sistema</span>
                 </div>
-                <div class="header-user">
-                    <div class="user-avatar">
-                        <asp:Label ID="lblIniciales" runat="server" Text="" />
-                    </div>
-                    <div class="user-info">
-                        <asp:Label ID="lblNombreProfesional" runat="server" CssClass="user-name" Text="" />
-                        <span class="user-role">Web Master</span>
-                    </div>
-                </div>
+                <uc:HeaderUsuario ID="ucHeaderUsuario" runat="server" />
             </header>
 
             <div class="page-content">

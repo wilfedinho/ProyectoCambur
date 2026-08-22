@@ -2,7 +2,7 @@
 using SERVICIOS;
 using System;
 
-public partial class FormMenuAdministrador : System.Web.UI.Page
+public partial class FormMenuAdministrador : GUI.PaginaBase
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -20,17 +20,29 @@ public partial class FormMenuAdministrador : System.Web.UI.Page
             return;
         }
 
-        if (!IsPostBack)
-        {
-            lblNombreProfesional.Text = psicologoActual.Nombre + " " + psicologoActual.Apellido;
-            lblIniciales.Text = ObtenerIniciales(psicologoActual.Nombre, psicologoActual.Apellido);
-        }
+        AplicarTraducciones();
     }
 
-    private string ObtenerIniciales(string nombre, string apellido)
+    private void AplicarTraducciones()
     {
-        string inicialNombre = string.IsNullOrEmpty(nombre) ? "" : nombre.Substring(0, 1);
-        string inicialApellido = string.IsNullOrEmpty(apellido) ? "" : apellido.Substring(0, 1);
-        return (inicialNombre + inicialApellido).ToUpper();
+        lblTaglineSidebar.Text = Traducir("tagline_panel_gestion");
+        lblMenuInicio.Text = Traducir("menu_inicio");
+        lblMenuProfesionales.Text = Traducir("menu_profesionales");
+        lblMenuIdiomas.Text = Traducir("menu_idiomas");
+        lblMenuBitacora.Text = Traducir("menu_bitacora");
+        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+
+        lblHeaderSeccion.Text = Traducir("header_administrador");
+        lblHeaderPagina.Text = Traducir("header_menu_principal");
+
+        lblBannerTitulo.Text = Traducir("banner_admin_titulo");
+        lblBannerSub.Text = Traducir("banner_admin_sub");
+
+        lblTileProfesionalesTitulo.Text = Traducir("menu_profesionales");
+        lblTileProfesionalesDesc.Text = Traducir("tile_profesionales_desc");
+        lblTileIdiomasTitulo.Text = Traducir("menu_idiomas");
+        lblTileIdiomasDesc.Text = Traducir("tile_idiomas_desc");
+        lblTileBitacoraTitulo.Text = Traducir("menu_bitacora");
+        lblTileBitacoraDesc.Text = Traducir("tile_bitacora_desc");
     }
 }

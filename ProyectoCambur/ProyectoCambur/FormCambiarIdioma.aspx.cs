@@ -7,7 +7,7 @@ using System.Linq;
 
 public partial class FormCambiarIdioma : GUI.PaginaBase
 {
- 
+   
     private static readonly Dictionary<string, string> Banderas = new Dictionary<string, string>
     {
         { "es", "🇦🇷" },
@@ -42,8 +42,6 @@ public partial class FormCambiarIdioma : GUI.PaginaBase
 
         if (!IsPostBack)
         {
-            lblNombreProfesional.Text = psicologoActual.Nombre + " " + psicologoActual.Apellido;
-            lblIniciales.Text = ObtenerIniciales(psicologoActual.Nombre, psicologoActual.Apellido);
             lnkVolverMenu.NavigateUrl = DestinoSegunRol(psicologoActual.RolPermiso);
             lnkCancelar.NavigateUrl = DestinoSegunRol(psicologoActual.RolPermiso);
 
@@ -63,7 +61,6 @@ public partial class FormCambiarIdioma : GUI.PaginaBase
         lblMenuCerrarSesion.Text = Traducir("menu_cerrar_sesion");
         lblHeaderSeccion.Text = Traducir("header_configuracion");
         lblHeaderPagina.Text = Traducir("header_cambiar_idioma");
-        lblRolActual.Text = psicologoActual.RolPermiso;
 
         lblTituloCard.Text = Traducir("titulo_idioma_interfaz");
         lblSubtituloCard.Text = Traducir("subtitulo_idioma_interfaz");
@@ -125,7 +122,7 @@ public partial class FormCambiarIdioma : GUI.PaginaBase
         {
             Psicologo psicologoActualizado = gestorPsicologo.CambiarIdioma(GestorSesion.PsicologoActual.IdPsicologo, nuevoIdioma);
 
-            
+     
             GestorSesion.Login(psicologoActualizado);
 
             Response.Redirect("FormCambiarIdioma.aspx?idioma=ok");
@@ -165,13 +162,6 @@ public partial class FormCambiarIdioma : GUI.PaginaBase
             default:
                 return "FormMenuProfesional.aspx";
         }
-    }
-
-    private string ObtenerIniciales(string nombre, string apellido)
-    {
-        string inicialNombre = string.IsNullOrEmpty(nombre) ? "" : nombre.Substring(0, 1);
-        string inicialApellido = string.IsNullOrEmpty(apellido) ? "" : apellido.Substring(0, 1);
-        return (inicialNombre + inicialApellido).ToUpper();
     }
 
     private void MostrarError(string msg)

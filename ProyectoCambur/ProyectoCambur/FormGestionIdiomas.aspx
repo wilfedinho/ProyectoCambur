@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FormGestionIdiomas.aspx.cs" Inherits="FormGestionIdiomas" %>
+<%@ Register Src="~/UserControls/HeaderUsuario.ascx" TagPrefix="uc" TagName="HeaderUsuario" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -6,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Cambur — Gestión de idiomas</title>
     <link href="EstilosPaginas/Shared.css"             rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/HeaderUsuario.css"      rel="stylesheet" type="text/css"/>
     <link href="EstilosPaginas/FormGestionIdiomas.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
@@ -14,18 +16,16 @@
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
-                <div class="tagline">Panel Técnico</div>
+                <asp:Label ID="lblTaglineSidebar" runat="server" CssClass="tagline" Text="" />
             </div>
             <nav class="sidebar-nav">
-                <a href="FormMenuWebMaster.aspx"      class="nav-item">🏠 Menú</a>
-                <a href="FormMaestroProfesional.aspx" class="nav-item">👥 Profesionales</a>
-                <a href="FormGestionIdiomas.aspx"      class="nav-item active">🌐 Idiomas</a>
-                <a href="FormDigitoVerificador.aspx"   class="nav-item">🔐 Integridad</a>
-                <a href="FormBackupRestore.aspx"       class="nav-item">💾 Backup / Restore</a>
-                <a href="FormAuditoriaBitacora.aspx"   class="nav-item">📜 Bitácora</a>
+                <a href="FormMenuAdministrador.aspx"  class="nav-item"><span>🏠</span> <asp:Label ID="lblMenuInicio" runat="server" Text="" /></a>
+                <a href="FormMaestroProfesional.aspx" class="nav-item"><span>👥</span> <asp:Label ID="lblMenuProfesionales" runat="server" Text="" /></a>
+                <a href="FormGestionIdiomas.aspx"      class="nav-item active"><span>🌐</span> <asp:Label ID="lblMenuIdiomas" runat="server" Text="" /></a>
+                <a href="FormAuditoriaBitacora.aspx"   class="nav-item"><span>📜</span> <asp:Label ID="lblMenuBitacora" runat="server" Text="" /></a>
             </nav>
             <div class="sidebar-footer">
-                <a href="FormLogout.aspx" class="nav-item nav-logout">🚪 Cerrar sesión</a>
+                <a href="FormLogout.aspx" class="nav-item nav-logout"><span>🚪</span> <asp:Label ID="lblMenuCerrarSesionSidebar" runat="server" Text="" /></a>
             </div>
         </aside>
 
@@ -33,65 +33,56 @@
 
             <header class="top-header">
                 <div class="header-title">
-                    <span class="header-section">Web Master</span>
+                    <asp:Label ID="lblHeaderSeccion" runat="server" CssClass="header-section" Text="" />
                     <span class="header-sep">/</span>
-                    <span class="header-page">Gestión de idiomas</span>
+                    <asp:Label ID="lblHeaderPagina" runat="server" CssClass="header-page" Text="" />
                 </div>
-                <div class="header-user">
-                    <div class="user-avatar">
-                        <asp:Label ID="lblIniciales" runat="server" Text="" />
-                    </div>
-                    <div class="user-info">
-                        <asp:Label ID="lblNombreProfesional" runat="server" CssClass="user-name" Text="" />
-                        <span class="user-role">Web Master</span>
-                    </div>
-                </div>
+                <uc:HeaderUsuario ID="ucHeaderUsuario" runat="server" />
             </header>
 
             <div class="page-content">
 
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" />
 
-                <!-- ============ ALTA DE IDIOMA ============ -->
+                
                 <div class="content-card">
                     <div class="card-header">
-                        <h2 class="card-title">Nuevo idioma</h2>
-                        <p class="card-subtitle">Se generan automáticamente todas las traducciones copiando las claves de "Español" y traduciéndolas con el traductor automático. Puede tardar según la cantidad de claves cargadas — no cierres la página mientras procesa.</p>
+                        <h2 class="card-title"><asp:Label ID="lblTituloNuevoIdioma" runat="server" Text="" /></h2>
+                        <p class="card-subtitle"><asp:Label ID="lblSubtituloNuevoIdioma" runat="server" Text="" /></p>
                     </div>
 
                     <div class="grid-3">
                         <div class="field">
-                            <label for="txtNombreIdioma">Nombre del idioma <sup>*</sup></label>
+                            <asp:Label ID="lblEtiquetaNombreIdioma" runat="server" AssociatedControlID="txtNombreIdioma" Text="" />
                             <asp:TextBox ID="txtNombreIdioma" runat="server" MaxLength="50" placeholder="Ej: English" ClientIDMode="Static" />
                             <asp:RequiredFieldValidator ID="rfvNombreIdioma" runat="server"
-                                ControlToValidate="txtNombreIdioma" ErrorMessage="El nombre del idioma es obligatorio."
+                                ControlToValidate="txtNombreIdioma" ErrorMessage="."
                                 CssClass="field-error" Display="Dynamic" ValidationGroup="vgIdioma" />
                         </div>
 
                         <div class="field">
-                            <label for="txtCodigoIso">Código ISO 639-1 <sup>*</sup></label>
+                            <asp:Label ID="lblEtiquetaCodigoIso" runat="server" AssociatedControlID="txtCodigoIso" Text="" />
                             <asp:TextBox ID="txtCodigoIso" runat="server" MaxLength="5" placeholder="Ej: en" ClientIDMode="Static" />
                             <asp:RequiredFieldValidator ID="rfvCodigoIso" runat="server"
-                                ControlToValidate="txtCodigoIso" ErrorMessage="El código ISO es obligatorio."
+                                ControlToValidate="txtCodigoIso" ErrorMessage="."
                                 CssClass="field-error" Display="Dynamic" ValidationGroup="vgIdioma" />
-                            <span class="hint-text">Lo usa el traductor automático (ej: es, en, pt, fr).</span>
+                            <asp:Label ID="lblHintCodigoIso" runat="server" CssClass="hint-text" Text="" />
                         </div>
                     </div>
 
                     <div class="form-actions">
                         <asp:Button ID="btnAltaIdioma" runat="server"
-                            Text="Generar idioma con traducciones"
+                            Text=""
                             CssClass="btn-primary"
                             ValidationGroup="vgIdioma"
-                            OnClick="btnAltaIdioma_Click"
-                            OnClientClick="return confirm('Esto va a llamar al traductor automatico para generar todas las traducciones. Puede tardar unos minutos segun la cantidad de claves. ¿Confirmas?');" />
+                            OnClick="btnAltaIdioma_Click" />
                     </div>
                 </div>
 
-                <!-- ============ IDIOMAS EXISTENTES ============ -->
+           
                 <div class="content-card mt-24">
                     <div class="card-header">
-                        <h2 class="card-title">Idiomas del sistema</h2>
+                        <h2 class="card-title"><asp:Label ID="lblTituloIdiomasSistema" runat="server" Text="" /></h2>
                     </div>
 
                     <div class="table-wrap">
@@ -99,8 +90,8 @@
                             CssClass="data-table"
                             AutoGenerateColumns="false"
                             GridLines="None"
-                            EmptyDataText="No hay idiomas cargados."
-                            OnRowCommand="gvIdiomas_RowCommand">
+                            OnRowCommand="gvIdiomas_RowCommand"
+                            OnRowDataBound="gvIdiomas_RowDataBound">
 
                             <EmptyDataRowStyle CssClass="empty-row" />
                             <HeaderStyle      CssClass="table-header" />
@@ -113,11 +104,8 @@
 
                                 <asp:TemplateField HeaderText="Estado" HeaderStyle-CssClass="th-centro" ItemStyle-CssClass="td-centro">
                                     <ItemTemplate>
-                                        <span class='<%# (bool)Eval("IsDisponible") ? "badge-estado activo" : "badge-estado inactivo" %>'>
-                                            <%# (bool)Eval("IsDisponible") ? "Disponible" : "Desactivado" %>
-                                        </span>
-                                        <asp:Label runat="server" CssClass="badge-estado bloqueado"
-                                            Visible='<%# (bool)Eval("IsOcupado") %>' Text="En uso" />
+                                        <asp:Label ID="lblEstadoIdioma" runat="server" CssClass="badge-estado" Text="" />
+                                        <asp:Label ID="lblEnUso" runat="server" CssClass="badge-estado bloqueado" Text="" Visible="false" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
@@ -127,20 +115,17 @@
                                             CommandName="Desactivar"
                                             CommandArgument='<%# Eval("NombreIdioma") %>'
                                             CssClass='<%# (bool)Eval("IsDisponible") ? "tbl-btn tbl-btn-baja" : "tbl-btn-hidden" %>'
-                                            Text="🚫 Desactivar"
                                             OnClientClick="return confirm('¿Confirmás desactivar este idioma? Solo se puede si ningún profesional activo lo está usando.');" />
 
                                         <asp:LinkButton ID="lbActivar" runat="server"
                                             CommandName="Activar"
                                             CommandArgument='<%# Eval("NombreIdioma") %>'
-                                            CssClass='<%# (bool)Eval("IsDisponible") ? "tbl-btn-hidden" : "tbl-btn tbl-btn-reactivar" %>'
-                                            Text="✅ Activar" />
+                                            CssClass='<%# (bool)Eval("IsDisponible") ? "tbl-btn-hidden" : "tbl-btn tbl-btn-reactivar" %>' />
 
                                         <asp:LinkButton ID="lbVerPendientes" runat="server"
                                             CommandName="VerPendientes"
                                             CommandArgument='<%# Eval("NombreIdioma") %>'
-                                            CssClass="tbl-btn tbl-btn-mod"
-                                            Text="✏️ Traducciones" />
+                                            CssClass="tbl-btn tbl-btn-mod" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
@@ -148,11 +133,11 @@
                     </div>
                 </div>
 
-                <!-- ============ TRADUCCIONES DE UN IDIOMA ============ -->
+           
                 <asp:Panel ID="pnlTraducciones" runat="server" CssClass="content-card mt-24" Visible="false">
                     <div class="card-header">
-                        <h2 class="card-title">Traducciones — <asp:Label ID="lblIdiomaSeleccionado" runat="server" Text="" /></h2>
-                        <p class="card-subtitle">Las marcadas "pendiente" fueron generadas por el traductor automático y todavía no fueron revisadas por un humano.</p>
+                        <h2 class="card-title"><asp:Label ID="lblTituloTraducciones" runat="server" Text="" /> — <asp:Label ID="lblIdiomaSeleccionado" runat="server" Text="" /></h2>
+                        <p class="card-subtitle"><asp:Label ID="lblSubtituloTraducciones" runat="server" Text="" /></p>
                     </div>
 
                     <div class="table-wrap">
@@ -160,8 +145,8 @@
                             CssClass="data-table"
                             AutoGenerateColumns="false"
                             GridLines="None"
-                            EmptyDataText="Este idioma no tiene traducciones cargadas."
-                            OnRowCommand="gvTraducciones_RowCommand">
+                            OnRowCommand="gvTraducciones_RowCommand"
+                            OnRowDataBound="gvTraducciones_RowDataBound">
 
                             <EmptyDataRowStyle CssClass="empty-row" />
                             <HeaderStyle      CssClass="table-header" />
@@ -179,9 +164,7 @@
 
                                 <asp:TemplateField HeaderText="Estado" HeaderStyle-CssClass="th-centro" ItemStyle-CssClass="td-centro">
                                     <ItemTemplate>
-                                        <span class='<%# (bool)Eval("Pendiente") ? "badge-estado bloqueado" : "badge-estado activo" %>'>
-                                            <%# (bool)Eval("Pendiente") ? "Pendiente" : "Revisado" %>
-                                        </span>
+                                        <asp:Label ID="lblEstadoTraduccion" runat="server" CssClass="badge-estado" Text="" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
@@ -190,8 +173,7 @@
                                         <asp:LinkButton ID="lbGuardarTraduccion" runat="server"
                                             CommandName="GuardarTraduccion"
                                             CommandArgument='<%# Eval("IdTraduccion") %>'
-                                            CssClass="tbl-btn tbl-btn-mod"
-                                            Text="💾 Guardar" />
+                                            CssClass="tbl-btn tbl-btn-mod" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>

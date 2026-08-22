@@ -2,7 +2,7 @@
 using SERVICIOS;
 using System;
 
-public partial class FormMenuWebMaster : System.Web.UI.Page
+public partial class FormMenuWebMaster : GUI.PaginaBase
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -16,22 +16,36 @@ public partial class FormMenuWebMaster : System.Web.UI.Page
 
         if (psicologoActual.RolPermiso != "Web Master")
         {
-           
             Response.Redirect("FormLogin.aspx");
             return;
         }
 
-        if (!IsPostBack)
-        {
-            lblNombreProfesional.Text = psicologoActual.Nombre + " " + psicologoActual.Apellido;
-            lblIniciales.Text = ObtenerIniciales(psicologoActual.Nombre, psicologoActual.Apellido);
-        }
+        AplicarTraducciones();
     }
 
-    private string ObtenerIniciales(string nombre, string apellido)
+    private void AplicarTraducciones()
     {
-        string inicialNombre = string.IsNullOrEmpty(nombre) ? "" : nombre.Substring(0, 1);
-        string inicialApellido = string.IsNullOrEmpty(apellido) ? "" : apellido.Substring(0, 1);
-        return (inicialNombre + inicialApellido).ToUpper();
+        lblTaglineSidebar.Text = Traducir("tagline_panel_tecnico");
+        lblMenuInicio.Text = Traducir("menu_inicio");
+        lblMenuProfesionales.Text = Traducir("menu_profesionales");
+        lblMenuIntegridad.Text = Traducir("menu_integridad");
+        lblMenuBackupRestore.Text = Traducir("menu_backup_restore");
+        lblMenuBitacora.Text = Traducir("menu_bitacora");
+        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+
+        lblHeaderSeccion.Text = Traducir("header_web_master");
+        lblHeaderPagina.Text = Traducir("header_menu_principal");
+
+        lblBannerTitulo.Text = Traducir("banner_webmaster_titulo");
+        lblBannerSub.Text = Traducir("banner_webmaster_sub");
+
+        lblTileProfesionalesTitulo.Text = Traducir("menu_profesionales");
+        lblTileProfesionalesDesc.Text = Traducir("tile_profesionales_desc");
+        lblTileIntegridadTitulo.Text = Traducir("menu_integridad");
+        lblTileIntegridadDesc.Text = Traducir("tile_integridad_desc");
+        lblTileBackupTitulo.Text = Traducir("menu_backup_restore");
+        lblTileBackupDesc.Text = Traducir("tile_backup_desc");
+        lblTileBitacoraTitulo.Text = Traducir("menu_bitacora");
+        lblTileBitacoraDesc.Text = Traducir("tile_bitacora_desc");
     }
 }

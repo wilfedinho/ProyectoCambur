@@ -26,9 +26,6 @@ public partial class FormDigitoVerificador : GUI.PaginaBase
 
         if (!IsPostBack)
         {
-            lblNombreProfesional.Text = psicologoActual.Nombre + " " + psicologoActual.Apellido;
-            lblIniciales.Text = ObtenerIniciales(psicologoActual.Nombre, psicologoActual.Apellido);
-
             CargarInconsistencias();
         }
     }
@@ -65,7 +62,7 @@ public partial class FormDigitoVerificador : GUI.PaginaBase
             pnlSinInconsistencias.Visible = false;
             pnlConInconsistencias.Visible = true;
 
-            
+         
             List<string> mensajesTraducidos = inconsistencias
                 .Select(inc =>
                 {
@@ -86,13 +83,6 @@ public partial class FormDigitoVerificador : GUI.PaginaBase
 
         MostrarExito(Traducir("msg_digitos_recalculados"));
         CargarInconsistencias();
-    }
-
-    private string ObtenerIniciales(string nombre, string apellido)
-    {
-        string inicialNombre = string.IsNullOrEmpty(nombre) ? "" : nombre.Substring(0, 1);
-        string inicialApellido = string.IsNullOrEmpty(apellido) ? "" : apellido.Substring(0, 1);
-        return (inicialNombre + inicialApellido).ToUpper();
     }
 
     private void MostrarExito(string msg)

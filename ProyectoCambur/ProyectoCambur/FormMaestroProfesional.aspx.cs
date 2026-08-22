@@ -44,9 +44,6 @@ public partial class FormMaestroProfesional : GUI.PaginaBase
 
         if (!IsPostBack)
         {
-            lblNombreProfesional.Text = psicologoActual.Nombre + " " + psicologoActual.Apellido;
-            lblRolActual.Text = psicologoActual.RolPermiso;
-            lblIniciales.Text = ObtenerIniciales(psicologoActual.Nombre, psicologoActual.Apellido);
             lblTaglineSidebar.Text = psicologoActual.RolPermiso == "Web Master" ? Traducir("tagline_panel_tecnico") : Traducir("tagline_panel_gestion");
             lnkVolverMenu.NavigateUrl = psicologoActual.RolPermiso == "Web Master" ? "FormMenuWebMaster.aspx" : "FormMenuAdministrador.aspx";
 
@@ -59,16 +56,16 @@ public partial class FormMaestroProfesional : GUI.PaginaBase
     private void AplicarTraducciones()
     {
         lnkVolverMenu.Text = "🏠 " + Traducir("menu_inicio");
-  
+
+      
         ddlFiltroEstado.Items.FindByValue("TODOS").Text = Traducir("opt_todos");
         ddlFiltroEstado.Items.FindByValue("ACTIVOS").Text = Traducir("opt_activos");
         ddlFiltroEstado.Items.FindByValue("INACTIVOS").Text = Traducir("opt_desactivados");
 
-   
+  
         lblTituloListado.Text = Traducir("titulo_profesionales_registrados");
         lblEtiquetaMostrar.Text = Traducir("lbl_mostrar");
 
-    
         gvProfesionales.Columns[0].HeaderText = Traducir("col_profesional");
         gvProfesionales.Columns[1].HeaderText = Traducir("col_dni");
         gvProfesionales.Columns[2].HeaderText = Traducir("col_email");
@@ -78,7 +75,7 @@ public partial class FormMaestroProfesional : GUI.PaginaBase
         gvProfesionales.Columns[6].HeaderText = Traducir("col_estado");
         gvProfesionales.Columns[7].HeaderText = Traducir("col_acciones");
         gvProfesionales.EmptyDataText = Traducir("empty_profesionales");
-
+ 
         ddlRol.Items.FindByValue("").Text = Traducir("opt_seleccionar");
         ddlRol.Items.FindByValue("Free").Text = Traducir("rol_psicologo_free");
         ddlRol.Items.FindByValue("Profesional").Text = Traducir("rol_psicologo_profesional");
@@ -312,13 +309,6 @@ public partial class FormMaestroProfesional : GUI.PaginaBase
         txtEmail.Text = psicologo.Email;
         ddlIdioma.SelectedValue = psicologo.Idioma;
         ddlRol.SelectedValue = psicologo.RolPermiso;
-    }
-
-    private string ObtenerIniciales(string nombre, string apellido)
-    {
-        string inicialNombre = string.IsNullOrEmpty(nombre) ? "" : nombre.Substring(0, 1);
-        string inicialApellido = string.IsNullOrEmpty(apellido) ? "" : apellido.Substring(0, 1);
-        return (inicialNombre + inicialApellido).ToUpper();
     }
 
     private void MostrarError(string msg)

@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FormMaestroProfesional.aspx.cs" Inherits="FormMaestroProfesional" %>
+<%@ Register Src="~/UserControls/HeaderUsuario.ascx" TagPrefix="uc" TagName="HeaderUsuario" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -6,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Cambur — Profesionales</title>
     <link href="EstilosPaginas/Shared.css"                rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/HeaderUsuario.css"          rel="stylesheet" type="text/css"/>
     <link href="EstilosPaginas/FormMaestroProfesional.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
@@ -33,15 +35,7 @@
                     <span class="header-sep">/</span>
                     <span class="header-page">ABM de profesionales</span>
                 </div>
-                <div class="header-user">
-                    <div class="user-avatar">
-                        <asp:Label ID="lblIniciales" runat="server" Text="" />
-                    </div>
-                    <div class="user-info">
-                        <asp:Label ID="lblNombreProfesional" runat="server" CssClass="user-name" Text="" />
-                        <asp:Label ID="lblRolActual" runat="server" CssClass="user-role" Text="" />
-                    </div>
-                </div>
+                <uc:HeaderUsuario ID="ucHeaderUsuario" runat="server" />
             </header>
 
             <div class="page-content">
