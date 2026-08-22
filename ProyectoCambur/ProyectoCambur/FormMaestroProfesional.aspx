@@ -150,14 +150,14 @@
 
                     <div class="card-header-row">
                         <div class="card-header-left">
-                            <h2 class="card-title">Profesionales registrados</h2>
+                            <h2 class="card-title"><asp:Label ID="lblTituloListado" runat="server" Text="Profesionales registrados" /></h2>
                             <div class="badges-row">
                                 <asp:Label ID="lblBadgeActivos"   runat="server" CssClass="badge-activos"   Text="" />
                                 <asp:Label ID="lblBadgeInactivos" runat="server" CssClass="badge-inactivos" Text="" />
                             </div>
                         </div>
                         <div class="filtro-estado">
-                            <label for="ddlFiltroEstado">Mostrar:</label>
+                            <asp:Label ID="lblEtiquetaMostrar" runat="server" AssociatedControlID="ddlFiltroEstado" Text="Mostrar:" />
                             <asp:DropDownList ID="ddlFiltroEstado" runat="server" ClientIDMode="Static" AutoPostBack="true" OnSelectedIndexChanged="ddlFiltroEstado_SelectedIndexChanged">
                                 <asp:ListItem Value="TODOS"      Text="Todos" />
                                 <asp:ListItem Value="ACTIVOS"    Text="Activos" />

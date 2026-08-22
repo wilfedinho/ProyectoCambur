@@ -2,8 +2,9 @@
 using SERVICIOS;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
-public partial class FormDigitoVerificador : System.Web.UI.Page
+public partial class FormDigitoVerificador : GUI.PaginaBase
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -21,6 +22,8 @@ public partial class FormDigitoVerificador : System.Web.UI.Page
             return;
         }
 
+        AplicarTraducciones();
+
         if (!IsPostBack)
         {
             lblNombreProfesional.Text = psicologoActual.Nombre + " " + psicologoActual.Apellido;
@@ -30,10 +33,27 @@ public partial class FormDigitoVerificador : System.Web.UI.Page
         }
     }
 
+    private void AplicarTraducciones()
+    {
+        lblTituloSinInconsistencias.Text = Traducir("titulo_sin_inconsistencias");
+        lblSubtituloSinInconsistencias.Text = Traducir("subtitulo_sin_inconsistencias");
+        lblTituloConInconsistencias.Text = "⚠️ " + Traducir("titulo_inconsistencias_detectadas");
+        lblSubtituloConInconsistencias.Text = Traducir("subtitulo_inconsistencias_detectadas");
+        lblTituloAcciones.Text = Traducir("titulo_acciones_disponibles");
+        lblSubtituloAcciones.Text = Traducir("subtitulo_acciones_disponibles");
+        lblAccionBackupTitulo.Text = Traducir("accion_backup_titulo");
+        lblAccionBackupDesc.Text = Traducir("accion_backup_desc");
+        lblAccionRestoreTitulo.Text = Traducir("accion_restore_titulo");
+        lblAccionRestoreDesc.Text = Traducir("accion_restore_desc");
+        lblAccionRecalcularTitulo.Text = Traducir("accion_recalcular_titulo");
+        lblAccionRecalcularDesc.Text = Traducir("accion_recalcular_desc");
+        btnRecalcular.Text = Traducir("btn_recalcular_digitos");
+    }
+
     private void CargarInconsistencias()
     {
         DigitoVerificador digitoVerificador = new DigitoVerificador();
-        List<string> inconsistencias = digitoVerificador.VerificarIntegridadTodasLasTablas();
+        List<InconsistenciaDetectada> inconsistencias = digitoVerificador.VerificarIntegridadTodasLasTablas();
 
         if (inconsistencias.Count == 0)
         {
@@ -44,7 +64,17 @@ public partial class FormDigitoVerificador : System.Web.UI.Page
         {
             pnlSinInconsistencias.Visible = false;
             pnlConInconsistencias.Visible = true;
-            rptInconsistencias.DataSource = inconsistencias;
+
+            
+            List<string> mensajesTraducidos = inconsistencias
+                .Select(inc =>
+                {
+                    string plantilla = Traducir(inc.Clave);
+                    return inc.Parametros.Length > 0 ? string.Format(plantilla, inc.Parametros) : plantilla;
+                })
+                .ToList();
+
+            rptInconsistencias.DataSource = mensajesTraducidos;
             rptInconsistencias.DataBind();
         }
     }
@@ -54,7 +84,7 @@ public partial class FormDigitoVerificador : System.Web.UI.Page
         DigitoVerificador digitoVerificador = new DigitoVerificador();
         digitoVerificador.RecalcularTodo();
 
-        MostrarExito("Dígitos verificadores recalculados. El estado actual de la base quedó registrado como válido.");
+        MostrarExito(Traducir("msg_digitos_recalculados"));
         CargarInconsistencias();
     }
 

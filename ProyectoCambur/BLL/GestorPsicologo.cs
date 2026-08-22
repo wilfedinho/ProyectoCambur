@@ -21,13 +21,13 @@ namespace BLL
 
             if (!VerificarFormatoContrasena(psicologoAlta.Contrasena))
             {
-                throw new ArgumentException("La contrasena no cumple con el formato requerido (minimo 8 caracteres, una mayuscula, un numero).");
+                throw new ExcepcionTraducible("error_formato_contrasena");
             }
 
             PsicologoDAL psicologoDAL = new PsicologoDAL();
             if (psicologoDAL.ExisteEmail(psicologoAlta.Email))
             {
-                throw new InvalidOperationException("Ya existe un profesional registrado con ese email.");
+                throw new ExcepcionTraducible("error_email_duplicado");
             }
 
             psicologoAlta.Contrasena = Cifrador.GestorCifrador.EncriptarIrreversible(psicologoAlta.Contrasena);
@@ -69,13 +69,48 @@ namespace BLL
             RecalcularDVHDe(idPsicologo);
         }
 
+        public Psicologo CambiarIdioma(int idPsicologo, string nuevoIdioma)
+        {
+            if (string.IsNullOrWhiteSpace(nuevoIdioma))
+            {
+                throw new ExcepcionTraducible("error_idioma_obligatorio");
+            }
+
+            IdiomaDAL idiomaDAL = new IdiomaDAL();
+            Idioma idioma = idiomaDAL.BuscarPorNombre(nuevoIdioma);
+
+            if (idioma == null || !idioma.IsDisponible)
+            {
+                throw new ExcepcionTraducible("error_idioma_no_disponible");
+            }
+
+            PsicologoDAL psicologoDAL = new PsicologoDAL();
+            Psicologo psicologo = psicologoDAL.BuscarPorId(idPsicologo);
+            if (psicologo == null)
+            {
+                throw new ExcepcionTraducible("error_profesional_no_encontrado");
+            }
+
+            if (psicologo.Idioma == nuevoIdioma)
+            {
+                throw new ExcepcionTraducible("error_idioma_ya_configurado");
+            }
+
+            psicologoDAL.CambiarIdioma(idPsicologo, nuevoIdioma);
+            psicologo.Idioma = nuevoIdioma;
+
+            new DigitoVerificador().ActualizarDVH(psicologo, "Profesional");
+
+            return psicologo;
+        }
+
         public void Desbloquear(int idPsicologo)
         {
             PsicologoDAL psicologoDAL = new PsicologoDAL();
             Psicologo psicologo = psicologoDAL.BuscarPorId(idPsicologo);
             if (psicologo == null)
             {
-                throw new InvalidOperationException("No se encontro el profesional.");
+                throw new ExcepcionTraducible("error_profesional_no_encontrado");
             }
 
             string contrasenaTemporal = psicologo.Dni + psicologo.Email;
@@ -93,7 +128,7 @@ namespace BLL
             Psicologo psicologoExistente = psicologoDAL.BuscarPorEmail(psicologoModificado.Email);
             if (psicologoExistente != null && psicologoExistente.IdPsicologo != psicologoModificado.IdPsicologo)
             {
-                throw new InvalidOperationException("Ya existe otro profesional registrado con ese email.");
+                throw new ExcepcionTraducible("error_email_duplicado_otro");
             }
 
             psicologoDAL.Modificar(psicologoModificado);
@@ -106,17 +141,17 @@ namespace BLL
             Psicologo psicologo = psicologoDAL.BuscarPorId(idPsicologo);
             if (psicologo == null)
             {
-                throw new InvalidOperationException("No se encontro el profesional.");
+                throw new ExcepcionTraducible("error_profesional_no_encontrado");
             }
 
             if (psicologo.Contrasena != Cifrador.GestorCifrador.EncriptarIrreversible(contrasenaActual))
             {
-                throw new InvalidOperationException("La contrasena actual no es correcta.");
+                throw new ExcepcionTraducible("error_contrasena_actual_incorrecta");
             }
 
             if (!VerificarFormatoContrasena(contrasenaNueva))
             {
-                throw new ArgumentException("La contrasena nueva no cumple con el formato requerido (minimo 8 caracteres, una mayuscula, un numero).");
+                throw new ExcepcionTraducible("error_formato_contrasena");
             }
 
             psicologoDAL.CambiarContrasena(idPsicologo, Cifrador.GestorCifrador.EncriptarIrreversible(contrasenaNueva));
@@ -212,22 +247,22 @@ namespace BLL
         {
             if (string.IsNullOrWhiteSpace(psicologo.Nombre))
             {
-                throw new ArgumentException("El nombre es obligatorio.");
+                throw new ExcepcionTraducible("error_nombre_obligatorio");
             }
 
             if (string.IsNullOrWhiteSpace(psicologo.Apellido))
             {
-                throw new ArgumentException("El apellido es obligatorio.");
+                throw new ExcepcionTraducible("error_apellido_obligatorio");
             }
 
             if (!VerificarFormatoDni(psicologo.Dni))
             {
-                throw new ArgumentException("El DNI no cumple con el formato esperado (ej: 12.345.678).");
+                throw new ExcepcionTraducible("error_formato_dni");
             }
 
             if (!VerificarFormatoEmail(psicologo.Email))
             {
-                throw new ArgumentException("El email no cumple con el formato esperado.");
+                throw new ExcepcionTraducible("error_formato_email");
             }
         }
 

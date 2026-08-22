@@ -16,7 +16,7 @@ public partial class FormMenuWebMaster : System.Web.UI.Page
 
         if (psicologoActual.RolPermiso != "Web Master")
         {
-            // No tiene este rol: lo mandamos a su menu correspondiente en vez de mostrarle un 403 crudo.
+           
             Response.Redirect("FormLogin.aspx");
             return;
         }

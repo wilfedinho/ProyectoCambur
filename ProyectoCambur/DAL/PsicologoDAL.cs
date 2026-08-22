@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace DAL
 {
-    
+
     public class PsicologoDAL
     {
         #region Operaciones Psicologo
@@ -72,6 +72,21 @@ namespace DAL
                 {
                     comando.Parameters.AddWithValue("@id_profesional", idPsicologo);
                     comando.Parameters.AddWithValue("@activo", true);
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void CambiarIdioma(int idPsicologo, string nuevoIdioma)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "UPDATE Profesional SET idioma = @idioma WHERE id_profesional = @id_profesional";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_profesional", idPsicologo);
+                    comando.Parameters.AddWithValue("@idioma", nuevoIdioma);
                     comando.ExecuteNonQuery();
                 }
             }
@@ -201,7 +216,7 @@ namespace DAL
 
         #region Digito Verificador (DVH)
 
-        
+
         public List<string> ObtenerListaDVH()
         {
             List<string> lista = new List<string>();

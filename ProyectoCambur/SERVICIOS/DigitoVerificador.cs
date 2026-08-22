@@ -8,7 +8,7 @@ namespace SERVICIOS
 {
     public class DigitoVerificador
     {
-        
+
         private static readonly List<string> TablasControladas = new List<string> { "Profesional" };
 
         #region Calculo de DVH (por registro)
@@ -30,7 +30,7 @@ namespace SERVICIOS
                 sb.Append(psicologo.IsHabilitado);
             }
 
-        
+
 
             return Cifrador.GestorCifrador.EncriptarIrreversible(sb.ToString());
         }
@@ -59,7 +59,7 @@ namespace SERVICIOS
 
         #region Actualizacion (se llama despues de cada alta/modificacion legitima)
 
-       
+
         public void ActualizarDVH(object entidad, string nombreTabla)
         {
             string dvh = CalcularDVH(entidad);
@@ -103,10 +103,10 @@ namespace SERVICIOS
             return CalcularDVV(nombreTabla) == digitoVerificadorDAL.ObtenerDVV(nombreTabla);
         }
 
-    
-        public List<string> VerificarIntegridadTodasLasTablas()
+
+        public List<InconsistenciaDetectada> VerificarIntegridadTodasLasTablas()
         {
-            List<string> inconsistencias = new List<string>();
+            List<InconsistenciaDetectada> inconsistencias = new List<InconsistenciaDetectada>();
             DigitoVerificadorDAL digitoVerificadorDAL = new DigitoVerificadorDAL();
 
             foreach (string tabla in TablasControladas)
@@ -123,10 +123,11 @@ namespace SERVICIOS
                         if (!VerificarIntegridadDVH(psicologo))
                         {
                             huboInconsistenciaDeRegistro = true;
-                            inconsistencias.Add(
-                                "Tabla Profesional: el registro de \"" + psicologo.Nombre + " " + psicologo.Apellido +
-                                "\" (" + psicologo.Email + ") presenta una inconsistencia " +
-                                "(fue modificado directamente en la base, o insertado sin pasar por el sistema).");
+                            inconsistencias.Add(new InconsistenciaDetectada(
+                                "dvh_registro_inconsistente",
+                                psicologo.Nombre + " " + psicologo.Apellido,
+                                psicologo.Email
+                            ));
                         }
                     }
 
@@ -136,26 +137,18 @@ namespace SERVICIOS
                     if (cantidadReal < cantidadRegistrada)
                     {
                         int faltantes = cantidadRegistrada - cantidadReal;
-                        inconsistencias.Add(
-                            "Tabla Profesional: falta" + (faltantes == 1 ? "" : "n") + " " + faltantes +
-                            " registro" + (faltantes == 1 ? "" : "s") +
-                            " respecto de lo esperado (posible eliminación directa en la base de datos).");
+                        inconsistencias.Add(new InconsistenciaDetectada("dvh_faltan_registros", faltantes));
                     }
                     else if (cantidadReal > cantidadRegistrada)
                     {
                         int sobrantes = cantidadReal - cantidadRegistrada;
-                        inconsistencias.Add(
-                            "Tabla Profesional: hay " + sobrantes + " registro" + (sobrantes == 1 ? "" : "s") +
-                            " de más respecto de lo esperado (posible inserción directa en la base de datos).");
+                        inconsistencias.Add(new InconsistenciaDetectada("dvh_registros_de_mas", sobrantes));
                     }
                     else if (!huboInconsistenciaDeRegistro && !VerificarIntegridadDVV(tabla))
                     {
-                        
-                        inconsistencias.Add("Tabla Profesional: se detectó una alteración que no pudo asociarse a un registro puntual.");
+                        inconsistencias.Add(new InconsistenciaDetectada("dvh_alteracion_no_asociada"));
                     }
                 }
-
-                
             }
 
             return inconsistencias;
@@ -170,7 +163,7 @@ namespace SERVICIOS
 
         #region Recalculo total (uso administrativo / puesta al dia inicial)
 
-   
+
         public void RecalcularTodo()
         {
             foreach (string tabla in TablasControladas)

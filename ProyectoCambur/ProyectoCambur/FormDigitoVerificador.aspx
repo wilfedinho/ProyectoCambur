@@ -55,15 +55,15 @@
                 <asp:Panel ID="pnlSinInconsistencias" runat="server" CssClass="estado-card estado-ok" Visible="false">
                     <span class="estado-icono">✅</span>
                     <div>
-                        <div class="estado-titulo">Sin inconsistencias detectadas</div>
-                        <div class="estado-sub">Todos los dígitos verificadores (DVH/DVV) y conteos de registros coinciden con lo esperado.</div>
+                        <div class="estado-titulo"><asp:Label ID="lblTituloSinInconsistencias" runat="server" Text="Sin inconsistencias detectadas" /></div>
+                        <div class="estado-sub"><asp:Label ID="lblSubtituloSinInconsistencias" runat="server" Text="Todos los dígitos verificadores (DVH/DVV) y conteos de registros coinciden con lo esperado." /></div>
                     </div>
                 </asp:Panel>
 
                 <asp:Panel ID="pnlConInconsistencias" runat="server" CssClass="content-card" Visible="false">
                     <div class="card-header">
-                        <h2 class="card-title">⚠️ Inconsistencias detectadas</h2>
-                        <p class="card-subtitle">Se detectaron cambios en la base de datos que no coinciden con lo registrado por el sistema.</p>
+                        <h2 class="card-title"><asp:Label ID="lblTituloConInconsistencias" runat="server" Text="⚠️ Inconsistencias detectadas" /></h2>
+                        <p class="card-subtitle"><asp:Label ID="lblSubtituloConInconsistencias" runat="server" Text="Se detectaron cambios en la base de datos que no coinciden con lo registrado por el sistema." /></p>
                     </div>
 
                     <ul class="lista-inconsistencias">
@@ -77,28 +77,28 @@
 
                 <div class="content-card mt-24">
                     <div class="card-header">
-                        <h2 class="card-title">Acciones disponibles</h2>
-                        <p class="card-subtitle">Elegí cómo proceder ante lo detectado (o como chequeo de rutina, aunque no haya inconsistencias).</p>
+                        <h2 class="card-title"><asp:Label ID="lblTituloAcciones" runat="server" Text="Acciones disponibles" /></h2>
+                        <p class="card-subtitle"><asp:Label ID="lblSubtituloAcciones" runat="server" Text="Elegí cómo proceder ante lo detectado (o como chequeo de rutina, aunque no haya inconsistencias)." /></p>
                     </div>
 
                     <div class="acciones-grid">
 
                         <a class="accion-tile" href="FormBackupRestore.aspx">
                             <div class="accion-icono">💾</div>
-                            <div class="accion-titulo">Realizar backup</div>
-                            <div class="accion-desc">Genera un respaldo del estado actual de la base de datos.</div>
+                            <div class="accion-titulo"><asp:Label ID="lblAccionBackupTitulo" runat="server" Text="Realizar backup" /></div>
+                            <div class="accion-desc"><asp:Label ID="lblAccionBackupDesc" runat="server" Text="Genera un respaldo del estado actual de la base de datos." /></div>
                         </a>
 
                         <a class="accion-tile" href="FormBackupRestore.aspx">
                             <div class="accion-icono">♻️</div>
-                            <div class="accion-titulo">Restaurar backup</div>
-                            <div class="accion-desc">Revierte la base de datos a un respaldo anterior conocido como válido.</div>
+                            <div class="accion-titulo"><asp:Label ID="lblAccionRestoreTitulo" runat="server" Text="Restaurar backup" /></div>
+                            <div class="accion-desc"><asp:Label ID="lblAccionRestoreDesc" runat="server" Text="Revierte la base de datos a un respaldo anterior conocido como válido." /></div>
                         </a>
 
                         <div class="accion-tile accion-tile-peligro">
                             <div class="accion-icono">🔁</div>
-                            <div class="accion-titulo">Recalcular dígitos verificadores</div>
-                            <div class="accion-desc">Asume el estado actual de la base como válido y recalcula todos los DVH/DVV/CR desde cero. Usar solo después de confirmar que los cambios detectados son legítimos.</div>
+                            <div class="accion-titulo"><asp:Label ID="lblAccionRecalcularTitulo" runat="server" Text="Recalcular dígitos verificadores" /></div>
+                            <div class="accion-desc"><asp:Label ID="lblAccionRecalcularDesc" runat="server" Text="Asume el estado actual de la base como válido y recalcula todos los DVH/DVV/CR desde cero. Usar solo después de confirmar que los cambios detectados son legítimos." /></div>
                             <asp:Button ID="btnRecalcular" runat="server"
                                 Text="Recalcular y aceptar estado actual"
                                 CssClass="btn-secondary btn-peligro"

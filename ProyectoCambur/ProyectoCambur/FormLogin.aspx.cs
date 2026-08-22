@@ -5,9 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Web.UI;
 
-public partial class FormLogin : System.Web.UI.Page
+public partial class FormLogin : GUI.PaginaBase
 {
-   
     protected void Page_Load(object sender, EventArgs e)
     {
         Page.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
@@ -15,17 +14,16 @@ public partial class FormLogin : System.Web.UI.Page
         {
             if (Request.QueryString["logout"] == "ok")
             {
-                MostrarExito("Sesión cerrada correctamente. ¡Hasta la próxima!");
+                MostrarExito(Traducir("login_sesion_cerrada"));
             }
 
             if (Request.QueryString["registro"] == "ok")
             {
-                MostrarExito("Cuenta creada correctamente. Podés iniciar sesión.");
+                MostrarExito(Traducir("login_cuenta_creada"));
             }
         }
     }
 
-    
     protected void btnLogin_Click(object sender, EventArgs e)
     {
         lblMensaje.Visible = false;
@@ -48,61 +46,54 @@ public partial class FormLogin : System.Web.UI.Page
                 return;
 
             case ResultadoLogin.CuentaBloqueada:
-                MostrarPanelBloqueado(
-                    "Tu cuenta fue bloqueada por exceso de intentos fallidos. " +
-                    "Contactá al administrador para desbloquearla.");
+                MostrarPanelBloqueado(Traducir("login_cuenta_bloqueada"));
                 return;
 
             case ResultadoLogin.CuentaDeshabilitada:
-                MostrarError("Tu cuenta fue deshabilitada por un administrador. Contactalo para más información.");
+                MostrarError(Traducir("login_cuenta_deshabilitada"));
                 return;
 
             case ResultadoLogin.CuentaInactiva:
-                MostrarError("Tu cuenta se encuentra inactiva. Contactá al administrador.");
+                MostrarError(Traducir("login_cuenta_inactiva"));
                 return;
 
             case ResultadoLogin.CredencialesInvalidas:
             default:
-                MostrarError("El correo o la contraseña ingresados son incorrectos.");
+                MostrarError(Traducir("login_credenciales_invalidas"));
                 return;
         }
     }
 
-    
+  
     private void ProcesarLoginExitoso(Psicologo psicologoLogueado)
     {
         DigitoVerificador digitoVerificador = new DigitoVerificador();
-        List<string> inconsistencias = digitoVerificador.VerificarIntegridadTodasLasTablas();
+        List<InconsistenciaDetectada> inconsistencias = digitoVerificador.VerificarIntegridadTodasLasTablas();
 
         if (inconsistencias.Count > 0)
         {
             switch (psicologoLogueado.RolPermiso)
             {
                 case "Web Master":
-                    
                     GestorSesion.Login(psicologoLogueado);
                     Response.Redirect("FormDigitoVerificador.aspx");
                     return;
 
                 case "Administrador":
-                    
                     Response.Redirect("FormError.aspx?codigo=inconsistencia_bd");
                     return;
 
                 default:
-                    
                     Response.Redirect("FormError.aspx?codigo=no_disponible");
                     return;
             }
         }
 
-       
         GestorSesion.Login(psicologoLogueado);
-        
+       
         Response.Redirect(DestinoSegunRol(psicologoLogueado.RolPermiso));
     }
 
-    
     private void MostrarError(string msg)
     {
         lblMensaje.Text = msg;
@@ -121,10 +112,8 @@ public partial class FormLogin : System.Web.UI.Page
     {
         pnlBloqueado.Visible = true;
         lblMensajeBloqueado.Text = msg;
-        
     }
 
-    
     private string DestinoSegunRol(string rolPermiso)
     {
         switch (rolPermiso)
@@ -134,7 +123,6 @@ public partial class FormLogin : System.Web.UI.Page
             case "Web Master":
                 return "FormMenuWebMaster.aspx";
             default:
-                
                 return "FormMenuProfesional.aspx";
         }
     }

@@ -1,175 +1,177 @@
-﻿using System;
+﻿using BE;
+using BLL;
+using SERVICIOS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Data;
 
-
-public partial class FormCambiarIdioma : System.Web.UI.Page
+public partial class FormCambiarIdioma : GUI.PaginaBase
 {
-    // =========================================================
-    // MODELO INTERNO
-    // =========================================================
-    private class IdiomaDemo
+ 
+    private static readonly Dictionary<string, string> Banderas = new Dictionary<string, string>
     {
-        public string Codigo { get; set; }
-        public string Nombre { get; set; }
+        { "es", "🇦🇷" },
+        { "en", "🇺🇸" },
+        { "pt", "🇧🇷" },
+        { "fr", "🇫🇷" },
+        { "de", "🇩🇪" },
+        { "it", "🇮🇹" },
+    };
+
+    private class FilaIdioma
+    {
+        public string NombreIdioma { get; set; }
+        public string CodigoIso { get; set; }
         public string Flag { get; set; }
-        public bool Activo { get; set; }  // si el admin lo habilitó
-        public bool EsActual { get; set; }  // si es el del profesional logueado
+        public bool Disponible { get; set; }
+        public bool EsActual { get; set; }
+        public string TextoNoDisponible { get; set; }
     }
 
-    // =========================================================
-    // PAGE LOAD
-    // =========================================================
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!GestorSesion.EstaAutenticado)
+        {
+            Response.Redirect("FormLogin.aspx");
+            return;
+        }
+
+        Psicologo psicologoActual = GestorSesion.PsicologoActual;
+
+        AplicarTraducciones(psicologoActual);
+
         if (!IsPostBack)
         {
-            CargarProfesionalDemo();
-            CargarIdiomaActivoDemo();
-            CargarGrillaIdiomas();
+            lblNombreProfesional.Text = psicologoActual.Nombre + " " + psicologoActual.Apellido;
+            lblIniciales.Text = ObtenerIniciales(psicologoActual.Nombre, psicologoActual.Apellido);
+            lnkVolverMenu.NavigateUrl = DestinoSegunRol(psicologoActual.RolPermiso);
+            lnkCancelar.NavigateUrl = DestinoSegunRol(psicologoActual.RolPermiso);
+
+            CargarIdiomaActivo(psicologoActual);
+            CargarGrillaIdiomas(psicologoActual);
+
+            if (Request.QueryString["idioma"] == "ok")
+            {
+                MostrarExito(Traducir("msg_idioma_actualizado"));
+            }
         }
     }
 
-    // =========================================================
-    // PROFESIONAL (demo)
-    // TODO: reemplazar por Session["Profesional"]
-    // =========================================================
-    private void CargarProfesionalDemo()
+    private void AplicarTraducciones(Psicologo psicologoActual)
     {
-        lblNombreProfesional.Text = "Lucía Martínez";
-        lblIniciales.Text = "LM";
+        lblTaglineSidebar.Text = Traducir("tagline_configuracion");
+        lblMenuCerrarSesion.Text = Traducir("menu_cerrar_sesion");
+        lblHeaderSeccion.Text = Traducir("header_configuracion");
+        lblHeaderPagina.Text = Traducir("header_cambiar_idioma");
+        lblRolActual.Text = psicologoActual.RolPermiso;
+
+        lblTituloCard.Text = Traducir("titulo_idioma_interfaz");
+        lblSubtituloCard.Text = Traducir("subtitulo_idioma_interfaz");
+        lblSeccionActual.Text = Traducir("seccion_idioma_actual");
+        lblBadgeActivo.Text = Traducir("badge_activo");
+        lblSeccionDisponibles.Text = Traducir("seccion_idiomas_disponibles");
+        lnkCancelar.Text = Traducir("btn_cancelar");
+        btnGuardar.Text = Traducir("btn_confirmar_cambio_idioma");
+        lblTituloSeleccion.Text = Traducir("titulo_idioma_seleccionado");
+        lblSinSeleccion.Text = Traducir("msg_ningun_idioma_seleccionado");
+        lblAvisoInmediatoTitulo.Text = Traducir("aviso_inmediato_titulo");
+        lblAvisoInmediatoTexto.Text = Traducir("aviso_inmediato_texto");
+        lblAvisoClinicoTitulo.Text = Traducir("aviso_clinico_titulo");
+        lblAvisoClinicoTexto.Text = Traducir("aviso_clinico_texto");
     }
 
-    // =========================================================
-    // IDIOMA ACTIVO DEL PROFESIONAL (demo)
-    // TODO: reemplazar por:
-    //   int idProfesional = (int)Session["IdProfesional"];
-    //   BE.Profesional prof = BLL.ProfesionalBLL.ObtenerPorId(idProfesional);
-    //   string codigoActual = prof.CodigoIdioma;
-    // =========================================================
-    private void CargarIdiomaActivoDemo()
+    private void CargarIdiomaActivo(Psicologo psicologoActual)
     {
-        lblIdiomaActivoFlag.Text = "🇦🇷";
-        lblIdiomaActivoNombre.Text = "Español";
-        lblIdiomaActivoCodigo.Text = "ES";
+        string codigoIso = ObtenerCodigoIso(psicologoActual.Idioma);
+        lblIdiomaActivoFlag.Text = ObtenerBandera(codigoIso);
+        lblIdiomaActivoNombre.Text = psicologoActual.Idioma;
+        lblIdiomaActivoCodigo.Text = codigoIso.ToUpper();
     }
 
-    // =========================================================
-    // GRILLA DE IDIOMAS DISPONIBLES (demo)
-    // TODO: reemplazar por BLL.IdiomaBLL.ObtenerTodos()
-    // =========================================================
-    private void CargarGrillaIdiomas()
+    private void CargarGrillaIdiomas(Psicologo psicologoActual)
     {
-        string idiomaActual = "ES"; // TODO: leer de Session o BD
+        GestorIdioma gestorIdioma = new GestorIdioma();
+        List<Idioma> idiomas = gestorIdioma.ObtenerTodos();
 
-        var idiomas = new List<IdiomaDemo>
+        List<FilaIdioma> filas = idiomas.Select(i => new FilaIdioma
         {
-            new IdiomaDemo { Codigo="ES", Nombre="Español",    Flag="🇦🇷", Activo=true,  EsActual=true  },
-            new IdiomaDemo { Codigo="EN", Nombre="English",    Flag="🇺🇸", Activo=true,  EsActual=false },
-            new IdiomaDemo { Codigo="PT", Nombre="Português",  Flag="🇧🇷", Activo=true,  EsActual=false },
-            new IdiomaDemo { Codigo="FR", Nombre="Français",   Flag="🇫🇷", Activo=false, EsActual=false },
-        };
+            NombreIdioma = i.NombreIdioma,
+            CodigoIso = i.CodigoIso,
+            Flag = ObtenerBandera(i.CodigoIso),
+            Disponible = i.IsDisponible,
+            EsActual = i.NombreIdioma == psicologoActual.Idioma,
+            TextoNoDisponible = Traducir("idioma_no_disponible")
+        }).ToList();
 
-        DataTable dt = new DataTable();
-        dt.Columns.Add("Codigo", typeof(string));
-        dt.Columns.Add("Nombre", typeof(string));
-        dt.Columns.Add("Flag", typeof(string));
-        dt.Columns.Add("Activo", typeof(bool));
-        dt.Columns.Add("EsActual", typeof(bool));
-
-        foreach (var i in idiomas)
-            dt.Rows.Add(i.Codigo, i.Nombre, i.Flag, i.Activo, i.EsActual);
-
-        rptIdiomas.DataSource = dt;
+        rptIdiomas.DataSource = filas;
         rptIdiomas.DataBind();
     }
 
-    // =========================================================
-    // EVENTO: CONFIRMAR CAMBIO DE IDIOMA (CUS03)
-    // =========================================================
     protected void btnGuardar_Click(object sender, EventArgs e)
     {
         lblMensaje.Visible = false;
 
-        string nuevoCodigo = hfIdiomaSeleccionado.Value;
+        string nuevoIdioma = hfIdiomaSeleccionado.Value;
 
-        if (string.IsNullOrEmpty(nuevoCodigo))
+        if (string.IsNullOrEmpty(nuevoIdioma))
         {
-            MostrarError("Seleccioná un idioma antes de confirmar.");
+            MostrarError(Traducir("error_seleccionar_idioma"));
             return;
         }
 
-        string idiomaActual = "ES"; // TODO: leer de BD
+        GestorPsicologo gestorPsicologo = new GestorPsicologo();
 
-        if (nuevoCodigo == idiomaActual)
+        try
         {
-            MostrarError("El idioma seleccionado ya es el que tenés configurado actualmente.");
-            return;
+            Psicologo psicologoActualizado = gestorPsicologo.CambiarIdioma(GestorSesion.PsicologoActual.IdPsicologo, nuevoIdioma);
+
+            
+            GestorSesion.Login(psicologoActualizado);
+
+            Response.Redirect("FormCambiarIdioma.aspx?idioma=ok");
         }
-
-        // ── Validar que el idioma siga activo (flujo 4.1) ─────
-        // TODO: reemplazar por:
-        //   BE.Idioma idioma = BLL.IdiomaBLL.ObtenerPorCodigo(nuevoCodigo);
-        //   if (idioma == null || !idioma.Activo)
-        //   { MostrarError("El idioma seleccionado no se encuentra disponible."); return; }
-        bool idiomaActivo = ValidarIdiomaActivoDemo(nuevoCodigo);
-        if (!idiomaActivo)
+        catch (ExcepcionTraducible ex)
         {
-            MostrarError("El idioma seleccionado no se encuentra disponible. Seleccioná otro idioma.");
-            CargarGrillaIdiomas();
-            return;
-        }
-
-        // ── Persistir preferencia (paso 5) ────────────────────
-        // TODO: reemplazar por:
-        //   int idProfesional = (int)Session["IdProfesional"];
-        //   bool ok = BLL.ProfesionalBLL.ActualizarIdioma(idProfesional, nuevoCodigo);
-        //   if (!ok) { MostrarError("No fue posible guardar el cambio. Intentá nuevamente."); return; }
-        //   BLL.DigitoVerificadorBLL.RecalcularPorProfesional(idProfesional);
-        //   BLL.BitacoraBLL.Registrar(idProfesional, "Configuración", "Cambio de idioma a " + nuevoCodigo, criticidad: 3);
-        //   Session["Idioma"] = nuevoCodigo;
-        //   Response.Redirect(Request.RawUrl + "?idioma=ok"); // recarga con nuevo idioma
-
-        // DEMO: actualizar el label de idioma activo y recargar grilla
-        ActualizarIdiomaActivoDemo(nuevoCodigo);
-        MostrarExito("Idioma actualizado correctamente a " + ObtenerNombreIdiomaDemo(nuevoCodigo) +
-                     ". En producción la interfaz se recargará automáticamente.");
-        CargarGrillaIdiomas();
-    }
-
-    // =========================================================
-    // HELPERS DEMO
-    // =========================================================
-    private bool ValidarIdiomaActivoDemo(string codigo)
-    {
-        return codigo != "FR"; // FR está desactivado en demo
-    }
-
-    private string ObtenerNombreIdiomaDemo(string codigo)
-    {
-        switch (codigo)
-        {
-            case "ES": return "Español";
-            case "EN": return "English";
-            case "PT": return "Português";
-            case "FR": return "Français";
-            default: return codigo;
+            MostrarError(TraducirExcepcion(ex));
+            CargarIdiomaActivo(GestorSesion.PsicologoActual);
+            CargarGrillaIdiomas(GestorSesion.PsicologoActual);
         }
     }
 
-    private void ActualizarIdiomaActivoDemo(string codigo)
+    private string ObtenerCodigoIso(string nombreIdioma)
     {
-        string flag = codigo == "EN" ? "🇺🇸"
-                    : codigo == "PT" ? "🇧🇷"
-                    : codigo == "FR" ? "🇫🇷"
-                    : "🇦🇷";
-        lblIdiomaActivoFlag.Text = flag;
-        lblIdiomaActivoNombre.Text = ObtenerNombreIdiomaDemo(codigo);
-        lblIdiomaActivoCodigo.Text = codigo;
+        GestorIdioma gestorIdioma = new GestorIdioma();
+        Idioma idioma = gestorIdioma.BuscarPorNombre(nombreIdioma);
+        return idioma != null ? idioma.CodigoIso : "";
+    }
+
+    private string ObtenerBandera(string codigoIso)
+    {
+        if (!string.IsNullOrEmpty(codigoIso) && Banderas.ContainsKey(codigoIso.ToLower()))
+        {
+            return Banderas[codigoIso.ToLower()];
+        }
+        return "🌐";
+    }
+
+    private string DestinoSegunRol(string rolPermiso)
+    {
+        switch (rolPermiso)
+        {
+            case "Administrador":
+                return "FormMenuAdministrador.aspx";
+            case "Web Master":
+                return "FormMenuWebMaster.aspx";
+            default:
+                return "FormMenuProfesional.aspx";
+        }
+    }
+
+    private string ObtenerIniciales(string nombre, string apellido)
+    {
+        string inicialNombre = string.IsNullOrEmpty(nombre) ? "" : nombre.Substring(0, 1);
+        string inicialApellido = string.IsNullOrEmpty(apellido) ? "" : apellido.Substring(0, 1);
+        return (inicialNombre + inicialApellido).ToUpper();
     }
 
     private void MostrarError(string msg)

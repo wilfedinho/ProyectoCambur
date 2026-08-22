@@ -45,6 +45,7 @@
     <Compile Include="EstadoInforme.cs" />
     <Compile Include="EstadoSuscripcion.cs" />
     <Compile Include="HistorialClinico.cs" />
+    <Compile Include="Idioma.cs" />
     <Compile Include="InformeDerivacion.cs" />
     <Compile Include="ModeloEvaluacion.cs" />
     <Compile Include="Paciente.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResumenClinico.cs" />
     <Compile Include="Suscripcion.cs" />
+    <Compile Include="Traduccion.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

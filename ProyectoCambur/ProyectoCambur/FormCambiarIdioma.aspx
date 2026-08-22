@@ -11,69 +11,54 @@
 <body>
     <form id="form1" runat="server">
 
-       
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
-                <div class="tagline">Gestión Clínica</div>
+                <div class="tagline"><asp:Label ID="lblTaglineSidebar" runat="server" Text="" /></div>
             </div>
             <nav class="sidebar-nav">
-                <a href="FormDashboard.aspx"         class="nav-item">🏠 Dashboard</a>
-                <a href="FormRegistroPaciente.aspx"  class="nav-item">👤 Pacientes</a>
-                <a href="FormRealizarConsulta.aspx"  class="nav-item">🗒️ Consultas</a>
-                <a href="FormHistorialClinico.aspx"  class="nav-item">📋 Historial Clínico</a>
-                <a href="FormResumenIA.aspx"         class="nav-item">🤖 Resumen IA</a>
-                <a href="FormLineaTemporal.aspx"     class="nav-item">📅 Línea Temporal</a>
-                <a href="FormInformeDerivacion.aspx" class="nav-item">📤 Derivaciones</a>
-                <a href="FormPerfilPaciente.aspx"    class="nav-item">🧠 Perfilación</a>
-                <a href="FormExportarReporte.aspx"   class="nav-item">💾 Exportar</a>
+                <asp:HyperLink ID="lnkVolverMenu" runat="server" CssClass="nav-item" Text="🏠 Menú" NavigateUrl="~/FormLogin.aspx" />
             </nav>
             <div class="sidebar-footer">
-                <a href="FormSuscripcion.aspx"  class="nav-item">💳 Mi Suscripción</a>
-                <a href="FormLogout.aspx"       class="nav-item nav-logout">🚪 Cerrar sesión</a>
+                <a href="FormLogout.aspx" class="nav-item nav-logout">🚪 <asp:Label ID="lblMenuCerrarSesion" runat="server" Text="" /></a>
             </div>
         </aside>
 
-     
         <div class="main-wrap">
 
-         
             <header class="top-header">
                 <div class="header-title">
-                    <span class="header-section">Configuración</span>
+                    <asp:Label ID="lblHeaderSeccion" runat="server" CssClass="header-section" Text="" />
                     <span class="header-sep">/</span>
-                    <span class="header-page">Cambiar idioma</span>
+                    <asp:Label ID="lblHeaderPagina" runat="server" CssClass="header-page" Text="" />
                 </div>
                 <div class="header-user">
                     <div class="user-avatar">
-                        <asp:Label ID="lblIniciales" runat="server" Text="LM" />
+                        <asp:Label ID="lblIniciales" runat="server" Text="" />
                     </div>
                     <div class="user-info">
                         <asp:Label ID="lblNombreProfesional" runat="server" CssClass="user-name" Text="" />
-                        <span class="user-role">Psicólogo/a</span>
+                        <asp:Label ID="lblRolActual" runat="server" CssClass="user-role" Text="" />
                     </div>
                 </div>
             </header>
 
-       
             <div class="page-content">
 
-                <asp:Label ID="lblMensaje" runat="server" Visible="false" CssClass="server-error" />
+                <asp:Label ID="lblMensaje" runat="server" Visible="false" />
 
                 <div class="idioma-layout">
 
-               
                     <div class="idioma-main">
                         <div class="content-card">
 
                             <div class="card-header">
-                                <h2 class="card-title">Idioma de la interfaz</h2>
-                                <p class="card-subtitle">Seleccioná el idioma en el que querés visualizar la plataforma. El cambio se aplica de forma inmediata.</p>
+                                <h2 class="card-title"><asp:Label ID="lblTituloCard" runat="server" Text="" /></h2>
+                                <p class="card-subtitle"><asp:Label ID="lblSubtituloCard" runat="server" Text="" /></p>
                             </div>
 
-                            <div class="section-sep">Idioma actual</div>
+                            <asp:Label ID="lblSeccionActual" runat="server" CssClass="section-sep" Text="" />
 
-                        
                             <div class="idioma-activo-card">
                                 <div class="ia-flag">
                                     <asp:Label ID="lblIdiomaActivoFlag" runat="server" Text="" />
@@ -84,35 +69,34 @@
                                     <asp:Label ID="lblIdiomaActivoCodigo" runat="server"
                                         CssClass="ia-codigo" Text="" />
                                 </div>
-                                <asp:Label runat="server"
-                                    CssClass="badge-activos" Text="Activo" />
+                                <asp:Label ID="lblBadgeActivo" runat="server"
+                                    CssClass="badge-activos" Text="" />
                             </div>
 
-                            <div class="section-sep">Idiomas disponibles</div>
+                            <asp:Label ID="lblSeccionDisponibles" runat="server" CssClass="section-sep" Text="" />
 
                             <asp:HiddenField ID="hfIdiomaSeleccionado" runat="server"
                                 Value="" ClientIDMode="Static" />
 
-                      
                             <div class="idiomas-grid">
                                 <asp:Repeater ID="rptIdiomas" runat="server">
                                     <ItemTemplate>
                                         <div class='<%# "idioma-card" + ((bool)Eval("EsActual") ? " idioma-card-activo" : "") %>'
-                                             id='<%# "idiomaCard_" + Eval("Codigo") %>'
-                                             onclick='<%# "seleccionarIdioma(this, \"" + Eval("Codigo") + "\")" %>'>
+                                             id='<%# "idiomaCard_" + Eval("CodigoIso") %>'
+                                             onclick='<%# "seleccionarIdioma(this, \"" + System.Web.HttpUtility.JavaScriptStringEncode(Eval("NombreIdioma").ToString()) + "\")" %>'>
                                             <div class="idioma-flag"><%# Eval("Flag") %></div>
                                             <div class="idioma-card-info">
-                                                <div class="idioma-card-nombre"><%# Eval("Nombre") %></div>
-                                                <div class="idioma-card-codigo"><%# Eval("Codigo") %></div>
+                                                <div class="idioma-card-nombre"><%# Eval("NombreIdioma") %></div>
+                                                <div class="idioma-card-codigo"><%# Eval("CodigoIso") %></div>
                                             </div>
                                             <div class="idioma-check">
                                                 <%# (bool)Eval("EsActual") ? "●" : "○" %>
                                             </div>
-                                          
+
                                             <asp:Panel runat="server"
-                                                Visible='<%# !(bool)Eval("Activo") %>'
+                                                Visible='<%# !(bool)Eval("Disponible") %>'
                                                 CssClass="idioma-badge-inactivo">
-                                                No disponible
+                                                <%# Eval("TextoNoDisponible") %>
                                             </asp:Panel>
                                         </div>
                                     </ItemTemplate>
@@ -120,9 +104,9 @@
                             </div>
 
                             <div class="form-actions">
-                                <a href="FormDashboard.aspx" class="btn-secondary">Cancelar</a>
+                                <asp:HyperLink ID="lnkCancelar" runat="server" CssClass="btn-secondary" Text="" NavigateUrl="~/FormLogin.aspx" />
                                 <asp:Button ID="btnGuardar" runat="server"
-                                    Text="Confirmar cambio de idioma"
+                                    Text=""
                                     CssClass="btn-primary"
                                     OnClick="btnGuardar_Click"
                                     CausesValidation="false" />
@@ -134,22 +118,22 @@
                     <div class="idioma-aside">
 
                         <div class="content-card sel-card">
-                            <p class="accesos-titulo">Idioma seleccionado</p>
+                            <p class="accesos-titulo"><asp:Label ID="lblTituloSeleccion" runat="server" Text="" /></p>
                             <div id="seleccionadoInfo" class="sel-vacio">
-                                Ningún idioma seleccionado todavía.
+                                <asp:Label ID="lblSinSeleccion" runat="server" Text="" />
                             </div>
                         </div>
 
                         <div class="content-card aviso-card">
                             <div class="aviso-icon">🌐</div>
-                            <p class="aviso-titulo">Aplicación inmediata</p>
-                            <p class="aviso-texto">Al confirmar, la interfaz se recargará automáticamente en el idioma elegido. Las traducciones son gestionadas por el administrador del sistema.</p>
+                            <p class="aviso-titulo"><asp:Label ID="lblAvisoInmediatoTitulo" runat="server" Text="" /></p>
+                            <p class="aviso-texto"><asp:Label ID="lblAvisoInmediatoTexto" runat="server" Text="" /></p>
                         </div>
 
                         <div class="content-card aviso-card">
                             <div class="aviso-icon">📝</div>
-                            <p class="aviso-titulo">Contenido clínico</p>
-                            <p class="aviso-texto">El cambio de idioma afecta únicamente a la interfaz del sistema. El contenido clínico ingresado permanece en el idioma original.</p>
+                            <p class="aviso-titulo"><asp:Label ID="lblAvisoClinicoTitulo" runat="server" Text="" /></p>
+                            <p class="aviso-texto"><asp:Label ID="lblAvisoClinicoTexto" runat="server" Text="" /></p>
                         </div>
 
                     </div>
@@ -160,15 +144,7 @@
     </form>
 
     <script type="text/javascript">
-        var IDIOMAS_INFO = {
-            'ES': { nombre: 'Español', flag: '🇦🇷' },
-            'EN': { nombre: 'English', flag: '🇺🇸' },
-            'PT': { nombre: 'Português', flag: '🇧🇷' },
-            'FR': { nombre: 'Français', flag: '🇫🇷' }
-        };
-
-        function seleccionarIdioma(card, codigo) {
-         
+        function seleccionarIdioma(card, nombreIdioma) {
             if (card.querySelector('.idioma-badge-inactivo')) return;
 
             document.querySelectorAll('.idioma-card').forEach(function (c) {
@@ -183,16 +159,18 @@
             if (chk) chk.textContent = '●';
 
             var hf = document.getElementById('hfIdiomaSeleccionado');
-            if (hf) hf.value = codigo;
+            if (hf) hf.value = nombreIdioma;
 
-           
-            var info   = IDIOMAS_INFO[codigo] || { nombre: codigo, flag: '🌐' };
-            var panel  = document.getElementById('seleccionadoInfo');
+            var nombre = card.querySelector('.idioma-card-nombre').textContent;
+            var flag = card.querySelector('.idioma-flag').textContent;
+            var codigo = card.querySelector('.idioma-card-codigo').textContent;
+
+            var panel = document.getElementById('seleccionadoInfo');
             if (panel) {
                 panel.className = 'sel-activo';
                 panel.innerHTML =
-                    '<span class="sel-flag">' + info.flag + '</span>' +
-                    '<div><div class="sel-nombre">' + info.nombre + '</div>' +
+                    '<span class="sel-flag">' + flag + '</span>' +
+                    '<div><div class="sel-nombre">' + nombre + '</div>' +
                     '<div class="sel-codigo">' + codigo + '</div></div>';
             }
         }
