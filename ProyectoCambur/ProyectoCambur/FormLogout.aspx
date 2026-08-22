@@ -13,27 +13,24 @@
             <div class="logout-card">
                 <div class="logout-logo">CAM<span>BUR</span></div>
 
-           
                 <asp:Panel ID="pnlCerrando" runat="server" CssClass="logout-estado">
                     <div class="logout-spinner"></div>
-                    <p class="logout-titulo">Cerrando sesión...</p>
-                    <p class="logout-subtitulo">Limpiando datos de sesión de forma segura.</p>
+                    <p class="logout-titulo"><asp:Label ID="lblTituloCerrando" runat="server" Text="" /></p>
+                    <p class="logout-subtitulo"><asp:Label ID="lblSubtituloCerrando" runat="server" Text="" /></p>
                 </asp:Panel>
 
-         
                 <asp:Panel ID="pnlError" runat="server" CssClass="logout-estado" Visible="false">
                     <div class="logout-icono-error">⚠️</div>
-                    <p class="logout-titulo">Error al cerrar sesión</p>
+                    <p class="logout-titulo"><asp:Label ID="lblTituloError" runat="server" Text="" /></p>
                     <asp:Label ID="lblErrorLogout" runat="server"
                         CssClass="logout-subtitulo" Text="" />
-                    <a href="FormLogin.aspx" class="btn-ir-login">Ir al inicio de sesión</a>
+                    <asp:HyperLink ID="lnkIrLogin" runat="server" CssClass="btn-ir-login" Text="" NavigateUrl="~/FormLogin.aspx" />
                 </asp:Panel>
 
-             
                 <asp:Panel ID="pnlExito" runat="server" CssClass="logout-estado" Visible="false">
                     <div class="logout-icono-ok">✓</div>
-                    <p class="logout-titulo">Sesión cerrada</p>
-                    <p class="logout-subtitulo">Serás redirigido al inicio de sesión...</p>
+                    <p class="logout-titulo"><asp:Label ID="lblTituloExito" runat="server" Text="" /></p>
+                    <p class="logout-subtitulo"><asp:Label ID="lblSubtituloExito" runat="server" Text="" /></p>
                 </asp:Panel>
 
             </div>

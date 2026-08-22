@@ -13,6 +13,78 @@
     font-family: var(--font-body);
 }
 
+.table-pager {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px 0;
+}
+
+    .table-pager a, .table-pager span {
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 13px;
+        color: var(--text-sub);
+        text-decoration: none;
+    }
+
+    .table-pager span {
+        background: var(--sidebar-dark);
+        color: #fff;
+        font-weight: 600;
+    }
+
+.overlay-carga {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(27, 42, 59, 0.75);
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay-carga-card {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 40px 48px;
+    text-align: center;
+    max-width: 380px;
+}
+
+.overlay-spinner {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 18px;
+    border: 4px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: overlay-girar 0.8s linear infinite;
+}
+
+@keyframes overlay-girar {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.overlay-carga-titulo {
+    font-family: var(--font-title);
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--text-main);
+    margin: 0 0 6px;
+}
+
+.overlay-carga-sub {
+    font-size: 13px;
+    color: var(--text-sub);
+    margin: 0;
+}
+
 .badge-estado.bloqueado {
     background: #FFF4E5;
     color: #8A5A00;

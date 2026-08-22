@@ -2,11 +2,33 @@
 using SERVICIOS;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class FormGestionIdiomas : GUI.PaginaBase
 {
+    
+    private class IdiomaCandidato
+    {
+        public string Nombre;
+        public string CodigoIso;
+        public IdiomaCandidato(string nombre, string codigoIso) { Nombre = nombre; CodigoIso = codigoIso; }
+    }
+
+    private static readonly List<IdiomaCandidato> CatalogoIdiomas = new List<IdiomaCandidato>
+    {
+        new IdiomaCandidato("English", "en"),
+        new IdiomaCandidato("Français", "fr"),
+        new IdiomaCandidato("Português", "pt"),
+        new IdiomaCandidato("Deutsch (Alemán)", "de"),
+        new IdiomaCandidato("Italiano", "it"),
+        new IdiomaCandidato("中文 (Chino)", "zh"),
+        new IdiomaCandidato("日本語 (Japonés)", "ja"),
+        new IdiomaCandidato("Русский (Ruso)", "ru"),
+        new IdiomaCandidato("العربية (Árabe)", "ar"),
+    };
+
     private string IdiomaSeleccionado
     {
         get { return ViewState["IdiomaSeleccionado"] as string; }
@@ -23,7 +45,6 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
 
         Psicologo psicologoActual = GestorSesion.PsicologoActual;
 
-       
         if (psicologoActual.RolPermiso != "Administrador")
         {
             Response.Redirect("FormLogin.aspx");
@@ -34,7 +55,7 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
 
         if (!IsPostBack)
         {
-           
+            CargarComboIdiomasCandidatos();
             CargarIdiomas();
         }
     }
@@ -53,13 +74,12 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
 
         lblTituloNuevoIdioma.Text = Traducir("titulo_nuevo_idioma");
         lblSubtituloNuevoIdioma.Text = Traducir("subtitulo_nuevo_idioma");
-        lblEtiquetaNombreIdioma.Text = Traducir("lbl_nombre_idioma");
-        lblEtiquetaCodigoIso.Text = Traducir("lbl_codigo_iso");
-        lblHintCodigoIso.Text = Traducir("hint_codigo_iso");
-        rfvNombreIdioma.ErrorMessage = Traducir("error_nombre_idioma_obligatorio");
-        rfvCodigoIso.ErrorMessage = Traducir("error_codigo_iso_obligatorio");
+        lblEtiquetaNuevoIdioma.Text = Traducir("lbl_nuevo_idioma");
+        rfvNuevoIdioma.ErrorMessage = Traducir("error_idioma_obligatorio_alta");
+        lblHintNuevoIdioma.Text = Traducir("hint_nuevo_idioma");
         btnAltaIdioma.Text = Traducir("btn_generar_idioma");
-        btnAltaIdioma.OnClientClick = "return confirm('" + Traducir("confirm_alta_idioma").Replace("'", "\\'") + "');";
+        lblOverlayTitulo.Text = Traducir("overlay_generando_titulo");
+        lblOverlaySub.Text = Traducir("overlay_generando_sub");
 
         lblTituloIdiomasSistema.Text = Traducir("titulo_idiomas_sistema");
         gvIdiomas.EmptyDataText = Traducir("empty_idiomas");
@@ -76,18 +96,34 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
         gvTraducciones.Columns[2].HeaderText = Traducir("col_estado");
     }
 
+    private void CargarComboIdiomasCandidatos()
+    {
+        GestorIdioma gestorIdioma = new GestorIdioma();
+        List<string> nombresYaRegistrados = gestorIdioma.ObtenerTodos().Select(i => i.NombreIdioma).ToList();
+
+        ddlNuevoIdioma.Items.Clear();
+        ddlNuevoIdioma.Items.Add(new ListItem(Traducir("opt_seleccionar"), ""));
+
+        foreach (IdiomaCandidato candidato in CatalogoIdiomas)
+        {
+            if (!nombresYaRegistrados.Contains(candidato.Nombre))
+            {
+                ddlNuevoIdioma.Items.Add(new ListItem(
+                    candidato.Nombre + " — " + candidato.CodigoIso.ToUpper(),
+                    candidato.Nombre + "|" + candidato.CodigoIso
+                ));
+            }
+        }
+    }
+
     protected void btnAltaIdioma_Click(object sender, EventArgs e)
     {
         lblMensaje.Visible = false;
 
         if (!Page.IsValid) return;
 
-        Idioma nuevoIdioma = new Idioma(
-            txtNombreIdioma.Text.Trim(),
-            txtCodigoIso.Text.Trim().ToLower(),
-            true,
-            false
-        );
+        string[] partes = ddlNuevoIdioma.SelectedValue.Split('|');
+        Idioma nuevoIdioma = new Idioma(partes[0], partes[1], true, false);
 
         GestorIdioma gestorIdioma = new GestorIdioma();
 
@@ -96,8 +132,7 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
             gestorIdioma.Alta(nuevoIdioma);
             MostrarExito(string.Format(Traducir("msg_idioma_generado"), nuevoIdioma.NombreIdioma));
 
-            txtNombreIdioma.Text = string.Empty;
-            txtCodigoIso.Text = string.Empty;
+            CargarComboIdiomasCandidatos();
         }
         catch (ExcepcionTraducible ex)
         {
@@ -137,6 +172,7 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
                 IdiomaSeleccionado = nombreIdioma;
                 lblIdiomaSeleccionado.Text = nombreIdioma;
                 pnlTraducciones.Visible = true;
+                gvTraducciones.PageIndex = 0;
                 CargarTraducciones(nombreIdioma);
                 return;
         }
@@ -187,6 +223,11 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
         try
         {
             gestorIdioma.ModificarTraduccion(idTraduccion, txtTexto.Text);
+
+           
+            RefrescarTraducciones();
+            AplicarTraducciones();
+
             MostrarExito(Traducir("msg_traduccion_actualizada"));
         }
         catch (ExcepcionTraducible ex)
@@ -194,6 +235,14 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
             MostrarError(TraducirExcepcion(ex));
         }
 
+        pnlTraducciones.Visible = true;
+        lblIdiomaSeleccionado.Text = IdiomaSeleccionado;
+        CargarTraducciones(IdiomaSeleccionado);
+    }
+
+    protected void gvTraducciones_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        gvTraducciones.PageIndex = e.NewPageIndex;
         pnlTraducciones.Visible = true;
         lblIdiomaSeleccionado.Text = IdiomaSeleccionado;
         CargarTraducciones(IdiomaSeleccionado);

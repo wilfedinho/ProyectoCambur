@@ -3,18 +3,16 @@ using System;
 using System.Web;
 using System.Web.UI;
 
-public partial class FormLogout : System.Web.UI.Page
+public partial class FormLogout : GUI.PaginaBase
 {
-    // =========================================================
-    // PAGE LOAD — ejecuta el logout al cargar la página
-    // =========================================================
+   
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+      
+        AplicarTraducciones();
 
         if (!GestorSesion.EstaAutenticado)
         {
-            // No hay sesion activa: no tiene sentido mostrar la pantalla de logout
             Response.Redirect("FormLogin.aspx");
             return;
         }
@@ -22,25 +20,27 @@ public partial class FormLogout : System.Web.UI.Page
         EjecutarLogout();
     }
 
-    // =========================================================
-    // LÓGICA DE CIERRE DE SESIÓN (CUS02)
-    // =========================================================
+    private void AplicarTraducciones()
+    {
+        lblTituloCerrando.Text = Traducir("logout_cerrando_titulo");
+        lblSubtituloCerrando.Text = Traducir("logout_cerrando_sub");
+        lblTituloError.Text = Traducir("logout_error_titulo");
+        lnkIrLogin.Text = Traducir("logout_ir_login");
+        lblTituloExito.Text = Traducir("logout_exito_titulo");
+        lblSubtituloExito.Text = Traducir("logout_exito_sub");
+    }
+
+
     private void EjecutarLogout()
     {
         try
         {
-            // ── PASO 1: Recuperar datos antes de limpiar, para bitacora ──
             int idPsicologo = GestorSesion.PsicologoActual.IdPsicologo;
 
-            // TODO: cuando se arme Bitacora en SERVICIOS, registrar aca el evento de logout:
-            //   Bitacora.Registrar(idPsicologo, "Logout", "Cierre de sesion");
+     
 
-            // TODO: cuando se arme DigitoVerificador en SERVICIOS, recalcular aca si corresponde.
-
-            // ── PASO 2: Limpiar la sesion ─────────────────────────────────
             GestorSesion.Logout();
 
-            // ── PASO 3: Mostrar estado de exito y redirigir ──────────────
             pnlCerrando.Visible = false;
             pnlExito.Visible = true;
 
@@ -52,15 +52,11 @@ public partial class FormLogout : System.Web.UI.Page
             {
                 HttpContext.Current.Session.Abandon();
             }
-            catch { /* Ignorar errores secundarios */ }
+            catch {  }
 
             pnlCerrando.Visible = false;
             pnlError.Visible = true;
-            lblErrorLogout.Text = "Ocurrió un error al cerrar la sesión. " +
-                                      "Por seguridad, cerrá el navegador para asegurarte " +
-                                      "de que la sesión quedó terminada.";
-
-            // TODO: registrar el error en log del sistema
+            lblErrorLogout.Text = Traducir("logout_error_texto");
         }
     }
 }

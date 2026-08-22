@@ -44,7 +44,6 @@
 
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" />
 
-                
                 <div class="content-card">
                     <div class="card-header">
                         <h2 class="card-title"><asp:Label ID="lblTituloNuevoIdioma" runat="server" Text="" /></h2>
@@ -53,20 +52,13 @@
 
                     <div class="grid-3">
                         <div class="field">
-                            <asp:Label ID="lblEtiquetaNombreIdioma" runat="server" AssociatedControlID="txtNombreIdioma" Text="" />
-                            <asp:TextBox ID="txtNombreIdioma" runat="server" MaxLength="50" placeholder="Ej: English" ClientIDMode="Static" />
-                            <asp:RequiredFieldValidator ID="rfvNombreIdioma" runat="server"
-                                ControlToValidate="txtNombreIdioma" ErrorMessage="."
+                            <asp:Label ID="lblEtiquetaNuevoIdioma" runat="server" AssociatedControlID="ddlNuevoIdioma" Text="" />
+                            <asp:DropDownList ID="ddlNuevoIdioma" runat="server" ClientIDMode="Static" />
+                            <asp:RequiredFieldValidator ID="rfvNuevoIdioma" runat="server"
+                                ControlToValidate="ddlNuevoIdioma" InitialValue=""
+                                ErrorMessage="."
                                 CssClass="field-error" Display="Dynamic" ValidationGroup="vgIdioma" />
-                        </div>
-
-                        <div class="field">
-                            <asp:Label ID="lblEtiquetaCodigoIso" runat="server" AssociatedControlID="txtCodigoIso" Text="" />
-                            <asp:TextBox ID="txtCodigoIso" runat="server" MaxLength="5" placeholder="Ej: en" ClientIDMode="Static" />
-                            <asp:RequiredFieldValidator ID="rfvCodigoIso" runat="server"
-                                ControlToValidate="txtCodigoIso" ErrorMessage="."
-                                CssClass="field-error" Display="Dynamic" ValidationGroup="vgIdioma" />
-                            <asp:Label ID="lblHintCodigoIso" runat="server" CssClass="hint-text" Text="" />
+                            <asp:Label ID="lblHintNuevoIdioma" runat="server" CssClass="hint-text" Text="" />
                         </div>
                     </div>
 
@@ -75,11 +67,21 @@
                             Text=""
                             CssClass="btn-primary"
                             ValidationGroup="vgIdioma"
-                            OnClick="btnAltaIdioma_Click" />
+                            OnClick="btnAltaIdioma_Click"
+                            OnClientClick="return confirmarYMostrarOverlay();" />
                     </div>
                 </div>
 
-           
+          
+                <div id="overlayGenerandoIdioma" class="overlay-carga" style="display:none;">
+                    <div class="overlay-carga-card">
+                        <div class="overlay-spinner"></div>
+                        <p class="overlay-carga-titulo"><asp:Label ID="lblOverlayTitulo" runat="server" Text="" /></p>
+                        <p class="overlay-carga-sub"><asp:Label ID="lblOverlaySub" runat="server" Text="" /></p>
+                    </div>
+                </div>
+
+         
                 <div class="content-card mt-24">
                     <div class="card-header">
                         <h2 class="card-title"><asp:Label ID="lblTituloIdiomasSistema" runat="server" Text="" /></h2>
@@ -133,7 +135,7 @@
                     </div>
                 </div>
 
-           
+         
                 <asp:Panel ID="pnlTraducciones" runat="server" CssClass="content-card mt-24" Visible="false">
                     <div class="card-header">
                         <h2 class="card-title"><asp:Label ID="lblTituloTraducciones" runat="server" Text="" /> — <asp:Label ID="lblIdiomaSeleccionado" runat="server" Text="" /></h2>
@@ -145,8 +147,15 @@
                             CssClass="data-table"
                             AutoGenerateColumns="false"
                             GridLines="None"
+                            AllowPaging="True"
+                            PageSize="50"
                             OnRowCommand="gvTraducciones_RowCommand"
-                            OnRowDataBound="gvTraducciones_RowDataBound">
+                            OnRowDataBound="gvTraducciones_RowDataBound"
+                            OnPageIndexChanging="gvTraducciones_PageIndexChanging">
+
+                            <PagerStyle CssClass="table-pager" />
+                            <PagerSettings Mode="NumericFirstLast" PageButtonCount="10" />
+
 
                             <EmptyDataRowStyle CssClass="empty-row" />
                             <HeaderStyle      CssClass="table-header" />
@@ -185,5 +194,25 @@
         </div>
 
     </form>
+
+    <script type="text/javascript">
+        var CONFIRM_ALTA_IDIOMA_TEXTO = "<%= Traducir("confirm_alta_idioma").Replace("\"", "\\\"") %>";
+
+        function confirmarYMostrarOverlay() {
+          
+            if (typeof (Page_ClientValidate) === 'function') {
+                if (!Page_ClientValidate('vgIdioma')) {
+                    return false;
+                }
+            }
+
+            if (!confirm(CONFIRM_ALTA_IDIOMA_TEXTO)) {
+                return false;
+            }
+
+            document.getElementById('overlayGenerandoIdioma').style.display = 'flex';
+            return true;
+        }
+    </script>
 </body>
 </html>

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace GUI
 {
+   
     public class PaginaBase : System.Web.UI.Page, IObservadorIdioma
     {
         protected Dictionary<string, string> Traducciones { get; private set; }
@@ -23,19 +24,20 @@ namespace GUI
         {
             Traducciones = traducciones;
         }
-
-  
+        public void RefrescarTraducciones()
+        {
+            SujetoIdioma sujetoIdioma = new SujetoIdioma();
+            sujetoIdioma.Suscribir(this);
+            sujetoIdioma.NotificarCambioIdioma(ObtenerIdiomaActual());
+        }
         public string Traducir(string clave)
         {
             if (Traducciones != null && Traducciones.ContainsKey(clave))
             {
                 return Traducciones[clave];
             }
-
-       
             return clave;
         }
-
 
         protected string TraducirExcepcion(ExcepcionTraducible ex)
         {
@@ -55,7 +57,6 @@ namespace GUI
                     return psicologoActual.Idioma;
                 }
             }
-
             return "Español";
         }
     }
