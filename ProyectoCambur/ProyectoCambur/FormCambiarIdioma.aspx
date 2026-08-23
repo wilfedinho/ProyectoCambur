@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FormCambiarIdioma.aspx.cs" Inherits="FormCambiarIdioma" %>
 <%@ Register Src="~/UserControls/HeaderUsuario.ascx" TagPrefix="uc" TagName="HeaderUsuario" %>
+<%@ Register Src="~/UserControls/SidebarNavegacion.ascx" TagPrefix="uc" TagName="SidebarNavegacion" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -8,6 +9,7 @@
     <title>Cambur — Cambiar Idioma</title>
     <link href="EstilosPaginas/Shared.css"              rel="stylesheet" type="text/css"/>
     <link href="EstilosPaginas/HeaderUsuario.css"       rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/SidebarNavegacion.css"   rel="stylesheet" type="text/css"/>
     <link href="EstilosPaginas/FormCambiarIdioma.css"   rel="stylesheet" type="text/css"/>
 </head>
 <body>
@@ -18,9 +20,7 @@
                 <div class="logotype">CAM<span>BUR</span></div>
                 <div class="tagline"><asp:Label ID="lblTaglineSidebar" runat="server" Text="" /></div>
             </div>
-            <nav class="sidebar-nav">
-                <asp:HyperLink ID="lnkVolverMenu" runat="server" CssClass="nav-item" Text="🏠 Menú" NavigateUrl="~/FormLogin.aspx" />
-            </nav>
+            <uc:SidebarNavegacion ID="ucSidebarNavegacion" runat="server" />
             <div class="sidebar-footer">
                 <a href="FormLogout.aspx" class="nav-item nav-logout">🚪 <asp:Label ID="lblMenuCerrarSesion" runat="server" Text="" /></a>
             </div>

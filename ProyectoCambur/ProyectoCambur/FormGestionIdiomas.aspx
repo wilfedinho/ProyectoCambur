@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FormGestionIdiomas.aspx.cs" Inherits="FormGestionIdiomas" %>
 <%@ Register Src="~/UserControls/HeaderUsuario.ascx" TagPrefix="uc" TagName="HeaderUsuario" %>
+<%@ Register Src="~/UserControls/SidebarNavegacion.ascx" TagPrefix="uc" TagName="SidebarNavegacion" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -8,6 +9,7 @@
     <title>Cambur — Gestión de idiomas</title>
     <link href="EstilosPaginas/Shared.css"             rel="stylesheet" type="text/css"/>
     <link href="EstilosPaginas/HeaderUsuario.css"      rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/SidebarNavegacion.css"  rel="stylesheet" type="text/css"/>
     <link href="EstilosPaginas/FormGestionIdiomas.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
@@ -18,12 +20,7 @@
                 <div class="logotype">CAM<span>BUR</span></div>
                 <asp:Label ID="lblTaglineSidebar" runat="server" CssClass="tagline" Text="" />
             </div>
-            <nav class="sidebar-nav">
-                <a href="FormMenuAdministrador.aspx"  class="nav-item"><span>🏠</span> <asp:Label ID="lblMenuInicio" runat="server" Text="" /></a>
-                <a href="FormMaestroProfesional.aspx" class="nav-item"><span>👥</span> <asp:Label ID="lblMenuProfesionales" runat="server" Text="" /></a>
-                <a href="FormGestionIdiomas.aspx"      class="nav-item active"><span>🌐</span> <asp:Label ID="lblMenuIdiomas" runat="server" Text="" /></a>
-                <a href="FormAuditoriaBitacora.aspx"   class="nav-item"><span>📜</span> <asp:Label ID="lblMenuBitacora" runat="server" Text="" /></a>
-            </nav>
+            <uc:SidebarNavegacion ID="ucSidebarNavegacion" runat="server" PaginaActual="idiomas" />
             <div class="sidebar-footer">
                 <a href="FormLogout.aspx" class="nav-item nav-logout"><span>🚪</span> <asp:Label ID="lblMenuCerrarSesionSidebar" runat="server" Text="" /></a>
             </div>
@@ -44,7 +41,7 @@
 
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" />
 
-       
+    
                 <div class="content-card">
                     <div class="card-header">
                         <h2 class="card-title"><asp:Label ID="lblTituloNuevoIdioma" runat="server" Text="" /></h2>
@@ -73,7 +70,6 @@
                     </div>
                 </div>
 
-            
                 <div id="overlayGenerandoIdioma" class="overlay-carga" style="display:none;">
                     <div class="overlay-carga-card">
                         <div class="overlay-spinner"></div>
@@ -82,6 +78,7 @@
                     </div>
                 </div>
 
+             
                 <div class="content-card mt-24">
                     <div class="card-header">
                         <h2 class="card-title"><asp:Label ID="lblTituloIdiomasSistema" runat="server" Text="" /></h2>
@@ -135,6 +132,7 @@
                     </div>
                 </div>
 
+                <!-- ============ TRADUCCIONES DE UN IDIOMA ============ -->
                 <asp:Panel ID="pnlTraducciones" runat="server" CssClass="content-card mt-24" Visible="false">
                     <div class="card-header">
                         <h2 class="card-title"><asp:Label ID="lblTituloTraducciones" runat="server" Text="" /> — <asp:Label ID="lblIdiomaSeleccionado" runat="server" Text="" /></h2>

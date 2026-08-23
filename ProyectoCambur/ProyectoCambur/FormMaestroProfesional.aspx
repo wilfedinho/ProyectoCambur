@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FormMaestroProfesional.aspx.cs" Inherits="FormMaestroProfesional" %>
 <%@ Register Src="~/UserControls/HeaderUsuario.ascx" TagPrefix="uc" TagName="HeaderUsuario" %>
+<%@ Register Src="~/UserControls/SidebarNavegacion.ascx" TagPrefix="uc" TagName="SidebarNavegacion" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -8,6 +9,7 @@
     <title>Cambur — Profesionales</title>
     <link href="EstilosPaginas/Shared.css"                rel="stylesheet" type="text/css"/>
     <link href="EstilosPaginas/HeaderUsuario.css"          rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/SidebarNavegacion.css"      rel="stylesheet" type="text/css"/>
     <link href="EstilosPaginas/FormMaestroProfesional.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
@@ -18,10 +20,7 @@
                 <div class="logotype">CAM<span>BUR</span></div>
                 <div class="tagline"><asp:Label ID="lblTaglineSidebar" runat="server" Text="Panel" /></div>
             </div>
-            <nav class="sidebar-nav">
-                <asp:HyperLink ID="lnkVolverMenu" runat="server" CssClass="nav-item" Text="🏠 Menú" NavigateUrl="~/FormLogin.aspx" />
-                <a href="FormMaestroProfesional.aspx" class="nav-item active">👥 Profesionales</a>
-            </nav>
+            <uc:SidebarNavegacion ID="ucSidebarNavegacion" runat="server" PaginaActual="profesionales" />
             <div class="sidebar-footer">
                 <a href="FormLogout.aspx" class="nav-item nav-logout">🚪 Cerrar sesión</a>
             </div>

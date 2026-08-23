@@ -1,110 +1,87 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FormCambiarClave.aspx.cs" Inherits="FormCambiarClave" %>
+<%@ Register Src="~/UserControls/HeaderUsuario.ascx" TagPrefix="uc" TagName="HeaderUsuario" %>
+<%@ Register Src="~/UserControls/SidebarNavegacion.ascx" TagPrefix="uc" TagName="SidebarNavegacion" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Cambur — Cambiar Clave</title>
-    <link href="EstilosPaginas/Shared.css"             rel="stylesheet" type="text/css"/>
-    <link href="EstilosPaginas/FormCambiarClave.css"   rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/Shared.css"            rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/HeaderUsuario.css"     rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/SidebarNavegacion.css" rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/FormCambiarClave.css"  rel="stylesheet" type="text/css"/>
 </head>
 <body>
     <form id="form1" runat="server">
 
-       
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
-                <div class="tagline">Gestión Clínica</div>
+                <asp:Label ID="lblTaglineSidebar" runat="server" CssClass="tagline" Text="" />
             </div>
-            <nav class="sidebar-nav">
-                <a href="FormDashboard.aspx"         class="nav-item">🏠 Dashboard</a>
-                <a href="FormRegistroPaciente.aspx"  class="nav-item">👤 Pacientes</a>
-                <a href="FormRealizarConsulta.aspx"  class="nav-item">🗒️ Consultas</a>
-                <a href="FormHistorialClinico.aspx"  class="nav-item">📋 Historial Clínico</a>
-                <a href="FormResumenIA.aspx"         class="nav-item">🤖 Resumen IA</a>
-                <a href="FormLineaTemporal.aspx"     class="nav-item">📅 Línea Temporal</a>
-                <a href="FormInformeDerivacion.aspx" class="nav-item">📤 Derivaciones</a>
-                <a href="FormPerfilPaciente.aspx"    class="nav-item">🧠 Perfilación</a>
-                <a href="FormExportarReporte.aspx"   class="nav-item">💾 Exportar</a>
-            </nav>
+            <uc:SidebarNavegacion ID="ucSidebarNavegacion" runat="server" />
             <div class="sidebar-footer">
-                <a href="FormSuscripcion.aspx"  class="nav-item">💳 Mi Suscripción</a>
-                <a href="FormLogout.aspx"       class="nav-item nav-logout">🚪 Cerrar sesión</a>
+                <a href="FormLogout.aspx" class="nav-item nav-logout">🚪 <asp:Label ID="lblMenuCerrarSesion" runat="server" Text="" /></a>
             </div>
         </aside>
 
-       
         <div class="main-wrap">
 
-       
             <header class="top-header">
                 <div class="header-title">
-                    <span class="header-section">Configuración</span>
+                    <asp:Label ID="lblHeaderSeccion" runat="server" CssClass="header-section" Text="" />
                     <span class="header-sep">/</span>
-                    <span class="header-page">Cambiar clave</span>
+                    <asp:Label ID="lblHeaderPagina" runat="server" CssClass="header-page" Text="" />
                 </div>
-                <div class="header-user">
-                    <div class="user-avatar">
-                        <asp:Label ID="lblIniciales" runat="server" Text="LM" />
-                    </div>
-                    <div class="user-info">
-                        <asp:Label ID="lblNombreProfesional" runat="server" CssClass="user-name" Text="" />
-                        <span class="user-role">Psicólogo/a</span>
-                    </div>
-                </div>
+                <uc:HeaderUsuario ID="ucHeaderUsuario" runat="server" />
             </header>
 
-     
             <div class="page-content">
 
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" CssClass="server-error" />
 
                 <div class="clave-layout">
 
-               
                     <div class="clave-main">
                         <div class="content-card">
 
                             <div class="card-header">
-                                <h2 class="card-title">Cambiar contraseña</h2>
-                                <p class="card-subtitle">Actualizá tu contraseña de acceso. La nueva clave se hasheará con SHA-256 antes de almacenarse.</p>
+                                <h2 class="card-title"><asp:Label ID="lblTituloCard" runat="server" Text="" /></h2>
+                                <p class="card-subtitle"><asp:Label ID="lblSubtituloCard" runat="server" Text="" /></p>
                             </div>
 
-                            <div class="section-sep">Verificación de identidad</div>
+                            <asp:Label ID="lblSeccionVerificacion" runat="server" CssClass="section-sep" Text="" />
 
                             <div class="field">
-                                <label for="txtClaveActual">Contraseña actual <sup>*</sup></label>
+                                <asp:Label ID="lblEtiquetaClaveActual" runat="server" AssociatedControlID="txtClaveActual" Text="" />
                                 <div class="pass-wrap">
                                     <asp:TextBox ID="txtClaveActual" runat="server"
                                         TextMode="Password" MaxLength="100"
-                                        placeholder="Tu contraseña actual"
                                         ClientIDMode="Static" />
                                     <button type="button" class="pass-toggle"
                                             onclick="toggleField('txtClaveActual', this)">👁</button>
                                 </div>
                                 <asp:RequiredFieldValidator ID="rfvClaveActual" runat="server"
                                     ControlToValidate="txtClaveActual"
-                                    ErrorMessage="La contraseña actual es obligatoria."
+                                    ErrorMessage="."
                                     CssClass="field-error" Display="Dynamic"
                                     ValidationGroup="vgClave" />
                             </div>
 
-                            <div class="section-sep">Nueva contraseña</div>
+                            <asp:Label ID="lblSeccionNueva" runat="server" CssClass="section-sep" Text="" />
 
-                        
                             <div class="field">
-                                <label for="txtClaveNueva">Nueva contraseña <sup>*</sup></label>
+                                <asp:Label ID="lblEtiquetaClaveNueva" runat="server" AssociatedControlID="txtClaveNueva" Text="" />
                                 <div class="pass-wrap">
                                     <asp:TextBox ID="txtClaveNueva" runat="server"
                                         TextMode="Password" MaxLength="100"
-                                        placeholder="Mín. 7 car., mayúscula y símbolo"
                                         ClientIDMode="Static"
                                         oninput="checkStrength(this.value)" />
                                     <button type="button" class="pass-toggle"
                                             onclick="toggleField('txtClaveNueva', this)">👁</button>
                                 </div>
-                        
+
                                 <div class="strength-bars">
                                     <div class="strength-bar" id="bar1"></div>
                                     <div class="strength-bar" id="bar2"></div>
@@ -113,39 +90,37 @@
                                 <span class="strength-label" id="lblStrength"></span>
                                 <asp:RequiredFieldValidator ID="rfvClaveNueva" runat="server"
                                     ControlToValidate="txtClaveNueva"
-                                    ErrorMessage="La nueva contraseña es obligatoria."
+                                    ErrorMessage="."
                                     CssClass="field-error" Display="Dynamic"
                                     ValidationGroup="vgClave" />
                             </div>
 
-                         
                             <div class="field" style="margin-top:4px;">
-                                <label for="txtClaveConfirmacion">Confirmar nueva contraseña <sup>*</sup></label>
+                                <asp:Label ID="lblEtiquetaConfirmacion" runat="server" AssociatedControlID="txtClaveConfirmacion" Text="" />
                                 <div class="pass-wrap">
                                     <asp:TextBox ID="txtClaveConfirmacion" runat="server"
                                         TextMode="Password" MaxLength="100"
-                                        placeholder="Repetir nueva contraseña"
                                         ClientIDMode="Static" />
                                     <button type="button" class="pass-toggle"
                                             onclick="toggleField('txtClaveConfirmacion', this)">👁</button>
                                 </div>
                                 <asp:RequiredFieldValidator ID="rfvConfirmacion" runat="server"
                                     ControlToValidate="txtClaveConfirmacion"
-                                    ErrorMessage="La confirmación es obligatoria."
+                                    ErrorMessage="."
                                     CssClass="field-error" Display="Dynamic"
                                     ValidationGroup="vgClave" />
                                 <asp:CompareValidator ID="cvClaves" runat="server"
                                     ControlToValidate="txtClaveConfirmacion"
                                     ControlToCompare="txtClaveNueva"
-                                    ErrorMessage="La nueva contraseña y su confirmación no coinciden."
+                                    ErrorMessage="."
                                     CssClass="field-error" Display="Dynamic"
                                     ValidationGroup="vgClave" />
                             </div>
 
                             <div class="form-actions">
-                                <a href="FormDashboard.aspx" class="btn-secondary">Cancelar</a>
+                                <asp:HyperLink ID="lnkCancelar" runat="server" CssClass="btn-secondary" Text="" NavigateUrl="~/FormLogin.aspx" />
                                 <asp:Button ID="btnConfirmar" runat="server"
-                                    Text="Confirmar cambio"
+                                    Text=""
                                     CssClass="btn-primary"
                                     ValidationGroup="vgClave"
                                     OnClick="btnConfirmar_Click" />
@@ -154,44 +129,38 @@
                         </div>
                     </div>
 
-                 
                     <div class="clave-aside">
 
-               
                         <div class="content-card politica-card">
-                            <p class="accesos-titulo">Política de contraseña</p>
+                            <p class="accesos-titulo"><asp:Label ID="lblTituloPolitica" runat="server" Text="" /></p>
                             <div class="politica-item" id="polLong">
                                 <span class="pol-icono pol-pendiente">○</span>
-                                <span class="pol-texto">Mínimo 7 caracteres</span>
+                                <span class="pol-texto"><asp:Label ID="lblPolLongitud" runat="server" Text="" /></span>
                             </div>
                             <div class="politica-item" id="polMay">
                                 <span class="pol-icono pol-pendiente">○</span>
-                                <span class="pol-texto">Al menos una mayúscula</span>
+                                <span class="pol-texto"><asp:Label ID="lblPolMayuscula" runat="server" Text="" /></span>
                             </div>
-                            <div class="politica-item" id="polMin">
+                            <div class="politica-item" id="polNum">
                                 <span class="pol-icono pol-pendiente">○</span>
-                                <span class="pol-texto">Al menos una minúscula</span>
-                            </div>
-                            <div class="politica-item" id="polEsp">
-                                <span class="pol-icono pol-pendiente">○</span>
-                                <span class="pol-texto">Al menos un carácter especial</span>
+                                <span class="pol-texto"><asp:Label ID="lblPolNumero" runat="server" Text="" /></span>
                             </div>
                             <div class="politica-item" id="polDif">
                                 <span class="pol-icono pol-pendiente">○</span>
-                                <span class="pol-texto">Distinta a la contraseña actual</span>
+                                <span class="pol-texto"><asp:Label ID="lblPolDistinta" runat="server" Text="" /></span>
                             </div>
                         </div>
 
                         <div class="content-card aviso-card">
                             <div class="aviso-icon">🔒</div>
-                            <p class="aviso-titulo">Almacenamiento seguro</p>
-                            <p class="aviso-texto">Tu contraseña se almacena como hash SHA-256 irreversible. Nadie, incluido el administrador, puede ver tu clave en texto plano.</p>
+                            <p class="aviso-titulo"><asp:Label ID="lblAvisoSeguroTitulo" runat="server" Text="" /></p>
+                            <p class="aviso-texto"><asp:Label ID="lblAvisoSeguroTexto" runat="server" Text="" /></p>
                         </div>
 
                         <div class="content-card aviso-card">
                             <div class="aviso-icon">⚠️</div>
-                            <p class="aviso-titulo">Al cambiar la clave</p>
-                            <p class="aviso-texto">No se cerrará tu sesión activa. Si sospechás accesos no autorizados, cerrá sesión desde todos tus dispositivos.</p>
+                            <p class="aviso-titulo"><asp:Label ID="lblAvisoSesionTitulo" runat="server" Text="" /></p>
+                            <p class="aviso-texto"><asp:Label ID="lblAvisoSesionTexto" runat="server" Text="" /></p>
                         </div>
 
                     </div>
@@ -203,18 +172,15 @@
     </form>
 
     <script type="text/javascript">
-      
         function toggleField(id, btn) {
             var input = document.getElementById(id);
             if (!input) return;
             input.type = input.type === 'password' ? 'text' : 'password';
         }
-
-      
         function checkStrength(val) {
-            var b1  = document.getElementById('bar1');
-            var b2  = document.getElementById('bar2');
-            var b3  = document.getElementById('bar3');
+            var b1 = document.getElementById('bar1');
+            var b2 = document.getElementById('bar2');
+            var b3 = document.getElementById('bar3');
             var lbl = document.getElementById('lblStrength');
             if (!b1) return;
 
@@ -224,9 +190,9 @@
             if (!val) { actualizarPolitica(val); return; }
 
             var score = 0;
-            if (val.length >= 7)            score++;
-            if (/[A-Z]/.test(val))          score++;
-            if (/[^a-zA-Z0-9]/.test(val))  score++;
+            if (val.length >= 8) score++;
+            if (/[A-Z]/.test(val)) score++;
+            if (/[0-9]/.test(val)) score++;
 
             lbl.style.display = 'block';
             if (score === 1) {
@@ -246,22 +212,19 @@
             actualizarPolitica(val);
         }
 
-       
         function actualizarPolitica(val) {
-            marcarPol('polLong', val && val.length >= 7);
-            marcarPol('polMay',  val && /[A-Z]/.test(val));
-            marcarPol('polMin',  val && /[a-z]/.test(val));
-            marcarPol('polEsp',  val && /[^a-zA-Z0-9]/.test(val));
-           
+            marcarPol('polLong', val && val.length >= 8);
+            marcarPol('polMay', val && /[A-Z]/.test(val));
+            marcarPol('polNum', val && /[0-9]/.test(val));
         }
 
         function marcarPol(id, ok) {
-            var el    = document.getElementById(id);
+            var el = document.getElementById(id);
             if (!el) return;
             var icono = el.querySelector('.pol-icono');
             if (!icono) return;
             icono.textContent = ok ? '●' : '○';
-            icono.className   = ok ? 'pol-icono pol-ok' : 'pol-icono pol-pendiente';
+            icono.className = ok ? 'pol-icono pol-ok' : 'pol-icono pol-pendiente';
         }
     </script>
 </body>

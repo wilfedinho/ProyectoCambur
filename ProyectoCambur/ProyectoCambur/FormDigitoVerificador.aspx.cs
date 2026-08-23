@@ -32,6 +32,9 @@ public partial class FormDigitoVerificador : GUI.PaginaBase
 
     private void AplicarTraducciones()
     {
+        lblTaglineSidebar.Text = Traducir("tagline_panel_tecnico");
+        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+
         lblTituloSinInconsistencias.Text = Traducir("titulo_sin_inconsistencias");
         lblSubtituloSinInconsistencias.Text = Traducir("subtitulo_sin_inconsistencias");
         lblTituloConInconsistencias.Text = "⚠️ " + Traducir("titulo_inconsistencias_detectadas");
@@ -62,7 +65,7 @@ public partial class FormDigitoVerificador : GUI.PaginaBase
             pnlSinInconsistencias.Visible = false;
             pnlConInconsistencias.Visible = true;
 
-         
+        
             List<string> mensajesTraducidos = inconsistencias
                 .Select(inc =>
                 {

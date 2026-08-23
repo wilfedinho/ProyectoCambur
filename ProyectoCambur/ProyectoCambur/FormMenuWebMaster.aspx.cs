@@ -26,11 +26,6 @@ public partial class FormMenuWebMaster : GUI.PaginaBase
     private void AplicarTraducciones()
     {
         lblTaglineSidebar.Text = Traducir("tagline_panel_tecnico");
-        lblMenuInicio.Text = Traducir("menu_inicio");
-        lblMenuProfesionales.Text = Traducir("menu_profesionales");
-        lblMenuIntegridad.Text = Traducir("menu_integridad");
-        lblMenuBackupRestore.Text = Traducir("menu_backup_restore");
-        lblMenuBitacora.Text = Traducir("menu_bitacora");
         lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
 
         lblHeaderSeccion.Text = Traducir("header_web_master");
@@ -39,8 +34,6 @@ public partial class FormMenuWebMaster : GUI.PaginaBase
         lblBannerTitulo.Text = Traducir("banner_webmaster_titulo");
         lblBannerSub.Text = Traducir("banner_webmaster_sub");
 
-        lblTileProfesionalesTitulo.Text = Traducir("menu_profesionales");
-        lblTileProfesionalesDesc.Text = Traducir("tile_profesionales_desc");
         lblTileIntegridadTitulo.Text = Traducir("menu_integridad");
         lblTileIntegridadDesc.Text = Traducir("tile_integridad_desc");
         lblTileBackupTitulo.Text = Traducir("menu_backup_restore");

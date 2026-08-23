@@ -7,7 +7,6 @@ using System.Linq;
 
 public partial class FormCambiarIdioma : GUI.PaginaBase
 {
-   
     private static readonly Dictionary<string, string> Banderas = new Dictionary<string, string>
     {
         { "es", "🇦🇷" },
@@ -42,7 +41,6 @@ public partial class FormCambiarIdioma : GUI.PaginaBase
 
         if (!IsPostBack)
         {
-            lnkVolverMenu.NavigateUrl = DestinoSegunRol(psicologoActual.RolPermiso);
             lnkCancelar.NavigateUrl = DestinoSegunRol(psicologoActual.RolPermiso);
 
             CargarIdiomaActivo(psicologoActual);
@@ -121,8 +119,6 @@ public partial class FormCambiarIdioma : GUI.PaginaBase
         try
         {
             Psicologo psicologoActualizado = gestorPsicologo.CambiarIdioma(GestorSesion.PsicologoActual.IdPsicologo, nuevoIdioma);
-
-     
             GestorSesion.Login(psicologoActualizado);
 
             Response.Redirect("FormCambiarIdioma.aspx?idioma=ok");

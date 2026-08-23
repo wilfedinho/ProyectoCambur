@@ -15,17 +15,23 @@ public partial class FormAuditoriaBitacora : GUI.PaginaBase
             Response.Redirect("FormLogin.aspx");
             return;
         }
+
         Psicologo psicologoActual = GestorSesion.PsicologoActual;
+
+
         if (psicologoActual.RolPermiso != "Web Master")
         {
             Response.Redirect("FormLogin.aspx");
             return;
         }
+
         AplicarTraducciones();
+
         if (!IsPostBack)
         {
             CargarCombosDeFiltros();
             CargarGrilla();
+
             new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_ADMINISTRACION, EventosBitacora.DESC_CONSULTA_BITACORA, EventosBitacora.CRIT_CONSULTA_BITACORA);
         }
     }
@@ -33,11 +39,6 @@ public partial class FormAuditoriaBitacora : GUI.PaginaBase
     private void AplicarTraducciones()
     {
         lblTaglineSidebar.Text = Traducir("tagline_panel_tecnico");
-        lblMenuInicio.Text = Traducir("menu_inicio");
-        lblMenuProfesionales.Text = Traducir("menu_profesionales");
-        lblMenuIntegridad.Text = Traducir("menu_integridad");
-        lblMenuBackupRestore.Text = Traducir("menu_backup_restore");
-        lblMenuBitacora.Text = Traducir("menu_bitacora");
         lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
 
         lblHeaderSeccion.Text = Traducir("header_web_master");
@@ -200,6 +201,8 @@ public partial class FormAuditoriaBitacora : GUI.PaginaBase
         lblDetBloqueado.Visible = psicologo.IsBloqueado;
         lblDetBloqueado.Text = Traducir("estado_bloqueado");
     }
+
+
     private string TextoCriticidad(int criticidad)
     {
         switch (criticidad)

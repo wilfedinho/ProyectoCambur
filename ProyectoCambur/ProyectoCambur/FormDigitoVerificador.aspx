@@ -1,13 +1,15 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FormDigitoVerificador.aspx.cs" Inherits="FormDigitoVerificador" %>
 <%@ Register Src="~/UserControls/HeaderUsuario.ascx" TagPrefix="uc" TagName="HeaderUsuario" %>
+<%@ Register Src="~/UserControls/SidebarNavegacion.ascx" TagPrefix="uc" TagName="SidebarNavegacion" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Cambur — Integridad del sistema</title>
-    <link href="EstilosPaginas/Shared.css"               rel="stylesheet" type="text/css"/>
-    <link href="EstilosPaginas/HeaderUsuario.css"        rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/Shared.css"                rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/HeaderUsuario.css"         rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/SidebarNavegacion.css"     rel="stylesheet" type="text/css"/>
     <link href="EstilosPaginas/FormDigitoVerificador.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
@@ -16,18 +18,11 @@
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
-                <div class="tagline">Panel Técnico</div>
+                <asp:Label ID="lblTaglineSidebar" runat="server" CssClass="tagline" Text="" />
             </div>
-            <nav class="sidebar-nav">
-                <a href="FormMenuWebMaster.aspx"      class="nav-item">🏠 Menú</a>
-                <a href="FormMaestroProfesional.aspx" class="nav-item">👥 Profesionales</a>
-                <a href="FormGestionIdiomas.aspx"      class="nav-item">🌐 Idiomas</a>
-                <a href="FormDigitoVerificador.aspx"   class="nav-item active">🔐 Integridad</a>
-                <a href="FormBackupRestore.aspx"       class="nav-item">💾 Backup / Restore</a>
-                <a href="FormAuditoriaBitacora.aspx"   class="nav-item">📜 Bitácora</a>
-            </nav>
+            <uc:SidebarNavegacion ID="ucSidebarNavegacion" runat="server" PaginaActual="integridad" />
             <div class="sidebar-footer">
-                <a href="FormLogout.aspx" class="nav-item nav-logout">🚪 Cerrar sesión</a>
+                <a href="FormLogout.aspx" class="nav-item nav-logout"><span>🚪</span> <asp:Label ID="lblMenuCerrarSesionSidebar" runat="server" Text="" /></a>
             </div>
         </aside>
 

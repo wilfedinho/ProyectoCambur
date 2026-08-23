@@ -26,10 +26,6 @@ public partial class FormMenuAdministrador : GUI.PaginaBase
     private void AplicarTraducciones()
     {
         lblTaglineSidebar.Text = Traducir("tagline_panel_gestion");
-        lblMenuInicio.Text = Traducir("menu_inicio");
-        lblMenuProfesionales.Text = Traducir("menu_profesionales");
-        lblMenuIdiomas.Text = Traducir("menu_idiomas");
-        lblMenuBitacora.Text = Traducir("menu_bitacora");
         lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
 
         lblHeaderSeccion.Text = Traducir("header_administrador");
@@ -42,7 +38,5 @@ public partial class FormMenuAdministrador : GUI.PaginaBase
         lblTileProfesionalesDesc.Text = Traducir("tile_profesionales_desc");
         lblTileIdiomasTitulo.Text = Traducir("menu_idiomas");
         lblTileIdiomasDesc.Text = Traducir("tile_idiomas_desc");
-        lblTileBitacoraTitulo.Text = Traducir("menu_bitacora");
-        lblTileBitacoraDesc.Text = Traducir("tile_bitacora_desc");
     }
 }

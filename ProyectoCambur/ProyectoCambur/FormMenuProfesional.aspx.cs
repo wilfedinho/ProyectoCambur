@@ -14,7 +14,7 @@ public partial class FormMenuProfesional : GUI.PaginaBase
 
         Psicologo psicologoActual = GestorSesion.PsicologoActual;
 
-     
+       
         if (psicologoActual.RolPermiso == "Administrador" || psicologoActual.RolPermiso == "Web Master")
         {
             Response.Redirect("FormLogin.aspx");
@@ -27,10 +27,6 @@ public partial class FormMenuProfesional : GUI.PaginaBase
     private void AplicarTraducciones(Psicologo psicologoActual)
     {
         lblTaglineSidebar.Text = Traducir("tagline_gestion_clinica");
-        lblMenuInicio.Text = Traducir("menu_inicio");
-        lblMenuDashboard.Text = Traducir("menu_dashboard");
-        lblMenuPacientes.Text = Traducir("menu_pacientes");
-        lblMenuSuscripcion.Text = Traducir("menu_mi_suscripcion");
         lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
 
         lblHeaderSeccion.Text = Traducir("header_inicio");

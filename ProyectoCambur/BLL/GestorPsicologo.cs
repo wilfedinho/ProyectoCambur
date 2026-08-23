@@ -70,7 +70,7 @@ namespace BLL
             RecalcularDVHDe(idPsicologo);
         }
 
-        
+     
         public Psicologo CambiarIdioma(int idPsicologo, string nuevoIdioma)
         {
             if (string.IsNullOrWhiteSpace(nuevoIdioma))
@@ -156,6 +156,11 @@ namespace BLL
             if (!VerificarFormatoContrasena(contrasenaNueva))
             {
                 throw new ExcepcionTraducible("error_formato_contrasena");
+            }
+
+            if (Cifrador.GestorCifrador.EncriptarIrreversible(contrasenaNueva) == psicologo.Contrasena)
+            {
+                throw new ExcepcionTraducible("error_contrasena_igual_actual");
             }
 
             psicologoDAL.CambiarContrasena(idPsicologo, Cifrador.GestorCifrador.EncriptarIrreversible(contrasenaNueva));
