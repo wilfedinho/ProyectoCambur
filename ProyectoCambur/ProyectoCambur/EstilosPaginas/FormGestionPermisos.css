@@ -1,0 +1,19 @@
+﻿.mt-8 {
+    margin-top: 8px;
+}
+
+.badge-rol {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    background: var(--sidebar-mid);
+    color: #fff;
+}
+
+.arbol-permisos {
+    font-family: var(--font-body);
+    font-size: 14px;
+    padding: 10px 0;
+}

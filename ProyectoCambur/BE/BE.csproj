@@ -51,6 +51,9 @@
     <Compile Include="ModeloEvaluacion.cs" />
     <Compile Include="Paciente.cs" />
     <Compile Include="PerfilPaciente.cs" />
+    <Compile Include="Permiso.cs" />
+    <Compile Include="PermisoCompuesto.cs" />
+    <Compile Include="PermisoSimple.cs" />
     <Compile Include="PlanSuscripcion.cs" />
     <Compile Include="Psicologo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

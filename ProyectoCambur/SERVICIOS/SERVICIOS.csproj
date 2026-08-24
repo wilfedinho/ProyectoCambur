@@ -50,6 +50,7 @@
     <Compile Include="ExceptionTraducible.cs" />
     <Compile Include="GestorBitacora.cs" />
     <Compile Include="GestorIdioma.cs" />
+    <Compile Include="GestorPermiso.cs" />
     <Compile Include="GestorSesion.cs" />
     <Compile Include="InconsistenciaDetectada.cs" />
     <Compile Include="IObservadorIdioma.cs" />
