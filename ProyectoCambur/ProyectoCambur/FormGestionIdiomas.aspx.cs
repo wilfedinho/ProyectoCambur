@@ -8,7 +8,6 @@ using System.Web.UI.WebControls;
 
 public partial class FormGestionIdiomas : GUI.PaginaBase
 {
-
     private class IdiomaCandidato
     {
         public string Nombre;
@@ -42,16 +41,13 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
             Response.Redirect("FormLogin.aspx");
             return;
         }
-
         Psicologo psicologoActual = GestorSesion.PsicologoActual;
-        if (psicologoActual.RolPermiso != "Administrador")
+        if (!new GestorPermiso().TienePermiso(psicologoActual.RolPermiso, "acceder_gestionar_idiomas"))
         {
             Response.Redirect("FormLogin.aspx");
             return;
         }
-
         AplicarTraducciones();
-
         if (!IsPostBack)
         {
             CargarComboIdiomasCandidatos();
@@ -63,10 +59,8 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
     {
         lblTaglineSidebar.Text = Traducir("tagline_panel_gestion");
         lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
-
         lblHeaderSeccion.Text = Traducir("header_administrador");
         lblHeaderPagina.Text = Traducir("menu_idiomas");
-
         lblTituloNuevoIdioma.Text = Traducir("titulo_nuevo_idioma");
         lblSubtituloNuevoIdioma.Text = Traducir("subtitulo_nuevo_idioma");
         lblEtiquetaNuevoIdioma.Text = Traducir("lbl_nuevo_idioma");
@@ -75,14 +69,12 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
         btnAltaIdioma.Text = Traducir("btn_generar_idioma");
         lblOverlayTitulo.Text = Traducir("overlay_generando_titulo");
         lblOverlaySub.Text = Traducir("overlay_generando_sub");
-
         lblTituloIdiomasSistema.Text = Traducir("titulo_idiomas_sistema");
         gvIdiomas.EmptyDataText = Traducir("empty_idiomas");
         gvIdiomas.Columns[0].HeaderText = Traducir("col_idioma");
         gvIdiomas.Columns[1].HeaderText = Traducir("col_codigo_iso");
         gvIdiomas.Columns[2].HeaderText = Traducir("col_estado");
         gvIdiomas.Columns[3].HeaderText = Traducir("col_acciones");
-
         lblTituloTraducciones.Text = Traducir("titulo_traducciones");
         lblSubtituloTraducciones.Text = Traducir("subtitulo_traducciones");
         gvTraducciones.EmptyDataText = Traducir("empty_traducciones");
@@ -207,14 +199,10 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
     protected void gvTraducciones_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         if (e.CommandName != "GuardarTraduccion") return;
-
         int idTraduccion = Convert.ToInt32(e.CommandArgument);
-
         GridViewRow fila = ((Control)e.CommandSource).NamingContainer as GridViewRow;
         TextBox txtTexto = (TextBox)fila.FindControl("txtTexto");
-
         GestorIdioma gestorIdioma = new GestorIdioma();
-
         try
         {
             gestorIdioma.ModificarTraduccion(idTraduccion, txtTexto.Text);

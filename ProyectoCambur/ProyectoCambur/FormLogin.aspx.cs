@@ -29,16 +29,12 @@ public partial class FormLogin : GUI.PaginaBase
         lblMensaje.Visible = false;
         pnlBloqueado.Visible = false;
         pnlIntentos.Visible = false;
-
         if (!Page.IsValid) return;
-
         string email = txtEmail.Text.Trim().ToLower();
         string password = txtPassword.Text;
-
         GestorPsicologo gestorPsicologo = new GestorPsicologo();
         Psicologo psicologoLogueado;
         ResultadoLogin resultado = gestorPsicologo.ValidarCredenciales(email, password, out psicologoLogueado);
-
         switch (resultado)
         {
             case ResultadoLogin.Ok:
@@ -63,31 +59,28 @@ public partial class FormLogin : GUI.PaginaBase
                 return;
         }
     }
-
     private void ProcesarLoginExitoso(Psicologo psicologoLogueado)
     {
         DigitoVerificador digitoVerificador = new DigitoVerificador();
         List<InconsistenciaDetectada> inconsistencias = digitoVerificador.VerificarIntegridadTodasLasTablas();
-
         if (inconsistencias.Count > 0)
         {
-            switch (psicologoLogueado.RolPermiso)
+            GestorPermiso gestorPermiso = new GestorPermiso();
+            PermisoCompuesto perfil = gestorPermiso.LeerPerfilConEstructura(psicologoLogueado.RolPermiso);
+            if (perfil != null && perfil.ContieneFamilia("HerramientasSistema"))
             {
-                case "Web Master":
-                    GestorSesion.Login(psicologoLogueado);
-                    Response.Redirect("FormDigitoVerificador.aspx");
-                    return;
-
-                case "Administrador":
-                    Response.Redirect("FormError.aspx?codigo=inconsistencia_bd");
-                    return;
-
-                default:
-                    Response.Redirect("FormError.aspx?codigo=no_disponible");
-                    return;
+                GestorSesion.Login(psicologoLogueado);
+                Response.Redirect("FormDigitoVerificador.aspx");
+                return;
             }
+            if (perfil != null && perfil.ContieneFamilia("GestionSistema"))
+            {
+                Response.Redirect("FormError.aspx?codigo=inconsistencia_bd");
+                return;
+            }
+            Response.Redirect("FormError.aspx?codigo=no_disponible");
+            return;
         }
-
         GestorSesion.Login(psicologoLogueado);
         new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_AUTENTICACION, EventosBitacora.DESC_INICIO_SESION, EventosBitacora.CRIT_INICIO_SESION);
         Response.Redirect(DestinoSegunRol(psicologoLogueado.RolPermiso));
@@ -112,17 +105,21 @@ public partial class FormLogin : GUI.PaginaBase
         pnlBloqueado.Visible = true;
         lblMensajeBloqueado.Text = msg;
     }
-
     private string DestinoSegunRol(string rolPermiso)
     {
-        switch (rolPermiso)
+        GestorPermiso gestorPermiso = new GestorPermiso();
+        BE.PermisoCompuesto perfil = gestorPermiso.LeerPerfilConEstructura(rolPermiso);
+
+        if (perfil != null && perfil.ContieneFamilia("HerramientasSistema"))
         {
-            case "Administrador":
-                return "FormMenuAdministrador.aspx";
-            case "Web Master":
-                return "FormMenuWebMaster.aspx";
-            default:
-                return "FormMenuProfesional.aspx";
+            return "FormMenuWebMaster.aspx";
         }
+
+        if (perfil != null && perfil.ContieneFamilia("GestionSistema"))
+        {
+            return "FormMenuAdministrador.aspx";
+        }
+
+        return "FormMenuProfesional.aspx";
     }
 }

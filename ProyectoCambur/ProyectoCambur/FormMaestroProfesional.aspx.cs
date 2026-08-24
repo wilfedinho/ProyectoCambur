@@ -25,37 +25,27 @@ public partial class FormMaestroProfesional : GUI.PaginaBase
     protected void Page_Load(object sender, EventArgs e)
     {
         Page.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
-
         if (!GestorSesion.EstaAutenticado)
         {
             Response.Redirect("FormLogin.aspx");
             return;
         }
-
         Psicologo psicologoActual = GestorSesion.PsicologoActual;
-
-   
-        if (psicologoActual.RolPermiso != "Administrador")
+        if (!new GestorPermiso().TienePermiso(psicologoActual.RolPermiso, "acceder_abm_profesionales"))
         {
             Response.Redirect("FormLogin.aspx");
             return;
         }
-
         AplicarTraducciones();
-
         if (!IsPostBack)
         {
             lblTaglineSidebar.Text = Traducir("tagline_panel_gestion");
-
             ModoAlta();
             CargarGrilla();
         }
     }
-
-
     private void AplicarTraducciones()
     {
-       
         ddlFiltroEstado.Items.FindByValue("TODOS").Text = Traducir("opt_todos");
         ddlFiltroEstado.Items.FindByValue("ACTIVOS").Text = Traducir("opt_activos");
         ddlFiltroEstado.Items.FindByValue("INACTIVOS").Text = Traducir("opt_desactivados");
@@ -112,11 +102,7 @@ public partial class FormMaestroProfesional : GUI.PaginaBase
         gvProfesionales.DataSource = filas;
         gvProfesionales.DataBind();
         TraducirFilasGrilla();
-
-        List<Psicologo> universoCompleto = gestorPsicologo.ObtenerTodos()
-            .Where(p => p.IdPsicologo != idPropio)
-            .ToList();
-
+        List<Psicologo> universoCompleto = gestorPsicologo.ObtenerTodos().Where(p => p.IdPsicologo != idPropio).ToList();
         lblBadgeActivos.Text = universoCompleto.Count(p => p.Activo) + " " + Traducir("badge_activos_sufijo");
         lblBadgeActivos.Visible = true;
         lblBadgeInactivos.Text = universoCompleto.Count(p => !p.Activo) + " " + Traducir("badge_inactivos_sufijo");

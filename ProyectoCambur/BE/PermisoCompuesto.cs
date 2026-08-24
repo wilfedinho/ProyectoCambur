@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BE
 {
@@ -40,6 +37,26 @@ namespace BE
                 if (hijo is PermisoCompuesto compuesto && compuesto.Contiene(nombrePermisoSimple))
                 {
                     return true;
+                }
+            }
+
+            return false;
+        }
+        public bool ContieneFamilia(string nombreFamilia)
+        {
+            foreach (Permiso hijo in hijos)
+            {
+                if (hijo is PermisoCompuesto compuesto)
+                {
+                    if (compuesto.ObtenerNombre() == nombreFamilia)
+                    {
+                        return true;
+                    }
+
+                    if (compuesto.ContieneFamilia(nombreFamilia))
+                    {
+                        return true;
+                    }
                 }
             }
 
