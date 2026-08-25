@@ -16,9 +16,10 @@ public partial class FormDigitoVerificador : GUI.PaginaBase
 
         Psicologo psicologoActual = GestorSesion.PsicologoActual;
 
-        if (psicologoActual.RolPermiso != "Web Master")
+        GestorPermiso gestorPermiso = new GestorPermiso();
+        if (!gestorPermiso.TienePermiso(psicologoActual.RolPermiso, "acceder_digito_verificador"))
         {
-            Response.Redirect("FormLogin.aspx");
+            DenegarAcceso();
             return;
         }
 
@@ -65,7 +66,7 @@ public partial class FormDigitoVerificador : GUI.PaginaBase
             pnlSinInconsistencias.Visible = false;
             pnlConInconsistencias.Visible = true;
 
-        
+
             List<string> mensajesTraducidos = inconsistencias
                 .Select(inc =>
                 {

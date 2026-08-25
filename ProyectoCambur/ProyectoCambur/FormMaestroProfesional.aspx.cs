@@ -256,6 +256,7 @@ public partial class FormMaestroProfesional : PaginaBase
         hdnIdPsicologo.Value = psicologo.IdPsicologo.ToString();
         lblFormTitulo.Text = Traducir("titulo_modificar_profesional");
         btnGuardar.Text = Traducir("btn_guardar_cambios");
+        btnCancelarEdicion.Text = Traducir("btn_cancelar_edicion");
         btnCancelarEdicion.Visible = true;
         pnlAvisoContrasena.Visible = false;
         txtNombre.Text = psicologo.Nombre;

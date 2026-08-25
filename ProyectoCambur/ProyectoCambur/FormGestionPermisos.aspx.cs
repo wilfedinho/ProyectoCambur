@@ -20,9 +20,9 @@ public partial class FormGestionPermisos : GUI.PaginaBase
             return;
         }
         Psicologo psicologoActual = GestorSesion.PsicologoActual;
-        if (psicologoActual.RolPermiso != "Administrador")
+        if (!GestorPermiso.TienePermiso(psicologoActual.RolPermiso, "acceder_gestionar_permisos"))
         {
-            Response.Redirect("FormLogin.aspx");
+            DenegarAcceso();
             return;
         }
         AplicarTraducciones();

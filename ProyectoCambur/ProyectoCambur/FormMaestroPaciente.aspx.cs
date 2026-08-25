@@ -129,7 +129,7 @@ public partial class FormMaestroPaciente : GUI.PaginaBase
                 nuevoPaciente.DNI = txtDni.Text.Trim();
                 nuevoPaciente.FechaNacimiento = fechaNacimiento;
                 nuevoPaciente.Ocupacion = txtOcupacion.Text.Trim();
-                nuevoPaciente.EstadoCivil = txtEstadoCivil.Text.Trim();
+                nuevoPaciente.EstadoCivil = ddlEstadoCivil.SelectedValue;
                 nuevoPaciente.Email = txtEmail.Text.Trim();
                 nuevoPaciente.Telefono = txtTelefono.Text.Trim();
                 nuevoPaciente.Sexo = ddlSexo.SelectedValue;
@@ -155,7 +155,7 @@ public partial class FormMaestroPaciente : GUI.PaginaBase
                 pacienteModificado.DNI = txtDni.Text.Trim();
                 pacienteModificado.FechaNacimiento = fechaNacimiento;
                 pacienteModificado.Ocupacion = txtOcupacion.Text.Trim();
-                pacienteModificado.EstadoCivil = txtEstadoCivil.Text.Trim();
+                pacienteModificado.EstadoCivil = ddlEstadoCivil.SelectedValue;
                 pacienteModificado.Email = txtEmail.Text.Trim();
                 pacienteModificado.Telefono = txtTelefono.Text.Trim();
                 pacienteModificado.Sexo = ddlSexo.SelectedValue;
@@ -290,7 +290,7 @@ public partial class FormMaestroPaciente : GUI.PaginaBase
         txtDni.Text = string.Empty;
         txtFechaNacimiento.Text = string.Empty;
         ddlSexo.SelectedIndex = 0;
-        txtEstadoCivil.Text = string.Empty;
+        ddlEstadoCivil.SelectedIndex = 0;
         txtOcupacion.Text = string.Empty;
         txtEmail.Text = string.Empty;
         txtTelefono.Text = string.Empty;
@@ -309,6 +309,7 @@ public partial class FormMaestroPaciente : GUI.PaginaBase
         hdnIdPaciente.Value = paciente.IdPaciente.ToString();
         lblFormTitulo.Text = Traducir("titulo_modificar_paciente");
         btnGuardar.Text = Traducir("btn_guardar_cambios");
+        btnCancelarEdicion.Text = Traducir("btn_cancelar_edicion");
         btnCancelarEdicion.Visible = true;
         if (ddlPsicologo.Items.FindByValue(paciente.IdPsicologo.ToString()) == null)
         {
@@ -328,7 +329,8 @@ public partial class FormMaestroPaciente : GUI.PaginaBase
         txtDni.Text = paciente.DNI;
         txtFechaNacimiento.Text = paciente.FechaNacimiento.ToString("yyyy-MM-dd");
         ddlSexo.SelectedValue = paciente.Sexo;
-        txtEstadoCivil.Text = paciente.EstadoCivil;
+        ListItem itemEstadoCivil = ddlEstadoCivil.Items.FindByValue(paciente.EstadoCivil ?? "");
+        ddlEstadoCivil.SelectedIndex = itemEstadoCivil != null ? ddlEstadoCivil.Items.IndexOf(itemEstadoCivil) : 0;
         txtOcupacion.Text = paciente.Ocupacion;
         txtEmail.Text = paciente.Email;
         txtTelefono.Text = paciente.Telefono;

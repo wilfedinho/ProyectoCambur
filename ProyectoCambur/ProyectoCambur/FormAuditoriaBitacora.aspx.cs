@@ -16,17 +16,22 @@ public partial class FormAuditoriaBitacora : GUI.PaginaBase
             return;
         }
         Psicologo psicologoActual = GestorSesion.PsicologoActual;
-        if (psicologoActual.RolPermiso != "Web Master")
+        GestorPermiso gestorPermiso = new GestorPermiso();
+        if (!gestorPermiso.TienePermiso(psicologoActual.RolPermiso, "acceder_auditoria_bitacora"))
         {
-            Response.Redirect("FormLogin.aspx");
+            DenegarAcceso();
             return;
         }
         AplicarTraducciones();
         if (!IsPostBack)
         {
+            string hoy = DateTime.Now.ToString("yyyy-MM-dd");
+            txtFechaInicio.Attributes["max"] = hoy;
+            txtFechaFin.Attributes["max"] = hoy;
             CargarCombosDeFiltros();
             CargarGrilla();
-            new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_ADMINISTRACION, EventosBitacora.DESC_CONSULTA_BITACORA, EventosBitacora.CRIT_CONSULTA_BITACORA);
+            GestorBitacora gestorBitacora = new GestorBitacora();
+            gestorBitacora.RegistrarEvento(EventosBitacora.MOD_ADMINISTRACION, EventosBitacora.DESC_CONSULTA_BITACORA, EventosBitacora.CRIT_CONSULTA_BITACORA);
         }
     }
 
@@ -102,7 +107,19 @@ public partial class FormAuditoriaBitacora : GUI.PaginaBase
 
         if (hayFechaInicio && hayFechaFin && fechaInicioParseada.Date > fechaFinParseada.Date)
         {
-            //MostrarError(Traducir("error_rango_fechas_invalido"));
+            MostrarError(Traducir("error_rango_fechas_invalido"));
+            return;
+        }
+
+        if (hayFechaInicio && fechaInicioParseada.Date > DateTime.Now.Date)
+        {
+            MostrarError(Traducir("error_fecha_inicio_futura"));
+            return;
+        }
+
+        if (hayFechaFin && fechaFinParseada.Date > DateTime.Now.Date)
+        {
+            MostrarError(Traducir("error_fecha_fin_futura"));
             return;
         }
 
@@ -204,5 +221,19 @@ public partial class FormAuditoriaBitacora : GUI.PaginaBase
             case 3: return Traducir("criticidad_baja");
             default: return criticidad.ToString();
         }
+    }
+
+    private void MostrarError(string msg)
+    {
+        lblMensaje.Text = msg;
+        lblMensaje.CssClass = "server-error";
+        lblMensaje.Visible = true;
+    }
+
+    private void MostrarExito(string msg)
+    {
+        lblMensaje.Text = msg;
+        lblMensaje.CssClass = "server-success";
+        lblMensaje.Visible = true;
     }
 }

@@ -109,8 +109,14 @@
                         </div>
 
                         <div class="field">
-                            <asp:Label ID="lblEtiquetaEstadoCivil" runat="server" AssociatedControlID="txtEstadoCivil" Text="" />
-                            <asp:TextBox ID="txtEstadoCivil" runat="server" MaxLength="50" ClientIDMode="Static" />
+                            <asp:Label ID="lblEtiquetaEstadoCivil" runat="server" AssociatedControlID="ddlEstadoCivil" Text="" />
+                            <asp:DropDownList ID="ddlEstadoCivil" runat="server" ClientIDMode="Static">
+                                <asp:ListItem Value="" Text="" />
+                                <asp:ListItem Value="Soltero/a" Text="Soltero/a" />
+                                <asp:ListItem Value="Casado/a" Text="Casado/a" />
+                                <asp:ListItem Value="Divorciado/a" Text="Divorciado/a" />
+                                <asp:ListItem Value="Viudo/a" Text="Viudo/a" />
+                            </asp:DropDownList>
                         </div>
 
                         <div class="field">

@@ -20,7 +20,13 @@ public partial class FormMenu : PaginaBase
         {
             GestorPermiso gestorPermiso = new GestorPermiso();
             PermisoCompuesto perfil = gestorPermiso.LeerPerfilConEstructura(psicologoActual.RolPermiso);
-            if (perfil == null || perfil.ObtenerHijos().Count == 0)
+            if (perfil == null)
+            {
+                DenegarAcceso();
+                return;
+            }
+
+            if (perfil.ObtenerHijos().Count == 0)
             {
                 pnlSinPermisos.Visible = true;
                 return;
