@@ -4,8 +4,8 @@ using SERVICIOS;
 using System;
 using System.Collections.Generic;
 using System.Web.UI;
-
-public partial class FormLogin : GUI.PaginaBase
+using GUI;
+public partial class FormLogin : PaginaBase
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -16,10 +16,13 @@ public partial class FormLogin : GUI.PaginaBase
             {
                 MostrarExito(Traducir("login_sesion_cerrada"));
             }
-
             if (Request.QueryString["registro"] == "ok")
             {
                 MostrarExito(Traducir("login_cuenta_creada"));
+            }
+            if (Request.QueryString["acceso_denegado"] == "ok")
+            {
+                MostrarError(Traducir("login_sesion_cerrada_por_acceso_denegado"));
             }
         }
     }
@@ -66,24 +69,27 @@ public partial class FormLogin : GUI.PaginaBase
         if (inconsistencias.Count > 0)
         {
             GestorPermiso gestorPermiso = new GestorPermiso();
-            PermisoCompuesto perfil = gestorPermiso.LeerPerfilConEstructura(psicologoLogueado.RolPermiso);
+            BE.PermisoCompuesto perfil = gestorPermiso.LeerPerfilConEstructura(psicologoLogueado.RolPermiso);
+
             if (perfil != null && perfil.ContieneFamilia("HerramientasSistema"))
             {
                 GestorSesion.Login(psicologoLogueado);
                 Response.Redirect("FormDigitoVerificador.aspx");
                 return;
             }
+
             if (perfil != null && perfil.ContieneFamilia("GestionSistema"))
             {
                 Response.Redirect("FormError.aspx?codigo=inconsistencia_bd");
                 return;
             }
+
             Response.Redirect("FormError.aspx?codigo=no_disponible");
             return;
         }
         GestorSesion.Login(psicologoLogueado);
         new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_AUTENTICACION, EventosBitacora.DESC_INICIO_SESION, EventosBitacora.CRIT_INICIO_SESION);
-        Response.Redirect(DestinoSegunRol(psicologoLogueado.RolPermiso));
+        Response.Redirect("FormMenu.aspx");
     }
 
     private void MostrarError(string msg)
@@ -105,21 +111,5 @@ public partial class FormLogin : GUI.PaginaBase
         pnlBloqueado.Visible = true;
         lblMensajeBloqueado.Text = msg;
     }
-    private string DestinoSegunRol(string rolPermiso)
-    {
-        GestorPermiso gestorPermiso = new GestorPermiso();
-        BE.PermisoCompuesto perfil = gestorPermiso.LeerPerfilConEstructura(rolPermiso);
 
-        if (perfil != null && perfil.ContieneFamilia("HerramientasSistema"))
-        {
-            return "FormMenuWebMaster.aspx";
-        }
-
-        if (perfil != null && perfil.ContieneFamilia("GestionSistema"))
-        {
-            return "FormMenuAdministrador.aspx";
-        }
-
-        return "FormMenuProfesional.aspx";
-    }
 }

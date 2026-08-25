@@ -34,18 +34,13 @@ public partial class FormCambiarIdioma : GUI.PaginaBase
             Response.Redirect("FormLogin.aspx");
             return;
         }
-
         Psicologo psicologoActual = GestorSesion.PsicologoActual;
-
         AplicarTraducciones(psicologoActual);
-
         if (!IsPostBack)
         {
-            lnkCancelar.NavigateUrl = DestinoSegunRol(psicologoActual.RolPermiso);
-
+            lnkCancelar.NavigateUrl = "FormMenu.aspx";
             CargarIdiomaActivo(psicologoActual);
             CargarGrillaIdiomas(psicologoActual);
-
             if (Request.QueryString["idioma"] == "ok")
             {
                 MostrarExito(Traducir("msg_idioma_actualizado"));
@@ -59,7 +54,6 @@ public partial class FormCambiarIdioma : GUI.PaginaBase
         lblMenuCerrarSesion.Text = Traducir("menu_cerrar_sesion");
         lblHeaderSeccion.Text = Traducir("header_configuracion");
         lblHeaderPagina.Text = Traducir("header_cambiar_idioma");
-
         lblTituloCard.Text = Traducir("titulo_idioma_interfaz");
         lblSubtituloCard.Text = Traducir("subtitulo_idioma_interfaz");
         lblSeccionActual.Text = Traducir("seccion_idioma_actual");
@@ -87,7 +81,6 @@ public partial class FormCambiarIdioma : GUI.PaginaBase
     {
         GestorIdioma gestorIdioma = new GestorIdioma();
         List<Idioma> idiomas = gestorIdioma.ObtenerTodos();
-
         List<FilaIdioma> filas = idiomas.Select(i => new FilaIdioma
         {
             NombreIdioma = i.NombreIdioma,
@@ -97,7 +90,6 @@ public partial class FormCambiarIdioma : GUI.PaginaBase
             EsActual = i.NombreIdioma == psicologoActual.Idioma,
             TextoNoDisponible = Traducir("idioma_no_disponible")
         }).ToList();
-
         rptIdiomas.DataSource = filas;
         rptIdiomas.DataBind();
     }
@@ -105,17 +97,13 @@ public partial class FormCambiarIdioma : GUI.PaginaBase
     protected void btnGuardar_Click(object sender, EventArgs e)
     {
         lblMensaje.Visible = false;
-
         string nuevoIdioma = hfIdiomaSeleccionado.Value;
-
         if (string.IsNullOrEmpty(nuevoIdioma))
         {
             MostrarError(Traducir("error_seleccionar_idioma"));
             return;
         }
-
         GestorPsicologo gestorPsicologo = new GestorPsicologo();
-
         try
         {
             Psicologo psicologoActualizado = gestorPsicologo.CambiarIdioma(GestorSesion.PsicologoActual.IdPsicologo, nuevoIdioma);
@@ -145,19 +133,6 @@ public partial class FormCambiarIdioma : GUI.PaginaBase
             return Banderas[codigoIso.ToLower()];
         }
         return "🌐";
-    }
-
-    private string DestinoSegunRol(string rolPermiso)
-    {
-        switch (rolPermiso)
-        {
-            case "Administrador":
-                return "FormMenuAdministrador.aspx";
-            case "Web Master":
-                return "FormMenuWebMaster.aspx";
-            default:
-                return "FormMenuProfesional.aspx";
-        }
     }
 
     private void MostrarError(string msg)

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 namespace GUI
 {
-    
     public class PaginaBase : System.Web.UI.Page, IObservadorIdioma
     {
         protected Dictionary<string, string> Traducciones { get; private set; }
@@ -14,25 +13,20 @@ namespace GUI
         {
             base.OnInit(e);
             UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
-
             SujetoIdioma sujetoIdioma = new SujetoIdioma();
             sujetoIdioma.Suscribir(this);
             sujetoIdioma.NotificarCambioIdioma(ObtenerIdiomaActual());
         }
-
         public void ActualizarIdioma(Dictionary<string, string> traducciones)
         {
             Traducciones = traducciones;
         }
-
-   
         public void RefrescarTraducciones()
         {
             SujetoIdioma sujetoIdioma = new SujetoIdioma();
             sujetoIdioma.Suscribir(this);
             sujetoIdioma.NotificarCambioIdioma(ObtenerIdiomaActual());
         }
-
         public string Traducir(string clave)
         {
             if (Traducciones != null && Traducciones.ContainsKey(clave))
@@ -41,14 +35,16 @@ namespace GUI
             }
             return clave;
         }
-
-      
         protected string TraducirExcepcion(ExcepcionTraducible ex)
         {
             string plantilla = Traducir(ex.Clave);
             return ex.Parametros != null && ex.Parametros.Length > 0
                 ? string.Format(plantilla, ex.Parametros)
                 : plantilla;
+        }
+        protected void DenegarAcceso()
+        {
+            Response.Redirect("FormAccesoDenegado.aspx");
         }
 
         private string ObtenerIdiomaActual()
@@ -61,7 +57,6 @@ namespace GUI
                     return psicologoActual.Idioma;
                 }
             }
-
             return "Español";
         }
     }

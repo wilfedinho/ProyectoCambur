@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using GUI;
 
-public partial class FormGestionIdiomas : GUI.PaginaBase
+public partial class FormGestionIdiomas : PaginaBase
 {
     private class IdiomaCandidato
     {
@@ -41,10 +42,11 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
             Response.Redirect("FormLogin.aspx");
             return;
         }
+
         Psicologo psicologoActual = GestorSesion.PsicologoActual;
         if (!new GestorPermiso().TienePermiso(psicologoActual.RolPermiso, "acceder_gestionar_idiomas"))
         {
-            Response.Redirect("FormLogin.aspx");
+            DenegarAcceso();
             return;
         }
         AplicarTraducciones();
@@ -87,10 +89,8 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
     {
         GestorIdioma gestorIdioma = new GestorIdioma();
         List<string> nombresYaRegistrados = gestorIdioma.ObtenerTodos().Select(i => i.NombreIdioma).ToList();
-
         ddlNuevoIdioma.Items.Clear();
         ddlNuevoIdioma.Items.Add(new ListItem(Traducir("opt_seleccionar"), ""));
-
         foreach (IdiomaCandidato candidato in CatalogoIdiomas)
         {
             if (!nombresYaRegistrados.Contains(candidato.Nombre))
@@ -113,19 +113,16 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
         Idioma nuevoIdioma = new Idioma(partes[0], partes[1], true, false);
 
         GestorIdioma gestorIdioma = new GestorIdioma();
-
         try
         {
             gestorIdioma.Alta(nuevoIdioma);
             MostrarExito(string.Format(Traducir("msg_idioma_generado"), nuevoIdioma.NombreIdioma));
-
             CargarComboIdiomasCandidatos();
         }
         catch (ExcepcionTraducible ex)
         {
             MostrarError(TraducirExcepcion(ex));
         }
-
         CargarIdiomas();
     }
 
@@ -133,7 +130,6 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
     {
         string nombreIdioma = e.CommandArgument.ToString();
         GestorIdioma gestorIdioma = new GestorIdioma();
-
         switch (e.CommandName)
         {
             case "Activar":
@@ -168,30 +164,24 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
     protected void gvIdiomas_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowType != DataControlRowType.DataRow) return;
-
         Idioma idioma = e.Row.DataItem as Idioma;
         if (idioma == null) return;
-
         Label lblEstadoIdioma = e.Row.FindControl("lblEstadoIdioma") as Label;
         if (lblEstadoIdioma != null)
         {
             lblEstadoIdioma.Text = idioma.IsDisponible ? Traducir("estado_disponible") : Traducir("estado_desactivado");
             lblEstadoIdioma.CssClass = idioma.IsDisponible ? "badge-estado activo" : "badge-estado inactivo";
         }
-
         Label lblEnUso = e.Row.FindControl("lblEnUso") as Label;
         if (lblEnUso != null)
         {
             lblEnUso.Visible = idioma.IsOcupado;
             lblEnUso.Text = Traducir("badge_en_uso");
         }
-
         LinkButton lbDesactivar = e.Row.FindControl("lbDesactivar") as LinkButton;
         if (lbDesactivar != null) lbDesactivar.Text = "🚫 " + Traducir("btn_desactivar");
-
         LinkButton lbActivar = e.Row.FindControl("lbActivar") as LinkButton;
         if (lbActivar != null) lbActivar.Text = "✅ " + Traducir("btn_activar");
-
         LinkButton lbVerPendientes = e.Row.FindControl("lbVerPendientes") as LinkButton;
         if (lbVerPendientes != null) lbVerPendientes.Text = "✏️ " + Traducir("btn_traducciones");
     }
@@ -208,14 +198,12 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
             gestorIdioma.ModificarTraduccion(idTraduccion, txtTexto.Text);
             RefrescarTraducciones();
             AplicarTraducciones();
-
             MostrarExito(Traducir("msg_traduccion_actualizada"));
         }
         catch (ExcepcionTraducible ex)
         {
             MostrarError(TraducirExcepcion(ex));
         }
-
         pnlTraducciones.Visible = true;
         lblIdiomaSeleccionado.Text = IdiomaSeleccionado;
         CargarTraducciones(IdiomaSeleccionado);
@@ -232,17 +220,14 @@ public partial class FormGestionIdiomas : GUI.PaginaBase
     protected void gvTraducciones_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowType != DataControlRowType.DataRow) return;
-
         Traduccion traduccion = e.Row.DataItem as Traduccion;
         if (traduccion == null) return;
-
         Label lblEstadoTraduccion = e.Row.FindControl("lblEstadoTraduccion") as Label;
         if (lblEstadoTraduccion != null)
         {
             lblEstadoTraduccion.Text = traduccion.Pendiente ? Traducir("estado_pendiente") : Traducir("estado_revisado");
             lblEstadoTraduccion.CssClass = traduccion.Pendiente ? "badge-estado bloqueado" : "badge-estado activo";
         }
-
         LinkButton lbGuardarTraduccion = e.Row.FindControl("lbGuardarTraduccion") as LinkButton;
         if (lbGuardarTraduccion != null) lbGuardarTraduccion.Text = "💾 " + Traducir("btn_guardar");
     }

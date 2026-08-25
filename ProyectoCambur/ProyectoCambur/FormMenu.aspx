@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FormMenuWebMaster.aspx.cs" Inherits="FormMenuWebMaster" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FormMenu.aspx.cs" Inherits="FormMenu" %>
 <%@ Register Src="~/UserControls/HeaderUsuario.ascx" TagPrefix="uc" TagName="HeaderUsuario" %>
 <%@ Register Src="~/UserControls/SidebarNavegacion.ascx" TagPrefix="uc" TagName="SidebarNavegacion" %>
 <!DOCTYPE html>
@@ -6,11 +6,12 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Cambur — Menú Web Master</title>
-    <link href="EstilosPaginas/Shared.css"           rel="stylesheet" type="text/css"/>
-    <link href="EstilosPaginas/HeaderUsuario.css"    rel="stylesheet" type="text/css"/>
+    <title>Cambur — Menú</title>
+    <link href="EstilosPaginas/Shared.css"            rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/HeaderUsuario.css"     rel="stylesheet" type="text/css"/>
     <link href="EstilosPaginas/SidebarNavegacion.css" rel="stylesheet" type="text/css"/>
-    <link href="EstilosPaginas/MenuRoles.css"        rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/MenuRoles.css"         rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/FormMenu.css"          rel="stylesheet" type="text/css"/>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -41,32 +42,15 @@
 
                 <div class="rol-banner">
                     <div>
-                        <asp:Label ID="lblBannerTitulo" runat="server" CssClass="rol-banner-titulo" Text="" />
+                        <asp:Label ID="lblBienvenida" runat="server" CssClass="rol-banner-titulo" Text="" />
                         <asp:Label ID="lblBannerSub" runat="server" CssClass="rol-banner-sub" Text="" />
                     </div>
                 </div>
+                <asp:PlaceHolder ID="phSecciones" runat="server" />
 
-                <div class="menu-tile-grid">
-
-                    <a class="menu-tile" href="FormDigitoVerificador.aspx">
-                        <div class="menu-tile-icono">🔐</div>
-                        <asp:Label ID="lblTileIntegridadTitulo" runat="server" CssClass="menu-tile-titulo" Text="" />
-                        <asp:Label ID="lblTileIntegridadDesc" runat="server" CssClass="menu-tile-desc" Text="" />
-                    </a>
-
-                    <a class="menu-tile" href="FormBackupRestore.aspx">
-                        <div class="menu-tile-icono">💾</div>
-                        <asp:Label ID="lblTileBackupTitulo" runat="server" CssClass="menu-tile-titulo" Text="" />
-                        <asp:Label ID="lblTileBackupDesc" runat="server" CssClass="menu-tile-desc" Text="" />
-                    </a>
-
-                    <a class="menu-tile" href="FormAuditoriaBitacora.aspx">
-                        <div class="menu-tile-icono">📜</div>
-                        <asp:Label ID="lblTileBitacoraTitulo" runat="server" CssClass="menu-tile-titulo" Text="" />
-                        <asp:Label ID="lblTileBitacoraDesc" runat="server" CssClass="menu-tile-desc" Text="" />
-                    </a>
-
-                </div>
+                <asp:Panel ID="pnlSinPermisos" runat="server" Visible="false" CssClass="content-card mt-24">
+                    <p class="card-subtitle"><asp:Label ID="lblSinPermisos" runat="server" Text="" /></p>
+                </asp:Panel>
 
             </div>
         </div>

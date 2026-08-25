@@ -5,8 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI.WebControls;
-
-public partial class FormMaestroProfesional : GUI.PaginaBase
+using GUI;
+public partial class FormMaestroProfesional : PaginaBase
 {
     private class FilaProfesional
     {
@@ -33,7 +33,7 @@ public partial class FormMaestroProfesional : GUI.PaginaBase
         Psicologo psicologoActual = GestorSesion.PsicologoActual;
         if (!new GestorPermiso().TienePermiso(psicologoActual.RolPermiso, "acceder_abm_profesionales"))
         {
-            Response.Redirect("FormLogin.aspx");
+            DenegarAcceso();
             return;
         }
         AplicarTraducciones();
@@ -70,11 +70,7 @@ public partial class FormMaestroProfesional : GUI.PaginaBase
     {
         GestorPsicologo gestorPsicologo = new GestorPsicologo();
         int idPropio = GestorSesion.PsicologoActual.IdPsicologo;
-
-        List<Psicologo> todos = gestorPsicologo.ObtenerTodos()
-            .Where(p => p.IdPsicologo != idPropio)
-            .ToList();
-
+        List<Psicologo> todos = gestorPsicologo.ObtenerTodos().Where(p => p.IdPsicologo != idPropio).ToList();
         string filtro = ddlFiltroEstado.SelectedValue;
         if (filtro == "ACTIVOS")
         {
@@ -84,7 +80,6 @@ public partial class FormMaestroProfesional : GUI.PaginaBase
         {
             todos = todos.Where(p => !p.Activo).ToList();
         }
-
         List<FilaProfesional> filas = todos.Select(p => new FilaProfesional
         {
             IdPsicologo = p.IdPsicologo,
@@ -98,7 +93,6 @@ public partial class FormMaestroProfesional : GUI.PaginaBase
             IsHabilitado = p.IsHabilitado,
             IsBloqueado = p.IsBloqueado
         }).ToList();
-
         gvProfesionales.DataSource = filas;
         gvProfesionales.DataBind();
         TraducirFilasGrilla();
@@ -114,22 +108,16 @@ public partial class FormMaestroProfesional : GUI.PaginaBase
         foreach (GridViewRow fila in gvProfesionales.Rows)
         {
             if (fila.RowType != DataControlRowType.DataRow) continue;
-
             LinkButton lbModificar = fila.FindControl("lbModificar") as LinkButton;
             if (lbModificar != null) lbModificar.Text = "✏️ " + Traducir("btn_modificar");
-
             LinkButton lbBaja = fila.FindControl("lbBaja") as LinkButton;
             if (lbBaja != null) lbBaja.Text = "🚫 " + Traducir("btn_dar_baja");
-
             LinkButton lbReactivar = fila.FindControl("lbReactivar") as LinkButton;
             if (lbReactivar != null) lbReactivar.Text = "✅ " + Traducir("btn_reactivar");
-
             LinkButton lbDeshabilitar = fila.FindControl("lbDeshabilitar") as LinkButton;
             if (lbDeshabilitar != null) lbDeshabilitar.Text = "⛔ " + Traducir("btn_deshabilitar");
-
             LinkButton lbHabilitar = fila.FindControl("lbHabilitar") as LinkButton;
             if (lbHabilitar != null) lbHabilitar.Text = "✅ " + Traducir("btn_habilitar");
-
             LinkButton lbDesbloquear = fila.FindControl("lbDesbloquear") as LinkButton;
             if (lbDesbloquear != null) lbDesbloquear.Text = "🔓 " + Traducir("btn_desbloquear");
         }
@@ -138,13 +126,9 @@ public partial class FormMaestroProfesional : GUI.PaginaBase
     protected void btnGuardar_Click(object sender, EventArgs e)
     {
         lblMensaje.Visible = false;
-
         bool esAlta = hdnIdPsicologo.Value == "0";
-
         if (!Page.IsValid) return;
-
         GestorPsicologo gestorPsicologo = new GestorPsicologo();
-
         try
         {
             if (esAlta)
@@ -157,7 +141,6 @@ public partial class FormMaestroProfesional : GUI.PaginaBase
                 nuevoPsicologo.Contrasena = nuevoPsicologo.Dni + nuevoPsicologo.Email;
                 nuevoPsicologo.Idioma = ddlIdioma.SelectedValue;
                 nuevoPsicologo.RolPermiso = ddlRol.SelectedValue;
-
                 gestorPsicologo.Alta(nuevoPsicologo);
                 MostrarExito(string.Format(Traducir("msg_profesional_registrado"), nuevoPsicologo.Nombre + " " + nuevoPsicologo.Apellido));
             }
@@ -172,18 +155,15 @@ public partial class FormMaestroProfesional : GUI.PaginaBase
                     CargarGrilla();
                     return;
                 }
-
                 psicologoModificado.Nombre = txtNombre.Text.Trim();
                 psicologoModificado.Apellido = txtApellido.Text.Trim();
                 psicologoModificado.Dni = txtDni.Text.Trim();
                 psicologoModificado.Email = txtEmail.Text.Trim().ToLower();
                 psicologoModificado.Idioma = ddlIdioma.SelectedValue;
                 psicologoModificado.RolPermiso = ddlRol.SelectedValue;
-
                 gestorPsicologo.Modificar(psicologoModificado);
                 MostrarExito(string.Format(Traducir("msg_profesional_modificado"), psicologoModificado.Nombre + " " + psicologoModificado.Apellido));
             }
-
             ModoAlta();
             CargarGrilla();
         }
@@ -207,7 +187,6 @@ public partial class FormMaestroProfesional : GUI.PaginaBase
     {
         int idPsicologo = Convert.ToInt32(e.CommandArgument);
         GestorPsicologo gestorPsicologo = new GestorPsicologo();
-
         try
         {
             switch (e.CommandName)
@@ -246,7 +225,6 @@ public partial class FormMaestroProfesional : GUI.PaginaBase
         {
             MostrarError(TraducirExcepcion(ex));
         }
-
         CargarGrilla();
     }
 
@@ -257,7 +235,6 @@ public partial class FormMaestroProfesional : GUI.PaginaBase
         btnGuardar.Text = Traducir("btn_registrar_profesional");
         btnCancelarEdicion.Visible = false;
         pnlAvisoContrasena.Visible = true;
-
         txtNombre.Text = string.Empty;
         txtApellido.Text = string.Empty;
         txtDni.Text = string.Empty;
@@ -276,13 +253,11 @@ public partial class FormMaestroProfesional : GUI.PaginaBase
             CargarGrilla();
             return;
         }
-
         hdnIdPsicologo.Value = psicologo.IdPsicologo.ToString();
         lblFormTitulo.Text = Traducir("titulo_modificar_profesional");
         btnGuardar.Text = Traducir("btn_guardar_cambios");
         btnCancelarEdicion.Visible = true;
         pnlAvisoContrasena.Visible = false;
-
         txtNombre.Text = psicologo.Nombre;
         txtApellido.Text = psicologo.Apellido;
         txtDni.Text = psicologo.Dni;
