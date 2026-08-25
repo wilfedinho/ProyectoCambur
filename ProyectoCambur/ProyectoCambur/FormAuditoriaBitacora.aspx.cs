@@ -15,23 +15,17 @@ public partial class FormAuditoriaBitacora : GUI.PaginaBase
             Response.Redirect("FormLogin.aspx");
             return;
         }
-
         Psicologo psicologoActual = GestorSesion.PsicologoActual;
-
-
         if (psicologoActual.RolPermiso != "Web Master")
         {
             Response.Redirect("FormLogin.aspx");
             return;
         }
-
         AplicarTraducciones();
-
         if (!IsPostBack)
         {
             CargarCombosDeFiltros();
             CargarGrilla();
-
             new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_ADMINISTRACION, EventosBitacora.DESC_CONSULTA_BITACORA, EventosBitacora.CRIT_CONSULTA_BITACORA);
         }
     }
@@ -71,8 +65,6 @@ public partial class FormAuditoriaBitacora : GUI.PaginaBase
         lblDetEtiquetaEstado.Text = Traducir("col_estado");
         lblDetalleNoEncontrado.Text = Traducir("msg_profesional_no_encontrado_por_email");
     }
-
-
     private void CargarCombosDeFiltros()
     {
         GestorBitacora gestorBitacora = new GestorBitacora();
@@ -101,6 +93,19 @@ public partial class FormAuditoriaBitacora : GUI.PaginaBase
 
     protected void btnFiltrar_Click(object sender, EventArgs e)
     {
+        lblMensaje.Visible = false;
+
+        DateTime fechaInicioParseada;
+        DateTime fechaFinParseada;
+        bool hayFechaInicio = DateTime.TryParse(txtFechaInicio.Text, out fechaInicioParseada);
+        bool hayFechaFin = DateTime.TryParse(txtFechaFin.Text, out fechaFinParseada);
+
+        if (hayFechaInicio && hayFechaFin && fechaInicioParseada.Date > fechaFinParseada.Date)
+        {
+            //MostrarError(Traducir("error_rango_fechas_invalido"));
+            return;
+        }
+
         gvBitacora.PageIndex = 0;
         pnlDetalle.Visible = false;
         CargarGrilla();
@@ -152,17 +157,14 @@ public partial class FormAuditoriaBitacora : GUI.PaginaBase
     protected void gvBitacora_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowType != DataControlRowType.DataRow) return;
-
         Bitacora evento = e.Row.DataItem as Bitacora;
         if (evento == null) return;
-
         Label lblCriticidad = e.Row.FindControl("lblCriticidad") as Label;
         if (lblCriticidad != null)
         {
             lblCriticidad.Text = evento.Criticidad + " - " + TextoCriticidad(evento.Criticidad);
             lblCriticidad.CssClass = "badge-criticidad badge-criticidad-" + evento.Criticidad;
         }
-
         LinkButton lbVerDetalle = e.Row.FindControl("lbVerDetalle") as LinkButton;
         if (lbVerDetalle != null) lbVerDetalle.Text = "🔍 " + Traducir("btn_ver_detalle");
     }
@@ -170,39 +172,29 @@ public partial class FormAuditoriaBitacora : GUI.PaginaBase
     protected void gvBitacora_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         if (e.CommandName != "VerDetalle") return;
-
         string email = e.CommandArgument.ToString();
         pnlDetalle.Visible = true;
-
         GestorPsicologo gestorPsicologo = new GestorPsicologo();
         Psicologo psicologo = gestorPsicologo.BuscarPorEmail(email);
-
         if (psicologo == null)
         {
             pnlDetalleEncontrado.Visible = false;
             pnlDetalleNoEncontrado.Visible = true;
             return;
         }
-
         pnlDetalleEncontrado.Visible = true;
         pnlDetalleNoEncontrado.Visible = false;
-
         lblDetNombre.Text = psicologo.Nombre + " " + psicologo.Apellido;
         lblDetDni.Text = psicologo.Dni;
         lblDetEmail.Text = psicologo.Email;
         lblDetRol.Text = psicologo.RolPermiso;
-
         lblDetActivo.Text = psicologo.Activo ? Traducir("estado_disponible") : Traducir("estado_desactivado");
         lblDetActivo.CssClass = psicologo.Activo ? "badge-estado activo" : "badge-estado inactivo";
-
         lblDetHabilitado.Text = psicologo.IsHabilitado ? Traducir("btn_habilitar") : Traducir("btn_deshabilitar");
         lblDetHabilitado.CssClass = psicologo.IsHabilitado ? "badge-estado activo" : "badge-estado inactivo";
-
         lblDetBloqueado.Visible = psicologo.IsBloqueado;
         lblDetBloqueado.Text = Traducir("estado_bloqueado");
     }
-
-
     private string TextoCriticidad(int criticidad)
     {
         switch (criticidad)

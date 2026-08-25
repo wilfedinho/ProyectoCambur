@@ -15,8 +15,8 @@ namespace DAL
             using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
             {
                 cone.Open();
-                string query = "INSERT INTO Paciente (id_profesional, nombre, apellido, dni,fecha_nacimiento, ocupacion, estado_civil, email, telefono, sexo, activo, fecha_registro, digitoverificador) " +
-                               "VALUES (@IdProfesional, @Nombre, @Apellido, @dni,@FechaNacimiento, @Ocupacion, @EstadoCivil, @Email, @Telefono, @Sexo, @Activo, @FechaRegistro, @DigitoVerificador); " +
+                string query = "INSERT INTO Paciente (id_profesional, nombre, apellido, dni, fecha_nacimiento, ocupacion, estado_civil, email, telefono, sexo, activo, fecha_registro, digito_verificador) " +
+                               "VALUES (@IdProfesional, @Nombre, @Apellido, @dni, @FechaNacimiento, @Ocupacion, @EstadoCivil, @Email, @Telefono, @Sexo, @Activo, @FechaRegistro, @DigitoVerificador); " +
                                "SELECT CAST(SCOPE_IDENTITY() AS INT)";
 
                 using (SqlCommand comando = new SqlCommand(query, cone))
@@ -78,12 +78,13 @@ namespace DAL
             using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
             {
                 cone.Open();
-                string query = "UPDATE Paciente SET nombre = @Nombre, apellido = @Apellido, dni = @dni,fecha_nacimiento = @FechaNacimiento, " +
+                string query = "UPDATE Paciente SET id_profesional = @IdProfesional, nombre = @Nombre, apellido = @Apellido, dni = @dni, fecha_nacimiento = @FechaNacimiento, " +
                                "ocupacion = @Ocupacion, estado_civil = @EstadoCivil, email = @Email, telefono = @Telefono, sexo = @Sexo, " +
                                "digito_verificador = @DigitoVerificador WHERE id_paciente = @IdPaciente";
                 using (SqlCommand comando = new SqlCommand(query, cone))
                 {
                     comando.Parameters.AddWithValue("@IdPaciente", pacienteModificado.IdPaciente);
+                    comando.Parameters.AddWithValue("@IdProfesional", pacienteModificado.IdPsicologo);
                     comando.Parameters.AddWithValue("@Nombre", pacienteModificado.Nombre);
                     comando.Parameters.AddWithValue("@Apellido", pacienteModificado.Apellido);
                     comando.Parameters.AddWithValue("@dni", pacienteModificado.DNI);
@@ -94,6 +95,46 @@ namespace DAL
                     comando.Parameters.AddWithValue("@Telefono", (object)pacienteModificado.Telefono ?? DBNull.Value);
                     comando.Parameters.AddWithValue("@Sexo", (object)pacienteModificado.Sexo ?? DBNull.Value);
                     comando.Parameters.AddWithValue("@DigitoVerificador", (object)pacienteModificado.DigitoVerificador ?? DBNull.Value);
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
+
+        #endregion
+
+        #region Digito Verificador (DVH)
+
+        public List<string> ObtenerListaDVH()
+        {
+            List<string> lista = new List<string>();
+
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT digito_verificador FROM Paciente ORDER BY id_paciente";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                using (SqlDataReader reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(reader["digito_verificador"] == DBNull.Value ? string.Empty : reader["digito_verificador"].ToString());
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+        public void ActualizarDVH(int idPaciente, string dvh)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "UPDATE Paciente SET digito_verificador = @digito_verificador WHERE id_paciente = @id_paciente";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_paciente", idPaciente);
+                    comando.Parameters.AddWithValue("@digito_verificador", dvh);
                     comando.ExecuteNonQuery();
                 }
             }

@@ -8,8 +8,7 @@ namespace SERVICIOS
 {
     public class DigitoVerificador
     {
-
-        private static readonly List<string> TablasControladas = new List<string> { "Profesional" };
+        private static readonly List<string> TablasControladas = new List<string> { "Profesional", "Paciente" };
 
         #region Calculo de DVH (por registro)
 
@@ -30,7 +29,20 @@ namespace SERVICIOS
                 sb.Append(psicologo.IsHabilitado);
             }
 
-
+            if (entidad is Paciente paciente)
+            {
+                sb.Append(paciente.Nombre);
+                sb.Append(paciente.Apellido);
+                sb.Append(paciente.DNI);
+                sb.Append(paciente.FechaNacimiento);
+                sb.Append(paciente.Ocupacion);
+                sb.Append(paciente.EstadoCivil);
+                sb.Append(paciente.Email);
+                sb.Append(paciente.Telefono);
+                sb.Append(paciente.Sexo);
+                sb.Append(paciente.IdPsicologo);
+                sb.Append(paciente.Activo);
+            }
 
             return Cifrador.GestorCifrador.EncriptarIrreversible(sb.ToString());
         }
@@ -52,13 +64,21 @@ namespace SERVICIOS
                 }
             }
 
+            if (nombreTabla == "Paciente")
+            {
+                PacienteDAL pacienteDAL = new PacienteDAL();
+                foreach (string dvh in pacienteDAL.ObtenerListaDVH())
+                {
+                    sb.Append(dvh);
+                }
+            }
+
             return Cifrador.GestorCifrador.EncriptarIrreversible(sb.ToString());
         }
 
         #endregion
 
         #region Actualizacion (se llama despues de cada alta/modificacion legitima)
-
 
         public void ActualizarDVH(object entidad, string nombreTabla)
         {
@@ -69,6 +89,13 @@ namespace SERVICIOS
                 PsicologoDAL psicologoDAL = new PsicologoDAL();
                 psicologoDAL.ActualizarDVH(psicologo.IdPsicologo, dvh);
                 psicologo.DigitoVerificador = dvh;
+            }
+
+            if (nombreTabla == "Paciente" && entidad is Paciente paciente)
+            {
+                PacienteDAL pacienteDAL = new PacienteDAL();
+                pacienteDAL.ActualizarDVH(paciente.IdPaciente, dvh);
+                paciente.DigitoVerificador = dvh;
             }
 
             ActualizarDVV(nombreTabla);
@@ -89,12 +116,19 @@ namespace SERVICIOS
 
         public bool VerificarIntegridadDVH(object entidad)
         {
-            if (entidad is Psicologo psicologo)
+            if (entidad is Psicologo || entidad is Paciente)
             {
-                return CalcularDVH(psicologo) == psicologo.DigitoVerificador;
+                return CalcularDVH(entidad) == ObtenerDigitoVerificadorDe(entidad);
             }
 
             return false;
+        }
+
+        private string ObtenerDigitoVerificadorDe(object entidad)
+        {
+            if (entidad is Psicologo psicologo) return psicologo.DigitoVerificador;
+            if (entidad is Paciente paciente) return paciente.DigitoVerificador;
+            return null;
         }
 
         public bool VerificarIntegridadDVV(string nombreTabla)
@@ -102,7 +136,6 @@ namespace SERVICIOS
             DigitoVerificadorDAL digitoVerificadorDAL = new DigitoVerificadorDAL();
             return CalcularDVV(nombreTabla) == digitoVerificadorDAL.ObtenerDVV(nombreTabla);
         }
-
 
         public List<InconsistenciaDetectada> VerificarIntegridadTodasLasTablas()
         {
@@ -131,27 +164,55 @@ namespace SERVICIOS
                         }
                     }
 
-                    int cantidadReal = digitoVerificadorDAL.CalcularCount(tabla);
-                    int cantidadRegistrada = digitoVerificadorDAL.ObtenerCR(tabla);
+                    AgregarInconsistenciasDeConteo(inconsistencias, digitoVerificadorDAL, tabla, huboInconsistenciaDeRegistro);
+                }
 
-                    if (cantidadReal < cantidadRegistrada)
+                if (tabla == "Paciente")
+                {
+                    PacienteDAL pacienteDAL = new PacienteDAL();
+                    List<Paciente> pacientes = pacienteDAL.ObtenerTodos();
+
+                    bool huboInconsistenciaDeRegistro = false;
+
+                    foreach (Paciente paciente in pacientes)
                     {
-                        int faltantes = cantidadRegistrada - cantidadReal;
-                        inconsistencias.Add(new InconsistenciaDetectada("dvh_faltan_registros", faltantes));
+                        if (!VerificarIntegridadDVH(paciente))
+                        {
+                            huboInconsistenciaDeRegistro = true;
+                            inconsistencias.Add(new InconsistenciaDetectada(
+                                "dvh_registro_inconsistente_paciente",
+                                paciente.Nombre + " " + paciente.Apellido,
+                                paciente.DNI
+                            ));
+                        }
                     }
-                    else if (cantidadReal > cantidadRegistrada)
-                    {
-                        int sobrantes = cantidadReal - cantidadRegistrada;
-                        inconsistencias.Add(new InconsistenciaDetectada("dvh_registros_de_mas", sobrantes));
-                    }
-                    else if (!huboInconsistenciaDeRegistro && !VerificarIntegridadDVV(tabla))
-                    {
-                        inconsistencias.Add(new InconsistenciaDetectada("dvh_alteracion_no_asociada"));
-                    }
+
+                    AgregarInconsistenciasDeConteo(inconsistencias, digitoVerificadorDAL, tabla, huboInconsistenciaDeRegistro);
                 }
             }
 
             return inconsistencias;
+        }
+
+        private void AgregarInconsistenciasDeConteo(List<InconsistenciaDetectada> inconsistencias, DigitoVerificadorDAL digitoVerificadorDAL, string tabla, bool huboInconsistenciaDeRegistro)
+        {
+            int cantidadReal = digitoVerificadorDAL.CalcularCount(tabla);
+            int cantidadRegistrada = digitoVerificadorDAL.ObtenerCR(tabla);
+
+            if (cantidadReal < cantidadRegistrada)
+            {
+                int faltantes = cantidadRegistrada - cantidadReal;
+                inconsistencias.Add(new InconsistenciaDetectada("dvh_faltan_registros_tabla", tabla, faltantes));
+            }
+            else if (cantidadReal > cantidadRegistrada)
+            {
+                int sobrantes = cantidadReal - cantidadRegistrada;
+                inconsistencias.Add(new InconsistenciaDetectada("dvh_registros_de_mas_tabla", tabla, sobrantes));
+            }
+            else if (!huboInconsistenciaDeRegistro && !VerificarIntegridadDVV(tabla))
+            {
+                inconsistencias.Add(new InconsistenciaDetectada("dvh_alteracion_no_asociada_tabla", tabla));
+            }
         }
 
         public bool ExisteAlgunaInconsistencia()
@@ -162,7 +223,6 @@ namespace SERVICIOS
         #endregion
 
         #region Recalculo total (uso administrativo / puesta al dia inicial)
-
 
         public void RecalcularTodo()
         {
@@ -183,9 +243,26 @@ namespace SERVICIOS
                         ActualizarDVH(psicologo, tabla);
                     }
                 }
+
+                if (tabla == "Paciente")
+                {
+                    PacienteDAL pacienteDAL = new PacienteDAL();
+                    List<Paciente> pacientes = pacienteDAL.ObtenerTodos();
+
+                    if (pacientes.Count == 0)
+                    {
+                        ActualizarDVV(tabla);
+                    }
+
+                    foreach (Paciente paciente in pacientes)
+                    {
+                        ActualizarDVH(paciente, tabla);
+                    }
+                }
             }
 
-            new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_ADMINISTRACION, EventosBitacora.DESC_RECALCULO_DVH, EventosBitacora.CRIT_RECALCULO_DVH);
+            GestorBitacora gestorBitacora = new GestorBitacora();
+            gestorBitacora.RegistrarEvento(EventosBitacora.MOD_ADMINISTRACION, EventosBitacora.DESC_RECALCULO_DVH, EventosBitacora.CRIT_RECALCULO_DVH);
         }
 
         #endregion

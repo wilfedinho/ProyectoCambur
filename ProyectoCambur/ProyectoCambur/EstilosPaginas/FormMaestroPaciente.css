@@ -1,0 +1,35 @@
+﻿.hint-text {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.filtro-estado {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text-sub);
+}
+
+.table-pager {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px 0;
+}
+
+    .table-pager a, .table-pager span {
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 13px;
+        color: var(--text-sub);
+        text-decoration: none;
+    }
+
+    .table-pager span {
+        background: var(--sidebar-dark);
+        color: #fff;
+        font-weight: 600;
+    }
