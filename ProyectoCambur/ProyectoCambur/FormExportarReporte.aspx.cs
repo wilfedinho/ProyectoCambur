@@ -9,34 +9,23 @@ using System.Data;
 
 public partial class FormExportarReporte : System.Web.UI.Page
 {
-    // =========================================================
-    // PAGE LOAD
-    // =========================================================
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
             CargarProfesionalDemo();
             CargarDropdownPacientes();
-            CargarDocumentosDemo(1);     // primer paciente por defecto
+            CargarDocumentosDemo(1);    
             CargarExportacionesRecientes();
         }
     }
 
-    // =========================================================
-    // PROFESIONAL (demo)
-    // TODO: reemplazar por Session["Profesional"]
-    // =========================================================
     private void CargarProfesionalDemo()
     {
         lblNombreProfesional.Text = "Lucía Martínez";
         lblIniciales.Text = "LM";
     }
 
-    // =========================================================
-    // DROPDOWN DE PACIENTES
-    // TODO: reemplazar por BLL.PacienteBLL.ObtenerActivosPorProfesional()
-    // =========================================================
     private void CargarDropdownPacientes()
     {
         ddlPaciente.Items.Clear();
@@ -47,16 +36,12 @@ public partial class FormExportarReporte : System.Web.UI.Page
         ddlPaciente.Items.Add(new ListItem("Facundo Pérez", "5"));
     }
 
-    // =========================================================
-    // CARGAR ESTADO DE DOCUMENTOS DEL PACIENTE
-    // TODO: reemplazar por BLL.DocumentoBLL.ObtenerEstadoPorPaciente(id)
-    // =========================================================
     private void CargarDocumentosDemo(int idPaciente)
     {
-        // Datos demo según paciente seleccionado
+       
         switch (idPaciente)
         {
-            case 1: // Martín González — todos disponibles
+            case 1: 
                 SetDocumento(lblFechaResumen, lblEstadoResumen,
                     "Generado el 08/05/2026", "✓ Disponible", "doc-badge doc-badge-ok");
                 SetDocumento(lblFechaDerivacion, lblEstadoDerivacion,
@@ -65,7 +50,7 @@ public partial class FormExportarReporte : System.Web.UI.Page
                     "Modelo: Big Five · 10/03/2026", "✓ Disponible", "doc-badge doc-badge-ok");
                 break;
 
-            case 2: // Sofía Ramírez — derivación pendiente
+            case 2: 
                 SetDocumento(lblFechaResumen, lblEstadoResumen,
                     "Generado el 02/05/2026", "✓ Disponible", "doc-badge doc-badge-ok");
                 SetDocumento(lblFechaDerivacion, lblEstadoDerivacion,
@@ -74,7 +59,7 @@ public partial class FormExportarReporte : System.Web.UI.Page
                     "Sin perfil generado", "⚠ No disponible", "doc-badge doc-badge-no-disponible");
                 break;
 
-            case 3: // Carlos Ibáñez — derivación pendiente de validación
+            case 3:
                 SetDocumento(lblFechaResumen, lblEstadoResumen,
                     "Generado el 06/05/2026", "✓ Disponible", "doc-badge doc-badge-ok");
                 SetDocumento(lblFechaDerivacion, lblEstadoDerivacion,
@@ -101,11 +86,6 @@ public partial class FormExportarReporte : System.Web.UI.Page
         lblEstado.Text = estado;
         lblEstado.CssClass = cssClass;
     }
-
-    // =========================================================
-    // EXPORTACIONES RECIENTES
-    // TODO: reemplazar por BLL.ExportacionBLL.ObtenerUltimas(idProfesional, 5)
-    // =========================================================
     private void CargarExportacionesRecientes()
     {
         DataTable dt = new DataTable();
@@ -133,9 +113,6 @@ public partial class FormExportarReporte : System.Web.UI.Page
         }
     }
 
-    // =========================================================
-    // EVENTO: CAMBIO DE PACIENTE (AutoPostBack)
-    // =========================================================
     protected void ddlPaciente_SelectedIndexChanged(object sender, EventArgs e)
     {
         int idPaciente = 0;
@@ -146,9 +123,6 @@ public partial class FormExportarReporte : System.Web.UI.Page
         lblMensaje.Visible = false;
     }
 
-    // =========================================================
-    // EVENTO: EXPORTAR EN PDF
-    // =========================================================
     protected void btnExportar_Click(object sender, EventArgs e)
     {
         lblMensaje.Visible = false;
@@ -164,7 +138,7 @@ public partial class FormExportarReporte : System.Web.UI.Page
         int idPaciente = 0;
         int.TryParse(ddlPaciente.SelectedValue, out idPaciente);
 
-        // Validar disponibilidad del documento
+    
         if (!DocumentoDisponible(idPaciente, tipo))
         {
             MostrarError("El documento seleccionado no está disponible para este paciente. " +
@@ -172,34 +146,16 @@ public partial class FormExportarReporte : System.Web.UI.Page
             return;
         }
 
-        // Validar informe de derivación validado
         if (tipo == "DERIVACION" && !DerivacionValidada(idPaciente))
         {
             MostrarError("El informe de derivación debe ser revisado y validado antes de exportarse. " +
                          "Revisalo en la sección Derivaciones.");
             return;
         }
-
-        // TODO: reemplazar por:
-        //   int idProfesional = (int)Session["IdProfesional"];
-        //   byte[] pdfBytes = BLL.ExportacionBLL.GenerarPDF(idPaciente, idProfesional, tipo);
-        //   // Registrar evento en bitácora:
-        //   BLL.BitacoraBLL.Registrar(idProfesional, "Exportar", "Exportación de " + tipo, criticidad: 3);
-        //   // Enviar el PDF al navegador:
-        //   Response.ContentType = "application/pdf";
-        //   Response.AddHeader("Content-Disposition", "attachment; filename=Reporte_" + tipo + ".pdf");
-        //   Response.BinaryWrite(pdfBytes);
-        //   Response.End();
-
-        // DEMO: mostrar preview en pantalla
         MostrarPreviewDemo(idPaciente, tipo);
         MostrarExito("Reporte generado correctamente. En producción se descargará como PDF.");
     }
 
-    // =========================================================
-    // VALIDACIONES DE DISPONIBILIDAD (demo)
-    // TODO: reemplazar por BLL.DocumentoBLL.EstaDisponible(idPaciente, tipo)
-    // =========================================================
     private bool DocumentoDisponible(int idPaciente, string tipo)
     {
         if (idPaciente <= 1) return true;
@@ -209,13 +165,10 @@ public partial class FormExportarReporte : System.Web.UI.Page
 
     private bool DerivacionValidada(int idPaciente)
     {
-        if (idPaciente == 3) return false; // Carlos tiene derivación pendiente de validación
+        if (idPaciente == 3) return false; 
         return true;
     }
 
-    // =========================================================
-    // PREVIEW DEL DOCUMENTO (demo)
-    // =========================================================
     private void MostrarPreviewDemo(int idPaciente, string tipo)
     {
         string nombrePaciente = ddlPaciente.SelectedItem.Text;
@@ -235,9 +188,6 @@ public partial class FormExportarReporte : System.Web.UI.Page
         lblPrevTipoDoc.Text = tipoLabel;
     }
 
-    // =========================================================
-    // HELPERS
-    // =========================================================
     private void MostrarError(string msg)
     {
         lblMensaje.Text = msg;

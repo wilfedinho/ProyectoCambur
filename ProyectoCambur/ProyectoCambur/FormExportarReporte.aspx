@@ -206,7 +206,6 @@
 
                     </div>
 
-                    <!-- COLUMNA LATERAL -->
                     <div class="exportar-aside">
 
                         <div class="content-card historial-exportaciones-card">
@@ -272,7 +271,7 @@
         }
 
         window.addEventListener('DOMContentLoaded', function () {
-            /* Restaurar selección visual si hay un tipo en el HiddenField (post postback) */
+      
             var hf   = document.getElementById('hfTipoSeleccionado');
             var mapa = { 'RESUMEN': 'docResumen', 'DERIVACION': 'docDerivacion', 'PERFIL': 'docPerfil' };
             if (hf && hf.value && mapa[hf.value]) {

@@ -434,17 +434,34 @@ input[type="submit"].btn-login {
 }
 
 
-.link-clave-olvidada {
-    text-align: right;
-    margin-top: 6px;
+.resultado-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    padding: 16px 0;
 }
 
-    .link-clave-olvidada a {
-        font-size: 12px;
-        color: var(--text-muted);
-        text-decoration: underline;
-    }
+.resultado-icono {
+    font-size: 42px;
+    line-height: 1;
+}
 
-        .link-clave-olvidada a:hover {
-            color: var(--text-main);
-        }
+.resultado-titulo {
+    font-family: var(--font-title);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.resultado-texto {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 320px;
+}
+
+    .resultado-texto strong {
+        color: var(--text-main);
+    }

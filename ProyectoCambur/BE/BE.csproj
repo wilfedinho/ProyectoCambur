@@ -59,6 +59,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResumenClinico.cs" />
     <Compile Include="Suscripcion.cs" />
+    <Compile Include="TokenRecuperacion.cs" />
     <Compile Include="Traduccion.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

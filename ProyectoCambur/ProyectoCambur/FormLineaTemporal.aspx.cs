@@ -8,18 +8,12 @@ using System.Data;
 
 public partial class FormLineaTemporal : System.Web.UI.Page
 {
-    // =========================================================
-    // ESTADO DE FILTRO (ViewState)
-    // =========================================================
     private string FiltroTipo
     {
         get { return ViewState["FiltroTipo"] != null ? ViewState["FiltroTipo"].ToString() : "TODOS"; }
         set { ViewState["FiltroTipo"] = value; }
     }
 
-    // =========================================================
-    // PAGE LOAD
-    // =========================================================
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -32,21 +26,12 @@ public partial class FormLineaTemporal : System.Web.UI.Page
         }
     }
 
-    // =========================================================
-    // PROFESIONAL (demo)
-    // TODO: reemplazar por Session["Profesional"]
-    // =========================================================
     private void CargarProfesionalDemo()
     {
         lblNombreProfesional.Text = "Lucía Martínez";
         lblIniciales.Text = "LM";
     }
 
-    // =========================================================
-    // DATOS DEL PACIENTE (demo)
-    // TODO: reemplazar por BLL.PacienteBLL.ObtenerPorId(id)
-    //   int id = Convert.ToInt32(Request.QueryString["id"]);
-    // =========================================================
     private void CargarPacienteDemo()
     {
         lblHeaderPaciente.Text = "Línea Temporal — Martín González";
@@ -57,11 +42,6 @@ public partial class FormLineaTemporal : System.Web.UI.Page
         lblPacienteOcup.Text = "Docente";
     }
 
-    // =========================================================
-    // DATOS DEMO — todos los eventos de la línea temporal
-    // TODO: reemplazar por BLL.TimelineBLL.ObtenerPorPaciente(id)
-    //   que devuelve una lista unificada de Consultas + Historial + Eventos
-    // =========================================================
     private List<EventoTimeline> ObtenerEventosDemo()
     {
         return new List<EventoTimeline>
@@ -181,9 +161,6 @@ public partial class FormLineaTemporal : System.Web.UI.Page
         };
     }
 
-    // =========================================================
-    // CARGAR TIMELINE CON FILTROS
-    // =========================================================
     private void CargarTimeline(string tipo, DateTime? desde, DateTime? hasta)
     {
         var todos = ObtenerEventosDemo();
@@ -197,8 +174,6 @@ public partial class FormLineaTemporal : System.Web.UI.Page
             if (pasaTipo && pasaDesde && pasaHasta)
                 filtrados.Add(ev);
         }
-
-        // Estadísticas globales (siempre sobre todos los eventos)
         var consultas = todos.FindAll(x => x.Tipo == "CONSULTA");
         lblStatConsultas.Text = consultas.Count.ToString();
 
@@ -223,12 +198,8 @@ public partial class FormLineaTemporal : System.Web.UI.Page
 
         lblSinRegistros.Visible = false;
         lblTotalEventos.Text = filtrados.Count + " registro" + (filtrados.Count != 1 ? "s" : "") + " encontrado" + (filtrados.Count != 1 ? "s" : "");
-
-        // Asignar lado (izq/der) alternado
         for (int i = 0; i < filtrados.Count; i++)
             filtrados[i].LadoCss = (i % 2 == 0) ? "der" : "izq";
-
-        // Convertir a DataTable para el Repeater
         DataTable dt = new DataTable();
         dt.Columns.Add("IdEvento", typeof(int));
         dt.Columns.Add("Tipo", typeof(string));
@@ -250,13 +221,9 @@ public partial class FormLineaTemporal : System.Web.UI.Page
         rptTimeline.DataSource = dt;
         rptTimeline.DataBind();
 
-        // Marcar botón activo
         ActualizarBotonesFiltro(tipo);
     }
 
-    // =========================================================
-    // ACTIVAR BOTÓN DE FILTRO CORRECTO
-    // =========================================================
     private void ActualizarBotonesFiltro(string tipo)
     {
         btnFiltroTodos.CssClass = "filtro-btn" + (tipo == "TODOS" ? " active" : "");
@@ -264,10 +231,6 @@ public partial class FormLineaTemporal : System.Web.UI.Page
         btnFiltroHistorial.CssClass = "filtro-btn" + (tipo == "HISTORIAL" ? " active" : "");
         btnFiltroEvento.CssClass = "filtro-btn" + (tipo == "EVENTO" ? " active" : "");
     }
-
-    // =========================================================
-    // EVENTO: FILTRO POR TIPO
-    // =========================================================
     protected void btnFiltro_Click(object sender, EventArgs e)
     {
         Button btn = (Button)sender;
@@ -281,10 +244,6 @@ public partial class FormLineaTemporal : System.Web.UI.Page
 
         CargarTimeline(tipo, desde, hasta);
     }
-
-    // =========================================================
-    // EVENTO: FILTRO POR FECHA
-    // =========================================================
     protected void btnAplicarFecha_Click(object sender, EventArgs e)
     {
         DateTime? desde = null, hasta = null;
@@ -300,29 +259,10 @@ public partial class FormLineaTemporal : System.Web.UI.Page
 
         CargarTimeline(FiltroTipo, desde, hasta);
     }
-
-    // =========================================================
-    // EVENTO: VER DETALLE (manejado por JS client-side)
-    // Se conserva el handler server-side para cuando haya
-    // navegación real a pantalla de detalle
-    // =========================================================
     protected void rptTimeline_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
-        // El toggle de detalle se hace 100% en JS
-        // Este handler queda disponible para futura navegación:
-        // if (e.CommandName == "VerDetalle")
-        // {
-        //     string[] args    = e.CommandArgument.ToString().Split('|');
-        //     int idEvento     = Convert.ToInt32(args[0]);
-        //     string tipo      = args[1];
-        //     if (tipo == "CONSULTA")
-        //         Response.Redirect("FormModificarConsulta.aspx?id=" + idEvento);
-        // }
     }
 
-    // =========================================================
-    // HELPERS
-    // =========================================================
     private void MostrarError(string msg)
     {
         lblMensaje.Text = msg;
@@ -330,21 +270,18 @@ public partial class FormLineaTemporal : System.Web.UI.Page
         lblMensaje.Visible = true;
     }
 
-    // =========================================================
-    // CLASE AUXILIAR — Evento de la línea temporal
-    // =========================================================
     private class EventoTimeline
     {
         public int IdEvento { get; set; }
-        public string Tipo { get; set; }  // CONSULTA | HISTORIAL | EVENTO
+        public string Tipo { get; set; } 
         public string TipoLabel { get; set; }
-        public string TipoCss { get; set; }  // consulta | historial | evento
+        public string TipoCss { get; set; }  
         public string Icono { get; set; }
         public DateTime Fecha { get; set; }
         public string Resumen { get; set; }
         public string Detalle { get; set; }
         public int Duracion { get; set; }
         public string Modalidad { get; set; }
-        public string LadoCss { get; set; }  // izq | der
+        public string LadoCss { get; set; }  
     }
 }

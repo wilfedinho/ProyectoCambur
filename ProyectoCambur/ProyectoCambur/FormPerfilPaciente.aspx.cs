@@ -4,9 +4,6 @@ using System.Data;
 
 public partial class FormPerfilPaciente : System.Web.UI.Page
 {
-    // =========================================================
-    // PAGE LOAD
-    // =========================================================
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -17,11 +14,6 @@ public partial class FormPerfilPaciente : System.Web.UI.Page
             MostrarEstado(1);
         }
     }
-
-    // =========================================================
-    // CONTROL DE ESTADOS
-    // Estado 1 = selección de modelo | Estado 2 = resultado
-    // =========================================================
     private void MostrarEstado(int estado)
     {
         pnlSeleccion.Visible = (estado == 1);
@@ -30,23 +22,11 @@ public partial class FormPerfilPaciente : System.Web.UI.Page
             ? "Generar perfil del paciente"
             : "Perfil generado";
     }
-
-    // =========================================================
-    // PROFESIONAL (demo)
-    // TODO: reemplazar por Session["Profesional"]
-    // =========================================================
     private void CargarProfesionalDemo()
     {
         lblNombreProfesional.Text = "Lucía Martínez";
         lblIniciales.Text = "LM";
     }
-
-    // =========================================================
-    // PACIENTE (demo)
-    // TODO: reemplazar por:
-    //   int id = Convert.ToInt32(Request.QueryString["id"]);
-    //   BE.Paciente p = BLL.PacienteBLL.ObtenerPorId(id);
-    // =========================================================
     private void CargarPacienteDemo()
     {
         lblPacienteIniciales.Text = "MG";
@@ -54,11 +34,6 @@ public partial class FormPerfilPaciente : System.Web.UI.Page
         lblPacienteEdad.Text = "33 años";
         lblPacienteConsultas.Text = "12 consultas registradas";
     }
-
-    // =========================================================
-    // PERFILES ANTERIORES (demo)
-    // TODO: reemplazar por BLL.PerfilBLL.ObtenerPorPaciente(id)
-    // =========================================================
     private void CargarPerfilesAnterioresDemo()
     {
         DataTable dt = new DataTable();
@@ -81,10 +56,6 @@ public partial class FormPerfilPaciente : System.Web.UI.Page
             lblSinPerfiles.Visible = true;
         }
     }
-
-    // =========================================================
-    // EVENTO: GENERAR PERFIL (Estado 1 → Estado 2)
-    // =========================================================
     protected void btnGenerar_Click(object sender, EventArgs e)
     {
         lblMensaje.Visible = false;
@@ -96,24 +67,9 @@ public partial class FormPerfilPaciente : System.Web.UI.Page
             MostrarError("Seleccioná un modelo de evaluación antes de generar el perfil.");
             return;
         }
-
-        // TODO: reemplazar por:
-        //   int idPaciente    = Convert.ToInt32(Request.QueryString["id"]);
-        //   int idProfesional = (int)Session["IdProfesional"];
-        //   BE.PerfilIA perfil = BLL.PerfilBLL.GenerarConIA(idPaciente, idProfesional, modelo);
-        //   if (perfil == null) { MostrarError("El servicio de IA no pudo generar el perfil. Intentá nuevamente."); return; }
-        //   CargarResultado(perfil.Modelo, perfil.Descripcion, perfil.Dimensiones,
-        //                   perfil.Patrones, perfil.Consideraciones);
-
-        // DEMO: cargar perfil según modelo seleccionado
         CargarPerfilDemo(modelo);
         MostrarEstado(2);
     }
-
-    // =========================================================
-    // PERFILES DEMO POR MODELO
-    // Simula la respuesta del módulo Python/FastAPI con OpenRouter
-    // =========================================================
     private void CargarPerfilDemo(string modelo)
     {
         string nombreModelo = string.Empty;
@@ -254,25 +210,17 @@ public partial class FormPerfilPaciente : System.Web.UI.Page
                 MostrarError("Modelo no reconocido. Seleccioná una opción válida.");
                 return;
         }
-
-        // Cargar resultado en los Labels
         lblResultadoMeta.Text = "Paciente: Martín González · " + nombreModelo;
         lblModeloUsado.Text = "🧠 Modelo: " + nombreModelo;
         lblDescripcionGeneral.Text = descripcion;
         lblDimensiones.Text = dimensiones;
         lblPatrones.Text = patrones;
         lblConsideraciones.Text = consideraciones;
-
-        // Meta card lateral
         lblMetaPaciente.Text = "Martín González";
         lblMetaModelo.Text = nombreModelo;
         lblMetaConsultas.Text = "12 consultas + historial clínico";
         lblMetaFecha.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
     }
-
-    // =========================================================
-    // EVENTO: NUEVO PERFIL (Estado 2 → Estado 1)
-    // =========================================================
     protected void btnNuevoPerfil_Click(object sender, EventArgs e)
     {
         lblMensaje.Visible = false;
@@ -280,36 +228,11 @@ public partial class FormPerfilPaciente : System.Web.UI.Page
         CargarPerfilesAnterioresDemo();
         MostrarEstado(1);
     }
-
-    // =========================================================
-    // EVENTO: GUARDAR PERFIL
-    // =========================================================
     protected void btnGuardar_Click(object sender, EventArgs e)
     {
         lblMensaje.Visible = false;
-
-        // TODO: reemplazar por:
-        //   int idPaciente    = Convert.ToInt32(Request.QueryString["id"]);
-        //   int idProfesional = (int)Session["IdProfesional"];
-        //   BE.PerfilIA perfil = new BE.PerfilIA();
-        //   perfil.IdPaciente           = idPaciente;
-        //   perfil.IdProfesional        = idProfesional;
-        //   perfil.Modelo               = hfModeloSeleccionado.Value;
-        //   perfil.DescripcionGeneral   = lblDescripcionGeneral.Text;  // BLL encripta AES
-        //   perfil.Dimensiones          = lblDimensiones.Text;         // BLL encripta AES
-        //   perfil.Patrones             = lblPatrones.Text;            // BLL encripta AES
-        //   perfil.Consideraciones      = lblConsideraciones.Text;     // BLL encripta AES
-        //   perfil.FechaGeneracion      = DateTime.Now;
-        //   bool ok = BLL.PerfilBLL.Guardar(perfil);
-        //   if (ok) MostrarExito("Perfil guardado correctamente.");
-        //   else    MostrarError("No fue posible guardar el perfil.");
-
         MostrarExito("Perfil guardado y encriptado correctamente. Disponible para exportar en PDF.");
     }
-
-    // =========================================================
-    // HELPERS
-    // =========================================================
     private void MostrarError(string msg)
     {
         lblMensaje.Text = msg;

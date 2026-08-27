@@ -49,6 +49,7 @@
     <Compile Include="EventosBitacora.cs" />
     <Compile Include="ExceptionTraducible.cs" />
     <Compile Include="GestorBitacora.cs" />
+    <Compile Include="GestorEmail.cs" />
     <Compile Include="GestorIdioma.cs" />
     <Compile Include="GestorPermiso.cs" />
     <Compile Include="GestorSesion.cs" />

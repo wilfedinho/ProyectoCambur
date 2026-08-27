@@ -24,6 +24,10 @@ public partial class FormLogin : PaginaBase
             {
                 MostrarError(Traducir("login_sesion_cerrada_por_acceso_denegado"));
             }
+            if (Request.QueryString["clave_restablecida"] == "ok")
+            {
+                MostrarExito(Traducir("login_clave_restablecida"));
+            }
         }
     }
 

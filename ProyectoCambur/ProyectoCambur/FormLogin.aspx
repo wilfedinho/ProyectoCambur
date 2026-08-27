@@ -102,9 +102,12 @@
                             ErrorMessage="La contraseña es obligatoria."
                             CssClass="field-error" Display="Dynamic"
                             ValidationGroup="vgLogin" />
+                        <p class="link-clave-olvidada">
+                            <a href="FormClaveOlvidada.aspx">¿Olvidaste tu contraseña?</a>
+                        </p>
                     </div>
 
-                 
+
                     <asp:Button ID="btnLogin" runat="server"
                         Text="Iniciar sesión →"
                         CssClass="btn-login"

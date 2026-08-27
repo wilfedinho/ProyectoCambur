@@ -5,10 +5,6 @@ using System.Web.UI.WebControls;
 
 public partial class FormRealizarConsulta : System.Web.UI.Page
 {
-    // =========================================================
-    // DATOS DEMO — pacientes disponibles
-    // TODO: reemplazar por BLL.PacienteBLL.ObtenerActivosPorProfesional()
-    // =========================================================
     private class PacienteDemo
     {
         public int Id { get; set; }
@@ -32,10 +28,6 @@ public partial class FormRealizarConsulta : System.Web.UI.Page
             new PacienteDemo { Id=5, Nombre="Facundo Pérez",     Iniciales="FP", Edad=27, Ocupacion="Estudiante",   EstadoCivil="Soltero/a",  Consultas=3,  UltimaConsulta="28/04/2026" },
         };
     }
-
-    // =========================================================
-    // PAGE LOAD
-    // =========================================================
     protected void Page_Load(object sender, EventArgs e)
     {
         Page.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
@@ -44,25 +36,15 @@ public partial class FormRealizarConsulta : System.Web.UI.Page
             CargarProfesionalDemo();
             CargarDropdownPacientes();
             CargarFormularioDemo();
-            ActualizarCardPaciente(1); // primer paciente por defecto
+            ActualizarCardPaciente(1); 
             CargarUltimasConsultasDemo(1);
         }
     }
-
-    // =========================================================
-    // PROFESIONAL LOGUEADO (demo)
-    // TODO: reemplazar por Session["Profesional"]
-    // =========================================================
     private void CargarProfesionalDemo()
     {
         lblNombreProfesional.Text = "Lucía Martínez";
         lblIniciales.Text = "LM";
     }
-
-    // =========================================================
-    // DROPDOWN DE PACIENTES
-    // TODO: reemplazar ObtenerPacientesDemo() por BLL real
-    // =========================================================
     private void CargarDropdownPacientes()
     {
         ddlPaciente.Items.Clear();
@@ -70,16 +52,9 @@ public partial class FormRealizarConsulta : System.Web.UI.Page
 
         foreach (var p in ObtenerPacientesDemo())
             ddlPaciente.Items.Add(new ListItem(p.Nombre, p.Id.ToString()));
-
-        // Seleccionar el primero por defecto (demo)
         if (ddlPaciente.Items.Count > 1)
             ddlPaciente.Items[1].Selected = true;
     }
-
-    // =========================================================
-    // PRE-RELLENO DEL FORMULARIO (demo)
-    // TODO: quitar en producción
-    // =========================================================
     private void CargarFormularioDemo()
     {
         txtFechaConsulta.Text = DateTime.Today.ToString("yyyy-MM-dd");
@@ -93,11 +68,6 @@ public partial class FormRealizarConsulta : System.Web.UI.Page
         txtDiagnostico.Text = "Episodio de ansiedad situacional con activación de creencias nucleares de incompetencia.";
         txtTratamiento.Text = "Continuar con TCC. Proponer registro de pensamientos automáticos para la próxima semana.";
     }
-
-    // =========================================================
-    // CARD LATERAL DEL PACIENTE SELECCIONADO
-    // TODO: reemplazar por BLL.PacienteBLL.ObtenerPorId(id)
-    // =========================================================
     private void ActualizarCardPaciente(int idPaciente)
     {
         var pacientes = ObtenerPacientesDemo();
@@ -123,14 +93,8 @@ public partial class FormRealizarConsulta : System.Web.UI.Page
         lblTotalConsultas.Text = p.Consultas.ToString();
         lblUltimaConsulta.Text = p.UltimaConsulta;
     }
-
-    // =========================================================
-    // CONSULTAS RECIENTES DEL PACIENTE
-    // TODO: reemplazar por BLL.ConsultaBLL.ObtenerUltimas(idPaciente, cantidad:3)
-    // =========================================================
     private void CargarUltimasConsultasDemo(int idPaciente)
     {
-        // Datos demo fijos por paciente
         var consultas = new DataTable();
         consultas.Columns.Add("Fecha", typeof(DateTime));
         consultas.Columns.Add("Resumen", typeof(string));
@@ -166,10 +130,6 @@ public partial class FormRealizarConsulta : System.Web.UI.Page
             lblSinConsultas.Visible = true;
         }
     }
-
-    // =========================================================
-    // EVENTO: CAMBIO DE PACIENTE EN DROPDOWN (AutoPostBack)
-    // =========================================================
     protected void ddlPaciente_SelectedIndexChanged(object sender, EventArgs e)
     {
         int idPaciente = 0;
@@ -183,41 +143,29 @@ public partial class FormRealizarConsulta : System.Web.UI.Page
             ActualizarCardPaciente(0);
         }
     }
-
-    // =========================================================
-    // EVENTO BOTÓN REGISTRAR CONSULTA
-    // =========================================================
     protected void btnRegistrar_Click(object sender, EventArgs e)
     {
         lblMensaje.Visible = false;
 
         if (!Page.IsValid) return;
-
-        // Validar paciente seleccionado
         int idPaciente = 0;
         if (!int.TryParse(ddlPaciente.SelectedValue, out idPaciente) || idPaciente == 0)
         {
             MostrarError("Debés seleccionar un paciente para registrar la consulta.");
             return;
         }
-
-        // Validar fecha
         DateTime fechaConsulta;
         if (!DateTime.TryParse(txtFechaConsulta.Text, out fechaConsulta))
         {
             MostrarError("La fecha ingresada no es válida.");
             return;
         }
-
-        // Validar duración
         int duracion;
         if (!int.TryParse(txtDuracion.Text, out duracion) || duracion <= 0)
         {
             MostrarError("La duración debe ser un número positivo de minutos.");
             return;
         }
-
-        // Recoger valores
         string modalidad = ddlModalidad.SelectedValue;
         string objetivos = txtObjetivos.Text.Trim();
         string observaciones = txtObservaciones.Text.Trim();
@@ -226,36 +174,11 @@ public partial class FormRealizarConsulta : System.Web.UI.Page
         string evolucion = txtEvolucion.Text.Trim();
         string diagnostico = txtDiagnostico.Text.Trim();
         string tratamiento = txtTratamiento.Text.Trim();
-
-        // TODO: reemplazar por:
-        //   int idProfesional = (int)Session["IdProfesional"];
-        //   BE.Consulta c = new BE.Consulta();
-        //   c.IdPaciente      = idPaciente;
-        //   c.IdProfesional   = idProfesional;
-        //   c.Fecha           = fechaConsulta;
-        //   c.Duracion        = duracion;
-        //   c.Modalidad       = modalidad;
-        //   c.Objetivos       = objetivos;        // se encripta en BLL con AES
-        //   c.Observaciones   = observaciones;    // se encripta en BLL con AES
-        //   c.Hipotesis       = hipotesis;        // se encripta en BLL con AES
-        //   c.Intervenciones  = intervenciones;   // se encripta en BLL con AES
-        //   c.Evolucion       = evolucion;        // se encripta en BLL con AES
-        //   c.Diagnostico     = diagnostico;      // se encripta en BLL con AES
-        //   c.Tratamiento     = tratamiento;      // se encripta en BLL con AES
-        //   bool ok = BLL.ConsultaBLL.Registrar(c);
-        //   if (ok) { MostrarExito("..."); LimpiarFormulario(); }
-        //   else      MostrarError("...");
-
-        // DEMO: simular registro exitoso
         string nombrePaciente = ddlPaciente.SelectedItem.Text;
         MostrarExito("Consulta del " + fechaConsulta.ToString("dd/MM/yyyy")
             + " registrada correctamente para " + nombrePaciente + ". Los datos fueron encriptados.");
         LimpiarContenidoClinico();
     }
-
-    // =========================================================
-    // HELPERS
-    // =========================================================
     private void MostrarError(string msg)
     {
         lblMensaje.Text = msg;
@@ -269,8 +192,6 @@ public partial class FormRealizarConsulta : System.Web.UI.Page
         lblMensaje.CssClass = "server-success";
         lblMensaje.Visible = true;
     }
-
-    // Limpia solo los campos clínicos, no el paciente ni la fecha
     private void LimpiarContenidoClinico()
     {
         txtObjetivos.Text = string.Empty;

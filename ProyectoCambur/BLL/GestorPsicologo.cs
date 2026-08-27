@@ -3,6 +3,7 @@ using DAL;
 using SERVICIOS;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 
 namespace BLL
@@ -11,6 +12,7 @@ namespace BLL
     {
         private const int MAX_INTENTOS = 3;
         private const int MINUTOS_DECAIMIENTO_INTENTOS = 10;
+        private const int MINUTOS_EXPIRACION_TOKEN_RECUPERACION = 30;
         private const string TABLA = "Profesional";
 
         #region Operaciones Psicologo
@@ -70,7 +72,7 @@ namespace BLL
             RecalcularDVHDe(idPsicologo);
         }
 
-     
+
         public Psicologo CambiarIdioma(int idPsicologo, string nuevoIdioma)
         {
             if (string.IsNullOrWhiteSpace(nuevoIdioma))
@@ -225,6 +227,117 @@ namespace BLL
 
             psicologoLogueado = psicologo;
             return ResultadoLogin.Ok;
+        }
+
+        #endregion
+
+        #region Recuperación de clave (olvido de contraseña, vía email)
+        public void SolicitarRecuperacionClave(string email, string urlBaseSitio)
+        {
+            if (!VerificarFormatoEmail(email))
+            {
+                throw new ExcepcionTraducible("error_formato_email");
+            }
+
+            PsicologoDAL psicologoDAL = new PsicologoDAL();
+            Psicologo psicologo = psicologoDAL.BuscarPorEmail(email.Trim().ToLower());
+
+            if (psicologo == null || !psicologo.Activo || !psicologo.IsHabilitado)
+            {
+                return;
+            }
+            TokenRecuperacionDAL tokenDAL = new TokenRecuperacionDAL();
+            tokenDAL.InvalidarTokensVigentesDe(psicologo.IdPsicologo);
+
+            string tokenPlano = GenerarTokenAleatorio();
+            string tokenHash = Cifrador.GestorCifrador.EncriptarIrreversible(tokenPlano);
+
+            TokenRecuperacion nuevoToken = new TokenRecuperacion
+            {
+                IdProfesional = psicologo.IdPsicologo,
+                TokenHash = tokenHash,
+                FechaGeneracion = DateTime.Now,
+                FechaExpiracion = DateTime.Now.AddMinutes(MINUTOS_EXPIRACION_TOKEN_RECUPERACION),
+                Usado = false
+            };
+            tokenDAL.Alta(nuevoToken);
+
+            string link = urlBaseSitio.TrimEnd('/') + "/FormRestablecerClave.aspx?token=" + tokenPlano;
+
+            GestorEmail gestorEmail = new GestorEmail();
+            gestorEmail.EnviarCorreoRecuperacionClave(psicologo.Email, psicologo.Nombre, link);
+
+            new GestorBitacora().RegistrarEvento(psicologo.Email, EventosBitacora.MOD_AUTENTICACION, EventosBitacora.DESC_SOLICITUD_RECUPERACION_CLAVE, EventosBitacora.CRIT_SOLICITUD_RECUPERACION_CLAVE);
+        }
+        public bool ValidarTokenRecuperacion(string tokenPlano, out Psicologo psicologoDelToken)
+        {
+            psicologoDelToken = null;
+
+            if (string.IsNullOrWhiteSpace(tokenPlano))
+            {
+                return false;
+            }
+
+            string tokenHash = Cifrador.GestorCifrador.EncriptarIrreversible(tokenPlano);
+            TokenRecuperacionDAL tokenDAL = new TokenRecuperacionDAL();
+            TokenRecuperacion token = tokenDAL.BuscarPorHash(tokenHash);
+
+            if (token == null || token.Usado || token.FechaExpiracion < DateTime.Now)
+            {
+                return false;
+            }
+
+            PsicologoDAL psicologoDAL = new PsicologoDAL();
+            psicologoDelToken = psicologoDAL.BuscarPorId(token.IdProfesional);
+
+            return psicologoDelToken != null;
+        }
+        public void RestablecerClave(string tokenPlano, string contrasenaNueva)
+        {
+            Psicologo psicologo;
+            if (!ValidarTokenRecuperacion(tokenPlano, out psicologo))
+            {
+                throw new ExcepcionTraducible("error_token_invalido_o_expirado");
+            }
+
+            if (!VerificarFormatoContrasena(contrasenaNueva))
+            {
+                throw new ExcepcionTraducible("error_formato_contrasena");
+            }
+
+            string hashNuevo = Cifrador.GestorCifrador.EncriptarIrreversible(contrasenaNueva);
+            if (hashNuevo == psicologo.Contrasena)
+            {
+                throw new ExcepcionTraducible("error_contrasena_igual_actual");
+            }
+
+            PsicologoDAL psicologoDAL = new PsicologoDAL();
+            psicologoDAL.Desbloquear(psicologo.IdPsicologo, hashNuevo);
+
+            string tokenHash = Cifrador.GestorCifrador.EncriptarIrreversible(tokenPlano);
+            TokenRecuperacionDAL tokenDAL = new TokenRecuperacionDAL();
+            TokenRecuperacion token = tokenDAL.BuscarPorHash(tokenHash);
+            if (token != null)
+            {
+                tokenDAL.MarcarUsado(token.IdToken);
+            }
+
+            RecalcularDVHDe(psicologo.IdPsicologo);
+            new GestorBitacora().RegistrarEvento(psicologo.Email, EventosBitacora.MOD_AUTENTICACION, EventosBitacora.DESC_RESTABLECIMIENTO_CLAVE, EventosBitacora.CRIT_RESTABLECIMIENTO_CLAVE);
+        }
+
+        private string GenerarTokenAleatorio()
+        {
+            byte[] bytesAleatorios = new byte[32];
+            using (RandomNumberGenerator generador = RandomNumberGenerator.Create())
+            {
+                generador.GetBytes(bytesAleatorios);
+            }
+
+            return Convert.ToBase64String(bytesAleatorios)
+                .Replace("+", "-")
+                .Replace("/", "_")
+                .Replace("=", "");
         }
 
         #endregion

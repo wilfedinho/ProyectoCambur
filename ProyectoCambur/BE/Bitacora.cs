@@ -9,7 +9,6 @@ namespace BE
     public class Bitacora
     {
         public int IdBitacora { get; set; }
-    
         public string Usuario { get; set; }
         public string Modulo { get; set; }
         public string Descripcion { get; set; }

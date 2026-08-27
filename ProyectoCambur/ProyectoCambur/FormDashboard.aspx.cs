@@ -9,18 +9,11 @@ using System.Globalization;
 
 public partial class FormDashboard : System.Web.UI.Page
 {
-    // =========================================================
-    // PERÍODO ACTIVO (ViewState)
-    // =========================================================
     private string PeriodoActivo
     {
         get { return ViewState["Periodo"] != null ? ViewState["Periodo"].ToString() : "MES"; }
         set { ViewState["Periodo"] = value; }
     }
-
-    // =========================================================
-    // PAGE LOAD
-    // =========================================================
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -29,11 +22,6 @@ public partial class FormDashboard : System.Web.UI.Page
             CargarDashboard("MES");
         }
     }
-
-    // =========================================================
-    // PROFESIONAL (demo)
-    // TODO: reemplazar por Session["Profesional"]
-    // =========================================================
     private void CargarProfesionalDemo()
     {
         lblNombreProfesional.Text = "Lucía Martínez";
@@ -42,11 +30,6 @@ public partial class FormDashboard : System.Web.UI.Page
         lblFechaHoy.Text = DateTime.Today.ToString("dddd d 'de' MMMM 'de' yyyy",
                                         new CultureInfo("es-AR"));
     }
-
-    // =========================================================
-    // CARGA CENTRAL DEL DASHBOARD
-    // TODO: reemplazar cada sección por su llamada BLL
-    // =========================================================
     private void CargarDashboard(string periodo)
     {
         PeriodoActivo = periodo;
@@ -54,7 +37,6 @@ public partial class FormDashboard : System.Web.UI.Page
 
         var datos = ObtenerDatosDemo(periodo);
 
-        // ── KPIs principales ──
         lblKpiTotalPacientes.Text = datos.TotalPacientes.ToString();
         lblKpiNuevosPacientes.Text = datos.NuevosPacientes.ToString();
         lblKpiConsultas.Text = datos.Consultas.ToString();
@@ -65,29 +47,20 @@ public partial class FormDashboard : System.Web.UI.Page
         lblKpiDeltaConsultas.Text = datos.DeltaConsultas;
         lblKpiDeltaDeriv.Text = datos.DeltaDerivaciones;
 
-        // ── KPIs IA ──
         lblKpiResumenes.Text = datos.ResumenesIA.ToString();
         lblKpiPerfilaciones.Text = datos.Perfilaciones.ToString();
         lblKpiExportaciones.Text = datos.Exportaciones.ToString();
 
-        // ── Gráfico ──
         lblGraficoSubtitulo.Text = "Consultas por mes · últimos 6 meses";
         CargarGrafico();
 
-        // ── Últimas consultas ──
         CargarUltimasConsultas();
 
-        // ── Pacientes activos ──
         CargarPacientesActivos();
     }
-
-    // =========================================================
-    // GRÁFICO DE BARRAS (últimos 6 meses)
-    // TODO: reemplazar por BLL.DashboardBLL.ConsultasPorMes(idProf, 6)
-    // =========================================================
     private void CargarGrafico()
     {
-        // Datos demo de consultas por mes
+    
         var meses = new[]
         {
             new { Mes = "Diciembre",  MesCorto = "Dic", Valor = 8  },
@@ -109,7 +82,7 @@ public partial class FormDashboard : System.Web.UI.Page
         dt.Columns.Add("EsActual", typeof(bool));
 
         string mesActual = DateTime.Today.ToString("MMMM", new CultureInfo("es-AR"));
-        // Capitalizar primera letra
+       
         if (mesActual.Length > 0)
             mesActual = char.ToUpper(mesActual[0]) + mesActual.Substring(1);
 
@@ -123,10 +96,6 @@ public partial class FormDashboard : System.Web.UI.Page
         rptGrafico.DataBind();
     }
 
-    // =========================================================
-    // ÚLTIMAS CONSULTAS
-    // TODO: reemplazar por BLL.ConsultaBLL.ObtenerUltimasPorProfesional(id, 5)
-    // =========================================================
     private void CargarUltimasConsultas()
     {
         DataTable dt = new DataTable();
@@ -145,10 +114,6 @@ public partial class FormDashboard : System.Web.UI.Page
         gvUltimasConsultas.DataBind();
     }
 
-    // =========================================================
-    // PACIENTES ACTIVOS
-    // TODO: reemplazar por BLL.PacienteBLL.ObtenerActivosPorProfesional(id)
-    // =========================================================
     private void CargarPacientesActivos()
     {
         DataTable dt = new DataTable();
@@ -168,12 +133,7 @@ public partial class FormDashboard : System.Web.UI.Page
 
         lblBadgePacientesActivos.Text = dt.Rows.Count + " activos";
         lblBadgePacientesActivos.Visible = true;
-    }
-
-    // =========================================================
-    // DATOS DEMO POR PERÍODO
-    // TODO: reemplazar por BLL.DashboardBLL.ObtenerKPIs(idProf, periodo)
-    // =========================================================
+    }    
     private DatosDashboard ObtenerDatosDemo(string periodo)
     {
         switch (periodo)
@@ -223,7 +183,7 @@ public partial class FormDashboard : System.Web.UI.Page
                     DeltaConsultas = "↑ 18% vs. año anterior",
                     DeltaDerivaciones = "↑ 2 más que el año pasado"
                 };
-            default: // MES
+            default: 
                 return new DatosDashboard
                 {
                     TotalPacientes = 18,
@@ -241,9 +201,6 @@ public partial class FormDashboard : System.Web.UI.Page
         }
     }
 
-    // =========================================================
-    // ACTUALIZAR BOTONES DE PERÍODO
-    // =========================================================
     private void ActualizarBotonesPeriodo(string periodo)
     {
         btnSemana.CssClass = "periodo-btn" + (periodo == "SEMANA" ? " active" : "");
@@ -252,18 +209,12 @@ public partial class FormDashboard : System.Web.UI.Page
         btnAnio.CssClass = "periodo-btn" + (periodo == "ANIO" ? " active" : "");
     }
 
-    // =========================================================
-    // EVENTO CAMBIO DE PERÍODO
-    // =========================================================
     protected void btnPeriodo_Click(object sender, EventArgs e)
     {
         System.Web.UI.WebControls.Button btn = (System.Web.UI.WebControls.Button)sender;
         CargarDashboard(btn.CommandArgument);
     }
 
-    // =========================================================
-    // CLASE AUXILIAR
-    // =========================================================
     private class DatosDashboard
     {
         public int TotalPacientes { get; set; }

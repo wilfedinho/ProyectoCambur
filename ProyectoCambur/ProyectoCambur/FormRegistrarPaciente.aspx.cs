@@ -4,9 +4,6 @@ using System.Web.UI.WebControls;
 
 public partial class FormRegistrarPaciente : System.Web.UI.Page
 {
-    // =========================================================
-    // PAGE LOAD
-    // =========================================================
     protected void Page_Load(object sender, EventArgs e)
     {
         Page.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
@@ -17,21 +14,11 @@ public partial class FormRegistrarPaciente : System.Web.UI.Page
             CargarTablaPacientesDemo();
         }
     }
-
-    // =========================================================
-    // DATOS DEL PROFESIONAL LOGUEADO (demo)
-    // TODO: reemplazar por Session["Profesional"]
-    // =========================================================
     private void CargarProfesionalDemo()
     {
         lblNombreProfesional.Text = "Lucía Martínez";
         lblIniciales.Text = "LM";
     }
-
-    // =========================================================
-    // PRE-RELLENO DEL FORMULARIO (demo)
-    // TODO: quitar este método en producción
-    // =========================================================
     private void CargarFormularioDemo()
     {
         txtNombre.Text = "Martín";
@@ -43,11 +30,6 @@ public partial class FormRegistrarPaciente : System.Web.UI.Page
         txtEmail.Text = "martin.gonzalez@email.com";
         txtTelefono.Text = "11-2345-6789";
     }
-
-    // =========================================================
-    // TABLA DE PACIENTES (demo)
-    // TODO: reemplazar por BLL.PacienteBLL.ObtenerPorProfesional(idProfesional)
-    // =========================================================
     private void CargarTablaPacientesDemo()
     {
         DataTable dt = new DataTable();
@@ -66,8 +48,6 @@ public partial class FormRegistrarPaciente : System.Web.UI.Page
 
         gvPacientes.DataSource = dt;
         gvPacientes.DataBind();
-
-        // Contadores en badges
         int activos = 0;
         int inactivos = 0;
         foreach (DataRow row in dt.Rows)
@@ -82,10 +62,6 @@ public partial class FormRegistrarPaciente : System.Web.UI.Page
         lblBadgeInactivos.Text = inactivos + " inactivos";
         lblBadgeInactivos.Visible = true;
     }
-
-    // =========================================================
-    // EVENTO BOTÓN REGISTRAR
-    // =========================================================
     protected void btnRegistrar_Click(object sender, EventArgs e)
     {
         lblMensaje.Visible = false;
@@ -108,8 +84,6 @@ public partial class FormRegistrarPaciente : System.Web.UI.Page
             MostrarError("La fecha de nacimiento ingresada no es válida.");
             return;
         }
-
-        // TODO: reemplazar por llamada a BLL.PacienteBLL.Registrar(paciente)
         bool ok = SimularRegistroDemo(nombre);
 
         if (ok)
@@ -123,10 +97,6 @@ public partial class FormRegistrarPaciente : System.Web.UI.Page
             MostrarError("Ya existe un paciente con esos datos en tu entorno clínico.");
         }
     }
-
-    // =========================================================
-    // EVENTO COMANDOS DE TABLA (Ver, Modificar, DarBaja, Reactivar)
-    // =========================================================
     protected void gvPacientes_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         int idPaciente = Convert.ToInt32(e.CommandArgument);
@@ -134,36 +104,28 @@ public partial class FormRegistrarPaciente : System.Web.UI.Page
         switch (e.CommandName)
         {
             case "Modificar":
-                // TODO: Response.Redirect("FormModificarPaciente.aspx?id=" + idPaciente);
+            
                 MostrarExito("Demo: Modificar paciente ID " + idPaciente + ". (Redirigir a FormModificarPaciente.aspx)");
                 break;
 
             case "DarBaja":
-                // TODO: BLL.PacienteBLL.DarDeBaja(idPaciente);
+            
                 MostrarExito("Demo: Paciente ID " + idPaciente + " dado de baja correctamente.");
                 CargarTablaPacientesDemo();
                 break;
 
             case "Reactivar":
-                // TODO: BLL.PacienteBLL.Reactivar(idPaciente);
+         
                 MostrarExito("Demo: Paciente ID " + idPaciente + " reactivado correctamente.");
                 CargarTablaPacientesDemo();
                 break;
         }
     }
-
-    // =========================================================
-    // SIMULACIÓN DEMO
-    // =========================================================
     private bool SimularRegistroDemo(string nombre)
     {
         if (nombre.ToLower() == "duplicado") return false;
         return true;
     }
-
-    // =========================================================
-    // HELPERS
-    // =========================================================
     private void MostrarError(string msg)
     {
         lblMensaje.Text = msg;

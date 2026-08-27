@@ -132,7 +132,6 @@
                     </div>
                 </div>
 
-                <!-- ============ TRADUCCIONES DE UN IDIOMA ============ -->
                 <asp:Panel ID="pnlTraducciones" runat="server" CssClass="content-card mt-24" Visible="false">
                     <div class="card-header">
                         <h2 class="card-title"><asp:Label ID="lblTituloTraducciones" runat="server" Text="" /> — <asp:Label ID="lblIdiomaSeleccionado" runat="server" Text="" /></h2>

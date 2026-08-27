@@ -6,14 +6,6 @@ using System.Web;
 
 namespace SERVICIOS
 {
-    // Provee las dos operaciones criptograficas que usa todo el sistema:
-    // - EncriptarIrreversible: hash SHA-256 (contrasenas, digito verificador)
-    // - EncriptarReversible / DesencriptarReversible: AES (informacion clinica sensible)
-    //
-    // La clave AES es unica para todo el sistema y se persiste en App_Data/cifrador.key.
-    // IMPORTANTE: ese archivo es la unica forma de recuperar los datos clinicos encriptados.
-    // Si se pierde, TODA la informacion cifrada en la base queda irrecuperable. Hay que
-    // incluirlo en el backup del sistema (fuera del control de versiones).
     public class Cifrador
     {
         private static Cifrador Instancia;
@@ -59,9 +51,6 @@ namespace SERVICIOS
 
         private string ObtenerRutaArchivoClave()
         {
-            // En un request web normal usamos App_Data (protegida: IIS no sirve ese contenido por HTTP).
-            // El fallback es solo para el caso de que esta clase se use fuera de un request HTTP
-            // (por ejemplo, una tarea programada mas adelante).
             if (HttpContext.Current != null)
             {
                 return HttpContext.Current.Server.MapPath("~/App_Data/" + NombreArchivoClave);
@@ -98,7 +87,6 @@ namespace SERVICIOS
                 using (ICryptoTransform encriptador = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV))
                 using (MemoryStream msEncrypt = new MemoryStream())
                 {
-                    // El IV no es secreto: se antepone al texto cifrado para poder desencriptar despues.
                     msEncrypt.Write(aesAlg.IV, 0, aesAlg.IV.Length);
 
                     using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encriptador, CryptoStreamMode.Write))
