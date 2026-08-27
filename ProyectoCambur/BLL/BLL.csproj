@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GestorConsulta.cs" />
     <Compile Include="GestorPaciente.cs" />
     <Compile Include="GestorPsicologo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

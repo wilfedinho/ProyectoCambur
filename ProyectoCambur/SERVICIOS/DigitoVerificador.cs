@@ -8,7 +8,7 @@ namespace SERVICIOS
 {
     public class DigitoVerificador
     {
-        private static readonly List<string> TablasControladas = new List<string> { "Profesional", "Paciente" };
+        private static readonly List<string> TablasControladas = new List<string> { "Profesional", "Paciente", "Consulta" };
 
         #region Calculo de DVH (por registro)
 
@@ -44,6 +44,22 @@ namespace SERVICIOS
                 sb.Append(paciente.Activo);
             }
 
+            if (entidad is Consulta consulta)
+            {
+                sb.Append(consulta.IdPaciente);
+                sb.Append(consulta.IdPsicologo);
+                sb.Append(consulta.FechaConsulta);
+                sb.Append(consulta.TiempoConsulta);
+                sb.Append(consulta.FechaRegistro);
+                sb.Append(consulta.Objetivos);
+                sb.Append(consulta.Observaciones);
+                sb.Append(consulta.Hipotesis);
+                sb.Append(consulta.Intervenciones);
+                sb.Append(consulta.EvolucionObservada);
+                sb.Append(consulta.Diagnostico);
+                sb.Append(consulta.Tratamiento);
+            }
+
             return Cifrador.GestorCifrador.EncriptarIrreversible(sb.ToString());
         }
 
@@ -68,6 +84,15 @@ namespace SERVICIOS
             {
                 PacienteDAL pacienteDAL = new PacienteDAL();
                 foreach (string dvh in pacienteDAL.ObtenerListaDVH())
+                {
+                    sb.Append(dvh);
+                }
+            }
+
+            if (nombreTabla == "Consulta")
+            {
+                ConsultaDAL consultaDAL = new ConsultaDAL();
+                foreach (string dvh in consultaDAL.ObtenerListaDVH())
                 {
                     sb.Append(dvh);
                 }
@@ -98,6 +123,13 @@ namespace SERVICIOS
                 paciente.DigitoVerificador = dvh;
             }
 
+            if (nombreTabla == "Consulta" && entidad is Consulta consulta)
+            {
+                ConsultaDAL consultaDAL = new ConsultaDAL();
+                consultaDAL.ActualizarDVH(consulta.IdConsulta, dvh);
+                consulta.DigitoVerificador = dvh;
+            }
+
             ActualizarDVV(nombreTabla);
         }
 
@@ -116,7 +148,7 @@ namespace SERVICIOS
 
         public bool VerificarIntegridadDVH(object entidad)
         {
-            if (entidad is Psicologo || entidad is Paciente)
+            if (entidad is Psicologo || entidad is Paciente || entidad is Consulta)
             {
                 return CalcularDVH(entidad) == ObtenerDigitoVerificadorDe(entidad);
             }
@@ -128,6 +160,7 @@ namespace SERVICIOS
         {
             if (entidad is Psicologo psicologo) return psicologo.DigitoVerificador;
             if (entidad is Paciente paciente) return paciente.DigitoVerificador;
+            if (entidad is Consulta consulta) return consulta.DigitoVerificador;
             return null;
         }
 
@@ -183,6 +216,29 @@ namespace SERVICIOS
                                 "dvh_registro_inconsistente_paciente",
                                 paciente.Nombre + " " + paciente.Apellido,
                                 paciente.DNI
+                            ));
+                        }
+                    }
+
+                    AgregarInconsistenciasDeConteo(inconsistencias, digitoVerificadorDAL, tabla, huboInconsistenciaDeRegistro);
+                }
+
+                if (tabla == "Consulta")
+                {
+                    ConsultaDAL consultaDAL = new ConsultaDAL();
+                    List<Consulta> consultas = consultaDAL.ObtenerTodas();
+
+                    bool huboInconsistenciaDeRegistro = false;
+
+                    foreach (Consulta consulta in consultas)
+                    {
+                        if (!VerificarIntegridadDVH(consulta))
+                        {
+                            huboInconsistenciaDeRegistro = true;
+                            inconsistencias.Add(new InconsistenciaDetectada(
+                                "dvh_registro_inconsistente_consulta",
+                                consulta.IdConsulta,
+                                consulta.FechaConsulta
                             ));
                         }
                     }
@@ -257,6 +313,22 @@ namespace SERVICIOS
                     foreach (Paciente paciente in pacientes)
                     {
                         ActualizarDVH(paciente, tabla);
+                    }
+                }
+
+                if (tabla == "Consulta")
+                {
+                    ConsultaDAL consultaDAL = new ConsultaDAL();
+                    List<Consulta> consultas = consultaDAL.ObtenerTodas();
+
+                    if (consultas.Count == 0)
+                    {
+                        ActualizarDVV(tabla);
+                    }
+
+                    foreach (Consulta consulta in consultas)
+                    {
+                        ActualizarDVH(consulta, tabla);
                     }
                 }
             }

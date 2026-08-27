@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitacoraDAL.cs" />
+    <Compile Include="ConsultaDAL.cs" />
     <Compile Include="DigitoVerificadorDAL.cs" />
     <Compile Include="GestorConexion.cs" />
     <Compile Include="IdiomaDAL.cs" />

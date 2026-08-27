@@ -10,7 +10,7 @@ namespace BE
     {
         public int IdConsulta { get; set; }
         public int IdPaciente { get; set; }
-        public int IdProfesional { get; set; }
+        public int IdPsicologo { get; set; }
         public DateTime FechaConsulta { get; set; }
         public int TiempoConsulta { get; set; }
         public string Objetivos { get; set; }
@@ -21,17 +21,18 @@ namespace BE
         public string Diagnostico { get; set; }
         public string Tratamiento { get; set; }
         public DateTime? FechaModificacion { get; set; }
+        public DateTime FechaRegistro { get; set; }
         public string DigitoVerificador { get; set; }
 
         public Consulta()
         {
         }
 
-        public Consulta(int nIdConsulta, int nIdPaciente, int nIdProfesional, DateTime nFechaConsulta, int nTiempoConsulta, string nObjetivos, string nObservaciones, string nHipotesis, string nIntervenciones, string nEvolucionObservada, string nDiagnostico, string nTratamiento, DateTime? nFechaModificacion = null, string nDigitoVerificador = null)
+        public Consulta(int nIdConsulta, int nIdPaciente, int nIdPsicologo, DateTime nFechaConsulta, int nTiempoConsulta, string nObjetivos, string nObservaciones, string nHipotesis, string nIntervenciones, string nEvolucionObservada, string nDiagnostico, string nTratamiento, DateTime nFechaRegistro, DateTime? nFechaModificacion = null, string nDigitoVerificador = null)
         {
             IdConsulta = nIdConsulta;
             IdPaciente = nIdPaciente;
-            IdProfesional = nIdProfesional;
+            IdPsicologo = nIdPsicologo;
             FechaConsulta = nFechaConsulta;
             TiempoConsulta = nTiempoConsulta;
             Objetivos = nObjetivos;
@@ -41,6 +42,7 @@ namespace BE
             EvolucionObservada = nEvolucionObservada;
             Diagnostico = nDiagnostico;
             Tratamiento = nTratamiento;
+            FechaRegistro = nFechaRegistro;
             FechaModificacion = nFechaModificacion;
             DigitoVerificador = nDigitoVerificador;
         }
