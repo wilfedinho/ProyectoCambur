@@ -16,23 +16,32 @@ namespace BLL
         private const string TABLA = "Profesional";
 
         #region Operaciones Psicologo
-
         public int Alta(Psicologo psicologoAlta)
         {
             ValidarDatosPsicologo(psicologoAlta);
-
             if (!VerificarFormatoContrasena(psicologoAlta.Contrasena))
             {
                 throw new ExcepcionTraducible("error_formato_contrasena");
             }
+            psicologoAlta.Contrasena = Cifrador.GestorCifrador.EncriptarIrreversible(psicologoAlta.Contrasena);
+            return RegistrarPsicologoValidado(psicologoAlta);
+        }
+        public int AltaPorAdministrador(Psicologo psicologoAlta)
+        {
+            ValidarDatosPsicologo(psicologoAlta);
 
+            string contrasenaInicial = psicologoAlta.Dni + psicologoAlta.Email;
+            psicologoAlta.Contrasena = Cifrador.GestorCifrador.EncriptarIrreversible(contrasenaInicial);
+            return RegistrarPsicologoValidado(psicologoAlta);
+        }
+        private int RegistrarPsicologoValidado(Psicologo psicologoAlta)
+        {
             PsicologoDAL psicologoDAL = new PsicologoDAL();
             if (psicologoDAL.ExisteEmail(psicologoAlta.Email))
             {
                 throw new ExcepcionTraducible("error_email_duplicado");
             }
 
-            psicologoAlta.Contrasena = Cifrador.GestorCifrador.EncriptarIrreversible(psicologoAlta.Contrasena);
             psicologoAlta.Activo = true;
             psicologoAlta.FechaRegistro = DateTime.Now;
 
@@ -246,6 +255,7 @@ namespace BLL
             {
                 return;
             }
+
             TokenRecuperacionDAL tokenDAL = new TokenRecuperacionDAL();
             tokenDAL.InvalidarTokensVigentesDe(psicologo.IdPsicologo);
 

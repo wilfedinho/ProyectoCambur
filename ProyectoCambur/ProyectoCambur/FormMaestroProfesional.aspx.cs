@@ -138,10 +138,9 @@ public partial class FormMaestroProfesional : PaginaBase
                 nuevoPsicologo.Apellido = txtApellido.Text.Trim();
                 nuevoPsicologo.Dni = txtDni.Text.Trim();
                 nuevoPsicologo.Email = txtEmail.Text.Trim().ToLower();
-                nuevoPsicologo.Contrasena = nuevoPsicologo.Dni + nuevoPsicologo.Email;
                 nuevoPsicologo.Idioma = ddlIdioma.SelectedValue;
                 nuevoPsicologo.RolPermiso = ddlRol.SelectedValue;
-                gestorPsicologo.Alta(nuevoPsicologo);
+                gestorPsicologo.AltaPorAdministrador(nuevoPsicologo);
                 MostrarExito(string.Format(Traducir("msg_profesional_registrado"), nuevoPsicologo.Nombre + " " + nuevoPsicologo.Apellido));
             }
             else
