@@ -4,6 +4,6 @@ namespace SERVICIOS
 {
     public interface ITraductorAutomatico
     {
-        List<string> Traducir(List<string> textos, string idiomaOrigenIso, string idiomaDestinoIso);
+        Dictionary<string, string> Traducir(List<string> claves, string idiomaDestinoIso);
     }
 }

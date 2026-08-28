@@ -13,7 +13,7 @@ namespace SERVICIOS
 
         private readonly ITraductorAutomatico traductor;
 
-        public GestorIdioma() : this(new TraductorAzure())
+        public GestorIdioma() : this(new TraductorResx())
         {
         }
 
@@ -49,31 +49,25 @@ namespace SERVICIOS
             {
                 throw new ExcepcionTraducible("error_idioma_referencia_sin_traducciones");
             }
-
-
             idiomaDAL.Alta(nuevoIdioma);
-
-
-            List<string> textosOriginales = clavesReferencia.Select(t => t.Texto).ToList();
-            List<string> textosTraducidos = traductor.Traducir(textosOriginales, idiomaReferencia.CodigoIso, nuevoIdioma.CodigoIso);
-
-            if (textosTraducidos.Count != textosOriginales.Count)
-            {
-                throw new ExcepcionTraducible("error_traductor_desalineado");
-            }
-
+            List<string> claves = clavesReferencia.Select(t => t.Clave).ToList();
+            Dictionary<string, string> traducciones = traductor.Traducir(claves, nuevoIdioma.CodigoIso);
 
             List<Traduccion> traduccionesNuevas = new List<Traduccion>();
-            for (int i = 0; i < clavesReferencia.Count; i++)
+            foreach (Traduccion original in clavesReferencia)
             {
+                string texto;
+                bool encontrada = traducciones.TryGetValue(original.Clave, out texto) && !string.IsNullOrWhiteSpace(texto);
+
                 traduccionesNuevas.Add(new Traduccion(
                     0,
                     nuevoIdioma.NombreIdioma,
-                    clavesReferencia[i].Clave,
-                    textosTraducidos[i],
-                    true
+                    original.Clave,
+                    encontrada ? texto : original.Texto,
+                    !encontrada
                 ));
             }
+
             traduccionDAL.AltaMasiva(traduccionesNuevas);
             new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_GESTION_IDIOMAS, EventosBitacora.DESC_ALTA_IDIOMA, EventosBitacora.CRIT_ALTA_IDIOMA);
         }

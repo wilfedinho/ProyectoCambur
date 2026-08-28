@@ -10,6 +10,10 @@ public partial class SidebarNavegacion : System.Web.UI.UserControl
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        RenderizarNavegacion();
+    }
+    public void RenderizarNavegacion()
+    {
         if (!GestorSesion.EstaAutenticado) return;
         PaginaBase paginaBase = Page as PaginaBase;
         string rolPermiso = GestorSesion.PsicologoActual.RolPermiso;
@@ -23,6 +27,7 @@ public partial class SidebarNavegacion : System.Web.UI.UserControl
         }
         litNav.Text = html.ToString();
     }
+
     private void RenderizarHijos(StringBuilder html, PaginaBase paginaBase, PermisoCompuesto nodo)
     {
         foreach (Permiso hijo in nodo.ObtenerHijos())

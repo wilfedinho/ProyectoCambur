@@ -1,0 +1,1141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="menu_inicio" xml:space="preserve">
+    <value>ホーム</value>
+  </data>
+  <data name="menu_profesionales" xml:space="preserve">
+    <value>専門家</value>
+  </data>
+  <data name="menu_idiomas" xml:space="preserve">
+    <value>言語</value>
+  </data>
+  <data name="menu_integridad" xml:space="preserve">
+    <value>整合性</value>
+  </data>
+  <data name="menu_backup_restore" xml:space="preserve">
+    <value>バックアップ／復元</value>
+  </data>
+  <data name="menu_bitacora" xml:space="preserve">
+    <value>ログ</value>
+  </data>
+  <data name="menu_cerrar_sesion" xml:space="preserve">
+    <value>ログアウト</value>
+  </data>
+  <data name="btn_iniciar_sesion" xml:space="preserve">
+    <value>ログイン</value>
+  </data>
+  <data name="lbl_correo" xml:space="preserve">
+    <value>メールアドレス</value>
+  </data>
+  <data name="lbl_contrasena" xml:space="preserve">
+    <value>パスワード</value>
+  </data>
+  <data name="login_sesion_cerrada" xml:space="preserve">
+    <value>セッションを正常に終了しました。またお会いしましょう。</value>
+  </data>
+  <data name="login_cuenta_creada" xml:space="preserve">
+    <value>アカウントが正常に作成されました。ログインできます。</value>
+  </data>
+  <data name="login_cuenta_bloqueada" xml:space="preserve">
+    <value>ログイン試行回数の超過によりアカウントがロックされました。解除については管理者にお問い合わせください。</value>
+  </data>
+  <data name="login_cuenta_deshabilitada" xml:space="preserve">
+    <value>このアカウントは管理者により無効化されています。詳細は管理者にお問い合わせください。</value>
+  </data>
+  <data name="login_cuenta_inactiva" xml:space="preserve">
+    <value>このアカウントは現在無効な状態です。管理者にお問い合わせください。</value>
+  </data>
+  <data name="login_credenciales_invalidas" xml:space="preserve">
+    <value>入力されたメールアドレスまたはパスワードが正しくありません。</value>
+  </data>
+  <data name="titulo_nuevo_profesional" xml:space="preserve">
+    <value>専門家の新規登録</value>
+  </data>
+  <data name="titulo_modificar_profesional" xml:space="preserve">
+    <value>専門家情報の編集</value>
+  </data>
+  <data name="subtitulo_nuevo_profesional" xml:space="preserve">
+    <value>専門家の情報を入力してください。役割によりログイン後にアクセスできるメニューが決まります。</value>
+  </data>
+  <data name="lbl_nombre" xml:space="preserve">
+    <value>名</value>
+  </data>
+  <data name="lbl_apellido" xml:space="preserve">
+    <value>姓</value>
+  </data>
+  <data name="lbl_dni" xml:space="preserve">
+    <value>身分証番号</value>
+  </data>
+  <data name="lbl_idioma" xml:space="preserve">
+    <value>言語</value>
+  </data>
+  <data name="lbl_rol_plan" xml:space="preserve">
+    <value>役割／プラン</value>
+  </data>
+  <data name="opt_seleccionar" xml:space="preserve">
+    <value>選択してください…</value>
+  </data>
+  <data name="rol_psicologo_free" xml:space="preserve">
+    <value>心理士 — 無料プラン</value>
+  </data>
+  <data name="rol_psicologo_profesional" xml:space="preserve">
+    <value>心理士 — プロフェッショナルプラン</value>
+  </data>
+  <data name="rol_psicologo_premium" xml:space="preserve">
+    <value>心理士 — プレミアムプラン</value>
+  </data>
+  <data name="btn_registrar_profesional" xml:space="preserve">
+    <value>専門家を登録</value>
+  </data>
+  <data name="btn_guardar_cambios" xml:space="preserve">
+    <value>変更を保存</value>
+  </data>
+  <data name="btn_cancelar_edicion" xml:space="preserve">
+    <value>編集をキャンセル</value>
+  </data>
+  <data name="titulo_profesionales_registrados" xml:space="preserve">
+    <value>登録済みの専門家</value>
+  </data>
+  <data name="lbl_mostrar" xml:space="preserve">
+    <value>表示：</value>
+  </data>
+  <data name="opt_todos" xml:space="preserve">
+    <value>すべて</value>
+  </data>
+  <data name="opt_activos" xml:space="preserve">
+    <value>有効</value>
+  </data>
+  <data name="opt_desactivados" xml:space="preserve">
+    <value>無効</value>
+  </data>
+  <data name="col_profesional" xml:space="preserve">
+    <value>専門家</value>
+  </data>
+  <data name="col_dni" xml:space="preserve">
+    <value>身分証番号</value>
+  </data>
+  <data name="col_email" xml:space="preserve">
+    <value>メールアドレス</value>
+  </data>
+  <data name="col_idioma" xml:space="preserve">
+    <value>言語</value>
+  </data>
+  <data name="col_registrado" xml:space="preserve">
+    <value>登録日</value>
+  </data>
+  <data name="col_estado" xml:space="preserve">
+    <value>状態</value>
+  </data>
+  <data name="col_acciones" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="empty_profesionales" xml:space="preserve">
+    <value>この条件に該当する専門家はいません。</value>
+  </data>
+  <data name="btn_modificar" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="btn_dar_baja" xml:space="preserve">
+    <value>無効化</value>
+  </data>
+  <data name="btn_reactivar" xml:space="preserve">
+    <value>再有効化</value>
+  </data>
+  <data name="btn_habilitar" xml:space="preserve">
+    <value>有効化</value>
+  </data>
+  <data name="btn_deshabilitar" xml:space="preserve">
+    <value>無効化</value>
+  </data>
+  <data name="btn_desbloquear" xml:space="preserve">
+    <value>ロック解除</value>
+  </data>
+  <data name="badge_activos_sufijo" xml:space="preserve">
+    <value>件が有効</value>
+  </data>
+  <data name="badge_inactivos_sufijo" xml:space="preserve">
+    <value>件が無効</value>
+  </data>
+  <data name="tagline_panel_tecnico" xml:space="preserve">
+    <value>技術管理パネル</value>
+  </data>
+  <data name="tagline_panel_gestion" xml:space="preserve">
+    <value>管理パネル</value>
+  </data>
+  <data name="msg_profesional_registrado" xml:space="preserve">
+    <value>専門家「{0}」を登録しました。初期パスワードは身分証番号＋メールアドレスです。</value>
+  </data>
+  <data name="msg_profesional_modificado" xml:space="preserve">
+    <value>専門家「{0}」の情報を更新しました。</value>
+  </data>
+  <data name="msg_profesional_no_existe" xml:space="preserve">
+    <value>編集しようとした専門家はすでに存在しません。</value>
+  </data>
+  <data name="msg_profesional_no_existe_grilla" xml:space="preserve">
+    <value>選択した専門家はすでに存在しません。</value>
+  </data>
+  <data name="msg_profesional_baja" xml:space="preserve">
+    <value>専門家を無効化しました。</value>
+  </data>
+  <data name="msg_profesional_reactivado" xml:space="preserve">
+    <value>専門家を再有効化しました。</value>
+  </data>
+  <data name="msg_profesional_deshabilitado" xml:space="preserve">
+    <value>専門家を無効化しました。以降はログインできなくなります。</value>
+  </data>
+  <data name="msg_profesional_habilitado" xml:space="preserve">
+    <value>専門家を有効化しました。</value>
+  </data>
+  <data name="msg_profesional_desbloqueado" xml:space="preserve">
+    <value>専門家のロックを解除しました。パスワードは身分証番号＋メールアドレスにリセットされましたので、次回ログイン時に変更するようお伝えください。</value>
+  </data>
+  <data name="titulo_sin_inconsistencias" xml:space="preserve">
+    <value>不整合は検出されませんでした</value>
+  </data>
+  <data name="subtitulo_sin_inconsistencias" xml:space="preserve">
+    <value>すべての検査符号（DVH／DVV）とレコード数は想定どおり一致しています。</value>
+  </data>
+  <data name="titulo_inconsistencias_detectadas" xml:space="preserve">
+    <value>不整合が検出されました</value>
+  </data>
+  <data name="subtitulo_inconsistencias_detectadas" xml:space="preserve">
+    <value>システムの記録と一致しないデータベースの変更が検出されました。</value>
+  </data>
+  <data name="titulo_acciones_disponibles" xml:space="preserve">
+    <value>実行可能な操作</value>
+  </data>
+  <data name="subtitulo_acciones_disponibles" xml:space="preserve">
+    <value>検出結果への対応方法を選択してください（不整合がない場合でも定期チェックとして利用できます）。</value>
+  </data>
+  <data name="accion_backup_titulo" xml:space="preserve">
+    <value>バックアップを実行</value>
+  </data>
+  <data name="accion_backup_desc" xml:space="preserve">
+    <value>データベースの現在の状態のバックアップを作成します。</value>
+  </data>
+  <data name="accion_restore_titulo" xml:space="preserve">
+    <value>バックアップから復元</value>
+  </data>
+  <data name="accion_restore_desc" xml:space="preserve">
+    <value>データベースを、有効と確認された以前のバックアップ状態に戻します。</value>
+  </data>
+  <data name="accion_recalcular_titulo" xml:space="preserve">
+    <value>検査符号を再計算</value>
+  </data>
+  <data name="accion_recalcular_desc" xml:space="preserve">
+    <value>データベースの現在の状態を有効とみなし、すべての DVH／DVV／CR をゼロから再計算します。検出された変更が正当であると確認できた場合のみ使用してください。</value>
+  </data>
+  <data name="btn_recalcular_digitos" xml:space="preserve">
+    <value>再計算して現在の状態を承認</value>
+  </data>
+  <data name="msg_digitos_recalculados" xml:space="preserve">
+    <value>検査符号を再計算しました。データベースの現在の状態が有効として記録されました。</value>
+  </data>
+  <data name="dvh_registro_inconsistente" xml:space="preserve">
+    <value>専門家テーブル：「{0}」（{1}）のレコードに不整合があります（データベースが直接変更された、またはシステムを経由せずに挿入された可能性があります）。</value>
+  </data>
+  <data name="dvh_faltan_registros" xml:space="preserve">
+    <value>専門家テーブル：想定より不足しているレコード数：{0}件（データベースから直接削除された可能性があります）。</value>
+  </data>
+  <data name="dvh_registros_de_mas" xml:space="preserve">
+    <value>専門家テーブル：想定より超過しているレコード数：{0}件（データベースへ直接挿入された可能性があります）。</value>
+  </data>
+  <data name="dvh_alteracion_no_asociada" xml:space="preserve">
+    <value>専門家テーブル：特定のレコードに関連付けられない変更が検出されました。</value>
+  </data>
+  <data name="tagline_configuracion" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="header_configuracion" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="header_cambiar_idioma" xml:space="preserve">
+    <value>言語の変更</value>
+  </data>
+  <data name="titulo_idioma_interfaz" xml:space="preserve">
+    <value>画面表示言語</value>
+  </data>
+  <data name="subtitulo_idioma_interfaz" xml:space="preserve">
+    <value>プラットフォームの表示に使用する言語を選択してください。変更は即座に反映されます。</value>
+  </data>
+  <data name="seccion_idioma_actual" xml:space="preserve">
+    <value>現在の言語</value>
+  </data>
+  <data name="badge_activo" xml:space="preserve">
+    <value>有効</value>
+  </data>
+  <data name="seccion_idiomas_disponibles" xml:space="preserve">
+    <value>利用可能な言語</value>
+  </data>
+  <data name="idioma_no_disponible" xml:space="preserve">
+    <value>利用不可</value>
+  </data>
+  <data name="btn_cancelar" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="btn_confirmar_cambio_idioma" xml:space="preserve">
+    <value>言語変更を確認</value>
+  </data>
+  <data name="titulo_idioma_seleccionado" xml:space="preserve">
+    <value>選択された言語</value>
+  </data>
+  <data name="msg_ningun_idioma_seleccionado" xml:space="preserve">
+    <value>まだ言語が選択されていません。</value>
+  </data>
+  <data name="aviso_inmediato_titulo" xml:space="preserve">
+    <value>即時反映</value>
+  </data>
+  <data name="aviso_inmediato_texto" xml:space="preserve">
+    <value>確定すると、画面は自動的に選択した言語で再読み込みされます。翻訳内容はシステム管理者が管理しています。</value>
+  </data>
+  <data name="aviso_clinico_titulo" xml:space="preserve">
+    <value>診療内容について</value>
+  </data>
+  <data name="aviso_clinico_texto" xml:space="preserve">
+    <value>言語変更はシステムの画面表示にのみ適用されます。入力済みの診療内容は元の言語のまま保持されます。</value>
+  </data>
+  <data name="error_seleccionar_idioma" xml:space="preserve">
+    <value>確定する前に言語を選択してください。</value>
+  </data>
+  <data name="msg_idioma_actualizado" xml:space="preserve">
+    <value>言語を更新しました。</value>
+  </data>
+  <data name="error_formato_contrasena" xml:space="preserve">
+    <value>パスワードが要件を満たしていません（8文字以上、大文字を1文字以上、数字を1つ以上含めてください）。</value>
+  </data>
+  <data name="error_email_duplicado" xml:space="preserve">
+    <value>そのメールアドレスで登録済みの専門家がすでに存在します。</value>
+  </data>
+  <data name="error_profesional_no_encontrado" xml:space="preserve">
+    <value>専門家が見つかりませんでした。</value>
+  </data>
+  <data name="error_email_duplicado_otro" xml:space="preserve">
+    <value>そのメールアドレスで登録済みの別の専門家がすでに存在します。</value>
+  </data>
+  <data name="error_contrasena_actual_incorrecta" xml:space="preserve">
+    <value>現在のパスワードが正しくありません。</value>
+  </data>
+  <data name="error_nombre_obligatorio" xml:space="preserve">
+    <value>名は必須項目です。</value>
+  </data>
+  <data name="error_apellido_obligatorio" xml:space="preserve">
+    <value>姓は必須項目です。</value>
+  </data>
+  <data name="error_formato_dni" xml:space="preserve">
+    <value>身分証番号の形式が正しくありません（例：12.345.678）。</value>
+  </data>
+  <data name="error_formato_email" xml:space="preserve">
+    <value>メールアドレスの形式が正しくありません。</value>
+  </data>
+  <data name="error_idioma_obligatorio" xml:space="preserve">
+    <value>言語は必須項目です。</value>
+  </data>
+  <data name="error_idioma_no_disponible" xml:space="preserve">
+    <value>選択された言語は利用できません。</value>
+  </data>
+  <data name="error_idioma_ya_configurado" xml:space="preserve">
+    <value>その言語はすでに現在の設定言語です。</value>
+  </data>
+  <data name="error_idioma_duplicado" xml:space="preserve">
+    <value>同名の言語がすでに存在します。</value>
+  </data>
+  <data name="error_idioma_referencia_no_encontrado" xml:space="preserve">
+    <value>キーをコピーするための参照言語（「{0}」）が見つかりませんでした。この言語は事前にすべての翻訳を手動で登録しておく必要があります。</value>
+  </data>
+  <data name="error_idioma_referencia_sin_traducciones" xml:space="preserve">
+    <value>参照言語にはまだ翻訳が登録されていません。コピーできる内容がありません。</value>
+  </data>
+  <data name="error_traductor_desalineado" xml:space="preserve">
+    <value>自動翻訳ツールが返したテキストの数が想定と異なります。キーのずれを防ぐため、翻訳は生成されませんでした。</value>
+  </data>
+  <data name="error_idioma_en_uso" xml:space="preserve">
+    <value>「{0}」を無効化できません：現在この言語を使用している有効な専門家が存在します。</value>
+  </data>
+  <data name="error_traduccion_vacia" xml:space="preserve">
+    <value>翻訳テキストを空にすることはできません。</value>
+  </data>
+  <data name="error_nombre_idioma_obligatorio" xml:space="preserve">
+    <value>言語名は必須項目です。</value>
+  </data>
+  <data name="error_codigo_iso_obligatorio" xml:space="preserve">
+    <value>言語の ISO コードは必須項目です（例：es、en、pt）。</value>
+  </data>
+  <data name="titulo_integridad_sistema" xml:space="preserve">
+    <value>システム整合性</value>
+  </data>
+  <data name="menu_cambiar_idioma" xml:space="preserve">
+    <value>言語の変更</value>
+  </data>
+  <data name="menu_cambiar_clave" xml:space="preserve">
+    <value>パスワードの変更</value>
+  </data>
+  <data name="header_administrador" xml:space="preserve">
+    <value>管理者</value>
+  </data>
+  <data name="header_web_master" xml:space="preserve">
+    <value>ウェブマスター</value>
+  </data>
+  <data name="header_menu_principal" xml:space="preserve">
+    <value>メインメニュー</value>
+  </data>
+  <data name="titulo_nuevo_idioma" xml:space="preserve">
+    <value>新規言語の追加</value>
+  </data>
+  <data name="subtitulo_nuevo_idioma" xml:space="preserve">
+    <value>「スペイン語」のキーをコピーし、自動翻訳ツールで翻訳することで、すべての翻訳が自動生成されます。キー数によっては時間がかかる場合があります。処理中はページを閉じないでください。</value>
+  </data>
+  <data name="lbl_nombre_idioma" xml:space="preserve">
+    <value>言語名</value>
+  </data>
+  <data name="lbl_codigo_iso" xml:space="preserve">
+    <value>ISO 639-1 コード</value>
+  </data>
+  <data name="hint_codigo_iso" xml:space="preserve">
+    <value>自動翻訳ツールが使用します（例：es、en、pt、fr）。</value>
+  </data>
+  <data name="btn_generar_idioma" xml:space="preserve">
+    <value>言語と翻訳を生成</value>
+  </data>
+  <data name="confirm_alta_idioma" xml:space="preserve">
+    <value>この操作により自動翻訳ツールが呼び出され、すべての翻訳が生成されます。キー数によっては数分かかる場合があります。よろしいですか？</value>
+  </data>
+  <data name="titulo_idiomas_sistema" xml:space="preserve">
+    <value>システムの言語</value>
+  </data>
+  <data name="empty_idiomas" xml:space="preserve">
+    <value>登録されている言語はありません。</value>
+  </data>
+  <data name="col_codigo_iso" xml:space="preserve">
+    <value>ISO コード</value>
+  </data>
+  <data name="estado_disponible" xml:space="preserve">
+    <value>利用可能</value>
+  </data>
+  <data name="estado_desactivado" xml:space="preserve">
+    <value>無効</value>
+  </data>
+  <data name="badge_en_uso" xml:space="preserve">
+    <value>使用中</value>
+  </data>
+  <data name="btn_desactivar" xml:space="preserve">
+    <value>無効化</value>
+  </data>
+  <data name="btn_activar" xml:space="preserve">
+    <value>有効化</value>
+  </data>
+  <data name="btn_traducciones" xml:space="preserve">
+    <value>翻訳</value>
+  </data>
+  <data name="titulo_traducciones" xml:space="preserve">
+    <value>翻訳</value>
+  </data>
+  <data name="subtitulo_traducciones" xml:space="preserve">
+    <value>「未確認」と表示されている項目は自動翻訳ツールにより生成されたもので、まだ人による確認が行われていません。</value>
+  </data>
+  <data name="empty_traducciones" xml:space="preserve">
+    <value>この言語にはまだ翻訳が登録されていません。</value>
+  </data>
+  <data name="col_clave" xml:space="preserve">
+    <value>キー</value>
+  </data>
+  <data name="col_texto" xml:space="preserve">
+    <value>テキスト</value>
+  </data>
+  <data name="estado_pendiente" xml:space="preserve">
+    <value>未確認</value>
+  </data>
+  <data name="estado_revisado" xml:space="preserve">
+    <value>確認済み</value>
+  </data>
+  <data name="btn_guardar" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="msg_idioma_generado" xml:space="preserve">
+    <value>言語「{0}」を生成しました。専門家に公開する前に、未確認の翻訳を確認してください。</value>
+  </data>
+  <data name="msg_idioma_activado" xml:space="preserve">
+    <value>言語「{0}」を有効化しました。</value>
+  </data>
+  <data name="msg_idioma_desactivado" xml:space="preserve">
+    <value>言語「{0}」を無効化しました。</value>
+  </data>
+  <data name="msg_traduccion_actualizada" xml:space="preserve">
+    <value>翻訳を更新しました。</value>
+  </data>
+  <data name="banner_admin_titulo" xml:space="preserve">
+    <value>管理パネル</value>
+  </data>
+  <data name="banner_admin_sub" xml:space="preserve">
+    <value>専門家の管理およびシステム監査</value>
+  </data>
+  <data name="tile_profesionales_desc" xml:space="preserve">
+    <value>専門家アカウントの登録・無効化・編集・有効化・ロック解除。</value>
+  </data>
+  <data name="tile_idiomas_desc" xml:space="preserve">
+    <value>システムで利用可能な言語を管理します。</value>
+  </data>
+  <data name="tile_bitacora_desc" xml:space="preserve">
+    <value>システムイベントの監査ログを表示します。</value>
+  </data>
+  <data name="banner_webmaster_titulo" xml:space="preserve">
+    <value>システム技術パネル</value>
+  </data>
+  <data name="banner_webmaster_sub" xml:space="preserve">
+    <value>整合性・バックアップ・監査への完全なアクセス</value>
+  </data>
+  <data name="tile_integridad_desc" xml:space="preserve">
+    <value>重要なテーブルの検査符号を確認します。</value>
+  </data>
+  <data name="tile_backup_desc" xml:space="preserve">
+    <value>システムデータベースのバックアップまたは復元を行います。</value>
+  </data>
+  <data name="lbl_nuevo_idioma" xml:space="preserve">
+    <value>追加する言語</value>
+  </data>
+  <data name="error_idioma_obligatorio_alta" xml:space="preserve">
+    <value>リストから言語を選択してください。</value>
+  </data>
+  <data name="hint_nuevo_idioma" xml:space="preserve">
+    <value>システムにまだ登録されていない言語のみが表示されます。</value>
+  </data>
+  <data name="overlay_generando_titulo" xml:space="preserve">
+    <value>言語を生成中...</value>
+  </data>
+  <data name="overlay_generando_sub" xml:space="preserve">
+    <value>システムのすべてのキーを翻訳しています。数分かかる場合がありますので、このウィンドウを閉じないでください。</value>
+  </data>
+  <data name="logout_cerrando_titulo" xml:space="preserve">
+    <value>ログアウト処理中...</value>
+  </data>
+  <data name="logout_cerrando_sub" xml:space="preserve">
+    <value>セッションデータを安全に消去しています。</value>
+  </data>
+  <data name="logout_error_titulo" xml:space="preserve">
+    <value>ログアウト中にエラーが発生しました</value>
+  </data>
+  <data name="logout_error_texto" xml:space="preserve">
+    <value>ログアウト処理中にエラーが発生しました。安全のため、セッションが確実に終了するようブラウザを閉じてください。</value>
+  </data>
+  <data name="logout_ir_login" xml:space="preserve">
+    <value>ログイン画面へ</value>
+  </data>
+  <data name="logout_exito_titulo" xml:space="preserve">
+    <value>セッションを終了しました</value>
+  </data>
+  <data name="logout_exito_sub" xml:space="preserve">
+    <value>ログイン画面にリダイレクトします...</value>
+  </data>
+  <data name="titulo_filtros_bitacora" xml:space="preserve">
+    <value>検索条件</value>
+  </data>
+  <data name="subtitulo_filtros_bitacora" xml:space="preserve">
+    <value>必要な条件を組み合わせて指定するか、すべて「すべて」のままにして最新のイベントを表示してください。</value>
+  </data>
+  <data name="lbl_fecha_inicio" xml:space="preserve">
+    <value>開始日</value>
+  </data>
+  <data name="lbl_fecha_fin" xml:space="preserve">
+    <value>終了日</value>
+  </data>
+  <data name="lbl_modulo" xml:space="preserve">
+    <value>モジュール</value>
+  </data>
+  <data name="lbl_usuario_email" xml:space="preserve">
+    <value>ユーザー（メールアドレス）</value>
+  </data>
+  <data name="lbl_criticidad" xml:space="preserve">
+    <value>重大度</value>
+  </data>
+  <data name="btn_limpiar_filtros" xml:space="preserve">
+    <value>条件をクリア</value>
+  </data>
+  <data name="btn_filtrar" xml:space="preserve">
+    <value>絞り込み</value>
+  </data>
+  <data name="titulo_eventos_registrados" xml:space="preserve">
+    <value>記録されたイベント</value>
+  </data>
+  <data name="col_descripcion" xml:space="preserve">
+    <value>説明</value>
+  </data>
+  <data name="col_fecha_evento" xml:space="preserve">
+    <value>日付</value>
+  </data>
+  <data name="empty_bitacora" xml:space="preserve">
+    <value>この条件に該当するイベントはありません。</value>
+  </data>
+  <data name="hint_ultimos_dias" xml:space="preserve">
+    <value>条件未指定の場合は直近数日分を表示</value>
+  </data>
+  <data name="titulo_detalle_profesional" xml:space="preserve">
+    <value>専門家の詳細</value>
+  </data>
+  <data name="col_nombre_completo" xml:space="preserve">
+    <value>氏名</value>
+  </data>
+  <data name="msg_profesional_no_encontrado_por_email" xml:space="preserve">
+    <value>現在このメールアドレスに該当する専門家は見つかりませんでした（メールアドレスの変更または削除の可能性があります）。</value>
+  </data>
+  <data name="btn_ver_detalle" xml:space="preserve">
+    <value>詳細を表示</value>
+  </data>
+  <data name="criticidad_alta" xml:space="preserve">
+    <value>影響度：高</value>
+  </data>
+  <data name="criticidad_media" xml:space="preserve">
+    <value>影響度：中</value>
+  </data>
+  <data name="criticidad_baja" xml:space="preserve">
+    <value>影響度：低</value>
+  </data>
+  <data name="estado_bloqueado" xml:space="preserve">
+    <value>ロック中</value>
+  </data>
+  <data name="header_cambiar_clave" xml:space="preserve">
+    <value>パスワードの変更</value>
+  </data>
+  <data name="titulo_cambiar_contrasena" xml:space="preserve">
+    <value>パスワードの変更</value>
+  </data>
+  <data name="subtitulo_cambiar_contrasena" xml:space="preserve">
+    <value>ログイン用パスワードを更新します。新しいパスワードは保存前にハッシュ化されます。</value>
+  </data>
+  <data name="seccion_verificacion_identidad" xml:space="preserve">
+    <value>本人確認</value>
+  </data>
+  <data name="lbl_contrasena_actual" xml:space="preserve">
+    <value>現在のパスワード</value>
+  </data>
+  <data name="error_contrasena_actual_obligatoria" xml:space="preserve">
+    <value>現在のパスワードは必須項目です。</value>
+  </data>
+  <data name="seccion_nueva_contrasena" xml:space="preserve">
+    <value>新しいパスワード</value>
+  </data>
+  <data name="lbl_contrasena_nueva" xml:space="preserve">
+    <value>新しいパスワード</value>
+  </data>
+  <data name="error_contrasena_nueva_obligatoria" xml:space="preserve">
+    <value>新しいパスワードは必須項目です。</value>
+  </data>
+  <data name="lbl_confirmar_contrasena" xml:space="preserve">
+    <value>新しいパスワードの確認</value>
+  </data>
+  <data name="error_confirmacion_obligatoria" xml:space="preserve">
+    <value>確認用パスワードは必須項目です。</value>
+  </data>
+  <data name="error_confirmacion_no_coincide" xml:space="preserve">
+    <value>新しいパスワードと確認用パスワードが一致しません。</value>
+  </data>
+  <data name="btn_confirmar_cambio" xml:space="preserve">
+    <value>変更を確定</value>
+  </data>
+  <data name="titulo_politica_contrasena" xml:space="preserve">
+    <value>パスワードポリシー</value>
+  </data>
+  <data name="pol_longitud" xml:space="preserve">
+    <value>8文字以上</value>
+  </data>
+  <data name="pol_mayuscula" xml:space="preserve">
+    <value>大文字を1文字以上含む</value>
+  </data>
+  <data name="pol_numero" xml:space="preserve">
+    <value>数字を1つ以上含む</value>
+  </data>
+  <data name="pol_distinta_actual" xml:space="preserve">
+    <value>現在のパスワードと異なること</value>
+  </data>
+  <data name="aviso_seguro_titulo" xml:space="preserve">
+    <value>安全な保存方式</value>
+  </data>
+  <data name="aviso_seguro_texto" xml:space="preserve">
+    <value>パスワードは不可逆なハッシュ形式で保存されます。管理者を含め、平文のパスワードを閲覧できる者はいません。</value>
+  </data>
+  <data name="aviso_sesion_titulo" xml:space="preserve">
+    <value>パスワード変更時について</value>
+  </data>
+  <data name="aviso_sesion_texto" xml:space="preserve">
+    <value>現在のログインセッションは終了しません。不正アクセスの疑いがある場合は、すべての端末からログアウトしてください。</value>
+  </data>
+  <data name="msg_contrasena_actualizada" xml:space="preserve">
+    <value>パスワードを更新しました。</value>
+  </data>
+  <data name="error_contrasena_igual_actual" xml:space="preserve">
+    <value>新しいパスワードは現在のパスワードと同じにできません。別のパスワードを選択してください。</value>
+  </data>
+  <data name="seccion_herramientas_sistema" xml:space="preserve">
+    <value>システムツール</value>
+  </data>
+  <data name="nav_auditoria_bitacora" xml:space="preserve">
+    <value>ログ監査</value>
+  </data>
+  <data name="nav_backup_restore" xml:space="preserve">
+    <value>バックアップ／復元</value>
+  </data>
+  <data name="nav_digito_verificador" xml:space="preserve">
+    <value>検査符号の再計算</value>
+  </data>
+  <data name="seccion_gestion_sistema" xml:space="preserve">
+    <value>システム管理</value>
+  </data>
+  <data name="nav_abm_profesionales" xml:space="preserve">
+    <value>専門家管理</value>
+  </data>
+  <data name="nav_abm_pacientes" xml:space="preserve">
+    <value>患者管理</value>
+  </data>
+  <data name="nav_abm_consultas" xml:space="preserve">
+    <value>診療管理</value>
+  </data>
+  <data name="nav_gestionar_idiomas" xml:space="preserve">
+    <value>言語の管理</value>
+  </data>
+  <data name="nav_gestionar_permisos" xml:space="preserve">
+    <value>権限の管理</value>
+  </data>
+  <data name="seccion_gestion_clinica" xml:space="preserve">
+    <value>診療管理</value>
+  </data>
+  <data name="nav_registrar_paciente" xml:space="preserve">
+    <value>患者を登録</value>
+  </data>
+  <data name="nav_realizar_consulta" xml:space="preserve">
+    <value>診療を実施</value>
+  </data>
+  <data name="nav_generar_historial" xml:space="preserve">
+    <value>診療録を作成</value>
+  </data>
+  <data name="nav_modificar_consulta" xml:space="preserve">
+    <value>診療を編集</value>
+  </data>
+  <data name="nav_linea_temporal" xml:space="preserve">
+    <value>診療タイムライン</value>
+  </data>
+  <data name="seccion_modulo_ia" xml:space="preserve">
+    <value>AI 支援モジュール</value>
+  </data>
+  <data name="nav_resumen_ia" xml:space="preserve">
+    <value>AI 診療サマリー</value>
+  </data>
+  <data name="nav_informe_derivacion" xml:space="preserve">
+    <value>紹介状</value>
+  </data>
+  <data name="nav_auditoria_informe" xml:space="preserve">
+    <value>レポート監査</value>
+  </data>
+  <data name="nav_perfilacion_paciente" xml:space="preserve">
+    <value>患者プロファイリング</value>
+  </data>
+  <data name="seccion_operativo_config" xml:space="preserve">
+    <value>運用・設定</value>
+  </data>
+  <data name="nav_dashboard" xml:space="preserve">
+    <value>運用ダッシュボード</value>
+  </data>
+  <data name="nav_exportar_reporte" xml:space="preserve">
+    <value>レポートのエクスポート</value>
+  </data>
+  <data name="nav_gestionar_suscripcion" xml:space="preserve">
+    <value>サブスクリプション管理</value>
+  </data>
+  <data name="error_nombre_permiso_obligatorio" xml:space="preserve">
+    <value>名称は必須項目です。</value>
+  </data>
+  <data name="error_permiso_simple_duplicado" xml:space="preserve">
+    <value>同名の単一権限がすでに存在します。</value>
+  </data>
+  <data name="error_familia_duplicada" xml:space="preserve">
+    <value>同名の権限グループがすでに存在します。</value>
+  </data>
+  <data name="error_perfil_duplicado" xml:space="preserve">
+    <value>同名のロールがすでに存在します。</value>
+  </data>
+  <data name="error_familia_no_puede_incluirse_a_si_misma" xml:space="preserve">
+    <value>権限グループは自分自身を含めることはできません。</value>
+  </data>
+  <data name="error_elemento_no_encontrado" xml:space="preserve">
+    <value>同名の単一権限も権限グループも見つかりませんでした。</value>
+  </data>
+  <data name="error_familia_asignada_a_perfil" xml:space="preserve">
+    <value>「{0}」を削除できません：少なくとも1つのロールに割り当てられています。先に削除してください。</value>
+  </data>
+  <data name="error_familia_anidada_en_otra" xml:space="preserve">
+    <value>「{0}」を削除できません：別の権限グループに含まれています。先に削除してください。</value>
+  </data>
+  <data name="error_perfil_asignado_a_profesional" xml:space="preserve">
+    <value>「{0}」を削除できません：このロールが割り当てられた有効な専門家が存在します。</value>
+  </data>
+  <data name="titulo_altas_permisos" xml:space="preserve">
+    <value>新規作成</value>
+  </data>
+  <data name="subtitulo_altas_permisos" xml:space="preserve">
+    <value>新しい（空の）権限グループまたはロールを作成します。要素は後で「構造の管理」から追加できます。</value>
+  </data>
+  <data name="lbl_nuevo_permiso_simple" xml:space="preserve">
+    <value>新しい単一権限</value>
+  </data>
+  <data name="btn_agregar" xml:space="preserve">
+    <value>追加</value>
+  </data>
+  <data name="lbl_nueva_familia" xml:space="preserve">
+    <value>新しい権限グループ</value>
+  </data>
+  <data name="lbl_nuevo_perfil" xml:space="preserve">
+    <value>新しいロール</value>
+  </data>
+  <data name="titulo_gestionar_estructura" xml:space="preserve">
+    <value>構造の管理</value>
+  </data>
+  <data name="subtitulo_gestionar_estructura" xml:space="preserve">
+    <value>内容を確認・変更するロールまたは権限グループを選択してください。</value>
+  </data>
+  <data name="lbl_tipo" xml:space="preserve">
+    <value>種別</value>
+  </data>
+  <data name="lbl_elemento" xml:space="preserve">
+    <value>要素</value>
+  </data>
+  <data name="opt_perfil_rol" xml:space="preserve">
+    <value>ロール</value>
+  </data>
+  <data name="opt_familia" xml:space="preserve">
+    <value>権限グループ</value>
+  </data>
+  <data name="btn_borrar_seleccionado" xml:space="preserve">
+    <value>この要素を削除</value>
+  </data>
+  <data name="titulo_hijos_directos" xml:space="preserve">
+    <value>直接含まれる要素</value>
+  </data>
+  <data name="subtitulo_hijos_directos" xml:space="preserve">
+    <value>ここで構成を組み立てます。ロールまたは権限グループは、単一権限や他の権限グループを含めることができます。</value>
+  </data>
+  <data name="col_nombre" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="col_tipo" xml:space="preserve">
+    <value>種別</value>
+  </data>
+  <data name="empty_hijos_directos" xml:space="preserve">
+    <value>まだ何も含まれていません。</value>
+  </data>
+  <data name="lbl_agregar_elemento" xml:space="preserve">
+    <value>単一権限または権限グループを追加</value>
+  </data>
+  <data name="lbl_permiso_simple" xml:space="preserve">
+    <value>単一権限</value>
+  </data>
+  <data name="btn_quitar" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="titulo_arbol_completo" xml:space="preserve">
+    <value>全体構造（読み取り専用）</value>
+  </data>
+  <data name="subtitulo_arbol_completo" xml:space="preserve">
+    <value>直接追加された内容と、入れ子になった権限グループから継承される内容がすべて含まれます。</value>
+  </data>
+  <data name="msg_permiso_simple_creado" xml:space="preserve">
+    <value>単一権限「{0}」を作成しました。</value>
+  </data>
+  <data name="msg_familia_creada" xml:space="preserve">
+    <value>権限グループ「{0}」を作成しました。</value>
+  </data>
+  <data name="msg_perfil_creado" xml:space="preserve">
+    <value>ロール「{0}」を作成しました。</value>
+  </data>
+  <data name="msg_elemento_agregado" xml:space="preserve">
+    <value>「{0}」を「{1}」に追加しました。</value>
+  </data>
+  <data name="msg_elemento_quitado" xml:space="preserve">
+    <value>「{0}」を「{1}」から削除しました。</value>
+  </data>
+  <data name="msg_elemento_borrado" xml:space="preserve">
+    <value>「{0}」を削除しました。</value>
+  </data>
+  <data name="error_permiso_ya_incluido" xml:space="preserve">
+    <value>権限「{0}」はすでに「{1}」に含まれています（直接、または含まれる権限グループ経由）。</value>
+  </data>
+  <data name="error_familia_genera_permisos_duplicados" xml:space="preserve">
+    <value>「{0}」を「{1}」に追加できません：少なくとも1つの単一権限が重複しており、ツリー内で重複が生じます。</value>
+  </data>
+  <data name="acceso_denegado_titulo" xml:space="preserve">
+    <value>この機能を使用する権限がありません</value>
+  </data>
+  <data name="acceso_denegado_texto" xml:space="preserve">
+    <value>現在のロールには、開こうとした機能へアクセスするために必要な権限が含まれていません。安全のため、セッションは自動的に終了します。</value>
+  </data>
+  <data name="acceso_denegado_countdown" xml:space="preserve">
+    <value>ログアウトまで</value>
+  </data>
+  <data name="msg_sin_permisos_asignados" xml:space="preserve">
+    <value>現在のロールにはまだ機能が割り当てられていません。管理者にお問い合わせください。</value>
+  </data>
+  <data name="login_sesion_cerrada_por_acceso_denegado" xml:space="preserve">
+    <value>権限のない機能へのアクセスが試みられたため、セッションを終了しました。</value>
+  </data>
+  <data name="banner_profesional_sub" xml:space="preserve">
+    <value>あなたの診療ワークスペース</value>
+  </data>
+  <data name="header_inicio" xml:space="preserve">
+    <value>ホーム</value>
+  </data>
+  <data name="menu_dashboard" xml:space="preserve">
+    <value>ダッシュボード</value>
+  </data>
+  <data name="menu_mi_suscripcion" xml:space="preserve">
+    <value>マイサブスクリプション</value>
+  </data>
+  <data name="menu_pacientes" xml:space="preserve">
+    <value>患者</value>
+  </data>
+  <data name="msg_bienvenida" xml:space="preserve">
+    <value>こんにちは、{0}さん</value>
+  </data>
+  <data name="tagline_gestion_clinica" xml:space="preserve">
+    <value>診療管理</value>
+  </data>
+  <data name="tile_dashboard_desc" xml:space="preserve">
+    <value>患者、診療、各種指標など、診療活動の全体像を確認できます。</value>
+  </data>
+  <data name="tile_pacientes_desc" xml:space="preserve">
+    <value>担当する患者を登録・管理します。</value>
+  </data>
+  <data name="tile_suscripcion_desc" xml:space="preserve">
+    <value>現在のプランを確認・変更します。</value>
+  </data>
+  <data name="btn_registrar_paciente_form" xml:space="preserve">
+    <value>患者を登録</value>
+  </data>
+  <data name="col_paciente" xml:space="preserve">
+    <value>患者</value>
+  </data>
+  <data name="dvh_alteracion_no_asociada_tabla" xml:space="preserve">
+    <value>{0}テーブル：特定のレコードに関連付けられない変更が検出されました。</value>
+  </data>
+  <data name="dvh_faltan_registros_tabla" xml:space="preserve">
+    <value>{0}テーブル：想定より不足しているレコード数：{1}件（データベースから直接削除された可能性があります）。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_paciente" xml:space="preserve">
+    <value>患者テーブル：「{0}」（{1}）のレコードに不整合があります（データベースが直接変更された、またはシステムを経由せずに挿入された可能性があります）。</value>
+  </data>
+  <data name="dvh_registros_de_mas_tabla" xml:space="preserve">
+    <value>{0}テーブル：想定より超過しているレコード数：{1}件（データベースへ直接挿入された可能性があります）。</value>
+  </data>
+  <data name="empty_pacientes" xml:space="preserve">
+    <value>この条件に該当する患者はいません。</value>
+  </data>
+  <data name="error_fecha_nacimiento_futura" xml:space="preserve">
+    <value>生年月日を未来の日付にすることはできません。</value>
+  </data>
+  <data name="error_fecha_nacimiento_obligatoria" xml:space="preserve">
+    <value>生年月日は必須項目です。</value>
+  </data>
+  <data name="error_paciente_sin_profesional" xml:space="preserve">
+    <value>患者は医療専門家と紐付けられている必要があります。</value>
+  </data>
+  <data name="error_rango_fechas_invalido" xml:space="preserve">
+    <value>開始日は終了日より後にできません。</value>
+  </data>
+  <data name="hint_psicologo_asignado" xml:space="preserve">
+    <value>有効な診療権限を持つ専門家のみ表示されます。</value>
+  </data>
+  <data name="lbl_estado_civil" xml:space="preserve">
+    <value>婚姻状況</value>
+  </data>
+  <data name="lbl_fecha_nacimiento" xml:space="preserve">
+    <value>生年月日</value>
+  </data>
+  <data name="lbl_ocupacion" xml:space="preserve">
+    <value>職業</value>
+  </data>
+  <data name="lbl_psicologo_asignado" xml:space="preserve">
+    <value>担当心理士</value>
+  </data>
+  <data name="lbl_sexo" xml:space="preserve">
+    <value>性別</value>
+  </data>
+  <data name="lbl_telefono" xml:space="preserve">
+    <value>電話番号</value>
+  </data>
+  <data name="msg_paciente_baja" xml:space="preserve">
+    <value>患者を無効化しました。</value>
+  </data>
+  <data name="msg_paciente_modificado" xml:space="preserve">
+    <value>患者「{0}」の情報を更新しました。</value>
+  </data>
+  <data name="msg_paciente_no_existe" xml:space="preserve">
+    <value>選択した患者はすでに存在しません。</value>
+  </data>
+  <data name="msg_paciente_reactivado" xml:space="preserve">
+    <value>患者を再有効化しました。</value>
+  </data>
+  <data name="msg_paciente_registrado" xml:space="preserve">
+    <value>患者「{0}」を登録しました。</value>
+  </data>
+  <data name="seccion_datos_paciente" xml:space="preserve">
+    <value>患者情報</value>
+  </data>
+  <data name="seccion_vinculo_profesional" xml:space="preserve">
+    <value>担当専門家との紐付け</value>
+  </data>
+  <data name="subtitulo_abm_paciente" xml:space="preserve">
+    <value>すべての患者は医療専門家と紐付けられている必要があります。技術系ロール（管理者、ウェブマスター）には患者を割り当てることはできません。</value>
+  </data>
+  <data name="tile_abm_consultas_desc" xml:space="preserve">
+    <value>臨床診療の登録・無効化・編集。</value>
+  </data>
+  <data name="tile_abm_pacientes_desc" xml:space="preserve">
+    <value>システム内の患者の登録・無効化・編集。</value>
+  </data>
+  <data name="tile_auditoria_informe_desc" xml:space="preserve">
+    <value>作成済みの紹介状を確認・監査します。</value>
+  </data>
+  <data name="tile_exportar_desc" xml:space="preserve">
+    <value>レポートを PDF 形式でエクスポートします。</value>
+  </data>
+  <data name="tile_generar_historial_desc" xml:space="preserve">
+    <value>患者の診療録を作成します。</value>
+  </data>
+  <data name="tile_informe_derivacion_desc" xml:space="preserve">
+    <value>患者の紹介状を作成します。</value>
+  </data>
+  <data name="tile_linea_temporal_desc" xml:space="preserve">
+    <value>患者の経時的な病状の推移を確認します。</value>
+  </data>
+  <data name="tile_modificar_consulta_desc" xml:space="preserve">
+    <value>登録済みの診療内容を編集します。</value>
+  </data>
+  <data name="tile_perfilacion_desc" xml:space="preserve">
+    <value>患者の発達プロファイルを作成します。</value>
+  </data>
+  <data name="tile_permisos_desc" xml:space="preserve">
+    <value>システムのロール、権限グループ、権限を管理します。</value>
+  </data>
+  <data name="tile_realizar_consulta_desc" xml:space="preserve">
+    <value>患者の新しい診療を登録します。</value>
+  </data>
+  <data name="tile_registrar_paciente_desc" xml:space="preserve">
+    <value>あなたの診療所に新しい患者を登録します。</value>
+  </data>
+  <data name="tile_resumen_ia_desc" xml:space="preserve">
+    <value>AI が支援する診療サマリーを作成します。</value>
+  </data>
+  <data name="titulo_modificar_paciente" xml:space="preserve">
+    <value>患者情報の編集</value>
+  </data>
+  <data name="titulo_nuevo_paciente" xml:space="preserve">
+    <value>患者の新規登録</value>
+  </data>
+  <data name="titulo_pacientes_registrados" xml:space="preserve">
+    <value>登録済みの患者</value>
+  </data>
+  <data name="error_fecha_fin_futura" xml:space="preserve">
+    <value>終了日を本日より後の日付にすることはできません。</value>
+  </data>
+  <data name="error_fecha_inicio_futura" xml:space="preserve">
+    <value>開始日を本日より後の日付にすることはできません。</value>
+  </data>
+  <data name="aviso_contenido_encriptado" xml:space="preserve">
+    <value>これらの項目はデータベース内で暗号化して保存されます。データベースへ直接アクセスしても平文で読み取ることはできません。</value>
+  </data>
+  <data name="btn_registrar_consulta_form" xml:space="preserve">
+    <value>診療を登録</value>
+  </data>
+  <data name="dvh_registro_inconsistente_consulta" xml:space="preserve">
+    <value>診療テーブル：第{0}号の診療（{1:dd/MM/yyyy}）に不整合があります（データベースが直接変更された、またはシステムを経由せずに挿入された可能性があります）。</value>
+  </data>
+  <data name="empty_consultas" xml:space="preserve">
+    <value>登録された診療はありません。</value>
+  </data>
+  <data name="error_consulta_sin_paciente" xml:space="preserve">
+    <value>診療は患者と紐付けられている必要があります。</value>
+  </data>
+  <data name="error_fecha_consulta_futura" xml:space="preserve">
+    <value>診療日を未来の日付にすることはできません。</value>
+  </data>
+  <data name="error_fecha_consulta_obligatoria" xml:space="preserve">
+    <value>診療日は必須項目です。</value>
+  </data>
+  <data name="error_tiempo_consulta_invalido" xml:space="preserve">
+    <value>診療時間は0より大きい数値で入力してください。</value>
+  </data>
+  <data name="hint_paciente_por_psicologo" xml:space="preserve">
+    <value>選択した専門家に紐付けられた患者のみ表示されます。</value>
+  </data>
+  <data name="lbl_diagnostico" xml:space="preserve">
+    <value>診断</value>
+  </data>
+  <data name="lbl_evolucion_observada" xml:space="preserve">
+    <value>観察された経過</value>
+  </data>
+  <data name="lbl_fecha_consulta" xml:space="preserve">
+    <value>診療日</value>
+  </data>
+  <data name="lbl_hipotesis" xml:space="preserve">
+    <value>仮説</value>
+  </data>
+  <data name="lbl_intervenciones" xml:space="preserve">
+    <value>介入内容</value>
+  </data>
+  <data name="lbl_objetivos" xml:space="preserve">
+    <value>目標</value>
+  </data>
+  <data name="lbl_observaciones" xml:space="preserve">
+    <value>所見</value>
+  </data>
+  <data name="lbl_paciente" xml:space="preserve">
+    <value>患者</value>
+  </data>
+  <data name="lbl_tiempo_consulta" xml:space="preserve">
+    <value>所要時間（分）</value>
+  </data>
+  <data name="lbl_tratamiento" xml:space="preserve">
+    <value>治療方針</value>
+  </data>
+  <data name="msg_consulta_modificada" xml:space="preserve">
+    <value>診療情報を更新しました。</value>
+  </data>
+  <data name="msg_consulta_no_existe" xml:space="preserve">
+    <value>選択した診療はすでに存在しません。</value>
+  </data>
+  <data name="msg_consulta_registrada" xml:space="preserve">
+    <value>診療を登録しました。</value>
+  </data>
+  <data name="opt_seleccionar_psicologo_primero" xml:space="preserve">
+    <value>まず専門家を選択してください</value>
+  </data>
+  <data name="seccion_contenido_clinico" xml:space="preserve">
+    <value>診療内容</value>
+  </data>
+  <data name="seccion_datos_consulta" xml:space="preserve">
+    <value>診療情報</value>
+  </data>
+  <data name="subtitulo_abm_consulta" xml:space="preserve">
+    <value>まず専門家を選択すると、その専門家に紐付く患者のみが表示されます。</value>
+  </data>
+  <data name="subtitulo_consultas_registradas" xml:space="preserve">
+    <value>セキュリティ上の理由により、この一覧には診療内容は表示されません。詳細を見るには「編集」を開いてください。</value>
+  </data>
+  <data name="titulo_consultas_registradas" xml:space="preserve">
+    <value>登録済みの診療</value>
+  </data>
+  <data name="titulo_modificar_consulta_form" xml:space="preserve">
+    <value>診療の編集</value>
+  </data>
+  <data name="titulo_nueva_consulta" xml:space="preserve">
+    <value>新規診療</value>
+  </data>
+  <data name="error_envio_correo_recuperacion" xml:space="preserve">
+    <value>パスワード再設定用のメールを送信できませんでした。しばらくしてから再度お試しください。</value>
+  </data>
+  <data name="error_token_invalido_o_expirado" xml:space="preserve">
+    <value>このパスワード再設定用リンクは無効か、有効期限が切れています。</value>
+  </data>
+  <data name="login_clave_restablecida" xml:space="preserve">
+    <value>パスワードが正常に再設定されました。ログインできます。</value>
+  </data>
+</root>

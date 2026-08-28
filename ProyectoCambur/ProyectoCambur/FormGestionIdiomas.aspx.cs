@@ -198,6 +198,7 @@ public partial class FormGestionIdiomas : PaginaBase
             gestorIdioma.ModificarTraduccion(idTraduccion, txtTexto.Text);
             RefrescarTraducciones();
             AplicarTraducciones();
+            ucSidebarNavegacion.RenderizarNavegacion();
             MostrarExito(Traducir("msg_traduccion_actualizada"));
         }
         catch (ExcepcionTraducible ex)

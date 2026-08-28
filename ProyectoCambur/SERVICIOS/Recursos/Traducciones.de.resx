@@ -1,0 +1,1141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="menu_inicio" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="menu_profesionales" xml:space="preserve">
+    <value>Fachkräfte</value>
+  </data>
+  <data name="menu_idiomas" xml:space="preserve">
+    <value>Sprachen</value>
+  </data>
+  <data name="menu_integridad" xml:space="preserve">
+    <value>Integrität</value>
+  </data>
+  <data name="menu_backup_restore" xml:space="preserve">
+    <value>Sicherung / Wiederherstellung</value>
+  </data>
+  <data name="menu_bitacora" xml:space="preserve">
+    <value>Prüfprotokoll</value>
+  </data>
+  <data name="menu_cerrar_sesion" xml:space="preserve">
+    <value>Abmelden</value>
+  </data>
+  <data name="btn_iniciar_sesion" xml:space="preserve">
+    <value>Anmelden ?</value>
+  </data>
+  <data name="lbl_correo" xml:space="preserve">
+    <value>E-Mail-Adresse</value>
+  </data>
+  <data name="lbl_contrasena" xml:space="preserve">
+    <value>Passwort</value>
+  </data>
+  <data name="login_sesion_cerrada" xml:space="preserve">
+    <value>Sitzung erfolgreich beendet. Bis bald!</value>
+  </data>
+  <data name="login_cuenta_creada" xml:space="preserve">
+    <value>Konto erfolgreich erstellt. Sie können sich jetzt anmelden.</value>
+  </data>
+  <data name="login_cuenta_bloqueada" xml:space="preserve">
+    <value>Ihr Konto wurde nach zu vielen fehlgeschlagenen Versuchen gesperrt. Wenden Sie sich an einen Administrator, um es zu entsperren.</value>
+  </data>
+  <data name="login_cuenta_deshabilitada" xml:space="preserve">
+    <value>Ihr Konto wurde von einem Administrator deaktiviert. Wenden Sie sich für weitere Informationen an ihn.</value>
+  </data>
+  <data name="login_cuenta_inactiva" xml:space="preserve">
+    <value>Ihr Konto ist inaktiv. Wenden Sie sich an den Administrator.</value>
+  </data>
+  <data name="login_credenciales_invalidas" xml:space="preserve">
+    <value>Die eingegebene E-Mail-Adresse oder das Passwort ist falsch.</value>
+  </data>
+  <data name="titulo_nuevo_profesional" xml:space="preserve">
+    <value>Neue Fachkraft</value>
+  </data>
+  <data name="titulo_modificar_profesional" xml:space="preserve">
+    <value>Fachkraft bearbeiten</value>
+  </data>
+  <data name="subtitulo_nuevo_profesional" xml:space="preserve">
+    <value>Füllen Sie die Daten der Fachkraft aus. Die Rolle bestimmt, auf welches Menü sie beim Anmelden zugreift.</value>
+  </data>
+  <data name="lbl_nombre" xml:space="preserve">
+    <value>Vorname</value>
+  </data>
+  <data name="lbl_apellido" xml:space="preserve">
+    <value>Nachname</value>
+  </data>
+  <data name="lbl_dni" xml:space="preserve">
+    <value>Ausweisnummer</value>
+  </data>
+  <data name="lbl_idioma" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
+  <data name="lbl_rol_plan" xml:space="preserve">
+    <value>Rolle / Tarif</value>
+  </data>
+  <data name="opt_seleccionar" xml:space="preserve">
+    <value>Auswählen...</value>
+  </data>
+  <data name="rol_psicologo_free" xml:space="preserve">
+    <value>Psychologe/in — Kostenloser Tarif</value>
+  </data>
+  <data name="rol_psicologo_profesional" xml:space="preserve">
+    <value>Psychologe/in — Professioneller Tarif</value>
+  </data>
+  <data name="rol_psicologo_premium" xml:space="preserve">
+    <value>Psychologe/in — Premium-Tarif</value>
+  </data>
+  <data name="btn_registrar_profesional" xml:space="preserve">
+    <value>Fachkraft registrieren</value>
+  </data>
+  <data name="btn_guardar_cambios" xml:space="preserve">
+    <value>Änderungen speichern</value>
+  </data>
+  <data name="btn_cancelar_edicion" xml:space="preserve">
+    <value>Bearbeitung abbrechen</value>
+  </data>
+  <data name="titulo_profesionales_registrados" xml:space="preserve">
+    <value>Registrierte Fachkräfte</value>
+  </data>
+  <data name="lbl_mostrar" xml:space="preserve">
+    <value>Anzeigen:</value>
+  </data>
+  <data name="opt_todos" xml:space="preserve">
+    <value>Alle</value>
+  </data>
+  <data name="opt_activos" xml:space="preserve">
+    <value>Aktiv</value>
+  </data>
+  <data name="opt_desactivados" xml:space="preserve">
+    <value>Deaktiviert</value>
+  </data>
+  <data name="col_profesional" xml:space="preserve">
+    <value>Fachkraft</value>
+  </data>
+  <data name="col_dni" xml:space="preserve">
+    <value>Ausweisnummer</value>
+  </data>
+  <data name="col_email" xml:space="preserve">
+    <value>E-Mail</value>
+  </data>
+  <data name="col_idioma" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
+  <data name="col_registrado" xml:space="preserve">
+    <value>Registriert</value>
+  </data>
+  <data name="col_estado" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="col_acciones" xml:space="preserve">
+    <value>Aktionen</value>
+  </data>
+  <data name="empty_profesionales" xml:space="preserve">
+    <value>Mit diesem Filter gibt es keine Fachkräfte anzuzeigen.</value>
+  </data>
+  <data name="btn_modificar" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="btn_dar_baja" xml:space="preserve">
+    <value>Deaktivieren</value>
+  </data>
+  <data name="btn_reactivar" xml:space="preserve">
+    <value>Reaktivieren</value>
+  </data>
+  <data name="btn_habilitar" xml:space="preserve">
+    <value>Aktivieren</value>
+  </data>
+  <data name="btn_deshabilitar" xml:space="preserve">
+    <value>Deaktivieren</value>
+  </data>
+  <data name="btn_desbloquear" xml:space="preserve">
+    <value>Entsperren</value>
+  </data>
+  <data name="badge_activos_sufijo" xml:space="preserve">
+    <value>aktiv</value>
+  </data>
+  <data name="badge_inactivos_sufijo" xml:space="preserve">
+    <value>inaktiv</value>
+  </data>
+  <data name="tagline_panel_tecnico" xml:space="preserve">
+    <value>Technisches Panel</value>
+  </data>
+  <data name="tagline_panel_gestion" xml:space="preserve">
+    <value>Verwaltungspanel</value>
+  </data>
+  <data name="msg_profesional_registrado" xml:space="preserve">
+    <value>Fachkraft "{0}" erfolgreich registriert. Anfangspasswort: Ausweisnummer+E-Mail.</value>
+  </data>
+  <data name="msg_profesional_modificado" xml:space="preserve">
+    <value>Fachkraft "{0}" erfolgreich bearbeitet.</value>
+  </data>
+  <data name="msg_profesional_no_existe" xml:space="preserve">
+    <value>Die Fachkraft, die Sie bearbeiten möchten, existiert nicht mehr.</value>
+  </data>
+  <data name="msg_profesional_no_existe_grilla" xml:space="preserve">
+    <value>Die ausgewählte Fachkraft existiert nicht mehr.</value>
+  </data>
+  <data name="msg_profesional_baja" xml:space="preserve">
+    <value>Fachkraft erfolgreich deaktiviert.</value>
+  </data>
+  <data name="msg_profesional_reactivado" xml:space="preserve">
+    <value>Fachkraft erfolgreich reaktiviert.</value>
+  </data>
+  <data name="msg_profesional_deshabilitado" xml:space="preserve">
+    <value>Fachkraft deaktiviert. Sie kann sich nicht mehr anmelden.</value>
+  </data>
+  <data name="msg_profesional_habilitado" xml:space="preserve">
+    <value>Fachkraft erfolgreich aktiviert.</value>
+  </data>
+  <data name="msg_profesional_desbloqueado" xml:space="preserve">
+    <value>Fachkraft entsperrt. Ihr Passwort wurde auf Ausweisnummer+E-Mail zurückgesetzt; sie sollte es bei der nächsten Anmeldung ändern.</value>
+  </data>
+  <data name="titulo_sin_inconsistencias" xml:space="preserve">
+    <value>Keine Unstimmigkeiten festgestellt</value>
+  </data>
+  <data name="subtitulo_sin_inconsistencias" xml:space="preserve">
+    <value>Alle Prüfziffern (DVH/DVV) und Datensatzanzahlen stimmen mit den Erwartungen überein.</value>
+  </data>
+  <data name="titulo_inconsistencias_detectadas" xml:space="preserve">
+    <value>Unstimmigkeiten festgestellt</value>
+  </data>
+  <data name="subtitulo_inconsistencias_detectadas" xml:space="preserve">
+    <value>Es wurden Änderungen in der Datenbank festgestellt, die nicht mit dem übereinstimmen, was das System registriert hat.</value>
+  </data>
+  <data name="titulo_acciones_disponibles" xml:space="preserve">
+    <value>Verfügbare Aktionen</value>
+  </data>
+  <data name="subtitulo_acciones_disponibles" xml:space="preserve">
+    <value>Wählen Sie, wie mit dem Festgestellten verfahren werden soll (oder als Routineprüfung, auch wenn keine Unstimmigkeiten vorliegen).</value>
+  </data>
+  <data name="accion_backup_titulo" xml:space="preserve">
+    <value>Sicherung durchführen</value>
+  </data>
+  <data name="accion_backup_desc" xml:space="preserve">
+    <value>Erstellt eine Sicherung des aktuellen Zustands der Datenbank.</value>
+  </data>
+  <data name="accion_restore_titulo" xml:space="preserve">
+    <value>Sicherung wiederherstellen</value>
+  </data>
+  <data name="accion_restore_desc" xml:space="preserve">
+    <value>Setzt die Datenbank auf eine zuvor als gültig bekannte Sicherung zurück.</value>
+  </data>
+  <data name="accion_recalcular_titulo" xml:space="preserve">
+    <value>Prüfziffern neu berechnen</value>
+  </data>
+  <data name="accion_recalcular_desc" xml:space="preserve">
+    <value>Nimmt den aktuellen Zustand der Datenbank als gültig an und berechnet alle DVH/DVV/CR von Grund auf neu. Nur verwenden, nachdem bestätigt wurde, dass die festgestellten Änderungen legitim sind.</value>
+  </data>
+  <data name="btn_recalcular_digitos" xml:space="preserve">
+    <value>Neu berechnen und aktuellen Zustand akzeptieren</value>
+  </data>
+  <data name="msg_digitos_recalculados" xml:space="preserve">
+    <value>Prüfziffern neu berechnet. Der aktuelle Zustand der Datenbank wurde als gültig registriert.</value>
+  </data>
+  <data name="dvh_registro_inconsistente" xml:space="preserve">
+    <value>Tabelle Fachkraft: der Datensatz von "{0}" ({1}) weist eine Unstimmigkeit auf (er wurde direkt in der Datenbank geändert oder ohne das System einzufügen).</value>
+  </data>
+  <data name="dvh_faltan_registros" xml:space="preserve">
+    <value>Tabelle Fachkraft: Anzahl der fehlenden Datensätze im Vergleich zum Erwarteten: {0} (mögliches direktes Löschen in der Datenbank).</value>
+  </data>
+  <data name="dvh_registros_de_mas" xml:space="preserve">
+    <value>Tabelle Fachkraft: Anzahl der zusätzlichen Datensätze im Vergleich zum Erwarteten: {0} (mögliches direktes Einfügen in die Datenbank).</value>
+  </data>
+  <data name="dvh_alteracion_no_asociada" xml:space="preserve">
+    <value>Tabelle Fachkraft: es wurde eine Änderung festgestellt, die keinem bestimmten Datensatz zugeordnet werden konnte.</value>
+  </data>
+  <data name="tagline_configuracion" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="header_configuracion" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="header_cambiar_idioma" xml:space="preserve">
+    <value>Sprache ändern</value>
+  </data>
+  <data name="titulo_idioma_interfaz" xml:space="preserve">
+    <value>Sprache der Oberfläche</value>
+  </data>
+  <data name="subtitulo_idioma_interfaz" xml:space="preserve">
+    <value>Wählen Sie die Sprache, in der Sie die Plattform anzeigen möchten. Die Änderung wird sofort angewendet.</value>
+  </data>
+  <data name="seccion_idioma_actual" xml:space="preserve">
+    <value>Aktuelle Sprache</value>
+  </data>
+  <data name="badge_activo" xml:space="preserve">
+    <value>Aktiv</value>
+  </data>
+  <data name="seccion_idiomas_disponibles" xml:space="preserve">
+    <value>Verfügbare Sprachen</value>
+  </data>
+  <data name="idioma_no_disponible" xml:space="preserve">
+    <value>Nicht verfügbar</value>
+  </data>
+  <data name="btn_cancelar" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="btn_confirmar_cambio_idioma" xml:space="preserve">
+    <value>Sprachänderung bestätigen</value>
+  </data>
+  <data name="titulo_idioma_seleccionado" xml:space="preserve">
+    <value>Ausgewählte Sprache</value>
+  </data>
+  <data name="msg_ningun_idioma_seleccionado" xml:space="preserve">
+    <value>Noch keine Sprache ausgewählt.</value>
+  </data>
+  <data name="aviso_inmediato_titulo" xml:space="preserve">
+    <value>Sofortige Anwendung</value>
+  </data>
+  <data name="aviso_inmediato_texto" xml:space="preserve">
+    <value>Nach der Bestätigung wird die Oberfläche automatisch in der gewählten Sprache neu geladen. Die Übersetzungen werden vom Systemadministrator verwaltet.</value>
+  </data>
+  <data name="aviso_clinico_titulo" xml:space="preserve">
+    <value>Klinischer Inhalt</value>
+  </data>
+  <data name="aviso_clinico_texto" xml:space="preserve">
+    <value>Der Sprachwechsel betrifft nur die Systemoberfläche. Bereits eingegebener klinischer Inhalt bleibt in der ursprünglichen Sprache.</value>
+  </data>
+  <data name="error_seleccionar_idioma" xml:space="preserve">
+    <value>Wählen Sie eine Sprache aus, bevor Sie bestätigen.</value>
+  </data>
+  <data name="msg_idioma_actualizado" xml:space="preserve">
+    <value>Sprache erfolgreich aktualisiert.</value>
+  </data>
+  <data name="error_formato_contrasena" xml:space="preserve">
+    <value>Das Passwort entspricht nicht dem erforderlichen Format (mindestens 8 Zeichen, ein Großbuchstabe, eine Zahl).</value>
+  </data>
+  <data name="error_email_duplicado" xml:space="preserve">
+    <value>Es gibt bereits eine Fachkraft, die mit dieser E-Mail-Adresse registriert ist.</value>
+  </data>
+  <data name="error_profesional_no_encontrado" xml:space="preserve">
+    <value>Die Fachkraft wurde nicht gefunden.</value>
+  </data>
+  <data name="error_email_duplicado_otro" xml:space="preserve">
+    <value>Es gibt bereits eine andere Fachkraft, die mit dieser E-Mail-Adresse registriert ist.</value>
+  </data>
+  <data name="error_contrasena_actual_incorrecta" xml:space="preserve">
+    <value>Das aktuelle Passwort ist nicht korrekt.</value>
+  </data>
+  <data name="error_nombre_obligatorio" xml:space="preserve">
+    <value>Der Vorname ist erforderlich.</value>
+  </data>
+  <data name="error_apellido_obligatorio" xml:space="preserve">
+    <value>Der Nachname ist erforderlich.</value>
+  </data>
+  <data name="error_formato_dni" xml:space="preserve">
+    <value>Die Ausweisnummer entspricht nicht dem erwarteten Format (z. B.: 12.345.678).</value>
+  </data>
+  <data name="error_formato_email" xml:space="preserve">
+    <value>Die E-Mail-Adresse entspricht nicht dem erwarteten Format.</value>
+  </data>
+  <data name="error_idioma_obligatorio" xml:space="preserve">
+    <value>Die Sprache ist erforderlich.</value>
+  </data>
+  <data name="error_idioma_no_disponible" xml:space="preserve">
+    <value>Die ausgewählte Sprache ist nicht verfügbar.</value>
+  </data>
+  <data name="error_idioma_ya_configurado" xml:space="preserve">
+    <value>Das ist bereits Ihre aktuell konfigurierte Sprache.</value>
+  </data>
+  <data name="error_idioma_duplicado" xml:space="preserve">
+    <value>Es gibt bereits eine Sprache mit diesem Namen.</value>
+  </data>
+  <data name="error_idioma_referencia_no_encontrado" xml:space="preserve">
+    <value>Die Referenzsprache ("{0}") wurde nicht gefunden, um die Schlüssel zu kopieren. Diese Sprache muss zuerst manuell mit allen ihren Übersetzungen geladen werden.</value>
+  </data>
+  <data name="error_idioma_referencia_sin_traducciones" xml:space="preserve">
+    <value>Die Referenzsprache hat noch keine Übersetzungen geladen. Es gibt nichts zu kopieren.</value>
+  </data>
+  <data name="error_traductor_desalineado" xml:space="preserve">
+    <value>Der automatische Übersetzer hat eine andere Anzahl von Texten zurückgegeben als erwartet. Es wurde keine Übersetzung erstellt, um nicht übereinstimmende Schlüssel zu vermeiden.</value>
+  </data>
+  <data name="error_idioma_en_uso" xml:space="preserve">
+    <value>"{0}" kann nicht deaktiviert werden: Es gibt aktive Fachkräfte, die diese Sprache derzeit verwenden.</value>
+  </data>
+  <data name="error_traduccion_vacia" xml:space="preserve">
+    <value>Der Übersetzungstext darf nicht leer bleiben.</value>
+  </data>
+  <data name="error_nombre_idioma_obligatorio" xml:space="preserve">
+    <value>Der Name der Sprache ist erforderlich.</value>
+  </data>
+  <data name="error_codigo_iso_obligatorio" xml:space="preserve">
+    <value>Der ISO-Code der Sprache ist erforderlich (z. B.: es, en, pt).</value>
+  </data>
+  <data name="titulo_integridad_sistema" xml:space="preserve">
+    <value>Systemintegrität</value>
+  </data>
+  <data name="menu_cambiar_idioma" xml:space="preserve">
+    <value>Sprache ändern</value>
+  </data>
+  <data name="menu_cambiar_clave" xml:space="preserve">
+    <value>Passwort ändern</value>
+  </data>
+  <data name="header_administrador" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="header_web_master" xml:space="preserve">
+    <value>Web Master</value>
+  </data>
+  <data name="header_menu_principal" xml:space="preserve">
+    <value>Hauptmenü</value>
+  </data>
+  <data name="titulo_nuevo_idioma" xml:space="preserve">
+    <value>Neue Sprache</value>
+  </data>
+  <data name="subtitulo_nuevo_idioma" xml:space="preserve">
+    <value>Alle Übersetzungen werden automatisch erstellt, indem die Schlüssel von „Spanisch“ kopiert und mit dem automatischen Übersetzer übersetzt werden. Dies kann je nach Anzahl der geladenen Schlüssel dauern — schließen Sie die Seite während der Verarbeitung nicht.</value>
+  </data>
+  <data name="lbl_nombre_idioma" xml:space="preserve">
+    <value>Name der Sprache</value>
+  </data>
+  <data name="lbl_codigo_iso" xml:space="preserve">
+    <value>ISO-639-1-Code</value>
+  </data>
+  <data name="hint_codigo_iso" xml:space="preserve">
+    <value>Wird vom automatischen Übersetzer verwendet (z. B.: es, en, pt, fr).</value>
+  </data>
+  <data name="btn_generar_idioma" xml:space="preserve">
+    <value>Sprache mit Übersetzungen erstellen</value>
+  </data>
+  <data name="confirm_alta_idioma" xml:space="preserve">
+    <value>Dadurch wird der automatische Übersetzer aufgerufen, um alle Übersetzungen zu erstellen. Dies kann je nach Anzahl der Schlüssel einige Minuten dauern. Bestätigen?</value>
+  </data>
+  <data name="titulo_idiomas_sistema" xml:space="preserve">
+    <value>Systemsprachen</value>
+  </data>
+  <data name="empty_idiomas" xml:space="preserve">
+    <value>Keine Sprachen geladen.</value>
+  </data>
+  <data name="col_codigo_iso" xml:space="preserve">
+    <value>ISO-Code</value>
+  </data>
+  <data name="estado_disponible" xml:space="preserve">
+    <value>Verfügbar</value>
+  </data>
+  <data name="estado_desactivado" xml:space="preserve">
+    <value>Deaktiviert</value>
+  </data>
+  <data name="badge_en_uso" xml:space="preserve">
+    <value>In Verwendung</value>
+  </data>
+  <data name="btn_desactivar" xml:space="preserve">
+    <value>Deaktivieren</value>
+  </data>
+  <data name="btn_activar" xml:space="preserve">
+    <value>Aktivieren</value>
+  </data>
+  <data name="btn_traducciones" xml:space="preserve">
+    <value>Übersetzungen</value>
+  </data>
+  <data name="titulo_traducciones" xml:space="preserve">
+    <value>Übersetzungen</value>
+  </data>
+  <data name="subtitulo_traducciones" xml:space="preserve">
+    <value>Die mit "ausstehend" markierten wurden vom automatischen Übersetzer erstellt und noch nicht von einem Menschen überprüft.</value>
+  </data>
+  <data name="empty_traducciones" xml:space="preserve">
+    <value>Diese Sprache hat keine geladenen Übersetzungen.</value>
+  </data>
+  <data name="col_clave" xml:space="preserve">
+    <value>Schlüssel</value>
+  </data>
+  <data name="col_texto" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="estado_pendiente" xml:space="preserve">
+    <value>Ausstehend</value>
+  </data>
+  <data name="estado_revisado" xml:space="preserve">
+    <value>Überprüft</value>
+  </data>
+  <data name="btn_guardar" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="msg_idioma_generado" xml:space="preserve">
+    <value>Sprache "{0}" erfolgreich erstellt. Überprüfen Sie die ausstehenden Übersetzungen, bevor Sie sie für Fachkräfte aktivieren.</value>
+  </data>
+  <data name="msg_idioma_activado" xml:space="preserve">
+    <value>Sprache "{0}" aktiviert.</value>
+  </data>
+  <data name="msg_idioma_desactivado" xml:space="preserve">
+    <value>Sprache "{0}" deaktiviert.</value>
+  </data>
+  <data name="msg_traduccion_actualizada" xml:space="preserve">
+    <value>Übersetzung aktualisiert.</value>
+  </data>
+  <data name="banner_admin_titulo" xml:space="preserve">
+    <value>Verwaltungspanel</value>
+  </data>
+  <data name="banner_admin_sub" xml:space="preserve">
+    <value>Verwaltung von Fachkräften und Systemprüfung</value>
+  </data>
+  <data name="tile_profesionales_desc" xml:space="preserve">
+    <value>Anlegen, Deaktivieren, Bearbeiten, Aktivieren und Entsperren von Fachkraft-Konten.</value>
+  </data>
+  <data name="tile_idiomas_desc" xml:space="preserve">
+    <value>Die im System verfügbaren Sprachen verwalten.</value>
+  </data>
+  <data name="tile_bitacora_desc" xml:space="preserve">
+    <value>Das Prüfprotokoll der Systemereignisse anzeigen.</value>
+  </data>
+  <data name="banner_webmaster_titulo" xml:space="preserve">
+    <value>Technisches Panel des Systems</value>
+  </data>
+  <data name="banner_webmaster_sub" xml:space="preserve">
+    <value>Vollständiger Zugriff auf Integrität, Sicherung und Prüfung</value>
+  </data>
+  <data name="tile_integridad_desc" xml:space="preserve">
+    <value>Die Prüfziffer der kritischen Tabellen überprüfen.</value>
+  </data>
+  <data name="tile_backup_desc" xml:space="preserve">
+    <value>Die Systemdatenbank sichern oder wiederherstellen.</value>
+  </data>
+  <data name="lbl_nuevo_idioma" xml:space="preserve">
+    <value>Hinzuzufügende Sprache</value>
+  </data>
+  <data name="error_idioma_obligatorio_alta" xml:space="preserve">
+    <value>Wählen Sie eine Sprache aus der Liste aus.</value>
+  </data>
+  <data name="hint_nuevo_idioma" xml:space="preserve">
+    <value>Es werden nur Sprachen angezeigt, die noch nicht im System registriert sind.</value>
+  </data>
+  <data name="overlay_generando_titulo" xml:space="preserve">
+    <value>Sprache wird erstellt...</value>
+  </data>
+  <data name="overlay_generando_sub" xml:space="preserve">
+    <value>Alle Schlüssel des Systems werden übersetzt. Dies kann einige Minuten dauern, schließen Sie dieses Fenster nicht.</value>
+  </data>
+  <data name="logout_cerrando_titulo" xml:space="preserve">
+    <value>Abmeldung läuft...</value>
+  </data>
+  <data name="logout_cerrando_sub" xml:space="preserve">
+    <value>Sitzungsdaten werden sicher gelöscht.</value>
+  </data>
+  <data name="logout_error_titulo" xml:space="preserve">
+    <value>Fehler bei der Abmeldung</value>
+  </data>
+  <data name="logout_error_texto" xml:space="preserve">
+    <value>Bei der Abmeldung ist ein Fehler aufgetreten. Schließen Sie aus Sicherheitsgründen Ihren Browser, um sicherzustellen, dass die Sitzung beendet wurde.</value>
+  </data>
+  <data name="logout_ir_login" xml:space="preserve">
+    <value>Zur Anmeldung</value>
+  </data>
+  <data name="logout_exito_titulo" xml:space="preserve">
+    <value>Sitzung beendet</value>
+  </data>
+  <data name="logout_exito_sub" xml:space="preserve">
+    <value>Sie werden zur Anmeldung weitergeleitet...</value>
+  </data>
+  <data name="titulo_filtros_bitacora" xml:space="preserve">
+    <value>Suchfilter</value>
+  </data>
+  <data name="subtitulo_filtros_bitacora" xml:space="preserve">
+    <value>Kombinieren Sie die benötigten Filter oder belassen Sie sie alle auf "Alle", um die neuesten Ereignisse zu sehen.</value>
+  </data>
+  <data name="lbl_fecha_inicio" xml:space="preserve">
+    <value>Startdatum</value>
+  </data>
+  <data name="lbl_fecha_fin" xml:space="preserve">
+    <value>Enddatum</value>
+  </data>
+  <data name="lbl_modulo" xml:space="preserve">
+    <value>Modul</value>
+  </data>
+  <data name="lbl_usuario_email" xml:space="preserve">
+    <value>Benutzer (E-Mail)</value>
+  </data>
+  <data name="lbl_criticidad" xml:space="preserve">
+    <value>Kritikalität</value>
+  </data>
+  <data name="btn_limpiar_filtros" xml:space="preserve">
+    <value>Filter löschen</value>
+  </data>
+  <data name="btn_filtrar" xml:space="preserve">
+    <value>Filtern</value>
+  </data>
+  <data name="titulo_eventos_registrados" xml:space="preserve">
+    <value>Registrierte Ereignisse</value>
+  </data>
+  <data name="col_descripcion" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="col_fecha_evento" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="empty_bitacora" xml:space="preserve">
+    <value>Keine Ereignisse mit diesen Filtern registriert.</value>
+  </data>
+  <data name="hint_ultimos_dias" xml:space="preserve">
+    <value>ohne Filter, letzte Tage</value>
+  </data>
+  <data name="titulo_detalle_profesional" xml:space="preserve">
+    <value>Details der Fachkraft</value>
+  </data>
+  <data name="col_nombre_completo" xml:space="preserve">
+    <value>Vollständiger Name</value>
+  </data>
+  <data name="msg_profesional_no_encontrado_por_email" xml:space="preserve">
+    <value>Derzeit wurde keine Fachkraft mit dieser E-Mail-Adresse gefunden (sie hat möglicherweise ihre E-Mail geändert oder wurde gelöscht).</value>
+  </data>
+  <data name="btn_ver_detalle" xml:space="preserve">
+    <value>Details anzeigen</value>
+  </data>
+  <data name="criticidad_alta" xml:space="preserve">
+    <value>Hohe Auswirkung</value>
+  </data>
+  <data name="criticidad_media" xml:space="preserve">
+    <value>Mittlere Auswirkung</value>
+  </data>
+  <data name="criticidad_baja" xml:space="preserve">
+    <value>Geringe Auswirkung</value>
+  </data>
+  <data name="estado_bloqueado" xml:space="preserve">
+    <value>Gesperrt</value>
+  </data>
+  <data name="header_cambiar_clave" xml:space="preserve">
+    <value>Passwort ändern</value>
+  </data>
+  <data name="titulo_cambiar_contrasena" xml:space="preserve">
+    <value>Passwort ändern</value>
+  </data>
+  <data name="subtitulo_cambiar_contrasena" xml:space="preserve">
+    <value>Aktualisieren Sie Ihr Zugangspasswort. Das neue Passwort wird vor der Speicherung gehasht.</value>
+  </data>
+  <data name="seccion_verificacion_identidad" xml:space="preserve">
+    <value>Identitätsprüfung</value>
+  </data>
+  <data name="lbl_contrasena_actual" xml:space="preserve">
+    <value>Aktuelles Passwort</value>
+  </data>
+  <data name="error_contrasena_actual_obligatoria" xml:space="preserve">
+    <value>Das aktuelle Passwort ist erforderlich.</value>
+  </data>
+  <data name="seccion_nueva_contrasena" xml:space="preserve">
+    <value>Neues Passwort</value>
+  </data>
+  <data name="lbl_contrasena_nueva" xml:space="preserve">
+    <value>Neues Passwort</value>
+  </data>
+  <data name="error_contrasena_nueva_obligatoria" xml:space="preserve">
+    <value>Das neue Passwort ist erforderlich.</value>
+  </data>
+  <data name="lbl_confirmar_contrasena" xml:space="preserve">
+    <value>Neues Passwort bestätigen</value>
+  </data>
+  <data name="error_confirmacion_obligatoria" xml:space="preserve">
+    <value>Die Bestätigung ist erforderlich.</value>
+  </data>
+  <data name="error_confirmacion_no_coincide" xml:space="preserve">
+    <value>Das neue Passwort und seine Bestätigung stimmen nicht überein.</value>
+  </data>
+  <data name="btn_confirmar_cambio" xml:space="preserve">
+    <value>Änderung bestätigen</value>
+  </data>
+  <data name="titulo_politica_contrasena" xml:space="preserve">
+    <value>Passwortrichtlinie</value>
+  </data>
+  <data name="pol_longitud" xml:space="preserve">
+    <value>Mindestens 8 Zeichen</value>
+  </data>
+  <data name="pol_mayuscula" xml:space="preserve">
+    <value>Mindestens ein Großbuchstabe</value>
+  </data>
+  <data name="pol_numero" xml:space="preserve">
+    <value>Mindestens eine Zahl</value>
+  </data>
+  <data name="pol_distinta_actual" xml:space="preserve">
+    <value>Unterschiedlich vom aktuellen Passwort</value>
+  </data>
+  <data name="aviso_seguro_titulo" xml:space="preserve">
+    <value>Sichere Speicherung</value>
+  </data>
+  <data name="aviso_seguro_texto" xml:space="preserve">
+    <value>Ihr Passwort wird unwiderruflich gehasht gespeichert. Niemand, auch nicht der Administrator, kann Ihr Passwort im Klartext sehen.</value>
+  </data>
+  <data name="aviso_sesion_titulo" xml:space="preserve">
+    <value>Beim Ändern des Passworts</value>
+  </data>
+  <data name="aviso_sesion_texto" xml:space="preserve">
+    <value>Ihre aktive Sitzung wird nicht beendet. Wenn Sie unbefugten Zugriff vermuten, melden Sie sich von allen Ihren Geräten ab.</value>
+  </data>
+  <data name="msg_contrasena_actualizada" xml:space="preserve">
+    <value>Passwort erfolgreich aktualisiert.</value>
+  </data>
+  <data name="error_contrasena_igual_actual" xml:space="preserve">
+    <value>Das neue Passwort darf nicht mit dem aktuellen Passwort identisch sein. Wählen Sie ein anderes Passwort.</value>
+  </data>
+  <data name="seccion_herramientas_sistema" xml:space="preserve">
+    <value>Systemwerkzeuge</value>
+  </data>
+  <data name="nav_auditoria_bitacora" xml:space="preserve">
+    <value>Protokollprüfung</value>
+  </data>
+  <data name="nav_backup_restore" xml:space="preserve">
+    <value>Sicherung / Wiederherstellung</value>
+  </data>
+  <data name="nav_digito_verificador" xml:space="preserve">
+    <value>Prüfziffer neu berechnen</value>
+  </data>
+  <data name="seccion_gestion_sistema" xml:space="preserve">
+    <value>Systemverwaltung</value>
+  </data>
+  <data name="nav_abm_profesionales" xml:space="preserve">
+    <value>Fachkräfte verwalten</value>
+  </data>
+  <data name="nav_abm_pacientes" xml:space="preserve">
+    <value>Patienten verwalten</value>
+  </data>
+  <data name="nav_abm_consultas" xml:space="preserve">
+    <value>Konsultationen verwalten</value>
+  </data>
+  <data name="nav_gestionar_idiomas" xml:space="preserve">
+    <value>Sprachen verwalten</value>
+  </data>
+  <data name="nav_gestionar_permisos" xml:space="preserve">
+    <value>Berechtigungen verwalten</value>
+  </data>
+  <data name="seccion_gestion_clinica" xml:space="preserve">
+    <value>Klinische Verwaltung</value>
+  </data>
+  <data name="nav_registrar_paciente" xml:space="preserve">
+    <value>Patient registrieren</value>
+  </data>
+  <data name="nav_realizar_consulta" xml:space="preserve">
+    <value>Konsultation durchführen</value>
+  </data>
+  <data name="nav_generar_historial" xml:space="preserve">
+    <value>Klinische Vorgeschichte erstellen</value>
+  </data>
+  <data name="nav_modificar_consulta" xml:space="preserve">
+    <value>Konsultation bearbeiten</value>
+  </data>
+  <data name="nav_linea_temporal" xml:space="preserve">
+    <value>Klinische Zeitleiste</value>
+  </data>
+  <data name="seccion_modulo_ia" xml:space="preserve">
+    <value>KI-unterstütztes Modul</value>
+  </data>
+  <data name="nav_resumen_ia" xml:space="preserve">
+    <value>Klinische KI-Zusammenfassung</value>
+  </data>
+  <data name="nav_informe_derivacion" xml:space="preserve">
+    <value>Überweisungsbericht</value>
+  </data>
+  <data name="nav_auditoria_informe" xml:space="preserve">
+    <value>Berichtsprüfung</value>
+  </data>
+  <data name="nav_perfilacion_paciente" xml:space="preserve">
+    <value>Patientenprofilierung</value>
+  </data>
+  <data name="seccion_operativo_config" xml:space="preserve">
+    <value>Betrieb und Konfiguration</value>
+  </data>
+  <data name="nav_dashboard" xml:space="preserve">
+    <value>Operatives Dashboard</value>
+  </data>
+  <data name="nav_exportar_reporte" xml:space="preserve">
+    <value>Bericht exportieren</value>
+  </data>
+  <data name="nav_gestionar_suscripcion" xml:space="preserve">
+    <value>Abonnement verwalten</value>
+  </data>
+  <data name="error_nombre_permiso_obligatorio" xml:space="preserve">
+    <value>Der Name ist erforderlich.</value>
+  </data>
+  <data name="error_permiso_simple_duplicado" xml:space="preserve">
+    <value>Es gibt bereits eine einfache Berechtigung mit diesem Namen.</value>
+  </data>
+  <data name="error_familia_duplicada" xml:space="preserve">
+    <value>Es gibt bereits eine Gruppe mit diesem Namen.</value>
+  </data>
+  <data name="error_perfil_duplicado" xml:space="preserve">
+    <value>Es gibt bereits ein Profil mit diesem Namen.</value>
+  </data>
+  <data name="error_familia_no_puede_incluirse_a_si_misma" xml:space="preserve">
+    <value>Eine Gruppe kann sich nicht selbst enthalten.</value>
+  </data>
+  <data name="error_elemento_no_encontrado" xml:space="preserve">
+    <value>Es wurde weder eine einfache Berechtigung noch eine Gruppe mit diesem Namen gefunden.</value>
+  </data>
+  <data name="error_familia_asignada_a_perfil" xml:space="preserve">
+    <value>"{0}" kann nicht gelöscht werden: Sie ist mindestens einem Profil zugewiesen. Entfernen Sie sie zuerst von dort.</value>
+  </data>
+  <data name="error_familia_anidada_en_otra" xml:space="preserve">
+    <value>"{0}" kann nicht gelöscht werden: Sie ist in einer anderen Gruppe enthalten. Entfernen Sie sie zuerst von dort.</value>
+  </data>
+  <data name="error_perfil_asignado_a_profesional" xml:space="preserve">
+    <value>"{0}" kann nicht gelöscht werden: Es gibt aktive Fachkräfte mit diesem zugewiesenen Profil.</value>
+  </data>
+  <data name="titulo_altas_permisos" xml:space="preserve">
+    <value>Neuanlagen</value>
+  </data>
+  <data name="subtitulo_altas_permisos" xml:space="preserve">
+    <value>Eine neue (leere) Gruppe oder ein neues Profil erstellen. Danach werden ihnen von "Struktur verwalten" aus Elemente hinzugefügt.</value>
+  </data>
+  <data name="lbl_nuevo_permiso_simple" xml:space="preserve">
+    <value>Neue einfache Berechtigung</value>
+  </data>
+  <data name="btn_agregar" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="lbl_nueva_familia" xml:space="preserve">
+    <value>Neue Gruppe</value>
+  </data>
+  <data name="lbl_nuevo_perfil" xml:space="preserve">
+    <value>Neues Profil (Rolle)</value>
+  </data>
+  <data name="titulo_gestionar_estructura" xml:space="preserve">
+    <value>Struktur verwalten</value>
+  </data>
+  <data name="subtitulo_gestionar_estructura" xml:space="preserve">
+    <value>Wählen Sie ein Profil oder eine Gruppe aus, um zu sehen und zu bearbeiten, was es/sie enthält.</value>
+  </data>
+  <data name="lbl_tipo" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="lbl_elemento" xml:space="preserve">
+    <value>Element</value>
+  </data>
+  <data name="opt_perfil_rol" xml:space="preserve">
+    <value>Profil (Rolle)</value>
+  </data>
+  <data name="opt_familia" xml:space="preserve">
+    <value>Gruppe</value>
+  </data>
+  <data name="btn_borrar_seleccionado" xml:space="preserve">
+    <value>Dieses Element löschen</value>
+  </data>
+  <data name="titulo_hijos_directos" xml:space="preserve">
+    <value>Direkt enthaltene Elemente</value>
+  </data>
+  <data name="subtitulo_hijos_directos" xml:space="preserve">
+    <value>Hier wird die Zusammensetzung erstellt: ein Profil oder eine Gruppe kann einfache Berechtigungen und/oder andere Gruppen enthalten.</value>
+  </data>
+  <data name="col_nombre" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="col_tipo" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="empty_hijos_directos" xml:space="preserve">
+    <value>Enthält noch nichts.</value>
+  </data>
+  <data name="lbl_agregar_elemento" xml:space="preserve">
+    <value>Einfache Berechtigung oder Gruppe hinzufügen</value>
+  </data>
+  <data name="lbl_permiso_simple" xml:space="preserve">
+    <value>Einfache Berechtigung</value>
+  </data>
+  <data name="btn_quitar" xml:space="preserve">
+    <value>Entfernen</value>
+  </data>
+  <data name="titulo_arbol_completo" xml:space="preserve">
+    <value>Vollständige Struktur (schreibgeschützte Ansicht)</value>
+  </data>
+  <data name="subtitulo_arbol_completo" xml:space="preserve">
+    <value>Enthält das direkt Hinzugefügte und alles, was von verschachtelten Gruppen geerbt wird.</value>
+  </data>
+  <data name="msg_permiso_simple_creado" xml:space="preserve">
+    <value>Einfache Berechtigung "{0}" erstellt.</value>
+  </data>
+  <data name="msg_familia_creada" xml:space="preserve">
+    <value>Gruppe "{0}" erstellt.</value>
+  </data>
+  <data name="msg_perfil_creado" xml:space="preserve">
+    <value>Profil "{0}" erstellt.</value>
+  </data>
+  <data name="msg_elemento_agregado" xml:space="preserve">
+    <value>"{0}" zu "{1}" hinzugefügt.</value>
+  </data>
+  <data name="msg_elemento_quitado" xml:space="preserve">
+    <value>"{0}" aus "{1}" entfernt.</value>
+  </data>
+  <data name="msg_elemento_borrado" xml:space="preserve">
+    <value>"{0}" erfolgreich gelöscht.</value>
+  </data>
+  <data name="error_permiso_ya_incluido" xml:space="preserve">
+    <value>Die Berechtigung "{0}" ist bereits in "{1}" vorhanden (direkt oder über eine enthaltene Gruppe).</value>
+  </data>
+  <data name="error_familia_genera_permisos_duplicados" xml:space="preserve">
+    <value>"{0}" kann nicht zu "{1}" hinzugefügt werden: Sie teilen sich mindestens eine einfache Berechtigung, die im Baum dupliziert würde.</value>
+  </data>
+  <data name="acceso_denegado_titulo" xml:space="preserve">
+    <value>Sie haben keine Berechtigung für diese Funktion</value>
+  </data>
+  <data name="acceso_denegado_texto" xml:space="preserve">
+    <value>Ihr aktuelles Profil enthält nicht die erforderliche Berechtigung, um auf das zuzugreifen, was Sie öffnen wollten. Aus Sicherheitsgründen wird Ihre Sitzung automatisch beendet.</value>
+  </data>
+  <data name="acceso_denegado_countdown" xml:space="preserve">
+    <value>Abmeldung in</value>
+  </data>
+  <data name="msg_sin_permisos_asignados" xml:space="preserve">
+    <value>Ihrem Profil ist noch keine Funktion zugewiesen. Wenden Sie sich an einen Administrator.</value>
+  </data>
+  <data name="login_sesion_cerrada_por_acceso_denegado" xml:space="preserve">
+    <value>Ihre Sitzung wurde beendet, weil Sie versucht haben, auf eine Funktion ohne die erforderliche Berechtigung zuzugreifen.</value>
+  </data>
+  <data name="banner_profesional_sub" xml:space="preserve">
+    <value>Ihr klinischer Arbeitsbereich</value>
+  </data>
+  <data name="header_inicio" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="menu_dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="menu_mi_suscripcion" xml:space="preserve">
+    <value>Mein Abonnement</value>
+  </data>
+  <data name="menu_pacientes" xml:space="preserve">
+    <value>Patienten</value>
+  </data>
+  <data name="msg_bienvenida" xml:space="preserve">
+    <value>Hallo, {0}</value>
+  </data>
+  <data name="tagline_gestion_clinica" xml:space="preserve">
+    <value>Klinische Verwaltung</value>
+  </data>
+  <data name="tile_dashboard_desc" xml:space="preserve">
+    <value>Überblick über Ihre klinische Aktivität: Patienten, Konsultationen und Kennzahlen.</value>
+  </data>
+  <data name="tile_pacientes_desc" xml:space="preserve">
+    <value>Die Patienten Ihrer Praxis registrieren und verwalten.</value>
+  </data>
+  <data name="tile_suscripcion_desc" xml:space="preserve">
+    <value>Ihren aktuellen Tarif ansehen oder ändern.</value>
+  </data>
+  <data name="btn_registrar_paciente_form" xml:space="preserve">
+    <value>Patient registrieren</value>
+  </data>
+  <data name="col_paciente" xml:space="preserve">
+    <value>Patient</value>
+  </data>
+  <data name="dvh_alteracion_no_asociada_tabla" xml:space="preserve">
+    <value>Tabelle {0}: es wurde eine Änderung festgestellt, die keinem bestimmten Datensatz zugeordnet werden konnte.</value>
+  </data>
+  <data name="dvh_faltan_registros_tabla" xml:space="preserve">
+    <value>Tabelle {0}: Anzahl der fehlenden Datensätze im Vergleich zum Erwarteten: {1} (mögliches direktes Löschen in der Datenbank).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_paciente" xml:space="preserve">
+    <value>Tabelle Patient: der Datensatz von "{0}" ({1}) weist eine Unstimmigkeit auf (er wurde direkt in der Datenbank geändert oder ohne das System eingefügt).</value>
+  </data>
+  <data name="dvh_registros_de_mas_tabla" xml:space="preserve">
+    <value>Tabelle {0}: Anzahl der zusätzlichen Datensätze im Vergleich zum Erwarteten: {1} (mögliches direktes Einfügen in die Datenbank).</value>
+  </data>
+  <data name="empty_pacientes" xml:space="preserve">
+    <value>Mit diesem Filter gibt es keine Patienten anzuzeigen.</value>
+  </data>
+  <data name="error_fecha_nacimiento_futura" xml:space="preserve">
+    <value>Das Geburtsdatum darf nicht in der Zukunft liegen.</value>
+  </data>
+  <data name="error_fecha_nacimiento_obligatoria" xml:space="preserve">
+    <value>Das Geburtsdatum ist erforderlich.</value>
+  </data>
+  <data name="error_paciente_sin_profesional" xml:space="preserve">
+    <value>Der Patient muss mit einer medizinischen Fachkraft verknüpft sein.</value>
+  </data>
+  <data name="error_rango_fechas_invalido" xml:space="preserve">
+    <value>Das Startdatum darf nicht nach dem Enddatum liegen.</value>
+  </data>
+  <data name="hint_psicologo_asignado" xml:space="preserve">
+    <value>Es werden nur Fachkräfte mit aktiver klinischer Berechtigung angezeigt.</value>
+  </data>
+  <data name="lbl_estado_civil" xml:space="preserve">
+    <value>Familienstand</value>
+  </data>
+  <data name="lbl_fecha_nacimiento" xml:space="preserve">
+    <value>Geburtsdatum</value>
+  </data>
+  <data name="lbl_ocupacion" xml:space="preserve">
+    <value>Beruf</value>
+  </data>
+  <data name="lbl_psicologo_asignado" xml:space="preserve">
+    <value>Zugewiesener Psychologe</value>
+  </data>
+  <data name="lbl_sexo" xml:space="preserve">
+    <value>Geschlecht</value>
+  </data>
+  <data name="lbl_telefono" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="msg_paciente_baja" xml:space="preserve">
+    <value>Patient erfolgreich deaktiviert.</value>
+  </data>
+  <data name="msg_paciente_modificado" xml:space="preserve">
+    <value>Patient "{0}" erfolgreich bearbeitet.</value>
+  </data>
+  <data name="msg_paciente_no_existe" xml:space="preserve">
+    <value>Der ausgewählte Patient existiert nicht mehr.</value>
+  </data>
+  <data name="msg_paciente_reactivado" xml:space="preserve">
+    <value>Patient erfolgreich reaktiviert.</value>
+  </data>
+  <data name="msg_paciente_registrado" xml:space="preserve">
+    <value>Patient "{0}" erfolgreich registriert.</value>
+  </data>
+  <data name="seccion_datos_paciente" xml:space="preserve">
+    <value>Patientendaten</value>
+  </data>
+  <data name="seccion_vinculo_profesional" xml:space="preserve">
+    <value>Verknüpfung mit Fachkraft</value>
+  </data>
+  <data name="subtitulo_abm_paciente" xml:space="preserve">
+    <value>Jeder Patient muss mit einer medizinischen Fachkraft verknüpft sein. Technischen Profilen (Administrator, Web Master) können keine Patienten zugewiesen werden.</value>
+  </data>
+  <data name="tile_abm_consultas_desc" xml:space="preserve">
+    <value>Anlegen, Deaktivieren und Bearbeiten klinischer Konsultationen.</value>
+  </data>
+  <data name="tile_abm_pacientes_desc" xml:space="preserve">
+    <value>Anlegen, Deaktivieren und Bearbeiten von Patienten des Systems.</value>
+  </data>
+  <data name="tile_auditoria_informe_desc" xml:space="preserve">
+    <value>Einen erstellten Überweisungsbericht überprüfen und prüfen.</value>
+  </data>
+  <data name="tile_exportar_desc" xml:space="preserve">
+    <value>Einen Bericht im PDF-Format exportieren.</value>
+  </data>
+  <data name="tile_generar_historial_desc" xml:space="preserve">
+    <value>Die klinische Vorgeschichte eines Patienten hinzufügen.</value>
+  </data>
+  <data name="tile_informe_derivacion_desc" xml:space="preserve">
+    <value>Einen Überweisungsbericht für einen Patienten erstellen.</value>
+  </data>
+  <data name="tile_linea_temporal_desc" xml:space="preserve">
+    <value>Die chronologische Entwicklung eines Patienten im Zeitverlauf ansehen.</value>
+  </data>
+  <data name="tile_modificar_consulta_desc" xml:space="preserve">
+    <value>Die Daten einer bereits registrierten Konsultation bearbeiten.</value>
+  </data>
+  <data name="tile_perfilacion_desc" xml:space="preserve">
+    <value>Das evolutionäre Profil eines Patienten erstellen.</value>
+  </data>
+  <data name="tile_permisos_desc" xml:space="preserve">
+    <value>Rollen, Gruppen und Berechtigungen des Systems verwalten.</value>
+  </data>
+  <data name="tile_realizar_consulta_desc" xml:space="preserve">
+    <value>Eine neue klinische Konsultation für einen Patienten registrieren.</value>
+  </data>
+  <data name="tile_registrar_paciente_desc" xml:space="preserve">
+    <value>Einen neuen Patienten in Ihrer Praxis anlegen.</value>
+  </data>
+  <data name="tile_resumen_ia_desc" xml:space="preserve">
+    <value>Eine klinische Zusammenfassung mit Unterstützung durch künstliche Intelligenz erstellen.</value>
+  </data>
+  <data name="titulo_modificar_paciente" xml:space="preserve">
+    <value>Patient bearbeiten</value>
+  </data>
+  <data name="titulo_nuevo_paciente" xml:space="preserve">
+    <value>Neuer Patient</value>
+  </data>
+  <data name="titulo_pacientes_registrados" xml:space="preserve">
+    <value>Registrierte Patienten</value>
+  </data>
+  <data name="error_fecha_fin_futura" xml:space="preserve">
+    <value>Das Enddatum darf nicht nach heute liegen.</value>
+  </data>
+  <data name="error_fecha_inicio_futura" xml:space="preserve">
+    <value>Das Startdatum darf nicht nach heute liegen.</value>
+  </data>
+  <data name="aviso_contenido_encriptado" xml:space="preserve">
+    <value>Diese Felder werden verschlüsselt in der Datenbank gespeichert. Nicht einmal ein direkter Zugriff auf die Datenbank erlaubt es, sie im Klartext zu lesen.</value>
+  </data>
+  <data name="btn_registrar_consulta_form" xml:space="preserve">
+    <value>Konsultation registrieren</value>
+  </data>
+  <data name="dvh_registro_inconsistente_consulta" xml:space="preserve">
+    <value>Tabelle Konsultation: die Konsultation Nr. {0} vom {1:dd/MM/yyyy} weist eine Unstimmigkeit auf (sie wurde direkt in der Datenbank geändert oder ohne das System eingefügt).</value>
+  </data>
+  <data name="empty_consultas" xml:space="preserve">
+    <value>Keine Konsultationen registriert.</value>
+  </data>
+  <data name="error_consulta_sin_paciente" xml:space="preserve">
+    <value>Die Konsultation muss mit einem Patienten verknüpft sein.</value>
+  </data>
+  <data name="error_fecha_consulta_futura" xml:space="preserve">
+    <value>Das Datum der Konsultation darf nicht in der Zukunft liegen.</value>
+  </data>
+  <data name="error_fecha_consulta_obligatoria" xml:space="preserve">
+    <value>Das Datum der Konsultation ist erforderlich.</value>
+  </data>
+  <data name="error_tiempo_consulta_invalido" xml:space="preserve">
+    <value>Die Dauer der Konsultation muss eine Zahl größer als 0 sein.</value>
+  </data>
+  <data name="hint_paciente_por_psicologo" xml:space="preserve">
+    <value>Es werden nur die mit der ausgewählten Fachkraft verknüpften Patienten angezeigt.</value>
+  </data>
+  <data name="lbl_diagnostico" xml:space="preserve">
+    <value>Diagnose</value>
+  </data>
+  <data name="lbl_evolucion_observada" xml:space="preserve">
+    <value>Beobachtete Entwicklung</value>
+  </data>
+  <data name="lbl_fecha_consulta" xml:space="preserve">
+    <value>Datum der Konsultation</value>
+  </data>
+  <data name="lbl_hipotesis" xml:space="preserve">
+    <value>Hypothese</value>
+  </data>
+  <data name="lbl_intervenciones" xml:space="preserve">
+    <value>Interventionen</value>
+  </data>
+  <data name="lbl_objetivos" xml:space="preserve">
+    <value>Ziele</value>
+  </data>
+  <data name="lbl_observaciones" xml:space="preserve">
+    <value>Beobachtungen</value>
+  </data>
+  <data name="lbl_paciente" xml:space="preserve">
+    <value>Patient</value>
+  </data>
+  <data name="lbl_tiempo_consulta" xml:space="preserve">
+    <value>Dauer (Minuten)</value>
+  </data>
+  <data name="lbl_tratamiento" xml:space="preserve">
+    <value>Behandlung</value>
+  </data>
+  <data name="msg_consulta_modificada" xml:space="preserve">
+    <value>Konsultation erfolgreich bearbeitet.</value>
+  </data>
+  <data name="msg_consulta_no_existe" xml:space="preserve">
+    <value>Die ausgewählte Konsultation existiert nicht mehr.</value>
+  </data>
+  <data name="msg_consulta_registrada" xml:space="preserve">
+    <value>Konsultation erfolgreich registriert.</value>
+  </data>
+  <data name="opt_seleccionar_psicologo_primero" xml:space="preserve">
+    <value>Wählen Sie zuerst eine Fachkraft aus</value>
+  </data>
+  <data name="seccion_contenido_clinico" xml:space="preserve">
+    <value>Klinischer Inhalt</value>
+  </data>
+  <data name="seccion_datos_consulta" xml:space="preserve">
+    <value>Konsultationsdaten</value>
+  </data>
+  <data name="subtitulo_abm_consulta" xml:space="preserve">
+    <value>Wählen Sie zuerst die Fachkraft aus, um nur deren verknüpfte Patienten zu sehen.</value>
+  </data>
+  <data name="subtitulo_consultas_registradas" xml:space="preserve">
+    <value>Der klinische Inhalt wird aus Sicherheitsgründen nicht in dieser Liste angezeigt — öffnen Sie "Bearbeiten", um ihn anzuzeigen.</value>
+  </data>
+  <data name="titulo_consultas_registradas" xml:space="preserve">
+    <value>Registrierte Konsultationen</value>
+  </data>
+  <data name="titulo_modificar_consulta_form" xml:space="preserve">
+    <value>Konsultation bearbeiten</value>
+  </data>
+  <data name="titulo_nueva_consulta" xml:space="preserve">
+    <value>Neue Konsultation</value>
+  </data>
+  <data name="error_envio_correo_recuperacion" xml:space="preserve">
+    <value>Wir konnten die Wiederherstellungs-E-Mail nicht senden. Versuchen Sie es in ein paar Minuten erneut.</value>
+  </data>
+  <data name="error_token_invalido_o_expirado" xml:space="preserve">
+    <value>Der Wiederherstellungslink ist ungültig oder bereits abgelaufen.</value>
+  </data>
+  <data name="login_clave_restablecida" xml:space="preserve">
+    <value>Ihr Passwort wurde erfolgreich zurückgesetzt. Sie können sich jetzt anmelden.</value>
+  </data>
+</root>

@@ -1,0 +1,1141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="menu_inicio" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="menu_profesionales" xml:space="preserve">
+    <value>Специалисты</value>
+  </data>
+  <data name="menu_idiomas" xml:space="preserve">
+    <value>Языки</value>
+  </data>
+  <data name="menu_integridad" xml:space="preserve">
+    <value>Целостность данных</value>
+  </data>
+  <data name="menu_backup_restore" xml:space="preserve">
+    <value>Резервное копирование / Восстановление</value>
+  </data>
+  <data name="menu_bitacora" xml:space="preserve">
+    <value>Журнал аудита</value>
+  </data>
+  <data name="menu_cerrar_sesion" xml:space="preserve">
+    <value>Выйти из системы</value>
+  </data>
+  <data name="btn_iniciar_sesion" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="lbl_correo" xml:space="preserve">
+    <value>Электронная почта</value>
+  </data>
+  <data name="lbl_contrasena" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="login_sesion_cerrada" xml:space="preserve">
+    <value>Сеанс успешно завершён. До скорой встречи!</value>
+  </data>
+  <data name="login_cuenta_creada" xml:space="preserve">
+    <value>Учётная запись успешно создана. Теперь вы можете войти в систему.</value>
+  </data>
+  <data name="login_cuenta_bloqueada" xml:space="preserve">
+    <value>Ваша учётная запись заблокирована из-за превышения числа неудачных попыток входа. Обратитесь к администратору для разблокировки.</value>
+  </data>
+  <data name="login_cuenta_deshabilitada" xml:space="preserve">
+    <value>Ваша учётная запись отключена администратором. Свяжитесь с ним для получения дополнительной информации.</value>
+  </data>
+  <data name="login_cuenta_inactiva" xml:space="preserve">
+    <value>Ваша учётная запись неактивна. Обратитесь к администратору.</value>
+  </data>
+  <data name="login_credenciales_invalidas" xml:space="preserve">
+    <value>Введённый адрес электронной почты или пароль неверны.</value>
+  </data>
+  <data name="titulo_nuevo_profesional" xml:space="preserve">
+    <value>Новый специалист</value>
+  </data>
+  <data name="titulo_modificar_profesional" xml:space="preserve">
+    <value>Редактировать специалиста</value>
+  </data>
+  <data name="subtitulo_nuevo_profesional" xml:space="preserve">
+    <value>Заполните данные специалиста. Роль определяет, к какому меню он получит доступ при входе в систему.</value>
+  </data>
+  <data name="lbl_nombre" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="lbl_apellido" xml:space="preserve">
+    <value>Фамилия</value>
+  </data>
+  <data name="lbl_dni" xml:space="preserve">
+    <value>DNI (номер документа)</value>
+  </data>
+  <data name="lbl_idioma" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="lbl_rol_plan" xml:space="preserve">
+    <value>Роль / Тариф</value>
+  </data>
+  <data name="opt_seleccionar" xml:space="preserve">
+    <value>Выберите...</value>
+  </data>
+  <data name="rol_psicologo_free" xml:space="preserve">
+    <value>Психолог — тариф Free</value>
+  </data>
+  <data name="rol_psicologo_profesional" xml:space="preserve">
+    <value>Психолог — тариф Профессиональный</value>
+  </data>
+  <data name="rol_psicologo_premium" xml:space="preserve">
+    <value>Психолог — тариф Premium</value>
+  </data>
+  <data name="btn_registrar_profesional" xml:space="preserve">
+    <value>Зарегистрировать специалиста</value>
+  </data>
+  <data name="btn_guardar_cambios" xml:space="preserve">
+    <value>Сохранить изменения</value>
+  </data>
+  <data name="btn_cancelar_edicion" xml:space="preserve">
+    <value>Отменить редактирование</value>
+  </data>
+  <data name="titulo_profesionales_registrados" xml:space="preserve">
+    <value>Зарегистрированные специалисты</value>
+  </data>
+  <data name="lbl_mostrar" xml:space="preserve">
+    <value>Показать:</value>
+  </data>
+  <data name="opt_todos" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="opt_activos" xml:space="preserve">
+    <value>Активные</value>
+  </data>
+  <data name="opt_desactivados" xml:space="preserve">
+    <value>Отключённые</value>
+  </data>
+  <data name="col_profesional" xml:space="preserve">
+    <value>Специалист</value>
+  </data>
+  <data name="col_dni" xml:space="preserve">
+    <value>DNI</value>
+  </data>
+  <data name="col_email" xml:space="preserve">
+    <value>Эл. почта</value>
+  </data>
+  <data name="col_idioma" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="col_registrado" xml:space="preserve">
+    <value>Дата регистрации</value>
+  </data>
+  <data name="col_estado" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="col_acciones" xml:space="preserve">
+    <value>Действия</value>
+  </data>
+  <data name="empty_profesionales" xml:space="preserve">
+    <value>Нет специалистов, соответствующих этому фильтру.</value>
+  </data>
+  <data name="btn_modificar" xml:space="preserve">
+    <value>Изменить</value>
+  </data>
+  <data name="btn_dar_baja" xml:space="preserve">
+    <value>Деактивировать</value>
+  </data>
+  <data name="btn_reactivar" xml:space="preserve">
+    <value>Восстановить</value>
+  </data>
+  <data name="btn_habilitar" xml:space="preserve">
+    <value>Включить</value>
+  </data>
+  <data name="btn_deshabilitar" xml:space="preserve">
+    <value>Отключить</value>
+  </data>
+  <data name="btn_desbloquear" xml:space="preserve">
+    <value>Разблокировать</value>
+  </data>
+  <data name="badge_activos_sufijo" xml:space="preserve">
+    <value>активных</value>
+  </data>
+  <data name="badge_inactivos_sufijo" xml:space="preserve">
+    <value>неактивных</value>
+  </data>
+  <data name="tagline_panel_tecnico" xml:space="preserve">
+    <value>Техническая панель</value>
+  </data>
+  <data name="tagline_panel_gestion" xml:space="preserve">
+    <value>Панель управления</value>
+  </data>
+  <data name="msg_profesional_registrado" xml:space="preserve">
+    <value>Специалист «{0}» успешно зарегистрирован. Первоначальный пароль: DNI+Email.</value>
+  </data>
+  <data name="msg_profesional_modificado" xml:space="preserve">
+    <value>Данные специалиста «{0}» успешно изменены.</value>
+  </data>
+  <data name="msg_profesional_no_existe" xml:space="preserve">
+    <value>Специалист, которого вы пытаетесь изменить, больше не существует.</value>
+  </data>
+  <data name="msg_profesional_no_existe_grilla" xml:space="preserve">
+    <value>Выбранный специалист больше не существует.</value>
+  </data>
+  <data name="msg_profesional_baja" xml:space="preserve">
+    <value>Специалист успешно деактивирован.</value>
+  </data>
+  <data name="msg_profesional_reactivado" xml:space="preserve">
+    <value>Специалист успешно восстановлен.</value>
+  </data>
+  <data name="msg_profesional_deshabilitado" xml:space="preserve">
+    <value>Специалист отключён. Он больше не сможет войти в систему.</value>
+  </data>
+  <data name="msg_profesional_habilitado" xml:space="preserve">
+    <value>Специалист успешно включён.</value>
+  </data>
+  <data name="msg_profesional_desbloqueado" xml:space="preserve">
+    <value>Специалист разблокирован. Его пароль сброшен на DNI+Email; ему следует сменить его при следующем входе.</value>
+  </data>
+  <data name="titulo_sin_inconsistencias" xml:space="preserve">
+    <value>Несоответствий не обнаружено</value>
+  </data>
+  <data name="subtitulo_sin_inconsistencias" xml:space="preserve">
+    <value>Все контрольные цифры (DVH/DVV) и количество записей совпадают с ожидаемыми значениями.</value>
+  </data>
+  <data name="titulo_inconsistencias_detectadas" xml:space="preserve">
+    <value>Обнаружены несоответствия</value>
+  </data>
+  <data name="subtitulo_inconsistencias_detectadas" xml:space="preserve">
+    <value>Обнаружены изменения в базе данных, которые не соответствуют записям системы.</value>
+  </data>
+  <data name="titulo_acciones_disponibles" xml:space="preserve">
+    <value>Доступные действия</value>
+  </data>
+  <data name="subtitulo_acciones_disponibles" xml:space="preserve">
+    <value>Выберите, как поступить с обнаруженным (или используйте как плановую проверку, даже если несоответствий нет).</value>
+  </data>
+  <data name="accion_backup_titulo" xml:space="preserve">
+    <value>Создать резервную копию</value>
+  </data>
+  <data name="accion_backup_desc" xml:space="preserve">
+    <value>Создаёт резервную копию текущего состояния базы данных.</value>
+  </data>
+  <data name="accion_restore_titulo" xml:space="preserve">
+    <value>Восстановить из резервной копии</value>
+  </data>
+  <data name="accion_restore_desc" xml:space="preserve">
+    <value>Возвращает базу данных к предыдущему состоянию, признанному действительным.</value>
+  </data>
+  <data name="accion_recalcular_titulo" xml:space="preserve">
+    <value>Пересчитать контрольные цифры</value>
+  </data>
+  <data name="accion_recalcular_desc" xml:space="preserve">
+    <value>Принимает текущее состояние базы данных как действительное и пересчитывает все DVH/DVV/CR заново. Используйте только после подтверждения того, что обнаруженные изменения являются законными.</value>
+  </data>
+  <data name="btn_recalcular_digitos" xml:space="preserve">
+    <value>Пересчитать и принять текущее состояние</value>
+  </data>
+  <data name="msg_digitos_recalculados" xml:space="preserve">
+    <value>Контрольные цифры пересчитаны. Текущее состояние базы данных зарегистрировано как действительное.</value>
+  </data>
+  <data name="dvh_registro_inconsistente" xml:space="preserve">
+    <value>Таблица «Специалисты»: запись «{0}» ({1}) содержит несоответствие (была изменена напрямую в базе данных или добавлена в обход системы).</value>
+  </data>
+  <data name="dvh_faltan_registros" xml:space="preserve">
+    <value>Таблица «Специалисты»: количество недостающих записей относительно ожидаемого: {0} (возможное прямое удаление из базы данных).</value>
+  </data>
+  <data name="dvh_registros_de_mas" xml:space="preserve">
+    <value>Таблица «Специалисты»: количество лишних записей относительно ожидаемого: {0} (возможная прямая вставка в базу данных).</value>
+  </data>
+  <data name="dvh_alteracion_no_asociada" xml:space="preserve">
+    <value>Таблица «Специалисты»: обнаружено изменение, которое не удалось связать с конкретной записью.</value>
+  </data>
+  <data name="tagline_configuracion" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="header_configuracion" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="header_cambiar_idioma" xml:space="preserve">
+    <value>Сменить язык</value>
+  </data>
+  <data name="titulo_idioma_interfaz" xml:space="preserve">
+    <value>Язык интерфейса</value>
+  </data>
+  <data name="subtitulo_idioma_interfaz" xml:space="preserve">
+    <value>Выберите язык, на котором вы хотите видеть платформу. Изменение применяется мгновенно.</value>
+  </data>
+  <data name="seccion_idioma_actual" xml:space="preserve">
+    <value>Текущий язык</value>
+  </data>
+  <data name="badge_activo" xml:space="preserve">
+    <value>Активен</value>
+  </data>
+  <data name="seccion_idiomas_disponibles" xml:space="preserve">
+    <value>Доступные языки</value>
+  </data>
+  <data name="idioma_no_disponible" xml:space="preserve">
+    <value>Недоступен</value>
+  </data>
+  <data name="btn_cancelar" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="btn_confirmar_cambio_idioma" xml:space="preserve">
+    <value>Подтвердить смену языка</value>
+  </data>
+  <data name="titulo_idioma_seleccionado" xml:space="preserve">
+    <value>Выбранный язык</value>
+  </data>
+  <data name="msg_ningun_idioma_seleccionado" xml:space="preserve">
+    <value>Язык ещё не выбран.</value>
+  </data>
+  <data name="aviso_inmediato_titulo" xml:space="preserve">
+    <value>Немедленное применение</value>
+  </data>
+  <data name="aviso_inmediato_texto" xml:space="preserve">
+    <value>После подтверждения интерфейс автоматически перезагрузится на выбранном языке. Переводы управляются администратором системы.</value>
+  </data>
+  <data name="aviso_clinico_titulo" xml:space="preserve">
+    <value>Клинические данные</value>
+  </data>
+  <data name="aviso_clinico_texto" xml:space="preserve">
+    <value>Смена языка влияет только на интерфейс системы. Введённые клинические данные остаются на исходном языке.</value>
+  </data>
+  <data name="error_seleccionar_idioma" xml:space="preserve">
+    <value>Выберите язык перед подтверждением.</value>
+  </data>
+  <data name="msg_idioma_actualizado" xml:space="preserve">
+    <value>Язык успешно изменён.</value>
+  </data>
+  <data name="error_formato_contrasena" xml:space="preserve">
+    <value>Пароль не соответствует требуемому формату (минимум 8 символов, одна заглавная буква, одна цифра).</value>
+  </data>
+  <data name="error_email_duplicado" xml:space="preserve">
+    <value>Специалист с таким адресом электронной почты уже зарегистрирован.</value>
+  </data>
+  <data name="error_profesional_no_encontrado" xml:space="preserve">
+    <value>Специалист не найден.</value>
+  </data>
+  <data name="error_email_duplicado_otro" xml:space="preserve">
+    <value>Другой специалист с таким адресом электронной почты уже зарегистрирован.</value>
+  </data>
+  <data name="error_contrasena_actual_incorrecta" xml:space="preserve">
+    <value>Текущий пароль указан неверно.</value>
+  </data>
+  <data name="error_nombre_obligatorio" xml:space="preserve">
+    <value>Имя обязательно для заполнения.</value>
+  </data>
+  <data name="error_apellido_obligatorio" xml:space="preserve">
+    <value>Фамилия обязательна для заполнения.</value>
+  </data>
+  <data name="error_formato_dni" xml:space="preserve">
+    <value>DNI не соответствует ожидаемому формату (напр.: 12.345.678).</value>
+  </data>
+  <data name="error_formato_email" xml:space="preserve">
+    <value>Адрес электронной почты не соответствует ожидаемому формату.</value>
+  </data>
+  <data name="error_idioma_obligatorio" xml:space="preserve">
+    <value>Язык обязателен для заполнения.</value>
+  </data>
+  <data name="error_idioma_no_disponible" xml:space="preserve">
+    <value>Выбранный язык недоступен.</value>
+  </data>
+  <data name="error_idioma_ya_configurado" xml:space="preserve">
+    <value>Это уже текущий настроенный у вас язык.</value>
+  </data>
+  <data name="error_idioma_duplicado" xml:space="preserve">
+    <value>Язык с таким названием уже существует.</value>
+  </data>
+  <data name="error_idioma_referencia_no_encontrado" xml:space="preserve">
+    <value>Не найден язык-источник («{0}») для копирования ключей. Этот язык должен быть предварительно загружен вручную со всеми переводами.</value>
+  </data>
+  <data name="error_idioma_referencia_sin_traducciones" xml:space="preserve">
+    <value>У языка-источника ещё нет загруженных переводов. Копировать нечего.</value>
+  </data>
+  <data name="error_traductor_desalineado" xml:space="preserve">
+    <value>Автоматический переводчик вернул количество текстов, отличное от ожидаемого. Перевод не был создан, чтобы избежать рассинхронизации ключей.</value>
+  </data>
+  <data name="error_idioma_en_uso" xml:space="preserve">
+    <value>Невозможно отключить «{0}»: этот язык в настоящее время используют активные специалисты.</value>
+  </data>
+  <data name="error_traduccion_vacia" xml:space="preserve">
+    <value>Текст перевода не может быть пустым.</value>
+  </data>
+  <data name="error_nombre_idioma_obligatorio" xml:space="preserve">
+    <value>Название языка обязательно для заполнения.</value>
+  </data>
+  <data name="error_codigo_iso_obligatorio" xml:space="preserve">
+    <value>ISO-код языка обязателен для заполнения (напр.: es, en, pt).</value>
+  </data>
+  <data name="titulo_integridad_sistema" xml:space="preserve">
+    <value>Целостность системы</value>
+  </data>
+  <data name="menu_cambiar_idioma" xml:space="preserve">
+    <value>Сменить язык</value>
+  </data>
+  <data name="menu_cambiar_clave" xml:space="preserve">
+    <value>Сменить пароль</value>
+  </data>
+  <data name="header_administrador" xml:space="preserve">
+    <value>Администратор</value>
+  </data>
+  <data name="header_web_master" xml:space="preserve">
+    <value>Веб-мастер</value>
+  </data>
+  <data name="header_menu_principal" xml:space="preserve">
+    <value>Главное меню</value>
+  </data>
+  <data name="titulo_nuevo_idioma" xml:space="preserve">
+    <value>Новый язык</value>
+  </data>
+  <data name="subtitulo_nuevo_idioma" xml:space="preserve">
+    <value>Все переводы генерируются автоматически путём копирования ключей из «Испанский» и их перевода через автоматический переводчик. Время выполнения зависит от количества загруженных ключей — не закрывайте страницу во время обработки.</value>
+  </data>
+  <data name="lbl_nombre_idioma" xml:space="preserve">
+    <value>Название языка</value>
+  </data>
+  <data name="lbl_codigo_iso" xml:space="preserve">
+    <value>Код ISO 639-1</value>
+  </data>
+  <data name="hint_codigo_iso" xml:space="preserve">
+    <value>Используется автоматическим переводчиком (напр.: es, en, pt, fr).</value>
+  </data>
+  <data name="btn_generar_idioma" xml:space="preserve">
+    <value>Создать язык с переводами</value>
+  </data>
+  <data name="confirm_alta_idioma" xml:space="preserve">
+    <value>Это вызовет автоматический переводчик для создания всех переводов. В зависимости от количества ключей это может занять несколько минут. Подтверждаете?</value>
+  </data>
+  <data name="titulo_idiomas_sistema" xml:space="preserve">
+    <value>Языки системы</value>
+  </data>
+  <data name="empty_idiomas" xml:space="preserve">
+    <value>Нет загруженных языков.</value>
+  </data>
+  <data name="col_codigo_iso" xml:space="preserve">
+    <value>Код ISO</value>
+  </data>
+  <data name="estado_disponible" xml:space="preserve">
+    <value>Доступен</value>
+  </data>
+  <data name="estado_desactivado" xml:space="preserve">
+    <value>Отключён</value>
+  </data>
+  <data name="badge_en_uso" xml:space="preserve">
+    <value>Используется</value>
+  </data>
+  <data name="btn_desactivar" xml:space="preserve">
+    <value>Отключить</value>
+  </data>
+  <data name="btn_activar" xml:space="preserve">
+    <value>Включить</value>
+  </data>
+  <data name="btn_traducciones" xml:space="preserve">
+    <value>Переводы</value>
+  </data>
+  <data name="titulo_traducciones" xml:space="preserve">
+    <value>Переводы</value>
+  </data>
+  <data name="subtitulo_traducciones" xml:space="preserve">
+    <value>Помеченные как «в ожидании» были созданы автоматическим переводчиком и ещё не проверены человеком.</value>
+  </data>
+  <data name="empty_traducciones" xml:space="preserve">
+    <value>У этого языка нет загруженных переводов.</value>
+  </data>
+  <data name="col_clave" xml:space="preserve">
+    <value>Ключ</value>
+  </data>
+  <data name="col_texto" xml:space="preserve">
+    <value>Текст</value>
+  </data>
+  <data name="estado_pendiente" xml:space="preserve">
+    <value>В ожидании</value>
+  </data>
+  <data name="estado_revisado" xml:space="preserve">
+    <value>Проверено</value>
+  </data>
+  <data name="btn_guardar" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="msg_idioma_generado" xml:space="preserve">
+    <value>Язык «{0}» успешно создан. Проверьте ожидающие переводы перед тем, как включить его для специалистов.</value>
+  </data>
+  <data name="msg_idioma_activado" xml:space="preserve">
+    <value>Язык «{0}» включён.</value>
+  </data>
+  <data name="msg_idioma_desactivado" xml:space="preserve">
+    <value>Язык «{0}» отключён.</value>
+  </data>
+  <data name="msg_traduccion_actualizada" xml:space="preserve">
+    <value>Перевод обновлён.</value>
+  </data>
+  <data name="banner_admin_titulo" xml:space="preserve">
+    <value>Панель администратора</value>
+  </data>
+  <data name="banner_admin_sub" xml:space="preserve">
+    <value>Управление специалистами и аудит системы</value>
+  </data>
+  <data name="tile_profesionales_desc" xml:space="preserve">
+    <value>Добавление, удаление, изменение, включение и разблокировка учётных записей специалистов.</value>
+  </data>
+  <data name="tile_idiomas_desc" xml:space="preserve">
+    <value>Управление доступными в системе языками.</value>
+  </data>
+  <data name="tile_bitacora_desc" xml:space="preserve">
+    <value>Просмотр журнала аудита событий системы.</value>
+  </data>
+  <data name="banner_webmaster_titulo" xml:space="preserve">
+    <value>Техническая панель системы</value>
+  </data>
+  <data name="banner_webmaster_sub" xml:space="preserve">
+    <value>Полный доступ к целостности данных, резервному копированию и аудиту</value>
+  </data>
+  <data name="tile_integridad_desc" xml:space="preserve">
+    <value>Проверка контрольной цифры критически важных таблиц.</value>
+  </data>
+  <data name="tile_backup_desc" xml:space="preserve">
+    <value>Резервное копирование или восстановление базы данных системы.</value>
+  </data>
+  <data name="lbl_nuevo_idioma" xml:space="preserve">
+    <value>Язык для добавления</value>
+  </data>
+  <data name="error_idioma_obligatorio_alta" xml:space="preserve">
+    <value>Выберите язык из списка.</value>
+  </data>
+  <data name="hint_nuevo_idioma" xml:space="preserve">
+    <value>Отображаются только языки, ещё не добавленные в систему.</value>
+  </data>
+  <data name="overlay_generando_titulo" xml:space="preserve">
+    <value>Создание языка...</value>
+  </data>
+  <data name="overlay_generando_sub" xml:space="preserve">
+    <value>Перевод всех ключей системы. Это может занять несколько минут, не закрывайте это окно.</value>
+  </data>
+  <data name="logout_cerrando_titulo" xml:space="preserve">
+    <value>Завершение сеанса...</value>
+  </data>
+  <data name="logout_cerrando_sub" xml:space="preserve">
+    <value>Безопасная очистка данных сеанса.</value>
+  </data>
+  <data name="logout_error_titulo" xml:space="preserve">
+    <value>Ошибка при выходе из системы</value>
+  </data>
+  <data name="logout_error_texto" xml:space="preserve">
+    <value>При выходе из системы произошла ошибка. В целях безопасности закройте браузер, чтобы убедиться, что сеанс завершён.</value>
+  </data>
+  <data name="logout_ir_login" xml:space="preserve">
+    <value>Перейти к странице входа</value>
+  </data>
+  <data name="logout_exito_titulo" xml:space="preserve">
+    <value>Сеанс завершён</value>
+  </data>
+  <data name="logout_exito_sub" xml:space="preserve">
+    <value>Вы будете перенаправлены на страницу входа...</value>
+  </data>
+  <data name="titulo_filtros_bitacora" xml:space="preserve">
+    <value>Фильтры поиска</value>
+  </data>
+  <data name="subtitulo_filtros_bitacora" xml:space="preserve">
+    <value>Комбинируйте нужные фильтры или оставьте их все со значением «Все», чтобы увидеть последние события.</value>
+  </data>
+  <data name="lbl_fecha_inicio" xml:space="preserve">
+    <value>Дата начала</value>
+  </data>
+  <data name="lbl_fecha_fin" xml:space="preserve">
+    <value>Дата окончания</value>
+  </data>
+  <data name="lbl_modulo" xml:space="preserve">
+    <value>Модуль</value>
+  </data>
+  <data name="lbl_usuario_email" xml:space="preserve">
+    <value>Пользователь (эл. почта)</value>
+  </data>
+  <data name="lbl_criticidad" xml:space="preserve">
+    <value>Критичность</value>
+  </data>
+  <data name="btn_limpiar_filtros" xml:space="preserve">
+    <value>Очистить фильтры</value>
+  </data>
+  <data name="btn_filtrar" xml:space="preserve">
+    <value>Фильтровать</value>
+  </data>
+  <data name="titulo_eventos_registrados" xml:space="preserve">
+    <value>Зарегистрированные события</value>
+  </data>
+  <data name="col_descripcion" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="col_fecha_evento" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="empty_bitacora" xml:space="preserve">
+    <value>Нет событий, зарегистрированных с этими фильтрами.</value>
+  </data>
+  <data name="hint_ultimos_dias" xml:space="preserve">
+    <value>без фильтров, за последние дни</value>
+  </data>
+  <data name="titulo_detalle_profesional" xml:space="preserve">
+    <value>Данные специалиста</value>
+  </data>
+  <data name="col_nombre_completo" xml:space="preserve">
+    <value>Полное имя</value>
+  </data>
+  <data name="msg_profesional_no_encontrado_por_email" xml:space="preserve">
+    <value>В настоящее время специалист с таким адресом электронной почты не найден (возможно, он изменил email или был удалён).</value>
+  </data>
+  <data name="btn_ver_detalle" xml:space="preserve">
+    <value>Посмотреть детали</value>
+  </data>
+  <data name="criticidad_alta" xml:space="preserve">
+    <value>Высокая значимость</value>
+  </data>
+  <data name="criticidad_media" xml:space="preserve">
+    <value>Средняя значимость</value>
+  </data>
+  <data name="criticidad_baja" xml:space="preserve">
+    <value>Низкая значимость</value>
+  </data>
+  <data name="estado_bloqueado" xml:space="preserve">
+    <value>Заблокирован</value>
+  </data>
+  <data name="header_cambiar_clave" xml:space="preserve">
+    <value>Сменить пароль</value>
+  </data>
+  <data name="titulo_cambiar_contrasena" xml:space="preserve">
+    <value>Смена пароля</value>
+  </data>
+  <data name="subtitulo_cambiar_contrasena" xml:space="preserve">
+    <value>Обновите ваш пароль доступа. Новый пароль хешируется перед сохранением.</value>
+  </data>
+  <data name="seccion_verificacion_identidad" xml:space="preserve">
+    <value>Подтверждение личности</value>
+  </data>
+  <data name="lbl_contrasena_actual" xml:space="preserve">
+    <value>Текущий пароль</value>
+  </data>
+  <data name="error_contrasena_actual_obligatoria" xml:space="preserve">
+    <value>Текущий пароль обязателен для заполнения.</value>
+  </data>
+  <data name="seccion_nueva_contrasena" xml:space="preserve">
+    <value>Новый пароль</value>
+  </data>
+  <data name="lbl_contrasena_nueva" xml:space="preserve">
+    <value>Новый пароль</value>
+  </data>
+  <data name="error_contrasena_nueva_obligatoria" xml:space="preserve">
+    <value>Новый пароль обязателен для заполнения.</value>
+  </data>
+  <data name="lbl_confirmar_contrasena" xml:space="preserve">
+    <value>Подтвердите новый пароль</value>
+  </data>
+  <data name="error_confirmacion_obligatoria" xml:space="preserve">
+    <value>Подтверждение обязательно для заполнения.</value>
+  </data>
+  <data name="error_confirmacion_no_coincide" xml:space="preserve">
+    <value>Новый пароль и его подтверждение не совпадают.</value>
+  </data>
+  <data name="btn_confirmar_cambio" xml:space="preserve">
+    <value>Подтвердить изменение</value>
+  </data>
+  <data name="titulo_politica_contrasena" xml:space="preserve">
+    <value>Политика паролей</value>
+  </data>
+  <data name="pol_longitud" xml:space="preserve">
+    <value>Минимум 8 символов</value>
+  </data>
+  <data name="pol_mayuscula" xml:space="preserve">
+    <value>Не менее одной заглавной буквы</value>
+  </data>
+  <data name="pol_numero" xml:space="preserve">
+    <value>Не менее одной цифры</value>
+  </data>
+  <data name="pol_distinta_actual" xml:space="preserve">
+    <value>Отличается от текущего пароля</value>
+  </data>
+  <data name="aviso_seguro_titulo" xml:space="preserve">
+    <value>Безопасное хранение</value>
+  </data>
+  <data name="aviso_seguro_texto" xml:space="preserve">
+    <value>Ваш пароль хранится в хешированном виде без возможности восстановления. Никто, включая администратора, не может увидеть ваш пароль в открытом виде.</value>
+  </data>
+  <data name="aviso_sesion_titulo" xml:space="preserve">
+    <value>При смене пароля</value>
+  </data>
+  <data name="aviso_sesion_texto" xml:space="preserve">
+    <value>Ваш активный сеанс не будет завершён. Если вы подозреваете несанкционированный доступ, завершите сеансы на всех ваших устройствах.</value>
+  </data>
+  <data name="msg_contrasena_actualizada" xml:space="preserve">
+    <value>Пароль успешно обновлён.</value>
+  </data>
+  <data name="error_contrasena_igual_actual" xml:space="preserve">
+    <value>Новый пароль не может совпадать с текущим паролем. Выберите другой пароль.</value>
+  </data>
+  <data name="seccion_herramientas_sistema" xml:space="preserve">
+    <value>Системные инструменты</value>
+  </data>
+  <data name="nav_auditoria_bitacora" xml:space="preserve">
+    <value>Аудит журнала</value>
+  </data>
+  <data name="nav_backup_restore" xml:space="preserve">
+    <value>Резервное копирование / Восстановление</value>
+  </data>
+  <data name="nav_digito_verificador" xml:space="preserve">
+    <value>Пересчитать контрольную цифру</value>
+  </data>
+  <data name="seccion_gestion_sistema" xml:space="preserve">
+    <value>Управление системой</value>
+  </data>
+  <data name="nav_abm_profesionales" xml:space="preserve">
+    <value>Управление специалистами</value>
+  </data>
+  <data name="nav_abm_pacientes" xml:space="preserve">
+    <value>Управление пациентами</value>
+  </data>
+  <data name="nav_abm_consultas" xml:space="preserve">
+    <value>Управление консультациями</value>
+  </data>
+  <data name="nav_gestionar_idiomas" xml:space="preserve">
+    <value>Управление языками</value>
+  </data>
+  <data name="nav_gestionar_permisos" xml:space="preserve">
+    <value>Управление правами доступа</value>
+  </data>
+  <data name="seccion_gestion_clinica" xml:space="preserve">
+    <value>Клиническое управление</value>
+  </data>
+  <data name="nav_registrar_paciente" xml:space="preserve">
+    <value>Зарегистрировать пациента</value>
+  </data>
+  <data name="nav_realizar_consulta" xml:space="preserve">
+    <value>Провести консультацию</value>
+  </data>
+  <data name="nav_generar_historial" xml:space="preserve">
+    <value>Сформировать историю болезни</value>
+  </data>
+  <data name="nav_modificar_consulta" xml:space="preserve">
+    <value>Изменить консультацию</value>
+  </data>
+  <data name="nav_linea_temporal" xml:space="preserve">
+    <value>Клиническая хронология</value>
+  </data>
+  <data name="seccion_modulo_ia" xml:space="preserve">
+    <value>Модуль вспомогательного ИИ</value>
+  </data>
+  <data name="nav_resumen_ia" xml:space="preserve">
+    <value>Клиническое резюме ИИ</value>
+  </data>
+  <data name="nav_informe_derivacion" xml:space="preserve">
+    <value>Направительное заключение</value>
+  </data>
+  <data name="nav_auditoria_informe" xml:space="preserve">
+    <value>Аудит заключения</value>
+  </data>
+  <data name="nav_perfilacion_paciente" xml:space="preserve">
+    <value>Профилирование пациента</value>
+  </data>
+  <data name="seccion_operativo_config" xml:space="preserve">
+    <value>Эксплуатация и настройки</value>
+  </data>
+  <data name="nav_dashboard" xml:space="preserve">
+    <value>Операционная панель</value>
+  </data>
+  <data name="nav_exportar_reporte" xml:space="preserve">
+    <value>Экспортировать отчёт</value>
+  </data>
+  <data name="nav_gestionar_suscripcion" xml:space="preserve">
+    <value>Управление подпиской</value>
+  </data>
+  <data name="error_nombre_permiso_obligatorio" xml:space="preserve">
+    <value>Название обязательно для заполнения.</value>
+  </data>
+  <data name="error_permiso_simple_duplicado" xml:space="preserve">
+    <value>Простое право с таким названием уже существует.</value>
+  </data>
+  <data name="error_familia_duplicada" xml:space="preserve">
+    <value>Группа прав с таким названием уже существует.</value>
+  </data>
+  <data name="error_perfil_duplicado" xml:space="preserve">
+    <value>Профиль с таким названием уже существует.</value>
+  </data>
+  <data name="error_familia_no_puede_incluirse_a_si_misma" xml:space="preserve">
+    <value>Группа прав не может включать саму себя.</value>
+  </data>
+  <data name="error_elemento_no_encontrado" xml:space="preserve">
+    <value>Не найдено ни простое право, ни группа прав с таким названием.</value>
+  </data>
+  <data name="error_familia_asignada_a_perfil" xml:space="preserve">
+    <value>Невозможно удалить «{0}»: она назначена как минимум одному профилю. Сначала удалите её оттуда.</value>
+  </data>
+  <data name="error_familia_anidada_en_otra" xml:space="preserve">
+    <value>Невозможно удалить «{0}»: она включена в другую группу прав. Сначала удалите её оттуда.</value>
+  </data>
+  <data name="error_perfil_asignado_a_profesional" xml:space="preserve">
+    <value>Невозможно удалить «{0}»: есть активные специалисты с этим профилем.</value>
+  </data>
+  <data name="titulo_altas_permisos" xml:space="preserve">
+    <value>Добавление</value>
+  </data>
+  <data name="subtitulo_altas_permisos" xml:space="preserve">
+    <value>Создайте новую (пустую) группу прав или профиль. Позже в них можно добавить элементы через «Управление структурой».</value>
+  </data>
+  <data name="lbl_nuevo_permiso_simple" xml:space="preserve">
+    <value>Новое простое право</value>
+  </data>
+  <data name="btn_agregar" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="lbl_nueva_familia" xml:space="preserve">
+    <value>Новая группа прав</value>
+  </data>
+  <data name="lbl_nuevo_perfil" xml:space="preserve">
+    <value>Новый профиль (роль)</value>
+  </data>
+  <data name="titulo_gestionar_estructura" xml:space="preserve">
+    <value>Управление структурой</value>
+  </data>
+  <data name="subtitulo_gestionar_estructura" xml:space="preserve">
+    <value>Выберите профиль или группу прав, чтобы просмотреть и изменить их содержимое.</value>
+  </data>
+  <data name="lbl_tipo" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="lbl_elemento" xml:space="preserve">
+    <value>Элемент</value>
+  </data>
+  <data name="opt_perfil_rol" xml:space="preserve">
+    <value>Профиль (роль)</value>
+  </data>
+  <data name="opt_familia" xml:space="preserve">
+    <value>Группа прав</value>
+  </data>
+  <data name="btn_borrar_seleccionado" xml:space="preserve">
+    <value>Удалить этот элемент</value>
+  </data>
+  <data name="titulo_hijos_directos" xml:space="preserve">
+    <value>Непосредственно включённые элементы</value>
+  </data>
+  <data name="subtitulo_hijos_directos" xml:space="preserve">
+    <value>Здесь формируется состав: профиль или группа прав может включать простые права и/или другие группы прав.</value>
+  </data>
+  <data name="col_nombre" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="col_tipo" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="empty_hijos_directos" xml:space="preserve">
+    <value>Пока ничего не включено.</value>
+  </data>
+  <data name="lbl_agregar_elemento" xml:space="preserve">
+    <value>Добавить простое право или группу прав</value>
+  </data>
+  <data name="lbl_permiso_simple" xml:space="preserve">
+    <value>Простое право</value>
+  </data>
+  <data name="btn_quitar" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="titulo_arbol_completo" xml:space="preserve">
+    <value>Полная структура (только для просмотра)</value>
+  </data>
+  <data name="subtitulo_arbol_completo" xml:space="preserve">
+    <value>Включает элементы, добавленные напрямую, и всё, что наследуется от вложенных групп прав.</value>
+  </data>
+  <data name="msg_permiso_simple_creado" xml:space="preserve">
+    <value>Простое право «{0}» создано.</value>
+  </data>
+  <data name="msg_familia_creada" xml:space="preserve">
+    <value>Группа прав «{0}» создана.</value>
+  </data>
+  <data name="msg_perfil_creado" xml:space="preserve">
+    <value>Профиль «{0}» создан.</value>
+  </data>
+  <data name="msg_elemento_agregado" xml:space="preserve">
+    <value>«{0}» добавлено в «{1}».</value>
+  </data>
+  <data name="msg_elemento_quitado" xml:space="preserve">
+    <value>«{0}» удалено из «{1}».</value>
+  </data>
+  <data name="msg_elemento_borrado" xml:space="preserve">
+    <value>«{0}» успешно удалено.</value>
+  </data>
+  <data name="error_permiso_ya_incluido" xml:space="preserve">
+    <value>Право «{0}» уже присутствует в «{1}» (напрямую или через одну из включённых групп).</value>
+  </data>
+  <data name="error_familia_genera_permisos_duplicados" xml:space="preserve">
+    <value>Невозможно добавить «{0}» в «{1}»: они имеют хотя бы одно общее простое право, которое дублировалось бы в дереве.</value>
+  </data>
+  <data name="acceso_denegado_titulo" xml:space="preserve">
+    <value>У вас нет прав для этой функции</value>
+  </data>
+  <data name="acceso_denegado_texto" xml:space="preserve">
+    <value>Ваш текущий профиль не включает право, необходимое для доступа к тому, что вы пытались открыть. В целях безопасности ваш сеанс будет автоматически завершён.</value>
+  </data>
+  <data name="acceso_denegado_countdown" xml:space="preserve">
+    <value>Выход из системы через</value>
+  </data>
+  <data name="msg_sin_permisos_asignados" xml:space="preserve">
+    <value>Вашему профилю пока не назначена ни одна функция. Обратитесь к администратору.</value>
+  </data>
+  <data name="login_sesion_cerrada_por_acceso_denegado" xml:space="preserve">
+    <value>Ваш сеанс был завершён, так как вы пытались получить доступ к функции без необходимого права.</value>
+  </data>
+  <data name="banner_profesional_sub" xml:space="preserve">
+    <value>Ваше клиническое рабочее пространство</value>
+  </data>
+  <data name="header_inicio" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="menu_dashboard" xml:space="preserve">
+    <value>Панель управления</value>
+  </data>
+  <data name="menu_mi_suscripcion" xml:space="preserve">
+    <value>Моя подписка</value>
+  </data>
+  <data name="menu_pacientes" xml:space="preserve">
+    <value>Пациенты</value>
+  </data>
+  <data name="msg_bienvenida" xml:space="preserve">
+    <value>Здравствуйте, {0}</value>
+  </data>
+  <data name="tagline_gestion_clinica" xml:space="preserve">
+    <value>Клиническое управление</value>
+  </data>
+  <data name="tile_dashboard_desc" xml:space="preserve">
+    <value>Общий обзор вашей клинической деятельности: пациенты, консультации и показатели.</value>
+  </data>
+  <data name="tile_pacientes_desc" xml:space="preserve">
+    <value>Регистрация и управление пациентами вашего клинического подразделения.</value>
+  </data>
+  <data name="tile_suscripcion_desc" xml:space="preserve">
+    <value>Просмотр или изменение вашего текущего тарифного плана.</value>
+  </data>
+  <data name="btn_registrar_paciente_form" xml:space="preserve">
+    <value>Зарегистрировать пациента</value>
+  </data>
+  <data name="col_paciente" xml:space="preserve">
+    <value>Пациент</value>
+  </data>
+  <data name="dvh_alteracion_no_asociada_tabla" xml:space="preserve">
+    <value>Таблица {0}: обнаружено изменение, которое не удалось связать с конкретной записью.</value>
+  </data>
+  <data name="dvh_faltan_registros_tabla" xml:space="preserve">
+    <value>Таблица {0}: количество недостающих записей относительно ожидаемого: {1} (возможное прямое удаление из базы данных).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_paciente" xml:space="preserve">
+    <value>Таблица «Пациенты»: запись «{0}» ({1}) содержит несоответствие (была изменена напрямую в базе данных или добавлена в обход системы).</value>
+  </data>
+  <data name="dvh_registros_de_mas_tabla" xml:space="preserve">
+    <value>Таблица {0}: количество лишних записей относительно ожидаемого: {1} (возможная прямая вставка в базу данных).</value>
+  </data>
+  <data name="empty_pacientes" xml:space="preserve">
+    <value>Нет пациентов, соответствующих этому фильтру.</value>
+  </data>
+  <data name="error_fecha_nacimiento_futura" xml:space="preserve">
+    <value>Дата рождения не может быть в будущем.</value>
+  </data>
+  <data name="error_fecha_nacimiento_obligatoria" xml:space="preserve">
+    <value>Дата рождения обязательна для заполнения.</value>
+  </data>
+  <data name="error_paciente_sin_profesional" xml:space="preserve">
+    <value>Пациент должен быть привязан к специалисту здравоохранения.</value>
+  </data>
+  <data name="error_rango_fechas_invalido" xml:space="preserve">
+    <value>Дата начала не может быть позже даты окончания.</value>
+  </data>
+  <data name="hint_psicologo_asignado" xml:space="preserve">
+    <value>Отображаются только специалисты с активным клиническим правом.</value>
+  </data>
+  <data name="lbl_estado_civil" xml:space="preserve">
+    <value>Семейное положение</value>
+  </data>
+  <data name="lbl_fecha_nacimiento" xml:space="preserve">
+    <value>Дата рождения</value>
+  </data>
+  <data name="lbl_ocupacion" xml:space="preserve">
+    <value>Род занятий</value>
+  </data>
+  <data name="lbl_psicologo_asignado" xml:space="preserve">
+    <value>Назначенный психолог</value>
+  </data>
+  <data name="lbl_sexo" xml:space="preserve">
+    <value>Пол</value>
+  </data>
+  <data name="lbl_telefono" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="msg_paciente_baja" xml:space="preserve">
+    <value>Пациент успешно деактивирован.</value>
+  </data>
+  <data name="msg_paciente_modificado" xml:space="preserve">
+    <value>Данные пациента «{0}» успешно изменены.</value>
+  </data>
+  <data name="msg_paciente_no_existe" xml:space="preserve">
+    <value>Выбранный пациент больше не существует.</value>
+  </data>
+  <data name="msg_paciente_reactivado" xml:space="preserve">
+    <value>Пациент успешно восстановлен.</value>
+  </data>
+  <data name="msg_paciente_registrado" xml:space="preserve">
+    <value>Пациент «{0}» успешно зарегистрирован.</value>
+  </data>
+  <data name="seccion_datos_paciente" xml:space="preserve">
+    <value>Данные пациента</value>
+  </data>
+  <data name="seccion_vinculo_profesional" xml:space="preserve">
+    <value>Связь со специалистом</value>
+  </data>
+  <data name="subtitulo_abm_paciente" xml:space="preserve">
+    <value>Каждый пациент должен быть привязан к специалисту здравоохранения. Технические профили (Администратор, Веб-мастер) не могут иметь назначенных пациентов.</value>
+  </data>
+  <data name="tile_abm_consultas_desc" xml:space="preserve">
+    <value>Добавление, удаление и изменение клинических консультаций.</value>
+  </data>
+  <data name="tile_abm_pacientes_desc" xml:space="preserve">
+    <value>Добавление, удаление и изменение пациентов системы.</value>
+  </data>
+  <data name="tile_auditoria_informe_desc" xml:space="preserve">
+    <value>Просмотр и аудит сформированного направительного заключения.</value>
+  </data>
+  <data name="tile_exportar_desc" xml:space="preserve">
+    <value>Экспорт отчёта в формате PDF.</value>
+  </data>
+  <data name="tile_generar_historial_desc" xml:space="preserve">
+    <value>Внесение истории болезни пациента.</value>
+  </data>
+  <data name="tile_informe_derivacion_desc" xml:space="preserve">
+    <value>Формирование направительного заключения для пациента.</value>
+  </data>
+  <data name="tile_linea_temporal_desc" xml:space="preserve">
+    <value>Просмотр хронологической эволюции пациента с течением времени.</value>
+  </data>
+  <data name="tile_modificar_consulta_desc" xml:space="preserve">
+    <value>Редактирование данных уже зарегистрированной консультации.</value>
+  </data>
+  <data name="tile_perfilacion_desc" xml:space="preserve">
+    <value>Формирование эволюционного профиля пациента.</value>
+  </data>
+  <data name="tile_permisos_desc" xml:space="preserve">
+    <value>Управление ролями, группами прав и правами доступа системы.</value>
+  </data>
+  <data name="tile_realizar_consulta_desc" xml:space="preserve">
+    <value>Регистрация новой клинической консультации для пациента.</value>
+  </data>
+  <data name="tile_registrar_paciente_desc" xml:space="preserve">
+    <value>Регистрация нового пациента в вашем кабинете.</value>
+  </data>
+  <data name="tile_resumen_ia_desc" xml:space="preserve">
+    <value>Формирование клинического резюме с помощью искусственного интеллекта.</value>
+  </data>
+  <data name="titulo_modificar_paciente" xml:space="preserve">
+    <value>Изменить пациента</value>
+  </data>
+  <data name="titulo_nuevo_paciente" xml:space="preserve">
+    <value>Новый пациент</value>
+  </data>
+  <data name="titulo_pacientes_registrados" xml:space="preserve">
+    <value>Зарегистрированные пациенты</value>
+  </data>
+  <data name="error_fecha_fin_futura" xml:space="preserve">
+    <value>Дата окончания не может быть позже сегодняшнего дня.</value>
+  </data>
+  <data name="error_fecha_inicio_futura" xml:space="preserve">
+    <value>Дата начала не может быть позже сегодняшнего дня.</value>
+  </data>
+  <data name="aviso_contenido_encriptado" xml:space="preserve">
+    <value>Эти поля хранятся в базе данных в зашифрованном виде. Даже при прямом доступе к базе данных прочитать их в открытом виде невозможно.</value>
+  </data>
+  <data name="btn_registrar_consulta_form" xml:space="preserve">
+    <value>Зарегистрировать консультацию</value>
+  </data>
+  <data name="dvh_registro_inconsistente_consulta" xml:space="preserve">
+    <value>Таблица «Консультации»: консультация №{0} от {1:dd/MM/yyyy} содержит несоответствие (была изменена напрямую в базе данных или добавлена в обход системы).</value>
+  </data>
+  <data name="empty_consultas" xml:space="preserve">
+    <value>Нет зарегистрированных консультаций.</value>
+  </data>
+  <data name="error_consulta_sin_paciente" xml:space="preserve">
+    <value>Консультация должна быть привязана к пациенту.</value>
+  </data>
+  <data name="error_fecha_consulta_futura" xml:space="preserve">
+    <value>Дата консультации не может быть в будущем.</value>
+  </data>
+  <data name="error_fecha_consulta_obligatoria" xml:space="preserve">
+    <value>Дата консультации обязательна для заполнения.</value>
+  </data>
+  <data name="error_tiempo_consulta_invalido" xml:space="preserve">
+    <value>Продолжительность консультации должна быть числом больше 0.</value>
+  </data>
+  <data name="hint_paciente_por_psicologo" xml:space="preserve">
+    <value>Отображаются только пациенты, привязанные к выбранному специалисту.</value>
+  </data>
+  <data name="lbl_diagnostico" xml:space="preserve">
+    <value>Диагноз</value>
+  </data>
+  <data name="lbl_evolucion_observada" xml:space="preserve">
+    <value>Наблюдаемая динамика</value>
+  </data>
+  <data name="lbl_fecha_consulta" xml:space="preserve">
+    <value>Дата консультации</value>
+  </data>
+  <data name="lbl_hipotesis" xml:space="preserve">
+    <value>Гипотеза</value>
+  </data>
+  <data name="lbl_intervenciones" xml:space="preserve">
+    <value>Вмешательства</value>
+  </data>
+  <data name="lbl_objetivos" xml:space="preserve">
+    <value>Цели</value>
+  </data>
+  <data name="lbl_observaciones" xml:space="preserve">
+    <value>Наблюдения</value>
+  </data>
+  <data name="lbl_paciente" xml:space="preserve">
+    <value>Пациент</value>
+  </data>
+  <data name="lbl_tiempo_consulta" xml:space="preserve">
+    <value>Продолжительность (минуты)</value>
+  </data>
+  <data name="lbl_tratamiento" xml:space="preserve">
+    <value>Лечение</value>
+  </data>
+  <data name="msg_consulta_modificada" xml:space="preserve">
+    <value>Консультация успешно изменена.</value>
+  </data>
+  <data name="msg_consulta_no_existe" xml:space="preserve">
+    <value>Выбранная консультация больше не существует.</value>
+  </data>
+  <data name="msg_consulta_registrada" xml:space="preserve">
+    <value>Консультация успешно зарегистрирована.</value>
+  </data>
+  <data name="opt_seleccionar_psicologo_primero" xml:space="preserve">
+    <value>Сначала выберите специалиста</value>
+  </data>
+  <data name="seccion_contenido_clinico" xml:space="preserve">
+    <value>Клиническое содержание</value>
+  </data>
+  <data name="seccion_datos_consulta" xml:space="preserve">
+    <value>Данные консультации</value>
+  </data>
+  <data name="subtitulo_abm_consulta" xml:space="preserve">
+    <value>Сначала выберите специалиста, чтобы увидеть только привязанных к нему пациентов.</value>
+  </data>
+  <data name="subtitulo_consultas_registradas" xml:space="preserve">
+    <value>Клиническое содержание не отображается в этом списке из соображений безопасности — откройте «Изменить», чтобы его увидеть.</value>
+  </data>
+  <data name="titulo_consultas_registradas" xml:space="preserve">
+    <value>Зарегистрированные консультации</value>
+  </data>
+  <data name="titulo_modificar_consulta_form" xml:space="preserve">
+    <value>Изменить консультацию</value>
+  </data>
+  <data name="titulo_nueva_consulta" xml:space="preserve">
+    <value>Новая консультация</value>
+  </data>
+  <data name="error_envio_correo_recuperacion" xml:space="preserve">
+    <value>Не удалось отправить письмо для восстановления пароля. Попробуйте снова через несколько минут.</value>
+  </data>
+  <data name="error_token_invalido_o_expirado" xml:space="preserve">
+    <value>Ссылка для восстановления недействительна или срок её действия истёк.</value>
+  </data>
+  <data name="login_clave_restablecida" xml:space="preserve">
+    <value>Ваш пароль успешно восстановлен. Теперь вы можете войти в систему.</value>
+  </data>
+</root>
