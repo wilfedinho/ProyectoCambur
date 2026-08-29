@@ -1,123 +1,74 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using BE;
+using BLL;
+using SERVICIOS;
+using System;
+using System.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-public partial class FormRegistroProfesional : System.Web.UI.Page
+using GUI;
+public partial class FormRegistroProfesional : PaginaBase
 {
-    private const string DEMO_NOMBRE = "Lucía";
-    private const string DEMO_APELLIDO = "Martínez";
-    private const string DEMO_DNI = "32145678";
-    private const string DEMO_EMAIL = "lucia@consultorio.com";
-    private const string DEMO_TARJETA = "4111 1111 1111 1111";
-    private const string DEMO_TITULAR = "LUCIA MARTINEZ";
-    private const string DEMO_VENCE = "12/28";
-    private const string DEMO_PLAN = "2"; 
     protected void Page_Load(object sender, EventArgs e)
     {
         Page.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-        if (!IsPostBack)
-        {
-            CargarDatosDemo();
-        }
     }
-    private void CargarDatosDemo()
+    protected string ObtenerPublicKeyMercadoPago()
     {
-        txtNombre.Text = DEMO_NOMBRE;
-        txtApellido.Text = DEMO_APELLIDO;
-        txtDNI.Text = DEMO_DNI;
-        txtEmail.Text = DEMO_EMAIL;
-        txtNumeroTarjeta.Text = DEMO_TARJETA;
-        txtTitular.Text = DEMO_TITULAR;
-        txtVencimiento.Text = DEMO_VENCE;
-        hfPlanSeleccionado.Value = DEMO_PLAN;
+        string publicKey = ConfigurationManager.AppSettings["MercadoPagoPublicKey"];
+        return publicKey ?? string.Empty;
     }
+
     protected void btnRegistrar_Click(object sender, EventArgs e)
     {
         lblMensaje.Visible = false;
+
         if (!Page.IsValid) return;
-        string nombre = txtNombre.Text.Trim();
-        string apellido = txtApellido.Text.Trim();
-        string dni = txtDNI.Text.Trim();
-        string email = txtEmail.Text.Trim();
-        string password = txtPassword.Text;
-        string confirmPw = txtConfirmPassword.Text;
-        string tarjeta = txtNumeroTarjeta.Text.Trim();
-        string titular = txtTitular.Text.Trim();
-        string vence = txtVencimiento.Text.Trim();
-        string cvv = txtCVV.Text;
-        int idPlan = 2;
 
+        string tokenTarjeta = hfTokenTarjeta.Value;
+        string paymentMethodId = hfPaymentMethodId.Value;
+        if (string.IsNullOrWhiteSpace(tokenTarjeta) || string.IsNullOrWhiteSpace(paymentMethodId))
+        {
+            MostrarError("No pudimos validar los datos de la tarjeta. Recargá la página e intentá nuevamente.");
+            return;
+        }
+
+        int idPlan;
         if (!int.TryParse(hfPlanSeleccionado.Value, out idPlan))
+        {
             idPlan = 2;
-        if (password != confirmPw)
+        }
+
+        Psicologo nuevoPsicologo = new Psicologo
         {
-            MostrarError("Las contraseñas no coinciden.");
+            Nombre = txtNombre.Text.Trim(),
+            Apellido = txtApellido.Text.Trim(),
+            Dni = txtDNI.Text.Trim(),
+            Email = txtEmail.Text.Trim().ToLower(),
+            Idioma = "Español"
+        };
+
+        GestorPsicologo gestorPsicologo = new GestorPsicologo();
+        try
+        {
+            gestorPsicologo.RegistrarProfesionalConSuscripcion(nuevoPsicologo, txtPassword.Text, idPlan, tokenTarjeta, paymentMethodId);
+        }
+        catch (ExcepcionTraducible ex)
+        {
+            MostrarError(TraducirExcepcion(ex));
             return;
         }
-
-        if (!ValidarFortalezaPassword(password))
+        catch (Exception)
         {
-            MostrarError("La contraseña debe tener al menos 7 caracteres, una mayúscula y un carácter especial.");
+            MostrarError("No fue posible completar el registro. Verificá los datos ingresados e intentá nuevamente.");
             return;
         }
-        bool registroExitoso = SimularRegistroDemo(nombre, apellido, dni, email, idPlan);
-
-        if (registroExitoso)
-        {
-            MostrarExito("Cuenta creada correctamente. Podés iniciar sesión.");
-            LimpiarFormulario();
-        }
-        else
-        {
-            MostrarError("No fue posible completar el registro. Verificá los datos ingresados.");
-        }
+        Response.Redirect("FormLogin.aspx?registro=ok");
     }
-    private bool SimularRegistroDemo(string nombre, string apellido, string dni, string email, int idPlan)
-    {
-        if (email.ToLower() == "repetido@test.com")
-            return false;
-        return true;
-    }
-    private bool ValidarFortalezaPassword(string password)
-    {
-        if (password.Length < 7) return false;
 
-        bool tieneMayuscula = false;
-        bool tieneEspecial = false;
-
-        foreach (char c in password)
-        {
-            if (char.IsUpper(c)) tieneMayuscula = true;
-            if (!char.IsLetterOrDigit(c)) tieneEspecial = true;
-        }
-
-        return tieneMayuscula && tieneEspecial;
-    }
     private void MostrarError(string mensaje)
     {
         lblMensaje.Text = mensaje;
         lblMensaje.CssClass = "server-error";
         lblMensaje.Visible = true;
     }
-
-    private void MostrarExito(string mensaje)
-    {
-        lblMensaje.Text = mensaje;
-        lblMensaje.CssClass = "server-success";
-        lblMensaje.Visible = true;
-    }
-    private void LimpiarFormulario()
-    {
-        txtNombre.Text = string.Empty;
-        txtApellido.Text = string.Empty;
-        txtDNI.Text = string.Empty;
-        txtEmail.Text = string.Empty;
-        txtNumeroTarjeta.Text = string.Empty;
-        txtTitular.Text = string.Empty;
-        txtVencimiento.Text = string.Empty;
-        hfPlanSeleccionado.Value = "2";
-    }
 }
-

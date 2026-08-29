@@ -15,6 +15,9 @@ namespace BE
         public DateTime FechaInicio { get; set; }
         public DateTime? FechaFin { get; set; }
         public string DigitoVerificador { get; set; }
+        public decimal Precio { get; set; }
+        public string IdPagoExterno { get; set; }
+        public string UltimosCuatroTarjeta { get; set; }
 
         public Suscripcion()
         {
@@ -29,6 +32,14 @@ namespace BE
             FechaInicio = nFechaInicio;
             FechaFin = nFechaFin;
             DigitoVerificador = nDigitoVerificador;
+        }
+
+        public Suscripcion(int nIdSuscripcion, int nIdProfesional, PlanSuscripcion nPlan, EstadoSuscripcion nEstado, DateTime nFechaInicio, DateTime? nFechaFin, decimal nPrecio, string nIdPagoExterno, string nUltimosCuatroTarjeta, string nDigitoVerificador = null)
+            : this(nIdSuscripcion, nIdProfesional, nPlan, nEstado, nFechaInicio, nFechaFin, nDigitoVerificador)
+        {
+            Precio = nPrecio;
+            IdPagoExterno = nIdPagoExterno;
+            UltimosCuatroTarjeta = nUltimosCuatroTarjeta;
         }
     }
 }

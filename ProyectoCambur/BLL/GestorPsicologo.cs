@@ -14,6 +14,16 @@ namespace BLL
         private const int MINUTOS_DECAIMIENTO_INTENTOS = 10;
         private const int MINUTOS_EXPIRACION_TOKEN_RECUPERACION = 30;
         private const string TABLA = "Profesional";
+        private readonly IPasarelaPago pasarelaPago;
+
+        public GestorPsicologo() : this(new PasarelaMercadoPago())
+        {
+        }
+
+        public GestorPsicologo(IPasarelaPago pasarelaPagoAUsar)
+        {
+            pasarelaPago = pasarelaPagoAUsar;
+        }
 
         #region Operaciones Psicologo
         public int Alta(Psicologo psicologoAlta)
@@ -34,6 +44,72 @@ namespace BLL
             psicologoAlta.Contrasena = Cifrador.GestorCifrador.EncriptarIrreversible(contrasenaInicial);
             return RegistrarPsicologoValidado(psicologoAlta);
         }
+        public Psicologo RegistrarProfesionalConSuscripcion(Psicologo psicologoAlta, string contrasenaPlana, int idPlan, string tokenTarjeta, string paymentMethodId)
+        {
+            ValidarDatosPsicologo(psicologoAlta);
+
+            if (!VerificarFormatoContrasena(contrasenaPlana))
+            {
+                throw new ExcepcionTraducible("error_formato_contrasena");
+            }
+
+            InfoPlan plan = CatalogoPlanes.ObtenerPorId(idPlan);
+            if (plan == null)
+            {
+                throw new InvalidOperationException("Plan de suscripción inválido: " + idPlan);
+            }
+
+            if (string.IsNullOrWhiteSpace(tokenTarjeta) || string.IsNullOrWhiteSpace(paymentMethodId))
+            {
+                throw new ExcepcionTraducible("error_pago_timeout");
+            }
+            PsicologoDAL psicologoDAL = new PsicologoDAL();
+            if (psicologoDAL.ExisteEmail(psicologoAlta.Email))
+            {
+                throw new ExcepcionTraducible("error_email_duplicado");
+            }
+
+            DatosPago datosPago = new DatosPago
+            {
+                TokenTarjeta = tokenTarjeta,
+                PaymentMethodId = paymentMethodId,
+                Monto = plan.Precio,
+                Descripcion = "Cambur — Suscripción plan " + plan.NombreComercial,
+                EmailPagador = psicologoAlta.Email,
+                DniPagador = psicologoAlta.Dni.Replace(".", "")
+            };
+
+            ResultadoPago resultadoPago = pasarelaPago.CrearPago(datosPago);
+
+            if (!resultadoPago.Aprobado)
+            {
+                throw new ExcepcionTraducible("error_pago_rechazado", resultadoPago.MotivoRechazo);
+            }
+
+            // Recién acá, con el pago ya aprobado, se persiste el profesional.
+            psicologoAlta.RolPermiso = plan.RolPermiso;
+            psicologoAlta.Contrasena = Cifrador.GestorCifrador.EncriptarIrreversible(contrasenaPlana);
+            int idPsicologo = RegistrarPsicologoValidado(psicologoAlta);
+
+            Suscripcion nuevaSuscripcion = new Suscripcion
+            {
+                IdProfesional = idPsicologo,
+                Plan = plan.Plan,
+                Estado = EstadoSuscripcion.Activa,
+                FechaInicio = DateTime.Now,
+                FechaFin = null,
+                Precio = plan.Precio,
+                IdPagoExterno = resultadoPago.IdPagoExterno,
+                UltimosCuatroTarjeta = resultadoPago.UltimosCuatroTarjeta
+            };
+            new SuscripcionDAL().Alta(nuevaSuscripcion);
+            GestorBitacora gestorBitacora = new GestorBitacora();
+            gestorBitacora.RegistrarEvento(psicologoAlta.Email, EventosBitacora.MOD_PROFESIONALES, EventosBitacora.DESC_REGISTRO_PROFESIONAL, EventosBitacora.CRIT_REGISTRO_PROFESIONAL);
+            gestorBitacora.RegistrarEvento(psicologoAlta.Email, EventosBitacora.MOD_SUSCRIPCION, EventosBitacora.DESC_ALTA_SUSCRIPCION, EventosBitacora.CRIT_ALTA_SUSCRIPCION);
+
+            return psicologoAlta;
+        }
+
         private int RegistrarPsicologoValidado(Psicologo psicologoAlta)
         {
             PsicologoDAL psicologoDAL = new PsicologoDAL();
@@ -344,10 +420,7 @@ namespace BLL
                 generador.GetBytes(bytesAleatorios);
             }
 
-            return Convert.ToBase64String(bytesAleatorios)
-                .Replace("+", "-")
-                .Replace("/", "_")
-                .Replace("=", "");
+            return Convert.ToBase64String(bytesAleatorios).Replace("+", "-").Replace("/", "_").Replace("=", "");
         }
 
         #endregion

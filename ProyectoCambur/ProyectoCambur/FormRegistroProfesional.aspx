@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Cambur — Registro de Profesional</title>
     <link href="EstilosPaginas/FormRegistroProfesional.css" rel="stylesheet" type="text/css"/>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
 </head>
 <body>
     <form id="form1" runat="server">
 
-        
+
         <div class="col-brand">
             <div class="brand-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
@@ -26,7 +27,7 @@
             </div>
         </div>
 
-       
+
         <div class="col-form">
 
             <div class="form-header">
@@ -34,10 +35,10 @@
                 <h1 class="form-title">Crear cuenta</h1>
             </div>
 
-          
+
             <asp:Label ID="lblMensaje" runat="server" CssClass="server-error" Visible="false" />
 
-          
+
             <div class="section-sep">Datos personales</div>
 
             <div class="grid-2">
@@ -66,7 +67,7 @@
 
                 <div class="field">
                     <label for="txtDNI">DNI <sup>*</sup></label>
-                    <asp:TextBox ID="txtDNI" runat="server" MaxLength="8" placeholder="Sin puntos ni espacios" ClientIDMode="Static" />
+                    <asp:TextBox ID="txtDNI" runat="server" MaxLength="10" placeholder="Ej: 12.345.678" ClientIDMode="Static" />
                     <asp:RequiredFieldValidator ID="rfvDNI" runat="server"
                         ControlToValidate="txtDNI"
                         ErrorMessage="El DNI es obligatorio."
@@ -75,8 +76,8 @@
                         ValidationGroup="vgRegistro" />
                     <asp:RegularExpressionValidator ID="revDNI" runat="server"
                         ControlToValidate="txtDNI"
-                        ValidationExpression="^\d{7,8}$"
-                        ErrorMessage="DNI inválido (7 u 8 dígitos)."
+                        ValidationExpression="^[0-9]{2}[.][0-9]{3}[.][0-9]{3}$"
+                        ErrorMessage="Formato esperado: 12.345.678"
                         CssClass="field-error"
                         Display="Dynamic"
                         ValidationGroup="vgRegistro" />
@@ -103,7 +104,7 @@
                 <div class="field">
                     <label for="txtPassword">Contraseña <sup>*</sup></label>
                     <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" MaxLength="100"
-                        placeholder="Mín. 7 car., mayúscula y símbolo"
+                        placeholder="Mín. 8 car., una mayúscula y un número"
                         ClientIDMode="Static"
                         oninput="checkStrength(this.value)" />
                     <div class="strength-bars">
@@ -115,6 +116,13 @@
                     <asp:RequiredFieldValidator ID="rfvPassword" runat="server"
                         ControlToValidate="txtPassword"
                         ErrorMessage="La contraseña es obligatoria."
+                        CssClass="field-error"
+                        Display="Dynamic"
+                        ValidationGroup="vgRegistro" />
+                    <asp:RegularExpressionValidator ID="revPassword" runat="server"
+                        ControlToValidate="txtPassword"
+                        ValidationExpression="^(?=.*[A-Z])(?=.*[0-9]).{8,}$"
+                        ErrorMessage="Mínimo 8 caracteres, con al menos una mayúscula y un número."
                         CssClass="field-error"
                         Display="Dynamic"
                         ValidationGroup="vgRegistro" />
@@ -142,7 +150,7 @@
 
             </div>
 
-          
+
             <div class="section-sep">Plan de suscripción</div>
 
             <asp:HiddenField ID="hfPlanSeleccionado" runat="server" Value="2" ClientIDMode="Static" />
@@ -166,8 +174,9 @@
                 </div>
             </div>
 
-           
+
             <div class="section-sep">Datos de pago</div>
+            <p class="pago-aviso">Pago procesado de forma segura por Mercado Pago. Cambur no almacena el número de tu tarjeta.</p>
 
             <div class="field mb-14">
                 <label for="txtNumeroTarjeta">Número de tarjeta <sup>*</sup></label>
@@ -175,6 +184,7 @@
                     <asp:TextBox ID="txtNumeroTarjeta" runat="server" MaxLength="19"
                         placeholder="0000 0000 0000 0000"
                         ClientIDMode="Static"
+                        autocomplete="off"
                         oninput="formatCardNumber(this)" />
                     <span class="card-brand-badge" id="cardBrand">VISA</span>
                 </div>
@@ -189,7 +199,7 @@
             <div class="grid-3">
                 <div class="field">
                     <label for="txtTitular">Titular <sup>*</sup></label>
-                    <asp:TextBox ID="txtTitular" runat="server" MaxLength="100" placeholder="Nombre en la tarjeta" ClientIDMode="Static" />
+                    <asp:TextBox ID="txtTitular" runat="server" MaxLength="100" placeholder="Nombre en la tarjeta" ClientIDMode="Static" autocomplete="off" />
                     <asp:RequiredFieldValidator ID="rfvTitular" runat="server"
                         ControlToValidate="txtTitular"
                         ErrorMessage="Obligatorio."
@@ -202,6 +212,7 @@
                     <asp:TextBox ID="txtVencimiento" runat="server" MaxLength="5"
                         placeholder="MM/AA"
                         ClientIDMode="Static"
+                        autocomplete="off"
                         oninput="formatExpiry(this)" />
                     <asp:RequiredFieldValidator ID="rfvVencimiento" runat="server"
                         ControlToValidate="txtVencimiento"
@@ -214,7 +225,8 @@
                     <label for="txtCVV">Código CVV <sup>*</sup></label>
                     <asp:TextBox ID="txtCVV" runat="server" TextMode="Password" MaxLength="4"
                         placeholder="CVV"
-                        ClientIDMode="Static" />
+                        ClientIDMode="Static"
+                        autocomplete="off" />
                     <asp:RequiredFieldValidator ID="rfvCVV" runat="server"
                         ControlToValidate="txtCVV"
                         ErrorMessage="Obligatorio."
@@ -223,8 +235,10 @@
                         ValidationGroup="vgRegistro" />
                 </div>
             </div>
+            <asp:HiddenField ID="hfTokenTarjeta" runat="server" ClientIDMode="Static" />
+            <asp:HiddenField ID="hfPaymentMethodId" runat="server" ClientIDMode="Static" />
 
-         
+
             <div class="form-footer">
                 <div class="login-link">
                     ¿Ya tenés cuenta? <a href="FormLogin.aspx">Iniciar sesión</a>
@@ -233,6 +247,8 @@
                     Text="Registrarse →"
                     CssClass="btn-register"
                     ValidationGroup="vgRegistro"
+                    ClientIDMode="Static"
+                    OnClientClick="return iniciarRegistroConPago();"
                     OnClick="btnRegistrar_Click" />
             </div>
 
@@ -244,13 +260,14 @@
 
         </div>
 
-    
+
         <div class="toast" id="toastExito">Cuenta creada correctamente. Redirigiendo...</div>
 
     </form>
 
     <script type="text/javascript">
-     
+        var mp = new MercadoPago('<%= ObtenerPublicKeyMercadoPago() %>', { locale: 'es-AR' });
+
         function selectPlan(card, planId) {
             document.querySelectorAll('.plan-card').forEach(function (c) {
                 c.classList.remove('selected');
@@ -270,9 +287,9 @@
             lbl.style.display = 'none';
             if (!val) return;
             var score = 0;
-            if (val.length >= 7) score++;
+            if (val.length >= 8) score++;
             if (/[A-Z]/.test(val)) score++;
-            if (/[^a-zA-Z0-9]/.test(val)) score++;
+            if (/[0-9]/.test(val)) score++;
             lbl.style.display = 'block';
             if (score === 1) {
                 b1.style.background = '#E8455A';
@@ -305,8 +322,61 @@
             var v = input.value.replace(/\D/g, '').substring(0, 4);
             input.value = v.length >= 3 ? v.substring(0, 2) + '/' + v.substring(2) : v;
         }
+        function iniciarRegistroConPago() {
+            if (typeof Page_ClientValidate === 'function') {
+                if (!Page_ClientValidate('vgRegistro')) return false;
+            }
 
-       
+            var btn = document.getElementById('btnRegistrar');
+            var textoOriginal = btn.value;
+            btn.disabled = true;
+            btn.value = 'Procesando pago...';
+
+            var vencimiento = document.getElementById('txtVencimiento').value.split('/');
+            var numeroTarjeta = document.getElementById('txtNumeroTarjeta').value.replace(/\s/g, '');
+            var bin = numeroTarjeta.substring(0, 6);
+
+            var datosTarjeta = {
+                cardNumber: numeroTarjeta,
+                cardholderName: document.getElementById('txtTitular').value,
+                cardExpirationMonth: vencimiento[0] || '',
+                cardExpirationYear: vencimiento[1] ? ('20' + vencimiento[1]) : '',
+                securityCode: document.getElementById('txtCVV').value,
+                identificationType: 'DNI',
+                identificationNumber: document.getElementById('txtDNI').value.replace(/\./g, '')
+            };
+
+            function mostrarErrorTarjeta(mensaje) {
+                btn.disabled = false;
+                btn.value = textoOriginal;
+                var lbl = document.getElementById('lblMensaje');
+                if (lbl) {
+                    lbl.textContent = mensaje;
+                    lbl.style.display = 'block';
+                }
+            }
+            mp.getPaymentMethods({ bin: bin }).then(function (respuestaBin) {
+                if (!respuestaBin.results || respuestaBin.results.length === 0) {
+                    mostrarErrorTarjeta('No reconocemos esta tarjeta. Verificá el número ingresado.');
+                    return;
+                }
+                document.getElementById('hfPaymentMethodId').value = respuestaBin.results[0].id;
+
+                mp.createCardToken(datosTarjeta).then(function (resultado) {
+                    document.getElementById('hfTokenTarjeta').value = resultado.id;
+                    __doPostBack('btnRegistrar', '');
+                }).catch(function (error) {
+                    console.log('Error al tokenizar la tarjeta con Mercado Pago:', error);
+                    mostrarErrorTarjeta('No pudimos validar los datos de la tarjeta. Revisá el número, el vencimiento y el código de seguridad.');
+                });
+            }).catch(function (error) {
+                console.log('Error al identificar el medio de pago con Mercado Pago:', error);
+                mostrarErrorTarjeta('No pudimos identificar la tarjeta ingresada. Verificá el número.');
+            });
+
+            return false;
+        }
+
         window.addEventListener('DOMContentLoaded', function () {
             var mostrar = document.getElementById('hfMostrarToast');
             if (mostrar && mostrar.value === '1') {
