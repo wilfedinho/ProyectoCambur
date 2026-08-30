@@ -68,7 +68,14 @@ namespace BLL
         public List<Consulta> ObtenerPorPaciente(int idPaciente)
         {
             ConsultaDAL consultaDAL = new ConsultaDAL();
-            return consultaDAL.ObtenerPorPaciente(idPaciente);
+            List<Consulta> consultas = consultaDAL.ObtenerPorPaciente(idPaciente);
+
+            foreach (Consulta consulta in consultas)
+            {
+                DesencriptarCamposSensibles(consulta);
+            }
+
+            return consultas;
         }
 
         public List<Consulta> ObtenerTodas()

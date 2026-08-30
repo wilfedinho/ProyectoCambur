@@ -8,6 +8,7 @@ namespace SERVICIOS
     public class GestorPermiso
     {
         private readonly PermisoDAL permisoDAL = new PermisoDAL();
+        private readonly DigitoVerificador digitoVerificador = new DigitoVerificador();
 
         #region Chequeo de permisos (uso desde las paginas)
         public bool TienePermiso(string nombrePerfil, string nombrePermisoSimple)
@@ -84,6 +85,7 @@ namespace SERVICIOS
             }
 
             permisoDAL.InsertarPermisoSimple(nombre);
+            digitoVerificador.ActualizarDVHPermiso("PermisoSimple", nombre);
         }
 
         public void AltaFamilia(string nombre)
@@ -96,6 +98,7 @@ namespace SERVICIOS
             }
 
             permisoDAL.InsertarFamilia(new PermisoCompuesto(nombre));
+            digitoVerificador.ActualizarDVHPermiso("Familia", nombre);
         }
 
         public void AltaPerfil(string nombre)
@@ -108,6 +111,7 @@ namespace SERVICIOS
             }
 
             permisoDAL.InsertarPerfil(new PermisoCompuesto(nombre));
+            digitoVerificador.ActualizarDVHPermiso("Perfil", nombre);
         }
         public void AgregarElementoAFamilia(string nombreFamilia, string nombreElemento)
         {
@@ -118,22 +122,26 @@ namespace SERVICIOS
 
             ValidarNoGeneraDuplicado(nombreFamilia, nombreElemento, esPerfil: false);
 
-            bool agregado = permisoDAL.AgregarElementoAFamilia(nombreFamilia, nombreElemento);
+            string tablaAfectada;
+            bool agregado = permisoDAL.AgregarElementoAFamilia(nombreFamilia, nombreElemento, out tablaAfectada);
             if (!agregado)
             {
                 throw new ExcepcionTraducible("error_elemento_no_encontrado");
             }
+            digitoVerificador.ActualizarDVHPermiso(tablaAfectada, nombreFamilia, nombreElemento);
         }
 
         public void AgregarElementoAPerfil(string nombrePerfil, string nombreElemento)
         {
             ValidarNoGeneraDuplicado(nombrePerfil, nombreElemento, esPerfil: true);
 
-            bool agregado = permisoDAL.AgregarElementoAPerfil(nombrePerfil, nombreElemento);
+            string tablaAfectada;
+            bool agregado = permisoDAL.AgregarElementoAPerfil(nombrePerfil, nombreElemento, out tablaAfectada);
             if (!agregado)
             {
                 throw new ExcepcionTraducible("error_elemento_no_encontrado");
             }
+            digitoVerificador.ActualizarDVHPermiso(tablaAfectada, nombrePerfil, nombreElemento);
         }
         private void ValidarNoGeneraDuplicado(string nombreRaiz, string nombreElemento, bool esPerfil)
         {
@@ -183,10 +191,12 @@ namespace SERVICIOS
             if (elementoEsFamilia)
             {
                 permisoDAL.EliminarRelacionFamiliaFamilia(nombreFamilia, nombreElemento);
+                digitoVerificador.ActualizarDVV("Familia_Familia");
             }
             else
             {
                 permisoDAL.EliminarRelacionPermisoSimpleFamilia(nombreFamilia, nombreElemento);
+                digitoVerificador.ActualizarDVV("PermisoSimple_Familia");
             }
         }
 
@@ -195,10 +205,12 @@ namespace SERVICIOS
             if (elementoEsFamilia)
             {
                 permisoDAL.EliminarRelacionPerfilFamilia(nombrePerfil, nombreElemento);
+                digitoVerificador.ActualizarDVV("Perfil_Familia");
             }
             else
             {
                 permisoDAL.EliminarRelacionPermisoSimplePerfil(nombrePerfil, nombreElemento);
+                digitoVerificador.ActualizarDVV("PermisoSimple_Perfil");
             }
         }
         public void BorrarFamilia(string nombreFamilia)
@@ -212,8 +224,11 @@ namespace SERVICIOS
             {
                 throw new ExcepcionTraducible("error_familia_anidada_en_otra", nombreFamilia);
             }
-
             permisoDAL.BorrarFamilia(nombreFamilia);
+            digitoVerificador.ActualizarDVV("Familia_Familia");
+            digitoVerificador.ActualizarDVV("PermisoSimple_Familia");
+            digitoVerificador.ActualizarDVV("Perfil_Familia");
+            digitoVerificador.ActualizarDVV("Familia");
         }
         public void BorrarPerfil(string nombrePerfil)
         {
@@ -221,8 +236,10 @@ namespace SERVICIOS
             {
                 throw new ExcepcionTraducible("error_perfil_asignado_a_profesional", nombrePerfil);
             }
-
             permisoDAL.BorrarPerfil(nombrePerfil);
+            digitoVerificador.ActualizarDVV("PermisoSimple_Perfil");
+            digitoVerificador.ActualizarDVV("Perfil_Familia");
+            digitoVerificador.ActualizarDVV("Perfil");
         }
 
         #endregion

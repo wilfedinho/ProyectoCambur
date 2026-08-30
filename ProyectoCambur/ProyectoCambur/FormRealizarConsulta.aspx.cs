@@ -1,184 +1,248 @@
-﻿using System;
+﻿using BE;
+using BLL;
+using SERVICIOS;
+using System;
 using System.Collections.Generic;
-using System.Data;
+using System.Linq;
 using System.Web.UI.WebControls;
+using GUI;
 
-public partial class FormRealizarConsulta : System.Web.UI.Page
+public partial class FormRealizarConsulta : PaginaBase
 {
-    private class PacienteDemo
+    private class ItemHistorial
     {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Iniciales { get; set; }
-        public int Edad { get; set; }
-        public string Ocupacion { get; set; }
-        public string EstadoCivil { get; set; }
-        public int Consultas { get; set; }
-        public string UltimaConsulta { get; set; }
+        public DateTime Fecha { get; set; }
+        public string Resumen { get; set; }
     }
 
-    private List<PacienteDemo> ObtenerPacientesDemo()
-    {
-        return new List<PacienteDemo>
-        {
-            new PacienteDemo { Id=1, Nombre="Martín González",   Iniciales="MG", Edad=33, Ocupacion="Docente",      EstadoCivil="Soltero/a",  Consultas=12, UltimaConsulta="15/04/2026" },
-            new PacienteDemo { Id=2, Nombre="Sofía Ramírez",     Iniciales="SR", Edad=28, Ocupacion="Diseñadora",   EstadoCivil="En pareja",  Consultas=7,  UltimaConsulta="02/05/2026" },
-            new PacienteDemo { Id=3, Nombre="Carlos Ibáñez",     Iniciales="CI", Edad=45, Ocupacion="Contador",     EstadoCivil="Casado/a",   Consultas=20, UltimaConsulta="08/05/2026" },
-            new PacienteDemo { Id=4, Nombre="Valentina Moreno",  Iniciales="VM", Edad=31, Ocupacion="Enfermera",    EstadoCivil="Divorciada", Consultas=5,  UltimaConsulta="10/03/2026" },
-            new PacienteDemo { Id=5, Nombre="Facundo Pérez",     Iniciales="FP", Edad=27, Ocupacion="Estudiante",   EstadoCivil="Soltero/a",  Consultas=3,  UltimaConsulta="28/04/2026" },
-        };
-    }
     protected void Page_Load(object sender, EventArgs e)
     {
         Page.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
-        if (!IsPostBack)
-        {
-            CargarProfesionalDemo();
-            CargarDropdownPacientes();
-            CargarFormularioDemo();
-            ActualizarCardPaciente(1); 
-            CargarUltimasConsultasDemo(1);
-        }
-    }
-    private void CargarProfesionalDemo()
-    {
-        lblNombreProfesional.Text = "Lucía Martínez";
-        lblIniciales.Text = "LM";
-    }
-    private void CargarDropdownPacientes()
-    {
-        ddlPaciente.Items.Clear();
-        ddlPaciente.Items.Add(new ListItem("Seleccioná un paciente...", ""));
 
-        foreach (var p in ObtenerPacientesDemo())
-            ddlPaciente.Items.Add(new ListItem(p.Nombre, p.Id.ToString()));
-        if (ddlPaciente.Items.Count > 1)
-            ddlPaciente.Items[1].Selected = true;
-    }
-    private void CargarFormularioDemo()
-    {
-        txtFechaConsulta.Text = DateTime.Today.ToString("yyyy-MM-dd");
-        txtDuracion.Text = "50";
-        ddlModalidad.SelectedValue = "PRE";
-        txtObjetivos.Text = "Trabajar la regulación emocional ante situaciones de conflicto laboral.";
-        txtObservaciones.Text = "El paciente llega visiblemente ansioso. Refiere una semana de alta tensión en el trabajo por un conflicto con su supervisor. Se observa hipervigilancia y dificultad para concentrarse durante la sesión.";
-        txtHipotesis.Text = "Posible activación de esquema de incompetencia frente a figuras de autoridad.";
-        txtIntervenciones.Text = "Técnica de reestructuración cognitiva sobre la interpretación del conflicto. Ejercicio de respiración diafragmática al inicio de la sesión.";
-        txtEvolucion.Text = "El paciente logra identificar el pensamiento automático asociado. Al cierre refiere sentirse más tranquilo.";
-        txtDiagnostico.Text = "Episodio de ansiedad situacional con activación de creencias nucleares de incompetencia.";
-        txtTratamiento.Text = "Continuar con TCC. Proponer registro de pensamientos automáticos para la próxima semana.";
-    }
-    private void ActualizarCardPaciente(int idPaciente)
-    {
-        var pacientes = ObtenerPacientesDemo();
-        var p = pacientes.Find(x => x.Id == idPaciente);
-
-        if (p == null)
+        if (!GestorSesion.EstaAutenticado)
         {
-            lblPacienteNombre.Text = "Seleccioná un paciente";
-            lblPacienteIniciales.Text = "--";
-            lblPacienteEdad.Text = "";
-            lblPacienteOcupacion.Text = "";
-            lblPacienteEstado.Text = "";
-            lblTotalConsultas.Text = "--";
-            lblUltimaConsulta.Text = "--";
+            Response.Redirect("FormLogin.aspx");
             return;
         }
 
-        lblPacienteIniciales.Text = p.Iniciales;
-        lblPacienteNombre.Text = p.Nombre;
-        lblPacienteEdad.Text = p.Edad + " años";
-        lblPacienteOcupacion.Text = p.Ocupacion;
-        lblPacienteEstado.Text = p.EstadoCivil;
-        lblTotalConsultas.Text = p.Consultas.ToString();
-        lblUltimaConsulta.Text = p.UltimaConsulta;
-    }
-    private void CargarUltimasConsultasDemo(int idPaciente)
-    {
-        var consultas = new DataTable();
-        consultas.Columns.Add("Fecha", typeof(DateTime));
-        consultas.Columns.Add("Resumen", typeof(string));
+        Psicologo psicologoActual = GestorSesion.PsicologoActual;
 
-        if (idPaciente == 1)
+        GestorPermiso gestorPermiso = new GestorPermiso();
+        if (!gestorPermiso.TienePermiso(psicologoActual.RolPermiso, "acceder_realizar_consulta"))
         {
-            consultas.Rows.Add(new DateTime(2026, 4, 15), "Regulación emocional ante conflicto laboral.");
-            consultas.Rows.Add(new DateTime(2026, 3, 28), "Trabajo sobre creencias de incompetencia.");
-            consultas.Rows.Add(new DateTime(2026, 3, 10), "Psicoeducación sobre ansiedad y TCC.");
-        }
-        else if (idPaciente == 2)
-        {
-            consultas.Rows.Add(new DateTime(2026, 5, 2), "Exploración de dinámicas relacionales.");
-            consultas.Rows.Add(new DateTime(2026, 4, 14), "Trabajo sobre apego ansioso.");
-        }
-        else if (idPaciente == 3)
-        {
-            consultas.Rows.Add(new DateTime(2026, 5, 8), "Cierre de ciclo de duelo.");
-            consultas.Rows.Add(new DateTime(2026, 4, 22), "Reestructuración cognitiva.");
-            consultas.Rows.Add(new DateTime(2026, 4, 7), "Manejo del estrés crónico.");
+            DenegarAcceso();
+            return;
         }
 
-        if (consultas.Rows.Count > 0)
+        AplicarTraducciones();
+
+        if (!IsPostBack)
         {
-            rptUltimasConsultas.DataSource = consultas;
-            rptUltimasConsultas.DataBind();
-            lblSinConsultas.Visible = false;
-        }
-        else
-        {
-            rptUltimasConsultas.DataSource = null;
-            rptUltimasConsultas.DataBind();
-            lblSinConsultas.Visible = true;
+            lblTaglineSidebar.Text = Traducir("tagline_panel_gestion");
+            CargarComboPacientes();
+            LimpiarCardPaciente();
         }
     }
-    protected void ddlPaciente_SelectedIndexChanged(object sender, EventArgs e)
+
+    private void AplicarTraducciones()
     {
-        int idPaciente = 0;
-        if (int.TryParse(ddlPaciente.SelectedValue, out idPaciente) && idPaciente > 0)
-        {
-            ActualizarCardPaciente(idPaciente);
-            CargarUltimasConsultasDemo(idPaciente);
-        }
-        else
-        {
-            ActualizarCardPaciente(0);
-        }
+        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+        lblHeaderSeccion.Text = Traducir("seccion_gestion_clinica");
+        lblHeaderPagina.Text = Traducir("nav_realizar_consulta");
+
+        lblFormTitulo.Text = Traducir("titulo_nueva_consulta");
+        lblFormSubtitulo.Text = Traducir("subtitulo_realizar_consulta");
+
+        lblSeccionPacienteFecha.Text = Traducir("seccion_vinculo_profesional");
+        lblEtiquetaPaciente.Text = Traducir("lbl_paciente");
+        rfvPaciente.ErrorMessage = Traducir("error_consulta_sin_paciente");
+        lblEtiquetaFecha.Text = Traducir("lbl_fecha_consulta");
+        rfvFecha.ErrorMessage = Traducir("error_fecha_consulta_obligatoria");
+        lblEtiquetaDuracion.Text = Traducir("lbl_tiempo_consulta");
+        rfvDuracion.ErrorMessage = Traducir("error_tiempo_consulta_invalido");
+        cvDuracion.ErrorMessage = Traducir("error_tiempo_consulta_invalido");
+
+        lblSeccionContenidoClinico.Text = Traducir("seccion_contenido_clinico");
+        lblAvisoEncriptado.Text = Traducir("aviso_contenido_encriptado");
+        lblEtiquetaObjetivos.Text = Traducir("lbl_objetivos");
+        rfvObjetivos.ErrorMessage = Traducir("error_campo_obligatorio");
+        lblEtiquetaObservaciones.Text = Traducir("lbl_observaciones");
+        rfvObservaciones.ErrorMessage = Traducir("error_campo_obligatorio");
+        lblEtiquetaHipotesis.Text = Traducir("lbl_hipotesis");
+        lblEtiquetaIntervenciones.Text = Traducir("lbl_intervenciones");
+        lblEtiquetaEvolucion.Text = Traducir("lbl_evolucion_observada");
+
+        lblSeccionCierreClinico.Text = Traducir("seccion_cierre_clinico");
+        lblEtiquetaDiagnostico.Text = Traducir("lbl_diagnostico");
+        lblEtiquetaTratamiento.Text = Traducir("lbl_tratamiento");
+
+        lblBtnCancelar.Text = Traducir("btn_cancelar");
+        btnRegistrar.Text = Traducir("btn_registrar_consulta_form");
+
+        lblEtiquetaTotalConsultas.Text = Traducir("lbl_total_consultas_paciente");
+        lblEtiquetaUltimaSesion.Text = Traducir("lbl_ultima_sesion_paciente");
+        lblAvisoCardTexto.Text = Traducir("aviso_contenido_encriptado");
+        lblTituloUltimasConsultas.Text = Traducir("titulo_ultimas_consultas");
+        lblSinConsultas.Text = Traducir("historial_sin_consultas");
     }
+
     protected void btnRegistrar_Click(object sender, EventArgs e)
     {
         lblMensaje.Visible = false;
 
         if (!Page.IsValid) return;
-        int idPaciente = 0;
-        if (!int.TryParse(ddlPaciente.SelectedValue, out idPaciente) || idPaciente == 0)
+
+        int idPsicologo = GestorSesion.PsicologoActual.IdPsicologo;
+        int idPaciente = Convert.ToInt32(ddlPaciente.SelectedValue);
+        GestorPaciente gestorPaciente = new GestorPaciente();
+        List<Paciente> propios = gestorPaciente.ObtenerPorPsicologo(idPsicologo);
+        if (!propios.Any(p => p.IdPaciente == idPaciente))
         {
-            MostrarError("Debés seleccionar un paciente para registrar la consulta.");
+            MostrarError(Traducir("error_paciente_no_propio"));
             return;
         }
+
         DateTime fechaConsulta;
-        if (!DateTime.TryParse(txtFechaConsulta.Text, out fechaConsulta))
+        DateTime.TryParse(txtFechaConsulta.Text, out fechaConsulta);
+        int tiempoConsulta = Convert.ToInt32(txtDuracion.Text);
+
+        Consulta nuevaConsulta = new Consulta();
+        nuevaConsulta.IdPaciente = idPaciente;
+        nuevaConsulta.IdPsicologo = idPsicologo;
+        nuevaConsulta.FechaConsulta = fechaConsulta;
+        nuevaConsulta.TiempoConsulta = tiempoConsulta;
+        nuevaConsulta.Objetivos = txtObjetivos.Text.Trim();
+        nuevaConsulta.Observaciones = txtObservaciones.Text.Trim();
+        nuevaConsulta.Hipotesis = txtHipotesis.Text.Trim();
+        nuevaConsulta.Intervenciones = txtIntervenciones.Text.Trim();
+        nuevaConsulta.EvolucionObservada = txtEvolucion.Text.Trim();
+        nuevaConsulta.Diagnostico = txtDiagnostico.Text.Trim();
+        nuevaConsulta.Tratamiento = txtTratamiento.Text.Trim();
+
+        GestorConsulta gestorConsulta = new GestorConsulta();
+        try
         {
-            MostrarError("La fecha ingresada no es válida.");
-            return;
+            gestorConsulta.Alta(nuevaConsulta);
+            MostrarExito(Traducir("msg_consulta_registrada"));
+            LimpiarFormulario();
+            ActualizarCardPaciente(idPaciente);
+            CargarUltimasConsultas(idPaciente);
         }
-        int duracion;
-        if (!int.TryParse(txtDuracion.Text, out duracion) || duracion <= 0)
+        catch (ExcepcionTraducible ex)
         {
-            MostrarError("La duración debe ser un número positivo de minutos.");
-            return;
+            MostrarError(TraducirExcepcion(ex));
         }
-        string modalidad = ddlModalidad.SelectedValue;
-        string objetivos = txtObjetivos.Text.Trim();
-        string observaciones = txtObservaciones.Text.Trim();
-        string hipotesis = txtHipotesis.Text.Trim();
-        string intervenciones = txtIntervenciones.Text.Trim();
-        string evolucion = txtEvolucion.Text.Trim();
-        string diagnostico = txtDiagnostico.Text.Trim();
-        string tratamiento = txtTratamiento.Text.Trim();
-        string nombrePaciente = ddlPaciente.SelectedItem.Text;
-        MostrarExito("Consulta del " + fechaConsulta.ToString("dd/MM/yyyy")
-            + " registrada correctamente para " + nombrePaciente + ". Los datos fueron encriptados.");
-        LimpiarContenidoClinico();
     }
+
+    protected void ddlPaciente_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (string.IsNullOrEmpty(ddlPaciente.SelectedValue))
+        {
+            LimpiarCardPaciente();
+            return;
+        }
+        int idPaciente = Convert.ToInt32(ddlPaciente.SelectedValue);
+        ActualizarCardPaciente(idPaciente);
+        CargarUltimasConsultas(idPaciente);
+    }
+
+    private void CargarComboPacientes()
+    {
+        GestorPaciente gestorPaciente = new GestorPaciente();
+        int idPropio = GestorSesion.PsicologoActual.IdPsicologo;
+        List<Paciente> propios = gestorPaciente.ObtenerPorPsicologo(idPropio);
+        ddlPaciente.Items.Clear();
+        ddlPaciente.Items.Add(new ListItem(Traducir("opt_seleccionar"), ""));
+
+        foreach (Paciente p in propios.OrderBy(x => x.Apellido))
+        {
+            ddlPaciente.Items.Add(new ListItem(p.Nombre + " " + p.Apellido, p.IdPaciente.ToString()));
+        }
+    }
+
+    private void ActualizarCardPaciente(int idPaciente)
+    {
+        GestorPaciente gestorPaciente = new GestorPaciente();
+        Paciente paciente = gestorPaciente.BuscarPorId(idPaciente);
+        if (paciente == null)
+        {
+            LimpiarCardPaciente();
+            return;
+        }
+
+        string inicialNombre = string.IsNullOrEmpty(paciente.Nombre) ? "" : paciente.Nombre.Substring(0, 1);
+        string inicialApellido = string.IsNullOrEmpty(paciente.Apellido) ? "" : paciente.Apellido.Substring(0, 1);
+        lblPacienteIniciales.Text = (inicialNombre + inicialApellido).ToUpper();
+        lblPacienteNombre.Text = paciente.Nombre + " " + paciente.Apellido;
+        lblPacienteEdad.Text = string.Format(Traducir("lbl_edad_anios"), CalcularEdad(paciente.FechaNacimiento));
+        lblPacienteOcupacion.Text = paciente.Ocupacion;
+        lblPacienteEstado.Text = paciente.EstadoCivil;
+    }
+
+    private void CargarUltimasConsultas(int idPaciente)
+    {
+        GestorConsulta gestorConsulta = new GestorConsulta();
+        List<Consulta> consultas = gestorConsulta.ObtenerPorPaciente(idPaciente)
+            .OrderByDescending(c => c.FechaConsulta)
+            .ToList();
+
+        lblTotalConsultas.Text = consultas.Count.ToString();
+        lblUltimaConsulta.Text = consultas.Count > 0 ? consultas[0].FechaConsulta.ToString("dd/MM/yyyy") : "--";
+
+        List<ItemHistorial> historial = consultas.Take(5).Select(c => new ItemHistorial
+        {
+            Fecha = c.FechaConsulta,
+            Resumen = TruncarResumen(c.Objetivos)
+        }).ToList();
+
+        rptUltimasConsultas.DataSource = historial;
+        rptUltimasConsultas.DataBind();
+
+        rptUltimasConsultas.Visible = historial.Count > 0;
+        lblSinConsultas.Visible = historial.Count == 0;
+    }
+
+    private string TruncarResumen(string objetivos)
+    {
+        if (string.IsNullOrWhiteSpace(objetivos)) return "--";
+        return objetivos.Length > 60 ? objetivos.Substring(0, 60) + "…" : objetivos;
+    }
+
+    private int CalcularEdad(DateTime fechaNacimiento)
+    {
+        int edad = DateTime.Now.Year - fechaNacimiento.Year;
+        if (fechaNacimiento.Date > DateTime.Now.AddYears(-edad)) edad--;
+        return edad;
+    }
+
+    private void LimpiarCardPaciente()
+    {
+        lblPacienteIniciales.Text = "--";
+        lblPacienteNombre.Text = Traducir("opt_seleccionar");
+        lblPacienteEdad.Text = string.Empty;
+        lblPacienteOcupacion.Text = string.Empty;
+        lblPacienteEstado.Text = string.Empty;
+        lblTotalConsultas.Text = "--";
+        lblUltimaConsulta.Text = "--";
+        rptUltimasConsultas.DataSource = null;
+        rptUltimasConsultas.DataBind();
+        rptUltimasConsultas.Visible = false;
+        lblSinConsultas.Visible = false;
+    }
+
+    private void LimpiarFormulario()
+    {
+        txtFechaConsulta.Text = string.Empty;
+        txtDuracion.Text = string.Empty;
+        txtObjetivos.Text = string.Empty;
+        txtObservaciones.Text = string.Empty;
+        txtHipotesis.Text = string.Empty;
+        txtIntervenciones.Text = string.Empty;
+        txtEvolucion.Text = string.Empty;
+        txtDiagnostico.Text = string.Empty;
+        txtTratamiento.Text = string.Empty;
+    }
+
     private void MostrarError(string msg)
     {
         lblMensaje.Text = msg;
@@ -191,15 +255,5 @@ public partial class FormRealizarConsulta : System.Web.UI.Page
         lblMensaje.Text = msg;
         lblMensaje.CssClass = "server-success";
         lblMensaje.Visible = true;
-    }
-    private void LimpiarContenidoClinico()
-    {
-        txtObjetivos.Text = string.Empty;
-        txtObservaciones.Text = string.Empty;
-        txtHipotesis.Text = string.Empty;
-        txtIntervenciones.Text = string.Empty;
-        txtEvolucion.Text = string.Empty;
-        txtDiagnostico.Text = string.Empty;
-        txtTratamiento.Text = string.Empty;
     }
 }

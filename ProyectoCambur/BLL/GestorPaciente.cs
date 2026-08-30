@@ -17,6 +17,15 @@ namespace BLL
         {
             ValidarDatosPaciente(pacienteAlta);
             PacienteDAL pacienteDAL = new PacienteDAL();
+            if (pacienteDAL.ExisteDuplicadoPorDni(pacienteAlta.IdPsicologo, pacienteAlta.DNI))
+            {
+                throw new ExcepcionTraducible("error_paciente_duplicado");
+            }
+            if (pacienteDAL.ExisteDuplicadoPorEmail(pacienteAlta.IdPsicologo, pacienteAlta.Email))
+            {
+                throw new ExcepcionTraducible("error_paciente_email_duplicado");
+            }
+
             pacienteAlta.Activo = true;
             pacienteAlta.FechaRegistro = DateTime.Now;
             int idGenerado = pacienteDAL.Alta(pacienteAlta);
@@ -45,6 +54,16 @@ namespace BLL
         {
             ValidarDatosPaciente(pacienteModificado);
             PacienteDAL pacienteDAL = new PacienteDAL();
+            if (pacienteDAL.ExisteDuplicadoPorDni(pacienteModificado.IdPsicologo, pacienteModificado.DNI, pacienteModificado.IdPaciente))
+            {
+                throw new ExcepcionTraducible("error_paciente_duplicado");
+            }
+
+            if (pacienteDAL.ExisteDuplicadoPorEmail(pacienteModificado.IdPsicologo, pacienteModificado.Email, pacienteModificado.IdPaciente))
+            {
+                throw new ExcepcionTraducible("error_paciente_email_duplicado");
+            }
+
             pacienteDAL.Modificar(pacienteModificado);
             DigitoVerificador digitoVerificador = new DigitoVerificador();
             digitoVerificador.ActualizarDVH(pacienteModificado, TABLA);

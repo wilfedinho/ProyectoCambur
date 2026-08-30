@@ -9,14 +9,14 @@ namespace DAL
     public class BitacoraDAL
     {
         #region Alta
-
-        public void Alta(Bitacora nuevoEvento)
+        public int Alta(Bitacora nuevoEvento)
         {
             using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
             {
                 cone.Open();
                 string query = "INSERT INTO Bitacora (usuario, modulo, descripcion, criticidad, fecha_evento) " +
-                               "VALUES (@usuario, @modulo, @descripcion, @criticidad, @fecha_evento)";
+                               "VALUES (@usuario, @modulo, @descripcion, @criticidad, @fecha_evento); " +
+                               "SELECT CAST(SCOPE_IDENTITY() AS INT)";
                 using (SqlCommand comando = new SqlCommand(query, cone))
                 {
                     comando.Parameters.AddWithValue("@usuario", nuevoEvento.Usuario);
@@ -24,9 +24,110 @@ namespace DAL
                     comando.Parameters.AddWithValue("@descripcion", nuevoEvento.Descripcion);
                     comando.Parameters.AddWithValue("@criticidad", nuevoEvento.Criticidad);
                     comando.Parameters.AddWithValue("@fecha_evento", nuevoEvento.FechaEvento);
+
+                    int idGenerado = Convert.ToInt32(comando.ExecuteScalar());
+                    nuevoEvento.IdBitacora = idGenerado;
+                    return idGenerado;
+                }
+            }
+        }
+
+        #endregion
+
+        #region Digito Verificador (DVH)
+        public Bitacora BuscarPorId(int idBitacora)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT * FROM Bitacora WHERE id_bitacora = @id_bitacora";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_bitacora", idBitacora);
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Bitacora(
+                                Convert.ToInt32(reader["id_bitacora"]),
+                                reader["usuario"].ToString(),
+                                reader["modulo"].ToString(),
+                                reader["descripcion"].ToString(),
+                                Convert.ToInt32(reader["criticidad"]),
+                                Convert.ToDateTime(reader["fecha_evento"]),
+                                reader["digito_verificador"] == DBNull.Value ? null : reader["digito_verificador"].ToString()
+                            );
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        public List<string> ObtenerListaDVH()
+        {
+            List<string> lista = new List<string>();
+
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT digito_verificador FROM Bitacora ORDER BY id_bitacora";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                using (SqlDataReader reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(reader["digito_verificador"] == DBNull.Value ? string.Empty : reader["digito_verificador"].ToString());
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+        public void ActualizarDVH(int idBitacora, string dvh)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "UPDATE Bitacora SET digito_verificador = @digito_verificador WHERE id_bitacora = @id_bitacora";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_bitacora", idBitacora);
+                    comando.Parameters.AddWithValue("@digito_verificador", dvh);
                     comando.ExecuteNonQuery();
                 }
             }
+        }
+
+        public List<Bitacora> ObtenerTodos()
+        {
+            List<Bitacora> lista = new List<Bitacora>();
+
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT * FROM Bitacora ORDER BY id_bitacora";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                using (SqlDataReader reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(new Bitacora(
+                            Convert.ToInt32(reader["id_bitacora"]),
+                            reader["usuario"].ToString(),
+                            reader["modulo"].ToString(),
+                            reader["descripcion"].ToString(),
+                            Convert.ToInt32(reader["criticidad"]),
+                            Convert.ToDateTime(reader["fecha_evento"]),
+                            reader["digito_verificador"] == DBNull.Value ? null : reader["digito_verificador"].ToString()
+                        ));
+                    }
+                }
+            }
+
+            return lista;
         }
 
         #endregion
@@ -84,7 +185,7 @@ namespace DAL
 
         #region Busqueda filtrada (multi-filtro combinable)
 
-       
+
         public List<Bitacora> ObtenerPorFiltros(DateTime? fechaInicio, DateTime? fechaFin, string modulo, string usuario, int? criticidad)
         {
             List<Bitacora> lista = new List<Bitacora>();

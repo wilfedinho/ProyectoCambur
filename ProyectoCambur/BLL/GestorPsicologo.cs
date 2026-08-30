@@ -85,24 +85,23 @@ namespace BLL
             {
                 throw new ExcepcionTraducible("error_pago_rechazado", resultadoPago.MotivoRechazo);
             }
-
-            // Recién acá, con el pago ya aprobado, se persiste el profesional.
             psicologoAlta.RolPermiso = plan.RolPermiso;
             psicologoAlta.Contrasena = Cifrador.GestorCifrador.EncriptarIrreversible(contrasenaPlana);
             int idPsicologo = RegistrarPsicologoValidado(psicologoAlta);
-
+            DateTime fechaInicioSuscripcion = DateTime.Now;
             Suscripcion nuevaSuscripcion = new Suscripcion
             {
                 IdProfesional = idPsicologo,
                 Plan = plan.Plan,
                 Estado = EstadoSuscripcion.Activa,
-                FechaInicio = DateTime.Now,
-                FechaFin = null,
+                FechaInicio = fechaInicioSuscripcion,
+                FechaFin = fechaInicioSuscripcion.AddMonths(1),
                 Precio = plan.Precio,
                 IdPagoExterno = resultadoPago.IdPagoExterno,
                 UltimosCuatroTarjeta = resultadoPago.UltimosCuatroTarjeta
             };
             new SuscripcionDAL().Alta(nuevaSuscripcion);
+            new DigitoVerificador().ActualizarDVH(nuevaSuscripcion, "Suscripcion");
             GestorBitacora gestorBitacora = new GestorBitacora();
             gestorBitacora.RegistrarEvento(psicologoAlta.Email, EventosBitacora.MOD_PROFESIONALES, EventosBitacora.DESC_REGISTRO_PROFESIONAL, EventosBitacora.CRIT_REGISTRO_PROFESIONAL);
             gestorBitacora.RegistrarEvento(psicologoAlta.Email, EventosBitacora.MOD_SUSCRIPCION, EventosBitacora.DESC_ALTA_SUSCRIPCION, EventosBitacora.CRIT_ALTA_SUSCRIPCION);
@@ -333,7 +332,13 @@ namespace BLL
             }
 
             TokenRecuperacionDAL tokenDAL = new TokenRecuperacionDAL();
-            tokenDAL.InvalidarTokensVigentesDe(psicologo.IdPsicologo);
+            DigitoVerificador digitoVerificadorTokens = new DigitoVerificador();
+            foreach (TokenRecuperacion vigente in tokenDAL.BuscarVigentesDe(psicologo.IdPsicologo))
+            {
+                tokenDAL.MarcarUsado(vigente.IdToken);
+                vigente.Usado = true;
+                digitoVerificadorTokens.ActualizarDVH(vigente, "TokenRecuperacion");
+            }
 
             string tokenPlano = GenerarTokenAleatorio();
             string tokenHash = Cifrador.GestorCifrador.EncriptarIrreversible(tokenPlano);
@@ -347,6 +352,7 @@ namespace BLL
                 Usado = false
             };
             tokenDAL.Alta(nuevoToken);
+            digitoVerificadorTokens.ActualizarDVH(nuevoToken, "TokenRecuperacion");
 
             string link = urlBaseSitio.TrimEnd('/') + "/FormRestablecerClave.aspx?token=" + tokenPlano;
 
@@ -406,6 +412,8 @@ namespace BLL
             if (token != null)
             {
                 tokenDAL.MarcarUsado(token.IdToken);
+                token.Usado = true;
+                new DigitoVerificador().ActualizarDVH(token, "TokenRecuperacion");
             }
 
             RecalcularDVHDe(psicologo.IdPsicologo);
@@ -420,7 +428,10 @@ namespace BLL
                 generador.GetBytes(bytesAleatorios);
             }
 
-            return Convert.ToBase64String(bytesAleatorios).Replace("+", "-").Replace("/", "_").Replace("=", "");
+            return Convert.ToBase64String(bytesAleatorios)
+                .Replace("+", "-")
+                .Replace("/", "_")
+                .Replace("=", "");
         }
 
         #endregion

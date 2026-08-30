@@ -9,6 +9,55 @@ namespace DAL
     public class PacienteDAL
     {
         #region Operaciones Paciente
+        public bool ExisteDuplicadoPorDni(int idProfesional, string dni, int? idPacienteExcluir = null)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT COUNT(1) FROM Paciente WHERE id_profesional = @id_profesional AND dni = @dni";
+                if (idPacienteExcluir.HasValue)
+                {
+                    query += " AND id_paciente <> @id_paciente_excluir";
+                }
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_profesional", idProfesional);
+                    comando.Parameters.AddWithValue("@dni", (object)dni ?? string.Empty);
+                    if (idPacienteExcluir.HasValue)
+                    {
+                        comando.Parameters.AddWithValue("@id_paciente_excluir", idPacienteExcluir.Value);
+                    }
+                    return Convert.ToInt32(comando.ExecuteScalar()) > 0;
+                }
+            }
+        }
+        public bool ExisteDuplicadoPorEmail(int idProfesional, string email, int? idPacienteExcluir = null)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                return false;
+            }
+
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT COUNT(1) FROM Paciente WHERE id_profesional = @id_profesional AND email = @email";
+                if (idPacienteExcluir.HasValue)
+                {
+                    query += " AND id_paciente <> @id_paciente_excluir";
+                }
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_profesional", idProfesional);
+                    comando.Parameters.AddWithValue("@email", email);
+                    if (idPacienteExcluir.HasValue)
+                    {
+                        comando.Parameters.AddWithValue("@id_paciente_excluir", idPacienteExcluir.Value);
+                    }
+                    return Convert.ToInt32(comando.ExecuteScalar()) > 0;
+                }
+            }
+        }
 
         public int Alta(Paciente nuevoPaciente)
         {

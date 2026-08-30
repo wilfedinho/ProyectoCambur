@@ -290,22 +290,26 @@ namespace DAL
                 }
             }
         }
-        public bool AgregarElementoAFamilia(string nombreFamilia, string nombreIncluido)
+        public bool AgregarElementoAFamilia(string nombreFamilia, string nombreIncluido, out string tablaAfectada)
         {
             return AgregarElemento(nombreFamilia, nombreIncluido,
-                "INSERT INTO PermisoSimple_Familia (nombre_familia, nombre_permiso_simple) VALUES (@padre, @hijo)",
-                "INSERT INTO Familia_Familia (nombre_familia_incluye, nombre_familia_incluida) VALUES (@padre, @hijo)");
+                "INSERT INTO PermisoSimple_Familia (nombre_familia, nombre_permiso_simple) VALUES (@padre, @hijo)", "PermisoSimple_Familia",
+                "INSERT INTO Familia_Familia (nombre_familia_incluye, nombre_familia_incluida) VALUES (@padre, @hijo)", "Familia_Familia",
+                out tablaAfectada);
         }
 
-        public bool AgregarElementoAPerfil(string nombrePerfil, string nombreIncluido)
+        public bool AgregarElementoAPerfil(string nombrePerfil, string nombreIncluido, out string tablaAfectada)
         {
             return AgregarElemento(nombrePerfil, nombreIncluido,
-                "INSERT INTO PermisoSimple_Perfil (nombre_perfil, nombre_permiso_simple) VALUES (@padre, @hijo)",
-                "INSERT INTO Perfil_Familia (nombre_perfil, nombre_familia) VALUES (@padre, @hijo)");
+                "INSERT INTO PermisoSimple_Perfil (nombre_perfil, nombre_permiso_simple) VALUES (@padre, @hijo)", "PermisoSimple_Perfil",
+                "INSERT INTO Perfil_Familia (nombre_perfil, nombre_familia) VALUES (@padre, @hijo)", "Perfil_Familia",
+                out tablaAfectada);
         }
 
-        private bool AgregarElemento(string nombrePadre, string nombreIncluido, string queryPermisoSimple, string queryFamilia)
+        private bool AgregarElemento(string nombrePadre, string nombreIncluido, string queryPermisoSimple, string tablaPermisoSimple, string queryFamilia, string tablaFamilia, out string tablaAfectada)
         {
+            tablaAfectada = null;
+
             using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
             {
                 cone.Open();
@@ -321,6 +325,7 @@ namespace DAL
                             cmd.Parameters.AddWithValue("@hijo", nombreIncluido);
                             cmd.ExecuteNonQuery();
                         }
+                        tablaAfectada = tablaPermisoSimple;
                         return true;
                     }
                 }
@@ -336,6 +341,7 @@ namespace DAL
                             cmd.Parameters.AddWithValue("@hijo", nombreIncluido);
                             cmd.ExecuteNonQuery();
                         }
+                        tablaAfectada = tablaFamilia;
                         return true;
                     }
                 }
@@ -382,7 +388,7 @@ namespace DAL
             }
         }
 
-        
+
         public void BorrarFamilia(string nombreFamilia)
         {
             using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
@@ -449,13 +455,13 @@ namespace DAL
             }
         }
 
-        
+
         public bool PerfilEstaAsignado(string nombrePerfil)
         {
             return Existe("SELECT COUNT(1) FROM Profesional WHERE rol_permiso = @nombre", nombrePerfil);
         }
 
-      
+
         public bool FamiliaEstaAsignadaAPerfil(string nombreFamilia)
         {
             return Existe("SELECT COUNT(1) FROM Perfil_Familia WHERE nombre_familia = @nombre", nombreFamilia);
@@ -464,6 +470,97 @@ namespace DAL
         public bool FamiliaEstaAnidadaEnOtra(string nombreFamilia)
         {
             return Existe("SELECT COUNT(1) FROM Familia_Familia WHERE nombre_familia_incluida = @nombre", nombreFamilia);
+        }
+
+        #endregion
+
+        #region Digito Verificador (DVH/DVV) — tablas de la familia de Permisos
+        public class FilaPermiso
+        {
+            public string Clave1 { get; set; }
+            public string Clave2 { get; set; }
+            public string DigitoVerificador { get; set; }
+        }
+
+        private static void ObtenerNombresColumnas(string nombreTabla, out string tabla, out string columna1, out string columna2)
+        {
+            switch (nombreTabla)
+            {
+                case "PermisoSimple": tabla = "PermisoSimple"; columna1 = "nombre_permiso_simple"; columna2 = null; break;
+                case "Familia": tabla = "Familia"; columna1 = "nombre_familia"; columna2 = null; break;
+                case "Perfil": tabla = "Perfil"; columna1 = "nombre_perfil"; columna2 = null; break;
+                case "PermisoSimple_Familia": tabla = "PermisoSimple_Familia"; columna1 = "nombre_familia"; columna2 = "nombre_permiso_simple"; break;
+                case "Familia_Familia": tabla = "Familia_Familia"; columna1 = "nombre_familia_incluye"; columna2 = "nombre_familia_incluida"; break;
+                case "PermisoSimple_Perfil": tabla = "PermisoSimple_Perfil"; columna1 = "nombre_perfil"; columna2 = "nombre_permiso_simple"; break;
+                case "Perfil_Familia": tabla = "Perfil_Familia"; columna1 = "nombre_perfil"; columna2 = "nombre_familia"; break;
+                default: tabla = null; columna1 = null; columna2 = null; break;
+            }
+        }
+        public List<FilaPermiso> ObtenerFilas(string nombreTabla)
+        {
+            List<FilaPermiso> lista = new List<FilaPermiso>();
+
+            string tabla, columna1, columna2;
+            ObtenerNombresColumnas(nombreTabla, out tabla, out columna1, out columna2);
+            if (tabla == null) return lista;
+
+            string query = columna2 == null
+                ? string.Format("SELECT {0} AS clave1, digito_verificador FROM {1} ORDER BY {0}", columna1, tabla)
+                : string.Format("SELECT {0} AS clave1, {1} AS clave2, digito_verificador FROM {2} ORDER BY {0}, {1}", columna1, columna2, tabla);
+
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                using (SqlDataReader reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(new FilaPermiso
+                        {
+                            Clave1 = reader["clave1"].ToString(),
+                            Clave2 = columna2 == null ? null : reader["clave2"].ToString(),
+                            DigitoVerificador = reader["digito_verificador"] == DBNull.Value ? null : reader["digito_verificador"].ToString()
+                        });
+                    }
+                }
+            }
+
+            return lista;
+        }
+        public List<string> ObtenerListaDVH(string nombreTabla)
+        {
+            List<string> lista = new List<string>();
+            foreach (FilaPermiso fila in ObtenerFilas(nombreTabla))
+            {
+                lista.Add(fila.DigitoVerificador ?? string.Empty);
+            }
+            return lista;
+        }
+        public void ActualizarDVH(string nombreTabla, string clave1, string clave2, string dvh)
+        {
+            string tabla, columna1, columna2;
+            ObtenerNombresColumnas(nombreTabla, out tabla, out columna1, out columna2);
+            if (tabla == null) return;
+
+            string query = columna2 == null
+                ? string.Format("UPDATE {0} SET digito_verificador = @dvh WHERE {1} = @clave1", tabla, columna1)
+                : string.Format("UPDATE {0} SET digito_verificador = @dvh WHERE {1} = @clave1 AND {2} = @clave2", tabla, columna1, columna2);
+
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                using (SqlCommand cmd = new SqlCommand(query, cone))
+                {
+                    cmd.Parameters.AddWithValue("@dvh", dvh);
+                    cmd.Parameters.AddWithValue("@clave1", clave1);
+                    if (columna2 != null)
+                    {
+                        cmd.Parameters.AddWithValue("@clave2", clave2);
+                    }
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         #endregion

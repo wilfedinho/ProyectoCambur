@@ -1,5 +1,6 @@
 ﻿using BE;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -67,20 +68,90 @@ namespace DAL
                 }
             }
         }
-        public void InvalidarTokensVigentesDe(int idProfesional)
+        public List<TokenRecuperacion> BuscarVigentesDe(int idProfesional)
+        {
+            List<TokenRecuperacion> lista = new List<TokenRecuperacion>();
+
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT * FROM TokenRecuperacion WHERE id_profesional = @id_profesional AND usado = 0";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_profesional", idProfesional);
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista.Add(ArmarToken(reader));
+                        }
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+        #region Digito Verificador (DVH)
+
+        public List<string> ObtenerListaDVH()
+        {
+            List<string> lista = new List<string>();
+
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT digito_verificador FROM TokenRecuperacion ORDER BY id_token";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                using (SqlDataReader reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(reader["digito_verificador"] == DBNull.Value ? string.Empty : reader["digito_verificador"].ToString());
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+        public void ActualizarDVH(int idToken, string dvh)
         {
             using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
             {
                 cone.Open();
-                string query = "UPDATE TokenRecuperacion SET usado = @usado WHERE id_profesional = @id_profesional AND usado = 0";
+                string query = "UPDATE TokenRecuperacion SET digito_verificador = @digito_verificador WHERE id_token = @id_token";
                 using (SqlCommand comando = new SqlCommand(query, cone))
                 {
-                    comando.Parameters.AddWithValue("@id_profesional", idProfesional);
-                    comando.Parameters.AddWithValue("@usado", true);
+                    comando.Parameters.AddWithValue("@id_token", idToken);
+                    comando.Parameters.AddWithValue("@digito_verificador", dvh);
                     comando.ExecuteNonQuery();
                 }
             }
         }
+
+        public List<TokenRecuperacion> ObtenerTodos()
+        {
+            List<TokenRecuperacion> lista = new List<TokenRecuperacion>();
+
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT * FROM TokenRecuperacion ORDER BY id_token";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                using (SqlDataReader reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(ArmarToken(reader));
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+        #endregion
 
         private TokenRecuperacion ArmarToken(SqlDataReader reader)
         {
@@ -90,7 +161,8 @@ namespace DAL
                 reader["token_hash"].ToString(),
                 Convert.ToDateTime(reader["fecha_generacion"]),
                 Convert.ToDateTime(reader["fecha_expiracion"]),
-                Convert.ToBoolean(reader["usado"])
+                Convert.ToBoolean(reader["usado"]),
+                reader["digito_verificador"] == DBNull.Value ? null : reader["digito_verificador"].ToString()
             );
         }
     }

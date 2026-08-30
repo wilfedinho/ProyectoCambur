@@ -53,7 +53,7 @@ namespace DAL
             }
         }
 
-        
+
         public void ActualizarIsOcupadoCache(string nombreIdioma, bool ocupado)
         {
             using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
@@ -69,7 +69,7 @@ namespace DAL
             }
         }
 
-        
+
         public bool ExisteProfesionalUsandoIdioma(string nombreIdioma)
         {
             using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
@@ -152,8 +152,48 @@ namespace DAL
                 reader["nombre_idioma"].ToString(),
                 reader["codigo_iso"] == DBNull.Value ? null : reader["codigo_iso"].ToString(),
                 Convert.ToBoolean(reader["is_disponible"]),
-                Convert.ToBoolean(reader["is_ocupado"])
+                Convert.ToBoolean(reader["is_ocupado"]),
+                reader["digito_verificador"] == DBNull.Value ? null : reader["digito_verificador"].ToString()
             );
+        }
+
+        #endregion
+
+        #region Digito Verificador (DVH)
+        public List<string> ObtenerListaDVH()
+        {
+            List<string> lista = new List<string>();
+
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT digito_verificador FROM Idioma ORDER BY nombre_idioma";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                using (SqlDataReader reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(reader["digito_verificador"] == DBNull.Value ? string.Empty : reader["digito_verificador"].ToString());
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+        public void ActualizarDVH(string nombreIdioma, string dvh)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "UPDATE Idioma SET digito_verificador = @digito_verificador WHERE nombre_idioma = @nombre_idioma";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@nombre_idioma", nombreIdioma);
+                    comando.Parameters.AddWithValue("@digito_verificador", dvh);
+                    comando.ExecuteNonQuery();
+                }
+            }
         }
 
         #endregion

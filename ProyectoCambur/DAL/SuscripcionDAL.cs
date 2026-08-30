@@ -1,5 +1,6 @@
 ﻿using BE;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -40,6 +41,28 @@ namespace DAL
         #endregion
 
         #region Busquedas Suscripcion
+        public Suscripcion BuscarPorId(int idSuscripcion)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT * FROM Suscripcion WHERE id_suscripcion = @id_suscripcion";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_suscripcion", idSuscripcion);
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return ArmarSuscripcion(reader);
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
         public Suscripcion BuscarActivaDe(int idProfesional)
         {
             using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
@@ -77,6 +100,67 @@ namespace DAL
                 reader["ultimos_cuatro_tarjeta"] == DBNull.Value ? null : reader["ultimos_cuatro_tarjeta"].ToString(),
                 reader["digito_verificador"] == DBNull.Value ? null : reader["digito_verificador"].ToString()
             );
+        }
+
+        public List<Suscripcion> ObtenerTodas()
+        {
+            List<Suscripcion> lista = new List<Suscripcion>();
+
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT * FROM Suscripcion ORDER BY id_suscripcion";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                using (SqlDataReader reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(ArmarSuscripcion(reader));
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+        #endregion
+
+        #region Digito Verificador (DVH)
+
+        public List<string> ObtenerListaDVH()
+        {
+            List<string> lista = new List<string>();
+
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT digito_verificador FROM Suscripcion ORDER BY id_suscripcion";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                using (SqlDataReader reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(reader["digito_verificador"] == DBNull.Value ? string.Empty : reader["digito_verificador"].ToString());
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+        public void ActualizarDVH(int idSuscripcion, string dvh)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "UPDATE Suscripcion SET digito_verificador = @digito_verificador WHERE id_suscripcion = @id_suscripcion";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_suscripcion", idSuscripcion);
+                    comando.Parameters.AddWithValue("@digito_verificador", dvh);
+                    comando.ExecuteNonQuery();
+                }
+            }
         }
 
         #endregion

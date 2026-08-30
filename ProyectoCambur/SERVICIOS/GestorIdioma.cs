@@ -50,6 +50,8 @@ namespace SERVICIOS
                 throw new ExcepcionTraducible("error_idioma_referencia_sin_traducciones");
             }
             idiomaDAL.Alta(nuevoIdioma);
+            new DigitoVerificador().ActualizarDVH(nuevoIdioma, "Idioma");
+
             List<string> claves = clavesReferencia.Select(t => t.Clave).ToList();
             Dictionary<string, string> traducciones = traductor.Traducir(claves, nuevoIdioma.CodigoIso);
 
@@ -69,6 +71,12 @@ namespace SERVICIOS
             }
 
             traduccionDAL.AltaMasiva(traduccionesNuevas);
+            DigitoVerificador digitoVerificador = new DigitoVerificador();
+            foreach (Traduccion insertada in traduccionDAL.ObtenerTodasPorIdioma(nuevoIdioma.NombreIdioma))
+            {
+                digitoVerificador.ActualizarDVH(insertada, "Traduccion");
+            }
+
             new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_GESTION_IDIOMAS, EventosBitacora.DESC_ALTA_IDIOMA, EventosBitacora.CRIT_ALTA_IDIOMA);
         }
 
@@ -76,6 +84,7 @@ namespace SERVICIOS
         {
             IdiomaDAL idiomaDAL = new IdiomaDAL();
             idiomaDAL.Activar(nombreIdioma);
+            RecalcularDVHDeIdioma(idiomaDAL, nombreIdioma);
         }
 
 
@@ -91,7 +100,17 @@ namespace SERVICIOS
 
             idiomaDAL.ActualizarIsOcupadoCache(nombreIdioma, false);
             idiomaDAL.Desactivar(nombreIdioma);
+            RecalcularDVHDeIdioma(idiomaDAL, nombreIdioma);
             new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_GESTION_IDIOMAS, EventosBitacora.DESC_BAJA_IDIOMA, EventosBitacora.CRIT_BAJA_IDIOMA);
+        }
+
+        private void RecalcularDVHDeIdioma(IdiomaDAL idiomaDAL, string nombreIdioma)
+        {
+            Idioma idiomaActualizado = idiomaDAL.BuscarPorNombre(nombreIdioma);
+            if (idiomaActualizado != null)
+            {
+                new DigitoVerificador().ActualizarDVH(idiomaActualizado, "Idioma");
+            }
         }
 
         #endregion
@@ -107,6 +126,13 @@ namespace SERVICIOS
 
             TraduccionDAL traduccionDAL = new TraduccionDAL();
             traduccionDAL.ModificarTexto(idTraduccion, nuevoTexto);
+
+            Traduccion actualizada = traduccionDAL.BuscarPorId(idTraduccion);
+            if (actualizada != null)
+            {
+                new DigitoVerificador().ActualizarDVH(actualizada, "Traduccion");
+            }
+
             new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_GESTION_IDIOMAS, EventosBitacora.DESC_MODIF_TRADUCCION, EventosBitacora.CRIT_MODIF_TRADUCCION);
         }
 

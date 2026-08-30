@@ -10,12 +10,13 @@ namespace BE
         public DateTime FechaGeneracion { get; set; }
         public DateTime FechaExpiracion { get; set; }
         public bool Usado { get; set; }
+        public string DigitoVerificador { get; set; }
 
         public TokenRecuperacion()
         {
         }
 
-        public TokenRecuperacion(int nIdToken, int nIdProfesional, string nTokenHash, DateTime nFechaGeneracion, DateTime nFechaExpiracion, bool nUsado)
+        public TokenRecuperacion(int nIdToken, int nIdProfesional, string nTokenHash, DateTime nFechaGeneracion, DateTime nFechaExpiracion, bool nUsado, string nDigitoVerificador = null)
         {
             IdToken = nIdToken;
             IdProfesional = nIdProfesional;
@@ -23,6 +24,7 @@ namespace BE
             FechaGeneracion = nFechaGeneracion;
             FechaExpiracion = nFechaExpiracion;
             Usado = nUsado;
+            DigitoVerificador = nDigitoVerificador;
         }
     }
 }
