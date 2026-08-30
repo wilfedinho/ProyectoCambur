@@ -51,6 +51,7 @@
     <Compile Include="PermisoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PsicologoDAL.cs" />
+    <Compile Include="ResumenClinicoDAL.cs" />
     <Compile Include="SuscripcionDAL.cs" />
     <Compile Include="TokenRecuperacionDAL.cs" />
     <Compile Include="TraduccionDAL.cs" />

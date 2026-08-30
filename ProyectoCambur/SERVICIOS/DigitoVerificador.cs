@@ -9,7 +9,7 @@ namespace SERVICIOS
     public class DigitoVerificador
     {
         private static readonly List<string> TablasControladas = new List<string> {
-            "Profesional", "Paciente", "Consulta", "Suscripcion", "Traduccion", "TokenRecuperacion", "Bitacora", "Idioma",
+            "Profesional", "Paciente", "Consulta", "ResumenClinico", "Suscripcion", "Traduccion", "TokenRecuperacion", "Bitacora", "Idioma",
             "PermisoSimple", "Familia", "Perfil", "PermisoSimple_Familia", "Familia_Familia", "PermisoSimple_Perfil", "Perfil_Familia"
         };
         private static readonly HashSet<string> TablasFamiliaPermiso = new HashSet<string> {
@@ -64,6 +64,16 @@ namespace SERVICIOS
                 sb.Append(consulta.EvolucionObservada);
                 sb.Append(consulta.Diagnostico);
                 sb.Append(consulta.Tratamiento);
+            }
+
+            if (entidad is ResumenClinico resumenClinico)
+            {
+                sb.Append(resumenClinico.IdPaciente);
+                sb.Append(resumenClinico.IdProfesional);
+                sb.Append(resumenClinico.Contenido);
+                sb.Append(resumenClinico.RangoDesde);
+                sb.Append(resumenClinico.RangoHasta);
+                sb.Append(resumenClinico.FechaGeneracion);
             }
 
             if (entidad is Suscripcion suscripcion)
@@ -149,6 +159,15 @@ namespace SERVICIOS
             {
                 ConsultaDAL consultaDAL = new ConsultaDAL();
                 foreach (string dvh in consultaDAL.ObtenerListaDVH())
+                {
+                    sb.Append(dvh);
+                }
+            }
+
+            if (nombreTabla == "ResumenClinico")
+            {
+                ResumenClinicoDAL resumenClinicoDAL = new ResumenClinicoDAL();
+                foreach (string dvh in resumenClinicoDAL.ObtenerListaDVH())
                 {
                     sb.Append(dvh);
                 }
@@ -241,6 +260,13 @@ namespace SERVICIOS
                 consulta.DigitoVerificador = dvh;
             }
 
+            if (nombreTabla == "ResumenClinico" && entidad is ResumenClinico resumenClinico)
+            {
+                ResumenClinicoDAL resumenClinicoDAL = new ResumenClinicoDAL();
+                resumenClinicoDAL.ActualizarDVH(resumenClinico.IdResumen, dvh);
+                resumenClinico.DigitoVerificador = dvh;
+            }
+
             if (nombreTabla == "Suscripcion" && entidad is Suscripcion suscripcion)
             {
                 SuscripcionDAL suscripcionDAL = new SuscripcionDAL();
@@ -294,6 +320,11 @@ namespace SERVICIOS
                 return new ConsultaDAL().BuscarPorId(consulta.IdConsulta);
             }
 
+            if (nombreTabla == "ResumenClinico" && entidad is ResumenClinico resumenClinico && resumenClinico.IdResumen > 0)
+            {
+                return new ResumenClinicoDAL().BuscarPorId(resumenClinico.IdResumen);
+            }
+
             if (nombreTabla == "Suscripcion" && entidad is Suscripcion suscripcion && suscripcion.IdSuscripcion > 0)
             {
                 return new SuscripcionDAL().BuscarPorId(suscripcion.IdSuscripcion);
@@ -344,7 +375,7 @@ namespace SERVICIOS
 
         public bool VerificarIntegridadDVH(object entidad)
         {
-            if (entidad is Psicologo || entidad is Paciente || entidad is Consulta ||
+            if (entidad is Psicologo || entidad is Paciente || entidad is Consulta || entidad is ResumenClinico ||
                 entidad is Suscripcion || entidad is Traduccion || entidad is TokenRecuperacion || entidad is Bitacora ||
                 entidad is Idioma)
             {
@@ -359,6 +390,7 @@ namespace SERVICIOS
             if (entidad is Psicologo psicologo) return psicologo.DigitoVerificador;
             if (entidad is Paciente paciente) return paciente.DigitoVerificador;
             if (entidad is Consulta consulta) return consulta.DigitoVerificador;
+            if (entidad is ResumenClinico resumenClinico) return resumenClinico.DigitoVerificador;
             if (entidad is Suscripcion suscripcion) return suscripcion.DigitoVerificador;
             if (entidad is Traduccion traduccion) return traduccion.DigitoVerificador;
             if (entidad is TokenRecuperacion token) return token.DigitoVerificador;
@@ -442,6 +474,29 @@ namespace SERVICIOS
                                 "dvh_registro_inconsistente_consulta",
                                 consulta.IdConsulta,
                                 consulta.FechaConsulta
+                            ));
+                        }
+                    }
+
+                    AgregarInconsistenciasDeConteo(inconsistencias, digitoVerificadorDAL, tabla, huboInconsistenciaDeRegistro);
+                }
+
+                if (tabla == "ResumenClinico")
+                {
+                    ResumenClinicoDAL resumenClinicoDAL = new ResumenClinicoDAL();
+                    List<ResumenClinico> resumenes = resumenClinicoDAL.ObtenerTodos();
+
+                    bool huboInconsistenciaDeRegistro = false;
+
+                    foreach (ResumenClinico resumenClinico in resumenes)
+                    {
+                        if (!VerificarIntegridadDVH(resumenClinico))
+                        {
+                            huboInconsistenciaDeRegistro = true;
+                            inconsistencias.Add(new InconsistenciaDetectada(
+                                "dvh_registro_inconsistente_resumen",
+                                resumenClinico.IdResumen,
+                                resumenClinico.IdPaciente
                             ));
                         }
                     }
@@ -683,6 +738,22 @@ namespace SERVICIOS
                     foreach (Consulta consulta in consultas)
                     {
                         ActualizarDVH(consulta, tabla);
+                    }
+                }
+
+                if (tabla == "ResumenClinico")
+                {
+                    ResumenClinicoDAL resumenClinicoDAL = new ResumenClinicoDAL();
+                    List<ResumenClinico> resumenes = resumenClinicoDAL.ObtenerTodos();
+
+                    if (resumenes.Count == 0)
+                    {
+                        ActualizarDVV(tabla);
+                    }
+
+                    foreach (ResumenClinico resumenClinico in resumenes)
+                    {
+                        ActualizarDVH(resumenClinico, tabla);
                     }
                 }
 

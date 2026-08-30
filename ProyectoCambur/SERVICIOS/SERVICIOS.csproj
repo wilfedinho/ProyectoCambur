@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cifrador.cs" />
+    <Compile Include="ClienteOpenRouter.cs" />
     <Compile Include="DigitoVerificador.cs" />
     <Compile Include="EventosBitacora.cs" />
     <Compile Include="ExceptionTraducible.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="GestorPermiso.cs" />
     <Compile Include="GestorSesion.cs" />
     <Compile Include="InconsistenciaDetectada.cs" />
+    <Compile Include="IClientaIA.cs" />
     <Compile Include="PasarelaMercadoPago.cs" />
     <Compile Include="IObservadorIdioma.cs" />
     <Compile Include="IPasarelapago.cs" />
