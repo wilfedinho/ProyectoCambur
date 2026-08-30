@@ -1,103 +1,135 @@
-﻿using System;
+﻿using BE;
+using BLL;
+using SERVICIOS;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
+using GUI;
 
-
-public partial class FormExportarReporte : System.Web.UI.Page
+public partial class FormExportarReporte : PaginaBase
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
+
+        if (!GestorSesion.EstaAutenticado)
+        {
+            Response.Redirect("FormLogin.aspx");
+            return;
+        }
+
+        Psicologo psicologoActual = GestorSesion.PsicologoActual;
+
+        GestorPermiso gestorPermiso = new GestorPermiso();
+        if (!gestorPermiso.TienePermiso(psicologoActual.RolPermiso, "acceder_exportar_reporte"))
+        {
+            DenegarAcceso();
+            return;
+        }
+
+        AplicarTraducciones();
+
         if (!IsPostBack)
         {
-            CargarProfesionalDemo();
-            CargarDropdownPacientes();
-            CargarDocumentosDemo(1);    
+            CargarComboPacientes();
+            if (ddlPaciente.Items.Count > 0)
+            {
+                CargarDocumentosDisponibles(int.Parse(ddlPaciente.SelectedValue));
+            }
             CargarExportacionesRecientes();
         }
     }
 
-    private void CargarProfesionalDemo()
+    private void AplicarTraducciones()
     {
-        lblNombreProfesional.Text = "Lucía Martínez";
-        lblIniciales.Text = "LM";
+        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+        lblHeaderTitulo.Text = Traducir("nav_exportar_reporte");
+
+        lblCardTitulo.Text = Traducir("titulo_exportar_reporte");
+        lblCardSubtitulo.Text = Traducir("subtitulo_exportar_reporte");
+        lblSeccionPaciente.Text = Traducir("lbl_paciente");
+        lblEtiquetaPaciente.Text = Traducir("lbl_paciente");
+        lblSeccionTipoDoc.Text = Traducir("lbl_tipo_documento");
+
+        lblTipoResumen.Text = Traducir("doc_resumen_clinico");
+        lblTipoDerivacion.Text = Traducir("doc_informe_derivacion");
+        lblTipoPerfil.Text = Traducir("doc_perfil_evolutivo");
+        lblProximamenteDerivacion.Text = Traducir("lbl_proximamente");
+        lblProximamentePerfil.Text = Traducir("lbl_proximamente");
+
+        lnkVolver.Text = Traducir("btn_volver");
+        btnExportar.Text = Traducir("btn_exportar_pdf");
+
+        lblExportacionesRecientesTitulo.Text = Traducir("titulo_exportaciones_recientes");
+        lblSinExportaciones.Text = Traducir("msg_sin_exportaciones");
+
+        lblAvisoFormatoTitulo.Text = Traducir("titulo_aviso_formato_pdf");
+        lblAvisoFormatoTexto.Text = Traducir("texto_aviso_formato_pdf");
+        lblAvisoProteccionTitulo.Text = Traducir("titulo_aviso_proteccion_datos");
+        lblAvisoProteccionTexto.Text = Traducir("texto_aviso_proteccion_datos");
     }
 
-    private void CargarDropdownPacientes()
+    private void CargarComboPacientes()
     {
+        Psicologo psicologoActual = GestorSesion.PsicologoActual;
+        GestorPaciente gestorPaciente = new GestorPaciente();
+        List<Paciente> pacientes = gestorPaciente.ObtenerPorPsicologo(psicologoActual.IdPsicologo);
+
         ddlPaciente.Items.Clear();
-        ddlPaciente.Items.Add(new ListItem("Martín González", "1"));
-        ddlPaciente.Items.Add(new ListItem("Sofía Ramírez", "2"));
-        ddlPaciente.Items.Add(new ListItem("Carlos Ibáñez", "3"));
-        ddlPaciente.Items.Add(new ListItem("Valentina Moreno", "4"));
-        ddlPaciente.Items.Add(new ListItem("Facundo Pérez", "5"));
-    }
-
-    private void CargarDocumentosDemo(int idPaciente)
-    {
-       
-        switch (idPaciente)
+        foreach (Paciente p in pacientes.OrderBy(p => p.Apellido).ThenBy(p => p.Nombre))
         {
-            case 1: 
-                SetDocumento(lblFechaResumen, lblEstadoResumen,
-                    "Generado el 08/05/2026", "✓ Disponible", "doc-badge doc-badge-ok");
-                SetDocumento(lblFechaDerivacion, lblEstadoDerivacion,
-                    "Generado el 15/04/2026", "✓ Validado", "doc-badge doc-badge-ok");
-                SetDocumento(lblFechaPerfil, lblEstadoPerfil,
-                    "Modelo: Big Five · 10/03/2026", "✓ Disponible", "doc-badge doc-badge-ok");
-                break;
-
-            case 2: 
-                SetDocumento(lblFechaResumen, lblEstadoResumen,
-                    "Generado el 02/05/2026", "✓ Disponible", "doc-badge doc-badge-ok");
-                SetDocumento(lblFechaDerivacion, lblEstadoDerivacion,
-                    "Sin informe generado", "⚠ No disponible", "doc-badge doc-badge-no-disponible");
-                SetDocumento(lblFechaPerfil, lblEstadoPerfil,
-                    "Sin perfil generado", "⚠ No disponible", "doc-badge doc-badge-no-disponible");
-                break;
-
-            case 3:
-                SetDocumento(lblFechaResumen, lblEstadoResumen,
-                    "Generado el 06/05/2026", "✓ Disponible", "doc-badge doc-badge-ok");
-                SetDocumento(lblFechaDerivacion, lblEstadoDerivacion,
-                    "Generado el 22/04/2026", "⏳ Pendiente de validación", "doc-badge doc-badge-pendiente");
-                SetDocumento(lblFechaPerfil, lblEstadoPerfil,
-                    "Modelo: COPE · 01/04/2026", "✓ Disponible", "doc-badge doc-badge-ok");
-                break;
-
-            default:
-                SetDocumento(lblFechaResumen, lblEstadoResumen,
-                    "Sin documento", "⚠ No disponible", "doc-badge doc-badge-no-disponible");
-                SetDocumento(lblFechaDerivacion, lblEstadoDerivacion,
-                    "Sin documento", "⚠ No disponible", "doc-badge doc-badge-no-disponible");
-                SetDocumento(lblFechaPerfil, lblEstadoPerfil,
-                    "Sin documento", "⚠ No disponible", "doc-badge doc-badge-no-disponible");
-                break;
+            ddlPaciente.Items.Add(new ListItem(p.Apellido + ", " + p.Nombre, p.IdPaciente.ToString()));
         }
     }
 
-    private void SetDocumento(Label lblFecha, Label lblEstado,
-                               string fecha, string estado, string cssClass)
+    private void CargarDocumentosDisponibles(int idPaciente)
     {
-        lblFecha.Text = fecha;
-        lblEstado.Text = estado;
-        lblEstado.CssClass = cssClass;
+        Psicologo psicologoActual = GestorSesion.PsicologoActual;
+        GestorExportacion gestorExportacion = new GestorExportacion();
+
+        bool resumenDisponible = gestorExportacion.DocumentoDisponible(psicologoActual.IdPsicologo, idPaciente, GestorExportacion.TIPO_RESUMEN);
+
+        lblEstadoResumen.Text = resumenDisponible ? Traducir("lbl_disponible") : Traducir("lbl_no_disponible");
+        lblEstadoResumen.CssClass = resumenDisponible ? "doc-badge doc-badge-ok" : "doc-badge doc-badge-no-disponible";
+
+        if (resumenDisponible)
+        {
+            GestorResumenClinico gestorResumen = new GestorResumenClinico();
+            ResumenClinico ultimo = gestorResumen.ObtenerPorPaciente(idPaciente).OrderByDescending(r => r.FechaGeneracion).FirstOrDefault();
+            lblFechaResumen.Text = ultimo != null
+                ? string.Format(Traducir("lbl_generado_el"), ultimo.FechaGeneracion.ToString("dd/MM/yyyy"))
+                : "";
+        }
+        else
+        {
+            lblFechaResumen.Text = Traducir("lbl_sin_documento");
+        }
+        lblFechaDerivacion.Text = Traducir("lbl_proximamente_desc");
+        lblFechaPerfil.Text = Traducir("lbl_proximamente_desc");
+
+        hfTipoSeleccionado.Value = resumenDisponible ? GestorExportacion.TIPO_RESUMEN : "";
     }
+
     private void CargarExportacionesRecientes()
     {
+        Psicologo psicologoActual = GestorSesion.PsicologoActual;
+        GestorExportacion gestorExportacion = new GestorExportacion();
+        GestorPaciente gestorPaciente = new GestorPaciente();
+
+        List<Bitacora> eventos = gestorExportacion.ObtenerExportacionesRecientes(psicologoActual.IdPsicologo);
+
         DataTable dt = new DataTable();
         dt.Columns.Add("Icono", typeof(string));
         dt.Columns.Add("Tipo", typeof(string));
-        dt.Columns.Add("Paciente", typeof(string));
         dt.Columns.Add("Fecha", typeof(DateTime));
 
-        dt.Rows.Add("🤖", "Resumen Clínico IA", "Martín González", new DateTime(2026, 5, 8));
-        dt.Rows.Add("📤", "Informe de Derivación", "Martín González", new DateTime(2026, 4, 20));
-        dt.Rows.Add("🧠", "Perfil Evolutivo", "Carlos Ibáñez", new DateTime(2026, 4, 1));
-        dt.Rows.Add("🤖", "Resumen Clínico IA", "Sofía Ramírez", new DateTime(2026, 3, 15));
+        foreach (Bitacora b in eventos)
+        {
+            dt.Rows.Add("🤖", Traducir("doc_resumen_clinico"), b.FechaEvento);
+        }
 
         if (dt.Rows.Count > 0)
         {
@@ -115,11 +147,11 @@ public partial class FormExportarReporte : System.Web.UI.Page
 
     protected void ddlPaciente_SelectedIndexChanged(object sender, EventArgs e)
     {
-        int idPaciente = 0;
-        int.TryParse(ddlPaciente.SelectedValue, out idPaciente);
-        CargarDocumentosDemo(idPaciente);
-        pnlPreview.Visible = false;
-        hfTipoSeleccionado.Value = string.Empty;
+        int idPaciente;
+        if (int.TryParse(ddlPaciente.SelectedValue, out idPaciente))
+        {
+            CargarDocumentosDisponibles(idPaciente);
+        }
         lblMensaje.Visible = false;
     }
 
@@ -128,77 +160,56 @@ public partial class FormExportarReporte : System.Web.UI.Page
         lblMensaje.Visible = false;
 
         string tipo = hfTipoSeleccionado.Value;
-
         if (string.IsNullOrEmpty(tipo))
         {
-            MostrarError("Seleccioná el tipo de documento a exportar.");
+            MostrarError(Traducir("error_documento_no_disponible"));
             return;
         }
 
-        int idPaciente = 0;
-        int.TryParse(ddlPaciente.SelectedValue, out idPaciente);
-
-    
-        if (!DocumentoDisponible(idPaciente, tipo))
+        int idPaciente;
+        if (!int.TryParse(ddlPaciente.SelectedValue, out idPaciente))
         {
-            MostrarError("El documento seleccionado no está disponible para este paciente. " +
-                         "Generalo primero desde la sección correspondiente.");
+            MostrarError(Traducir("error_consulta_sin_paciente"));
             return;
         }
 
-        if (tipo == "DERIVACION" && !DerivacionValidada(idPaciente))
+        Psicologo psicologoActual = GestorSesion.PsicologoActual;
+        GestorExportacion gestorExportacion = new GestorExportacion();
+
+        try
         {
-            MostrarError("El informe de derivación debe ser revisado y validado antes de exportarse. " +
-                         "Revisalo en la sección Derivaciones.");
-            return;
+            string nombreArchivo;
+            byte[] pdf = gestorExportacion.Generar(psicologoActual.IdPsicologo, idPaciente, tipo, out nombreArchivo);
+
+            Response.Clear();
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("Content-Disposition", "attachment; filename=\"" + nombreArchivo + "\"");
+            Response.AddHeader("Content-Length", pdf.Length.ToString());
+            Response.BinaryWrite(pdf);
+            Response.Flush();
+            HttpContext.Current.ApplicationInstance.CompleteRequest();
         }
-        MostrarPreviewDemo(idPaciente, tipo);
-        MostrarExito("Reporte generado correctamente. En producción se descargará como PDF.");
+        catch (ExcepcionTraducible ex)
+        {
+            MostrarError(TraducirExcepcion(ex));
+        }
+        catch (Exception)
+        {
+            MostrarError(Traducir("error_generacion_pdf"));
+        }
     }
 
-    private bool DocumentoDisponible(int idPaciente, string tipo)
+    private string ObtenerIniciales(string nombre, string apellido)
     {
-        if (idPaciente <= 1) return true;
-        if (idPaciente == 2 && (tipo == "DERIVACION" || tipo == "PERFIL")) return false;
-        return true;
+        string i1 = !string.IsNullOrEmpty(nombre) ? nombre.Substring(0, 1) : "";
+        string i2 = !string.IsNullOrEmpty(apellido) ? apellido.Substring(0, 1) : "";
+        return (i1 + i2).ToUpper();
     }
 
-    private bool DerivacionValidada(int idPaciente)
+    private void MostrarError(string mensaje)
     {
-        if (idPaciente == 3) return false; 
-        return true;
-    }
-
-    private void MostrarPreviewDemo(int idPaciente, string tipo)
-    {
-        string nombrePaciente = ddlPaciente.SelectedItem.Text;
-        string tipoLabel = tipo == "RESUMEN" ? "Resumen Clínico IA"
-                              : tipo == "DERIVACION" ? "Informe de Derivación"
-                              : "Perfil Evolutivo del Paciente";
-
-        pnlPreview.Visible = true;
-        lblPreviewMeta.Text = tipoLabel + " · " + nombrePaciente;
-        lblPreviewBadge.Text = "✓ Listo para descargar";
-        lblPreviewBadge.CssClass = "doc-badge doc-badge-ok";
-
-        lblPrevFechDoc.Text = "Fecha: " + DateTime.Today.ToString("dd/MM/yyyy");
-        lblPrevProfesional.Text = "Prof. Lucía Martínez · Mat. 12345";
-        lblPrevPaciente.Text = nombrePaciente;
-        lblPrevDatosPaciente.Text = "Paciente activo · " + DateTime.Today.ToString("yyyy");
-        lblPrevTipoDoc.Text = tipoLabel;
-    }
-
-    private void MostrarError(string msg)
-    {
-        lblMensaje.Text = msg;
+        lblMensaje.Text = mensaje;
         lblMensaje.CssClass = "server-error";
-        lblMensaje.Visible = true;
-    }
-
-    private void MostrarExito(string msg)
-    {
-        lblMensaje.Text = msg;
-        lblMensaje.CssClass = "server-success";
         lblMensaje.Visible = true;
     }
 }

@@ -83,6 +83,18 @@ namespace BLL
             ConsultaDAL consultaDAL = new ConsultaDAL();
             return consultaDAL.ObtenerTodas();
         }
+        public List<Consulta> ObtenerPorPsicologo(int idPsicologo)
+        {
+            GestorPaciente gestorPaciente = new GestorPaciente();
+            List<Consulta> todas = new List<Consulta>();
+
+            foreach (Paciente paciente in gestorPaciente.ObtenerPorPsicologo(idPsicologo, soloActivos: false))
+            {
+                todas.AddRange(ObtenerPorPaciente(paciente.IdPaciente));
+            }
+
+            return todas;
+        }
 
         #endregion
 

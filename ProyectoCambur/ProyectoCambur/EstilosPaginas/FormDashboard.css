@@ -381,3 +381,10 @@
     .chip-btn:hover {
         background: var(--bg-paper);
     }
+
+.kpi-nota {
+    display: block;
+    font-size: 10px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}

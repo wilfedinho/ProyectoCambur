@@ -37,6 +37,8 @@
         public const int CRIT_MODIF_CONSULTA = 2;
         public const string DESC_INCORP_HISTORIAL = "Incorporación de historial clínico";
         public const int CRIT_INCORP_HISTORIAL = 2;
+        public const string DESC_MODIF_HISTORIAL = "Modificación de historial clínico";
+        public const int CRIT_MODIF_HISTORIAL = 2;
         public const string DESC_RESUMEN_IA = "Generación de resumen clínico asistido por IA";
         public const int CRIT_RESUMEN_IA = 2;
         public const string DESC_INFORME_DERIVACION = "Generación de informe de derivación";

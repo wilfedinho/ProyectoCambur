@@ -46,6 +46,7 @@
     <Compile Include="ConsultaDAL.cs" />
     <Compile Include="DigitoVerificadorDAL.cs" />
     <Compile Include="GestorConexion.cs" />
+    <Compile Include="HistorialClinicoDAL.cs" />
     <Compile Include="IdiomaDAL.cs" />
     <Compile Include="PacienteDAL.cs" />
     <Compile Include="PermisoDAL.cs" />

@@ -1,13 +1,20 @@
-﻿
-.historial-layout {
+﻿.historial-layout {
     display: grid;
     grid-template-columns: 1fr 260px;
     gap: 20px;
     align-items: start;
 }
 
-.historial-form-col { display: flex; flex-direction: column; }
-.historial-info-col { display: flex; flex-direction: column; gap: 16px; }
+.historial-form-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.historial-info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
 
 
 .paciente-header {
@@ -33,7 +40,9 @@
     flex-shrink: 0;
 }
 
-.paciente-header-info { flex: 1; }
+.paciente-header-info {
+    flex: 1;
+}
 
 .paciente-header-nombre {
     display: block;
@@ -62,7 +71,9 @@
     font-size: 13px;
 }
 
-.paciente-header-actions { flex-shrink: 0; }
+.paciente-header-actions {
+    flex-shrink: 0;
+}
 
 
 .badge-historial-completo {
@@ -117,7 +128,9 @@
     user-select: none;
 }
 
-.seccion-header:hover { background: #F4F1EB; }
+    .seccion-header:hover {
+        background: #F4F1EB;
+    }
 
 .seccion-header-left {
     display: flex;
@@ -125,7 +138,9 @@
     gap: 10px;
 }
 
-.seccion-icono { font-size: 16px; }
+.seccion-icono {
+    font-size: 16px;
+}
 
 .seccion-titulo {
     font-size: 14px;
@@ -157,26 +172,27 @@
     white-space: nowrap;
 }
 
-.badge-seccion.completado {
-    background: var(--success-bg);
-    border-color: var(--success-border);
-    color: var(--success-text);
-}
+    .badge-seccion.completado {
+        background: var(--success-bg);
+        border-color: var(--success-border);
+        color: var(--success-text);
+    }
 
 
 .seccion-body {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease, padding-top 0.2s;
-    padding: 0 18px 14px;
+    transition: max-height 0.3s ease, padding-top 0.2s, padding-bottom 0.2s;
+    padding: 0 18px;
 }
 
 .seccion-colapsable.abierto .seccion-body {
-   
 }
 
 
-.progreso-card { padding: 20px; }
+.progreso-card {
+    padding: 20px;
+}
 
 .progreso-titulo {
     font-size: 11px;
@@ -236,8 +252,13 @@
     transition: color 0.2s;
 }
 
-.pi-pendiente { color: var(--border); }
-.pi-ok        { color: var(--success); }
+.pi-pendiente {
+    color: var(--border);
+}
+
+.pi-ok {
+    color: var(--success);
+}
 
 .pi-label {
     font-size: 12px;
@@ -251,12 +272,28 @@
     background: #FAFAF8;
 }
 
-.aviso-icon    { font-size: 22px; margin-bottom: 6px; }
-.aviso-titulo  { font-size: 13px; font-weight: 500; color: var(--text-main); margin-bottom: 6px; }
-.aviso-texto   { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+.aviso-icon {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.aviso-titulo {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 6px;
+}
+
+.aviso-texto {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
 
 
-.accesos-card { padding: 18px 20px; }
+.accesos-card {
+    padding: 18px 20px;
+}
 
 .accesos-titulo {
     font-size: 11px;
@@ -280,6 +317,11 @@
     text-decoration: none;
 }
 
-.acceso-item:hover { background: var(--bg-paper); color: var(--text-main); }
+    .acceso-item:hover {
+        background: var(--bg-paper);
+        color: var(--text-main);
+    }
 
-.acceso-item span { font-size: 13px; }
+    .acceso-item span {
+        font-size: 13px;
+    }

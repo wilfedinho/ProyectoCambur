@@ -1,47 +1,106 @@
-﻿using System;
+﻿using BE;
+using BLL;
+using SERVICIOS;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Data;
 using System.Globalization;
+using System.Linq;
+using System.Web.UI.WebControls;
+using GUI;
 
-public partial class FormDashboard : System.Web.UI.Page
+public partial class FormDashboard : PaginaBase
 {
     private string PeriodoActivo
     {
-        get { return ViewState["Periodo"] != null ? ViewState["Periodo"].ToString() : "MES"; }
+        get { return ViewState["Periodo"] != null ? ViewState["Periodo"].ToString() : GestorDashboard.PERIODO_MES; }
         set { ViewState["Periodo"] = value; }
     }
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
+
+        if (!GestorSesion.EstaAutenticado)
+        {
+            Response.Redirect("FormLogin.aspx");
+            return;
+        }
+
+        Psicologo psicologoActual = GestorSesion.PsicologoActual;
+
+        GestorPermiso gestorPermiso = new GestorPermiso();
+        if (!gestorPermiso.TienePermiso(psicologoActual.RolPermiso, "acceder_dashboard"))
+        {
+            DenegarAcceso();
+            return;
+        }
+
+        AplicarTraducciones();
+
         if (!IsPostBack)
         {
-            CargarProfesionalDemo();
-            CargarDashboard("MES");
+            lblBienvenida.Text = string.Format(Traducir("lbl_bienvenida"), psicologoActual.Nombre);
+
+            CultureInfo cultura = new CultureInfo("es-AR");
+            string fecha = DateTime.Today.ToString("dddd d 'de' MMMM 'de' yyyy", cultura);
+            lblFechaHoy.Text = char.ToUpper(fecha[0]) + fecha.Substring(1);
+
+            try
+            {
+                CargarDashboard(GestorDashboard.PERIODO_MES);
+            }
+            catch (Exception)
+            {
+                MostrarError(Traducir("error_dashboard_recuperacion"));
+            }
         }
     }
-    private void CargarProfesionalDemo()
+
+    private void AplicarTraducciones()
     {
-        lblNombreProfesional.Text = "Lucía Martínez";
-        lblIniciales.Text = "LM";
-        lblBienvenida.Text = "Bienvenida, Lucía.";
-        lblFechaHoy.Text = DateTime.Today.ToString("dddd d 'de' MMMM 'de' yyyy",
-                                        new CultureInfo("es-AR"));
+        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+        lblHeaderPagina.Text = Traducir("nav_dashboard");
+
+        btnSemana.Text = Traducir("periodo_semana");
+        btnMes.Text = Traducir("periodo_mes");
+        btnTrimestre.Text = Traducir("periodo_trimestre");
+        btnAnio.Text = Traducir("periodo_anio");
+
+        lblLabelTotalPacientes.Text = Traducir("kpi_total_pacientes");
+        lblLabelNuevosPacientes.Text = Traducir("kpi_nuevos_pacientes");
+        lblLabelConsultas.Text = Traducir("kpi_consultas_realizadas");
+        lblLabelDerivaciones.Text = Traducir("kpi_derivaciones");
+        lblLabelResumenes.Text = Traducir("kpi_resumenes_ia");
+        lblLabelPerfilaciones.Text = Traducir("kpi_perfilaciones");
+        lblLabelExportaciones.Text = Traducir("kpi_informes_exportados");
+
+        lblGraficoTitulo.Text = Traducir("titulo_actividad_mensual");
+        lblUltimasTitulo.Text = Traducir("titulo_ultimas_consultas");
+        lnkVerTodasConsultas.Text = Traducir("lbl_ver_todas");
+        gvUltimasConsultas.Columns[0].HeaderText = Traducir("th_paciente");
+        gvUltimasConsultas.Columns[1].HeaderText = Traducir("th_fecha");
+        gvUltimasConsultas.Columns[2].HeaderText = Traducir("th_duracion");
+        gvUltimasConsultas.EmptyDataText = Traducir("msg_sin_consultas");
+
+        lblPacientesActivosTitulo.Text = Traducir("titulo_pacientes_activos");
+        lnkVerTodosPacientes.Text = Traducir("lbl_ver_todos");
     }
+
     private void CargarDashboard(string periodo)
     {
         PeriodoActivo = periodo;
         ActualizarBotonesPeriodo(periodo);
 
-        var datos = ObtenerDatosDemo(periodo);
+        Psicologo psicologoActual = GestorSesion.PsicologoActual;
+        GestorDashboard gestorDashboard = new GestorDashboard();
+
+        DatosDashboard datos = gestorDashboard.ObtenerIndicadores(psicologoActual.IdPsicologo, periodo);
 
         lblKpiTotalPacientes.Text = datos.TotalPacientes.ToString();
         lblKpiNuevosPacientes.Text = datos.NuevosPacientes.ToString();
         lblKpiConsultas.Text = datos.Consultas.ToString();
         lblKpiDerivaciones.Text = datos.Derivaciones.ToString();
-
         lblKpiDeltaPacientes.Text = datos.DeltaPacientes;
         lblKpiDeltaNuevos.Text = datos.DeltaNuevos;
         lblKpiDeltaConsultas.Text = datos.DeltaConsultas;
@@ -50,183 +109,111 @@ public partial class FormDashboard : System.Web.UI.Page
         lblKpiResumenes.Text = datos.ResumenesIA.ToString();
         lblKpiPerfilaciones.Text = datos.Perfilaciones.ToString();
         lblKpiExportaciones.Text = datos.Exportaciones.ToString();
+        lblNotaPerfilaciones.Text = datos.NotaPerfilaciones;
+        lblNotaPerfilaciones.Visible = true;
 
-        lblGraficoSubtitulo.Text = "Consultas por mes · últimos 6 meses";
-        CargarGrafico();
-
-        CargarUltimasConsultas();
-
-        CargarPacientesActivos();
+        lblGraficoSubtitulo.Text = string.Format(Traducir("lbl_grafico_subtitulo"), 6);
+        CargarGrafico(psicologoActual.IdPsicologo);
+        CargarUltimasConsultas(psicologoActual.IdPsicologo);
+        CargarPacientesActivos(psicologoActual.IdPsicologo);
     }
-    private void CargarGrafico()
+
+    private void CargarGrafico(int idPsicologo)
     {
-    
-        var meses = new[]
-        {
-            new { Mes = "Diciembre",  MesCorto = "Dic", Valor = 8  },
-            new { Mes = "Enero",      MesCorto = "Ene", Valor = 10 },
-            new { Mes = "Febrero",    MesCorto = "Feb", Valor = 7  },
-            new { Mes = "Marzo",      MesCorto = "Mar", Valor = 14 },
-            new { Mes = "Abril",      MesCorto = "Abr", Valor = 12 },
-            new { Mes = "Mayo",       MesCorto = "May", Valor = 9  },
-        };
+        GestorDashboard gestorDashboard = new GestorDashboard();
+        List<PuntoGrafico> puntos = gestorDashboard.ObtenerGraficoConsultasPorMes(idPsicologo);
 
-        int maxValor = 0;
-        foreach (var m in meses) if (m.Valor > maxValor) maxValor = m.Valor;
-
-        DataTable dt = new DataTable();
-        dt.Columns.Add("Mes", typeof(string));
-        dt.Columns.Add("MesCorto", typeof(string));
-        dt.Columns.Add("Valor", typeof(int));
-        dt.Columns.Add("PctAltura", typeof(int));
-        dt.Columns.Add("EsActual", typeof(bool));
-
-        string mesActual = DateTime.Today.ToString("MMMM", new CultureInfo("es-AR"));
-       
-        if (mesActual.Length > 0)
-            mesActual = char.ToUpper(mesActual[0]) + mesActual.Substring(1);
-
-        foreach (var m in meses)
-        {
-            int pct = maxValor > 0 ? (int)Math.Round((double)m.Valor / maxValor * 100) : 0;
-            dt.Rows.Add(m.Mes, m.MesCorto, m.Valor, pct, m.Mes == mesActual);
-        }
-
-        rptGrafico.DataSource = dt;
+        rptGrafico.DataSource = puntos;
         rptGrafico.DataBind();
     }
 
-    private void CargarUltimasConsultas()
+    private void CargarUltimasConsultas(int idPsicologo)
     {
+        GestorDashboard gestorDashboard = new GestorDashboard();
+        GestorPaciente gestorPaciente = new GestorPaciente();
+
+        List<Consulta> ultimas = gestorDashboard.ObtenerUltimasConsultas(idPsicologo);
+        Dictionary<int, string> nombresPaciente = gestorPaciente.ObtenerPorPsicologo(idPsicologo, soloActivos: false)
+            .ToDictionary(p => p.IdPaciente, p => p.Nombre + " " + p.Apellido);
+
         DataTable dt = new DataTable();
         dt.Columns.Add("IdConsulta", typeof(int));
         dt.Columns.Add("Paciente", typeof(string));
         dt.Columns.Add("Fecha", typeof(DateTime));
         dt.Columns.Add("Duracion", typeof(int));
 
-        dt.Rows.Add(101, "Martín González", new DateTime(2026, 5, 8), 50);
-        dt.Rows.Add(99, "Carlos Ibáñez", new DateTime(2026, 5, 6), 50);
-        dt.Rows.Add(98, "Sofía Ramírez", new DateTime(2026, 5, 2), 50);
-        dt.Rows.Add(97, "Facundo Pérez", new DateTime(2026, 4, 28), 45);
-        dt.Rows.Add(96, "Valentina Moreno", new DateTime(2026, 4, 22), 50);
+        foreach (Consulta c in ultimas)
+        {
+            string nombre = nombresPaciente.ContainsKey(c.IdPaciente) ? nombresPaciente[c.IdPaciente] : "—";
+            dt.Rows.Add(c.IdConsulta, nombre, c.FechaConsulta, c.TiempoConsulta);
+        }
 
         gvUltimasConsultas.DataSource = dt;
         gvUltimasConsultas.DataBind();
     }
 
-    private void CargarPacientesActivos()
+    private void CargarPacientesActivos(int idPsicologo)
     {
+        GestorDashboard gestorDashboard = new GestorDashboard();
+        GestorConsulta gestorConsulta = new GestorConsulta();
+
+        List<Paciente> activos = gestorDashboard.ObtenerPacientesActivos(idPsicologo);
+        List<Consulta> todasConsultas = gestorConsulta.ObtenerPorPsicologo(idPsicologo);
+
         DataTable dt = new DataTable();
         dt.Columns.Add("IdPaciente", typeof(int));
         dt.Columns.Add("Nombre", typeof(string));
         dt.Columns.Add("Iniciales", typeof(string));
         dt.Columns.Add("UltimaConsulta", typeof(string));
 
-        dt.Rows.Add(1, "Martín González", "MG", "Últ. sesión: 08/05/2026");
-        dt.Rows.Add(3, "Carlos Ibáñez", "CI", "Últ. sesión: 06/05/2026");
-        dt.Rows.Add(2, "Sofía Ramírez", "SR", "Últ. sesión: 02/05/2026");
-        dt.Rows.Add(5, "Facundo Pérez", "FP", "Últ. sesión: 28/04/2026");
-        dt.Rows.Add(4, "Valentina Moreno", "VM", "Últ. sesión: 22/04/2026");
+        foreach (Paciente p in activos)
+        {
+            DateTime? ultima = gestorDashboard.ObtenerUltimaConsultaDe(p.IdPaciente, todasConsultas);
+            string textoUltima = ultima.HasValue
+                ? Traducir("lbl_ult_sesion") + ": " + ultima.Value.ToString("dd/MM/yyyy")
+                : Traducir("lbl_sin_sesiones");
+            dt.Rows.Add(p.IdPaciente, p.Nombre + " " + p.Apellido, ObtenerIniciales(p.Nombre, p.Apellido), textoUltima);
+        }
 
         rptPacientesActivos.DataSource = dt;
         rptPacientesActivos.DataBind();
 
-        lblBadgePacientesActivos.Text = dt.Rows.Count + " activos";
+        lblBadgePacientesActivos.Text = dt.Rows.Count + " " + Traducir("lbl_activos");
         lblBadgePacientesActivos.Visible = true;
-    }    
-    private DatosDashboard ObtenerDatosDemo(string periodo)
-    {
-        switch (periodo)
-        {
-            case "SEMANA":
-                return new DatosDashboard
-                {
-                    TotalPacientes = 18,
-                    NuevosPacientes = 0,
-                    Consultas = 4,
-                    Derivaciones = 0,
-                    ResumenesIA = 1,
-                    Perfilaciones = 0,
-                    Exportaciones = 1,
-                    DeltaPacientes = "= Sin cambios",
-                    DeltaNuevos = "Sin incorporaciones",
-                    DeltaConsultas = "↑ 4 esta semana",
-                    DeltaDerivaciones = "Sin derivaciones"
-                };
-            case "TRIMESTRE":
-                return new DatosDashboard
-                {
-                    TotalPacientes = 18,
-                    NuevosPacientes = 3,
-                    Consultas = 38,
-                    Derivaciones = 2,
-                    ResumenesIA = 8,
-                    Perfilaciones = 5,
-                    Exportaciones = 6,
-                    DeltaPacientes = "↑ 3 nuevos este trimestre",
-                    DeltaNuevos = "↑ vs. 1 trimestre anterior",
-                    DeltaConsultas = "↑ 12% vs. trimestre anterior",
-                    DeltaDerivaciones = "= igual que trimestre anterior"
-                };
-            case "ANIO":
-                return new DatosDashboard
-                {
-                    TotalPacientes = 18,
-                    NuevosPacientes = 7,
-                    Consultas = 142,
-                    Derivaciones = 5,
-                    ResumenesIA = 24,
-                    Perfilaciones = 14,
-                    Exportaciones = 18,
-                    DeltaPacientes = "↑ 7 nuevos este año",
-                    DeltaNuevos = "↑ vs. 4 del año anterior",
-                    DeltaConsultas = "↑ 18% vs. año anterior",
-                    DeltaDerivaciones = "↑ 2 más que el año pasado"
-                };
-            default: 
-                return new DatosDashboard
-                {
-                    TotalPacientes = 18,
-                    NuevosPacientes = 1,
-                    Consultas = 14,
-                    Derivaciones = 1,
-                    ResumenesIA = 3,
-                    Perfilaciones = 2,
-                    Exportaciones = 2,
-                    DeltaPacientes = "↑ 1 nuevo este mes",
-                    DeltaNuevos = "↑ vs. 0 el mes pasado",
-                    DeltaConsultas = "↑ 14% vs. mes anterior",
-                    DeltaDerivaciones = "= igual que mes anterior"
-                };
-        }
     }
 
     private void ActualizarBotonesPeriodo(string periodo)
     {
-        btnSemana.CssClass = "periodo-btn" + (periodo == "SEMANA" ? " active" : "");
-        btnMes.CssClass = "periodo-btn" + (periodo == "MES" ? " active" : "");
-        btnTrimestre.CssClass = "periodo-btn" + (periodo == "TRIMESTRE" ? " active" : "");
-        btnAnio.CssClass = "periodo-btn" + (periodo == "ANIO" ? " active" : "");
+        btnSemana.CssClass = "periodo-btn" + (periodo == GestorDashboard.PERIODO_SEMANA ? " active" : "");
+        btnMes.CssClass = "periodo-btn" + (periodo == GestorDashboard.PERIODO_MES ? " active" : "");
+        btnTrimestre.CssClass = "periodo-btn" + (periodo == GestorDashboard.PERIODO_TRIMESTRE ? " active" : "");
+        btnAnio.CssClass = "periodo-btn" + (periodo == GestorDashboard.PERIODO_ANIO ? " active" : "");
     }
 
     protected void btnPeriodo_Click(object sender, EventArgs e)
     {
-        System.Web.UI.WebControls.Button btn = (System.Web.UI.WebControls.Button)sender;
-        CargarDashboard(btn.CommandArgument);
+        Button btn = (Button)sender;
+        try
+        {
+            CargarDashboard(btn.CommandArgument);
+        }
+        catch (Exception)
+        {
+            MostrarError(Traducir("error_dashboard_recalculo"));
+        }
     }
 
-    private class DatosDashboard
+    private string ObtenerIniciales(string nombre, string apellido)
     {
-        public int TotalPacientes { get; set; }
-        public int NuevosPacientes { get; set; }
-        public int Consultas { get; set; }
-        public int Derivaciones { get; set; }
-        public int ResumenesIA { get; set; }
-        public int Perfilaciones { get; set; }
-        public int Exportaciones { get; set; }
-        public string DeltaPacientes { get; set; }
-        public string DeltaNuevos { get; set; }
-        public string DeltaConsultas { get; set; }
-        public string DeltaDerivaciones { get; set; }
+        string i1 = !string.IsNullOrEmpty(nombre) ? nombre.Substring(0, 1) : "";
+        string i2 = !string.IsNullOrEmpty(apellido) ? apellido.Substring(0, 1) : "";
+        return (i1 + i2).ToUpper();
+    }
+
+    private void MostrarError(string mensaje)
+    {
+        lblMensaje.Text = mensaje;
+        lblMensaje.CssClass = "server-error";
+        lblMensaje.Visible = true;
     }
 }

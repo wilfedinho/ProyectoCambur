@@ -1,53 +1,199 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BE;
+using BLL;
+using SERVICIOS;
+using System;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-public partial class FormHistorialClinico : System.Web.UI.Page
-{
+using GUI;
 
+public partial class FormHistorialClinico : PaginaBase
+{
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
+
+        if (!GestorSesion.EstaAutenticado)
+        {
+            Response.Redirect("FormLogin.aspx");
+            return;
+        }
+
+        Psicologo psicologoActual = GestorSesion.PsicologoActual;
+
+        GestorPermiso gestorPermiso = new GestorPermiso();
+        if (!gestorPermiso.TienePermiso(psicologoActual.RolPermiso, "acceder_generar_historial"))
+        {
+            DenegarAcceso();
+            return;
+        }
+
+        AplicarTraducciones();
+
         if (!IsPostBack)
         {
-            CargarProfesionalDemo();
-            CargarHistorialDemo();
+            lblTaglineSidebar.Text = Traducir("tagline_panel_gestion");
+            CargarComboPacientes();
+            MostrarEstado(1);
         }
     }
 
-    private void CargarProfesionalDemo()
+    private void AplicarTraducciones()
     {
-        lblNombreProfesional.Text = "Lucía Martínez";
-        lblIniciales.Text = "LM";
+        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+        lblHeaderSeccion.Text = Traducir("seccion_gestion_clinica");
+        lblHeaderPagina.Text = Traducir("nav_generar_historial");
+        lblFormTituloSeleccion.Text = Traducir("titulo_historial_clinico");
+        lblFormSubtituloSeleccion.Text = Traducir("subtitulo_seleccion_paciente_historial");
+        lblEtiquetaPacienteSeleccion.Text = Traducir("lbl_paciente");
+        rfvPacienteSeleccion.ErrorMessage = Traducir("error_consulta_sin_paciente");
+        btnContinuar.Text = Traducir("btn_continuar");
+        lblSeccionInfoClinica.Text = Traducir("seccion_info_clinica_persistente");
+        lblHintHistorial.Text = Traducir("hint_historial_clinico");
+        lblTituloHabitos.Text = Traducir("seccion_habitos_nocivos");
+        txtHabitosNocivos.Attributes["placeholder"] = Traducir("placeholder_habitos_nocivos");
+        lblTituloContexto.Text = Traducir("seccion_contexto_familiar");
+        txtContextoFamiliar.Attributes["placeholder"] = Traducir("placeholder_contexto_familiar");
+        lblTituloAntFam.Text = Traducir("seccion_antecedentes_familiares");
+        txtAntecedentesFamiliares.Attributes["placeholder"] = Traducir("placeholder_antecedentes_familiares");
+        lblTituloAntMed.Text = Traducir("seccion_antecedentes_medicos");
+        txtAntecedentesMedicos.Attributes["placeholder"] = Traducir("placeholder_antecedentes_medicos");
+        lblTituloLaboral.Text = Traducir("seccion_situacion_laboral");
+        txtSituacionLaboral.Attributes["placeholder"] = Traducir("placeholder_situacion_laboral");
+        lblTituloTrauma.Text = Traducir("seccion_eventos_traumaticos");
+        txtEventosTraumaticos.Attributes["placeholder"] = Traducir("placeholder_eventos_traumaticos");
+        btnVolverSeleccion.Text = Traducir("btn_elegir_otro_paciente");
+        btnGuardar.Text = Traducir("btn_guardar_historial");
+        lblAvisoEncriptadoTitulo.Text = Traducir("titulo_datos_encriptados");
+        lblAvisoEncriptadoTexto.Text = Traducir("aviso_historial_encriptado");
+        lblProgresoTitulo.Text = Traducir("titulo_completitud_historial");
     }
 
-
-    private void CargarHistorialDemo()
+    protected void btnContinuar_Click(object sender, EventArgs e)
     {
+        lblMensaje.Visible = false;
 
-        lblHeaderPaciente.Text = "Historial Clínico — Martín González";
-        lblPacienteIniciales.Text = "MG";
-        lblPacienteNombre.Text = "Martín González";
-        lblPacienteEdad.Text = "33 años";
-        lblPacienteEstado.Text = "Soltero/a";
-        lblPacienteOcup.Text = "Docente";
+        if (!Page.IsValid) return;
 
-  
-        txtHabitosNocivos.Text = "Fumador ocasional (3-4 cigarrillos por semana). Refiere consumo moderado de alcohol los fines de semana. Dificultades para mantener rutina de sueño regular, se acuesta pasada la 1 AM habitualmente.";
+        int idPaciente = Convert.ToInt32(ddlPacienteSeleccion.SelectedValue);
+        int idPsicologo = GestorSesion.PsicologoActual.IdPsicologo;
 
-        txtContextoFamiliar.Text = "Vive solo desde los 25 años. Relación distante con el padre (separado de la madre cuando tenía 8 años). Vínculo estrecho con la madre, con quien habla diariamente. Tiene un hermano mayor con quien tiene poca relación.";
+        GestorPaciente gestorPaciente = new GestorPaciente();
+        Paciente paciente = gestorPaciente.BuscarPorId(idPaciente);
+        if (paciente == null || paciente.IdPsicologo != idPsicologo)
+        {
+            MostrarError(Traducir("error_paciente_no_propio"));
+            return;
+        }
 
-        txtAntecedentesFamiliares.Text = "Madre con diagnóstico de trastorno de ansiedad generalizada. Abuelo paterno con alcoholismo crónico. Sin otros antecedentes psiquiátricos relevantes en la familia.";
+        CargarFormularioParaPaciente(paciente);
+        MostrarEstado(2);
+    }
 
-        txtAntecedentesMedicos.Text = "Diagnóstico de hipertensión leve desde los 30 años, con seguimiento cardiológico anual. Sin medicación psiquiátrica actual. Alergia a la penicilina.";
+    protected void btnVolverSeleccion_Click(object sender, EventArgs e)
+    {
+        lblMensaje.Visible = false;
+        MostrarEstado(1);
+    }
 
-        txtSituacionLaboral.Text = "Docente de nivel secundario desde hace 7 años. Refiere satisfacción con la tarea pero estrés crónico por conflictos institucionales. Ingresos estables pero tensión por bajo reconocimiento salarial.";
+    protected void btnGuardar_Click(object sender, EventArgs e)
+    {
+        lblMensaje.Visible = false;
 
-   
-        txtEventosTraumaticos.Text = string.Empty;
+        int idPaciente = Convert.ToInt32(hdnIdPaciente.Value);
+        int idPsicologo = GestorSesion.PsicologoActual.IdPsicologo;
 
-  
+        GestorPaciente gestorPaciente = new GestorPaciente();
+        Paciente paciente = gestorPaciente.BuscarPorId(idPaciente);
+        if (paciente == null || paciente.IdPsicologo != idPsicologo)
+        {
+            MostrarError(Traducir("error_paciente_no_propio"));
+            return;
+        }
+
+        HistorialClinico historial = new HistorialClinico();
+        historial.IdPaciente = idPaciente;
+        historial.HabitosNocivos = txtHabitosNocivos.Text.Trim();
+        historial.ContextoFamiliar = txtContextoFamiliar.Text.Trim();
+        historial.AntecedentesFamiliares = txtAntecedentesFamiliares.Text.Trim();
+        historial.AntecedentesMedicos = txtAntecedentesMedicos.Text.Trim();
+        historial.SituacionLaboral = txtSituacionLaboral.Text.Trim();
+        historial.EventosTraumaticos = txtEventosTraumaticos.Text.Trim();
+
+        GestorHistorialClinico gestorHistorial = new GestorHistorialClinico();
+
+        try
+        {
+            bool esAlta = hdnModo.Value != "modificar";
+
+            if (esAlta)
+            {
+                gestorHistorial.Alta(historial);
+                MostrarExito(Traducir("msg_historial_guardado"));
+            }
+            else
+            {
+                historial.IdHistorial = Convert.ToInt32(hdnIdHistorial.Value);
+                gestorHistorial.Modificar(historial);
+                MostrarExito(Traducir("msg_historial_actualizado"));
+            }
+            CargarFormularioParaPaciente(paciente);
+        }
+        catch (ExcepcionTraducible ex)
+        {
+            if (ex.Clave == "error_historial_ya_existe")
+            {
+                CargarFormularioParaPaciente(paciente);
+                MostrarError(Traducir("error_historial_ya_existe"));
+            }
+            else
+            {
+                MostrarError(TraducirExcepcion(ex));
+            }
+        }
+    }
+
+    private void CargarFormularioParaPaciente(Paciente paciente)
+    {
+        hdnIdPaciente.Value = paciente.IdPaciente.ToString();
+
+        lblPacienteNombre.Text = paciente.Nombre + " " + paciente.Apellido;
+        lblPacienteIniciales.Text = ObtenerIniciales(paciente.Nombre, paciente.Apellido);
+        lblPacienteEdad.Text = CalcularEdad(paciente.FechaNacimiento) + " " + Traducir("lbl_anios");
+        lblPacienteEstado.Text = paciente.EstadoCivil;
+        lblPacienteOcup.Text = paciente.Ocupacion;
+
+        GestorHistorialClinico gestorHistorial = new GestorHistorialClinico();
+        HistorialClinico historialExistente = gestorHistorial.BuscarPorPaciente(paciente.IdPaciente);
+
+        if (historialExistente != null)
+        {
+            hdnModo.Value = "modificar";
+            hdnIdHistorial.Value = historialExistente.IdHistorial.ToString();
+            lblFormTituloFormulario.Text = Traducir("titulo_modificar_historial");
+            btnGuardar.Text = Traducir("btn_guardar_cambios");
+
+            txtHabitosNocivos.Text = historialExistente.HabitosNocivos;
+            txtContextoFamiliar.Text = historialExistente.ContextoFamiliar;
+            txtAntecedentesFamiliares.Text = historialExistente.AntecedentesFamiliares;
+            txtAntecedentesMedicos.Text = historialExistente.AntecedentesMedicos;
+            txtSituacionLaboral.Text = historialExistente.SituacionLaboral;
+            txtEventosTraumaticos.Text = historialExistente.EventosTraumaticos;
+        }
+        else
+        {
+            hdnModo.Value = "alta";
+            hdnIdHistorial.Value = "0";
+            lblFormTituloFormulario.Text = Traducir("titulo_generar_historial");
+            btnGuardar.Text = Traducir("btn_guardar_historial");
+
+            txtHabitosNocivos.Text = string.Empty;
+            txtContextoFamiliar.Text = string.Empty;
+            txtAntecedentesFamiliares.Text = string.Empty;
+            txtAntecedentesMedicos.Text = string.Empty;
+            txtSituacionLaboral.Text = string.Empty;
+            txtEventosTraumaticos.Text = string.Empty;
+        }
+
         ActualizarBadgeEstadoHistorial();
     }
 
@@ -63,7 +209,6 @@ public partial class FormHistorialClinico : System.Web.UI.Page
         if (!string.IsNullOrWhiteSpace(txtSituacionLaboral.Text)) completados++;
         if (!string.IsNullOrWhiteSpace(txtEventosTraumaticos.Text)) completados++;
 
-  
         ActualizarBadgeIndividual(lblBadgeHabitos, txtHabitosNocivos.Text);
         ActualizarBadgeIndividual(lblBadgeContexto, txtContextoFamiliar.Text);
         ActualizarBadgeIndividual(lblBadgeAntFam, txtAntecedentesFamiliares.Text);
@@ -71,47 +216,58 @@ public partial class FormHistorialClinico : System.Web.UI.Page
         ActualizarBadgeIndividual(lblBadgeLaboral, txtSituacionLaboral.Text);
         ActualizarBadgeIndividual(lblBadgeTrauma, txtEventosTraumaticos.Text);
 
-
         if (completados == total)
         {
-            lblEstadoHistorial.Text = "Historial completo";
+            lblEstadoHistorial.Text = Traducir("badge_historial_completo");
             lblEstadoHistorial.CssClass = "badge-historial-completo";
         }
         else
         {
-            lblEstadoHistorial.Text = completados + " de " + total + " secciones";
+            lblEstadoHistorial.Text = completados + " " + Traducir("lbl_de") + " " + total + " " + Traducir("lbl_secciones");
             lblEstadoHistorial.CssClass = "badge-historial-parcial";
         }
     }
 
-    private void ActualizarBadgeIndividual(System.Web.UI.WebControls.Label badge, string contenido)
+    private void ActualizarBadgeIndividual(Label badge, string contenido)
     {
         bool tieneContenido = !string.IsNullOrWhiteSpace(contenido);
-        badge.Text = tieneContenido ? "Completado" : "Pendiente";
+        badge.Text = tieneContenido ? Traducir("badge_completado") : Traducir("badge_pendiente");
         badge.CssClass = tieneContenido ? "badge-seccion completado" : "badge-seccion";
     }
 
-    protected void btnGuardar_Click(object sender, EventArgs e)
+    private void CargarComboPacientes()
     {
-        lblMensaje.Visible = false;
+        GestorPaciente gestorPaciente = new GestorPaciente();
+        int idPropio = GestorSesion.PsicologoActual.IdPsicologo;
+        var propios = gestorPaciente.ObtenerPorPsicologo(idPropio);
 
-   
-        bool alguienCompleto =
-            !string.IsNullOrWhiteSpace(txtHabitosNocivos.Text) ||
-            !string.IsNullOrWhiteSpace(txtContextoFamiliar.Text) ||
-            !string.IsNullOrWhiteSpace(txtAntecedentesFamiliares.Text) ||
-            !string.IsNullOrWhiteSpace(txtAntecedentesMedicos.Text) ||
-            !string.IsNullOrWhiteSpace(txtSituacionLaboral.Text) ||
-            !string.IsNullOrWhiteSpace(txtEventosTraumaticos.Text);
+        ddlPacienteSeleccion.Items.Clear();
+        ddlPacienteSeleccion.Items.Add(new ListItem(Traducir("opt_seleccionar"), ""));
 
-        if (!alguienCompleto)
+        foreach (Paciente p in propios.OrderBy(x => x.Apellido))
         {
-            MostrarError("Completá al menos una sección del historial antes de guardar.");
-            return;
+            ddlPacienteSeleccion.Items.Add(new ListItem(p.Nombre + " " + p.Apellido, p.IdPaciente.ToString()));
         }
+    }
 
-        ActualizarBadgeEstadoHistorial();
-        MostrarExito("Historial clínico guardado correctamente. Los datos fueron encriptados.");
+    private void MostrarEstado(int estado)
+    {
+        pnlSeleccionPaciente.Visible = (estado == 1);
+        pnlFormulario.Visible = (estado == 2);
+    }
+
+    private string ObtenerIniciales(string nombre, string apellido)
+    {
+        string i1 = !string.IsNullOrEmpty(nombre) ? nombre.Substring(0, 1) : "";
+        string i2 = !string.IsNullOrEmpty(apellido) ? apellido.Substring(0, 1) : "";
+        return (i1 + i2).ToUpper();
+    }
+
+    private int CalcularEdad(DateTime fechaNacimiento)
+    {
+        int edad = DateTime.Today.Year - fechaNacimiento.Year;
+        if (fechaNacimiento.Date > DateTime.Today.AddYears(-edad)) edad--;
+        return edad;
     }
 
     private void MostrarError(string msg)

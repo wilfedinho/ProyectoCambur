@@ -119,6 +119,18 @@ namespace BLL
             JavaScriptSerializer serializador = new JavaScriptSerializer();
             return serializador.Deserialize<SeccionesResumenClinico>(resumen.Contenido);
         }
+        public List<ResumenClinico> ObtenerPorPsicologo(int idPsicologo)
+        {
+            GestorPaciente gestorPaciente = new GestorPaciente();
+            List<ResumenClinico> todos = new List<ResumenClinico>();
+
+            foreach (Paciente paciente in gestorPaciente.ObtenerPorPsicologo(idPsicologo, soloActivos: false))
+            {
+                todos.AddRange(ObtenerPorPaciente(paciente.IdPaciente));
+            }
+
+            return todos;
+        }
 
         #endregion
 

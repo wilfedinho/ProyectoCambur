@@ -345,3 +345,25 @@
     font-weight: 500;
     margin-bottom: 10px;
 }
+
+.doc-card-disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+    .doc-card-disabled:hover {
+        background: var(--surface);
+        border-color: var(--border);
+    }
+
+.doc-card-seleccionable {
+    border: 1.5px solid var(--text-main);
+    background: #F8F5F0;
+    cursor: default;
+}
+
+.doc-badge-proximamente {
+    background: #EFEFF5;
+    border-color: #C7C7DA;
+    color: #45455C;
+}

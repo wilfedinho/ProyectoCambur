@@ -9,7 +9,7 @@ namespace SERVICIOS
     public class DigitoVerificador
     {
         private static readonly List<string> TablasControladas = new List<string> {
-            "Profesional", "Paciente", "Consulta", "ResumenClinico", "Suscripcion", "Traduccion", "TokenRecuperacion", "Bitacora", "Idioma",
+            "Profesional", "Paciente", "Consulta", "HistorialClinico", "ResumenClinico", "Suscripcion", "Traduccion", "TokenRecuperacion", "Bitacora", "Idioma",
             "PermisoSimple", "Familia", "Perfil", "PermisoSimple_Familia", "Familia_Familia", "PermisoSimple_Perfil", "Perfil_Familia"
         };
         private static readonly HashSet<string> TablasFamiliaPermiso = new HashSet<string> {
@@ -64,6 +64,18 @@ namespace SERVICIOS
                 sb.Append(consulta.EvolucionObservada);
                 sb.Append(consulta.Diagnostico);
                 sb.Append(consulta.Tratamiento);
+            }
+
+            if (entidad is HistorialClinico historialClinico)
+            {
+                sb.Append(historialClinico.IdPaciente);
+                sb.Append(historialClinico.HabitosNocivos);
+                sb.Append(historialClinico.ContextoFamiliar);
+                sb.Append(historialClinico.AntecedentesFamiliares);
+                sb.Append(historialClinico.AntecedentesMedicos);
+                sb.Append(historialClinico.SituacionLaboral);
+                sb.Append(historialClinico.EventosTraumaticos);
+                sb.Append(historialClinico.FechaRegistro);
             }
 
             if (entidad is ResumenClinico resumenClinico)
@@ -159,6 +171,15 @@ namespace SERVICIOS
             {
                 ConsultaDAL consultaDAL = new ConsultaDAL();
                 foreach (string dvh in consultaDAL.ObtenerListaDVH())
+                {
+                    sb.Append(dvh);
+                }
+            }
+
+            if (nombreTabla == "HistorialClinico")
+            {
+                HistorialClinicoDAL historialClinicoDAL = new HistorialClinicoDAL();
+                foreach (string dvh in historialClinicoDAL.ObtenerListaDVH())
                 {
                     sb.Append(dvh);
                 }
@@ -260,6 +281,13 @@ namespace SERVICIOS
                 consulta.DigitoVerificador = dvh;
             }
 
+            if (nombreTabla == "HistorialClinico" && entidad is HistorialClinico historialClinico)
+            {
+                HistorialClinicoDAL historialClinicoDAL = new HistorialClinicoDAL();
+                historialClinicoDAL.ActualizarDVH(historialClinico.IdHistorial, dvh);
+                historialClinico.DigitoVerificador = dvh;
+            }
+
             if (nombreTabla == "ResumenClinico" && entidad is ResumenClinico resumenClinico)
             {
                 ResumenClinicoDAL resumenClinicoDAL = new ResumenClinicoDAL();
@@ -320,6 +348,11 @@ namespace SERVICIOS
                 return new ConsultaDAL().BuscarPorId(consulta.IdConsulta);
             }
 
+            if (nombreTabla == "HistorialClinico" && entidad is HistorialClinico historialClinico && historialClinico.IdHistorial > 0)
+            {
+                return new HistorialClinicoDAL().BuscarPorId(historialClinico.IdHistorial);
+            }
+
             if (nombreTabla == "ResumenClinico" && entidad is ResumenClinico resumenClinico && resumenClinico.IdResumen > 0)
             {
                 return new ResumenClinicoDAL().BuscarPorId(resumenClinico.IdResumen);
@@ -375,9 +408,9 @@ namespace SERVICIOS
 
         public bool VerificarIntegridadDVH(object entidad)
         {
-            if (entidad is Psicologo || entidad is Paciente || entidad is Consulta || entidad is ResumenClinico ||
-                entidad is Suscripcion || entidad is Traduccion || entidad is TokenRecuperacion || entidad is Bitacora ||
-                entidad is Idioma)
+            if (entidad is Psicologo || entidad is Paciente || entidad is Consulta || entidad is HistorialClinico ||
+                entidad is ResumenClinico || entidad is Suscripcion || entidad is Traduccion || entidad is TokenRecuperacion ||
+                entidad is Bitacora || entidad is Idioma)
             {
                 return CalcularDVH(entidad) == ObtenerDigitoVerificadorDe(entidad);
             }
@@ -390,6 +423,7 @@ namespace SERVICIOS
             if (entidad is Psicologo psicologo) return psicologo.DigitoVerificador;
             if (entidad is Paciente paciente) return paciente.DigitoVerificador;
             if (entidad is Consulta consulta) return consulta.DigitoVerificador;
+            if (entidad is HistorialClinico historialClinico) return historialClinico.DigitoVerificador;
             if (entidad is ResumenClinico resumenClinico) return resumenClinico.DigitoVerificador;
             if (entidad is Suscripcion suscripcion) return suscripcion.DigitoVerificador;
             if (entidad is Traduccion traduccion) return traduccion.DigitoVerificador;
@@ -474,6 +508,29 @@ namespace SERVICIOS
                                 "dvh_registro_inconsistente_consulta",
                                 consulta.IdConsulta,
                                 consulta.FechaConsulta
+                            ));
+                        }
+                    }
+
+                    AgregarInconsistenciasDeConteo(inconsistencias, digitoVerificadorDAL, tabla, huboInconsistenciaDeRegistro);
+                }
+
+                if (tabla == "HistorialClinico")
+                {
+                    HistorialClinicoDAL historialClinicoDAL = new HistorialClinicoDAL();
+                    List<HistorialClinico> historiales = historialClinicoDAL.ObtenerTodos();
+
+                    bool huboInconsistenciaDeRegistro = false;
+
+                    foreach (HistorialClinico historialClinico in historiales)
+                    {
+                        if (!VerificarIntegridadDVH(historialClinico))
+                        {
+                            huboInconsistenciaDeRegistro = true;
+                            inconsistencias.Add(new InconsistenciaDetectada(
+                                "dvh_registro_inconsistente_historial",
+                                historialClinico.IdHistorial,
+                                historialClinico.IdPaciente
                             ));
                         }
                     }
@@ -738,6 +795,22 @@ namespace SERVICIOS
                     foreach (Consulta consulta in consultas)
                     {
                         ActualizarDVH(consulta, tabla);
+                    }
+                }
+
+                if (tabla == "HistorialClinico")
+                {
+                    HistorialClinicoDAL historialClinicoDAL = new HistorialClinicoDAL();
+                    List<HistorialClinico> historiales = historialClinicoDAL.ObtenerTodos();
+
+                    if (historiales.Count == 0)
+                    {
+                        ActualizarDVV(tabla);
+                    }
+
+                    foreach (HistorialClinico historialClinico in historiales)
+                    {
+                        ActualizarDVH(historialClinico, tabla);
                     }
                 }
 
