@@ -32,30 +32,30 @@
 
             <header class="top-header">
                 <div class="header-title">
-                    <span class="header-section">Perfilación</span>
+                    <asp:Label ID="lblHeaderSeccion" runat="server" CssClass="header-section" Text="" />
                     <span class="header-sep">/</span>
                     <asp:Label ID="lblHeaderTitulo" runat="server"
-                        CssClass="header-page" Text="Generar perfil del paciente" />
+                        CssClass="header-page" Text="" />
                 </div>
                 <uc:HeaderUsuario ID="ucHeaderUsuario" runat="server" />
             </header>
 
-            
+
             <div class="page-content">
 
                 <asp:Label ID="lblMensaje" runat="server"
                     Visible="false" CssClass="server-error" />
 
-             
+
                 <asp:Panel ID="pnlSeleccion" runat="server">
                     <div class="perfil-layout">
 
                         <div class="perfil-form-col">
 
-                       
+
                             <div class="content-card">
                                 <div class="field full-col" style="margin-bottom:16px;">
-                                    <label for="ddlPacientePerfil">Paciente <sup>*</sup></label>
+                                    <label for="ddlPacientePerfil"><asp:Label ID="lblEtiquetaPacientePerfil" runat="server" Text="" /> <sup>*</sup></label>
                                     <asp:DropDownList ID="ddlPacientePerfil" runat="server"
                                         ClientIDMode="Static" AutoPostBack="true"
                                         OnSelectedIndexChanged="ddlPacientePerfil_SelectedIndexChanged" />
@@ -63,7 +63,7 @@
 
                                 <div class="paciente-header">
                                     <div class="paciente-header-avatar">
-                                        <asp:Label ID="lblPacienteIniciales" runat="server" Text="MG" />
+                                        <asp:Label ID="lblPacienteIniciales" runat="server" Text="" />
                                     </div>
                                     <div class="paciente-header-info">
                                         <asp:Label ID="lblPacienteNombre" runat="server"
@@ -79,25 +79,25 @@
                                 </div>
 
                                 <div class="ia-badge-aviso">
-                                    🧠 Los perfiles son representaciones descriptivas y contextuales. No constituyen diagnósticos clínicos ni reemplazan el criterio profesional.
+                                    <asp:Label ID="lblAvisoPerfil" runat="server" Text="" />
                                 </div>
 
-                                <div class="section-sep">Seleccioná el modelo de evaluación</div>
-                                <p class="hint-text">Elegí el marco de evaluación pertinente para este proceso de perfilación. Podés generar múltiples perfiles con distintos modelos.</p>
+                                <div class="section-sep"><asp:Label ID="lblSeccionSeleccionarModelo" runat="server" Text="" /></div>
+                                <p class="hint-text"><asp:Label ID="lblHintSeleccionarModelo" runat="server" Text="" /></p>
 
-                            
+
                                 <asp:HiddenField ID="hfModeloSeleccionado" runat="server"
                                     Value="" ClientIDMode="Static" />
 
-                          
+
                                 <div class="modelos-grid">
 
                                     <div class="modelo-card" id="cardBigFive"
                                          onclick="seleccionarModelo(this, 'BIGFIVE')">
                                         <div class="modelo-icono">🌐</div>
                                         <div class="modelo-info">
-                                            <div class="modelo-nombre">Big Five (BFI)</div>
-                                            <div class="modelo-desc">Análisis de rasgos generales de personalidad en cinco dimensiones: apertura, responsabilidad, extroversión, amabilidad y neuroticismo.</div>
+                                            <div class="modelo-nombre"><asp:Label ID="lblModeloBigFiveNombre" runat="server" Text="" /></div>
+                                            <div class="modelo-desc"><asp:Label ID="lblModeloBigFiveDesc" runat="server" Text="" /></div>
                                         </div>
                                         <div class="modelo-check">○</div>
                                     </div>
@@ -106,8 +106,8 @@
                                          onclick="seleccionarModelo(this, 'COPE')">
                                         <div class="modelo-icono">🛡️</div>
                                         <div class="modelo-info">
-                                            <div class="modelo-nombre">COPE Simplificado</div>
-                                            <div class="modelo-desc">Estilos de afrontamiento ante situaciones de estrés. Identifica estrategias activas, evitativas y de soporte social.</div>
+                                            <div class="modelo-nombre"><asp:Label ID="lblModeloCopeNombre" runat="server" Text="" /></div>
+                                            <div class="modelo-desc"><asp:Label ID="lblModeloCopeDesc" runat="server" Text="" /></div>
                                         </div>
                                         <div class="modelo-check">○</div>
                                     </div>
@@ -116,8 +116,8 @@
                                          onclick="seleccionarModelo(this, 'AUTOEFICACIA')">
                                         <div class="modelo-icono">⚡</div>
                                         <div class="modelo-info">
-                                            <div class="modelo-nombre">Autoeficacia de Schwarzer</div>
-                                            <div class="modelo-desc">Autoconcepto y percepción de capacidades del paciente para enfrentar desafíos y situaciones demandantes.</div>
+                                            <div class="modelo-nombre"><asp:Label ID="lblModeloAutoeficaciaNombre" runat="server" Text="" /></div>
+                                            <div class="modelo-desc"><asp:Label ID="lblModeloAutoeficaciaDesc" runat="server" Text="" /></div>
                                         </div>
                                         <div class="modelo-check">○</div>
                                     </div>
@@ -126,8 +126,8 @@
                                          onclick="seleccionarModelo(this, 'APEGO')">
                                         <div class="modelo-icono">🔗</div>
                                         <div class="modelo-info">
-                                            <div class="modelo-nombre">Estilos de Apego (ECR)</div>
-                                            <div class="modelo-desc">Modelo de estilos de apego adulto basado en versiones acotadas del ECR. Evalúa ansiedad y evitación en vínculos.</div>
+                                            <div class="modelo-nombre"><asp:Label ID="lblModeloApegoNombre" runat="server" Text="" /></div>
+                                            <div class="modelo-desc"><asp:Label ID="lblModeloApegoDesc" runat="server" Text="" /></div>
                                         </div>
                                         <div class="modelo-check">○</div>
                                     </div>
@@ -136,8 +136,8 @@
                                          onclick="seleccionarModelo(this, 'VALORES')">
                                         <div class="modelo-icono">🌱</div>
                                         <div class="modelo-info">
-                                            <div class="modelo-nombre">Valores y Sentido de Vida (PVQ)</div>
-                                            <div class="modelo-desc">Modelos de valores personales y sentido de vida basados en PVQ y enfoques logoterapéuticos de Frankl.</div>
+                                            <div class="modelo-nombre"><asp:Label ID="lblModeloValoresNombre" runat="server" Text="" /></div>
+                                            <div class="modelo-desc"><asp:Label ID="lblModeloValoresDesc" runat="server" Text="" /></div>
                                         </div>
                                         <div class="modelo-check">○</div>
                                     </div>
@@ -145,9 +145,9 @@
                                 </div>
 
                                 <div class="form-actions">
-                                    <a href="FormMenu.aspx" class="btn-secondary">Cancelar</a>
+                                    <asp:HyperLink ID="lnkCancelar" runat="server" NavigateUrl="~/FormMenu.aspx" CssClass="btn-secondary" Text="" />
                                     <asp:Button ID="btnGenerar" runat="server"
-                                        Text="Generar perfil"
+                                        Text=""
                                         CssClass="btn-primary btn-ia"
                                         OnClick="btnGenerar_Click"
                                         CausesValidation="false"
@@ -157,18 +157,18 @@
                             </div>
                         </div>
 
-                  
+
                         <div class="perfil-aside">
 
                             <div class="content-card modelo-seleccionado-card">
-                                <p class="accesos-titulo">Modelo seleccionado</p>
+                                <p class="accesos-titulo"><asp:Label ID="lblTituloModeloSeleccionado" runat="server" Text="" /></p>
                                 <div id="modeloSeleccionadoInfo" class="modelo-sel-vacio">
-                                    Ningún modelo seleccionado todavía.
+                                    <asp:Label ID="lblNingunModeloSeleccionado" runat="server" Text="" />
                                 </div>
                             </div>
 
                             <div class="content-card perfiles-anteriores-card">
-                                <p class="accesos-titulo">Perfiles anteriores</p>
+                                <p class="accesos-titulo"><asp:Label ID="lblTituloPerfilesAnteriores" runat="server" Text="" /></p>
                                 <asp:Repeater ID="rptPerfilesAnteriores" runat="server" OnItemCommand="rptPerfilesAnteriores_ItemCommand">
                                     <ItemTemplate>
                                         <asp:LinkButton runat="server" CssClass="perfil-anterior-item"
@@ -181,30 +181,30 @@
                                 </asp:Repeater>
                                 <asp:Label ID="lblSinPerfiles" runat="server"
                                     CssClass="sin-perfiles-txt"
-                                    Text="Aún no se generaron perfiles para este paciente."
+                                    Text=""
                                     Visible="false" />
                             </div>
 
                             <div class="content-card aviso-card">
                                 <div class="aviso-icon">🔒</div>
-                                <p class="aviso-titulo">Datos encriptados</p>
-                                <p class="aviso-texto">El perfil generado se encripta con AES automáticamente, cumpliendo la Ley 25.326.</p>
+                                <p class="aviso-titulo"><asp:Label ID="lblAvisoTituloDatosEncriptados" runat="server" Text="" /></p>
+                                <p class="aviso-texto"><asp:Label ID="lblAvisoTextoDatosEncriptados" runat="server" Text="" /></p>
                             </div>
 
                         </div>
                     </div>
                 </asp:Panel>
 
-             
+
                 <div class="carga-overlay" id="cargaOverlay" style="display:none;">
                     <div class="carga-card">
                         <div class="carga-spinner"></div>
-                        <p class="carga-titulo">Generando perfil con IA...</p>
-                        <p class="carga-subtitulo">Analizando información clínica y contrastando con el modelo seleccionado</p>
+                        <p class="carga-titulo"><asp:Label ID="lblCargaTitulo" runat="server" Text="" /></p>
+                        <p class="carga-subtitulo"><asp:Label ID="lblCargaSubtitulo" runat="server" Text="" /></p>
                     </div>
                 </div>
 
-           
+
                 <asp:Panel ID="pnlResultado" runat="server"
                     CssClass="resultado-layout" Visible="false">
 
@@ -213,36 +213,36 @@
 
                             <div class="resultado-header">
                                 <div>
-                                    <h2 class="card-title">Perfil generado</h2>
+                                    <h2 class="card-title"><asp:Label ID="lblTituloPerfilGenerado" runat="server" Text="" /></h2>
                                     <asp:Label ID="lblResultadoMeta" runat="server"
                                         CssClass="card-subtitle" Text="" />
                                 </div>
                                 <div class="resultado-header-actions">
                                     <asp:Button ID="btnNuevoPerfil" runat="server"
-                                        Text="← Nuevo perfil"
+                                        Text=""
                                         CssClass="btn-secondary"
                                         OnClick="btnNuevoPerfil_Click"
                                         CausesValidation="false" />
                                 </div>
                             </div>
 
-                  
+
                             <div class="modelo-usado-badge">
                                 <asp:Label ID="lblModeloUsado" runat="server"
                                     CssClass="modelo-badge-texto" Text="" />
                             </div>
 
-              
+
                             <div class="ia-badge-resultado">
-                                🧠 Perfil orientativo generado por IA · No diagnóstico · Solo representación descriptiva contextual · Revisión profesional recomendada
+                                <asp:Label ID="lblAvisoIABadgePerfil" runat="server" Text="" />
                             </div>
 
-             
+
                             <div class="perfil-secciones">
 
                                 <div class="perfil-seccion">
                                     <div class="ps-titulo">
-                                        <span class="ps-icono">📌</span> Descripción general del perfil
+                                        <span class="ps-icono">📌</span> <asp:Label ID="lblSeccionDescripcionGeneral" runat="server" Text="" />
                                     </div>
                                     <asp:Label ID="lblDescripcionGeneral" runat="server"
                                         CssClass="ps-texto" Text="" />
@@ -250,7 +250,7 @@
 
                                 <div class="perfil-seccion">
                                     <div class="ps-titulo">
-                                        <span class="ps-icono">📊</span> Dimensiones evaluadas
+                                        <span class="ps-icono">📊</span> <asp:Label ID="lblSeccionDimensionesEvaluadas" runat="server" Text="" />
                                     </div>
                                     <asp:Label ID="lblDimensiones" runat="server"
                                         CssClass="ps-texto" Text="" />
@@ -258,7 +258,7 @@
 
                                 <div class="perfil-seccion">
                                     <div class="ps-titulo">
-                                        <span class="ps-icono">🔍</span> Patrones identificados en el contexto clínico
+                                        <span class="ps-icono">🔍</span> <asp:Label ID="lblSeccionPatronesIdentificados" runat="server" Text="" />
                                     </div>
                                     <asp:Label ID="lblPatrones" runat="server"
                                         CssClass="ps-texto" Text="" />
@@ -266,7 +266,7 @@
 
                                 <div class="perfil-seccion" style="border-bottom:none; margin-bottom:0; padding-bottom:0;">
                                     <div class="ps-titulo">
-                                        <span class="ps-icono">💡</span> Consideraciones para el tratamiento
+                                        <span class="ps-icono">💡</span> <asp:Label ID="lblSeccionConsideracionesTratamiento" runat="server" Text="" />
                                     </div>
                                     <asp:Label ID="lblConsideraciones" runat="server"
                                         CssClass="ps-texto" Text="" />
@@ -274,52 +274,52 @@
 
                             </div>
 
-                   
+
                             <div class="perfil-nota-pie">
-                                ⚠️ Esta perfilación es orientativa y no constituye diagnóstico clínico. El profesional es el único responsable de la interpretación y uso de esta información.
+                                <asp:Label ID="lblNotaPiePerfil" runat="server" Text="" />
                             </div>
 
                         </div>
                     </div>
 
-         
+
                     <div class="resultado-aside">
 
                         <div class="content-card meta-resultado-card">
-                            <p class="accesos-titulo">Detalles del perfil</p>
+                            <p class="accesos-titulo"><asp:Label ID="lblTituloDetallesPerfil" runat="server" Text="" /></p>
                             <div class="meta-fila">
-                                <span class="meta-label">Paciente</span>
+                                <span class="meta-label"><asp:Label ID="lblMetaLabelPaciente" runat="server" Text="" /></span>
                                 <asp:Label ID="lblMetaPaciente" runat="server"
                                     CssClass="meta-valor" Text="" />
                             </div>
                             <div class="meta-fila">
-                                <span class="meta-label">Modelo utilizado</span>
+                                <span class="meta-label"><asp:Label ID="lblMetaLabelModelo" runat="server" Text="" /></span>
                                 <asp:Label ID="lblMetaModelo" runat="server"
                                     CssClass="meta-valor" Text="" />
                             </div>
                             <div class="meta-fila">
-                                <span class="meta-label">Consultas analizadas</span>
+                                <span class="meta-label"><asp:Label ID="lblMetaLabelConsultas" runat="server" Text="" /></span>
                                 <asp:Label ID="lblMetaConsultas" runat="server"
                                     CssClass="meta-valor" Text="" />
                             </div>
                             <div class="meta-fila" style="border-bottom:none;">
-                                <span class="meta-label">Generado</span>
+                                <span class="meta-label"><asp:Label ID="lblMetaLabelFecha" runat="server" Text="" /></span>
                                 <asp:Label ID="lblMetaFecha" runat="server"
                                     CssClass="meta-valor" Text="" />
                             </div>
                         </div>
 
                         <div class="content-card accesos-card">
-                            <p class="accesos-titulo">Acciones relacionadas</p>
-                            <a href="FormExportarReporte.aspx"   class="acceso-item">💾 <span>Exportar en PDF</span></a>
-                            <a href="FormResumenIA.aspx"         class="acceso-item">🤖 <span>Resumen IA</span></a>
-                            <a href="FormInformeDerivacion.aspx" class="acceso-item">📤 <span>Generar derivación</span></a>
+                            <p class="accesos-titulo"><asp:Label ID="lblTituloAccionesRelacionadas" runat="server" Text="" /></p>
+                            <a href="FormExportarReporte.aspx"   class="acceso-item">💾 <span><asp:Label ID="lblAccesoExportarPdf" runat="server" Text="" /></span></a>
+                            <a href="FormResumenIA.aspx"         class="acceso-item">🤖 <span><asp:Label ID="lblAccesoResumenIA" runat="server" Text="" /></span></a>
+                            <a href="FormInformeDerivacion.aspx" class="acceso-item">📤 <span><asp:Label ID="lblAccesoGenerarDerivacion" runat="server" Text="" /></span></a>
                         </div>
 
                         <div class="content-card aviso-card">
                             <div class="aviso-icon">🔒</div>
-                            <p class="aviso-titulo">Perfil encriptado</p>
-                            <p class="aviso-texto">Este perfil ya fue guardado y encriptado con AES automáticamente al generarse, cumpliendo la Ley 25.326.</p>
+                            <p class="aviso-titulo"><asp:Label ID="lblAvisoTituloPerfilEncriptado" runat="server" Text="" /></p>
+                            <p class="aviso-texto"><asp:Label ID="lblAvisoTextoPerfilEncriptado" runat="server" Text="" /></p>
                         </div>
 
                     </div>
@@ -334,13 +334,8 @@
     <script type="text/javascript">
         var modeloActual = '';
 
-        var MODELOS_INFO = {
-            'BIGFIVE': { nombre: 'Big Five (BFI)', icono: '🌐', desc: 'Rasgos generales de personalidad en 5 dimensiones.' },
-            'COPE': { nombre: 'COPE Simplificado', icono: '🛡️', desc: 'Estilos de afrontamiento ante situaciones de estrés.' },
-            'AUTOEFICACIA': { nombre: 'Autoeficacia de Schwarzer', icono: '⚡', desc: 'Autoconcepto y percepción de capacidades propias.' },
-            'APEGO': { nombre: 'Estilos de Apego (ECR)', icono: '🔗', desc: 'Ansiedad y evitación en vínculos afectivos adultos.' },
-            'VALORES': { nombre: 'Valores y Sentido de Vida', icono: '🌱', desc: 'Valores personales y sentido de vida (PVQ/Logoterapia).' }
-        };
+        var MODELOS_INFO = <%= ModelosInfoJson %>;
+        var MSG_SELECCIONAR_MODELO = <%= JsonSeleccionarModeloAlerta %>;
 
         function seleccionarModelo(card, codigo) {
 
@@ -375,7 +370,7 @@
         function validarYCargar() {
             var hf = document.getElementById('hfModeloSeleccionado');
             if (!hf || !hf.value) {
-                alert('Seleccioná un modelo de evaluación antes de generar el perfil.');
+                alert(MSG_SELECCIONAR_MODELO);
                 return false;
             }
             var o = document.getElementById('cargaOverlay');
