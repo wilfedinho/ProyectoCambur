@@ -102,129 +102,99 @@
                             <asp:Label ID="lblSeccionInfoClinica" runat="server" CssClass="section-sep" Text="" style="margin-top:20px;display:block;" />
                             <p class="hint-text"><asp:Label ID="lblHintHistorial" runat="server" Text="" /></p>
 
-                            <div class="seccion-colapsable">
-                                <div class="seccion-header" onclick="toggleSeccion(this)">
+                            <div class="campo-historial">
+                                <div class="campo-historial-header">
                                     <div class="seccion-header-left">
                                         <span class="seccion-icono">🚬</span>
                                         <asp:Label ID="lblTituloHabitos" runat="server" CssClass="seccion-titulo" Text="" />
                                     </div>
-                                    <div class="seccion-header-right">
-                                        <asp:Label ID="lblBadgeHabitos" runat="server" CssClass="badge-seccion" Text="" />
-                                        <span class="seccion-flecha">▾</span>
-                                    </div>
+                                    <asp:Label ID="lblBadgeHabitos" runat="server" CssClass="badge-seccion" Text="" />
                                 </div>
-                                <div class="seccion-body">
-                                    <div class="field">
-                                        <asp:TextBox ID="txtHabitosNocivos" runat="server"
-                                            TextMode="MultiLine" Rows="4"
-                                            ClientIDMode="Static"
-                                            oninput="actualizarBadge(this, 'lblBadgeHabitos')" />
-                                    </div>
+                                <div class="field">
+                                    <asp:TextBox ID="txtHabitosNocivos" runat="server"
+                                        TextMode="MultiLine" Rows="4"
+                                        ClientIDMode="Static"
+                                        oninput="actualizarBadge(this, 'lblBadgeHabitos')" />
                                 </div>
                             </div>
 
-                            <div class="seccion-colapsable">
-                                <div class="seccion-header" onclick="toggleSeccion(this)">
+                            <div class="campo-historial">
+                                <div class="campo-historial-header">
                                     <div class="seccion-header-left">
                                         <span class="seccion-icono">👨‍👩‍👧</span>
                                         <asp:Label ID="lblTituloContexto" runat="server" CssClass="seccion-titulo" Text="" />
                                     </div>
-                                    <div class="seccion-header-right">
-                                        <asp:Label ID="lblBadgeContexto" runat="server" CssClass="badge-seccion" Text="" />
-                                        <span class="seccion-flecha">▾</span>
-                                    </div>
+                                    <asp:Label ID="lblBadgeContexto" runat="server" CssClass="badge-seccion" Text="" />
                                 </div>
-                                <div class="seccion-body">
-                                    <div class="field">
-                                        <asp:TextBox ID="txtContextoFamiliar" runat="server"
-                                            TextMode="MultiLine" Rows="4"
-                                            ClientIDMode="Static"
-                                            oninput="actualizarBadge(this, 'lblBadgeContexto')" />
-                                    </div>
+                                <div class="field">
+                                    <asp:TextBox ID="txtContextoFamiliar" runat="server"
+                                        TextMode="MultiLine" Rows="4"
+                                        ClientIDMode="Static"
+                                        oninput="actualizarBadge(this, 'lblBadgeContexto')" />
                                 </div>
                             </div>
 
-                            <div class="seccion-colapsable">
-                                <div class="seccion-header" onclick="toggleSeccion(this)">
+                            <div class="campo-historial">
+                                <div class="campo-historial-header">
                                     <div class="seccion-header-left">
                                         <span class="seccion-icono">🧬</span>
                                         <asp:Label ID="lblTituloAntFam" runat="server" CssClass="seccion-titulo" Text="" />
                                     </div>
-                                    <div class="seccion-header-right">
-                                        <asp:Label ID="lblBadgeAntFam" runat="server" CssClass="badge-seccion" Text="" />
-                                        <span class="seccion-flecha">▾</span>
-                                    </div>
+                                    <asp:Label ID="lblBadgeAntFam" runat="server" CssClass="badge-seccion" Text="" />
                                 </div>
-                                <div class="seccion-body">
-                                    <div class="field">
-                                        <asp:TextBox ID="txtAntecedentesFamiliares" runat="server"
-                                            TextMode="MultiLine" Rows="4"
-                                            ClientIDMode="Static"
-                                            oninput="actualizarBadge(this, 'lblBadgeAntFam')" />
-                                    </div>
+                                <div class="field">
+                                    <asp:TextBox ID="txtAntecedentesFamiliares" runat="server"
+                                        TextMode="MultiLine" Rows="4"
+                                        ClientIDMode="Static"
+                                        oninput="actualizarBadge(this, 'lblBadgeAntFam')" />
                                 </div>
                             </div>
 
-                            <div class="seccion-colapsable">
-                                <div class="seccion-header" onclick="toggleSeccion(this)">
+                            <div class="campo-historial">
+                                <div class="campo-historial-header">
                                     <div class="seccion-header-left">
                                         <span class="seccion-icono">🏥</span>
                                         <asp:Label ID="lblTituloAntMed" runat="server" CssClass="seccion-titulo" Text="" />
                                     </div>
-                                    <div class="seccion-header-right">
-                                        <asp:Label ID="lblBadgeAntMed" runat="server" CssClass="badge-seccion" Text="" />
-                                        <span class="seccion-flecha">▾</span>
-                                    </div>
+                                    <asp:Label ID="lblBadgeAntMed" runat="server" CssClass="badge-seccion" Text="" />
                                 </div>
-                                <div class="seccion-body">
-                                    <div class="field">
-                                        <asp:TextBox ID="txtAntecedentesMedicos" runat="server"
-                                            TextMode="MultiLine" Rows="4"
-                                            ClientIDMode="Static"
-                                            oninput="actualizarBadge(this, 'lblBadgeAntMed')" />
-                                    </div>
+                                <div class="field">
+                                    <asp:TextBox ID="txtAntecedentesMedicos" runat="server"
+                                        TextMode="MultiLine" Rows="4"
+                                        ClientIDMode="Static"
+                                        oninput="actualizarBadge(this, 'lblBadgeAntMed')" />
                                 </div>
                             </div>
 
-                            <div class="seccion-colapsable">
-                                <div class="seccion-header" onclick="toggleSeccion(this)">
+                            <div class="campo-historial">
+                                <div class="campo-historial-header">
                                     <div class="seccion-header-left">
                                         <span class="seccion-icono">💼</span>
                                         <asp:Label ID="lblTituloLaboral" runat="server" CssClass="seccion-titulo" Text="" />
                                     </div>
-                                    <div class="seccion-header-right">
-                                        <asp:Label ID="lblBadgeLaboral" runat="server" CssClass="badge-seccion" Text="" />
-                                        <span class="seccion-flecha">▾</span>
-                                    </div>
+                                    <asp:Label ID="lblBadgeLaboral" runat="server" CssClass="badge-seccion" Text="" />
                                 </div>
-                                <div class="seccion-body">
-                                    <div class="field">
-                                        <asp:TextBox ID="txtSituacionLaboral" runat="server"
-                                            TextMode="MultiLine" Rows="4"
-                                            ClientIDMode="Static"
-                                            oninput="actualizarBadge(this, 'lblBadgeLaboral')" />
-                                    </div>
+                                <div class="field">
+                                    <asp:TextBox ID="txtSituacionLaboral" runat="server"
+                                        TextMode="MultiLine" Rows="4"
+                                        ClientIDMode="Static"
+                                        oninput="actualizarBadge(this, 'lblBadgeLaboral')" />
                                 </div>
                             </div>
 
-                            <div class="seccion-colapsable">
-                                <div class="seccion-header" onclick="toggleSeccion(this)">
+                            <div class="campo-historial">
+                                <div class="campo-historial-header">
                                     <div class="seccion-header-left">
                                         <span class="seccion-icono">⚡</span>
                                         <asp:Label ID="lblTituloTrauma" runat="server" CssClass="seccion-titulo" Text="" />
                                     </div>
-                                    <div class="seccion-header-right">
-                                        <asp:Label ID="lblBadgeTrauma" runat="server" CssClass="badge-seccion" Text="" />
-                                        <span class="seccion-flecha">▾</span>
-                                    </div>
+                                    <asp:Label ID="lblBadgeTrauma" runat="server" CssClass="badge-seccion" Text="" />
                                 </div>
-                                <div class="seccion-body">
-                                    <div class="field">
-                                        <asp:TextBox ID="txtEventosTraumaticos" runat="server"
-                                            TextMode="MultiLine" Rows="4"
-                                            ClientIDMode="Static"
-                                            oninput="actualizarBadge(this, 'lblBadgeTrauma')" />
-                                    </div>
+                                <div class="field">
+                                    <asp:TextBox ID="txtEventosTraumaticos" runat="server"
+                                        TextMode="MultiLine" Rows="4"
+                                        ClientIDMode="Static"
+                                        oninput="actualizarBadge(this, 'lblBadgeTrauma')" />
                                 </div>
                             </div>
 
@@ -294,26 +264,6 @@
     </form>
 
     <script type="text/javascript">
-        function toggleSeccion(header) {
-            var seccion = header.parentElement;
-            var body = seccion.querySelector('.seccion-body');
-            var flecha = header.querySelector('.seccion-flecha');
-            var abierto = seccion.classList.contains('abierto');
-
-            if (abierto) {
-                seccion.classList.remove('abierto');
-                body.style.maxHeight = '0';
-                body.style.paddingTop = '0';
-                body.style.paddingBottom = '0';
-                flecha.textContent = '▾';
-            } else {
-                seccion.classList.add('abierto');
-                body.style.paddingTop = '14px';
-                body.style.paddingBottom = '14px';
-                body.style.maxHeight = body.scrollHeight + 'px';
-                flecha.textContent = '▴';
-            }
-        }
 
         function actualizarBadge(textarea, badgeId) {
             var badge = document.getElementById(badgeId);
@@ -356,21 +306,6 @@
 
         window.addEventListener('DOMContentLoaded', function () {
             actualizarProgreso();
-
-            var campos = [
-                'txtHabitosNocivos', 'txtContextoFamiliar',
-                'txtAntecedentesFamiliares', 'txtAntecedentesMedicos',
-                'txtSituacionLaboral', 'txtEventosTraumaticos'
-            ];
-            campos.forEach(function (id) {
-                var el = document.getElementById(id);
-                if (el && el.value.trim().length > 0) {
-                    var seccion = el.closest('.seccion-colapsable');
-                    if (seccion && !seccion.classList.contains('abierto')) {
-                        toggleSeccion(seccion.querySelector('.seccion-header'));
-                    }
-                }
-            });
         });
     </script>
 </body>
