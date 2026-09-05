@@ -8,6 +8,7 @@ namespace BE
 {
     public class SeccionesResumenClinico
     {
+        public bool InformacionSuficiente { get; set; }
         public string ContextoGeneral { get; set; }
         public string Evolucion { get; set; }
         public string TemasRecurrentes { get; set; }
@@ -16,6 +17,7 @@ namespace BE
 
         public SeccionesResumenClinico()
         {
+            InformacionSuficiente = true;
         }
 
         public bool EstaCompleta()

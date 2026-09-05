@@ -71,6 +71,13 @@
 
                        
                             <div class="content-card">
+                                <div class="field full-col" style="margin-bottom:16px;">
+                                    <label for="ddlPacientePerfil">Paciente <sup>*</sup></label>
+                                    <asp:DropDownList ID="ddlPacientePerfil" runat="server"
+                                        ClientIDMode="Static" AutoPostBack="true"
+                                        OnSelectedIndexChanged="ddlPacientePerfil_SelectedIndexChanged" />
+                                </div>
+
                                 <div class="paciente-header">
                                     <div class="paciente-header-avatar">
                                         <asp:Label ID="lblPacienteIniciales" runat="server" Text="MG" />
@@ -348,32 +355,32 @@
         var modeloActual = '';
 
         var MODELOS_INFO = {
-            'BIGFIVE':      { nombre: 'Big Five (BFI)',              icono: '🌐', desc: 'Rasgos generales de personalidad en 5 dimensiones.' },
-            'COPE':         { nombre: 'COPE Simplificado',           icono: '🛡️', desc: 'Estilos de afrontamiento ante situaciones de estrés.' },
-            'AUTOEFICACIA': { nombre: 'Autoeficacia de Schwarzer',   icono: '⚡', desc: 'Autoconcepto y percepción de capacidades propias.' },
-            'APEGO':        { nombre: 'Estilos de Apego (ECR)',      icono: '🔗', desc: 'Ansiedad y evitación en vínculos afectivos adultos.' },
-            'VALORES':      { nombre: 'Valores y Sentido de Vida',   icono: '🌱', desc: 'Valores personales y sentido de vida (PVQ/Logoterapia).' }
+            'BIGFIVE': { nombre: 'Big Five (BFI)', icono: '🌐', desc: 'Rasgos generales de personalidad en 5 dimensiones.' },
+            'COPE': { nombre: 'COPE Simplificado', icono: '🛡️', desc: 'Estilos de afrontamiento ante situaciones de estrés.' },
+            'AUTOEFICACIA': { nombre: 'Autoeficacia de Schwarzer', icono: '⚡', desc: 'Autoconcepto y percepción de capacidades propias.' },
+            'APEGO': { nombre: 'Estilos de Apego (ECR)', icono: '🔗', desc: 'Ansiedad y evitación en vínculos afectivos adultos.' },
+            'VALORES': { nombre: 'Valores y Sentido de Vida', icono: '🌱', desc: 'Valores personales y sentido de vida (PVQ/Logoterapia).' }
         };
 
         function seleccionarModelo(card, codigo) {
-            
+
             document.querySelectorAll('.modelo-card').forEach(function (c) {
                 c.classList.remove('seleccionado');
                 var chk = c.querySelector('.modelo-check');
                 if (chk) chk.textContent = '○';
             });
 
-            
+
             card.classList.add('seleccionado');
             var chk = card.querySelector('.modelo-check');
             if (chk) chk.textContent = '●';
 
-            
+
             modeloActual = codigo;
             var hf = document.getElementById('hfModeloSeleccionado');
             if (hf) hf.value = codigo;
 
-            
+
             var info = MODELOS_INFO[codigo];
             var panel = document.getElementById('modeloSeleccionadoInfo');
             if (panel && info) {

@@ -9,7 +9,7 @@ namespace SERVICIOS
     public class DigitoVerificador
     {
         private static readonly List<string> TablasControladas = new List<string> {
-            "Profesional", "Paciente", "Consulta", "HistorialClinico", "ResumenClinico", "Suscripcion", "Traduccion", "TokenRecuperacion", "Bitacora", "Idioma",
+            "Profesional", "Paciente", "Consulta", "HistorialClinico", "ResumenClinico", "InformeDerivacion", "PerfilPaciente", "Suscripcion", "Traduccion", "TokenRecuperacion", "Bitacora", "Idioma",
             "PermisoSimple", "Familia", "Perfil", "PermisoSimple_Familia", "Familia_Familia", "PermisoSimple_Perfil", "Perfil_Familia"
         };
         private static readonly HashSet<string> TablasFamiliaPermiso = new HashSet<string> {
@@ -86,6 +86,25 @@ namespace SERVICIOS
                 sb.Append(resumenClinico.RangoDesde);
                 sb.Append(resumenClinico.RangoHasta);
                 sb.Append(resumenClinico.FechaGeneracion);
+            }
+
+            if (entidad is InformeDerivacion informeDerivacion)
+            {
+                sb.Append(informeDerivacion.IdPaciente);
+                sb.Append(informeDerivacion.IdProfesional);
+                sb.Append(informeDerivacion.Contenido);
+                sb.Append(informeDerivacion.Estado);
+                sb.Append(informeDerivacion.FechaGeneracion);
+                sb.Append(informeDerivacion.FechaAuditoria);
+            }
+
+            if (entidad is PerfilPaciente perfilPaciente)
+            {
+                sb.Append(perfilPaciente.IdPaciente);
+                sb.Append(perfilPaciente.IdProfesional);
+                sb.Append(perfilPaciente.IdModelo);
+                sb.Append(perfilPaciente.Resultado);
+                sb.Append(perfilPaciente.FechaGeneracion);
             }
 
             if (entidad is Suscripcion suscripcion)
@@ -194,6 +213,24 @@ namespace SERVICIOS
                 }
             }
 
+            if (nombreTabla == "InformeDerivacion")
+            {
+                InformeDerivacionDAL informeDerivacionDAL = new InformeDerivacionDAL();
+                foreach (string dvh in informeDerivacionDAL.ObtenerListaDVH())
+                {
+                    sb.Append(dvh);
+                }
+            }
+
+            if (nombreTabla == "PerfilPaciente")
+            {
+                PerfilPacienteDAL perfilPacienteDAL = new PerfilPacienteDAL();
+                foreach (string dvh in perfilPacienteDAL.ObtenerListaDVH())
+                {
+                    sb.Append(dvh);
+                }
+            }
+
             if (nombreTabla == "Suscripcion")
             {
                 SuscripcionDAL suscripcionDAL = new SuscripcionDAL();
@@ -295,6 +332,20 @@ namespace SERVICIOS
                 resumenClinico.DigitoVerificador = dvh;
             }
 
+            if (nombreTabla == "InformeDerivacion" && entidad is InformeDerivacion informeDerivacion)
+            {
+                InformeDerivacionDAL informeDerivacionDAL = new InformeDerivacionDAL();
+                informeDerivacionDAL.ActualizarDVH(informeDerivacion.IdInforme, dvh);
+                informeDerivacion.DigitoVerificador = dvh;
+            }
+
+            if (nombreTabla == "PerfilPaciente" && entidad is PerfilPaciente perfilPaciente)
+            {
+                PerfilPacienteDAL perfilPacienteDAL = new PerfilPacienteDAL();
+                perfilPacienteDAL.ActualizarDVH(perfilPaciente.IdPerfil, dvh);
+                perfilPaciente.DigitoVerificador = dvh;
+            }
+
             if (nombreTabla == "Suscripcion" && entidad is Suscripcion suscripcion)
             {
                 SuscripcionDAL suscripcionDAL = new SuscripcionDAL();
@@ -358,6 +409,16 @@ namespace SERVICIOS
                 return new ResumenClinicoDAL().BuscarPorId(resumenClinico.IdResumen);
             }
 
+            if (nombreTabla == "InformeDerivacion" && entidad is InformeDerivacion informeDerivacion && informeDerivacion.IdInforme > 0)
+            {
+                return new InformeDerivacionDAL().BuscarPorId(informeDerivacion.IdInforme);
+            }
+
+            if (nombreTabla == "PerfilPaciente" && entidad is PerfilPaciente perfilPaciente && perfilPaciente.IdPerfil > 0)
+            {
+                return new PerfilPacienteDAL().BuscarPorId(perfilPaciente.IdPerfil);
+            }
+
             if (nombreTabla == "Suscripcion" && entidad is Suscripcion suscripcion && suscripcion.IdSuscripcion > 0)
             {
                 return new SuscripcionDAL().BuscarPorId(suscripcion.IdSuscripcion);
@@ -409,7 +470,8 @@ namespace SERVICIOS
         public bool VerificarIntegridadDVH(object entidad)
         {
             if (entidad is Psicologo || entidad is Paciente || entidad is Consulta || entidad is HistorialClinico ||
-                entidad is ResumenClinico || entidad is Suscripcion || entidad is Traduccion || entidad is TokenRecuperacion ||
+                entidad is ResumenClinico || entidad is InformeDerivacion || entidad is PerfilPaciente ||
+                entidad is Suscripcion || entidad is Traduccion || entidad is TokenRecuperacion ||
                 entidad is Bitacora || entidad is Idioma)
             {
                 return CalcularDVH(entidad) == ObtenerDigitoVerificadorDe(entidad);
@@ -425,6 +487,8 @@ namespace SERVICIOS
             if (entidad is Consulta consulta) return consulta.DigitoVerificador;
             if (entidad is HistorialClinico historialClinico) return historialClinico.DigitoVerificador;
             if (entidad is ResumenClinico resumenClinico) return resumenClinico.DigitoVerificador;
+            if (entidad is InformeDerivacion informeDerivacion) return informeDerivacion.DigitoVerificador;
+            if (entidad is PerfilPaciente perfilPaciente) return perfilPaciente.DigitoVerificador;
             if (entidad is Suscripcion suscripcion) return suscripcion.DigitoVerificador;
             if (entidad is Traduccion traduccion) return traduccion.DigitoVerificador;
             if (entidad is TokenRecuperacion token) return token.DigitoVerificador;
@@ -554,6 +618,52 @@ namespace SERVICIOS
                                 "dvh_registro_inconsistente_resumen",
                                 resumenClinico.IdResumen,
                                 resumenClinico.IdPaciente
+                            ));
+                        }
+                    }
+
+                    AgregarInconsistenciasDeConteo(inconsistencias, digitoVerificadorDAL, tabla, huboInconsistenciaDeRegistro);
+                }
+
+                if (tabla == "InformeDerivacion")
+                {
+                    InformeDerivacionDAL informeDerivacionDAL = new InformeDerivacionDAL();
+                    List<InformeDerivacion> informes = informeDerivacionDAL.ObtenerTodos();
+
+                    bool huboInconsistenciaDeRegistro = false;
+
+                    foreach (InformeDerivacion informeDerivacion in informes)
+                    {
+                        if (!VerificarIntegridadDVH(informeDerivacion))
+                        {
+                            huboInconsistenciaDeRegistro = true;
+                            inconsistencias.Add(new InconsistenciaDetectada(
+                                "dvh_registro_inconsistente_informe_derivacion",
+                                informeDerivacion.IdInforme,
+                                informeDerivacion.IdPaciente
+                            ));
+                        }
+                    }
+
+                    AgregarInconsistenciasDeConteo(inconsistencias, digitoVerificadorDAL, tabla, huboInconsistenciaDeRegistro);
+                }
+
+                if (tabla == "PerfilPaciente")
+                {
+                    PerfilPacienteDAL perfilPacienteDAL = new PerfilPacienteDAL();
+                    List<PerfilPaciente> perfiles = perfilPacienteDAL.ObtenerTodos();
+
+                    bool huboInconsistenciaDeRegistro = false;
+
+                    foreach (PerfilPaciente perfilPaciente in perfiles)
+                    {
+                        if (!VerificarIntegridadDVH(perfilPaciente))
+                        {
+                            huboInconsistenciaDeRegistro = true;
+                            inconsistencias.Add(new InconsistenciaDetectada(
+                                "dvh_registro_inconsistente_perfil_paciente",
+                                perfilPaciente.IdPerfil,
+                                perfilPaciente.IdPaciente
                             ));
                         }
                     }
@@ -827,6 +937,38 @@ namespace SERVICIOS
                     foreach (ResumenClinico resumenClinico in resumenes)
                     {
                         ActualizarDVH(resumenClinico, tabla);
+                    }
+                }
+
+                if (tabla == "InformeDerivacion")
+                {
+                    InformeDerivacionDAL informeDerivacionDAL = new InformeDerivacionDAL();
+                    List<InformeDerivacion> informes = informeDerivacionDAL.ObtenerTodos();
+
+                    if (informes.Count == 0)
+                    {
+                        ActualizarDVV(tabla);
+                    }
+
+                    foreach (InformeDerivacion informeDerivacion in informes)
+                    {
+                        ActualizarDVH(informeDerivacion, tabla);
+                    }
+                }
+
+                if (tabla == "PerfilPaciente")
+                {
+                    PerfilPacienteDAL perfilPacienteDAL = new PerfilPacienteDAL();
+                    List<PerfilPaciente> perfiles = perfilPacienteDAL.ObtenerTodos();
+
+                    if (perfiles.Count == 0)
+                    {
+                        ActualizarDVV(tabla);
+                    }
+
+                    foreach (PerfilPaciente perfilPaciente in perfiles)
+                    {
+                        ActualizarDVH(perfilPaciente, tabla);
                     }
                 }
 

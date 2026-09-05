@@ -10,5 +10,7 @@ namespace SERVICIOS
     public interface IClienteIA
     {
         SeccionesResumenClinico GenerarResumenClinico(string informacionClinica);
+        SeccionesInformeDerivacion GenerarInformeDerivacion(string informacionClinica);
+        SeccionesPerfilPaciente GenerarPerfilPaciente(string informacionClinica);
     }
 }

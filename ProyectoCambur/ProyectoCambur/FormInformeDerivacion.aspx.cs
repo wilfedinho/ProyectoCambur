@@ -1,21 +1,37 @@
-﻿using System;
+﻿using BE;
+using BLL;
+using SERVICIOS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using GUI;
 
-
-public partial class FormInformeDerivacion : System.Web.UI.Page
+public partial class FormInformeDerivacion : PaginaBase
 {
-
     protected void Page_Load(object sender, EventArgs e)
     {
         Page.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+
+        if (!GestorSesion.EstaAutenticado)
+        {
+            Response.Redirect("FormLogin.aspx");
+            return;
+        }
+
         if (!IsPostBack)
         {
-            CargarProfesionalDemo();
-            CargarPacienteDemo();
+            Psicologo psicologoActual = GestorSesion.PsicologoActual;
+            lblNombreProfesional.Text = psicologoActual.Nombre + " " + psicologoActual.Apellido;
+            lblIniciales.Text = Iniciales(psicologoActual.Nombre, psicologoActual.Apellido);
+
+            CargarComboPacientes();
+            if (!string.IsNullOrEmpty(ddlPacienteDerivacion.SelectedValue))
+            {
+                CargarInfoPaciente(Convert.ToInt32(ddlPacienteDerivacion.SelectedValue));
+            }
+
             MostrarEstado(1);
         }
     }
@@ -27,30 +43,50 @@ public partial class FormInformeDerivacion : System.Web.UI.Page
         lblHeaderTitulo.Text = estado == 1 ? "Generar informe" : "Auditoría del informe";
     }
 
-    private void CargarProfesionalDemo()
+    private void CargarComboPacientes()
     {
-        lblNombreProfesional.Text = "Lucía Martínez";
-        lblIniciales.Text = "LM";
+        GestorPaciente gestorPaciente = new GestorPaciente();
+        int idPsicologo = GestorSesion.PsicologoActual.IdPsicologo;
+        List<Paciente> propios = gestorPaciente.ObtenerPorPsicologo(idPsicologo);
+
+        ddlPacienteDerivacion.Items.Clear();
+        ddlPacienteDerivacion.Items.Add(new ListItem("Seleccioná un paciente...", ""));
+        foreach (Paciente p in propios.OrderBy(x => x.Apellido))
+        {
+            ddlPacienteDerivacion.Items.Add(new ListItem(p.Nombre + " " + p.Apellido, p.IdPaciente.ToString()));
+        }
     }
 
-
-    private void CargarPacienteDemo()
+    protected void ddlPacienteDerivacion_SelectedIndexChanged(object sender, EventArgs e)
     {
-        lblPacienteIniciales.Text = "MG";
-        lblPacienteNombre.Text = "Martín González";
-        lblPacienteEdad.Text = "33 años";
-        lblPacienteConsultas.Text = "12 consultas registradas";
+        lblMensaje.Visible = false;
+        if (!string.IsNullOrEmpty(ddlPacienteDerivacion.SelectedValue))
+        {
+            CargarInfoPaciente(Convert.ToInt32(ddlPacienteDerivacion.SelectedValue));
+        }
+    }
 
+    private void CargarInfoPaciente(int idPaciente)
+    {
+        GestorPaciente gestorPaciente = new GestorPaciente();
+        Paciente paciente = gestorPaciente.BuscarPorId(idPaciente);
+        if (paciente == null) return;
 
-        ddlEspecialidad.SelectedValue = "PSI";
-        txtProfDestino.Text = "Dr. Hernán Acosta";
-        txtInstitucion.Text = "Centro de Salud Mental Belgrano";
-        txtMotivo.Text = "Se solicita interconsulta psiquiátrica para evaluación de posible medicación " +
-                                        "complementaria al tratamiento psicoterapéutico en curso, dado el nivel de " +
-                                        "activación ansiosa persistente que no cede completamente con TCC.";
+        GestorConsulta gestorConsulta = new GestorConsulta();
+        int cantidadConsultas = gestorConsulta.ObtenerPorPaciente(idPaciente).Count;
 
-        lblAvisoIA.Text = "Últimas 12 consultas · Historial clínico completo · Evolución observada";
-        lblInfoConsultas.Text = "Últimas 12 consultas registradas";
+        lblPacienteIniciales.Text = Iniciales(paciente.Nombre, paciente.Apellido);
+        lblPacienteNombre.Text = paciente.Nombre + " " + paciente.Apellido;
+        lblPacienteEdad.Text = CalcularEdad(paciente.FechaNacimiento) + " años";
+        lblPacienteConsultas.Text = cantidadConsultas + " consulta" + (cantidadConsultas == 1 ? "" : "s") + " registrada" + (cantidadConsultas == 1 ? "" : "s");
+
+        GestorHistorialClinico gestorHistorial = new GestorHistorialClinico();
+        bool tieneHistorial = gestorHistorial.BuscarPorPaciente(idPaciente) != null;
+
+        lblAvisoIA.Text = (cantidadConsultas > 0 ? cantidadConsultas + " consulta" + (cantidadConsultas == 1 ? "" : "s") + " registrada" + (cantidadConsultas == 1 ? "" : "s") : "Sin consultas registradas") +
+                           (tieneHistorial ? " · Historial clínico completo" : " · Sin historial clínico") +
+                           " · Evolución observada";
+        lblInfoConsultas.Text = cantidadConsultas + " consulta" + (cantidadConsultas == 1 ? "" : "s") + " registrada" + (cantidadConsultas == 1 ? "" : "s");
     }
 
     protected void btnGenerar_Click(object sender, EventArgs e)
@@ -59,54 +95,46 @@ public partial class FormInformeDerivacion : System.Web.UI.Page
 
         if (!Page.IsValid) return;
 
+        int idPsicologo = GestorSesion.PsicologoActual.IdPsicologo;
+        int idPaciente = Convert.ToInt32(ddlPacienteDerivacion.SelectedValue);
         string especialidad = ddlEspecialidad.SelectedItem.Text;
         string profDestino = txtProfDestino.Text.Trim();
         string institucion = txtInstitucion.Text.Trim();
         string motivo = txtMotivo.Text.Trim();
-        CargarInformeDemo(especialidad, profDestino, motivo);
 
-        lblMetaPaciente.Text = "Martín González";
-        lblMetaEspecialidad.Text = especialidad;
-        lblMetaDestino.Text = profDestino + (institucion != "" ? " — " + institucion : "");
-        lblMetaFecha.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
-
-   
-        lblAuditoriaMeta.Text = "Derivación a " + especialidad + " · " + profDestino;
-
-        MostrarEstado(2);
+        GestorInformeDerivacion gestorInforme = new GestorInformeDerivacion();
+        try
+        {
+            int idGenerado = gestorInforme.Generar(idPsicologo, idPaciente, especialidad, profDestino, institucion, motivo);
+            hdnIdInforme.Value = idGenerado.ToString();
+            MostrarInformeGenerado(idGenerado);
+            MostrarEstado(2);
+        }
+        catch (ExcepcionTraducible ex)
+        {
+            MostrarError(TraducirExcepcion(ex));
+        }
     }
 
-    private void CargarInformeDemo(string especialidad, string profDestino, string motivo)
+    private void MostrarInformeGenerado(int idInforme)
     {
-        txtSintesisDiagnostica.Text =
-            "El paciente presenta un cuadro de ansiedad generalizada con activación de esquemas " +
-            "cognitivos de incompetencia e insuficiencia, asociados a conflictos relacionales con " +
-            "figuras de autoridad. Se observan patrones de hipervigilancia en entornos evaluativos " +
-            "y dificultades moderadas en la regulación emocional ante situaciones de conflicto laboral. " +
-            "El diagnóstico de trabajo se enmarca dentro del espectro ansioso con componentes de " +
-            "personalidad de tipo dependiente.";
+        GestorInformeDerivacion gestorInforme = new GestorInformeDerivacion();
+        InformeDerivacion informe = gestorInforme.BuscarPorId(idInforme);
+        SeccionesInformeDerivacion secciones = gestorInforme.ObtenerSecciones(informe);
 
-        txtAndamiajes.Text =
-            "• Terapia Cognitivo Conductual (TCC) como marco principal de intervención.\n" +
-            "• Reestructuración cognitiva aplicada a creencias nucleares de incompetencia.\n" +
-            "• Técnica de la flecha descendente para identificación de esquemas.\n" +
-            "• Registro de pensamientos automáticos como tarea intersesión.\n" +
-            "• Técnicas de regulación emocional: respiración diafragmática y mindfulness básico.\n" +
-            "• Psicoeducación sobre el modelo ABC del pensamiento (primeras sesiones).";
+        txtSintesisDiagnostica.Text = secciones.SintesisDiagnostica;
+        txtAndamiajes.Text = secciones.Andamiajes;
+        txtObjetivos.Text = secciones.Objetivos;
+        txtModalidadTrabajo.Text = secciones.ModalidadTrabajo;
+        txtMotivoDerivacion.Text = secciones.MotivoDerivacion;
+        txtFirma.Text = string.Empty;
 
-        txtObjetivos.Text =
-            "• Reducir el nivel de activación ansiosa basal del paciente.\n" +
-            "• Fortalecer la tolerancia a la frustración ante situaciones evaluativas.\n" +
-            "• Trabajar la autonomía emocional respecto de figuras de autoridad.\n" +
-            "• Consolidar estrategias de regulación emocional ante conflictos relacionales.\n" +
-            "• Evaluar necesidad de soporte farmacológico complementario.";
+        lblMetaPaciente.Text = ddlPacienteDerivacion.SelectedItem.Text;
+        lblMetaEspecialidad.Text = secciones.EspecialidadDerivacion;
+        lblMetaDestino.Text = secciones.ProfesionalDestinatario + (!string.IsNullOrEmpty(secciones.Institucion) ? " — " + secciones.Institucion : "");
+        lblMetaFecha.Text = informe.FechaGeneracion.ToString("dd/MM/yyyy HH:mm");
 
-        txtModalidadTrabajo.Text =
-            "Psicoterapia individual de frecuencia semanal, modalidad presencial, " +
-            "con sesiones de 50 minutos. Se incorporó una sesión de seguimiento telefónico " +
-            "ante episodio de crisis aguda durante el tratamiento.";
-
-        txtMotivoDerivacion.Text = motivo;
+        lblAuditoriaMeta.Text = "Derivación a " + secciones.EspecialidadDerivacion + " · " + secciones.ProfesionalDestinatario;
     }
 
     protected void btnValidar_Click(object sender, EventArgs e)
@@ -122,22 +150,66 @@ public partial class FormInformeDerivacion : System.Web.UI.Page
             return;
         }
 
-        MostrarExito("Informe validado y firmado por " + txtFirma.Text.Trim() +
-                     ". El documento está disponible para exportar en PDF.");
+        int idPsicologo = GestorSesion.PsicologoActual.IdPsicologo;
+        int idInforme = Convert.ToInt32(hdnIdInforme.Value);
+
+        GestorInformeDerivacion gestorInforme = new GestorInformeDerivacion();
+        try
+        {
+            gestorInforme.Auditar(idPsicologo, idInforme,
+                txtSintesisDiagnostica.Text.Trim(), txtAndamiajes.Text.Trim(), txtObjetivos.Text.Trim(),
+                txtModalidadTrabajo.Text.Trim(), txtMotivoDerivacion.Text.Trim(), txtFirma.Text.Trim());
+
+            MostrarExito("Informe validado y firmado por " + txtFirma.Text.Trim() +
+                         ". El documento está disponible para exportar en PDF.");
+        }
+        catch (ExcepcionTraducible ex)
+        {
+            MostrarError(TraducirExcepcion(ex));
+        }
     }
 
     protected void btnGuardarBorrador_Click(object sender, EventArgs e)
     {
         lblMensaje.Visible = false;
-        MostrarExito("Borrador guardado. Podés continuar la revisión más tarde desde la sección Derivaciones.");
+
+        int idPsicologo = GestorSesion.PsicologoActual.IdPsicologo;
+        int idInforme = Convert.ToInt32(hdnIdInforme.Value);
+
+        GestorInformeDerivacion gestorInforme = new GestorInformeDerivacion();
+        try
+        {
+            gestorInforme.GuardarBorrador(idPsicologo, idInforme,
+                txtSintesisDiagnostica.Text.Trim(), txtAndamiajes.Text.Trim(), txtObjetivos.Text.Trim(),
+                txtModalidadTrabajo.Text.Trim(), txtMotivoDerivacion.Text.Trim());
+
+            MostrarExito("Borrador guardado. Podés continuar la revisión más tarde desde la sección Derivaciones.");
+        }
+        catch (ExcepcionTraducible ex)
+        {
+            MostrarError(TraducirExcepcion(ex));
+        }
     }
 
     protected void btnDescartar_Click(object sender, EventArgs e)
     {
         lblMensaje.Visible = false;
-        LimpiarFormulario();
-        MostrarEstado(1);
-        MostrarExito("El informe fue descartado correctamente.");
+
+        int idPsicologo = GestorSesion.PsicologoActual.IdPsicologo;
+        int idInforme = Convert.ToInt32(hdnIdInforme.Value);
+
+        GestorInformeDerivacion gestorInforme = new GestorInformeDerivacion();
+        try
+        {
+            gestorInforme.Descartar(idPsicologo, idInforme);
+            LimpiarFormulario();
+            MostrarEstado(1);
+            MostrarExito("El informe fue descartado correctamente.");
+        }
+        catch (ExcepcionTraducible ex)
+        {
+            MostrarError(TraducirExcepcion(ex));
+        }
     }
 
     private void LimpiarFormulario()
@@ -146,6 +218,21 @@ public partial class FormInformeDerivacion : System.Web.UI.Page
         txtProfDestino.Text = string.Empty;
         txtInstitucion.Text = string.Empty;
         txtMotivo.Text = string.Empty;
+        hdnIdInforme.Value = string.Empty;
+    }
+
+    private string Iniciales(string nombre, string apellido)
+    {
+        string i1 = !string.IsNullOrWhiteSpace(nombre) ? nombre.Trim().Substring(0, 1).ToUpper() : "";
+        string i2 = !string.IsNullOrWhiteSpace(apellido) ? apellido.Trim().Substring(0, 1).ToUpper() : "";
+        return i1 + i2;
+    }
+
+    private int CalcularEdad(DateTime fechaNacimiento)
+    {
+        int edad = DateTime.Today.Year - fechaNacimiento.Year;
+        if (fechaNacimiento.Date > DateTime.Today.AddYears(-edad)) edad--;
+        return edad;
     }
 
     private void MostrarError(string msg)

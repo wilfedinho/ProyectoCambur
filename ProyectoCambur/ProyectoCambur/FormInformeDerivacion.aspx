@@ -71,7 +71,20 @@
                         <div class="derivacion-form-col">
                             <div class="content-card">
 
-                    
+                                <div class="field full-col" style="margin-bottom:16px;">
+                                    <label for="ddlPacienteDerivacion">Paciente <sup>*</sup></label>
+                                    <asp:DropDownList ID="ddlPacienteDerivacion" runat="server"
+                                        ClientIDMode="Static" AutoPostBack="true"
+                                        OnSelectedIndexChanged="ddlPacienteDerivacion_SelectedIndexChanged" />
+                                    <asp:RequiredFieldValidator ID="rfvPacienteDerivacion" runat="server"
+                                        ControlToValidate="ddlPacienteDerivacion"
+                                        InitialValue=""
+                                        ErrorMessage="Seleccioná un paciente."
+                                        CssClass="field-error" Display="Dynamic"
+                                        ValidationGroup="vgDerivacion" />
+                                </div>
+
+
                                 <div class="paciente-header">
                                     <div class="paciente-header-avatar">
                                         <asp:Label ID="lblPacienteIniciales"
@@ -216,6 +229,8 @@
                 </div>
 
               
+                <asp:HiddenField ID="hdnIdInforme" runat="server" ClientIDMode="Static" />
+
                 <asp:Panel ID="pnlAuditoria" runat="server"
                     CssClass="auditoria-layout" Visible="false">
 
