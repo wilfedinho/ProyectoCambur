@@ -92,6 +92,21 @@ namespace DAL
             }
         }
 
+        public void CambiarRolPermiso(int idPsicologo, string nuevoRolPermiso)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "UPDATE Profesional SET rol_permiso = @rol_permiso WHERE id_profesional = @id_profesional";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_profesional", idPsicologo);
+                    comando.Parameters.AddWithValue("@rol_permiso", nuevoRolPermiso);
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
+
         public void Modificar(Psicologo psicologoModificado)
         {
             using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())

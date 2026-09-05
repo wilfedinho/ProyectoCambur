@@ -86,6 +86,68 @@ namespace DAL
             return null;
         }
 
+        public void ActualizarEstadoYFin(int idSuscripcion, EstadoSuscripcion nuevoEstado, DateTime? fechaFin)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "UPDATE Suscripcion SET estado = @estado, fecha_fin = @fecha_fin WHERE id_suscripcion = @id_suscripcion";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_suscripcion", idSuscripcion);
+                    comando.Parameters.AddWithValue("@estado", nuevoEstado.ToString());
+                    comando.Parameters.AddWithValue("@fecha_fin", (object)fechaFin ?? DBNull.Value);
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public Suscripcion BuscarUltimaDe(int idProfesional)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT TOP 1 * FROM Suscripcion WHERE id_profesional = @id_profesional ORDER BY fecha_inicio DESC";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_profesional", idProfesional);
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return ArmarSuscripcion(reader);
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        public List<Suscripcion> ObtenerPorProfesional(int idProfesional)
+        {
+            List<Suscripcion> lista = new List<Suscripcion>();
+
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT * FROM Suscripcion WHERE id_profesional = @id_profesional ORDER BY fecha_inicio DESC";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_profesional", idProfesional);
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista.Add(ArmarSuscripcion(reader));
+                        }
+                    }
+                }
+            }
+
+            return lista;
+        }
+
         private Suscripcion ArmarSuscripcion(SqlDataReader reader)
         {
             return new Suscripcion(

@@ -6,11 +6,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.UI.WebControls;
 using GUI;
 
 public partial class FormExportarReporte : PaginaBase
 {
+    private readonly Dictionary<string, List<DocumentoExportable>> documentosPorTipo = new Dictionary<string, List<DocumentoExportable>>();
     protected void Page_Load(object sender, EventArgs e)
     {
         Page.UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
@@ -53,12 +55,11 @@ public partial class FormExportarReporte : PaginaBase
         lblSeccionPaciente.Text = Traducir("lbl_paciente");
         lblEtiquetaPaciente.Text = Traducir("lbl_paciente");
         lblSeccionTipoDoc.Text = Traducir("lbl_tipo_documento");
+        lblElegirDocumento.Text = Traducir("lbl_elegir_documento");
 
         lblTipoResumen.Text = Traducir("doc_resumen_clinico");
         lblTipoDerivacion.Text = Traducir("doc_informe_derivacion");
         lblTipoPerfil.Text = Traducir("doc_perfil_evolutivo");
-        lblProximamenteDerivacion.Text = Traducir("lbl_proximamente");
-        lblProximamentePerfil.Text = Traducir("lbl_proximamente");
 
         lnkVolver.Text = Traducir("btn_volver");
         btnExportar.Text = Traducir("btn_exportar_pdf");
@@ -85,17 +86,65 @@ public partial class FormExportarReporte : PaginaBase
         }
     }
 
+    public bool DisponibleResumen { get; private set; }
+    public bool DisponibleDerivacion { get; private set; }
+    public bool DisponiblePerfil { get; private set; }
+
+    public string DocumentosDisponiblesJson
+    {
+        get
+        {
+            Dictionary<string, List<Dictionary<string, object>>> mapa = new Dictionary<string, List<Dictionary<string, object>>>();
+
+            foreach (string tipo in new[] { GestorExportacion.TIPO_RESUMEN, GestorExportacion.TIPO_DERIVACION, GestorExportacion.TIPO_PERFIL })
+            {
+                List<Dictionary<string, object>> lista = new List<Dictionary<string, object>>();
+                List<DocumentoExportable> documentos;
+
+                if (documentosPorTipo.TryGetValue(tipo, out documentos))
+                {
+                    foreach (DocumentoExportable doc in documentos)
+                    {
+                        Dictionary<string, object> fila = new Dictionary<string, object>();
+                        fila["id"] = doc.IdDocumento;
+                        fila["fecha"] = doc.Fecha.ToString("dd/MM/yyyy HH:mm");
+                        fila["detalle"] = doc.Detalle ?? "";
+                        lista.Add(fila);
+                    }
+                }
+
+                mapa[tipo] = lista;
+            }
+
+            JavaScriptSerializer serializador = new JavaScriptSerializer();
+            return serializador.Serialize(mapa);
+        }
+    }
+
     private void CargarDocumentosDisponibles(int idPaciente)
     {
-        Psicologo psicologoActual = GestorSesion.PsicologoActual;
         GestorExportacion gestorExportacion = new GestorExportacion();
+        int idPsicologo = GestorSesion.PsicologoActual.IdPsicologo;
 
-        bool resumenDisponible = gestorExportacion.DocumentoDisponible(psicologoActual.IdPsicologo, idPaciente, GestorExportacion.TIPO_RESUMEN);
+        DisponibleResumen = gestorExportacion.DocumentoDisponible(idPsicologo, idPaciente, GestorExportacion.TIPO_RESUMEN);
+        DisponibleDerivacion = gestorExportacion.DocumentoDisponible(idPsicologo, idPaciente, GestorExportacion.TIPO_DERIVACION);
+        DisponiblePerfil = gestorExportacion.DocumentoDisponible(idPsicologo, idPaciente, GestorExportacion.TIPO_PERFIL);
 
-        lblEstadoResumen.Text = resumenDisponible ? Traducir("lbl_disponible") : Traducir("lbl_no_disponible");
-        lblEstadoResumen.CssClass = resumenDisponible ? "doc-badge doc-badge-ok" : "doc-badge doc-badge-no-disponible";
+        documentosPorTipo.Clear();
+        documentosPorTipo[GestorExportacion.TIPO_RESUMEN] = DisponibleResumen
+            ? gestorExportacion.ObtenerDocumentosDisponibles(idPsicologo, idPaciente, GestorExportacion.TIPO_RESUMEN)
+            : new List<DocumentoExportable>();
+        documentosPorTipo[GestorExportacion.TIPO_DERIVACION] = DisponibleDerivacion
+            ? gestorExportacion.ObtenerDocumentosDisponibles(idPsicologo, idPaciente, GestorExportacion.TIPO_DERIVACION)
+            : new List<DocumentoExportable>();
+        documentosPorTipo[GestorExportacion.TIPO_PERFIL] = DisponiblePerfil
+            ? gestorExportacion.ObtenerDocumentosDisponibles(idPsicologo, idPaciente, GestorExportacion.TIPO_PERFIL)
+            : new List<DocumentoExportable>();
 
-        if (resumenDisponible)
+        lblEstadoResumen.Text = DisponibleResumen ? Traducir("lbl_disponible") : Traducir("lbl_no_disponible");
+        lblEstadoResumen.CssClass = DisponibleResumen ? "doc-badge doc-badge-ok" : "doc-badge doc-badge-no-disponible";
+
+        if (DisponibleResumen)
         {
             GestorResumenClinico gestorResumen = new GestorResumenClinico();
             ResumenClinico ultimo = gestorResumen.ObtenerPorPaciente(idPaciente).OrderByDescending(r => r.FechaGeneracion).FirstOrDefault();
@@ -107,10 +156,86 @@ public partial class FormExportarReporte : PaginaBase
         {
             lblFechaResumen.Text = Traducir("lbl_sin_documento");
         }
-        lblFechaDerivacion.Text = Traducir("lbl_proximamente_desc");
-        lblFechaPerfil.Text = Traducir("lbl_proximamente_desc");
 
-        hfTipoSeleccionado.Value = resumenDisponible ? GestorExportacion.TIPO_RESUMEN : "";
+        if (DisponibleDerivacion)
+        {
+            lblEstadoDerivacion.Text = Traducir("lbl_disponible");
+            lblEstadoDerivacion.CssClass = "doc-badge doc-badge-ok";
+
+            GestorInformeDerivacion gestorInforme = new GestorInformeDerivacion();
+            InformeDerivacion ultimo = gestorInforme.ObtenerPorPaciente(idPaciente)
+                .Where(i => i.Estado == EstadoInforme.Auditado)
+                .OrderByDescending(i => i.FechaAuditoria)
+                .FirstOrDefault();
+            lblFechaDerivacion.Text = ultimo != null && ultimo.FechaAuditoria.HasValue
+                ? string.Format(Traducir("lbl_generado_el"), ultimo.FechaAuditoria.Value.ToString("dd/MM/yyyy"))
+                : "";
+        }
+        else if (gestorExportacion.DocumentoPendienteAuditoria(idPaciente))
+        {
+            lblEstadoDerivacion.Text = Traducir("lbl_pendiente_auditoria");
+            lblEstadoDerivacion.CssClass = "doc-badge doc-badge-pendiente";
+            lblFechaDerivacion.Text = Traducir("lbl_sin_documento");
+        }
+        else
+        {
+            lblEstadoDerivacion.Text = Traducir("lbl_no_disponible");
+            lblEstadoDerivacion.CssClass = "doc-badge doc-badge-no-disponible";
+            lblFechaDerivacion.Text = Traducir("lbl_sin_documento");
+        }
+
+        lblEstadoPerfil.Text = DisponiblePerfil ? Traducir("lbl_disponible") : Traducir("lbl_no_disponible");
+        lblEstadoPerfil.CssClass = DisponiblePerfil ? "doc-badge doc-badge-ok" : "doc-badge doc-badge-no-disponible";
+
+        if (DisponiblePerfil)
+        {
+            GestorPerfilPaciente gestorPerfil = new GestorPerfilPaciente();
+            PerfilPaciente ultimo = gestorPerfil.ObtenerPorPaciente(idPaciente).OrderByDescending(p => p.FechaGeneracion).FirstOrDefault();
+            lblFechaPerfil.Text = ultimo != null
+                ? string.Format(Traducir("lbl_generado_el"), ultimo.FechaGeneracion.ToString("dd/MM/yyyy"))
+                : "";
+        }
+        else
+        {
+            lblFechaPerfil.Text = Traducir("lbl_sin_documento");
+        }
+
+        string tipoAutoSeleccionado;
+        if (DisponibleResumen)
+        {
+            tipoAutoSeleccionado = GestorExportacion.TIPO_RESUMEN;
+        }
+        else if (DisponibleDerivacion)
+        {
+            tipoAutoSeleccionado = GestorExportacion.TIPO_DERIVACION;
+        }
+        else if (DisponiblePerfil)
+        {
+            tipoAutoSeleccionado = GestorExportacion.TIPO_PERFIL;
+        }
+        else
+        {
+            tipoAutoSeleccionado = "";
+        }
+
+        hfTipoSeleccionado.Value = tipoAutoSeleccionado;
+
+        List<DocumentoExportable> documentosDelTipo;
+        hfDocumentoSeleccionado.Value = !string.IsNullOrEmpty(tipoAutoSeleccionado)
+            && documentosPorTipo.TryGetValue(tipoAutoSeleccionado, out documentosDelTipo)
+            && documentosDelTipo.Count > 0
+                ? documentosDelTipo[0].IdDocumento.ToString()
+                : "";
+    }
+
+    protected string ClaseSeleccionado(string tipo)
+    {
+        return hfTipoSeleccionado.Value == tipo ? "seleccionado" : "";
+    }
+
+    protected string CheckIcono(string tipo)
+    {
+        return hfTipoSeleccionado.Value == tipo ? "●" : "○";
     }
 
     private void CargarExportacionesRecientes()
@@ -173,13 +298,20 @@ public partial class FormExportarReporte : PaginaBase
             return;
         }
 
+        int? idDocumento = null;
+        int idDocumentoParseado;
+        if (int.TryParse(hfDocumentoSeleccionado.Value, out idDocumentoParseado))
+        {
+            idDocumento = idDocumentoParseado;
+        }
+
         Psicologo psicologoActual = GestorSesion.PsicologoActual;
         GestorExportacion gestorExportacion = new GestorExportacion();
 
         try
         {
             string nombreArchivo;
-            byte[] pdf = gestorExportacion.Generar(psicologoActual.IdPsicologo, idPaciente, tipo, out nombreArchivo);
+            byte[] pdf = gestorExportacion.Generar(psicologoActual.IdPsicologo, idPaciente, tipo, idDocumento, out nombreArchivo);
 
             Response.Clear();
             Response.ContentType = "application/pdf";

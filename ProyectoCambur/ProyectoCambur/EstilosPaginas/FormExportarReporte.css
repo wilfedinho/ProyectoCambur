@@ -1,5 +1,4 @@
-﻿
-.exportar-layout {
+﻿.exportar-layout {
     display: grid;
     grid-template-columns: 1fr 240px;
     gap: 20px;
@@ -346,12 +345,14 @@
     margin-bottom: 10px;
 }
 
-.doc-card-disabled {
+.doc-card-disabled,
+.doc-card[data-disponible="false"] {
     cursor: not-allowed;
     opacity: 0.55;
 }
 
-    .doc-card-disabled:hover {
+    .doc-card-disabled:hover,
+    .doc-card[data-disponible="false"]:hover {
         background: var(--surface);
         border-color: var(--border);
     }
@@ -366,4 +367,65 @@
     background: #EFEFF5;
     border-color: #C7C7DA;
     color: #45455C;
+}
+
+
+.documentos-lista-wrap {
+    margin-bottom: 4px;
+}
+
+.documentos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.doc-version-item {
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    background: var(--surface);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+    .doc-version-item:hover {
+        background: #FDFCFA;
+        border-color: #B0A99E;
+    }
+
+    .doc-version-item.seleccionado {
+        border: 1.5px solid var(--text-main);
+        background: #F8F5F0;
+    }
+
+.doc-version-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.doc-version-fecha {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.doc-version-detalle {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.doc-version-check {
+    font-size: 15px;
+    color: var(--border);
+    flex-shrink: 0;
+}
+
+.doc-version-item.seleccionado .doc-version-check {
+    color: var(--text-main);
 }

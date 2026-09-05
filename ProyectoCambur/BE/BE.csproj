@@ -47,6 +47,7 @@
     <Compile Include="CatalogoPlanes.cs" />
     <Compile Include="Consulta.cs" />
     <Compile Include="DatosPago.cs" />
+    <Compile Include="DocumentoExportable.cs" />
     <Compile Include="EstadoInforme.cs" />
     <Compile Include="EstadoSuscripcion.cs" />
     <Compile Include="HistorialClinico.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Suscripcion.cs" />
     <Compile Include="TokenRecuperacion.cs" />
     <Compile Include="Traduccion.cs" />
+    <Compile Include="UsoPeriodo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -61,6 +61,8 @@
         public const int CRIT_CANCELAR_SUSCRIPCION = 1;
         public const string DESC_ACTUALIZAR_MEDIO_PAGO = "Actualización de medio de pago";
         public const int CRIT_ACTUALIZAR_MEDIO_PAGO = 2;
+        public const string DESC_REACTIVAR_SUSCRIPCION = "Reactivación de suscripción cancelada";
+        public const int CRIT_REACTIVAR_SUSCRIPCION = 2;
         public const string DESC_ALTA_SUSCRIPCION = "Alta de suscripción (pago aprobado por Mercado Pago)";
         public const int CRIT_ALTA_SUSCRIPCION = 2;
         public const string DESC_CONSULTA_BITACORA = "Consulta de bitácora";
