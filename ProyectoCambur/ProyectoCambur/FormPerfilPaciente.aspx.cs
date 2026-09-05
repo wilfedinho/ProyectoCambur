@@ -23,9 +23,8 @@ public partial class FormPerfilPaciente : PaginaBase
 
         if (!IsPostBack)
         {
-            Psicologo psicologoActual = GestorSesion.PsicologoActual;
-            lblNombreProfesional.Text = psicologoActual.Nombre + " " + psicologoActual.Apellido;
-            lblIniciales.Text = Iniciales(psicologoActual.Nombre, psicologoActual.Apellido);
+            lblTaglineSidebar.Text = Traducir("tagline_panel_gestion");
+            lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
 
             CargarComboPacientes();
             if (!string.IsNullOrEmpty(ddlPacientePerfil.SelectedValue))
@@ -66,6 +65,7 @@ public partial class FormPerfilPaciente : PaginaBase
     {
         lblMensaje.Visible = false;
         hfModeloSeleccionado.Value = string.Empty;
+        MostrarEstado(1);
 
         if (!string.IsNullOrEmpty(ddlPacientePerfil.SelectedValue))
         {
@@ -89,20 +89,20 @@ public partial class FormPerfilPaciente : PaginaBase
         lblPacienteEdad.Text = CalcularEdad(paciente.FechaNacimiento) + " años";
         lblPacienteConsultas.Text = cantidadConsultas + " consulta" + (cantidadConsultas == 1 ? "" : "s") + " registrada" + (cantidadConsultas == 1 ? "" : "s");
     }
-
     private void CargarPerfilesAnteriores(int idPaciente)
     {
         GestorPerfilPaciente gestorPerfil = new GestorPerfilPaciente();
         List<PerfilPaciente> perfiles = gestorPerfil.ObtenerPorPaciente(idPaciente);
 
         DataTable dt = new DataTable();
+        dt.Columns.Add("IdPerfil", typeof(int));
         dt.Columns.Add("Modelo", typeof(string));
         dt.Columns.Add("Fecha", typeof(DateTime));
 
         foreach (PerfilPaciente perfil in perfiles)
         {
             SeccionesPerfilPaciente secciones = gestorPerfil.ObtenerSecciones(perfil);
-            dt.Rows.Add(secciones != null ? secciones.NombreModelo : "Modelo", perfil.FechaGeneracion);
+            dt.Rows.Add(perfil.IdPerfil, secciones != null ? secciones.NombreModelo : "Modelo", perfil.FechaGeneracion);
         }
 
         if (dt.Rows.Count > 0)
@@ -117,6 +117,15 @@ public partial class FormPerfilPaciente : PaginaBase
             rptPerfilesAnteriores.DataBind();
             lblSinPerfiles.Visible = true;
         }
+    }
+    protected void rptPerfilesAnteriores_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+        if (e.CommandName != "VerPerfil") return;
+
+        lblMensaje.Visible = false;
+        int idPerfil = Convert.ToInt32(e.CommandArgument);
+        MostrarPerfilGenerado(idPerfil);
+        MostrarEstado(2);
     }
 
     protected void btnGenerar_Click(object sender, EventArgs e)
@@ -151,14 +160,13 @@ public partial class FormPerfilPaciente : PaginaBase
             MostrarError(TraducirExcepcion(ex));
         }
     }
-
     private void MostrarPerfilGenerado(int idPerfil)
     {
         GestorPerfilPaciente gestorPerfil = new GestorPerfilPaciente();
         PerfilPaciente perfil = gestorPerfil.BuscarPorId(idPerfil);
         SeccionesPerfilPaciente secciones = gestorPerfil.ObtenerSecciones(perfil);
 
-        string nombrePaciente = ddlPacientePerfil.SelectedItem.Text;
+        string nombrePaciente = ddlPacientePerfil.SelectedItem != null ? ddlPacientePerfil.SelectedItem.Text : string.Empty;
 
         lblResultadoMeta.Text = "Paciente: " + nombrePaciente + " · " + secciones.NombreModelo;
         lblModeloUsado.Text = "🧠 Modelo: " + secciones.NombreModelo;
@@ -187,12 +195,6 @@ public partial class FormPerfilPaciente : PaginaBase
         }
 
         MostrarEstado(1);
-    }
-
-    protected void btnGuardar_Click(object sender, EventArgs e)
-    {
-        lblMensaje.Visible = false;
-        MostrarExito("Perfil guardado y encriptado correctamente. Disponible para exportar en PDF.");
     }
 
     private string Iniciales(string nombre, string apellido)

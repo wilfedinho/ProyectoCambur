@@ -1,5 +1,4 @@
-﻿
-.ia-badge-aviso {
+﻿.ia-badge-aviso {
     background: #F0F4FA;
     border: 0.5px solid #B5D4F4;
     border-left: 3px solid #378ADD;
@@ -294,3 +293,41 @@
         background: var(--bg-paper);
         color: var(--text-main);
     }
+
+.resumen-anterior-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 0.5px solid #EDE8E0;
+    gap: 12px;
+}
+
+    .resumen-anterior-item:last-child {
+        border-bottom: none;
+    }
+
+.ra-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.ra-periodo {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-sub);
+}
+
+.ra-fecha {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.sin-perfiles-txt {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: italic;
+    display: block;
+    padding: 6px 0;
+}

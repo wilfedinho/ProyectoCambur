@@ -86,6 +86,72 @@ public partial class FormResumenIA : PaginaBase
 
         lblAvisoEncriptadoTitulo.Text = Traducir("titulo_resumen_encriptado");
         lblAvisoEncriptadoTexto.Text = Traducir("aviso_resumen_encriptado");
+
+        lblTituloResumenesAnteriores.Text = Traducir("titulo_resumenes_anteriores");
+        lblSinResumenesAnteriores.Text = Traducir("sin_resumenes_anteriores");
+    }
+    protected void ddlPaciente_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        lblMensaje.Visible = false;
+        MostrarEstado(1);
+
+        if (!string.IsNullOrEmpty(ddlPaciente.SelectedValue))
+        {
+            CargarResumenesAnteriores(Convert.ToInt32(ddlPaciente.SelectedValue));
+        }
+        else
+        {
+            pnlResumenesAnteriores.Visible = false;
+        }
+    }
+
+    private void CargarResumenesAnteriores(int idPaciente)
+    {
+        GestorResumenClinico gestorResumenClinico = new GestorResumenClinico();
+        List<ResumenClinico> resumenes = gestorResumenClinico.ObtenerPorPaciente(idPaciente);
+
+        pnlResumenesAnteriores.Visible = true;
+
+        if (resumenes.Count > 0)
+        {
+            rptResumenesAnteriores.DataSource = resumenes.Select(r => new
+            {
+                IdResumen = r.IdResumen,
+                Periodo = r.RangoDesde.ToString("dd/MM/yyyy") + " " + Traducir("lbl_al") + " " + r.RangoHasta.ToString("dd/MM/yyyy"),
+                FechaGeneracion = r.FechaGeneracion
+            }).ToList();
+            rptResumenesAnteriores.DataBind();
+            lblSinResumenesAnteriores.Visible = false;
+        }
+        else
+        {
+            rptResumenesAnteriores.DataSource = null;
+            rptResumenesAnteriores.DataBind();
+            lblSinResumenesAnteriores.Visible = true;
+        }
+    }
+    protected void rptResumenesAnteriores_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+        if (e.CommandName != "VerResumen") return;
+
+        lblMensaje.Visible = false;
+        int idPsicologo = GestorSesion.PsicologoActual.IdPsicologo;
+        int idResumen = Convert.ToInt32(e.CommandArgument);
+
+        GestorResumenClinico gestorResumenClinico = new GestorResumenClinico();
+        ResumenClinico resumen = gestorResumenClinico.BuscarPorId(idResumen);
+        if (resumen == null || resumen.IdProfesional != idPsicologo)
+        {
+            MostrarError(Traducir("error_paciente_no_propio"));
+            return;
+        }
+
+        GestorConsulta gestorConsulta = new GestorConsulta();
+        int cantidadConsultas = gestorConsulta.ObtenerPorPaciente(resumen.IdPaciente)
+            .Count(c => c.FechaConsulta.Date >= resumen.RangoDesde.Date && c.FechaConsulta.Date <= resumen.RangoHasta.Date);
+
+        MostrarResumenGenerado(idResumen, cantidadConsultas);
+        MostrarEstado(3);
     }
 
     protected void btnBuscar_Click(object sender, EventArgs e)
@@ -194,6 +260,10 @@ public partial class FormResumenIA : PaginaBase
     {
         lblMensaje.Visible = false;
         CargarFiltrosFechaPorDefecto();
+        if (!string.IsNullOrEmpty(ddlPaciente.SelectedValue))
+        {
+            CargarResumenesAnteriores(Convert.ToInt32(ddlPaciente.SelectedValue));
+        }
         MostrarEstado(1);
     }
 
@@ -224,6 +294,7 @@ public partial class FormResumenIA : PaginaBase
         pnlFiltros.Visible = (estado == 1);
         pnlConsultas.Visible = (estado == 2);
         pnlResumen.Visible = (estado == 3);
+        pnlResumenesAnteriores.Visible = (estado == 1) && !string.IsNullOrEmpty(ddlPaciente.SelectedValue);
     }
 
     private void CargarComboPacientes()

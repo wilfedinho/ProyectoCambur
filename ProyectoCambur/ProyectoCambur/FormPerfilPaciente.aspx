@@ -1,4 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FormPerfilPaciente.aspx.cs" Inherits="FormPerfilPaciente" %>
+<%@ Register Src="~/UserControls/HeaderUsuario.ascx" TagPrefix="uc" TagName="HeaderUsuario" %>
+<%@ Register Src="~/UserControls/SidebarNavegacion.ascx" TagPrefix="uc" TagName="SidebarNavegacion" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -6,38 +8,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Cambur — Perfilación del Paciente</title>
     <link href="EstilosPaginas/Shared.css"              rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/HeaderUsuario.css"       rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/SidebarNavegacion.css"   rel="stylesheet" type="text/css"/>
     <link href="EstilosPaginas/FormPerfilPaciente.css"  rel="stylesheet" type="text/css"/>
 </head>
 <body>
     <form id="form1" runat="server">
 
-      
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
-                <div class="tagline">Gestión Clínica</div>
+                <asp:Label ID="lblTaglineSidebar" runat="server" CssClass="tagline" Text="" />
             </div>
-            <nav class="sidebar-nav">
-                <a href="FormDashboard.aspx"         class="nav-item">🏠 Dashboard</a>
-                <a href="FormRegistroPaciente.aspx"  class="nav-item">👤 Pacientes</a>
-                <a href="FormRealizarConsulta.aspx"  class="nav-item">🗒️ Consultas</a>
-                <a href="FormHistorialClinico.aspx"  class="nav-item">📋 Historial Clínico</a>
-                <a href="FormResumenIA.aspx"         class="nav-item">🤖 Resumen IA</a>
-                <a href="FormLineaTemporal.aspx"     class="nav-item">📅 Línea Temporal</a>
-                <a href="FormInformeDerivacion.aspx" class="nav-item">📤 Derivaciones</a>
-                <a href="FormPerfilPaciente.aspx"    class="nav-item active">🧠 Perfilación</a>
-                <a href="FormExportarReporte.aspx"   class="nav-item">💾 Exportar</a>
-            </nav>
+            <uc:SidebarNavegacion ID="ucSidebarNavegacion" runat="server" PaginaActual="acceder_perfilacion_paciente" />
             <div class="sidebar-footer">
-                <a href="FormSuscripcion.aspx" class="nav-item">💳 Mi Suscripción</a>
-                <a href="FormLogin.aspx"       class="nav-item nav-logout">🚪 Cerrar sesión</a>
+                <a href="FormLogout.aspx" class="nav-item nav-logout"><span>🚪</span> <asp:Label ID="lblMenuCerrarSesionSidebar" runat="server" Text="" /></a>
             </div>
         </aside>
 
-        
+
         <div class="main-wrap">
 
-         
+
             <header class="top-header">
                 <div class="header-title">
                     <span class="header-section">Perfilación</span>
@@ -45,16 +37,7 @@
                     <asp:Label ID="lblHeaderTitulo" runat="server"
                         CssClass="header-page" Text="Generar perfil del paciente" />
                 </div>
-                <div class="header-user">
-                    <div class="user-avatar">
-                        <asp:Label ID="lblIniciales" runat="server" Text="LM" />
-                    </div>
-                    <div class="user-info">
-                        <asp:Label ID="lblNombreProfesional" runat="server"
-                            CssClass="user-name" Text="" />
-                        <span class="user-role">Psicólogo/a</span>
-                    </div>
-                </div>
+                <uc:HeaderUsuario ID="ucHeaderUsuario" runat="server" />
             </header>
 
             
@@ -162,7 +145,7 @@
                                 </div>
 
                                 <div class="form-actions">
-                                    <a href="FormRegistroPaciente.aspx" class="btn-secondary">Cancelar</a>
+                                    <a href="FormMenu.aspx" class="btn-secondary">Cancelar</a>
                                     <asp:Button ID="btnGenerar" runat="server"
                                         Text="Generar perfil"
                                         CssClass="btn-primary btn-ia"
@@ -186,12 +169,14 @@
 
                             <div class="content-card perfiles-anteriores-card">
                                 <p class="accesos-titulo">Perfiles anteriores</p>
-                                <asp:Repeater ID="rptPerfilesAnteriores" runat="server">
+                                <asp:Repeater ID="rptPerfilesAnteriores" runat="server" OnItemCommand="rptPerfilesAnteriores_ItemCommand">
                                     <ItemTemplate>
-                                        <div class="perfil-anterior-item">
+                                        <asp:LinkButton runat="server" CssClass="perfil-anterior-item"
+                                            CommandName="VerPerfil" CommandArgument='<%# Eval("IdPerfil") %>'
+                                            style="display:flex; width:100%; text-align:left; background:none; border:none; cursor:pointer;">
                                             <span class="pa-modelo"><%# Eval("Modelo") %></span>
                                             <span class="pa-fecha"><%# Eval("Fecha", "{0:dd/MM/yyyy}") %></span>
-                                        </div>
+                                        </asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:Repeater>
                                 <asp:Label ID="lblSinPerfiles" runat="server"
@@ -203,7 +188,7 @@
                             <div class="content-card aviso-card">
                                 <div class="aviso-icon">🔒</div>
                                 <p class="aviso-titulo">Datos encriptados</p>
-                                <p class="aviso-texto">El perfil generado se encripta con AES al guardarse, cumpliendo la Ley 25.326.</p>
+                                <p class="aviso-texto">El perfil generado se encripta con AES automáticamente, cumpliendo la Ley 25.326.</p>
                             </div>
 
                         </div>
@@ -237,11 +222,6 @@
                                         Text="← Nuevo perfil"
                                         CssClass="btn-secondary"
                                         OnClick="btnNuevoPerfil_Click"
-                                        CausesValidation="false" />
-                                    <asp:Button ID="btnGuardar" runat="server"
-                                        Text="💾 Guardar perfil"
-                                        CssClass="btn-primary"
-                                        OnClick="btnGuardar_Click"
                                         CausesValidation="false" />
                                 </div>
                             </div>
@@ -339,7 +319,7 @@
                         <div class="content-card aviso-card">
                             <div class="aviso-icon">🔒</div>
                             <p class="aviso-titulo">Perfil encriptado</p>
-                            <p class="aviso-texto">Al guardar, el contenido se encripta con AES cumpliendo la Ley 25.326.</p>
+                            <p class="aviso-texto">Este perfil ya fue guardado y encriptado con AES automáticamente al generarse, cumpliendo la Ley 25.326.</p>
                         </div>
 
                     </div>

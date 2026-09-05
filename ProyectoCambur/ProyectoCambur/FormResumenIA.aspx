@@ -57,7 +57,8 @@
                     <div class="grid-3">
                         <div class="field">
                             <asp:Label ID="lblEtiquetaPaciente" runat="server" AssociatedControlID="ddlPaciente" Text="" />
-                            <asp:DropDownList ID="ddlPaciente" runat="server" ClientIDMode="Static" />
+                            <asp:DropDownList ID="ddlPaciente" runat="server" ClientIDMode="Static"
+                                AutoPostBack="true" OnSelectedIndexChanged="ddlPaciente_SelectedIndexChanged" />
                             <asp:RequiredFieldValidator ID="rfvPaciente" runat="server"
                                 ControlToValidate="ddlPaciente" InitialValue=""
                                 ErrorMessage="."
@@ -95,6 +96,30 @@
                             ValidationGroup="vgFiltro"
                             OnClick="btnBuscar_Click" />
                     </div>
+
+                </asp:Panel>
+
+                <asp:Panel ID="pnlResumenesAnteriores" runat="server" CssClass="content-card mt-24" Visible="false">
+
+                    <div class="card-header">
+                        <h2 class="card-title"><asp:Label ID="lblTituloResumenesAnteriores" runat="server" Text="" /></h2>
+                    </div>
+
+                    <asp:Repeater ID="rptResumenesAnteriores" runat="server" OnItemCommand="rptResumenesAnteriores_ItemCommand">
+                        <ItemTemplate>
+                            <div class="resumen-anterior-item">
+                                <div class="ra-info">
+                                    <span class="ra-periodo"><%# Eval("Periodo") %></span>
+                                    <span class="ra-fecha"><%# Eval("FechaGeneracion", "{0:dd/MM/yyyy HH:mm}") %></span>
+                                </div>
+                                <asp:LinkButton runat="server" CssClass="btn-secondary"
+                                    CommandName="VerResumen" CommandArgument='<%# Eval("IdResumen") %>'
+                                    Text="Ver" />
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                    <asp:Label ID="lblSinResumenesAnteriores" runat="server"
+                        CssClass="sin-perfiles-txt" Text="" Visible="false" />
 
                 </asp:Panel>
 

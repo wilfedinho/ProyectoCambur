@@ -22,9 +22,8 @@ public partial class FormInformeDerivacion : PaginaBase
 
         if (!IsPostBack)
         {
-            Psicologo psicologoActual = GestorSesion.PsicologoActual;
-            lblNombreProfesional.Text = psicologoActual.Nombre + " " + psicologoActual.Apellido;
-            lblIniciales.Text = Iniciales(psicologoActual.Nombre, psicologoActual.Apellido);
+            lblTaglineSidebar.Text = Traducir("tagline_panel_gestion");
+            lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
 
             CargarComboPacientes();
             if (!string.IsNullOrEmpty(ddlPacienteDerivacion.SelectedValue))
@@ -35,12 +34,14 @@ public partial class FormInformeDerivacion : PaginaBase
             MostrarEstado(1);
         }
     }
-
     private void MostrarEstado(int estado)
     {
         pnlFormulario.Visible = (estado == 1);
         pnlAuditoria.Visible = (estado == 2);
         lblHeaderTitulo.Text = estado == 1 ? "Generar informe" : "Auditoría del informe";
+
+        ucSidebarNavegacion.PaginaActual = estado == 1 ? "acceder_informe_derivacion" : "acceder_auditoria_informe";
+        ucSidebarNavegacion.RenderizarNavegacion();
     }
 
     private void CargarComboPacientes()
