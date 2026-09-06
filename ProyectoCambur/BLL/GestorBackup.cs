@@ -13,8 +13,7 @@ namespace BLL
     {
         public const string TIPO_BACKUP = "BACKUP";
         public const string TIPO_RESTORE = "RESTORE";
-
-        private static readonly Regex PatronNombreArchivo = new Regex(@"^Backup_\d{8}_\d{6}\.bak$", RegexOptions.Compiled);
+        private static readonly Regex PatronNombreArchivo = new Regex(@"^(?:SistemaCambur|Backup)_\d{8}_\d{6}\.bak$", RegexOptions.Compiled);
 
         private readonly BackupDAL backupDAL = new BackupDAL();
         public string ObtenerCarpetaDestino()
@@ -28,7 +27,7 @@ namespace BLL
             string nombreBaseDatos = backupDAL.ObtenerNombreBaseDatos();
             string carpeta = ObtenerCarpetaOLanzarError();
 
-            string nombreArchivo = "Backup_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".bak";
+            string nombreArchivo = "SistemaCambur_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".bak";
             string rutaCompleta = carpeta + nombreArchivo;
 
             try

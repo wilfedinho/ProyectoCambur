@@ -49,6 +49,14 @@
                     </div>
                 </div>
 
+                <div class="carga-overlay" id="cargaOverlay" style="display:none;">
+                    <div class="carga-card">
+                        <div class="carga-spinner"></div>
+                        <p class="carga-titulo"><asp:Label ID="lblCargaTitulo" runat="server" Text="" /></p>
+                        <p class="carga-subtitulo"><asp:Label ID="lblCargaSubtitulo" runat="server" Text="" /></p>
+                    </div>
+                </div>
+
                 <div class="br-layout">
 
                     <div class="br-col">
@@ -70,7 +78,7 @@
                                 </div>
                                 <div class="br-info-item">
                                     <asp:Label ID="lblEtiquetaFormatoArchivo" runat="server" CssClass="br-info-label" Text="" />
-                                    <span class="br-info-valor">Backup_AAAAMMDD_HHMMSS.bak</span>
+                                    <span class="br-info-valor">SistemaCambur_AAAAMMDD_HHMMSS.bak</span>
                                 </div>
                                 <div class="br-info-item">
                                     <asp:Label ID="lblEtiquetaTipoBackup" runat="server" CssClass="br-info-label" Text="" />
@@ -92,7 +100,7 @@
                                 CssClass="btn-primary btn-backup"
                                 OnClick="btnGenerarBackup_Click"
                                 CausesValidation="false"
-                                OnClientClick="return confirm(<%= JsonConfirmarGenerarBackup %>);" />
+                                OnClientClick="return confirmarYMostrarCarga(<%= JsonConfirmarGenerarBackup %>);" />
 
                             <asp:Panel ID="pnlResultadoBackup" runat="server"
                                 CssClass="resultado-backup" Visible="false">
@@ -163,7 +171,8 @@
                                         Text=""
                                         CssClass="btn-danger-solid"
                                         OnClick="btnConfirmarRestore_Click"
-                                        CausesValidation="false" />
+                                        CausesValidation="false"
+                                        OnClientClick="mostrarCarga(); return true;" />
                                 </div>
                             </asp:Panel>
 
@@ -245,6 +254,23 @@
             var hf = document.getElementById('hfArchivoSeleccionado');
             if (hf) hf.value = nombre;
         }
+
+        function mostrarCarga() {
+            var overlay = document.getElementById('cargaOverlay');
+            if (overlay) overlay.style.display = 'flex';
+            return true;
+        }
+
+        function confirmarYMostrarCarga(mensajeConfirm) {
+            if (!confirm(mensajeConfirm)) return false;
+            mostrarCarga();
+            return true;
+        }
+
+        window.addEventListener('DOMContentLoaded', function () {
+            var overlay = document.getElementById('cargaOverlay');
+            if (overlay) overlay.style.display = 'none';
+        });
     </script>
 </body>
 </html>

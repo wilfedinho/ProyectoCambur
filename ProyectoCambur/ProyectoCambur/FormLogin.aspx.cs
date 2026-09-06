@@ -28,6 +28,10 @@ public partial class FormLogin : PaginaBase
             {
                 MostrarExito(Traducir("login_clave_restablecida"));
             }
+            if (Request.QueryString["restore"] == "ok")
+            {
+                MostrarError(Traducir("login_sesion_cerrada_por_restore"));
+            }
         }
     }
 

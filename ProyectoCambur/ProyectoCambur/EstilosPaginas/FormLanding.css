@@ -118,6 +118,28 @@ a {
 }
 
 
+.btn-primary,
+input[type="submit"].btn-primary {
+    background: var(--text-main);
+    color: var(--bg-paper);
+    border: none;
+    border-radius: 6px;
+    padding: 11px 28px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: background 0.15s;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+    .btn-primary:hover,
+    input[type="submit"].btn-primary:hover {
+        background: var(--sidebar-mid);
+    }
+
+
 .landing-section {
     max-width: 1180px;
     margin: 0 auto;
@@ -394,9 +416,9 @@ a {
 .valorar-card {
     max-width: 560px;
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px;
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 32px;
 }
 
     .valorar-card h3 {
@@ -456,6 +478,7 @@ a {
     resize: vertical;
 }
 
+
 .faq-lista {
     display: flex;
     flex-direction: column;
@@ -497,6 +520,7 @@ a {
         font-size: 14px;
     }
 
+
 .rse-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -531,11 +555,18 @@ a {
     max-width: 640px;
 }
 
+.contacto-form {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 32px;
+    max-width: 720px;
+}
+
 .contacto-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0 20px;
-    max-width: 720px;
 }
 
 .contacto-campo {

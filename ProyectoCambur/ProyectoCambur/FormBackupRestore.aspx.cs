@@ -1,5 +1,6 @@
 ﻿using BE;
 using BLL;
+using DAL;
 using SERVICIOS;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,12 @@ public partial class FormBackupRestore : PaginaBase
             CargarNombreArchivoPreview();
             CargarListaArchivos();
             CargarHistorial();
+            string archivoRestaurado = Request.QueryString["restaurado"];
+            if (!string.IsNullOrEmpty(archivoRestaurado))
+            {
+                pnlResultadoRestore.Visible = true;
+                lblResultadoRestore.Text = archivoRestaurado;
+            }
         }
     }
 
@@ -69,6 +76,9 @@ public partial class FormBackupRestore : PaginaBase
         btnConfirmarRestore.Text = Traducir("btn_confirmar_restore");
         btnIniciarRestore.Text = Traducir("btn_seleccionar_y_restaurar");
         lblResultadoTituloRestore.Text = Traducir("msg_backup_restaurado");
+
+        lblCargaTitulo.Text = Traducir("carga_titulo_backup_restore");
+        lblCargaSubtitulo.Text = Traducir("carga_subtitulo_backup_restore");
 
         lblTituloHistorial.Text = Traducir("titulo_historial_operaciones");
         gvHistorial.EmptyDataText = Traducir("msg_sin_operaciones");
@@ -106,7 +116,7 @@ public partial class FormBackupRestore : PaginaBase
 
     private void CargarNombreArchivoPreview()
     {
-        lblNombreArchivo.Text = "Backup_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".bak";
+        lblNombreArchivo.Text = "SistemaCambur_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".bak";
     }
 
     private void CargarListaArchivos()
@@ -245,13 +255,7 @@ public partial class FormBackupRestore : PaginaBase
         try
         {
             gestorBackup.RestaurarBackup(archivo);
-
-            hfArchivoSeleccionado.Value = string.Empty;
-            CargarListaArchivos();
-            CargarHistorial();
-
-            pnlResultadoRestore.Visible = true;
-            lblResultadoRestore.Text = archivo + " · " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            RefrescarSesionPostRestore(archivo);
         }
         catch (ExcepcionTraducible ex)
         {
@@ -261,6 +265,21 @@ public partial class FormBackupRestore : PaginaBase
         {
             MostrarError(Traducir("error_restore_inesperado"));
         }
+    }
+    private void RefrescarSesionPostRestore(string archivoRestaurado)
+    {
+        PsicologoDAL psicologoDAL = new PsicologoDAL();
+        Psicologo actualizado = psicologoDAL.BuscarPorId(GestorSesion.PsicologoActual.IdPsicologo);
+
+        if (actualizado == null)
+        {
+            GestorSesion.Logout();
+            Response.Redirect("FormLogin.aspx?restore=ok");
+            return;
+        }
+
+        GestorSesion.Login(actualizado);
+        Response.Redirect("FormBackupRestore.aspx?restaurado=" + Server.UrlEncode(archivoRestaurado));
     }
 
     private void MostrarError(string mensaje)

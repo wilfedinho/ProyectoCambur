@@ -1,5 +1,4 @@
-﻿
-.tagline-admin {
+﻿.tagline-admin {
     font-size: 10px;
     color: var(--accent);
     letter-spacing: 2px;
@@ -380,4 +379,52 @@ input[type="submit"].btn-danger-solid {
     font-family: monospace;
     font-size: 12px;
     color: var(--text-muted);
+}
+
+.carga-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(27, 42, 59, 0.55);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carga-card {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 40px 48px;
+    text-align: center;
+    min-width: 320px;
+}
+
+.carga-spinner {
+    width: 44px;
+    height: 44px;
+    border: 3px solid #EDE8E0;
+    border-top-color: var(--text-main);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.carga-titulo {
+    font-family: var(--font-title);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.carga-subtitulo {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
 }

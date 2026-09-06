@@ -55,7 +55,7 @@ namespace DAL
 
                 using (SqlCommand comando = new SqlCommand(query, cone))
                 {
-                    comando.CommandTimeout = 0;
+                    comando.CommandTimeout = 0; 
                     comando.Parameters.AddWithValue("@ruta", rutaCompleta);
                     comando.ExecuteNonQuery();
                 }
@@ -78,7 +78,9 @@ namespace DAL
                     "IF OBJECT_ID('tempdb..#archivosBackup') IS NOT NULL DROP TABLE #archivosBackup; " +
                     "CREATE TABLE #archivosBackup (Subdirectory NVARCHAR(512), Depth INT, IsFile BIT); " +
                     "INSERT INTO #archivosBackup EXEC master.dbo.xp_dirtree @carpeta, 1, 1; " +
-                    "SELECT Subdirectory FROM #archivosBackup WHERE IsFile = 1 AND Subdirectory LIKE 'Backup[_]%.bak' ORDER BY Subdirectory DESC;";
+                    "SELECT Subdirectory FROM #archivosBackup WHERE IsFile = 1 " +
+                    "AND (Subdirectory LIKE 'SistemaCambur[_]%.bak' OR Subdirectory LIKE 'Backup[_]%.bak') " +
+                    "ORDER BY Subdirectory DESC;";
 
                 using (SqlCommand comando = new SqlCommand(query, cone))
                 {
