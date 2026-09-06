@@ -111,7 +111,6 @@ a {
     border-left: 3px solid transparent;
     cursor: pointer;
     white-space: nowrap;
-   
     font-style: normal;
 }
 
@@ -368,7 +367,7 @@ a {
             font-size: 11px;
         }
 
-    
+
     .field input[type="text"],
     .field input[type="email"],
     .field input[type="password"],
@@ -401,6 +400,11 @@ a {
         .field select:focus {
             border-color: var(--text-main);
             background: var(--surface);
+        }
+
+        .field input[type="password"]::-ms-reveal,
+        .field input[type="password"]::-ms-clear {
+            display: none;
         }
 
     .field select {

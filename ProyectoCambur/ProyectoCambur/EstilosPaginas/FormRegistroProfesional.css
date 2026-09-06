@@ -273,6 +273,11 @@ body {
 		border-color: var(--text-main);
 	}
 
+	.field input[type="password"]::-ms-reveal,
+	.field input[type="password"]::-ms-clear {
+		display: none;
+	}
+
 	.field input.error,
 	.field select.error {
 		border-color: var(--accent);

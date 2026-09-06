@@ -1,5 +1,4 @@
-﻿
-.clave-layout {
+﻿.clave-layout {
     display: grid;
     grid-template-columns: 1fr 240px;
     gap: 20px;
@@ -47,6 +46,12 @@
     .pass-wrap input:focus {
         border-color: var(--text-main);
         background: var(--surface);
+    }
+
+
+    .pass-wrap input[type="password"]::-ms-reveal,
+    .pass-wrap input[type="password"]::-ms-clear {
+        display: none;
     }
 
 .pass-toggle {

@@ -285,6 +285,11 @@ a {
     background: var(--surface);
 }
 
+.input-wrap input[type="password"]::-ms-reveal,
+.input-wrap input[type="password"]::-ms-clear {
+    display: none;
+}
+
 .password-toggle {
     position: absolute;
     right: 12px;
