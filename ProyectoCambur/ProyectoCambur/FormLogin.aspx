@@ -122,6 +122,10 @@
                         <a href="FormRegistroProfesional.aspx">Registrarse</a>
                     </p>
 
+                    <p class="link-registro">
+                        <a href="FormLanding.aspx">Conocé CZ Consulting y Cambur</a>
+                    </p>
+
                 </div>
 
             </div>

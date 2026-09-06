@@ -123,14 +123,6 @@ namespace BLL
             DateTime ahora = DateTime.Now;
             DigitoVerificador digitoVerificador = new DigitoVerificador();
 
-            if (activa != null)
-            {
-                suscripcionDAL.ActualizarEstadoYFin(activa.IdSuscripcion, EstadoSuscripcion.Vencida, ahora);
-                activa.Estado = EstadoSuscripcion.Vencida;
-                activa.FechaFin = ahora;
-                digitoVerificador.ActualizarDVH(activa, TABLA);
-            }
-
             Suscripcion nuevaSuscripcion = new Suscripcion
             {
                 IdProfesional = idPsicologo,
@@ -142,12 +134,30 @@ namespace BLL
                 IdPagoExterno = resultadoPago.IdPagoExterno,
                 UltimosCuatroTarjeta = resultadoPago.UltimosCuatroTarjeta
             };
-            suscripcionDAL.Alta(nuevaSuscripcion);
+
+            bool cambiaRol = !string.Equals(psicologo.RolPermiso, plan.RolPermiso, StringComparison.Ordinal);
+            int? idSuscripcionAnterior = activa != null ? (int?)activa.IdSuscripcion : null;
+            int? idProfesionalCambioRol = cambiaRol ? (int?)idPsicologo : null;
+            string nuevoRolPermisoParam = cambiaRol ? plan.RolPermiso : null;
+            int idNuevaSuscripcion = suscripcionDAL.ProcesarPagoTransaccional(
+                idSuscripcionAnterior,
+                ahora,
+                nuevaSuscripcion,
+                idProfesionalCambioRol,
+                nuevoRolPermisoParam);
+
+            nuevaSuscripcion.IdSuscripcion = idNuevaSuscripcion;
+            if (activa != null)
+            {
+                activa.Estado = EstadoSuscripcion.Vencida;
+                activa.FechaFin = ahora;
+                digitoVerificador.ActualizarDVH(activa, TABLA);
+            }
+
             digitoVerificador.ActualizarDVH(nuevaSuscripcion, TABLA);
 
-            if (!string.Equals(psicologo.RolPermiso, plan.RolPermiso, StringComparison.Ordinal))
+            if (cambiaRol)
             {
-                psicologoDAL.CambiarRolPermiso(idPsicologo, plan.RolPermiso);
                 psicologo.RolPermiso = plan.RolPermiso;
                 digitoVerificador.ActualizarDVH(psicologo, "Profesional");
             }

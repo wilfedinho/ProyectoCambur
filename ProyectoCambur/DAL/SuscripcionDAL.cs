@@ -37,6 +37,43 @@ namespace DAL
                 }
             }
         }
+        public int ProcesarPagoTransaccional(int? idSuscripcionAnterior, DateTime? fechaCierreAnterior, Suscripcion nuevaSuscripcion, int? idProfesionalCambioRol, string nuevoRolPermiso)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                using (SqlCommand comando = new SqlCommand("dbo.sp_CamburProcesarPagoSuscripcion", cone))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    comando.Parameters.AddWithValue("@IdSuscripcionAnterior", (object)idSuscripcionAnterior ?? DBNull.Value);
+                    comando.Parameters.AddWithValue("@FechaCierreAnterior", (object)fechaCierreAnterior ?? DBNull.Value);
+                    comando.Parameters.AddWithValue("@EstadoCierreAnterior", EstadoSuscripcion.Vencida.ToString());
+
+                    comando.Parameters.AddWithValue("@IdProfesional", nuevaSuscripcion.IdProfesional);
+                    comando.Parameters.AddWithValue("@Plan", nuevaSuscripcion.Plan.ToString());
+                    comando.Parameters.AddWithValue("@Estado", nuevaSuscripcion.Estado.ToString());
+                    comando.Parameters.AddWithValue("@FechaInicio", nuevaSuscripcion.FechaInicio);
+                    comando.Parameters.AddWithValue("@FechaFin", (object)nuevaSuscripcion.FechaFin ?? DBNull.Value);
+                    comando.Parameters.AddWithValue("@Precio", nuevaSuscripcion.Precio);
+                    comando.Parameters.AddWithValue("@IdPagoExterno", (object)nuevaSuscripcion.IdPagoExterno ?? DBNull.Value);
+                    comando.Parameters.AddWithValue("@UltimosCuatroTarjeta", (object)nuevaSuscripcion.UltimosCuatroTarjeta ?? DBNull.Value);
+
+                    comando.Parameters.AddWithValue("@IdProfesionalCambioRol", (object)idProfesionalCambioRol ?? DBNull.Value);
+                    comando.Parameters.AddWithValue("@NuevoRolPermiso", (object)nuevoRolPermiso ?? DBNull.Value);
+
+                    SqlParameter paramIdNueva = new SqlParameter("@IdNuevaSuscripcion", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    comando.Parameters.Add(paramIdNueva);
+
+                    comando.ExecuteNonQuery();
+
+                    return Convert.ToInt32(paramIdNueva.Value);
+                }
+            }
+        }
 
         #endregion
 

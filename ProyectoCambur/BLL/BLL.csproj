@@ -100,6 +100,7 @@
   <ItemGroup>
     <Compile Include="GestorBackup.cs" />
     <Compile Include="GestorConsulta.cs" />
+    <Compile Include="GestorContacto.cs" />
     <Compile Include="GestorDashboard.cs" />
     <Compile Include="GestorExportacion.cs" />
     <Compile Include="GestorHistorialClinico.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="GestorPsicologo.cs" />
     <Compile Include="GestorResumenClinico.cs" />
     <Compile Include="GestorSuscripcion.cs" />
+    <Compile Include="GestorValoracion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResolvedorFuentesPdf.cs" />
     <Compile Include="ResultadoLogin.cs" />

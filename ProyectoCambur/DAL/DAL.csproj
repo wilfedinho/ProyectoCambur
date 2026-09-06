@@ -45,6 +45,7 @@
     <Compile Include="BackupDAL.cs" />
     <Compile Include="BitacoraDAL.cs" />
     <Compile Include="ConsultaDAL.cs" />
+    <Compile Include="ContactoDAL.cs" />
     <Compile Include="DigitoVerificadorDAL.cs" />
     <Compile Include="GestorConexion.cs" />
     <Compile Include="HistorialClinicoDAL.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="SuscripcionDAL.cs" />
     <Compile Include="TokenRecuperacionDAL.cs" />
     <Compile Include="TraduccionDAL.cs" />
+    <Compile Include="ValoracionDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">

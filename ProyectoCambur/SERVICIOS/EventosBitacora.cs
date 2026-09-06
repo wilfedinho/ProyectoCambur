@@ -15,6 +15,7 @@
         public const string MOD_SUSCRIPCION = "Suscripción";
         public const string MOD_ADMINISTRACION = "Administración";
         public const string MOD_GESTION_IDIOMAS = "Gestión de Idiomas";
+        public const string MOD_LANDING = "Landing Page";
         public const string DESC_INICIO_SESION = "Inicio de Sesión";
         public const int CRIT_INICIO_SESION = 2;
         public const string DESC_CIERRE_SESION = "Cierre de sesión";
@@ -79,5 +80,9 @@
         public const int CRIT_MODIF_TRADUCCION = 3;
         public const string DESC_BAJA_IDIOMA = "Baja lógica de idioma";
         public const int CRIT_BAJA_IDIOMA = 2;
+        public const string DESC_VALORACION_SERVICIO = "Valoración de servicio (landing page)";
+        public const int CRIT_VALORACION_SERVICIO = 3;
+        public const string DESC_MENSAJE_CONTACTO = "Mensaje enviado desde formulario de contacto";
+        public const int CRIT_MENSAJE_CONTACTO = 3;
     }
 }

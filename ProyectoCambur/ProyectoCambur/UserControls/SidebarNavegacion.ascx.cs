@@ -21,6 +21,7 @@ public partial class SidebarNavegacion : System.Web.UI.UserControl
         PermisoCompuesto perfil = gestorPermiso.LeerPerfilConEstructura(rolPermiso);
         StringBuilder html = new StringBuilder();
         AgregarItem(html, paginaBase, "menu_inicio", "🏠", "FormMenu.aspx", "inicio");
+        AgregarItem(html, paginaBase, "nav_landing", "🏢", "FormLanding.aspx", "landing");
         if (perfil != null)
         {
             RenderizarHijos(html, paginaBase, perfil);
