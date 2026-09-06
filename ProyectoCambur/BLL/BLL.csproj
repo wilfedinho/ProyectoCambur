@@ -98,6 +98,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GestorBackup.cs" />
     <Compile Include="GestorConsulta.cs" />
     <Compile Include="GestorDashboard.cs" />
     <Compile Include="GestorExportacion.cs" />

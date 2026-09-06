@@ -1,4 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FormBackupRestore.aspx.cs" Inherits="FormBackupRestore" %>
+<%@ Register Src="~/UserControls/HeaderUsuario.ascx" TagPrefix="uc" TagName="HeaderUsuario" %>
+<%@ Register Src="~/UserControls/SidebarNavegacion.ascx" TagPrefix="uc" TagName="SidebarNavegacion" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -6,122 +8,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Cambur — Backup / Restore</title>
     <link href="EstilosPaginas/Shared.css"              rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/HeaderUsuario.css"       rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/SidebarNavegacion.css"   rel="stylesheet" type="text/css"/>
     <link href="EstilosPaginas/FormBackupRestore.css"   rel="stylesheet" type="text/css"/>
 </head>
 <body>
     <form id="form1" runat="server">
 
-
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>
-                <div class="tagline-admin">Panel Web Master</div>
+                <asp:Label ID="lblTaglineSidebar" runat="server" CssClass="tagline-admin" Text="" />
             </div>
-            <nav class="sidebar-nav">
-                <a href="FormDashboard.aspx"              class="nav-item">🏠 Dashboard</a>
-                <a href="FormAuditoriaBitacora.aspx"      class="nav-item">📜 Bitácora</a>
-                <a href="FormBackupRestore.aspx"          class="nav-item active">💾 Backup / Restore</a>
-                <a href="FormDigitoVerificador.aspx"      class="nav-item">🔢 Dígito Verificador</a>
-                <a href="FormGestionIdiomas.aspx"         class="nav-item">🌐 Gestionar Idiomas</a>
-                <a href="FormABMProfesionales.aspx"       class="nav-item">👤 ABM Profesionales</a>
-                <a href="FormABMPacientes.aspx"           class="nav-item">🧑‍⚕️ ABM Pacientes</a>
-                <a href="FormABMConsultas.aspx"           class="nav-item">🗒️ ABM Consultas</a>
-            </nav>
+            <uc:SidebarNavegacion ID="ucSidebarNavegacion" runat="server" PaginaActual="acceder_backup_restore" />
             <div class="sidebar-footer">
-                <a href="FormLogout.aspx" class="nav-item nav-logout">🚪 Cerrar sesión</a>
+                <a href="FormLogout.aspx" class="nav-item nav-logout"><span>🚪</span> <asp:Label ID="lblMenuCerrarSesionSidebar" runat="server" Text="" /></a>
             </div>
         </aside>
 
-       
         <div class="main-wrap">
 
-          
             <header class="top-header">
                 <div class="header-title">
-                    <span class="header-section">Administración</span>
+                    <asp:Label ID="lblHeaderSeccion" runat="server" CssClass="header-section" Text="" />
                     <span class="header-sep">/</span>
-                    <span class="header-page">Backup / Restore</span>
+                    <asp:Label ID="lblHeaderTitulo" runat="server" CssClass="header-page" Text="" />
                 </div>
-                <div class="header-user">
-                    <div class="user-avatar user-avatar-admin">
-                        <asp:Label ID="lblIniciales" runat="server" Text="AD" />
-                    </div>
-                    <div class="user-info">
-                        <asp:Label ID="lblNombreAdmin" runat="server" CssClass="user-name" Text="" />
-                        <span class="user-role admin-role">Web Master</span>
-                    </div>
-                </div>
+                <uc:HeaderUsuario ID="ucHeaderUsuario" runat="server" />
             </header>
 
-            
             <div class="page-content">
 
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" CssClass="server-error" />
 
-              
                 <div class="aviso-critico">
                     <span class="aviso-crit-icono">⚠️</span>
                     <div>
-                        <p class="aviso-crit-titulo">Operación crítica del sistema</p>
-                        <p class="aviso-crit-texto">Las operaciones de backup y restore afectan directamente a la base de datos de producción. Asegurate de tener permisos y de informar al equipo antes de ejecutar una restauración.</p>
+                        <p class="aviso-crit-titulo"><asp:Label ID="lblAvisoCriticoTitulo" runat="server" Text="" /></p>
+                        <p class="aviso-crit-texto"><asp:Label ID="lblAvisoCriticoTexto" runat="server" Text="" /></p>
                     </div>
                 </div>
 
                 <div class="br-layout">
 
-                    
                     <div class="br-col">
                         <div class="content-card br-card">
                             <div class="br-card-header">
                                 <div class="br-icono-wrap br-icono-backup">💾</div>
                                 <div>
-                                    <h2 class="card-title">Generar Backup</h2>
-                                    <p class="card-subtitle">Crea una copia completa de la base de datos en formato .bak.</p>
+                                    <h2 class="card-title"><asp:Label ID="lblTituloGenerarBackup" runat="server" Text="" /></h2>
+                                    <p class="card-subtitle"><asp:Label ID="lblSubtituloGenerarBackup" runat="server" Text="" /></p>
                                 </div>
                             </div>
 
-                            <div class="section-sep">Configuración del backup</div>
+                            <p class="section-sep"><asp:Label ID="lblConfigBackup" runat="server" Text="" /></p>
 
                             <div class="br-info-grid">
                                 <div class="br-info-item">
-                                    <span class="br-info-label">Carpeta destino</span>
-                                    <span class="br-info-valor">BackupsSQL\</span>
+                                    <asp:Label ID="lblEtiquetaCarpetaDestino" runat="server" CssClass="br-info-label" Text="" />
+                                    <asp:Label ID="lblCarpetaDestino" runat="server" CssClass="br-info-valor" Text="" />
                                 </div>
                                 <div class="br-info-item">
-                                    <span class="br-info-label">Formato de archivo</span>
+                                    <asp:Label ID="lblEtiquetaFormatoArchivo" runat="server" CssClass="br-info-label" Text="" />
                                     <span class="br-info-valor">Backup_AAAAMMDD_HHMMSS.bak</span>
                                 </div>
                                 <div class="br-info-item">
-                                    <span class="br-info-label">Tipo de backup</span>
-                                    <span class="br-info-valor">Completo (Full Backup)</span>
+                                    <asp:Label ID="lblEtiquetaTipoBackup" runat="server" CssClass="br-info-label" Text="" />
+                                    <asp:Label ID="lblValorTipoBackup" runat="server" CssClass="br-info-valor" Text="" />
                                 </div>
                                 <div class="br-info-item">
-                                    <span class="br-info-label">Último backup</span>
-                                    <asp:Label ID="lblUltimoBackup" runat="server"
-                                        CssClass="br-info-valor" Text="" />
+                                    <asp:Label ID="lblEtiquetaUltimoBackup" runat="server" CssClass="br-info-label" Text="" />
+                                    <asp:Label ID="lblUltimoBackup" runat="server" CssClass="br-info-valor" Text="" />
                                 </div>
                             </div>
 
-                           
                             <div class="br-nombre-preview">
-                                <span class="br-nombre-label">Archivo que se generará:</span>
-                                <asp:Label ID="lblNombreArchivo" runat="server"
-                                    CssClass="br-nombre-valor" Text="" />
+                                <asp:Label ID="lblEtiquetaArchivoAGenerar" runat="server" CssClass="br-nombre-label" Text="" />
+                                <asp:Label ID="lblNombreArchivo" runat="server" CssClass="br-nombre-valor" Text="" />
                             </div>
 
                             <asp:Button ID="btnGenerarBackup" runat="server"
-                                Text="💾 Generar Backup ahora"
+                                Text=""
                                 CssClass="btn-primary btn-backup"
                                 OnClick="btnGenerarBackup_Click"
                                 CausesValidation="false"
-                                OnClientClick="return confirm('¿Confirmar generación de backup? Se creará un nuevo archivo .bak en la carpeta BackupsSQL.');" />
+                                OnClientClick="return confirm(<%= JsonConfirmarGenerarBackup %>);" />
 
-                        
                             <asp:Panel ID="pnlResultadoBackup" runat="server"
                                 CssClass="resultado-backup" Visible="false">
                                 <div class="resultado-icono">✓</div>
                                 <div>
-                                    <p class="resultado-titulo">Backup generado correctamente</p>
+                                    <p class="resultado-titulo"><asp:Label ID="lblResultadoTituloBackup" runat="server" Text="" /></p>
                                     <asp:Label ID="lblResultadoBackup" runat="server"
                                         CssClass="resultado-texto" Text="" />
                                 </div>
@@ -130,20 +107,18 @@
                         </div>
                     </div>
 
-                 
                     <div class="br-col">
                         <div class="content-card br-card">
                             <div class="br-card-header">
                                 <div class="br-icono-wrap br-icono-restore">🔄</div>
                                 <div>
-                                    <h2 class="card-title">Restaurar Backup</h2>
-                                    <p class="card-subtitle">Restaura la base de datos desde un archivo .bak existente.</p>
+                                    <h2 class="card-title"><asp:Label ID="lblTituloRestaurarBackup" runat="server" Text="" /></h2>
+                                    <p class="card-subtitle"><asp:Label ID="lblSubtituloRestaurarBackup" runat="server" Text="" /></p>
                                 </div>
                             </div>
 
-                            <div class="section-sep">Archivos disponibles</div>
+                            <p class="section-sep"><asp:Label ID="lblArchivosDisponibles" runat="server" Text="" /></p>
 
-                        
                             <div class="archivos-lista">
                                 <asp:Repeater ID="rptArchivos" runat="server">
                                     <ItemTemplate>
@@ -162,51 +137,47 @@
                                         </div>
                                     </ItemTemplate>
                                 </asp:Repeater>
+                                <asp:Label ID="lblSinBackupsDisponibles" runat="server" CssClass="sin-perfiles-txt" Visible="false" Text="" />
                             </div>
 
                             <asp:HiddenField ID="hfArchivoSeleccionado" runat="server"
                                 Value="" ClientIDMode="Static" />
 
-                       
                             <asp:Panel ID="pnlConfirmRestore" runat="server"
                                 CssClass="confirm-restore-panel" Visible="false">
                                 <div class="confirm-restore-aviso">
-                                    🚨 <strong>Atención:</strong> La restauración reemplazará
-                                    <strong>todos los datos actuales</strong> de la base de datos
-                                    con el contenido del archivo seleccionado. Esta acción no se puede deshacer.
+                                    🚨 <asp:Label ID="lblAvisoRestoreTexto" runat="server" Text="" />
                                 </div>
                                 <div class="confirm-restore-archivo">
-                                    Archivo seleccionado:
+                                    <asp:Label ID="lblEtiquetaArchivoSeleccionado" runat="server" AssociatedControlID="lblArchivoARestaurar" Text="" />
                                     <asp:Label ID="lblArchivoARestaurar" runat="server"
                                         CssClass="confirm-archivo-nombre" Text="" />
                                 </div>
                                 <div class="confirm-restore-actions">
                                     <asp:Button ID="btnCancelarRestore" runat="server"
-                                        Text="Cancelar"
+                                        Text=""
                                         CssClass="btn-secondary"
                                         OnClick="btnCancelarRestore_Click"
                                         CausesValidation="false" />
                                     <asp:Button ID="btnConfirmarRestore" runat="server"
-                                        Text="🔄 Confirmar restauración"
+                                        Text=""
                                         CssClass="btn-danger-solid"
                                         OnClick="btnConfirmarRestore_Click"
                                         CausesValidation="false" />
                                 </div>
                             </asp:Panel>
 
-                           
                             <asp:Button ID="btnIniciarRestore" runat="server"
-                                Text="Seleccionar archivo y restaurar →"
+                                Text=""
                                 CssClass="btn-restore"
                                 OnClick="btnIniciarRestore_Click"
                                 CausesValidation="false" />
 
-                         
                             <asp:Panel ID="pnlResultadoRestore" runat="server"
                                 CssClass="resultado-backup" Visible="false">
                                 <div class="resultado-icono">✓</div>
                                 <div>
-                                    <p class="resultado-titulo">Base de datos restaurada correctamente</p>
+                                    <p class="resultado-titulo"><asp:Label ID="lblResultadoTituloRestore" runat="server" Text="" /></p>
                                     <asp:Label ID="lblResultadoRestore" runat="server"
                                         CssClass="resultado-texto" Text="" />
                                 </div>
@@ -217,10 +188,9 @@
 
                 </div>
 
-              
                 <div class="content-card mt-24">
                     <div class="card-header">
-                        <h3 class="card-title" style="font-size:18px;">Historial de operaciones</h3>
+                        <h3 class="card-title" style="font-size:18px;"><asp:Label ID="lblTituloHistorial" runat="server" Text="" /></h3>
                     </div>
                     <div class="table-wrap" style="margin-top:14px;">
                         <asp:GridView ID="gvHistorial" runat="server"

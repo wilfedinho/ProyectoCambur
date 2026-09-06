@@ -41,5 +41,18 @@ namespace DAL
         {
             return new SqlConnection(ObtenerStringConexion());
         }
+        public SqlConnection DevolverConexionMaster()
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(ObtenerStringConexion())
+            {
+                InitialCatalog = "master"
+            };
+            return new SqlConnection(builder.ConnectionString);
+        }
+        public string ObtenerNombreBaseDatos()
+        {
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(ObtenerStringConexion());
+            return builder.InitialCatalog;
+        }
     }
 }

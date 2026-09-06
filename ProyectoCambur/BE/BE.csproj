@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackupDisponible.cs" />
     <Compile Include="Bitacora.cs" />
     <Compile Include="CatalogoPlanes.cs" />
     <Compile Include="Consulta.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="InfoPlan.cs" />
     <Compile Include="InformeDerivacion.cs" />
     <Compile Include="ModeloEvaluacion.cs" />
+    <Compile Include="OperacionBackupRestore.cs" />
     <Compile Include="Paciente.cs" />
     <Compile Include="PerfilPaciente.cs" />
     <Compile Include="Permiso.cs" />
