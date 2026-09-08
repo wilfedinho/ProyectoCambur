@@ -108,8 +108,7 @@ namespace BLL
             {
                 throw new ExcepcionTraducible("error_informe_firma_obligatoria");
             }
-
-            SeccionesInformeDerivacion secciones = DesencriptarSecciones(informe.Contenido);
+            SeccionesInformeDerivacion secciones = ObtenerSecciones(informe) ?? new SeccionesInformeDerivacion();
             secciones.SintesisDiagnostica = sintesisDiagnostica;
             secciones.Andamiajes = andamiajes;
             secciones.Objetivos = objetivos;
@@ -133,8 +132,7 @@ namespace BLL
         public void GuardarBorrador(int idPsicologo, int idInforme, string sintesisDiagnostica, string andamiajes, string objetivos, string modalidadTrabajo, string motivoDerivacion)
         {
             InformeDerivacion informe = ObtenerPropioOFallar(idPsicologo, idInforme);
-
-            SeccionesInformeDerivacion secciones = DesencriptarSecciones(informe.Contenido);
+            SeccionesInformeDerivacion secciones = ObtenerSecciones(informe) ?? new SeccionesInformeDerivacion();
             secciones.SintesisDiagnostica = sintesisDiagnostica;
             secciones.Andamiajes = andamiajes;
             secciones.Objetivos = objetivos;
@@ -235,13 +233,6 @@ namespace BLL
             {
                 throw new ExcepcionTraducible("error_informe_encriptacion");
             }
-        }
-
-        private SeccionesInformeDerivacion DesencriptarSecciones(string contenidoEncriptado)
-        {
-            string contenidoJson = Cifrador.GestorCifrador.DesencriptarReversible(contenidoEncriptado);
-            JavaScriptSerializer serializador = new JavaScriptSerializer();
-            return serializador.Deserialize<SeccionesInformeDerivacion>(contenidoJson) ?? new SeccionesInformeDerivacion();
         }
 
         private string ArmarInformacionClinica(Paciente paciente, HistorialClinico historial, List<Consulta> consultas)

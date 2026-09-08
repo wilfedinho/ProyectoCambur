@@ -10,6 +10,9 @@ namespace BLL
     {
         public const string TIPO_CONSULTA = "CONSULTA";
         public const string TIPO_HISTORIAL = "HISTORIAL";
+        public const string TIPO_RESUMEN_IA = "RESUMEN_IA";
+        public const string TIPO_PERFILACION = "PERFILACION";
+        public const string TIPO_INFORME_DERIVACION = "INFORME_DERIVACION";
 
         public List<EventoTimeline> ObtenerLineaTemporal(int idPsicologo, int idPaciente, string tipoFiltro, DateTime? desde, DateTime? hasta)
         {
@@ -20,9 +23,10 @@ namespace BLL
                 throw new ExcepcionTraducible("error_paciente_no_propio");
             }
 
+            bool todos = string.IsNullOrEmpty(tipoFiltro) || tipoFiltro == "TODOS";
             List<EventoTimeline> eventos = new List<EventoTimeline>();
 
-            if (string.IsNullOrEmpty(tipoFiltro) || tipoFiltro == "TODOS" || tipoFiltro == TIPO_CONSULTA)
+            if (todos || tipoFiltro == TIPO_CONSULTA)
             {
                 GestorConsulta gestorConsulta = new GestorConsulta();
                 foreach (Consulta c in gestorConsulta.ObtenerPorPaciente(idPaciente))
@@ -31,13 +35,43 @@ namespace BLL
                 }
             }
 
-            if (string.IsNullOrEmpty(tipoFiltro) || tipoFiltro == "TODOS" || tipoFiltro == TIPO_HISTORIAL)
+            if (todos || tipoFiltro == TIPO_HISTORIAL)
             {
                 GestorHistorialClinico gestorHistorial = new GestorHistorialClinico();
                 HistorialClinico h = gestorHistorial.BuscarPorPaciente(idPaciente);
                 if (h != null)
                 {
                     eventos.Add(EventoTimeline.DesdeHistorial(h));
+                }
+            }
+
+            if (todos || tipoFiltro == TIPO_RESUMEN_IA)
+            {
+                GestorResumenClinico gestorResumen = new GestorResumenClinico();
+                foreach (ResumenClinico r in gestorResumen.ObtenerPorPaciente(idPaciente))
+                {
+                    SeccionesResumenClinico secciones = gestorResumen.ObtenerSecciones(r);
+                    eventos.Add(EventoTimeline.DesdeResumenClinico(r, secciones));
+                }
+            }
+
+            if (todos || tipoFiltro == TIPO_PERFILACION)
+            {
+                GestorPerfilPaciente gestorPerfil = new GestorPerfilPaciente();
+                foreach (PerfilPaciente p in gestorPerfil.ObtenerPorPaciente(idPaciente))
+                {
+                    SeccionesPerfilPaciente secciones = gestorPerfil.ObtenerSecciones(p);
+                    eventos.Add(EventoTimeline.DesdePerfilPaciente(p, secciones));
+                }
+            }
+
+            if (todos || tipoFiltro == TIPO_INFORME_DERIVACION)
+            {
+                GestorInformeDerivacion gestorInforme = new GestorInformeDerivacion();
+                foreach (InformeDerivacion inf in gestorInforme.ObtenerPorPaciente(idPaciente))
+                {
+                    SeccionesInformeDerivacion secciones = gestorInforme.ObtenerSecciones(inf);
+                    eventos.Add(EventoTimeline.DesdeInformeDerivacion(inf, secciones));
                 }
             }
 
@@ -96,6 +130,57 @@ namespace BLL
             };
         }
 
+        public static EventoTimeline DesdeResumenClinico(ResumenClinico r, SeccionesResumenClinico secciones)
+        {
+            return new EventoTimeline
+            {
+                IdEvento = r.IdResumen,
+                Tipo = GestorLineaTemporal.TIPO_RESUMEN_IA,
+                TipoLabel = "Resumen IA",
+                TipoCss = "evento",
+                Icono = "🤖",
+                Fecha = r.FechaGeneracion,
+                Resumen = TruncarTexto(secciones != null ? secciones.ContextoGeneral : null),
+                Detalle = ArmarDetalleResumen(secciones)
+            };
+        }
+
+        public static EventoTimeline DesdePerfilPaciente(PerfilPaciente p, SeccionesPerfilPaciente secciones)
+        {
+            string nombreModelo = secciones != null && !string.IsNullOrWhiteSpace(secciones.NombreModelo)
+                ? secciones.NombreModelo
+                : "Perfilación del paciente";
+            return new EventoTimeline
+            {
+                IdEvento = p.IdPerfil,
+                Tipo = GestorLineaTemporal.TIPO_PERFILACION,
+                TipoLabel = "Perfilación",
+                TipoCss = "evento",
+                Icono = "🧭",
+                Fecha = p.FechaGeneracion,
+                Resumen = TruncarTexto(nombreModelo + (secciones != null && !string.IsNullOrWhiteSpace(secciones.Descripcion) ? ": " + secciones.Descripcion : "")),
+                Detalle = ArmarDetallePerfil(secciones)
+            };
+        }
+
+        public static EventoTimeline DesdeInformeDerivacion(InformeDerivacion inf, SeccionesInformeDerivacion secciones)
+        {
+            bool auditado = inf.Estado == EstadoInforme.Auditado;
+            return new EventoTimeline
+            {
+                IdEvento = inf.IdInforme,
+                Tipo = GestorLineaTemporal.TIPO_INFORME_DERIVACION,
+                TipoLabel = "Informe de Derivación",
+                TipoCss = "evento",
+                Icono = "📄",
+                Fecha = inf.FechaGeneracion,
+                Resumen = TruncarTexto(
+                    (auditado ? "Firmado. " : "Borrador sin firmar. ") +
+                    (secciones != null ? secciones.MotivoDerivacion : null)),
+                Detalle = ArmarDetalleInforme(secciones, auditado)
+            };
+        }
+
         private static string TruncarTexto(string texto)
         {
             if (string.IsNullOrWhiteSpace(texto)) return "Sin detalle registrado.";
@@ -125,6 +210,47 @@ namespace BLL
             AgregarSiHayValor(sb, "Antecedentes médicos", h.AntecedentesMedicos);
             AgregarSiHayValor(sb, "Situación laboral", h.SituacionLaboral);
             AgregarSiHayValor(sb, "Eventos traumáticos", h.EventosTraumaticos);
+            return sb.Length > 0 ? sb.ToString() : "Sin detalle registrado.";
+        }
+
+        private static string ArmarDetalleResumen(SeccionesResumenClinico secciones)
+        {
+            if (secciones == null) return "Sin detalle registrado.";
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            AgregarSiHayValor(sb, "Contexto general", secciones.ContextoGeneral);
+            AgregarSiHayValor(sb, "Evolución", secciones.Evolucion);
+            AgregarSiHayValor(sb, "Temas recurrentes", secciones.TemasRecurrentes);
+            AgregarSiHayValor(sb, "Intervenciones", secciones.Intervenciones);
+            AgregarSiHayValor(sb, "Observaciones", secciones.Observaciones);
+            return sb.Length > 0 ? sb.ToString() : "Sin detalle registrado.";
+        }
+
+        private static string ArmarDetallePerfil(SeccionesPerfilPaciente secciones)
+        {
+            if (secciones == null) return "Sin detalle registrado.";
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            AgregarSiHayValor(sb, "Modelo", secciones.NombreModelo);
+            AgregarSiHayValor(sb, "Descripción", secciones.Descripcion);
+            AgregarSiHayValor(sb, "Dimensiones", secciones.Dimensiones);
+            AgregarSiHayValor(sb, "Patrones", secciones.Patrones);
+            AgregarSiHayValor(sb, "Consideraciones", secciones.Consideraciones);
+            return sb.Length > 0 ? sb.ToString() : "Sin detalle registrado.";
+        }
+
+        private static string ArmarDetalleInforme(SeccionesInformeDerivacion secciones, bool auditado)
+        {
+            if (secciones == null) return "Sin detalle registrado.";
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            AgregarSiHayValor(sb, "Estado", auditado ? "Firmado" : "Borrador sin firmar");
+            AgregarSiHayValor(sb, "Especialidad", secciones.EspecialidadDerivacion);
+            AgregarSiHayValor(sb, "Profesional destinatario", secciones.ProfesionalDestinatario);
+            AgregarSiHayValor(sb, "Institución", secciones.Institucion);
+            AgregarSiHayValor(sb, "Motivo de derivación", secciones.MotivoDerivacion);
+            AgregarSiHayValor(sb, "Síntesis diagnóstica", secciones.SintesisDiagnostica);
+            AgregarSiHayValor(sb, "Andamiajes", secciones.Andamiajes);
+            AgregarSiHayValor(sb, "Objetivos", secciones.Objetivos);
+            AgregarSiHayValor(sb, "Modalidad de trabajo", secciones.ModalidadTrabajo);
+            if (auditado) AgregarSiHayValor(sb, "Firma", secciones.Firma);
             return sb.Length > 0 ? sb.ToString() : "Sin detalle registrado.";
         }
 

@@ -43,7 +43,7 @@ public partial class FormModificarConsulta : PaginaBase
         lblHeaderSeccion.Text = Traducir("seccion_gestion_clinica");
         lblHeaderPagina.Text = Traducir("nav_modificar_consulta");
 
-    
+
         lblFormTituloSeleccion.Text = Traducir("titulo_modificar_consulta");
         lblFormSubtituloSeleccion.Text = Traducir("subtitulo_seleccion_consulta");
         lblEtiquetaPacienteSeleccion.Text = Traducir("lbl_paciente");
@@ -60,7 +60,7 @@ public partial class FormModificarConsulta : PaginaBase
         lblPlazoVencidoTitulo.Text = Traducir("titulo_plazo_vencido");
         btnVolverDesdeBloqueado.Text = Traducir("btn_volver");
 
-        
+
         lblAvisoReadonly.Text = Traducir("aviso_campos_no_editables");
         lblSeccionEditables.Text = Traducir("seccion_campos_editables");
         lblEtiquetaObjetivos.Text = Traducir("lbl_objetivos");
@@ -129,6 +129,7 @@ public partial class FormModificarConsulta : PaginaBase
         GestorConsulta gestorConsulta = new GestorConsulta();
         var editables = gestorConsulta.ObtenerPorPaciente(idPaciente)
             .Where(c => (DateTime.Now - c.FechaRegistro).TotalDays <= GestorConsulta.DIAS_LIMITE_MODIFICACION)
+            .Where(c => !c.FechaModificacion.HasValue)
             .OrderByDescending(c => c.FechaConsulta)
             .ToList();
 
@@ -179,6 +180,14 @@ public partial class FormModificarConsulta : PaginaBase
         if (consulta == null || consulta.IdPsicologo != idPsicologo)
         {
             MostrarError(Traducir("error_paciente_no_propio"));
+            return;
+        }
+
+        if (consulta.FechaModificacion.HasValue)
+        {
+            lblMensajeBloqueado.Text = string.Format(Traducir("msg_consulta_ya_modificada"),
+                consulta.FechaConsulta.ToString("dd/MM/yyyy"));
+            MostrarEstado(2);
             return;
         }
 
@@ -276,6 +285,12 @@ public partial class FormModificarConsulta : PaginaBase
             {
                 lblMensajeBloqueado.Text = string.Format(Traducir("msg_consulta_plazo_vencido"),
                     consulta.FechaConsulta.ToString("dd/MM/yyyy"), GestorConsulta.DIAS_LIMITE_MODIFICACION);
+                MostrarEstado(2);
+            }
+            else if (ex.Clave == "error_consulta_ya_modificada")
+            {
+                lblMensajeBloqueado.Text = string.Format(Traducir("msg_consulta_ya_modificada"),
+                    consulta.FechaConsulta.ToString("dd/MM/yyyy"));
                 MostrarEstado(2);
             }
             else

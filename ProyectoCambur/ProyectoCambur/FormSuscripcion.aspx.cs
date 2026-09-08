@@ -63,6 +63,12 @@ public partial class FormSuscripcion : PaginaBase
             CargarProfesional();
             CargarSuscripcion();
             CargarUso();
+
+            if (Session["MensajeExitoSuscripcion"] != null)
+            {
+                MostrarExito(Session["MensajeExitoSuscripcion"].ToString());
+                Session.Remove("MensajeExitoSuscripcion");
+            }
         }
     }
 
@@ -317,28 +323,28 @@ public partial class FormSuscripcion : PaginaBase
 
         try
         {
-            Psicologo actualizado;
-            string mensajeExito;
-
             if (hfAccionPago.Value == ACCION_ACTUALIZAR_MEDIO_PAGO)
             {
-                actualizado = gestorSuscripcion.ActualizarMedioPago(psicologoActual.IdPsicologo, tokenTarjeta, string.Empty);
-                mensajeExito = Traducir("exito_medio_pago_actualizado");
+                Psicologo actualizado = gestorSuscripcion.ActualizarMedioPago(psicologoActual.IdPsicologo, tokenTarjeta, string.Empty);
+                psicologoActual.RolPermiso = actualizado.RolPermiso;
+                GestorSesion.PsicologoActual = psicologoActual;
+
+                pnlPago.Visible = false;
+                LimpiarFormPago();
+                CargarSuscripcion();
+                CargarUso();
+                MostrarExito(Traducir("exito_medio_pago_actualizado"));
             }
             else
             {
-                actualizado = gestorSuscripcion.CambiarPlan(psicologoActual.IdPsicologo, idPlan, tokenTarjeta, string.Empty);
-                mensajeExito = Traducir("exito_plan_actualizado");
+                Psicologo actualizado = gestorSuscripcion.CambiarPlan(psicologoActual.IdPsicologo, idPlan, tokenTarjeta, string.Empty);
+                psicologoActual.RolPermiso = actualizado.RolPermiso;
+                GestorSesion.PsicologoActual = psicologoActual;
+                Session["MensajeExitoSuscripcion"] = Traducir("exito_plan_actualizado");
+                Response.Redirect(Request.Url.PathAndQuery, false);
+                Context.ApplicationInstance.CompleteRequest();
+                return;
             }
-
-            psicologoActual.RolPermiso = actualizado.RolPermiso;
-            GestorSesion.PsicologoActual = psicologoActual;
-
-            pnlPago.Visible = false;
-            LimpiarFormPago();
-            CargarSuscripcion();
-            CargarUso();
-            MostrarExito(mensajeExito);
         }
         catch (ExcepcionTraducible ex)
         {

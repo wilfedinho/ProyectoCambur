@@ -102,6 +102,18 @@
                                             Text="Historial" CssClass="filtro-btn"
                                             OnClick="btnFiltro_Click" CommandArgument="HISTORIAL"
                                             CausesValidation="false" />
+                                        <asp:Button ID="btnFiltroResumenIA" runat="server"
+                                            Text="Resumen IA" CssClass="filtro-btn"
+                                            OnClick="btnFiltro_Click" CommandArgument="RESUMEN_IA"
+                                            CausesValidation="false" />
+                                        <asp:Button ID="btnFiltroPerfilacion" runat="server"
+                                            Text="Perfilación" CssClass="filtro-btn"
+                                            OnClick="btnFiltro_Click" CommandArgument="PERFILACION"
+                                            CausesValidation="false" />
+                                        <asp:Button ID="btnFiltroInformeDerivacion" runat="server"
+                                            Text="Informe de derivación" CssClass="filtro-btn"
+                                            OnClick="btnFiltro_Click" CommandArgument="INFORME_DERIVACION"
+                                            CausesValidation="false" />
                                     </div>
                                     <div class="filtros-fechas">
                                         <asp:TextBox ID="txtDesde" runat="server"
@@ -112,6 +124,9 @@
                                         <asp:Button ID="btnAplicarFecha" runat="server"
                                             Text="Filtrar" CssClass="btn-secondary btn-sm"
                                             OnClick="btnAplicarFecha_Click" CausesValidation="false" />
+                                        <asp:Button ID="btnLimpiarFiltros" runat="server"
+                                            Text="Limpiar filtros" CssClass="btn-secondary btn-sm"
+                                            OnClick="btnLimpiarFiltros_Click" CausesValidation="false" />
                                     </div>
                                 </div>
 
@@ -120,6 +135,7 @@
                                     <div class="stats-leyenda">
                                         <asp:Label ID="lblLeyendaConsulta" runat="server" CssClass="leyenda-item consulta" Text="" />
                                         <asp:Label ID="lblLeyendaHistorial" runat="server" CssClass="leyenda-item historial" Text="" />
+                                        <asp:Label ID="lblLeyendaEventosIA" runat="server" CssClass="leyenda-item evento" Text="" />
                                     </div>
                                 </div>
                             </div>

@@ -39,6 +39,11 @@ namespace BLL
             {
                 throw new ExcepcionTraducible("error_consulta_fuera_de_plazo_modificacion", DIAS_LIMITE_MODIFICACION);
             }
+            Consulta consultaActual = BuscarPorId(consultaModificada.IdConsulta);
+            if (consultaActual != null && consultaActual.FechaModificacion.HasValue)
+            {
+                throw new ExcepcionTraducible("error_consulta_ya_modificada");
+            }
 
             consultaModificada.FechaModificacion = DateTime.Now;
             EncriptarCamposSensibles(consultaModificada);

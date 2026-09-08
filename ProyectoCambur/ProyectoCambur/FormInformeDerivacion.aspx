@@ -42,6 +42,49 @@
                 <asp:Label ID="lblMensaje" runat="server"
                     Visible="false" CssClass="server-error" />
 
+                <asp:Panel ID="pnlListaBorradores" runat="server" Visible="false">
+                    <div class="content-card">
+                        <div class="auditoria-header">
+                            <div>
+                                <h2 class="card-title"><asp:Label ID="lblTituloListaBorradores" runat="server" Text="" /></h2>
+                                <asp:Label ID="lblSubtituloListaBorradores" runat="server" CssClass="card-subtitle" Text="" />
+                            </div>
+                            <asp:Label ID="lblCantBorradores" runat="server" CssClass="badge-pendiente-revision" Visible="false" Text="" />
+                        </div>
+
+                        <asp:Label ID="lblSinBorradores" runat="server" CssClass="hint-vacio" Visible="false" Text="" />
+
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th><asp:Label ID="lblThPacienteBorrador" runat="server" Text="" /></th>
+                                    <th><asp:Label ID="lblThFechaBorrador" runat="server" Text="" /></th>
+                                    <th><asp:Label ID="lblThEspecialidadBorrador" runat="server" Text="" /></th>
+                                    <th><asp:Label ID="lblThDestinoBorrador" runat="server" Text="" /></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <asp:Repeater ID="rptBorradores" runat="server" OnItemCommand="rptBorradores_ItemCommand">
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td><%# Eval("NombrePaciente") %></td>
+                                            <td><%# Eval("Fecha") %></td>
+                                            <td><%# Eval("Especialidad") %></td>
+                                            <td><%# Eval("ProfesionalDestino") %></td>
+                                            <td>
+                                                <asp:LinkButton runat="server" CssClass="btn-secondary btn-sm"
+                                                    CommandName="Revisar" CommandArgument='<%# Eval("IdInforme") %>'
+                                                    Text='<%# Traducir("btn_revisar_firmar") %>' />
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </tbody>
+                        </table>
+                    </div>
+                </asp:Panel>
+
                 <asp:Panel ID="pnlFormulario" runat="server">
                     <div class="derivacion-layout">
 

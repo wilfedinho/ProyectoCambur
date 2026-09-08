@@ -34,13 +34,21 @@ public partial class FormInformeDerivacion : PaginaBase
 
         if (!IsPostBack)
         {
-            CargarComboPacientes();
-            if (!string.IsNullOrEmpty(ddlPacienteDerivacion.SelectedValue))
+            if (Request.QueryString["modo"] == "auditoria")
             {
-                CargarInfoPaciente(Convert.ToInt32(ddlPacienteDerivacion.SelectedValue));
+                CargarListaBorradores();
+                MostrarEstado(3);
             }
+            else
+            {
+                CargarComboPacientes();
+                if (!string.IsNullOrEmpty(ddlPacienteDerivacion.SelectedValue))
+                {
+                    CargarInfoPaciente(Convert.ToInt32(ddlPacienteDerivacion.SelectedValue));
+                }
 
-            MostrarEstado(1);
+                MostrarEstado(1);
+            }
         }
     }
     private void AplicarTraducciones()
@@ -121,15 +129,112 @@ public partial class FormInformeDerivacion : PaginaBase
 
         lblAvisoRevisionProfesionalTitulo.Text = Traducir("aviso_titulo_revision_profesional");
         lblAvisoRevisionProfesionalTexto.Text = Traducir("aviso_texto_revision_profesional");
+
+        lblTituloListaBorradores.Text = Traducir("titulo_lista_borradores_informe");
+        lblSubtituloListaBorradores.Text = Traducir("subtitulo_lista_borradores_informe");
+        lblThPacienteBorrador.Text = Traducir("lbl_paciente");
+        lblThFechaBorrador.Text = Traducir("lbl_generado");
+        lblThEspecialidadBorrador.Text = Traducir("lbl_especialidad_destino");
+        lblThDestinoBorrador.Text = Traducir("lbl_profesional_destinatario");
+        lblSinBorradores.Text = Traducir("msg_sin_borradores_pendientes");
     }
+    private string OrigenAuditoria
+    {
+        get { return ViewState["OrigenAuditoriaInforme"] != null ? ViewState["OrigenAuditoriaInforme"].ToString() : "generado"; }
+        set { ViewState["OrigenAuditoriaInforme"] = value; }
+    }
+
     private void MostrarEstado(int estado)
     {
+        pnlListaBorradores.Visible = (estado == 3);
         pnlFormulario.Visible = (estado == 1);
         pnlAuditoria.Visible = (estado == 2);
         lblHeaderTitulo.Text = estado == 1 ? Traducir("nav_informe_derivacion") : Traducir("nav_auditoria_informe");
 
         ucSidebarNavegacion.PaginaActual = estado == 1 ? "acceder_informe_derivacion" : "acceder_auditoria_informe";
         ucSidebarNavegacion.RenderizarNavegacion();
+    }
+
+    private void CargarListaBorradores()
+    {
+        int idPsicologo = GestorSesion.PsicologoActual.IdPsicologo;
+        GestorInformeDerivacion gestorInforme = new GestorInformeDerivacion();
+        GestorPaciente gestorPaciente = new GestorPaciente();
+
+        List<InformeDerivacion> pendientes = gestorInforme.ObtenerPorPsicologo(idPsicologo)
+            .Where(i => i.Estado == EstadoInforme.Borrador)
+            .OrderByDescending(i => i.FechaGeneracion)
+            .ToList();
+
+        var filas = pendientes.Select(i =>
+        {
+            SeccionesInformeDerivacion secciones = gestorInforme.ObtenerSecciones(i);
+            Paciente paciente = gestorPaciente.BuscarPorId(i.IdPaciente);
+            return new
+            {
+                IdInforme = i.IdInforme,
+                NombrePaciente = paciente != null ? paciente.Nombre + " " + paciente.Apellido : "—",
+                Fecha = i.FechaGeneracion.ToString("dd/MM/yyyy HH:mm"),
+                Especialidad = secciones != null ? secciones.EspecialidadDerivacion : "",
+                ProfesionalDestino = secciones != null ? secciones.ProfesionalDestinatario : ""
+            };
+        }).ToList();
+
+        rptBorradores.DataSource = filas;
+        rptBorradores.DataBind();
+
+        lblSinBorradores.Visible = filas.Count == 0;
+        lblCantBorradores.Text = filas.Count + " " + (filas.Count == 1 ? Traducir("lbl_borrador_singular") : Traducir("lbl_borradores_plural"));
+        lblCantBorradores.Visible = filas.Count > 0;
+    }
+
+    protected void rptBorradores_ItemCommand(object sender, RepeaterCommandEventArgs e)
+    {
+        if (e.CommandName != "Revisar") return;
+
+        lblMensaje.Visible = false;
+        int idInforme = Convert.ToInt32(e.CommandArgument);
+        CargarInformeExistente(idInforme);
+    }
+
+    private void CargarInformeExistente(int idInforme)
+    {
+        int idPsicologo = GestorSesion.PsicologoActual.IdPsicologo;
+        GestorInformeDerivacion gestorInforme = new GestorInformeDerivacion();
+        InformeDerivacion informe = gestorInforme.BuscarPorId(idInforme);
+
+        if (informe == null || informe.IdProfesional != idPsicologo)
+        {
+            MostrarError(Traducir("error_informe_no_propio"));
+            CargarListaBorradores();
+            MostrarEstado(3);
+            return;
+        }
+
+        SeccionesInformeDerivacion secciones = gestorInforme.ObtenerSecciones(informe);
+        hdnIdInforme.Value = informe.IdInforme.ToString();
+        OrigenAuditoria = "lista";
+
+        GestorPaciente gestorPaciente = new GestorPaciente();
+        Paciente paciente = gestorPaciente.BuscarPorId(informe.IdPaciente);
+
+        txtSintesisDiagnostica.Text = secciones != null ? secciones.SintesisDiagnostica : "";
+        txtAndamiajes.Text = secciones != null ? secciones.Andamiajes : "";
+        txtObjetivos.Text = secciones != null ? secciones.Objetivos : "";
+        txtModalidadTrabajo.Text = secciones != null ? secciones.ModalidadTrabajo : "";
+        txtMotivoDerivacion.Text = secciones != null ? secciones.MotivoDerivacion : "";
+        txtFirma.Text = string.Empty;
+
+        lblMetaPaciente.Text = paciente != null ? paciente.Nombre + " " + paciente.Apellido : "—";
+        lblMetaEspecialidad.Text = secciones != null ? secciones.EspecialidadDerivacion : "";
+        lblMetaDestino.Text = secciones != null
+            ? secciones.ProfesionalDestinatario + (!string.IsNullOrEmpty(secciones.Institucion) ? " — " + secciones.Institucion : "")
+            : "";
+        lblMetaFecha.Text = informe.FechaGeneracion.ToString("dd/MM/yyyy HH:mm");
+
+        lblAuditoriaMeta.Text = secciones != null ? secciones.EspecialidadDerivacion + " · " + secciones.ProfesionalDestinatario : "";
+
+        MostrarEstado(2);
     }
 
     private void CargarComboPacientes()
@@ -201,6 +306,7 @@ public partial class FormInformeDerivacion : PaginaBase
         {
             int idGenerado = gestorInforme.Generar(idPsicologo, idPaciente, especialidad, profDestino, institucion, motivo);
             hdnIdInforme.Value = idGenerado.ToString();
+            OrigenAuditoria = "generado";
             MostrarInformeGenerado(idGenerado);
             MostrarEstado(2);
         }
@@ -250,11 +356,18 @@ public partial class FormInformeDerivacion : PaginaBase
         GestorInformeDerivacion gestorInforme = new GestorInformeDerivacion();
         try
         {
+            string firmante = txtFirma.Text.Trim();
             gestorInforme.Auditar(idPsicologo, idInforme,
                 txtSintesisDiagnostica.Text.Trim(), txtAndamiajes.Text.Trim(), txtObjetivos.Text.Trim(),
-                txtModalidadTrabajo.Text.Trim(), txtMotivoDerivacion.Text.Trim(), txtFirma.Text.Trim());
+                txtModalidadTrabajo.Text.Trim(), txtMotivoDerivacion.Text.Trim(), firmante);
 
-            MostrarExito(string.Format(Traducir("exito_informe_validado"), txtFirma.Text.Trim()));
+            if (OrigenAuditoria == "lista")
+            {
+                CargarListaBorradores();
+                MostrarEstado(3);
+            }
+
+            MostrarExito(string.Format(Traducir("exito_informe_validado"), firmante));
         }
         catch (ExcepcionTraducible ex)
         {
@@ -295,8 +408,17 @@ public partial class FormInformeDerivacion : PaginaBase
         try
         {
             gestorInforme.Descartar(idPsicologo, idInforme);
-            LimpiarFormulario();
-            MostrarEstado(1);
+
+            if (OrigenAuditoria == "lista")
+            {
+                CargarListaBorradores();
+                MostrarEstado(3);
+            }
+            else
+            {
+                LimpiarFormulario();
+                MostrarEstado(1);
+            }
             MostrarExito(Traducir("exito_informe_descartado"));
         }
         catch (ExcepcionTraducible ex)

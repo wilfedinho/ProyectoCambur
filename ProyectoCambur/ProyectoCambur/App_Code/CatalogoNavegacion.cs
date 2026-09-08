@@ -36,7 +36,7 @@ namespace GUI
             { "acceder_linea_temporal",       new ItemMenu("📅", "FormLineaTemporal.aspx",       "nav_linea_temporal",      "tile_linea_temporal_desc") },
             { "acceder_resumen_ia",           new ItemMenu("🤖", "FormResumenIA.aspx",           "nav_resumen_ia",          "tile_resumen_ia_desc") },
             { "acceder_informe_derivacion",   new ItemMenu("📤", "FormInformeDerivacion.aspx",   "nav_informe_derivacion",  "tile_informe_derivacion_desc") },
-            { "acceder_auditoria_informe",    new ItemMenu("✅", "FormInformeDerivacion.aspx",   "nav_auditoria_informe",   "tile_auditoria_informe_desc") },
+            { "acceder_auditoria_informe",    new ItemMenu("✅", "FormInformeDerivacion.aspx?modo=auditoria", "nav_auditoria_informe", "tile_auditoria_informe_desc") },
             { "acceder_perfilacion_paciente", new ItemMenu("🧠", "FormPerfilPaciente.aspx",      "nav_perfilacion_paciente","tile_perfilacion_desc") },
             { "acceder_dashboard",            new ItemMenu("📊", "FormDashboard.aspx",           "nav_dashboard",           "tile_dashboard_desc") },
             { "acceder_exportar_reporte",     new ItemMenu("💾", "FormExportarReporte.aspx",     "nav_exportar_reporte",    "tile_exportar_desc") },

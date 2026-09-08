@@ -52,11 +52,16 @@ public partial class FormLineaTemporal : PaginaBase
         btnFiltroTodos.Text = Traducir("filtro_todos");
         btnFiltroConsulta.Text = "🗒️ " + Traducir("filtro_consultas");
         btnFiltroHistorial.Text = "📋 " + Traducir("filtro_historial");
+        btnFiltroResumenIA.Text = "🤖 " + Traducir("filtro_resumen_ia");
+        btnFiltroPerfilacion.Text = "🧭 " + Traducir("filtro_perfilacion");
+        btnFiltroInformeDerivacion.Text = "📄 " + Traducir("filtro_informe_derivacion");
         lblFiltroTipoEtiqueta.Text = Traducir("lbl_tipo") + ":";
         btnAplicarFecha.Text = Traducir("btn_filtrar");
+        btnLimpiarFiltros.Text = Traducir("btn_limpiar_filtros");
 
         lblLeyendaConsulta.Text = "● " + Traducir("filtro_consultas");
         lblLeyendaHistorial.Text = "● " + Traducir("filtro_historial");
+        lblLeyendaEventosIA.Text = "● " + Traducir("leyenda_eventos_ia");
 
         lblSinRegistros.Text = Traducir("msg_sin_registros_temporal");
 
@@ -173,7 +178,7 @@ public partial class FormLineaTemporal : PaginaBase
             {
                 IdEvento = ev.IdEvento,
                 Tipo = ev.Tipo,
-                TipoLabel = ev.Tipo == GestorLineaTemporal.TIPO_CONSULTA ? Traducir("filtro_consultas") : Traducir("filtro_historial"),
+                TipoLabel = ev.TipoLabel,
                 TipoCss = ev.TipoCss,
                 Icono = ev.Icono,
                 Fecha = ev.Fecha,
@@ -216,11 +221,23 @@ public partial class FormLineaTemporal : PaginaBase
         CargarTimeline(TipoFiltroActual, desde, hasta);
     }
 
+    protected void btnLimpiarFiltros_Click(object sender, EventArgs e)
+    {
+        txtDesde.Text = "";
+        txtHasta.Text = "";
+        TipoFiltroActual = "TODOS";
+        ActualizarBotonesFiltro("TODOS");
+        CargarTimeline("TODOS", null, null);
+    }
+
     private void ActualizarBotonesFiltro(string tipoActivo)
     {
         btnFiltroTodos.CssClass = "filtro-btn" + (tipoActivo == "TODOS" ? " active" : "");
         btnFiltroConsulta.CssClass = "filtro-btn" + (tipoActivo == GestorLineaTemporal.TIPO_CONSULTA ? " active" : "");
         btnFiltroHistorial.CssClass = "filtro-btn" + (tipoActivo == GestorLineaTemporal.TIPO_HISTORIAL ? " active" : "");
+        btnFiltroResumenIA.CssClass = "filtro-btn" + (tipoActivo == GestorLineaTemporal.TIPO_RESUMEN_IA ? " active" : "");
+        btnFiltroPerfilacion.CssClass = "filtro-btn" + (tipoActivo == GestorLineaTemporal.TIPO_PERFILACION ? " active" : "");
+        btnFiltroInformeDerivacion.CssClass = "filtro-btn" + (tipoActivo == GestorLineaTemporal.TIPO_INFORME_DERIVACION ? " active" : "");
     }
 
     private DateTime? ParsearFecha(string texto)
