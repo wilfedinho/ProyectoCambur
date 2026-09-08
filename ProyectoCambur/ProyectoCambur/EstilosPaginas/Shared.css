@@ -656,3 +656,25 @@ input[type="submit"].btn-primary {
         color: #5F5E5A;
         border: 0.5px solid #D3D1C7;
     }
+
+.stripe-card-element {
+    background: #FAFAF8;
+    border: 0.5px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    transition: border-color 0.15s;
+}
+
+    .stripe-card-element.StripeElement--focus {
+        border-color: var(--text-main);
+    }
+
+    .stripe-card-element.StripeElement--invalid {
+        border-color: #E8455A;
+    }
+
+#stripeCardErrorsPago {
+    color: #E8455A;
+    font-size: 12px;
+    min-height: 14px;
+}

@@ -86,13 +86,8 @@ public partial class FormSuscripcion : PaginaBase
 
         lblPagoAviso.Text = Traducir("pago_aviso_seguro");
         lblEtiquetaNumeroTarjeta.Text = Traducir("lbl_numero_tarjeta");
-        rfvTarjeta.ErrorMessage = Traducir("error_tarjeta_obligatoria");
         lblEtiquetaTitular.Text = Traducir("lbl_titular_tarjeta");
         rfvTitular.ErrorMessage = Traducir("error_campo_obligatorio");
-        lblEtiquetaVencimiento.Text = Traducir("lbl_vencimiento_tarjeta");
-        rfvVence.ErrorMessage = Traducir("error_campo_obligatorio");
-        lblEtiquetaCVV.Text = Traducir("lbl_cvv");
-        rfvCVV.ErrorMessage = Traducir("error_campo_obligatorio");
         btnCancelarPago.Text = Traducir("btn_cancelar");
         btnConfirmarPago.Text = Traducir("btn_confirmar_pago");
 
@@ -134,9 +129,9 @@ public partial class FormSuscripcion : PaginaBase
         btnCerrarModal.Text = Traducir("btn_entendido");
     }
 
-    protected string ObtenerPublicKeyMercadoPago()
+    protected string ObtenerPublicKeyStripe()
     {
-        string publicKey = ConfigurationManager.AppSettings["MercadoPagoPublicKey"];
+        string publicKey = ConfigurationManager.AppSettings["StripePublicKey"];
         return publicKey ?? string.Empty;
     }
 
@@ -164,7 +159,7 @@ public partial class FormSuscripcion : PaginaBase
         InfoPlan plan = gestorSuscripcion.ObtenerPlanDe(activa) ?? CatalogoPlanes.Planes[0];
 
         lblPlanNombre.Text = TraducirNombrePlan(plan);
-        lblPrecio.Text = "$" + plan.Precio.ToString("#,##0").Replace(",", ".") + " " + Traducir("lbl_por_mes");
+        lblPrecio.Text = "USD $" + plan.Precio.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture) + " " + Traducir("lbl_por_mes");
         lblFechaInicio.Text = activa.FechaInicio.ToString("dd/MM/yyyy");
         lblProxVencimiento.Text = activa.FechaFin.HasValue ? activa.FechaFin.Value.ToString("dd/MM/yyyy") : "-";
         lblMedioPago.Text = string.IsNullOrWhiteSpace(activa.UltimosCuatroTarjeta)
@@ -289,7 +284,6 @@ public partial class FormSuscripcion : PaginaBase
         hfAccionPago.Value = accion;
         hfPlanSeleccionadoPago.Value = idPlan.ToString();
         hfTokenTarjetaPago.Value = "";
-        hfPaymentMethodIdPago.Value = "";
         lblModalPagoTitulo.Text = titulo;
         LimpiarFormPago();
         pnlPago.Visible = true;
@@ -308,9 +302,8 @@ public partial class FormSuscripcion : PaginaBase
         if (!Page.IsValid) return;
 
         string tokenTarjeta = hfTokenTarjetaPago.Value;
-        string paymentMethodId = hfPaymentMethodIdPago.Value;
 
-        if (string.IsNullOrWhiteSpace(tokenTarjeta) || string.IsNullOrWhiteSpace(paymentMethodId))
+        if (string.IsNullOrWhiteSpace(tokenTarjeta))
         {
             MostrarError(Traducir("error_tarjeta_no_validada"));
             return;
@@ -329,12 +322,12 @@ public partial class FormSuscripcion : PaginaBase
 
             if (hfAccionPago.Value == ACCION_ACTUALIZAR_MEDIO_PAGO)
             {
-                actualizado = gestorSuscripcion.ActualizarMedioPago(psicologoActual.IdPsicologo, tokenTarjeta, paymentMethodId);
+                actualizado = gestorSuscripcion.ActualizarMedioPago(psicologoActual.IdPsicologo, tokenTarjeta, string.Empty);
                 mensajeExito = Traducir("exito_medio_pago_actualizado");
             }
             else
             {
-                actualizado = gestorSuscripcion.CambiarPlan(psicologoActual.IdPsicologo, idPlan, tokenTarjeta, paymentMethodId);
+                actualizado = gestorSuscripcion.CambiarPlan(psicologoActual.IdPsicologo, idPlan, tokenTarjeta, string.Empty);
                 mensajeExito = Traducir("exito_plan_actualizado");
             }
 
@@ -404,10 +397,7 @@ public partial class FormSuscripcion : PaginaBase
 
     private void LimpiarFormPago()
     {
-        txtNuevaTarjeta.Text = string.Empty;
         txtNuevoTitular.Text = string.Empty;
-        txtNuevoVence.Text = string.Empty;
-        txtNuevoCVV.Text = string.Empty;
     }
 
     private void MostrarError(string mensaje)

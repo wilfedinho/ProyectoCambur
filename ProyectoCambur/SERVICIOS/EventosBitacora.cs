@@ -16,6 +16,7 @@
         public const string MOD_ADMINISTRACION = "Administración";
         public const string MOD_GESTION_IDIOMAS = "Gestión de Idiomas";
         public const string MOD_LANDING = "Landing Page";
+        public const string MOD_PAGOS = "Pagos";
         public const string DESC_INICIO_SESION = "Inicio de Sesión";
         public const int CRIT_INICIO_SESION = 2;
         public const string DESC_CIERRE_SESION = "Cierre de sesión";
@@ -66,6 +67,10 @@
         public const int CRIT_REACTIVAR_SUSCRIPCION = 2;
         public const string DESC_ALTA_SUSCRIPCION = "Alta de suscripción (pago aprobado por Mercado Pago)";
         public const int CRIT_ALTA_SUSCRIPCION = 2;
+        public const string DESC_ALTA_SUSCRIPCION_ADMINISTRADOR = "Alta de suscripción asignada por administrador (sin pago, alta manual de profesional)";
+        public const int CRIT_ALTA_SUSCRIPCION_ADMINISTRADOR = 2;
+        public const string DESC_CAMBIO_SUSCRIPCION_ADMINISTRADOR = "Cambio de suscripción por cambio de rol/plan asignado por administrador (sin pago, edición manual de profesional)";
+        public const int CRIT_CAMBIO_SUSCRIPCION_ADMINISTRADOR = 2;
         public const string DESC_CONSULTA_BITACORA = "Consulta de bitácora";
         public const int CRIT_CONSULTA_BITACORA = 3;
         public const string DESC_GENERAR_BACKUP = "Generación de backup";
@@ -84,5 +89,9 @@
         public const int CRIT_VALORACION_SERVICIO = 3;
         public const string DESC_MENSAJE_CONTACTO = "Mensaje enviado desde formulario de contacto";
         public const int CRIT_MENSAJE_CONTACTO = 3;
+        public const string DESC_PAGO_APROBADO = "Intento de cobro aprobado por la pasarela de pago";
+        public const int CRIT_PAGO_APROBADO = 2;
+        public const string DESC_PAGO_RECHAZADO = "Intento de cobro rechazado por la pasarela de pago";
+        public const int CRIT_PAGO_RECHAZADO = 2;
     }
 }

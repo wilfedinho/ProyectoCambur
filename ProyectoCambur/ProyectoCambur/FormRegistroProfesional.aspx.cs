@@ -12,9 +12,9 @@ public partial class FormRegistroProfesional : PaginaBase
     {
         Page.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
     }
-    protected string ObtenerPublicKeyMercadoPago()
+    protected string ObtenerPublicKeyStripe()
     {
-        string publicKey = ConfigurationManager.AppSettings["MercadoPagoPublicKey"];
+        string publicKey = ConfigurationManager.AppSettings["StripePublicKey"];
         return publicKey ?? string.Empty;
     }
 
@@ -25,8 +25,7 @@ public partial class FormRegistroProfesional : PaginaBase
         if (!Page.IsValid) return;
 
         string tokenTarjeta = hfTokenTarjeta.Value;
-        string paymentMethodId = hfPaymentMethodId.Value;
-        if (string.IsNullOrWhiteSpace(tokenTarjeta) || string.IsNullOrWhiteSpace(paymentMethodId))
+        if (string.IsNullOrWhiteSpace(tokenTarjeta))
         {
             MostrarError("No pudimos validar los datos de la tarjeta. Recargá la página e intentá nuevamente.");
             return;
@@ -50,7 +49,7 @@ public partial class FormRegistroProfesional : PaginaBase
         GestorPsicologo gestorPsicologo = new GestorPsicologo();
         try
         {
-            gestorPsicologo.RegistrarProfesionalConSuscripcion(nuevoPsicologo, txtPassword.Text, idPlan, tokenTarjeta, paymentMethodId);
+            gestorPsicologo.RegistrarProfesionalConSuscripcion(nuevoPsicologo, txtPassword.Text, idPlan, tokenTarjeta, string.Empty);
         }
         catch (ExcepcionTraducible ex)
         {

@@ -540,3 +540,25 @@ input[type="submit"].btn-register {
 	margin: -6px 0 14px;
 	line-height: 1.6;
 }
+
+.stripe-card-element {
+	background: var(--surface);
+	border: 0.5px solid var(--border);
+	border-radius: 6px;
+	padding: 12px 14px;
+	transition: border-color 0.15s;
+}
+
+	.stripe-card-element.StripeElement--focus {
+		border-color: var(--text-main);
+	}
+
+	.stripe-card-element.StripeElement--invalid {
+		border-color: #E8455A;
+	}
+
+#stripeCardErrors {
+	color: #E8455A;
+	font-size: 12px;
+	min-height: 14px;
+}

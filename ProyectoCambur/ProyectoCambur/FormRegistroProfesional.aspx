@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Cambur — Registro de Profesional</title>
     <link href="EstilosPaginas/FormRegistroProfesional.css" rel="stylesheet" type="text/css"/>
-    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -158,85 +158,43 @@
             <div class="plan-grid">
                 <div class="plan-card" id="planBasico" onclick="selectPlan(this,'1')">
                     <div class="plan-name">Básico</div>
-                    <div class="plan-price">$4.990 <span>/mes</span></div>
+                    <div class="plan-price">USD $4.99 <span>/mes</span></div>
                     <div class="plan-desc">Hasta 20 pacientes. Historial + Consultas. Sin funciones IA.</div>
                 </div>
                 <div class="plan-card highlighted selected" id="planProfesional" onclick="selectPlan(this,'2')">
                     <div class="plan-badge">Más elegido</div>
                     <div class="plan-name">Profesional</div>
-                    <div class="plan-price">$9.990 <span>/mes</span></div>
+                    <div class="plan-price">USD $14.99 <span>/mes</span></div>
                     <div class="plan-desc">Pacientes ilimitados. IA asistiva, derivaciones y perfilación.</div>
                 </div>
                 <div class="plan-card" id="planPremium" onclick="selectPlan(this,'3')">
                     <div class="plan-name">Premium</div>
-                    <div class="plan-price">$14.990 <span>/mes</span></div>
+                    <div class="plan-price">USD $21.99 <span>/mes</span></div>
                     <div class="plan-desc">Todo Profesional + exportaciones avanzadas y soporte prioritario.</div>
                 </div>
             </div>
 
 
             <div class="section-sep">Datos de pago</div>
-            <p class="pago-aviso">Pago procesado de forma segura por Mercado Pago. Cambur no almacena el número de tu tarjeta.</p>
+            <p class="pago-aviso">Pago procesado de forma segura por Stripe, en dólares (USD). Cambur no almacena el número de tu tarjeta.</p>
 
             <div class="field mb-14">
-                <label for="txtNumeroTarjeta">Número de tarjeta <sup>*</sup></label>
-                <div class="card-number-wrap">
-                    <asp:TextBox ID="txtNumeroTarjeta" runat="server" MaxLength="19"
-                        placeholder="0000 0000 0000 0000"
-                        ClientIDMode="Static"
-                        autocomplete="off"
-                        oninput="formatCardNumber(this)" />
-                    <span class="card-brand-badge" id="cardBrand">VISA</span>
-                </div>
-                <asp:RequiredFieldValidator ID="rfvTarjeta" runat="server"
-                    ControlToValidate="txtNumeroTarjeta"
-                    ErrorMessage="El número de tarjeta es obligatorio."
+                <label for="txtTitular">Titular <sup>*</sup></label>
+                <asp:TextBox ID="txtTitular" runat="server" MaxLength="100" placeholder="Nombre en la tarjeta" ClientIDMode="Static" autocomplete="off" />
+                <asp:RequiredFieldValidator ID="rfvTitular" runat="server"
+                    ControlToValidate="txtTitular"
+                    ErrorMessage="Obligatorio."
                     CssClass="field-error"
                     Display="Dynamic"
                     ValidationGroup="vgRegistro" />
             </div>
 
-            <div class="grid-3">
-                <div class="field">
-                    <label for="txtTitular">Titular <sup>*</sup></label>
-                    <asp:TextBox ID="txtTitular" runat="server" MaxLength="100" placeholder="Nombre en la tarjeta" ClientIDMode="Static" autocomplete="off" />
-                    <asp:RequiredFieldValidator ID="rfvTitular" runat="server"
-                        ControlToValidate="txtTitular"
-                        ErrorMessage="Obligatorio."
-                        CssClass="field-error"
-                        Display="Dynamic"
-                        ValidationGroup="vgRegistro" />
-                </div>
-                <div class="field">
-                    <label for="txtVencimiento">Vencimiento <sup>*</sup></label>
-                    <asp:TextBox ID="txtVencimiento" runat="server" MaxLength="5"
-                        placeholder="MM/AA"
-                        ClientIDMode="Static"
-                        autocomplete="off"
-                        oninput="formatExpiry(this)" />
-                    <asp:RequiredFieldValidator ID="rfvVencimiento" runat="server"
-                        ControlToValidate="txtVencimiento"
-                        ErrorMessage="Obligatorio."
-                        CssClass="field-error"
-                        Display="Dynamic"
-                        ValidationGroup="vgRegistro" />
-                </div>
-                <div class="field">
-                    <label for="txtCVV">Código CVV <sup>*</sup></label>
-                    <asp:TextBox ID="txtCVV" runat="server" TextMode="Password" MaxLength="4"
-                        placeholder="CVV"
-                        ClientIDMode="Static"
-                        autocomplete="off" />
-                    <asp:RequiredFieldValidator ID="rfvCVV" runat="server"
-                        ControlToValidate="txtCVV"
-                        ErrorMessage="Obligatorio."
-                        CssClass="field-error"
-                        Display="Dynamic"
-                        ValidationGroup="vgRegistro" />
-                </div>
+            <div class="field mb-14">
+                <label for="stripeCardElement">Datos de la tarjeta <sup>*</sup></label>
+                <div id="stripeCardElement" class="stripe-card-element"></div>
+                <div id="stripeCardErrors" class="field-error" role="alert"></div>
             </div>
             <asp:HiddenField ID="hfTokenTarjeta" runat="server" ClientIDMode="Static" />
-            <asp:HiddenField ID="hfPaymentMethodId" runat="server" ClientIDMode="Static" />
 
 
             <div class="form-footer">
@@ -266,7 +224,20 @@
     </form>
 
     <script type="text/javascript">
-        var mp = new MercadoPago('<%= ObtenerPublicKeyMercadoPago() %>', { locale: 'es-AR' });
+        var stripe = Stripe('<%= ObtenerPublicKeyStripe() %>');
+        var stripeElements = stripe.elements();
+        var stripeCardElement = stripeElements.create('card', {
+            style: {
+                base: { fontSize: '15px', color: '#1a1a1a', fontFamily: 'inherit', '::placeholder': { color: '#9a9a9a' } },
+                invalid: { color: '#E8455A' }
+            },
+            hidePostalCode: true
+        });
+        stripeCardElement.mount('#stripeCardElement');
+        stripeCardElement.on('change', function (evento) {
+            var lblErrorTarjeta = document.getElementById('stripeCardErrors');
+            lblErrorTarjeta.textContent = evento.error ? evento.error.message : '';
+        });
 
         function selectPlan(card, planId) {
             document.querySelectorAll('.plan-card').forEach(function (c) {
@@ -307,21 +278,6 @@
         }
 
 
-        function formatCardNumber(input) {
-            var v = input.value.replace(/\D/g, '').substring(0, 16);
-            input.value = v.replace(/(.{4})/g, '$1 ').trim();
-            var brand = document.getElementById('cardBrand');
-            if (!brand) return;
-            if (v.startsWith('4')) brand.textContent = 'VISA';
-            else if (v.startsWith('5')) brand.textContent = 'MASTER';
-            else if (v.startsWith('3')) brand.textContent = 'AMEX';
-            else brand.textContent = 'TARJETA';
-        }
-
-        function formatExpiry(input) {
-            var v = input.value.replace(/\D/g, '').substring(0, 4);
-            input.value = v.length >= 3 ? v.substring(0, 2) + '/' + v.substring(2) : v;
-        }
         function iniciarRegistroConPago() {
             if (typeof Page_ClientValidate === 'function') {
                 if (!Page_ClientValidate('vgRegistro')) return false;
@@ -332,20 +288,6 @@
             btn.disabled = true;
             btn.value = 'Procesando pago...';
 
-            var vencimiento = document.getElementById('txtVencimiento').value.split('/');
-            var numeroTarjeta = document.getElementById('txtNumeroTarjeta').value.replace(/\s/g, '');
-            var bin = numeroTarjeta.substring(0, 6);
-
-            var datosTarjeta = {
-                cardNumber: numeroTarjeta,
-                cardholderName: document.getElementById('txtTitular').value,
-                cardExpirationMonth: vencimiento[0] || '',
-                cardExpirationYear: vencimiento[1] ? ('20' + vencimiento[1]) : '',
-                securityCode: document.getElementById('txtCVV').value,
-                identificationType: 'DNI',
-                identificationNumber: document.getElementById('txtDNI').value.replace(/\./g, '')
-            };
-
             function mostrarErrorTarjeta(mensaje) {
                 btn.disabled = false;
                 btn.value = textoOriginal;
@@ -355,23 +297,24 @@
                     lbl.style.display = 'block';
                 }
             }
-            mp.getPaymentMethods({ bin: bin }).then(function (respuestaBin) {
-                if (!respuestaBin.results || respuestaBin.results.length === 0) {
-                    mostrarErrorTarjeta('No reconocemos esta tarjeta. Verificá el número ingresado.');
+
+            stripe.createPaymentMethod({
+                type: 'card',
+                card: stripeCardElement,
+                billing_details: {
+                    name: document.getElementById('txtTitular').value
+                }
+            }).then(function (resultado) {
+                if (resultado.error) {
+                    console.log('Error al tokenizar la tarjeta con Stripe:', resultado.error);
+                    mostrarErrorTarjeta(resultado.error.message || 'No pudimos validar los datos de la tarjeta. Revisá el número, el vencimiento y el código de seguridad.');
                     return;
                 }
-                document.getElementById('hfPaymentMethodId').value = respuestaBin.results[0].id;
-
-                mp.createCardToken(datosTarjeta).then(function (resultado) {
-                    document.getElementById('hfTokenTarjeta').value = resultado.id;
-                    __doPostBack('btnRegistrar', '');
-                }).catch(function (error) {
-                    console.log('Error al tokenizar la tarjeta con Mercado Pago:', error);
-                    mostrarErrorTarjeta('No pudimos validar los datos de la tarjeta. Revisá el número, el vencimiento y el código de seguridad.');
-                });
+                document.getElementById('hfTokenTarjeta').value = resultado.paymentMethod.id;
+                __doPostBack('btnRegistrar', '');
             }).catch(function (error) {
-                console.log('Error al identificar el medio de pago con Mercado Pago:', error);
-                mostrarErrorTarjeta('No pudimos identificar la tarjeta ingresada. Verificá el número.');
+                console.log('Error al procesar la tarjeta con Stripe:', error);
+                mostrarErrorTarjeta('No pudimos procesar los datos de la tarjeta. Intentá nuevamente.');
             });
 
             return false;

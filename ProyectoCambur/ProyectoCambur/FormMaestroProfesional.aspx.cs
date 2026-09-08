@@ -181,43 +181,43 @@ public partial class FormMaestroProfesional : PaginaBase
     {
         CargarGrilla();
     }
+    private static readonly Dictionary<string, IComandoAccion> ComandosProfesional =
+        new Dictionary<string, IComandoAccion>
+        {
+            { "DarBaja", new ComandoDarBajaProfesional() },
+            { "Reactivar", new ComandoReactivarProfesional() },
+            { "Deshabilitar", new ComandoDeshabilitarProfesional() },
+            { "Habilitar", new ComandoHabilitarProfesional() },
+            { "Desbloquear", new ComandoDesbloquearProfesional() },
+        };
+
+    private static readonly Dictionary<string, string> MensajesExitoProfesional =
+        new Dictionary<string, string>
+        {
+            { "DarBaja", "msg_profesional_baja" },
+            { "Reactivar", "msg_profesional_reactivado" },
+            { "Deshabilitar", "msg_profesional_deshabilitado" },
+            { "Habilitar", "msg_profesional_habilitado" },
+            { "Desbloquear", "msg_profesional_desbloqueado" },
+        };
 
     protected void gvProfesionales_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         int idPsicologo = Convert.ToInt32(e.CommandArgument);
-        GestorPsicologo gestorPsicologo = new GestorPsicologo();
+
+        if (e.CommandName == "Modificar")
+        {
+            CargarFormularioParaEdicion(idPsicologo);
+            return;
+        }
+
         try
         {
-            switch (e.CommandName)
+            IComandoAccion comando;
+            if (ComandosProfesional.TryGetValue(e.CommandName, out comando))
             {
-                case "Modificar":
-                    CargarFormularioParaEdicion(idPsicologo);
-                    return;
-
-                case "DarBaja":
-                    gestorPsicologo.Baja(idPsicologo);
-                    MostrarExito(Traducir("msg_profesional_baja"));
-                    break;
-
-                case "Reactivar":
-                    gestorPsicologo.Activar(idPsicologo);
-                    MostrarExito(Traducir("msg_profesional_reactivado"));
-                    break;
-
-                case "Deshabilitar":
-                    gestorPsicologo.Deshabilitar(idPsicologo);
-                    MostrarExito(Traducir("msg_profesional_deshabilitado"));
-                    break;
-
-                case "Habilitar":
-                    gestorPsicologo.Habilitar(idPsicologo);
-                    MostrarExito(Traducir("msg_profesional_habilitado"));
-                    break;
-
-                case "Desbloquear":
-                    gestorPsicologo.Desbloquear(idPsicologo);
-                    MostrarExito(Traducir("msg_profesional_desbloqueado"));
-                    break;
+                comando.Ejecutar(idPsicologo);
+                MostrarExito(Traducir(MensajesExitoProfesional[e.CommandName]));
             }
         }
         catch (ExcepcionTraducible ex)

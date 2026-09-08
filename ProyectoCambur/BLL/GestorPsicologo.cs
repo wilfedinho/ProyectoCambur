@@ -16,7 +16,7 @@ namespace BLL
         private const string TABLA = "Profesional";
         private readonly IPasarelaPago pasarelaPago;
 
-        public GestorPsicologo() : this(new PasarelaMercadoPago())
+        public GestorPsicologo() : this(FabricaPasarelaPago.ObtenerPasarelaActiva())
         {
         }
 
@@ -40,9 +40,32 @@ namespace BLL
         {
             ValidarDatosPsicologo(psicologoAlta);
 
+            InfoPlan plan = CatalogoPlanes.ObtenerPorRolPermiso(psicologoAlta.RolPermiso);
+            if (plan == null)
+            {
+                throw new ExcepcionTraducible("error_suscripcion_plan_invalido");
+            }
+
             string contrasenaInicial = psicologoAlta.Dni + psicologoAlta.Email;
             psicologoAlta.Contrasena = Cifrador.GestorCifrador.EncriptarIrreversible(contrasenaInicial);
-            return RegistrarPsicologoValidado(psicologoAlta);
+            int idPsicologo = RegistrarPsicologoValidado(psicologoAlta);
+            DateTime ahora = DateTime.Now;
+            Suscripcion nuevaSuscripcion = new Suscripcion
+            {
+                IdProfesional = idPsicologo,
+                Plan = plan.Plan,
+                Estado = EstadoSuscripcion.Activa,
+                FechaInicio = ahora,
+                FechaFin = ahora.AddMonths(1),
+                Precio = plan.Precio,
+                IdPagoExterno = "ALTA_ADMINISTRADOR",
+                UltimosCuatroTarjeta = null
+            };
+            new SuscripcionDAL().Alta(nuevaSuscripcion);
+            new DigitoVerificador().ActualizarDVH(nuevaSuscripcion, "Suscripcion");
+            new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_SUSCRIPCION, EventosBitacora.DESC_ALTA_SUSCRIPCION_ADMINISTRADOR, EventosBitacora.CRIT_ALTA_SUSCRIPCION_ADMINISTRADOR);
+
+            return idPsicologo;
         }
         public Psicologo RegistrarProfesionalConSuscripcion(Psicologo psicologoAlta, string contrasenaPlana, int idPlan, string tokenTarjeta, string paymentMethodId)
         {
@@ -58,8 +81,7 @@ namespace BLL
             {
                 throw new InvalidOperationException("Plan de suscripción inválido: " + idPlan);
             }
-
-            if (string.IsNullOrWhiteSpace(tokenTarjeta) || string.IsNullOrWhiteSpace(paymentMethodId))
+            if (string.IsNullOrWhiteSpace(tokenTarjeta))
             {
                 throw new ExcepcionTraducible("error_pago_timeout");
             }
@@ -220,9 +242,64 @@ namespace BLL
             {
                 throw new ExcepcionTraducible("error_email_duplicado_otro");
             }
+            Psicologo psicologoAntesDeModificar = psicologoDAL.BuscarPorId(psicologoModificado.IdPsicologo);
+            bool cambiaRol = psicologoAntesDeModificar != null
+                && !string.Equals(psicologoAntesDeModificar.RolPermiso, psicologoModificado.RolPermiso, StringComparison.Ordinal);
 
             psicologoDAL.Modificar(psicologoModificado);
+
+            if (cambiaRol)
+            {
+                SincronizarSuscripcionPorCambioDeRol(psicologoModificado.IdPsicologo, psicologoModificado.RolPermiso);
+            }
+
             RecalcularDVHDe(psicologoModificado.IdPsicologo);
+        }
+        private void SincronizarSuscripcionPorCambioDeRol(int idPsicologo, string nuevoRolPermiso)
+        {
+            InfoPlan plan = CatalogoPlanes.ObtenerPorRolPermiso(nuevoRolPermiso);
+            if (plan == null)
+            {
+                return;
+            }
+
+            SuscripcionDAL suscripcionDAL = new SuscripcionDAL();
+            Suscripcion activa = suscripcionDAL.BuscarActivaDe(idPsicologo);
+
+            DateTime ahora = DateTime.Now;
+            Suscripcion nuevaSuscripcion = new Suscripcion
+            {
+                IdProfesional = idPsicologo,
+                Plan = plan.Plan,
+                Estado = EstadoSuscripcion.Activa,
+                FechaInicio = ahora,
+                FechaFin = ahora.AddMonths(1),
+                Precio = plan.Precio,
+                IdPagoExterno = "CAMBIO_ROL_ADMINISTRADOR",
+                UltimosCuatroTarjeta = null
+            };
+
+            int? idSuscripcionAnterior = activa != null ? (int?)activa.IdSuscripcion : null;
+
+            int idNuevaSuscripcion = suscripcionDAL.ProcesarPagoTransaccional(
+                idSuscripcionAnterior,
+                ahora,
+                nuevaSuscripcion,
+                idProfesionalCambioRol: null,
+                nuevoRolPermiso: null);
+
+            nuevaSuscripcion.IdSuscripcion = idNuevaSuscripcion;
+
+            DigitoVerificador digitoVerificador = new DigitoVerificador();
+            if (activa != null)
+            {
+                activa.Estado = EstadoSuscripcion.Vencida;
+                activa.FechaFin = ahora;
+                digitoVerificador.ActualizarDVH(activa, "Suscripcion");
+            }
+            digitoVerificador.ActualizarDVH(nuevaSuscripcion, "Suscripcion");
+
+            new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_SUSCRIPCION, EventosBitacora.DESC_CAMBIO_SUSCRIPCION_ADMINISTRADOR, EventosBitacora.CRIT_CAMBIO_SUSCRIPCION_ADMINISTRADOR);
         }
 
         public void CambiarContrasena(int idPsicologo, string contrasenaActual, string contrasenaNueva)

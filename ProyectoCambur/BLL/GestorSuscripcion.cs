@@ -11,7 +11,7 @@ namespace BLL
         private const string TABLA = "Suscripcion";
         private readonly IPasarelaPago pasarelaPago;
 
-        public GestorSuscripcion() : this(new PasarelaMercadoPago())
+        public GestorSuscripcion() : this(FabricaPasarelaPago.ObtenerPasarelaActiva())
         {
         }
 
@@ -78,7 +78,7 @@ namespace BLL
 
         private Psicologo ProcesarPago(int idPsicologo, int idPlan, string tokenTarjeta, string paymentMethodId, bool permitirMismoPlan, bool soloMedioPago)
         {
-            if (string.IsNullOrWhiteSpace(tokenTarjeta) || string.IsNullOrWhiteSpace(paymentMethodId))
+            if (string.IsNullOrWhiteSpace(tokenTarjeta))
             {
                 throw new ExcepcionTraducible("error_pago_timeout");
             }

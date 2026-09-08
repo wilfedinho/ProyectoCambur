@@ -190,26 +190,35 @@ public partial class FormMaestroPaciente : GUI.PaginaBase
         CargarGrilla();
     }
 
+    private static readonly Dictionary<string, IComandoAccion> ComandosPaciente =
+        new Dictionary<string, IComandoAccion>
+        {
+            { "DarBaja", new ComandoDarBajaPaciente() },
+            { "Reactivar", new ComandoReactivarPaciente() },
+        };
+
+    private static readonly Dictionary<string, string> MensajesExitoPaciente =
+        new Dictionary<string, string>
+        {
+            { "DarBaja", "msg_paciente_baja" },
+            { "Reactivar", "msg_paciente_reactivado" },
+        };
+
     protected void gvPacientes_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         int idPaciente = Convert.ToInt32(e.CommandArgument);
-        GestorPaciente gestorPaciente = new GestorPaciente();
 
-        switch (e.CommandName)
+        if (e.CommandName == "Modificar")
         {
-            case "Modificar":
-                CargarFormularioParaEdicion(idPaciente);
-                return;
+            CargarFormularioParaEdicion(idPaciente);
+            return;
+        }
 
-            case "DarBaja":
-                gestorPaciente.Baja(idPaciente);
-                MostrarExito(Traducir("msg_paciente_baja"));
-                break;
-
-            case "Reactivar":
-                gestorPaciente.Activar(idPaciente);
-                MostrarExito(Traducir("msg_paciente_reactivado"));
-                break;
+        IComandoAccion comando;
+        if (ComandosPaciente.TryGetValue(e.CommandName, out comando))
+        {
+            comando.Ejecutar(idPaciente);
+            MostrarExito(Traducir(MensajesExitoPaciente[e.CommandName]));
         }
 
         CargarGrilla();

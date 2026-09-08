@@ -11,7 +11,7 @@
     <link href="EstilosPaginas/HeaderUsuario.css"    rel="stylesheet" type="text/css"/>
     <link href="EstilosPaginas/SidebarNavegacion.css" rel="stylesheet" type="text/css"/>
     <link href="EstilosPaginas/FormSuscripcion.css"  rel="stylesheet" type="text/css"/>
-    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -116,23 +116,8 @@
                             <asp:HiddenField ID="hfAccionPago" runat="server" ClientIDMode="Static" />
                             <asp:HiddenField ID="hfPlanSeleccionadoPago" runat="server" ClientIDMode="Static" />
                             <asp:HiddenField ID="hfTokenTarjetaPago" runat="server" ClientIDMode="Static" />
-                            <asp:HiddenField ID="hfPaymentMethodIdPago" runat="server" ClientIDMode="Static" />
 
                             <div class="grid-2" style="max-width:460px; margin-top:16px;">
-                                <div class="field full">
-                                    <asp:Label ID="lblEtiquetaNumeroTarjeta" runat="server" AssociatedControlID="txtNuevaTarjeta" Text="" />
-                                    <sup>*</sup>
-                                    <asp:TextBox ID="txtNuevaTarjeta" runat="server"
-                                        MaxLength="19" placeholder="0000 0000 0000 0000"
-                                        ClientIDMode="Static"
-                                        autocomplete="off"
-                                        oninput="formatCard(this)" />
-                                    <asp:RequiredFieldValidator ID="rfvTarjeta" runat="server"
-                                        ControlToValidate="txtNuevaTarjeta"
-                                        ErrorMessage=""
-                                        CssClass="field-error" Display="Dynamic"
-                                        ValidationGroup="vgPago" />
-                                </div>
                                 <div class="field full">
                                     <asp:Label ID="lblEtiquetaTitular" runat="server" AssociatedControlID="txtNuevoTitular" Text="" />
                                     <sup>*</sup>
@@ -145,31 +130,11 @@
                                         CssClass="field-error" Display="Dynamic"
                                         ValidationGroup="vgPago" />
                                 </div>
-                                <div class="field">
-                                    <asp:Label ID="lblEtiquetaVencimiento" runat="server" AssociatedControlID="txtNuevoVence" Text="" />
+                                <div class="field full">
+                                    <asp:Label ID="lblEtiquetaNumeroTarjeta" runat="server" Text="" />
                                     <sup>*</sup>
-                                    <asp:TextBox ID="txtNuevoVence" runat="server"
-                                        MaxLength="5" placeholder="MM/AA"
-                                        ClientIDMode="Static"
-                                        autocomplete="off"
-                                        oninput="formatExpiry(this)" />
-                                    <asp:RequiredFieldValidator ID="rfvVence" runat="server"
-                                        ControlToValidate="txtNuevoVence"
-                                        ErrorMessage=""
-                                        CssClass="field-error" Display="Dynamic"
-                                        ValidationGroup="vgPago" />
-                                </div>
-                                <div class="field">
-                                    <asp:Label ID="lblEtiquetaCVV" runat="server" AssociatedControlID="txtNuevoCVV" Text="" />
-                                    <sup>*</sup>
-                                    <asp:TextBox ID="txtNuevoCVV" runat="server"
-                                        TextMode="Password" MaxLength="4"
-                                        placeholder="CVV" ClientIDMode="Static" autocomplete="off" />
-                                    <asp:RequiredFieldValidator ID="rfvCVV" runat="server"
-                                        ControlToValidate="txtNuevoCVV"
-                                        ErrorMessage=""
-                                        CssClass="field-error" Display="Dynamic"
-                                        ValidationGroup="vgPago" />
+                                    <div id="stripeCardElementPago" class="stripe-card-element"></div>
+                                    <div id="stripeCardErrorsPago" class="field-error"></div>
                                 </div>
                             </div>
                             <div class="form-actions">
@@ -199,16 +164,16 @@
                                     <div class="comp-feature"></div>
                                     <div class="comp-plan">
                                         <div class="comp-plan-nombre"><asp:Label ID="lblPlanBasicoNombre" runat="server" Text="" /></div>
-                                        <div class="comp-plan-precio">$4.990<span><asp:Label ID="lblPorMes1" runat="server" Text="" /></span></div>
+                                        <div class="comp-plan-precio">USD $4.99<span><asp:Label ID="lblPorMes1" runat="server" Text="" /></span></div>
                                     </div>
                                     <div class="comp-plan comp-plan-destacado">
                                         <div class="comp-plan-badge"><asp:Label ID="lblBadgeMasElegido" runat="server" Text="" /></div>
                                         <div class="comp-plan-nombre"><asp:Label ID="lblPlanProfesionalNombre" runat="server" Text="" /></div>
-                                        <div class="comp-plan-precio">$9.990<span><asp:Label ID="lblPorMes2" runat="server" Text="" /></span></div>
+                                        <div class="comp-plan-precio">USD $14.99<span><asp:Label ID="lblPorMes2" runat="server" Text="" /></span></div>
                                     </div>
                                     <div class="comp-plan">
                                         <div class="comp-plan-nombre"><asp:Label ID="lblPlanPremiumNombre" runat="server" Text="" /></div>
-                                        <div class="comp-plan-precio">$14.990<span><asp:Label ID="lblPorMes3" runat="server" Text="" /></span></div>
+                                        <div class="comp-plan-precio">USD $21.99<span><asp:Label ID="lblPorMes3" runat="server" Text="" /></span></div>
                                     </div>
                                 </div>
 
@@ -347,17 +312,22 @@
     </form>
 
     <script type="text/javascript">
-        var mp = new MercadoPago('<%= ObtenerPublicKeyMercadoPago() %>', { locale: 'es-AR' });
-        var MSG_PAGO = <%= MensajesPagoJson %>;
+        var stripe = Stripe('<%= ObtenerPublicKeyStripe() %>');
+        var stripeElementsPago = stripe.elements();
+        var stripeCardElementPago = stripeElementsPago.create('card', {
+            style: {
+                base: { fontSize: '15px', color: '#1a1a1a', fontFamily: 'inherit', '::placeholder': { color: '#9a9a9a' } },
+                invalid: { color: '#E8455A' }
+            },
+            hidePostalCode: true
+        });
+        stripeCardElementPago.mount('#stripeCardElementPago');
+        stripeCardElementPago.on('change', function (evento) {
+            var lblErrorTarjeta = document.getElementById('stripeCardErrorsPago');
+            lblErrorTarjeta.textContent = evento.error ? evento.error.message : '';
+        });
 
-        function formatCard(input) {
-            var v = input.value.replace(/\D/g, '').substring(0, 16);
-            input.value = v.replace(/(.{4})/g, '$1 ').trim();
-        }
-        function formatExpiry(input) {
-            var v = input.value.replace(/\D/g, '').substring(0, 4);
-            input.value = v.length >= 3 ? v.substring(0, 2) + '/' + v.substring(2) : v;
-        }
+        var MSG_PAGO = <%= MensajesPagoJson %>;
 
         function confirmarPago() {
             if (typeof Page_ClientValidate === 'function') {
@@ -368,20 +338,6 @@
             var textoOriginal = btn.value;
             btn.disabled = true;
             btn.value = MSG_PAGO.procesando;
-
-            var vencimiento = document.getElementById('txtNuevoVence').value.split('/');
-            var numeroTarjeta = document.getElementById('txtNuevaTarjeta').value.replace(/\s/g, '');
-            var bin = numeroTarjeta.substring(0, 6);
-
-            var datosTarjeta = {
-                cardNumber: numeroTarjeta,
-                cardholderName: document.getElementById('txtNuevoTitular').value,
-                cardExpirationMonth: vencimiento[0] || '',
-                cardExpirationYear: vencimiento[1] ? ('20' + vencimiento[1]) : '',
-                securityCode: document.getElementById('txtNuevoCVV').value,
-                identificationType: 'DNI',
-                identificationNumber: (document.getElementById('hfDniPsicologo').value || '').replace(/\./g, '')
-            };
 
             function mostrarErrorTarjeta(mensaje) {
                 btn.disabled = false;
@@ -394,22 +350,22 @@
                 }
             }
 
-            mp.getPaymentMethods({ bin: bin }).then(function (respuestaBin) {
-                if (!respuestaBin.results || respuestaBin.results.length === 0) {
-                    mostrarErrorTarjeta(MSG_PAGO.tarjetaNoReconocida);
+            stripe.createPaymentMethod({
+                type: 'card',
+                card: stripeCardElementPago,
+                billing_details: {
+                    name: document.getElementById('txtNuevoTitular').value
+                }
+            }).then(function (resultado) {
+                if (resultado.error) {
+                    console.log('Error al tokenizar la tarjeta con Stripe:', resultado.error);
+                    mostrarErrorTarjeta(resultado.error.message || MSG_PAGO.tarjetaInvalida);
                     return;
                 }
-                document.getElementById('hfPaymentMethodIdPago').value = respuestaBin.results[0].id;
-
-                mp.createCardToken(datosTarjeta).then(function (resultado) {
-                    document.getElementById('hfTokenTarjetaPago').value = resultado.id;
-                    __doPostBack('btnConfirmarPago', '');
-                }).catch(function (error) {
-                    console.log('Error al tokenizar la tarjeta con Mercado Pago:', error);
-                    mostrarErrorTarjeta(MSG_PAGO.tarjetaInvalida);
-                });
+                document.getElementById('hfTokenTarjetaPago').value = resultado.paymentMethod.id;
+                __doPostBack('btnConfirmarPago', '');
             }).catch(function (error) {
-                console.log('Error al identificar el medio de pago con Mercado Pago:', error);
+                console.log('Error al procesar la tarjeta con Stripe:', error);
                 mostrarErrorTarjeta(MSG_PAGO.tarjetaNoIdentificada);
             });
 

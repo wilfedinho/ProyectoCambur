@@ -45,6 +45,13 @@ namespace SERVICIOS
 
             try
             {
+                string dniParaMercadoPago = datosPago.DniPagador;
+                string dniPruebaSandbox = ConfigurationManager.AppSettings["MercadoPagoDniPruebaSandbox"];
+                if (!string.IsNullOrWhiteSpace(dniPruebaSandbox))
+                {
+                    dniParaMercadoPago = dniPruebaSandbox;
+                }
+
                 Dictionary<string, object> cuerpo = new Dictionary<string, object>
                 {
                     { "transaction_amount", datosPago.Monto },
@@ -52,13 +59,14 @@ namespace SERVICIOS
                     { "payment_method_id", datosPago.PaymentMethodId },
                     { "description", datosPago.Descripcion },
                     { "installments", 1 },
+                    { "binary_mode", true },
                     { "payer", new Dictionary<string, object>
                         {
                             { "email", datosPago.EmailPagador },
                             { "identification", new Dictionary<string, object>
                                 {
                                     { "type", "DNI" },
-                                    { "number", datosPago.DniPagador }
+                                    { "number", dniParaMercadoPago }
                                 }
                             }
                         }
@@ -98,6 +106,16 @@ namespace SERVICIOS
                             Aprobado = true,
                             IdPagoExterno = idPago,
                             UltimosCuatroTarjeta = ultimosCuatro
+                        };
+                    }
+                    if (estado == "in_process" || estado == "pending")
+                    {
+                        return new ResultadoPago
+                        {
+                            Aprobado = false,
+                            IdPagoExterno = idPago,
+                            UltimosCuatroTarjeta = ultimosCuatro,
+                            MotivoRechazo = "el pago quedó pendiente de revisión y no pudo confirmarse de forma inmediata — probá nuevamente en unos minutos o con otro medio de pago"
                         };
                     }
 
