@@ -2676,4 +2676,70 @@
   <data name="valor_tipo_backup_completo" xml:space="preserve">
     <value>完整备份（Full Backup）</value>
   </data>
+  <data name="btn_cargar_xml" xml:space="preserve">
+    <value>加载XML</value>
+  </data>
+  <data name="btn_exportar_seleccionados" xml:space="preserve">
+    <value>导出所选项</value>
+  </data>
+  <data name="btn_volver_gestion" xml:space="preserve">
+    <value>返回管理</value>
+  </data>
+  <data name="col_seleccionar" xml:space="preserve">
+    <value>选择</value>
+  </data>
+  <data name="empty_vista_previa_xml" xml:space="preserve">
+    <value>尚未加载任何文件。</value>
+  </data>
+  <data name="error_xml_formato_invalido" xml:space="preserve">
+    <value>该文件的XML格式无效或已损坏。</value>
+  </data>
+  <data name="error_xml_ningun_archivo" xml:space="preserve">
+    <value>请选择一个XML文件以继续。</value>
+  </data>
+  <data name="error_xml_ningun_profesional_seleccionado" xml:space="preserve">
+    <value>请至少选择一名专业人员进行导出。</value>
+  </data>
+  <data name="error_xml_origen_invalido" xml:space="preserve">
+    <value>该文件并非由Cambur系统生成。</value>
+  </data>
+  <data name="error_xml_version_no_soportada" xml:space="preserve">
+    <value>该文件是使用不受支持的格式版本生成的。</value>
+  </data>
+  <data name="lbl_archivo_xml" xml:space="preserve">
+    <value>XML文件</value>
+  </data>
+  <data name="modo_deserializar_xml" xml:space="preserve">
+    <value>反序列化XML</value>
+  </data>
+  <data name="modo_gestion" xml:space="preserve">
+    <value>管理</value>
+  </data>
+  <data name="modo_serializar_xml" xml:space="preserve">
+    <value>序列化为XML</value>
+  </data>
+  <data name="msg_xml_cargado_exitosamente" xml:space="preserve">
+    <value>已从文件中加载{0}名专业人员。</value>
+  </data>
+  <data name="subtitulo_deserializar_profesionales" xml:space="preserve">
+    <value>请选择由Cambur系统导出的XML文件。您将能够查看其中包含的专业人员信息，身份证号和电子邮件将以解密形式显示。</value>
+  </data>
+  <data name="subtitulo_serializar_profesionales" xml:space="preserve">
+    <value>请选择要导出的专业人员。身份证号和电子邮件将以加密方式保存在文件中。</value>
+  </data>
+  <data name="titulo_deserializar_profesionales" xml:space="preserve">
+    <value>从XML导入预览</value>
+  </data>
+  <data name="titulo_serializar_profesionales" xml:space="preserve">
+    <value>将专业人员导出为XML</value>
+  </data>
+  <data name="titulo_vista_previa_xml" xml:space="preserve">
+    <value>文件中找到的专业人员</value>
+  </data>
+  <data name="btn_elegir_archivo" xml:space="preserve">
+    <value>选择文件</value>
+  </data>
+  <data name="lbl_ningun_archivo_seleccionado" xml:space="preserve">
+    <value>未选择文件</value>
+  </data>
 </root>

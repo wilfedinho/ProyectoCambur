@@ -42,6 +42,18 @@
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" CssClass="server-error" />
 
                 <asp:HiddenField ID="hdnIdPsicologo" runat="server" Value="0" />
+                <asp:HiddenField ID="hdnModo" runat="server" Value="GESTION" />
+
+                <div class="modo-toolbar">
+                    <asp:LinkButton ID="btnModoGestion" runat="server" CssClass="btn-modo active"
+                        Text="👥 Gestión" OnClick="btnModoGestion_Click" CausesValidation="false" />
+                    <asp:LinkButton ID="btnModoSerializar" runat="server" CssClass="btn-modo"
+                        Text="🗄️ Serializar a XML" OnClick="btnModoSerializar_Click" CausesValidation="false" />
+                    <asp:LinkButton ID="btnModoDeserializar" runat="server" CssClass="btn-modo"
+                        Text="📥 Deserializar XML" OnClick="btnModoDeserializar_Click" CausesValidation="false" />
+                </div>
+
+                <asp:Panel ID="pnlModoGestion" runat="server">
 
                 <div class="content-card">
                     <div class="card-header">
@@ -112,7 +124,7 @@
                                 <asp:ListItem Value=""              Text="Seleccioná..." />
                                 <asp:ListItem Value="Web Master"    Text="Web Master" />
                                 <asp:ListItem Value="Administrador" Text="Administrador" />
-                                <asp:ListItem Value="Free"          Text="Psicólogo — Plan Free" />
+                                <asp:ListItem Value="Basico"        Text="Psicólogo — Plan Básico" />
                                 <asp:ListItem Value="Profesional"   Text="Psicólogo — Plan Profesional" />
                                 <asp:ListItem Value="Premium"       Text="Psicólogo — Plan Premium" />
                             </asp:DropDownList>
@@ -250,6 +262,144 @@
                         </asp:GridView>
                     </div>
                 </div>
+
+                </asp:Panel>
+
+                <asp:Panel ID="pnlModoSerializar" runat="server" Visible="false">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h2 class="card-title"><asp:Label ID="lblTituloSerializar" runat="server" Text="Exportar profesionales a XML" /></h2>
+                            <p class="card-subtitle"><asp:Label ID="lblSubtituloSerializar" runat="server" Text="Seleccioná los profesionales que querés exportar. El DNI y el email se guardan encriptados dentro del archivo." /></p>
+                        </div>
+
+                        <asp:Label ID="lblMensajeSerializar" runat="server" Visible="false" CssClass="server-error" />
+
+                        <div class="table-wrap">
+                            <asp:GridView ID="gvSeleccionSerializar" runat="server"
+                                CssClass="data-table"
+                                AutoGenerateColumns="false"
+                                GridLines="None"
+                                DataKeyNames="IdPsicologo"
+                                EmptyDataText="No hay profesionales para exportar.">
+
+                                <EmptyDataRowStyle CssClass="empty-row" />
+                                <HeaderStyle      CssClass="table-header" />
+                                <RowStyle         CssClass="table-row" />
+                                <AlternatingRowStyle CssClass="table-row table-row-alt" />
+
+                                <Columns>
+                                    <asp:TemplateField HeaderText="Seleccionar" HeaderStyle-CssClass="th-centro" ItemStyle-CssClass="td-centro">
+                                        <ItemTemplate>
+                                            <asp:CheckBox ID="chkSeleccionar" runat="server" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="NombreCompleto" HeaderText="Profesional" HeaderStyle-CssClass="th-left" />
+                                    <asp:BoundField DataField="Dni"            HeaderText="DNI"          HeaderStyle-CssClass="th-centro" ItemStyle-CssClass="td-centro" />
+                                    <asp:BoundField DataField="Email"          HeaderText="Email"        HeaderStyle-CssClass="th-left" />
+                                    <asp:TemplateField HeaderText="Rol / Plan" HeaderStyle-CssClass="th-centro" ItemStyle-CssClass="td-centro">
+                                        <ItemTemplate>
+                                            <span class="badge-rol"><%# Eval("RolPermiso") %></span>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="FechaRegistro" HeaderText="Registrado" HeaderStyle-CssClass="th-centro" ItemStyle-CssClass="td-centro"
+                                        DataFormatString="{0:dd/MM/yyyy}" />
+                                </Columns>
+                            </asp:GridView>
+                        </div>
+
+                        <div class="form-actions">
+                            <asp:LinkButton ID="btnVolverGestionSerializar" runat="server"
+                                CssClass="btn-secondary" Text="Volver a gestión"
+                                OnClick="btnModoGestion_Click" CausesValidation="false" />
+                            <asp:Button ID="btnExportarSeleccionados" runat="server"
+                                Text="⬇️ Exportar seleccionados"
+                                CssClass="btn-primary"
+                                OnClick="btnExportarSeleccionados_Click" CausesValidation="false" />
+                        </div>
+                    </div>
+                </asp:Panel>
+
+                <asp:Panel ID="pnlModoDeserializar" runat="server" Visible="false">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h2 class="card-title"><asp:Label ID="lblTituloDeserializar" runat="server" Text="Importar vista previa desde XML" /></h2>
+                            <p class="card-subtitle"><asp:Label ID="lblSubtituloDeserializar" runat="server" Text="Seleccioná un archivo XML exportado por Cambur. Vas a poder ver los profesionales que contiene, con el DNI y el email desencriptados." /></p>
+                        </div>
+
+                        <asp:Label ID="lblMensajeDeserializar" runat="server" Visible="false" CssClass="server-error" />
+
+                        <div class="grid-3">
+                            <div class="field">
+                                <label for="fuArchivoXml"><asp:Label ID="lblEtiquetaArchivoXml" runat="server" Text="Archivo XML" AssociatedControlID="fuArchivoXml" /></label>
+                                <div class="file-input-wrap">
+                                    <asp:FileUpload ID="fuArchivoXml" runat="server" accept=".xml" ClientIDMode="Static"
+                                        CssClass="file-input-native" onchange="cambur_ActualizarNombreArchivoXml(this)" />
+                                    <span class="file-input-boton"><asp:Label ID="lblBtnElegirArchivo" runat="server" Text="Elegir archivo" /></span>
+                                    <asp:Label ID="lblNombreArchivoXml" runat="server" ClientIDMode="Static" CssClass="file-input-nombre" Text="Ningún archivo seleccionado" />
+                                </div>
+                                <script type="text/javascript">
+                                    function cambur_ActualizarNombreArchivoXml(input) {
+                                        var span = document.getElementById('lblNombreArchivoXml');
+                                        if (!span) return;
+                                        if (input.files && input.files.length > 0) {
+                                            span.textContent = input.files[0].name;
+                                        }
+                                    }
+                                </script>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <asp:LinkButton ID="btnVolverGestionDeserializar" runat="server"
+                                CssClass="btn-secondary" Text="Volver a gestión"
+                                OnClick="btnModoGestion_Click" CausesValidation="false" />
+                            <asp:Button ID="btnCargarXml" runat="server"
+                                Text="📤 Cargar XML"
+                                CssClass="btn-primary"
+                                OnClick="btnCargarXml_Click" CausesValidation="false" />
+                        </div>
+
+                        <h2 class="card-title mt-24"><asp:Label ID="lblTituloVistaPreviaXml" runat="server" Text="Profesionales encontrados en el archivo" /></h2>
+                        <div class="table-wrap">
+                            <asp:GridView ID="gvProfesionalesXml" runat="server"
+                                CssClass="data-table"
+                                AutoGenerateColumns="false"
+                                GridLines="None"
+                                Visible="false"
+                                EmptyDataText="No se cargó ningún archivo todavía.">
+
+                                <EmptyDataRowStyle CssClass="empty-row" />
+                                <HeaderStyle      CssClass="table-header" />
+                                <RowStyle         CssClass="table-row" />
+                                <AlternatingRowStyle CssClass="table-row table-row-alt" />
+
+                                <Columns>
+                                    <asp:TemplateField HeaderText="Profesional" HeaderStyle-CssClass="th-left">
+                                        <ItemTemplate>
+                                            <%# Eval("Nombre") %> <%# Eval("Apellido") %>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="Dni"   HeaderText="DNI"   HeaderStyle-CssClass="th-centro" ItemStyle-CssClass="td-centro" />
+                                    <asp:BoundField DataField="Email" HeaderText="Email" HeaderStyle-CssClass="th-left" />
+                                    <asp:TemplateField HeaderText="Rol / Plan" HeaderStyle-CssClass="th-centro" ItemStyle-CssClass="td-centro">
+                                        <ItemTemplate>
+                                            <span class="badge-rol"><%# Eval("RolPermiso") %></span>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="FechaRegistro" HeaderText="Registrado" HeaderStyle-CssClass="th-centro" ItemStyle-CssClass="td-centro"
+                                        DataFormatString="{0:dd/MM/yyyy}" />
+                                    <asp:TemplateField HeaderText="Estado" HeaderStyle-CssClass="th-centro" ItemStyle-CssClass="td-centro">
+                                        <ItemTemplate>
+                                            <span class='<%# (bool)Eval("Activo") ? "badge-estado activo" : "badge-estado inactivo" %>'>
+                                                <%# (bool)Eval("Activo") ? "Activo" : "Inactivo" %>
+                                            </span>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
+                        </div>
+                    </div>
+                </asp:Panel>
 
             </div>
         </div>

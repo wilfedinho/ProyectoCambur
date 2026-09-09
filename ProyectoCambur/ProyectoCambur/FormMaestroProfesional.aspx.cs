@@ -3,7 +3,9 @@ using BLL;
 using SERVICIOS;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.UI.WebControls;
 using GUI;
 public partial class FormMaestroProfesional : PaginaBase
@@ -62,9 +64,209 @@ public partial class FormMaestroProfesional : PaginaBase
         gvProfesionales.Columns[7].HeaderText = Traducir("col_acciones");
         gvProfesionales.EmptyDataText = Traducir("empty_profesionales");
         ddlRol.Items.FindByValue("").Text = Traducir("opt_seleccionar");
-        ddlRol.Items.FindByValue("Free").Text = Traducir("rol_psicologo_free");
+        ddlRol.Items.FindByValue("Basico").Text = Traducir("rol_psicologo_basico");
         ddlRol.Items.FindByValue("Profesional").Text = Traducir("rol_psicologo_profesional");
         ddlRol.Items.FindByValue("Premium").Text = Traducir("rol_psicologo_premium");
+
+        btnModoGestion.Text = "👥 " + Traducir("modo_gestion");
+        btnModoSerializar.Text = "🗄️ " + Traducir("modo_serializar_xml");
+        btnModoDeserializar.Text = "📥 " + Traducir("modo_deserializar_xml");
+
+        lblTituloSerializar.Text = Traducir("titulo_serializar_profesionales");
+        lblSubtituloSerializar.Text = Traducir("subtitulo_serializar_profesionales");
+        gvSeleccionSerializar.Columns[0].HeaderText = Traducir("col_seleccionar");
+        gvSeleccionSerializar.Columns[1].HeaderText = Traducir("col_profesional");
+        gvSeleccionSerializar.Columns[2].HeaderText = Traducir("col_dni");
+        gvSeleccionSerializar.Columns[3].HeaderText = Traducir("col_email");
+        gvSeleccionSerializar.Columns[4].HeaderText = Traducir("lbl_rol_plan");
+        gvSeleccionSerializar.Columns[5].HeaderText = Traducir("col_registrado");
+        gvSeleccionSerializar.EmptyDataText = Traducir("empty_profesionales");
+        btnExportarSeleccionados.Text = "⬇️ " + Traducir("btn_exportar_seleccionados");
+        btnVolverGestionSerializar.Text = Traducir("btn_volver_gestion");
+
+        lblTituloDeserializar.Text = Traducir("titulo_deserializar_profesionales");
+        lblSubtituloDeserializar.Text = Traducir("subtitulo_deserializar_profesionales");
+        lblEtiquetaArchivoXml.Text = Traducir("lbl_archivo_xml");
+        lblBtnElegirArchivo.Text = Traducir("btn_elegir_archivo");
+        lblNombreArchivoXml.Text = Traducir("lbl_ningun_archivo_seleccionado");
+        btnCargarXml.Text = "📤 " + Traducir("btn_cargar_xml");
+        btnVolverGestionDeserializar.Text = Traducir("btn_volver_gestion");
+        lblTituloVistaPreviaXml.Text = Traducir("titulo_vista_previa_xml");
+        gvProfesionalesXml.Columns[0].HeaderText = Traducir("col_profesional");
+        gvProfesionalesXml.Columns[1].HeaderText = Traducir("col_dni");
+        gvProfesionalesXml.Columns[2].HeaderText = Traducir("col_email");
+        gvProfesionalesXml.Columns[3].HeaderText = Traducir("lbl_rol_plan");
+        gvProfesionalesXml.Columns[4].HeaderText = Traducir("col_registrado");
+        gvProfesionalesXml.Columns[5].HeaderText = Traducir("col_estado");
+        gvProfesionalesXml.EmptyDataText = Traducir("empty_vista_previa_xml");
+    }
+
+    private void CambiarModo(string modo)
+    {
+        hdnModo.Value = modo;
+        pnlModoGestion.Visible = modo == "GESTION";
+        pnlModoSerializar.Visible = modo == "SERIALIZAR";
+        pnlModoDeserializar.Visible = modo == "DESERIALIZAR";
+        btnModoGestion.CssClass = modo == "GESTION" ? "btn-modo active" : "btn-modo";
+        btnModoSerializar.CssClass = modo == "SERIALIZAR" ? "btn-modo active" : "btn-modo";
+        btnModoDeserializar.CssClass = modo == "DESERIALIZAR" ? "btn-modo active" : "btn-modo";
+    }
+
+    protected void btnModoGestion_Click(object sender, EventArgs e)
+    {
+        CambiarModo("GESTION");
+        ModoAlta();
+        CargarGrilla();
+    }
+
+    protected void btnModoSerializar_Click(object sender, EventArgs e)
+    {
+        CambiarModo("SERIALIZAR");
+        lblMensajeSerializar.Visible = false;
+        CargarGrillaSerializar();
+    }
+
+    protected void btnModoDeserializar_Click(object sender, EventArgs e)
+    {
+        CambiarModo("DESERIALIZAR");
+        lblMensajeDeserializar.Visible = false;
+        gvProfesionalesXml.Visible = false;
+        gvProfesionalesXml.DataSource = null;
+        gvProfesionalesXml.DataBind();
+    }
+
+    private void CargarGrillaSerializar()
+    {
+        GestorPsicologo gestorPsicologo = new GestorPsicologo();
+        int idPropio = GestorSesion.PsicologoActual.IdPsicologo;
+        List<Psicologo> todos = gestorPsicologo.ObtenerTodos().Where(p => p.IdPsicologo != idPropio).ToList();
+        List<FilaProfesional> filas = todos.Select(p => new FilaProfesional
+        {
+            IdPsicologo = p.IdPsicologo,
+            NombreCompleto = p.Nombre + " " + p.Apellido,
+            Dni = p.Dni,
+            Email = p.Email,
+            Idioma = p.Idioma,
+            RolPermiso = p.RolPermiso,
+            FechaRegistro = p.FechaRegistro,
+            Activo = p.Activo,
+            IsHabilitado = p.IsHabilitado,
+            IsBloqueado = p.IsBloqueado
+        }).ToList();
+        gvSeleccionSerializar.DataSource = filas;
+        gvSeleccionSerializar.DataBind();
+    }
+
+    protected void btnExportarSeleccionados_Click(object sender, EventArgs e)
+    {
+        lblMensajeSerializar.Visible = false;
+
+        List<int> idsSeleccionados = new List<int>();
+        foreach (GridViewRow fila in gvSeleccionSerializar.Rows)
+        {
+            if (fila.RowType != DataControlRowType.DataRow) continue;
+            CheckBox chkSeleccionar = fila.FindControl("chkSeleccionar") as CheckBox;
+            if (chkSeleccionar != null && chkSeleccionar.Checked)
+            {
+                idsSeleccionados.Add(Convert.ToInt32(gvSeleccionSerializar.DataKeys[fila.RowIndex].Value));
+            }
+        }
+
+        string rutaTemp = null;
+        try
+        {
+            string carpetaTemp = Server.MapPath("~/App_Data/ExportacionesTemp");
+            if (!Directory.Exists(carpetaTemp))
+            {
+                Directory.CreateDirectory(carpetaTemp);
+            }
+            string nombreArchivo = "Profesionales_Cambur_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xml";
+            rutaTemp = Path.Combine(carpetaTemp, nombreArchivo);
+
+            Psicologo psicologoActual = GestorSesion.PsicologoActual;
+            WSProfesionales servicioProfesionales = new WSProfesionales();
+            servicioProfesionales.SerializarProfesionales(rutaTemp, idsSeleccionados, psicologoActual.Nombre + " " + psicologoActual.Apellido);
+
+            byte[] contenidoXml = File.ReadAllBytes(rutaTemp);
+
+            Response.Clear();
+            Response.ContentType = "application/xml";
+            Response.AddHeader("Content-Disposition", "attachment; filename=\"" + nombreArchivo + "\"");
+            Response.AddHeader("Content-Length", contenidoXml.Length.ToString());
+            Response.BinaryWrite(contenidoXml);
+            Response.Flush();
+            HttpContext.Current.ApplicationInstance.CompleteRequest();
+        }
+        catch (ExcepcionTraducible ex)
+        {
+            lblMensajeSerializar.Text = TraducirExcepcion(ex);
+            lblMensajeSerializar.CssClass = "server-error";
+            lblMensajeSerializar.Visible = true;
+        }
+        finally
+        {
+            if (rutaTemp != null && File.Exists(rutaTemp))
+            {
+                File.Delete(rutaTemp);
+            }
+        }
+    }
+
+    protected void btnCargarXml_Click(object sender, EventArgs e)
+    {
+        lblMensajeDeserializar.Visible = false;
+        gvProfesionalesXml.Visible = false;
+
+        if (!fuArchivoXml.HasFile)
+        {
+            MostrarErrorDeserializar(Traducir("error_xml_ningun_archivo"));
+            return;
+        }
+
+        string rutaTemp = null;
+        try
+        {
+            string carpetaTemp = Server.MapPath("~/App_Data/ExportacionesTemp");
+            if (!Directory.Exists(carpetaTemp))
+            {
+                Directory.CreateDirectory(carpetaTemp);
+            }
+            rutaTemp = Path.Combine(carpetaTemp, Guid.NewGuid().ToString("N") + ".xml");
+            fuArchivoXml.SaveAs(rutaTemp);
+
+            WSProfesionales servicioProfesionales = new WSProfesionales();
+            List<ProfesionalXmlVista> profesionales = servicioProfesionales.DeserializarProfesionales(rutaTemp);
+
+            gvProfesionalesXml.DataSource = profesionales;
+            gvProfesionalesXml.DataBind();
+            gvProfesionalesXml.Visible = true;
+
+            lblMensajeDeserializar.Text = string.Format(Traducir("msg_xml_cargado_exitosamente"), profesionales.Count);
+            lblMensajeDeserializar.CssClass = "server-success";
+            lblMensajeDeserializar.Visible = true;
+        }
+        catch (ExcepcionTraducible ex)
+        {
+            MostrarErrorDeserializar(TraducirExcepcion(ex));
+        }
+        catch (Exception)
+        {
+            MostrarErrorDeserializar(Traducir("error_xml_formato_invalido"));
+        }
+        finally
+        {
+            if (rutaTemp != null && File.Exists(rutaTemp))
+            {
+                File.Delete(rutaTemp);
+            }
+        }
+    }
+
+    private void MostrarErrorDeserializar(string msg)
+    {
+        lblMensajeDeserializar.Text = msg;
+        lblMensajeDeserializar.CssClass = "server-error";
+        lblMensajeDeserializar.Visible = true;
     }
 
     private void CargarGrilla()

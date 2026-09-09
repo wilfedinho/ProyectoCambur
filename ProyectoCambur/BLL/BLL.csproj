@@ -116,6 +116,7 @@
     <Compile Include="GestorPerfilPaciente.cs" />
     <Compile Include="GestorPsicologo.cs" />
     <Compile Include="GestorResumenClinico.cs" />
+    <Compile Include="GestorSerializacionProfesionales.cs" />
     <Compile Include="GestorSuscripcion.cs" />
     <Compile Include="GestorValoracion.cs" />
     <Compile Include="IComandoAccion.cs" />

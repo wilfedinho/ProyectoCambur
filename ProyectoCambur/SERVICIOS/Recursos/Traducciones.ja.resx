@@ -2676,4 +2676,70 @@
   <data name="valor_tipo_backup_completo" xml:space="preserve">
     <value>完全(フルバックアップ)</value>
   </data>
+  <data name="btn_cargar_xml" xml:space="preserve">
+    <value>XMLを読み込む</value>
+  </data>
+  <data name="btn_exportar_seleccionados" xml:space="preserve">
+    <value>選択項目をエクスポート</value>
+  </data>
+  <data name="btn_volver_gestion" xml:space="preserve">
+    <value>管理画面に戻る</value>
+  </data>
+  <data name="col_seleccionar" xml:space="preserve">
+    <value>選択</value>
+  </data>
+  <data name="empty_vista_previa_xml" xml:space="preserve">
+    <value>まだファイルが読み込まれていません。</value>
+  </data>
+  <data name="error_xml_formato_invalido" xml:space="preserve">
+    <value>ファイルの形式が正しいXMLではないか、破損しています。</value>
+  </data>
+  <data name="error_xml_ningun_archivo" xml:space="preserve">
+    <value>続行するにはXMLファイルを選択してください。</value>
+  </data>
+  <data name="error_xml_ningun_profesional_seleccionado" xml:space="preserve">
+    <value>エクスポートする専門家を少なくとも1名選択してください。</value>
+  </data>
+  <data name="error_xml_origen_invalido" xml:space="preserve">
+    <value>このファイルはCamburシステムによって生成されたものではありません。</value>
+  </data>
+  <data name="error_xml_version_no_soportada" xml:space="preserve">
+    <value>このファイルはサポートされていない形式のバージョンで生成されています。</value>
+  </data>
+  <data name="lbl_archivo_xml" xml:space="preserve">
+    <value>XMLファイル</value>
+  </data>
+  <data name="modo_deserializar_xml" xml:space="preserve">
+    <value>XMLからデシリアライズ</value>
+  </data>
+  <data name="modo_gestion" xml:space="preserve">
+    <value>管理</value>
+  </data>
+  <data name="modo_serializar_xml" xml:space="preserve">
+    <value>XMLへシリアライズ</value>
+  </data>
+  <data name="msg_xml_cargado_exitosamente" xml:space="preserve">
+    <value>ファイルから{0}名の専門家を読み込みました。</value>
+  </data>
+  <data name="subtitulo_deserializar_profesionales" xml:space="preserve">
+    <value>Camburによってエクスポートされたxmlファイルを選択してください。含まれる専門家をDNIとメールアドレスが復号された状態で確認できます。</value>
+  </data>
+  <data name="subtitulo_serializar_profesionales" xml:space="preserve">
+    <value>エクスポートする専門家を選択してください。DNI(身分証明書番号)とメールアドレスは暗号化された状態でファイルに保存されます。</value>
+  </data>
+  <data name="titulo_deserializar_profesionales" xml:space="preserve">
+    <value>XMLからのプレビューをインポート</value>
+  </data>
+  <data name="titulo_serializar_profesionales" xml:space="preserve">
+    <value>専門家をXMLへエクスポート</value>
+  </data>
+  <data name="titulo_vista_previa_xml" xml:space="preserve">
+    <value>ファイル内で見つかった専門家</value>
+  </data>
+  <data name="btn_elegir_archivo" xml:space="preserve">
+    <value>ファイルを選択</value>
+  </data>
+  <data name="lbl_ningun_archivo_seleccionado" xml:space="preserve">
+    <value>ファイルが選択されていません</value>
+  </data>
 </root>

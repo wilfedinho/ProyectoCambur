@@ -2676,4 +2676,70 @@
   <data name="valor_tipo_backup_completo" xml:space="preserve">
     <value>كامل (نسخة احتياطية شاملة)</value>
   </data>
+  <data name="btn_cargar_xml" xml:space="preserve">
+    <value>تحميل XML</value>
+  </data>
+  <data name="btn_exportar_seleccionados" xml:space="preserve">
+    <value>تصدير المحدد</value>
+  </data>
+  <data name="btn_volver_gestion" xml:space="preserve">
+    <value>العودة إلى الإدارة</value>
+  </data>
+  <data name="col_seleccionar" xml:space="preserve">
+    <value>تحديد</value>
+  </data>
+  <data name="empty_vista_previa_xml" xml:space="preserve">
+    <value>لم يتم تحميل أي ملف حتى الآن.</value>
+  </data>
+  <data name="error_xml_formato_invalido" xml:space="preserve">
+    <value>الملف لا يحتوي على تنسيق XML صالح أو أنه تالف.</value>
+  </data>
+  <data name="error_xml_ningun_archivo" xml:space="preserve">
+    <value>حدد ملف XML للمتابعة.</value>
+  </data>
+  <data name="error_xml_ningun_profesional_seleccionado" xml:space="preserve">
+    <value>حدد معالجًا واحدًا على الأقل للتصدير.</value>
+  </data>
+  <data name="error_xml_origen_invalido" xml:space="preserve">
+    <value>لم يتم إنشاء هذا الملف بواسطة نظام Cambur.</value>
+  </data>
+  <data name="error_xml_version_no_soportada" xml:space="preserve">
+    <value>تم إنشاء هذا الملف بإصدار تنسيق غير مدعوم.</value>
+  </data>
+  <data name="lbl_archivo_xml" xml:space="preserve">
+    <value>ملف XML</value>
+  </data>
+  <data name="modo_deserializar_xml" xml:space="preserve">
+    <value>إلغاء تسلسل XML</value>
+  </data>
+  <data name="modo_gestion" xml:space="preserve">
+    <value>إدارة</value>
+  </data>
+  <data name="modo_serializar_xml" xml:space="preserve">
+    <value>تسلسل إلى XML</value>
+  </data>
+  <data name="msg_xml_cargado_exitosamente" xml:space="preserve">
+    <value>تم تحميل {0} معالجًا من الملف.</value>
+  </data>
+  <data name="subtitulo_deserializar_profesionales" xml:space="preserve">
+    <value>حدد ملف XML تم تصديره بواسطة Cambur. ستتمكن من رؤية المعالجين الموجودين فيه، مع رقم الهوية والبريد الإلكتروني بعد فك التشفير.</value>
+  </data>
+  <data name="subtitulo_serializar_profesionales" xml:space="preserve">
+    <value>حدد المعالجين الذين ترغب في تصديرهم. يتم حفظ رقم الهوية والبريد الإلكتروني مشفرين داخل الملف.</value>
+  </data>
+  <data name="titulo_deserializar_profesionales" xml:space="preserve">
+    <value>استيراد معاينة من XML</value>
+  </data>
+  <data name="titulo_serializar_profesionales" xml:space="preserve">
+    <value>تصدير المعالجين إلى XML</value>
+  </data>
+  <data name="titulo_vista_previa_xml" xml:space="preserve">
+    <value>المعالجون الموجودون في الملف</value>
+  </data>
+  <data name="btn_elegir_archivo" xml:space="preserve">
+    <value>اختيار ملف</value>
+  </data>
+  <data name="lbl_ningun_archivo_seleccionado" xml:space="preserve">
+    <value>لم يتم اختيار أي ملف</value>
+  </data>
 </root>

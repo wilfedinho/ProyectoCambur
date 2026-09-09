@@ -2676,4 +2676,70 @@
   <data name="valor_tipo_backup_completo" xml:space="preserve">
     <value>Vollständig (Full Backup)</value>
   </data>
+  <data name="btn_cargar_xml" xml:space="preserve">
+    <value>XML laden</value>
+  </data>
+  <data name="btn_exportar_seleccionados" xml:space="preserve">
+    <value>Ausgewählte exportieren</value>
+  </data>
+  <data name="btn_volver_gestion" xml:space="preserve">
+    <value>Zurück zur Verwaltung</value>
+  </data>
+  <data name="col_seleccionar" xml:space="preserve">
+    <value>Auswählen</value>
+  </data>
+  <data name="empty_vista_previa_xml" xml:space="preserve">
+    <value>Es wurde noch keine Datei geladen.</value>
+  </data>
+  <data name="error_xml_formato_invalido" xml:space="preserve">
+    <value>Die Datei hat kein gültiges XML-Format oder ist beschädigt.</value>
+  </data>
+  <data name="error_xml_ningun_archivo" xml:space="preserve">
+    <value>Wählen Sie eine XML-Datei aus, um fortzufahren.</value>
+  </data>
+  <data name="error_xml_ningun_profesional_seleccionado" xml:space="preserve">
+    <value>Wählen Sie mindestens eine Fachkraft zum Exportieren aus.</value>
+  </data>
+  <data name="error_xml_origen_invalido" xml:space="preserve">
+    <value>Diese Datei wurde nicht vom Cambur-System generiert.</value>
+  </data>
+  <data name="error_xml_version_no_soportada" xml:space="preserve">
+    <value>Diese Datei wurde mit einer nicht unterstützten Formatversion erstellt.</value>
+  </data>
+  <data name="lbl_archivo_xml" xml:space="preserve">
+    <value>XML-Datei</value>
+  </data>
+  <data name="modo_deserializar_xml" xml:space="preserve">
+    <value>XML deserialisieren</value>
+  </data>
+  <data name="modo_gestion" xml:space="preserve">
+    <value>Verwaltung</value>
+  </data>
+  <data name="modo_serializar_xml" xml:space="preserve">
+    <value>Nach XML serialisieren</value>
+  </data>
+  <data name="msg_xml_cargado_exitosamente" xml:space="preserve">
+    <value>Es wurden {0} Fachkräfte aus der Datei geladen.</value>
+  </data>
+  <data name="subtitulo_deserializar_profesionales" xml:space="preserve">
+    <value>Wählen Sie eine von Cambur exportierte XML-Datei aus. Sie können die darin enthaltenen Fachkräfte mit entschlüsselter Ausweisnummer und E-Mail-Adresse einsehen.</value>
+  </data>
+  <data name="subtitulo_serializar_profesionales" xml:space="preserve">
+    <value>Wählen Sie die Fachkräfte aus, die Sie exportieren möchten. Die Ausweisnummer und die E-Mail-Adresse werden verschlüsselt in der Datei gespeichert.</value>
+  </data>
+  <data name="titulo_deserializar_profesionales" xml:space="preserve">
+    <value>Vorschau aus XML importieren</value>
+  </data>
+  <data name="titulo_serializar_profesionales" xml:space="preserve">
+    <value>Fachkräfte nach XML exportieren</value>
+  </data>
+  <data name="titulo_vista_previa_xml" xml:space="preserve">
+    <value>In der Datei gefundene Fachkräfte</value>
+  </data>
+  <data name="btn_elegir_archivo" xml:space="preserve">
+    <value>Datei auswählen</value>
+  </data>
+  <data name="lbl_ningun_archivo_seleccionado" xml:space="preserve">
+    <value>Keine Datei ausgewählt</value>
+  </data>
 </root>

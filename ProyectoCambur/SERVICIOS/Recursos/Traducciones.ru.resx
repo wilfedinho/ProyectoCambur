@@ -2676,4 +2676,70 @@
   <data name="valor_tipo_backup_completo" xml:space="preserve">
     <value>Полная (Full Backup)</value>
   </data>
+  <data name="btn_cargar_xml" xml:space="preserve">
+    <value>Загрузить XML</value>
+  </data>
+  <data name="btn_exportar_seleccionados" xml:space="preserve">
+    <value>Экспортировать выбранные</value>
+  </data>
+  <data name="btn_volver_gestion" xml:space="preserve">
+    <value>Вернуться к управлению</value>
+  </data>
+  <data name="col_seleccionar" xml:space="preserve">
+    <value>Выбрать</value>
+  </data>
+  <data name="empty_vista_previa_xml" xml:space="preserve">
+    <value>Файл ещё не загружен.</value>
+  </data>
+  <data name="error_xml_formato_invalido" xml:space="preserve">
+    <value>Файл имеет недопустимый формат XML или повреждён.</value>
+  </data>
+  <data name="error_xml_ningun_archivo" xml:space="preserve">
+    <value>Выберите XML-файл, чтобы продолжить.</value>
+  </data>
+  <data name="error_xml_ningun_profesional_seleccionado" xml:space="preserve">
+    <value>Выберите хотя бы одного специалиста для экспорта.</value>
+  </data>
+  <data name="error_xml_origen_invalido" xml:space="preserve">
+    <value>Этот файл не был создан системой Cambur.</value>
+  </data>
+  <data name="error_xml_version_no_soportada" xml:space="preserve">
+    <value>Этот файл был создан с использованием версии формата, которая не поддерживается.</value>
+  </data>
+  <data name="lbl_archivo_xml" xml:space="preserve">
+    <value>XML-файл</value>
+  </data>
+  <data name="modo_deserializar_xml" xml:space="preserve">
+    <value>Десериализовать XML</value>
+  </data>
+  <data name="modo_gestion" xml:space="preserve">
+    <value>Управление</value>
+  </data>
+  <data name="modo_serializar_xml" xml:space="preserve">
+    <value>Сериализовать в XML</value>
+  </data>
+  <data name="msg_xml_cargado_exitosamente" xml:space="preserve">
+    <value>Из файла загружено специалистов: {0}.</value>
+  </data>
+  <data name="subtitulo_deserializar_profesionales" xml:space="preserve">
+    <value>Выберите XML-файл, экспортированный системой Cambur. Вы сможете увидеть содержащихся в нём специалистов с расшифрованными номером удостоверения личности (DNI) и адресом электронной почты.</value>
+  </data>
+  <data name="subtitulo_serializar_profesionales" xml:space="preserve">
+    <value>Выберите специалистов, которых Вы хотите экспортировать. Номер удостоверения личности (DNI) и адрес электронной почты сохраняются в файле в зашифрованном виде.</value>
+  </data>
+  <data name="titulo_deserializar_profesionales" xml:space="preserve">
+    <value>Импорт предварительного просмотра из XML</value>
+  </data>
+  <data name="titulo_serializar_profesionales" xml:space="preserve">
+    <value>Экспорт специалистов в XML</value>
+  </data>
+  <data name="titulo_vista_previa_xml" xml:space="preserve">
+    <value>Специалисты, найденные в файле</value>
+  </data>
+  <data name="btn_elegir_archivo" xml:space="preserve">
+    <value>Выбрать файл</value>
+  </data>
+  <data name="lbl_ningun_archivo_seleccionado" xml:space="preserve">
+    <value>Файл не выбран</value>
+  </data>
 </root>

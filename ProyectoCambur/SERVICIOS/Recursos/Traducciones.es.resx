@@ -2676,4 +2676,70 @@
   <data name="valor_tipo_backup_completo" xml:space="preserve">
     <value>Completo (Full Backup)</value>
   </data>
+  <data name="btn_cargar_xml" xml:space="preserve">
+    <value>Cargar XML</value>
+  </data>
+  <data name="btn_exportar_seleccionados" xml:space="preserve">
+    <value>Exportar seleccionados</value>
+  </data>
+  <data name="btn_volver_gestion" xml:space="preserve">
+    <value>Volver a gestión</value>
+  </data>
+  <data name="col_seleccionar" xml:space="preserve">
+    <value>Seleccionar</value>
+  </data>
+  <data name="empty_vista_previa_xml" xml:space="preserve">
+    <value>No se cargó ningún archivo todavía.</value>
+  </data>
+  <data name="error_xml_formato_invalido" xml:space="preserve">
+    <value>El archivo no tiene un formato XML válido o está dañado.</value>
+  </data>
+  <data name="error_xml_ningun_archivo" xml:space="preserve">
+    <value>Seleccioná un archivo XML para continuar.</value>
+  </data>
+  <data name="error_xml_ningun_profesional_seleccionado" xml:space="preserve">
+    <value>Seleccioná al menos un profesional para exportar.</value>
+  </data>
+  <data name="error_xml_origen_invalido" xml:space="preserve">
+    <value>Este archivo no fue generado por el sistema Cambur.</value>
+  </data>
+  <data name="error_xml_version_no_soportada" xml:space="preserve">
+    <value>Este archivo fue generado con una versión de formato que no es compatible.</value>
+  </data>
+  <data name="lbl_archivo_xml" xml:space="preserve">
+    <value>Archivo XML</value>
+  </data>
+  <data name="modo_deserializar_xml" xml:space="preserve">
+    <value>Deserializar XML</value>
+  </data>
+  <data name="modo_gestion" xml:space="preserve">
+    <value>Gestión</value>
+  </data>
+  <data name="modo_serializar_xml" xml:space="preserve">
+    <value>Serializar a XML</value>
+  </data>
+  <data name="msg_xml_cargado_exitosamente" xml:space="preserve">
+    <value>Se cargaron {0} profesionales del archivo.</value>
+  </data>
+  <data name="subtitulo_deserializar_profesionales" xml:space="preserve">
+    <value>Seleccioná un archivo XML exportado por Cambur. Vas a poder ver los profesionales que contiene, con el DNI y el email desencriptados.</value>
+  </data>
+  <data name="subtitulo_serializar_profesionales" xml:space="preserve">
+    <value>Seleccioná los profesionales que querés exportar. El DNI y el email se guardan encriptados dentro del archivo.</value>
+  </data>
+  <data name="titulo_deserializar_profesionales" xml:space="preserve">
+    <value>Importar vista previa desde XML</value>
+  </data>
+  <data name="titulo_serializar_profesionales" xml:space="preserve">
+    <value>Exportar profesionales a XML</value>
+  </data>
+  <data name="titulo_vista_previa_xml" xml:space="preserve">
+    <value>Profesionales encontrados en el archivo</value>
+  </data>
+  <data name="btn_elegir_archivo" xml:space="preserve">
+    <value>Elegir archivo</value>
+  </data>
+  <data name="lbl_ningun_archivo_seleccionado" xml:space="preserve">
+    <value>Ningún archivo seleccionado</value>
+  </data>
 </root>

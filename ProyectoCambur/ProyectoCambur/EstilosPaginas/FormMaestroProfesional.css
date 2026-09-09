@@ -52,3 +52,67 @@
     font-size: 12px;
     margin-top: 4px;
 }
+
+.modo-toolbar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.btn-modo {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-sub);
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+    .btn-modo:hover {
+        border-color: var(--text-muted);
+        color: var(--text-main);
+    }
+
+    .btn-modo.active {
+        background: var(--sidebar-mid);
+        border-color: var(--sidebar-mid);
+        color: #fff;
+    }
+
+.file-input-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.file-input-native {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-input-boton {
+    background: transparent;
+    color: var(--text-sub);
+    border: 0.5px solid var(--border);
+    border-radius: 6px;
+    padding: 11px 24px;
+    font-size: 14px;
+    font-family: var(--font-body);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.file-input-nombre {
+    font-size: 13px;
+    color: var(--text-muted);
+}
