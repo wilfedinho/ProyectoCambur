@@ -50,7 +50,7 @@ public partial class FormMaestroConsulta : GUI.PaginaBase
 
     private void AplicarTraducciones()
     {
-        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+        lblMenuLandingSidebar.Text = Traducir("nav_landing");
         lblHeaderSeccion.Text = Traducir("header_administrador");
         lblHeaderPagina.Text = Traducir("nav_abm_consultas");
 

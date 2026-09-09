@@ -60,7 +60,7 @@ public partial class FormGestionIdiomas : PaginaBase
     private void AplicarTraducciones()
     {
         lblTaglineSidebar.Text = Traducir("tagline_panel_gestion");
-        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+        lblMenuLandingSidebar.Text = Traducir("nav_landing");
         lblHeaderSeccion.Text = Traducir("header_administrador");
         lblHeaderPagina.Text = Traducir("menu_idiomas");
         lblTituloNuevoIdioma.Text = Traducir("titulo_nuevo_idioma");

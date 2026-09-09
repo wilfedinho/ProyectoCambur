@@ -54,7 +54,7 @@ public partial class FormInformeDerivacion : PaginaBase
     private void AplicarTraducciones()
     {
         lblTaglineSidebar.Text = Traducir("tagline_panel_gestion");
-        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+        lblMenuLandingSidebar.Text = Traducir("nav_landing");
         lblHeaderSeccion.Text = Traducir("seccion_modulo_ia");
 
         lblEtiquetaPacienteDerivacion.Text = Traducir("lbl_paciente");

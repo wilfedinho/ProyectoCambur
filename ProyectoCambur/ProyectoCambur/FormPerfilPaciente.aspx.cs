@@ -66,7 +66,7 @@ public partial class FormPerfilPaciente : PaginaBase
     private void AplicarTraducciones()
     {
         lblTaglineSidebar.Text = Traducir("tagline_panel_gestion");
-        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+        lblMenuLandingSidebar.Text = Traducir("nav_landing");
         lblHeaderSeccion.Text = Traducir("seccion_perfilacion");
 
         lblEtiquetaPacientePerfil.Text = Traducir("lbl_paciente");

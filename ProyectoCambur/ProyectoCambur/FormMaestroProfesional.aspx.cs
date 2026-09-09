@@ -46,6 +46,7 @@ public partial class FormMaestroProfesional : PaginaBase
     }
     private void AplicarTraducciones()
     {
+        lblMenuLandingSidebar.Text = Traducir("nav_landing");
         ddlFiltroEstado.Items.FindByValue("TODOS").Text = Traducir("opt_todos");
         ddlFiltroEstado.Items.FindByValue("ACTIVOS").Text = Traducir("opt_activos");
         ddlFiltroEstado.Items.FindByValue("INACTIVOS").Text = Traducir("opt_desactivados");
@@ -61,7 +62,7 @@ public partial class FormMaestroProfesional : PaginaBase
         gvProfesionales.Columns[7].HeaderText = Traducir("col_acciones");
         gvProfesionales.EmptyDataText = Traducir("empty_profesionales");
         ddlRol.Items.FindByValue("").Text = Traducir("opt_seleccionar");
-        ddlRol.Items.FindByValue("Basico").Text = Traducir("rol_psicologo_basico");
+        ddlRol.Items.FindByValue("Free").Text = Traducir("rol_psicologo_free");
         ddlRol.Items.FindByValue("Profesional").Text = Traducir("rol_psicologo_profesional");
         ddlRol.Items.FindByValue("Premium").Text = Traducir("rol_psicologo_premium");
     }

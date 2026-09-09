@@ -35,7 +35,7 @@ public partial class FormGestionPermisos : GUI.PaginaBase
 
     private void AplicarTraducciones()
     {
-        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+        lblMenuLandingSidebar.Text = Traducir("nav_landing");
         lblHeaderSeccion.Text = Traducir("header_administrador");
         lblHeaderPagina.Text = Traducir("nav_gestionar_permisos");
         lblTituloAltas.Text = Traducir("titulo_altas_permisos");

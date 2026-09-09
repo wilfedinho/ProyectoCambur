@@ -46,7 +46,7 @@ public partial class FormRealizarConsulta : PaginaBase
 
     private void AplicarTraducciones()
     {
-        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+        lblMenuLandingSidebar.Text = Traducir("nav_landing");
         lblHeaderSeccion.Text = Traducir("seccion_gestion_clinica");
         lblHeaderPagina.Text = Traducir("nav_realizar_consulta");
 

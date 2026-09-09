@@ -22,7 +22,7 @@
             </div>
             <uc:SidebarNavegacion ID="ucSidebarNavegacion" runat="server" PaginaActual="acceder_registrar_paciente" />
             <div class="sidebar-footer">
-                <a href="FormLogout.aspx" class="nav-item nav-logout">🚪 <asp:Label ID="lblMenuCerrarSesionSidebar" runat="server" Text="" /></a>
+                <a href="FormLanding.aspx" class="nav-item nav-landing"><span>🏢</span> <asp:Label ID="lblMenuLandingSidebar" runat="server" Text="" /></a>
             </div>
         </aside>
 

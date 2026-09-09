@@ -41,7 +41,7 @@ public partial class FormResumenIA : PaginaBase
 
     private void AplicarTraducciones()
     {
-        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+        lblMenuLandingSidebar.Text = Traducir("nav_landing");
         lblHeaderSeccion.Text = Traducir("seccion_modulo_ia");
         lblHeaderPagina.Text = Traducir("nav_resumen_ia");
 

@@ -75,7 +75,7 @@ public partial class FormSuscripcion : PaginaBase
     private void AplicarTraducciones()
     {
         lblTaglineSidebar.Text = Traducir("tagline_panel_gestion");
-        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+        lblMenuLandingSidebar.Text = Traducir("nav_landing");
         lblHeaderTitulo.Text = Traducir("nav_gestionar_suscripcion");
 
         lblMsgSinSuscripcion.Text = Traducir("msg_sin_suscripcion_activa");

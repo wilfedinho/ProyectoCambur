@@ -51,7 +51,7 @@ public partial class FormCambiarIdioma : GUI.PaginaBase
     private void AplicarTraducciones(Psicologo psicologoActual)
     {
         lblTaglineSidebar.Text = Traducir("tagline_configuracion");
-        lblMenuCerrarSesion.Text = Traducir("menu_cerrar_sesion");
+        lblMenuLandingSidebar.Text = Traducir("nav_landing");
         lblHeaderSeccion.Text = Traducir("header_configuracion");
         lblHeaderPagina.Text = Traducir("header_cambiar_idioma");
         lblTituloCard.Text = Traducir("titulo_idioma_interfaz");

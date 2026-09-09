@@ -78,11 +78,7 @@
   </data>
   <data name="opt_seleccionar" xml:space="preserve">
     <value>请选择...</value>
-  </data>
-  <data name="rol_psicologo_free" xml:space="preserve">
-    <value>心理医生 — 免费套餐</value>
-  </data>
-  <data name="rol_psicologo_profesional" xml:space="preserve">
+  </data>  <data name="rol_psicologo_profesional" xml:space="preserve">
     <value>心理医生 — 专业套餐</value>
   </data>
   <data name="rol_psicologo_premium" xml:space="preserve">
@@ -1137,5 +1133,1547 @@
   </data>
   <data name="login_clave_restablecida" xml:space="preserve">
     <value>您的密码已成功重置，现在可以登录了。</value>
+  </data>
+  <data name="acceso_exportar_pdf" xml:space="preserve">
+    <value>导出为PDF</value>
+  </data>
+  <data name="acceso_generar_derivacion" xml:space="preserve">
+    <value>生成转诊</value>
+  </data>
+  <data name="acceso_resumen_ia" xml:space="preserve">
+    <value>AI摘要</value>
+  </data>
+  <data name="acceso_ver_linea_temporal" xml:space="preserve">
+    <value>查看时间线</value>
+  </data>
+  <data name="aviso_campos_no_editables" xml:space="preserve">
+    <value>您只能修改临床字段。日期、时长和患者信息不可编辑。</value>
+  </data>
+  <data name="aviso_consulta_reencriptada" xml:space="preserve">
+    <value>保存时变更会以AES重新加密，符合第25,326号法律的规定。</value>
+  </data>
+  <data name="aviso_critico_texto" xml:space="preserve">
+    <value>备份和恢复操作会直接影响数据库。请确保您拥有相应权限，并在执行恢复操作前告知团队。</value>
+  </data>
+  <data name="aviso_critico_titulo" xml:space="preserve">
+    <value>系统关键操作</value>
+  </data>
+  <data name="aviso_historial_encriptado" xml:space="preserve">
+    <value>临床病历在持久化保存前会以AES加密，符合第25,326号法律的规定。</value>
+  </data>
+  <data name="aviso_ia_badge_informe" xml:space="preserve">
+    <value>由辅助AI生成 · 验证前请审阅并调整内容 · 非自动诊断</value>
+  </data>
+  <data name="aviso_ia_badge_perfil" xml:space="preserve">
+    <value>由AI生成的参考性画像 · 非诊断结论 · 仅作情境性描述参考 · 建议由专业人员审核</value>
+  </data>
+  <data name="aviso_ia_informe_titulo" xml:space="preserve">
+    <value>AI在撰写报告时将使用：</value>
+  </data>
+  <data name="aviso_ia_resultado" xml:space="preserve">
+    <value>由辅助AI生成 · 仅供组织参考 · 非诊断结论 · 建议由专业人员审核</value>
+  </data>
+  <data name="aviso_ia_resumen" xml:space="preserve">
+    <value>AI会对已记录的信息进行整理和归纳，不会给出诊断结论，也不会取代专业人员的判断。</value>
+  </data>
+  <data name="aviso_restore_texto" xml:space="preserve">
+    <value>注意：恢复操作将用所选文件的内容替换数据库中的全部当前数据。此操作无法撤销。</value>
+  </data>
+  <data name="aviso_resumen_encriptado" xml:space="preserve">
+    <value>生成的内容在保存时会以AES加密，符合第25,326号个人数据保护法的规定。</value>
+  </data>
+  <data name="aviso_texto_datos_encriptados_perfil" xml:space="preserve">
+    <value>生成的画像会自动以AES加密，符合第25,326号法律的规定。</value>
+  </data>
+  <data name="aviso_texto_perfil_encriptado" xml:space="preserve">
+    <value>该画像在生成时已自动保存并以AES加密，符合第25,326号法律的规定。</value>
+  </data>
+  <data name="aviso_texto_revision_obligatoria" xml:space="preserve">
+    <value>生成的报告在用于外部用途前必须经专业人员审核并确认。</value>
+  </data>
+  <data name="aviso_texto_revision_profesional" xml:space="preserve">
+    <value>请在确认前审阅并调整生成的内容。只有您可以签署并启用此报告用于外部用途。</value>
+  </data>
+  <data name="aviso_titulo_datos_encriptados" xml:space="preserve">
+    <value>数据已加密</value>
+  </data>
+  <data name="aviso_titulo_perfil_encriptado" xml:space="preserve">
+    <value>画像已加密</value>
+  </data>
+  <data name="aviso_titulo_revision_obligatoria" xml:space="preserve">
+    <value>强制审核</value>
+  </data>
+  <data name="aviso_titulo_revision_profesional" xml:space="preserve">
+    <value>专业审核</value>
+  </data>
+  <data name="badge_completado" xml:space="preserve">
+    <value>已完成</value>
+  </data>
+  <data name="badge_editable_hasta" xml:space="preserve">
+    <value>可编辑截止日期</value>
+  </data>
+  <data name="badge_historial_completo" xml:space="preserve">
+    <value>完整病历</value>
+  </data>
+  <data name="badge_mas_elegido" xml:space="preserve">
+    <value>最受欢迎</value>
+  </data>
+  <data name="badge_pendiente" xml:space="preserve">
+    <value>待处理</value>
+  </data>
+  <data name="badge_pendiente_revision" xml:space="preserve">
+    <value>待审核</value>
+  </data>
+  <data name="badge_suscripcion_activa" xml:space="preserve">
+    <value>有效</value>
+  </data>
+  <data name="badge_suscripcion_cancelada" xml:space="preserve">
+    <value>已取消</value>
+  </data>
+  <data name="badge_suscripcion_vencida" xml:space="preserve">
+    <value>已过期</value>
+  </data>
+  <data name="badge_ultimo_dia_editar" xml:space="preserve">
+    <value>最后编辑日</value>
+  </data>
+  <data name="btn_actualizar_medio_pago" xml:space="preserve">
+    <value>更新支付方式</value>
+  </data>
+  <data name="btn_buscar_consultas" xml:space="preserve">
+    <value>搜索就诊记录</value>
+  </data>
+  <data name="btn_cambiar_filtros" xml:space="preserve">
+    <value>更改筛选条件</value>
+  </data>
+  <data name="btn_cancelar_suscripcion" xml:space="preserve">
+    <value>取消订阅</value>
+  </data>
+  <data name="btn_confirmar_pago" xml:space="preserve">
+    <value>确认付款</value>
+  </data>
+  <data name="btn_confirmar_restore" xml:space="preserve">
+    <value>确认恢复</value>
+  </data>
+  <data name="btn_continuar" xml:space="preserve">
+    <value>继续</value>
+  </data>
+  <data name="btn_descartar_informe" xml:space="preserve">
+    <value>放弃报告</value>
+  </data>
+  <data name="btn_elegir_otro_paciente" xml:space="preserve">
+    <value>选择其他患者</value>
+  </data>
+  <data name="btn_entendido" xml:space="preserve">
+    <value>知道了</value>
+  </data>
+  <data name="btn_exportar_pdf" xml:space="preserve">
+    <value>📄 导出为PDF</value>
+  </data>
+  <data name="btn_generar_backup" xml:space="preserve">
+    <value>立即生成备份</value>
+  </data>
+  <data name="btn_generar_informe_ia" xml:space="preserve">
+    <value>用AI生成报告</value>
+  </data>
+  <data name="btn_generar_perfil" xml:space="preserve">
+    <value>生成画像</value>
+  </data>
+  <data name="btn_generar_resumen_ia" xml:space="preserve">
+    <value>用AI生成摘要</value>
+  </data>
+  <data name="btn_guardar_borrador" xml:space="preserve">
+    <value>保存草稿</value>
+  </data>
+  <data name="btn_guardar_historial" xml:space="preserve">
+    <value>保存临床病历</value>
+  </data>
+  <data name="btn_nuevo_perfil" xml:space="preserve">
+    <value>新建画像</value>
+  </data>
+  <data name="btn_nuevo_resumen" xml:space="preserve">
+    <value>新建摘要</value>
+  </data>
+  <data name="btn_plan_actual" xml:space="preserve">
+    <value>当前套餐</value>
+  </data>
+  <data name="btn_plan_seleccionar" xml:space="preserve">
+    <value>选择</value>
+  </data>
+  <data name="btn_reactivar_suscripcion" xml:space="preserve">
+    <value>重新激活订阅</value>
+  </data>
+  <data name="btn_revisar_firmar" xml:space="preserve">
+    <value>审核并签署</value>
+  </data>
+  <data name="btn_seleccionar_y_restaurar" xml:space="preserve">
+    <value>选择文件并恢复</value>
+  </data>
+  <data name="btn_validar_firmar_informe" xml:space="preserve">
+    <value>确认并签署报告</value>
+  </data>
+  <data name="btn_volver" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="carga_subtitulo_backup_restore" xml:space="preserve">
+    <value>根据数据库大小，此过程可能需要几秒钟。请勿关闭此窗口。</value>
+  </data>
+  <data name="carga_subtitulo_informe_ia" xml:space="preserve">
+    <value>正在整合临床信息并撰写文档</value>
+  </data>
+  <data name="carga_subtitulo_perfil_ia" xml:space="preserve">
+    <value>正在分析临床信息并与所选模型进行比对</value>
+  </data>
+  <data name="carga_subtitulo_resumen_ia" xml:space="preserve">
+    <value>正在分析就诊记录并生成结构化摘要</value>
+  </data>
+  <data name="carga_titulo_backup_restore" xml:space="preserve">
+    <value>正在处理操作……</value>
+  </data>
+  <data name="carga_titulo_informe_ia" xml:space="preserve">
+    <value>正在用AI生成报告……</value>
+  </data>
+  <data name="carga_titulo_perfil_ia" xml:space="preserve">
+    <value>正在用AI生成画像……</value>
+  </data>
+  <data name="carga_titulo_resumen_ia" xml:space="preserve">
+    <value>正在通过辅助AI处理……</value>
+  </data>
+  <data name="confirm_cancelar_suscripcion" xml:space="preserve">
+    <value>确认取消订阅吗？订阅将在当前计费周期结束前保持有效。</value>
+  </data>
+  <data name="confirm_descartar_informe" xml:space="preserve">
+    <value>确认放弃吗？此操作不可撤销。</value>
+  </data>
+  <data name="confirm_generar_backup" xml:space="preserve">
+    <value>确认生成备份吗？系统将在实例的备份文件夹中创建一个新的.bak文件。</value>
+  </data>
+  <data name="doc_informe_derivacion" xml:space="preserve">
+    <value>转诊报告</value>
+  </data>
+  <data name="doc_perfil_evolutivo" xml:space="preserve">
+    <value>演变画像</value>
+  </data>
+  <data name="doc_resumen_clinico" xml:space="preserve">
+    <value>AI临床摘要</value>
+  </data>
+  <data name="dvh_registro_inconsistente_bitacora" xml:space="preserve">
+    <value>检测到日志事件编号{0}（用户{1}）存在异常。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_familia" xml:space="preserve">
+    <value>检测到权限组"{0}"存在异常。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_familia_familia" xml:space="preserve">
+    <value>检测到权限组"{0}"与所含子组"{1}"之间的关系存在异常。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_historial" xml:space="preserve">
+    <value>HistorialClinico表：患者编号{1}的临床病历编号{0}存在异常（可能被直接在数据库中修改，或未通过系统插入）。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_idioma" xml:space="preserve">
+    <value>检测到语言"{0}"（代码{1}）存在异常。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_informe_derivacion" xml:space="preserve">
+    <value>InformeDerivacion表：患者编号{1}的转诊报告编号{0}存在异常（可能被直接在数据库中修改，或未通过系统插入）。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_perfil" xml:space="preserve">
+    <value>检测到配置文件"{0}"存在异常。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_perfil_familia" xml:space="preserve">
+    <value>检测到配置文件"{0}"与权限组"{1}"之间的关系存在异常。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_perfil_paciente" xml:space="preserve">
+    <value>PerfilPaciente表：患者编号{1}的画像编号{0}存在异常（可能被直接在数据库中修改，或未通过系统插入）。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_permiso_simple" xml:space="preserve">
+    <value>检测到单项权限"{0}"存在异常。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_permiso_simple_familia" xml:space="preserve">
+    <value>检测到权限组"{0}"与单项权限"{1}"之间的关系存在异常。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_permiso_simple_perfil" xml:space="preserve">
+    <value>检测到配置文件"{0}"与单项权限"{1}"之间的关系存在异常。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_resumen" xml:space="preserve">
+    <value>ResumenClinico表：患者编号{1}的临床摘要编号{0}存在异常（可能被直接在数据库中修改，或未通过系统插入）。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_suscripcion" xml:space="preserve">
+    <value>检测到订阅编号{0}（专业人员ID{1}）存在异常。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_token" xml:space="preserve">
+    <value>检测到找回令牌编号{0}（专业人员ID{1}）存在异常。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_traduccion" xml:space="preserve">
+    <value>检测到语言{0}的某条翻译（键"{1}"）存在异常。</value>
+  </data>
+  <data name="error_backup_archivo_invalido" xml:space="preserve">
+    <value>所选文件已不可用。请刷新列表后重试。</value>
+  </data>
+  <data name="error_backup_carpeta_no_configurada" xml:space="preserve">
+    <value>无法确定SQL Server实例的备份文件夹。</value>
+  </data>
+  <data name="error_backup_fallo" xml:space="preserve">
+    <value>无法生成备份。详情：{0}</value>
+  </data>
+  <data name="error_backup_inesperado" xml:space="preserve">
+    <value>生成备份时发生意外错误。请稍后重试。</value>
+  </data>
+  <data name="error_backup_permiso_carpeta" xml:space="preserve">
+    <value>SQL Server没有权限写入其备份文件夹。详情：{0}</value>
+  </data>
+  <data name="error_campo_obligatorio" xml:space="preserve">
+    <value>此字段为必填项。</value>
+  </data>
+  <data name="error_consulta_encriptacion" xml:space="preserve">
+    <value>由于加密就诊记录时发生内部错误，操作未能完成。请重试。</value>
+  </data>
+  <data name="error_consulta_fuera_de_plazo_modificacion" xml:space="preserve">
+    <value>修改此就诊记录的{0}天期限已过。</value>
+  </data>
+  <data name="error_consulta_ya_modificada" xml:space="preserve">
+    <value>此就诊记录已被修改过，无法再次编辑。</value>
+  </data>
+  <data name="error_contacto_datos_invalidos" xml:space="preserve">
+    <value>请在发送前填写您的姓名、主题和留言内容。</value>
+  </data>
+  <data name="error_contacto_email_invalido" xml:space="preserve">
+    <value>请输入有效的电子邮箱地址。</value>
+  </data>
+  <data name="error_dashboard_recalculo" xml:space="preserve">
+    <value>无法重新计算所选周期的指标。</value>
+  </data>
+  <data name="error_dashboard_recuperacion" xml:space="preserve">
+    <value>无法获取仪表盘指标。请稍后重试。</value>
+  </data>
+  <data name="error_dni_obligatorio" xml:space="preserve">
+    <value>身份证号为必填项。</value>
+  </data>
+  <data name="error_documento_no_disponible" xml:space="preserve">
+    <value>该患者的所选文档目前尚不可用。</value>
+  </data>
+  <data name="error_especialidad_obligatoria" xml:space="preserve">
+    <value>请选择专科。</value>
+  </data>
+  <data name="error_estado_civil_obligatorio" xml:space="preserve">
+    <value>请选择婚姻状况。</value>
+  </data>
+  <data name="error_fecha_desde_obligatoria" xml:space="preserve">
+    <value>请输入起始日期。</value>
+  </data>
+  <data name="error_fecha_formato_invalido" xml:space="preserve">
+    <value>输入的日期无效。</value>
+  </data>
+  <data name="error_fecha_hasta_obligatoria" xml:space="preserve">
+    <value>请输入结束日期。</value>
+  </data>
+  <data name="error_generacion_pdf" xml:space="preserve">
+    <value>生成PDF时发生错误。请重试。</value>
+  </data>
+  <data name="error_historial_campos_incompletos" xml:space="preserve">
+    <value>保存前请完成临床病历的全部6个部分。</value>
+  </data>
+  <data name="error_historial_encriptacion" xml:space="preserve">
+    <value>由于加密临床病历时发生内部错误，操作未能完成。请重试。</value>
+  </data>
+  <data name="error_historial_ya_existe" xml:space="preserve">
+    <value>该患者已有已登记的临床病历。当前显示的是其现有数据，供您修改。</value>
+  </data>
+  <data name="error_ia_comunicacion" xml:space="preserve">
+    <value>由于与人工智能服务通信出错，无法生成摘要。请重试。</value>
+  </data>
+  <data name="error_ia_respuesta_invalida" xml:space="preserve">
+    <value>由于人工智能服务返回了无效响应，无法生成摘要。请重试。</value>
+  </data>
+  <data name="error_ia_saturado" xml:space="preserve">
+    <value>人工智能服务当前负载已满（已达到使用限额）。请稍等片刻后重试。</value>
+  </data>
+  <data name="error_ia_timeout" xml:space="preserve">
+    <value>人工智能服务响应超时。请重试。</value>
+  </data>
+  <data name="error_informe_campos_incompletos" xml:space="preserve">
+    <value>生成报告前，请填写转诊专科、接收专业人员及转诊原因。</value>
+  </data>
+  <data name="error_informe_encriptacion" xml:space="preserve">
+    <value>保护报告信息时发生错误。请重试。</value>
+  </data>
+  <data name="error_informe_firma_obligatoria" xml:space="preserve">
+    <value>确认并签署报告前必须先签名。</value>
+  </data>
+  <data name="error_informe_informacion_insuficiente" xml:space="preserve">
+    <value>已录入的临床信息不足以撰写转诊报告。请在重试前检查该患者的临床病历和就诊记录。</value>
+  </data>
+  <data name="error_informe_no_propio" xml:space="preserve">
+    <value>所请求的报告不存在，或不属于您负责的患者。</value>
+  </data>
+  <data name="error_informe_sin_informacion_clinica" xml:space="preserve">
+    <value>该患者没有临床病历或就诊记录。请先录入临床信息，再生成转诊报告。</value>
+  </data>
+  <data name="error_informe_vacio" xml:space="preserve">
+    <value>报告不能为空。请至少填写诊断综述部分。</value>
+  </data>
+  <data name="error_motivo_derivacion_obligatorio" xml:space="preserve">
+    <value>请输入转诊原因。</value>
+  </data>
+  <data name="error_paciente_duplicado" xml:space="preserve">
+    <value>您已登记过一名相同身份证号的患者。</value>
+  </data>
+  <data name="error_paciente_email_duplicado" xml:space="preserve">
+    <value>您已登记过一名相同邮箱的患者。</value>
+  </data>
+  <data name="error_paciente_no_propio" xml:space="preserve">
+    <value>所选患者未关联到您的专业档案。</value>
+  </data>
+  <data name="error_pago_no_procesado" xml:space="preserve">
+    <value>付款处理失败。请核对卡片信息后重试。</value>
+  </data>
+  <data name="error_pago_rechazado" xml:space="preserve">
+    <value>付款被拒绝（{0}）。请核对您的卡片信息后重试。</value>
+  </data>
+  <data name="error_pago_timeout" xml:space="preserve">
+    <value>由于与支付网关通信出错，无法处理付款。请稍后重试。</value>
+  </data>
+  <data name="error_perfil_encriptacion" xml:space="preserve">
+    <value>保护画像信息时发生错误。请重试。</value>
+  </data>
+  <data name="error_perfil_informacion_insuficiente" xml:space="preserve">
+    <value>已录入的临床信息不足以按所选模型生成画像。请在重试前检查该患者的临床病历和就诊记录。</value>
+  </data>
+  <data name="error_perfil_modelo_invalido" xml:space="preserve">
+    <value>生成画像前请选择一个有效的评估模型。</value>
+  </data>
+  <data name="error_perfil_sin_informacion_clinica" xml:space="preserve">
+    <value>该患者没有临床病历或就诊记录。请先录入临床信息，再生成画像。</value>
+  </data>
+  <data name="error_prof_destino_obligatorio" xml:space="preserve">
+    <value>请输入接收专业人员。</value>
+  </data>
+  <data name="error_rango_fecha_invalido" xml:space="preserve">
+    <value>所选日期范围无效："起始日期"不能晚于"结束日期"。</value>
+  </data>
+  <data name="error_restore_fallo" xml:space="preserve">
+    <value>恢复操作未能完成。详情：{0}</value>
+  </data>
+  <data name="error_restore_inesperado" xml:space="preserve">
+    <value>恢复备份时发生意外错误。请稍后重试，或联系技术支持。</value>
+  </data>
+  <data name="error_restore_permiso_carpeta" xml:space="preserve">
+    <value>SQL Server没有权限读取所选的备份文件。详情：{0}</value>
+  </data>
+  <data name="error_resumen_encriptacion" xml:space="preserve">
+    <value>由于加密摘要时发生内部错误，操作未能完成。请重试。</value>
+  </data>
+  <data name="error_resumen_informacion_insuficiente" xml:space="preserve">
+    <value>所选就诊记录中录入的临床信息不足以生成摘要。请在重试前检查就诊记录字段，并补充真实的临床信息。</value>
+  </data>
+  <data name="error_resumen_sin_consultas" xml:space="preserve">
+    <value>在所选期间内未找到该患者的就诊记录。</value>
+  </data>
+  <data name="error_resumen_sin_consultas_seleccionadas" xml:space="preserve">
+    <value>请至少选择一条就诊记录以生成摘要。</value>
+  </data>
+  <data name="error_seleccionar_archivo" xml:space="preserve">
+    <value>继续前请从列表中选择一个备份文件。</value>
+  </data>
+  <data name="error_seleccionar_paciente_perfil" xml:space="preserve">
+    <value>生成画像前请先选择患者。</value>
+  </data>
+  <data name="error_sexo_obligatorio" xml:space="preserve">
+    <value>请选择患者性别。</value>
+  </data>
+  <data name="error_sin_consultas_editables" xml:space="preserve">
+    <value>该患者没有处于可修改的3天期限内的就诊记录。</value>
+  </data>
+  <data name="error_suscripcion_mismo_plan" xml:space="preserve">
+    <value>您已订阅该套餐。</value>
+  </data>
+  <data name="error_suscripcion_no_activa" xml:space="preserve">
+    <value>您没有有效的订阅。</value>
+  </data>
+  <data name="error_suscripcion_no_cancelada" xml:space="preserve">
+    <value>没有可重新激活的已取消订阅。</value>
+  </data>
+  <data name="error_suscripcion_periodo_vencido" xml:space="preserve">
+    <value>该订阅的已付费周期已到期。请选择一个套餐以重新订阅。</value>
+  </data>
+  <data name="error_suscripcion_plan_invalido" xml:space="preserve">
+    <value>所选订阅套餐无效。</value>
+  </data>
+  <data name="error_tarjeta_no_validada" xml:space="preserve">
+    <value>无法验证卡片信息。请刷新页面后重试。</value>
+  </data>
+  <data name="error_tarjeta_obligatoria" xml:space="preserve">
+    <value>请输入卡号。</value>
+  </data>
+  <data name="error_valoracion_puntuacion_invalida" xml:space="preserve">
+    <value>请选择1至5星的评分。</value>
+  </data>
+  <data name="error_valoracion_sin_suscripcion_activa" xml:space="preserve">
+    <value>您需要有效的订阅才能为服务评分。</value>
+  </data>
+  <data name="esp_cardiologia" xml:space="preserve">
+    <value>心脏病学</value>
+  </data>
+  <data name="esp_fisiatria" xml:space="preserve">
+    <value>物理康复医学</value>
+  </data>
+  <data name="esp_medicina_general" xml:space="preserve">
+    <value>全科医学</value>
+  </data>
+  <data name="esp_neurologia" xml:space="preserve">
+    <value>神经病学</value>
+  </data>
+  <data name="esp_nutricion" xml:space="preserve">
+    <value>营养学</value>
+  </data>
+  <data name="esp_otra_especialidad" xml:space="preserve">
+    <value>其他专科</value>
+  </data>
+  <data name="esp_psiquiatria" xml:space="preserve">
+    <value>精神病学</value>
+  </data>
+  <data name="esp_trabajo_social" xml:space="preserve">
+    <value>社会工作</value>
+  </data>
+  <data name="exito_borrador_guardado" xml:space="preserve">
+    <value>草稿已保存。您可以稍后在转诊模块中继续审核。</value>
+  </data>
+  <data name="exito_informe_descartado" xml:space="preserve">
+    <value>报告已成功放弃。</value>
+  </data>
+  <data name="exito_informe_validado" xml:space="preserve">
+    <value>报告已由{0}确认并签署。该文档现可导出为PDF。</value>
+  </data>
+  <data name="exito_medio_pago_actualizado" xml:space="preserve">
+    <value>支付方式更新成功。</value>
+  </data>
+  <data name="exito_plan_actualizado" xml:space="preserve">
+    <value>套餐更新成功，变更已立即生效。</value>
+  </data>
+  <data name="exito_suscripcion_reactivada" xml:space="preserve">
+    <value>您的订阅已成功重新激活。</value>
+  </data>
+  <data name="eyebrow_plan_activo" xml:space="preserve">
+    <value>当前套餐</value>
+  </data>
+  <data name="feature_consultas_historial" xml:space="preserve">
+    <value>就诊记录与病历</value>
+  </data>
+  <data name="feature_exportaciones_avanzado" xml:space="preserve">
+    <value>高级</value>
+  </data>
+  <data name="feature_exportaciones_pdf" xml:space="preserve">
+    <value>PDF导出</value>
+  </data>
+  <data name="feature_informe_derivacion_ia" xml:space="preserve">
+    <value>AI转诊报告</value>
+  </data>
+  <data name="feature_pacientes" xml:space="preserve">
+    <value>患者</value>
+  </data>
+  <data name="feature_pacientes_hasta20" xml:space="preserve">
+    <value>最多20位</value>
+  </data>
+  <data name="feature_pacientes_ilimitados" xml:space="preserve">
+    <value>无限量</value>
+  </data>
+  <data name="feature_perfilacion" xml:space="preserve">
+    <value>患者画像</value>
+  </data>
+  <data name="feature_resumen_ia" xml:space="preserve">
+    <value>AI临床摘要</value>
+  </data>
+  <data name="feature_soporte" xml:space="preserve">
+    <value>客户支持</value>
+  </data>
+  <data name="feature_soporte_email" xml:space="preserve">
+    <value>邮件</value>
+  </data>
+  <data name="feature_soporte_email_chat" xml:space="preserve">
+    <value>邮件+在线聊天</value>
+  </data>
+  <data name="feature_soporte_prioritario" xml:space="preserve">
+    <value>优先支持</value>
+  </data>
+  <data name="filtro_consultas" xml:space="preserve">
+    <value>就诊记录</value>
+  </data>
+  <data name="filtro_historial" xml:space="preserve">
+    <value>病历</value>
+  </data>
+  <data name="filtro_informe_derivacion" xml:space="preserve">
+    <value>转诊报告</value>
+  </data>
+  <data name="filtro_perfilacion" xml:space="preserve">
+    <value>画像</value>
+  </data>
+  <data name="filtro_resumen_ia" xml:space="preserve">
+    <value>AI摘要</value>
+  </data>
+  <data name="filtro_todos" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="hint_historial_clinico" xml:space="preserve">
+    <value>此信息并非来自某次具体就诊，而是来自患者的整体情况。展开各部分以完成填写。</value>
+  </data>
+  <data name="hint_seleccionar_consulta_modificar" xml:space="preserve">
+    <value>仅显示创建后3天期限内的就诊记录。请选择一条进行修改。</value>
+  </data>
+  <data name="hint_seleccionar_consultas" xml:space="preserve">
+    <value>请选择要纳入摘要的就诊记录。您可以使用表头的复选框全选。</value>
+  </data>
+  <data name="hint_seleccionar_modelo" xml:space="preserve">
+    <value>请为此次画像分析选择合适的评估框架。您可以使用不同模型生成多个画像。</value>
+  </data>
+  <data name="historial_sin_consultas" xml:space="preserve">
+    <value>该患者尚无已登记的就诊记录。</value>
+  </data>
+  <data name="ia_aviso_perfil" xml:space="preserve">
+    <value>画像是描述性的情境性呈现，不构成临床诊断，也不能取代专业人员的判断。</value>
+  </data>
+  <data name="info_incluye_antecedentes" xml:space="preserve">
+    <value>临床病历中的既往史</value>
+  </data>
+  <data name="info_incluye_evolucion" xml:space="preserve">
+    <value>治疗过程中观察到的进展</value>
+  </data>
+  <data name="info_incluye_intervenciones" xml:space="preserve">
+    <value>已实施的干预与支持措施</value>
+  </data>
+  <data name="js_procesando_pago" xml:space="preserve">
+    <value>正在处理付款……</value>
+  </data>
+  <data name="js_tarjeta_invalida" xml:space="preserve">
+    <value>无法验证卡片信息。请检查卡号、有效期和安全码。</value>
+  </data>
+  <data name="js_tarjeta_no_identificada" xml:space="preserve">
+    <value>无法识别所输入的卡片。请核对卡号。</value>
+  </data>
+  <data name="js_tarjeta_no_reconocida" xml:space="preserve">
+    <value>无法识别此卡片。请核对所输入的卡号。</value>
+  </data>
+  <data name="kpi_consultas_realizadas" xml:space="preserve">
+    <value>已完成的就诊</value>
+  </data>
+  <data name="kpi_derivaciones" xml:space="preserve">
+    <value>转诊</value>
+  </data>
+  <data name="kpi_informes_exportados" xml:space="preserve">
+    <value>已导出报告</value>
+  </data>
+  <data name="kpi_nuevos_pacientes" xml:space="preserve">
+    <value>本期新增</value>
+  </data>
+  <data name="kpi_perfilaciones" xml:space="preserve">
+    <value>画像分析</value>
+  </data>
+  <data name="kpi_resumenes_ia" xml:space="preserve">
+    <value>已生成AI摘要</value>
+  </data>
+  <data name="kpi_total_pacientes" xml:space="preserve">
+    <value>患者总数</value>
+  </data>
+  <data name="landing_btn_crear_cuenta" xml:space="preserve">
+    <value>创建账户</value>
+  </data>
+  <data name="landing_btn_enviar_contacto" xml:space="preserve">
+    <value>发送消息</value>
+  </data>
+  <data name="landing_btn_enviar_valoracion" xml:space="preserve">
+    <value>发布评价</value>
+  </data>
+  <data name="landing_btn_iniciar_sesion" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="landing_btn_ir_panel" xml:space="preserve">
+    <value>进入控制面板</value>
+  </data>
+  <data name="landing_contacto_enviado" xml:space="preserve">
+    <value>感谢您！我们已收到您的消息，将尽快回复。</value>
+  </data>
+  <data name="landing_contacto_lbl_asunto" xml:space="preserve">
+    <value>主题</value>
+  </data>
+  <data name="landing_contacto_lbl_email" xml:space="preserve">
+    <value>电子邮箱</value>
+  </data>
+  <data name="landing_contacto_lbl_mensaje" xml:space="preserve">
+    <value>留言</value>
+  </data>
+  <data name="landing_contacto_lbl_nombre" xml:space="preserve">
+    <value>姓名</value>
+  </data>
+  <data name="landing_contacto_texto" xml:space="preserve">
+    <value>对Cambur有疑问，或想和我们聊聊其他项目？给我们留言，我们会尽快回复您。</value>
+  </data>
+  <data name="landing_contacto_titulo" xml:space="preserve">
+    <value>联系我们</value>
+  </data>
+  <data name="landing_faq_pregunta_1" xml:space="preserve">
+    <value>什么是Cambur？</value>
+  </data>
+  <data name="landing_faq_pregunta_2" xml:space="preserve">
+    <value>AI会取代专业人员的判断吗？</value>
+  </data>
+  <data name="landing_faq_pregunta_3" xml:space="preserve">
+    <value>我患者的数据安全性如何？</value>
+  </data>
+  <data name="landing_faq_pregunta_4" xml:space="preserve">
+    <value>有哪些订阅套餐？</value>
+  </data>
+  <data name="landing_faq_pregunta_5" xml:space="preserve">
+    <value>我可以随时取消订阅吗？</value>
+  </data>
+  <data name="landing_faq_pregunta_6" xml:space="preserve">
+    <value>CZ Consulting只开发Cambur吗？</value>
+  </data>
+  <data name="landing_faq_respuesta_1" xml:space="preserve">
+    <value>这是一款为心理咨询师打造的临床管理系统：帮助整理患者、就诊记录与病历信息，并借助人工智能协助撰写临床摘要、转诊报告和演变画像。</value>
+  </data>
+  <data name="landing_faq_respuesta_2" xml:space="preserve">
+    <value>不会。AI仅根据专业人员录入的信息辅助撰写文档，所有生成结果在使用前都需经过专业人员审核和确认。</value>
+  </data>
+  <data name="landing_faq_respuesta_3" xml:space="preserve">
+    <value>临床信息设有完整性校验和内部审计日志，且系统内每个界面的访问权限均按用户角色进行限制。</value>
+  </data>
+  <data name="landing_faq_respuesta_4" xml:space="preserve">
+    <value>基础版、专业版和高级版，各有不同的月度使用限额。您可以随时在控制面板中更改套餐或支付方式。</value>
+  </data>
+  <data name="landing_faq_respuesta_5" xml:space="preserve">
+    <value>可以，没有最低使用期限的限制。取消订阅后，您仍可使用至已付费周期结束。</value>
+  </data>
+  <data name="landing_faq_respuesta_6" xml:space="preserve">
+    <value>不是。我们的主业是软件开发，Cambur是我们专注于HealthTech领域的产品之一，同时我们也为其他机构提供定制化项目服务。</value>
+  </data>
+  <data name="landing_faq_titulo" xml:space="preserve">
+    <value>常见问题</value>
+  </data>
+  <data name="landing_footer_texto" xml:space="preserve">
+    <value>CZ Consulting是一家软件开发公司。Cambur是CZ Consulting旗下的一款产品。</value>
+  </data>
+  <data name="landing_hero_cta_cambur" xml:space="preserve">
+    <value>了解Cambur</value>
+  </data>
+  <data name="landing_hero_cta_servicios" xml:space="preserve">
+    <value>了解我们的服务</value>
+  </data>
+  <data name="landing_hero_eyebrow" xml:space="preserve">
+    <value>CZ Consulting · 软件开发</value>
+  </data>
+  <data name="landing_hero_texto" xml:space="preserve">
+    <value>我们是一家软件开发公司，为不同行业设计和构建定制化数字产品。Cambur是我们旗下的一款自有产品——一个由AI辅助的心理健康专业人员临床管理平台，由为您提供服务的同一团队构思和维护。</value>
+  </data>
+  <data name="landing_hero_titulo" xml:space="preserve">
+    <value>我们构建让照护他人的人更轻松工作的软件</value>
+  </data>
+  <data name="landing_nav_contacto" xml:space="preserve">
+    <value>联系我们</value>
+  </data>
+  <data name="landing_nav_faq" xml:space="preserve">
+    <value>常见问题</value>
+  </data>
+  <data name="landing_nav_inicio" xml:space="preserve">
+    <value>首页</value>
+  </data>
+  <data name="landing_nav_nosotros" xml:space="preserve">
+    <value>关于我们</value>
+  </data>
+  <data name="landing_nav_rse" xml:space="preserve">
+    <value>企业社会责任</value>
+  </data>
+  <data name="landing_nav_servicios" xml:space="preserve">
+    <value>服务</value>
+  </data>
+  <data name="landing_nav_testimonios" xml:space="preserve">
+    <value>用户评价</value>
+  </data>
+  <data name="landing_nosotros_dato_1_num" xml:space="preserve">
+    <value>软件</value>
+  </data>
+  <data name="landing_nosotros_dato_1_texto" xml:space="preserve">
+    <value>我们的行业</value>
+  </data>
+  <data name="landing_nosotros_dato_2_num" xml:space="preserve">
+    <value>HealthTech</value>
+  </data>
+  <data name="landing_nosotros_dato_2_texto" xml:space="preserve">
+    <value>Cambur的重点领域</value>
+  </data>
+  <data name="landing_nosotros_dato_3_num" xml:space="preserve">
+    <value>AI</value>
+  </data>
+  <data name="landing_nosotros_dato_3_texto" xml:space="preserve">
+    <value>作为助手，而非替代者</value>
+  </data>
+  <data name="landing_nosotros_texto" xml:space="preserve">
+    <value>CZ Consulting是一家软件开发公司。我们与各行各业的机构合作，将业务流程转化为简单、安全、可持续的数字产品。软件是我们的主业，但我们将大量精力投入到HealthTech领域：我们相信技术可以减轻医疗照护人员的行政负担，同时绝不取代他们的专业判断。</value>
+  </data>
+  <data name="landing_nosotros_titulo" xml:space="preserve">
+    <value>关于我们</value>
+  </data>
+  <data name="landing_rse_pilar_1_texto" xml:space="preserve">
+    <value>减轻心理健康专业人员的行政负担，让他们有更多时间投入到患者身上。</value>
+  </data>
+  <data name="landing_rse_pilar_1_titulo" xml:space="preserve">
+    <value>心理健康的可及性</value>
+  </data>
+  <data name="landing_rse_pilar_2_texto" xml:space="preserve">
+    <value>我们所使用的人工智能只起辅助作用，从不做决策，也不会取代使用者的专业判断。</value>
+  </data>
+  <data name="landing_rse_pilar_2_titulo" xml:space="preserve">
+    <value>负责任地使用AI</value>
+  </data>
+  <data name="landing_rse_pilar_3_texto" xml:space="preserve">
+    <value>我们推动本地软件行业发展，培养人才并与本地区教育机构合作。</value>
+  </data>
+  <data name="landing_rse_pilar_3_titulo" xml:space="preserve">
+    <value>人才培养与本地发展</value>
+  </data>
+  <data name="landing_rse_texto" xml:space="preserve">
+    <value>作为一家科技公司，我们深知我们所构建的产品影响远不止于代码本身。以下是指导我们日常工作的核心方向。</value>
+  </data>
+  <data name="landing_rse_titulo" xml:space="preserve">
+    <value>企业社会责任</value>
+  </data>
+  <data name="landing_servicio_1_texto" xml:space="preserve">
+    <value>我们从零开始设计和构建专属系统，贴合每个机构的实际运作方式。</value>
+  </data>
+  <data name="landing_servicio_1_titulo" xml:space="preserve">
+    <value>定制化软件开发</value>
+  </data>
+  <data name="landing_servicio_2_texto" xml:space="preserve">
+    <value>我们协助现有流程的数字化转型：需求调研、架构设计、信息安全，以及与客户现有系统的集成。</value>
+  </data>
+  <data name="landing_servicio_2_titulo" xml:space="preserve">
+    <value>技术咨询与实施</value>
+  </data>
+  <data name="landing_servicio_3_badge" xml:space="preserve">
+    <value>HealthTech</value>
+  </data>
+  <data name="landing_servicio_3_texto" xml:space="preserve">
+    <value>我们的自有产品：一个面向心理咨询师的平台，用于整理患者、就诊记录和临床病历，并借助AI生成摘要、转诊报告和演变画像，全程始终由专业人员审核。</value>
+  </data>
+  <data name="landing_servicio_3_titulo" xml:space="preserve">
+    <value>Cambur：AI辅助的临床管理</value>
+  </data>
+  <data name="landing_servicios_subtitulo" xml:space="preserve">
+    <value>软件开发服务，以及一款已投入使用的自有产品。</value>
+  </data>
+  <data name="landing_servicios_titulo" xml:space="preserve">
+    <value>我们的业务</value>
+  </data>
+  <data name="landing_testimonios_cantidad_sufijo" xml:space="preserve">
+    <value>条评价</value>
+  </data>
+  <data name="landing_testimonios_promedio_sufijo" xml:space="preserve">
+    <value>分（满分5分）</value>
+  </data>
+  <data name="landing_testimonios_sin_datos" xml:space="preserve">
+    <value>目前还没有已发布的评价。快来发表第一条吧！</value>
+  </data>
+  <data name="landing_testimonios_titulo" xml:space="preserve">
+    <value>正在使用的专业人士怎么说</value>
+  </data>
+  <data name="landing_valoracion_enviada" xml:space="preserve">
+    <value>感谢您！您的评价已发布。</value>
+  </data>
+  <data name="landing_valorar_comentario_placeholder" xml:space="preserve">
+    <value>和我们分享您的使用体验（选填）</value>
+  </data>
+  <data name="landing_valorar_plan_actual_prefijo" xml:space="preserve">
+    <value>您将评价当前套餐：</value>
+  </data>
+  <data name="landing_valorar_sin_suscripcion" xml:space="preserve">
+    <value>您需要有效的订阅才能发表评价。您可以在控制面板中选择一个套餐。</value>
+  </data>
+  <data name="landing_valorar_texto" xml:space="preserve">
+    <value>您的评价会以真实姓名发布，且只能针对您当前订阅的套餐，以保证用户评价的真实性。</value>
+  </data>
+  <data name="landing_valorar_titulo" xml:space="preserve">
+    <value>评价您的套餐</value>
+  </data>
+  <data name="landing_valorar_ya_existente_aviso" xml:space="preserve">
+    <value>您已评价过当前套餐。再次发布将更新您之前的评价。</value>
+  </data>
+  <data name="lbl_activa_desde" xml:space="preserve">
+    <value>生效日期</value>
+  </data>
+  <data name="lbl_activos" xml:space="preserve">
+    <value>个有效</value>
+  </data>
+  <data name="lbl_al" xml:space="preserve">
+    <value>至</value>
+  </data>
+  <data name="lbl_andamiajes_implementados" xml:space="preserve">
+    <value>已实施的支持措施</value>
+  </data>
+  <data name="lbl_anios" xml:space="preserve">
+    <value>岁</value>
+  </data>
+  <data name="lbl_archivo_a_generar" xml:space="preserve">
+    <value>将生成的文件：</value>
+  </data>
+  <data name="lbl_archivo_seleccionado" xml:space="preserve">
+    <value>已选择的文件：</value>
+  </data>
+  <data name="lbl_archivos_disponibles" xml:space="preserve">
+    <value>可用文件</value>
+  </data>
+  <data name="lbl_bienvenida" xml:space="preserve">
+    <value>欢迎，{0}。</value>
+  </data>
+  <data name="lbl_borrador_singular" xml:space="preserve">
+    <value>条待处理草稿</value>
+  </data>
+  <data name="lbl_borradores_plural" xml:space="preserve">
+    <value>条待处理草稿</value>
+  </data>
+  <data name="lbl_carpeta_destino" xml:space="preserve">
+    <value>目标文件夹</value>
+  </data>
+  <data name="lbl_config_backup" xml:space="preserve">
+    <value>备份配置</value>
+  </data>
+  <data name="lbl_consultas_analizadas" xml:space="preserve">
+    <value>已分析的就诊记录</value>
+  </data>
+  <data name="lbl_consultas_analizadas_valor" xml:space="preserve">
+    <value>条已分析的就诊记录</value>
+  </data>
+  <data name="lbl_consultas_plural" xml:space="preserve">
+    <value>条就诊记录</value>
+  </data>
+  <data name="lbl_consultas_totales" xml:space="preserve">
+    <value>就诊记录总数</value>
+  </data>
+  <data name="lbl_creada" xml:space="preserve">
+    <value>创建时间</value>
+  </data>
+  <data name="lbl_cvv" xml:space="preserve">
+    <value>安全码（CVV）</value>
+  </data>
+  <data name="lbl_de" xml:space="preserve">
+    <value>共</value>
+  </data>
+  <data name="lbl_dias_restantes" xml:space="preserve">
+    <value>剩余天数</value>
+  </data>
+  <data name="lbl_disponible" xml:space="preserve">
+    <value>✓ 可用</value>
+  </data>
+  <data name="lbl_edad_anios" xml:space="preserve">
+    <value>{0}岁</value>
+  </data>
+  <data name="lbl_elegir_documento" xml:space="preserve">
+    <value>选择要导出的版本</value>
+  </data>
+  <data name="lbl_especialidad_derivacion" xml:space="preserve">
+    <value>转诊专科</value>
+  </data>
+  <data name="lbl_especialidad_destino" xml:space="preserve">
+    <value>接收专科</value>
+  </data>
+  <data name="lbl_fecha_desde" xml:space="preserve">
+    <value>起始日期</value>
+  </data>
+  <data name="lbl_fecha_hasta" xml:space="preserve">
+    <value>结束日期</value>
+  </data>
+  <data name="lbl_firma_digital" xml:space="preserve">
+    <value>电子签名</value>
+  </data>
+  <data name="lbl_formato_archivo" xml:space="preserve">
+    <value>文件格式</value>
+  </data>
+  <data name="lbl_generado" xml:space="preserve">
+    <value>生成时间</value>
+  </data>
+  <data name="lbl_generado_el" xml:space="preserve">
+    <value>生成于{0}</value>
+  </data>
+  <data name="lbl_grafico_subtitulo" xml:space="preserve">
+    <value>按月就诊统计 · 最近{0}个月</value>
+  </data>
+  <data name="lbl_institucion_opcional" xml:space="preserve">
+    <value>机构/中心（选填）</value>
+  </data>
+  <data name="lbl_limite" xml:space="preserve">
+    <value>限额</value>
+  </data>
+  <data name="lbl_medio_pago" xml:space="preserve">
+    <value>支付方式</value>
+  </data>
+  <data name="lbl_meses_tratamiento" xml:space="preserve">
+    <value>治疗月数</value>
+  </data>
+  <data name="lbl_minutos" xml:space="preserve">
+    <value>分钟</value>
+  </data>
+  <data name="lbl_modalidad_trabajo" xml:space="preserve">
+    <value>工作方式</value>
+  </data>
+  <data name="lbl_modelo_utilizado" xml:space="preserve">
+    <value>所用模型</value>
+  </data>
+  <data name="lbl_motivo_derivacion" xml:space="preserve">
+    <value>转诊原因</value>
+  </data>
+  <data name="lbl_no_disponible" xml:space="preserve">
+    <value>⚠ 不可用</value>
+  </data>
+  <data name="lbl_numero_tarjeta" xml:space="preserve">
+    <value>卡号</value>
+  </data>
+  <data name="lbl_objetivos_terapeuticos" xml:space="preserve">
+    <value>治疗目标</value>
+  </data>
+  <data name="lbl_pendiente_auditoria" xml:space="preserve">
+    <value>待审计</value>
+  </data>
+  <data name="lbl_periodo" xml:space="preserve">
+    <value>周期</value>
+  </data>
+  <data name="lbl_por_mes" xml:space="preserve">
+    <value>/月</value>
+  </data>
+  <data name="lbl_precio_mensual" xml:space="preserve">
+    <value>月度价格</value>
+  </data>
+  <data name="lbl_primera_sesion" xml:space="preserve">
+    <value>首次会诊</value>
+  </data>
+  <data name="lbl_profesional_destinatario" xml:space="preserve">
+    <value>接收专业人员</value>
+  </data>
+  <data name="lbl_proximamente" xml:space="preserve">
+    <value>⏳ 即将推出</value>
+  </data>
+  <data name="lbl_proximamente_desc" xml:space="preserve">
+    <value>即将推出</value>
+  </data>
+  <data name="lbl_proximo_vencimiento" xml:space="preserve">
+    <value>下次到期日</value>
+  </data>
+  <data name="lbl_registro" xml:space="preserve">
+    <value>条记录</value>
+  </data>
+  <data name="lbl_registros" xml:space="preserve">
+    <value>条记录</value>
+  </data>
+  <data name="lbl_secciones" xml:space="preserve">
+    <value>个部分</value>
+  </data>
+  <data name="lbl_seleccionar_paciente" xml:space="preserve">
+    <value>选择一位患者……</value>
+  </data>
+  <data name="lbl_sin_backups" xml:space="preserve">
+    <value>目前尚未生成任何备份。</value>
+  </data>
+  <data name="lbl_sin_backups_disponibles" xml:space="preserve">
+    <value>没有可用于恢复的备份。</value>
+  </data>
+  <data name="lbl_sin_documento" xml:space="preserve">
+    <value>尚未生成文档</value>
+  </data>
+  <data name="lbl_sin_modificaciones" xml:space="preserve">
+    <value>无先前修改记录</value>
+  </data>
+  <data name="lbl_sin_sesiones" xml:space="preserve">
+    <value>无已登记的会诊记录</value>
+  </data>
+  <data name="lbl_sintesis_diagnostica" xml:space="preserve">
+    <value>诊断综述</value>
+  </data>
+  <data name="lbl_tipo_backup" xml:space="preserve">
+    <value>备份类型</value>
+  </data>
+  <data name="lbl_tipo_documento" xml:space="preserve">
+    <value>文档类型</value>
+  </data>
+  <data name="lbl_titular_tarjeta" xml:space="preserve">
+    <value>持卡人</value>
+  </data>
+  <data name="lbl_total_consultas_paciente" xml:space="preserve">
+    <value>就诊记录数</value>
+  </data>
+  <data name="lbl_ult_sesion" xml:space="preserve">
+    <value>最近会诊</value>
+  </data>
+  <data name="lbl_ultima_modificacion" xml:space="preserve">
+    <value>最后修改时间</value>
+  </data>
+  <data name="lbl_ultima_sesion" xml:space="preserve">
+    <value>最近会诊</value>
+  </data>
+  <data name="lbl_ultima_sesion_paciente" xml:space="preserve">
+    <value>最近会诊</value>
+  </data>
+  <data name="lbl_ultimo_backup" xml:space="preserve">
+    <value>最近一次备份</value>
+  </data>
+  <data name="lbl_uso_consultas" xml:space="preserve">
+    <value>本月就诊记录</value>
+  </data>
+  <data name="lbl_uso_derivaciones" xml:space="preserve">
+    <value>已生成的转诊</value>
+  </data>
+  <data name="lbl_uso_perfiles" xml:space="preserve">
+    <value>画像分析</value>
+  </data>
+  <data name="lbl_uso_resumenes" xml:space="preserve">
+    <value>已生成的AI摘要</value>
+  </data>
+  <data name="lbl_vencimiento_tarjeta" xml:space="preserve">
+    <value>有效期</value>
+  </data>
+  <data name="lbl_ver_todas" xml:space="preserve">
+    <value>查看全部</value>
+  </data>
+  <data name="lbl_ver_todos" xml:space="preserve">
+    <value>查看全部</value>
+  </data>
+  <data name="leyenda_eventos_ia" xml:space="preserve">
+    <value>AI事件</value>
+  </data>
+  <data name="login_sesion_cerrada_por_restore" xml:space="preserve">
+    <value>数据库已恢复至先前状态，您的会话在该状态下已失效。请重新登录。</value>
+  </data>
+  <data name="modelo_apego_desc" xml:space="preserve">
+    <value>基于精简版ECR的成人依恋风格模型，评估人际关系中的焦虑与回避倾向。</value>
+  </data>
+  <data name="modelo_apego_nombre" xml:space="preserve">
+    <value>依恋风格（ECR）</value>
+  </data>
+  <data name="modelo_autoeficacia_desc" xml:space="preserve">
+    <value>患者应对挑战和高压情境的自我概念与能力认知。</value>
+  </data>
+  <data name="modelo_autoeficacia_nombre" xml:space="preserve">
+    <value>施瓦泽自我效能量表</value>
+  </data>
+  <data name="modelo_bigfive_desc" xml:space="preserve">
+    <value>从开放性、责任心、外向性、宜人性和神经质五个维度分析总体人格特质。</value>
+  </data>
+  <data name="modelo_bigfive_nombre" xml:space="preserve">
+    <value>大五人格（BFI）</value>
+  </data>
+  <data name="modelo_cope_desc" xml:space="preserve">
+    <value>面对压力情境的应对方式，识别积极应对、回避应对及社会支持型策略。</value>
+  </data>
+  <data name="modelo_cope_nombre" xml:space="preserve">
+    <value>简化版COPE应对量表</value>
+  </data>
+  <data name="modelo_valores_desc" xml:space="preserve">
+    <value>基于PVQ量表及弗兰克尔意义疗法理念的个人价值观与人生意义模型。</value>
+  </data>
+  <data name="modelo_valores_nombre" xml:space="preserve">
+    <value>价值观与人生意义（PVQ）</value>
+  </data>
+  <data name="msg_backup_generado" xml:space="preserve">
+    <value>备份生成成功</value>
+  </data>
+  <data name="msg_backup_restaurado" xml:space="preserve">
+    <value>数据库恢复成功</value>
+  </data>
+  <data name="msg_consulta_plazo_vencido" xml:space="preserve">
+    <value>{0}的就诊记录已无法编辑。自创建起{1}天的修改期限已过。</value>
+  </data>
+  <data name="msg_consulta_ya_modificada" xml:space="preserve">
+    <value>{0}的就诊记录已被修改过一次，无法再次编辑。</value>
+  </data>
+  <data name="msg_historial_actualizado" xml:space="preserve">
+    <value>临床病历更新成功。</value>
+  </data>
+  <data name="msg_historial_guardado" xml:space="preserve">
+    <value>临床病历保存成功，数据已加密。</value>
+  </data>
+  <data name="msg_seleccionar_modelo_alerta" xml:space="preserve">
+    <value>生成画像前请选择评估模型。</value>
+  </data>
+  <data name="msg_sin_borradores_pendientes" xml:space="preserve">
+    <value>没有待签署的转诊报告。</value>
+  </data>
+  <data name="msg_sin_consultas" xml:space="preserve">
+    <value>尚无已登记的就诊记录。</value>
+  </data>
+  <data name="msg_sin_exportaciones" xml:space="preserve">
+    <value>您还没有进行过任何导出。</value>
+  </data>
+  <data name="msg_sin_operaciones" xml:space="preserve">
+    <value>尚无已记录的操作。</value>
+  </data>
+  <data name="msg_sin_registros_temporal" xml:space="preserve">
+    <value>未找到符合所选筛选条件的临床记录。</value>
+  </data>
+  <data name="msg_sin_suscripcion_activa" xml:space="preserve">
+    <value>您没有有效的订阅。请在下方选择一个套餐以开始使用。</value>
+  </data>
+  <data name="msg_suscripcion_cancelada" xml:space="preserve">
+    <value>您的订阅已取消，将保持有效至{0}。您可以在此界面于该日期前重新激活。</value>
+  </data>
+  <data name="nav_landing" xml:space="preserve">
+    <value>CZ Consulting / Cambur</value>
+  </data>
+  <data name="nota_pie_perfil" xml:space="preserve">
+    <value>此画像仅供参考，不构成临床诊断。对该信息的解读和使用，专业人员负全部责任。</value>
+  </data>
+  <data name="pago_aviso_seguro" xml:space="preserve">
+    <value>付款通过Mercado Pago安全处理。Cambur不会存储您的卡号。</value>
+  </data>
+  <data name="periodo_anio" xml:space="preserve">
+    <value>今年</value>
+  </data>
+  <data name="periodo_mes" xml:space="preserve">
+    <value>本月</value>
+  </data>
+  <data name="periodo_semana" xml:space="preserve">
+    <value>本周</value>
+  </data>
+  <data name="periodo_trimestre" xml:space="preserve">
+    <value>本季度</value>
+  </data>
+  <data name="placeholder_antecedentes_familiares" xml:space="preserve">
+    <value>精神病史、慢性疾病、家族成瘾史……</value>
+  </data>
+  <data name="placeholder_antecedentes_medicos" xml:space="preserve">
+    <value>慢性疾病、目前用药、住院经历、手术史、过敏史……</value>
+  </data>
+  <data name="placeholder_contexto_familiar" xml:space="preserve">
+    <value>家庭构成、家庭动态、角色分工、冲突、重要人际关系……</value>
+  </data>
+  <data name="placeholder_eventos_traumaticos" xml:space="preserve">
+    <value>重大丧失、虐待、事故、暴力经历、未处理的哀伤……</value>
+  </data>
+  <data name="placeholder_firma" xml:space="preserve">
+    <value>全名及执业证号</value>
+  </data>
+  <data name="placeholder_habitos_nocivos" xml:space="preserve">
+    <value>烟草、酒精、药物滥用、久坐不动、睡眠障碍、饮食问题……</value>
+  </data>
+  <data name="placeholder_institucion" xml:space="preserve">
+    <value>中心或机构名称</value>
+  </data>
+  <data name="placeholder_motivo_derivacion" xml:space="preserve">
+    <value>请描述您转诊该患者的临床原因……</value>
+  </data>
+  <data name="placeholder_prof_destino" xml:space="preserve">
+    <value>接收专业人员姓名</value>
+  </data>
+  <data name="placeholder_situacion_laboral" xml:space="preserve">
+    <value>当前职业、工作稳定性、工作环境、冲突、满意度……</value>
+  </data>
+  <data name="plan_basico_nombre" xml:space="preserve">
+    <value>基础版</value>
+  </data>
+  <data name="plan_premium_nombre" xml:space="preserve">
+    <value>高级版</value>
+  </data>
+  <data name="plan_profesional_nombre" xml:space="preserve">
+    <value>专业版</value>
+  </data>
+  <data name="rol_psicologo_basico" xml:space="preserve">
+    <value>心理咨询师（基础版）</value>
+  </data>
+  <data name="seccion_antecedentes_familiares" xml:space="preserve">
+    <value>家族史</value>
+  </data>
+  <data name="seccion_antecedentes_medicos" xml:space="preserve">
+    <value>既往病史</value>
+  </data>
+  <data name="seccion_campos_editables" xml:space="preserve">
+    <value>可编辑字段</value>
+  </data>
+  <data name="seccion_cierre_clinico" xml:space="preserve">
+    <value>临床总结</value>
+  </data>
+  <data name="seccion_consideraciones_tratamiento" xml:space="preserve">
+    <value>治疗注意事项</value>
+  </data>
+  <data name="seccion_contenido_informe" xml:space="preserve">
+    <value>报告内容</value>
+  </data>
+  <data name="seccion_contexto_familiar" xml:space="preserve">
+    <value>家庭情况</value>
+  </data>
+  <data name="seccion_contexto_general" xml:space="preserve">
+    <value>本期总体情况</value>
+  </data>
+  <data name="seccion_datos_derivacion" xml:space="preserve">
+    <value>转诊信息</value>
+  </data>
+  <data name="seccion_descripcion_general_perfil" xml:space="preserve">
+    <value>画像总体描述</value>
+  </data>
+  <data name="seccion_dimensiones_evaluadas" xml:space="preserve">
+    <value>评估维度</value>
+  </data>
+  <data name="seccion_eventos_traumaticos" xml:space="preserve">
+    <value>相关创伤事件</value>
+  </data>
+  <data name="seccion_evolucion_observada" xml:space="preserve">
+    <value>观察到的进展</value>
+  </data>
+  <data name="seccion_filtros_busqueda" xml:space="preserve">
+    <value>搜索筛选条件</value>
+  </data>
+  <data name="seccion_firma_profesional" xml:space="preserve">
+    <value>专业人员签名</value>
+  </data>
+  <data name="seccion_habitos_nocivos" xml:space="preserve">
+    <value>不良习惯</value>
+  </data>
+  <data name="seccion_info_clinica_persistente" xml:space="preserve">
+    <value>持久性临床信息</value>
+  </data>
+  <data name="seccion_intervenciones_destacadas" xml:space="preserve">
+    <value>重要干预措施</value>
+  </data>
+  <data name="seccion_observaciones_periodo" xml:space="preserve">
+    <value>本期观察记录</value>
+  </data>
+  <data name="seccion_patrones_identificados" xml:space="preserve">
+    <value>在临床情境中识别出的模式</value>
+  </data>
+  <data name="seccion_perfilacion" xml:space="preserve">
+    <value>画像分析</value>
+  </data>
+  <data name="seccion_seleccionar_modelo" xml:space="preserve">
+    <value>选择评估模型</value>
+  </data>
+  <data name="seccion_situacion_laboral" xml:space="preserve">
+    <value>工作情况</value>
+  </data>
+  <data name="seccion_temas_recurrentes" xml:space="preserve">
+    <value>反复出现的主题</value>
+  </data>
+  <data name="sin_perfiles_anteriores" xml:space="preserve">
+    <value>该患者尚未生成过画像。</value>
+  </data>
+  <data name="sin_resumenes_anteriores" xml:space="preserve">
+    <value>该患者尚未生成过摘要。</value>
+  </data>
+  <data name="subtitulo_cambiar_plan" xml:space="preserve">
+    <value>比较各套餐的功能，选择最适合您执业需求的方案。</value>
+  </data>
+  <data name="subtitulo_exportar_reporte" xml:space="preserve">
+    <value>选择要导出为PDF的患者和文档类型。</value>
+  </data>
+  <data name="subtitulo_generar_backup" xml:space="preserve">
+    <value>创建数据库的完整.bak格式备份副本。</value>
+  </data>
+  <data name="subtitulo_linea_temporal_seleccion" xml:space="preserve">
+    <value>选择患者以查看其完整的临床历程。</value>
+  </data>
+  <data name="subtitulo_lista_borradores_informe" xml:space="preserve">
+    <value>审核并签署由AI模块生成的草稿。</value>
+  </data>
+  <data name="subtitulo_realizar_consulta" xml:space="preserve">
+    <value>选择患者并填写本次会诊的临床数据。</value>
+  </data>
+  <data name="subtitulo_registrar_paciente" xml:space="preserve">
+    <value>填写信息以在您的临床环境中登记新患者。</value>
+  </data>
+  <data name="subtitulo_restaurar_backup" xml:space="preserve">
+    <value>从现有的.bak文件恢复数据库。</value>
+  </data>
+  <data name="subtitulo_resumen_ia" xml:space="preserve">
+    <value>选择患者和周期，生成其就诊记录的结构化摘要。</value>
+  </data>
+  <data name="subtitulo_seleccion_consulta" xml:space="preserve">
+    <value>选择患者以查看其处于可编辑期限内的就诊记录。</value>
+  </data>
+  <data name="subtitulo_seleccion_paciente_historial" xml:space="preserve">
+    <value>选择患者以录入或修改其临床病历。</value>
+  </data>
+  <data name="texto_aviso_formato_pdf" xml:space="preserve">
+    <value>报告以PDF格式生成，带有专业抬头及患者信息。</value>
+  </data>
+  <data name="texto_aviso_proteccion_datos" xml:space="preserve">
+    <value>内容仅在导出时、且仅为已认证的专业人员解密。系统不保留未加密的副本。</value>
+  </data>
+  <data name="texto_pago_seguro" xml:space="preserve">
+    <value>银行数据以加密方式传输，不会存储在我们的服务器上。</value>
+  </data>
+  <data name="th_archivo" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="th_duracion" xml:space="preserve">
+    <value>时长</value>
+  </data>
+  <data name="th_fecha" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="th_fecha_hora" xml:space="preserve">
+    <value>日期/时间</value>
+  </data>
+  <data name="th_paciente" xml:space="preserve">
+    <value>患者</value>
+  </data>
+  <data name="th_plazo_restante" xml:space="preserve">
+    <value>剩余期限</value>
+  </data>
+  <data name="th_resultado" xml:space="preserve">
+    <value>结果</value>
+  </data>
+  <data name="th_resumen_objetivos" xml:space="preserve">
+    <value>目标摘要</value>
+  </data>
+  <data name="th_tipo" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="titulo_acciones_relacionadas" xml:space="preserve">
+    <value>相关操作</value>
+  </data>
+  <data name="titulo_actividad_mensual" xml:space="preserve">
+    <value>月度活动</value>
+  </data>
+  <data name="titulo_actualizar_medio_pago" xml:space="preserve">
+    <value>更新支付方式</value>
+  </data>
+  <data name="titulo_aviso_formato_pdf" xml:space="preserve">
+    <value>PDF格式</value>
+  </data>
+  <data name="titulo_aviso_proteccion_datos" xml:space="preserve">
+    <value>数据保护</value>
+  </data>
+  <data name="titulo_cambiar_a_plan" xml:space="preserve">
+    <value>切换至{0}套餐</value>
+  </data>
+  <data name="titulo_cambiar_plan" xml:space="preserve">
+    <value>更改套餐</value>
+  </data>
+  <data name="titulo_completitud_historial" xml:space="preserve">
+    <value>病历完整度</value>
+  </data>
+  <data name="titulo_consultas_editables" xml:space="preserve">
+    <value>可编辑的就诊记录</value>
+  </data>
+  <data name="titulo_consultas_encontradas" xml:space="preserve">
+    <value>找到的就诊记录</value>
+  </data>
+  <data name="titulo_datos_encriptados" xml:space="preserve">
+    <value>数据已加密</value>
+  </data>
+  <data name="titulo_datos_informe" xml:space="preserve">
+    <value>报告信息</value>
+  </data>
+  <data name="titulo_detalles_perfil" xml:space="preserve">
+    <value>画像详情</value>
+  </data>
+  <data name="titulo_detalles_resumen" xml:space="preserve">
+    <value>摘要详情</value>
+  </data>
+  <data name="titulo_exportaciones_recientes" xml:space="preserve">
+    <value>最近的导出记录</value>
+  </data>
+  <data name="titulo_exportar_reporte" xml:space="preserve">
+    <value>导出临床报告</value>
+  </data>
+  <data name="titulo_generar_backup" xml:space="preserve">
+    <value>生成备份</value>
+  </data>
+  <data name="titulo_generar_historial" xml:space="preserve">
+    <value>生成临床病历</value>
+  </data>
+  <data name="titulo_historial_cambios" xml:space="preserve">
+    <value>变更历史</value>
+  </data>
+  <data name="titulo_historial_clinico" xml:space="preserve">
+    <value>临床病历</value>
+  </data>
+  <data name="titulo_historial_operaciones" xml:space="preserve">
+    <value>操作历史</value>
+  </data>
+  <data name="titulo_info_incluida" xml:space="preserve">
+    <value>将包含的信息</value>
+  </data>
+  <data name="titulo_informe_generado" xml:space="preserve">
+    <value>转诊报告已生成</value>
+  </data>
+  <data name="titulo_linea_temporal_seleccion" xml:space="preserve">
+    <value>临床时间线</value>
+  </data>
+  <data name="titulo_lista_borradores_informe" xml:space="preserve">
+    <value>待签署的报告</value>
+  </data>
+  <data name="titulo_modelo_seleccionado" xml:space="preserve">
+    <value>已选模型</value>
+  </data>
+  <data name="titulo_modificar_consulta" xml:space="preserve">
+    <value>修改就诊记录</value>
+  </data>
+  <data name="titulo_modificar_historial" xml:space="preserve">
+    <value>修改现有临床病历</value>
+  </data>
+  <data name="titulo_pacientes_activos" xml:space="preserve">
+    <value>活跃患者</value>
+  </data>
+  <data name="titulo_pago_seguro" xml:space="preserve">
+    <value>安全支付</value>
+  </data>
+  <data name="titulo_perfil_generado" xml:space="preserve">
+    <value>画像已生成</value>
+  </data>
+  <data name="titulo_perfiles_anteriores" xml:space="preserve">
+    <value>既往画像</value>
+  </data>
+  <data name="titulo_plazo_edicion" xml:space="preserve">
+    <value>编辑期限</value>
+  </data>
+  <data name="titulo_plazo_vencido" xml:space="preserve">
+    <value>编辑期限已过</value>
+  </data>
+  <data name="titulo_restaurar_backup" xml:space="preserve">
+    <value>恢复备份</value>
+  </data>
+  <data name="titulo_resumen_encriptado" xml:space="preserve">
+    <value>摘要已加密</value>
+  </data>
+  <data name="titulo_resumen_generado" xml:space="preserve">
+    <value>临床摘要已生成</value>
+  </data>
+  <data name="titulo_resumen_ia" xml:space="preserve">
+    <value>AI辅助临床摘要</value>
+  </data>
+  <data name="titulo_resumen_tratamiento" xml:space="preserve">
+    <value>治疗摘要</value>
+  </data>
+  <data name="titulo_resumenes_anteriores" xml:space="preserve">
+    <value>既往摘要</value>
+  </data>
+  <data name="titulo_suscripcion_cancelada" xml:space="preserve">
+    <value>订阅已取消</value>
+  </data>
+  <data name="titulo_ultimas_consultas" xml:space="preserve">
+    <value>最近的就诊记录</value>
+  </data>
+  <data name="titulo_uso_periodo" xml:space="preserve">
+    <value>本期使用情况</value>
+  </data>
+  <data name="txt_consulta_analizada_singular" xml:space="preserve">
+    <value>条已分析的就诊记录</value>
+  </data>
+  <data name="txt_consulta_registrada_singular" xml:space="preserve">
+    <value>条已登记的就诊记录</value>
+  </data>
+  <data name="txt_consultas_analizadas_plural" xml:space="preserve">
+    <value>条已分析的就诊记录</value>
+  </data>
+  <data name="txt_consultas_registradas_plural" xml:space="preserve">
+    <value>条已登记的就诊记录</value>
+  </data>
+  <data name="txt_evolucion_observada" xml:space="preserve">
+    <value>观察到的进展</value>
+  </data>
+  <data name="txt_historial_clinico_completo" xml:space="preserve">
+    <value>完整临床病历</value>
+  </data>
+  <data name="txt_ningun_modelo_seleccionado" xml:space="preserve">
+    <value>尚未选择任何模型。</value>
+  </data>
+  <data name="txt_sin_consultas_registradas" xml:space="preserve">
+    <value>无已登记的就诊记录</value>
+  </data>
+  <data name="txt_sin_historial_clinico" xml:space="preserve">
+    <value>无临床病历</value>
+  </data>
+  <data name="valor_tipo_backup_completo" xml:space="preserve">
+    <value>完整备份（Full Backup）</value>
   </data>
 </root>

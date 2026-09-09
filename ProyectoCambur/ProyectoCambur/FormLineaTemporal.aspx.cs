@@ -40,7 +40,7 @@ public partial class FormLineaTemporal : PaginaBase
 
     private void AplicarTraducciones()
     {
-        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+        lblMenuLandingSidebar.Text = Traducir("nav_landing");
         lblHeaderPaciente.Text = Traducir("nav_linea_temporal");
 
         lblTituloSeleccion.Text = Traducir("titulo_linea_temporal_seleccion");

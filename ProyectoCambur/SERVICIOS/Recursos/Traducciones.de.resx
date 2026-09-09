@@ -78,11 +78,7 @@
   </data>
   <data name="opt_seleccionar" xml:space="preserve">
     <value>Auswählen...</value>
-  </data>
-  <data name="rol_psicologo_free" xml:space="preserve">
-    <value>Psychologe/in — Kostenloser Tarif</value>
-  </data>
-  <data name="rol_psicologo_profesional" xml:space="preserve">
+  </data>  <data name="rol_psicologo_profesional" xml:space="preserve">
     <value>Psychologe/in — Professioneller Tarif</value>
   </data>
   <data name="rol_psicologo_premium" xml:space="preserve">
@@ -1137,5 +1133,1547 @@
   </data>
   <data name="login_clave_restablecida" xml:space="preserve">
     <value>Ihr Passwort wurde erfolgreich zurückgesetzt. Sie können sich jetzt anmelden.</value>
+  </data>
+  <data name="acceso_exportar_pdf" xml:space="preserve">
+    <value>Als PDF exportieren</value>
+  </data>
+  <data name="acceso_generar_derivacion" xml:space="preserve">
+    <value>Überweisung erstellen</value>
+  </data>
+  <data name="acceso_resumen_ia" xml:space="preserve">
+    <value>KI-Zusammenfassung</value>
+  </data>
+  <data name="acceso_ver_linea_temporal" xml:space="preserve">
+    <value>Zeitleiste anzeigen</value>
+  </data>
+  <data name="aviso_campos_no_editables" xml:space="preserve">
+    <value>Sie können nur die klinischen Felder bearbeiten. Datum, Dauer und Patient sind nicht editierbar.</value>
+  </data>
+  <data name="aviso_consulta_reencriptada" xml:space="preserve">
+    <value>Änderungen werden beim Speichern gemäß dem Gesetz 25.326 erneut mit AES verschlüsselt.</value>
+  </data>
+  <data name="aviso_critico_texto" xml:space="preserve">
+    <value>Backup- und Wiederherstellungsvorgänge wirken sich direkt auf die Datenbank aus. Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen, und informieren Sie das Team, bevor Sie eine Wiederherstellung durchführen.</value>
+  </data>
+  <data name="aviso_critico_titulo" xml:space="preserve">
+    <value>Kritischer Systemvorgang</value>
+  </data>
+  <data name="aviso_historial_encriptado" xml:space="preserve">
+    <value>Die Krankenakte wird vor der Speicherung gemäß dem Gesetz 25.326 mit AES verschlüsselt.</value>
+  </data>
+  <data name="aviso_ia_badge_informe" xml:space="preserve">
+    <value>Von unterstützender KI erstellt · Überprüfen und passen Sie den Inhalt vor der Validierung an · Keine automatische Diagnose</value>
+  </data>
+  <data name="aviso_ia_badge_perfil" xml:space="preserve">
+    <value>Orientierendes, von KI erstelltes Profil · Keine Diagnose · Rein beschreibende, kontextuelle Darstellung · Fachliche Überprüfung empfohlen</value>
+  </data>
+  <data name="aviso_ia_informe_titulo" xml:space="preserve">
+    <value>Die KI verwendet zur Erstellung des Berichts folgende Daten:</value>
+  </data>
+  <data name="aviso_ia_resultado" xml:space="preserve">
+    <value>Von unterstützender KI erstellt · Nur zu Organisationszwecken · Keine Diagnose · Fachliche Überprüfung empfohlen</value>
+  </data>
+  <data name="aviso_ia_resumen" xml:space="preserve">
+    <value>Die KI organisiert und fasst die erfassten Informationen zusammen. Sie stellt keine Diagnosen und ersetzt nicht die fachliche Beurteilung.</value>
+  </data>
+  <data name="aviso_restore_texto" xml:space="preserve">
+    <value>Achtung: Bei der Wiederherstellung werden alle aktuellen Daten der Datenbank durch den Inhalt der ausgewählten Datei ersetzt. Dieser Vorgang kann nicht rückgängig gemacht werden.</value>
+  </data>
+  <data name="aviso_resumen_encriptado" xml:space="preserve">
+    <value>Der erstellte Inhalt wird beim Speichern gemäß dem Gesetz zum Schutz personenbezogener Daten Nr. 25.326 mit AES verschlüsselt.</value>
+  </data>
+  <data name="aviso_texto_datos_encriptados_perfil" xml:space="preserve">
+    <value>Das erstellte Profil wird automatisch gemäß dem Gesetz 25.326 mit AES verschlüsselt.</value>
+  </data>
+  <data name="aviso_texto_perfil_encriptado" xml:space="preserve">
+    <value>Dieses Profil wurde bei der Erstellung bereits gespeichert und automatisch gemäß dem Gesetz 25.326 mit AES verschlüsselt.</value>
+  </data>
+  <data name="aviso_texto_revision_obligatoria" xml:space="preserve">
+    <value>Der erstellte Bericht muss vor der externen Verwendung von der Fachperson überprüft und validiert werden.</value>
+  </data>
+  <data name="aviso_texto_revision_profesional" xml:space="preserve">
+    <value>Überprüfen und passen Sie den erstellten Inhalt vor der Validierung an. Nur Sie können diesen Bericht unterzeichnen und für die externe Verwendung freigeben.</value>
+  </data>
+  <data name="aviso_titulo_datos_encriptados" xml:space="preserve">
+    <value>Verschlüsselte Daten</value>
+  </data>
+  <data name="aviso_titulo_perfil_encriptado" xml:space="preserve">
+    <value>Verschlüsseltes Profil</value>
+  </data>
+  <data name="aviso_titulo_revision_obligatoria" xml:space="preserve">
+    <value>Verpflichtende Überprüfung</value>
+  </data>
+  <data name="aviso_titulo_revision_profesional" xml:space="preserve">
+    <value>Fachliche Überprüfung</value>
+  </data>
+  <data name="badge_completado" xml:space="preserve">
+    <value>Abgeschlossen</value>
+  </data>
+  <data name="badge_editable_hasta" xml:space="preserve">
+    <value>Bearbeitbar bis</value>
+  </data>
+  <data name="badge_historial_completo" xml:space="preserve">
+    <value>Vollständige Akte</value>
+  </data>
+  <data name="badge_mas_elegido" xml:space="preserve">
+    <value>Am beliebtesten</value>
+  </data>
+  <data name="badge_pendiente" xml:space="preserve">
+    <value>Ausstehend</value>
+  </data>
+  <data name="badge_pendiente_revision" xml:space="preserve">
+    <value>Überprüfung ausstehend</value>
+  </data>
+  <data name="badge_suscripcion_activa" xml:space="preserve">
+    <value>Aktiv</value>
+  </data>
+  <data name="badge_suscripcion_cancelada" xml:space="preserve">
+    <value>Gekündigt</value>
+  </data>
+  <data name="badge_suscripcion_vencida" xml:space="preserve">
+    <value>Abgelaufen</value>
+  </data>
+  <data name="badge_ultimo_dia_editar" xml:space="preserve">
+    <value>Letzter Tag zur Bearbeitung</value>
+  </data>
+  <data name="btn_actualizar_medio_pago" xml:space="preserve">
+    <value>Zahlungsmethode aktualisieren</value>
+  </data>
+  <data name="btn_buscar_consultas" xml:space="preserve">
+    <value>Sitzungen suchen</value>
+  </data>
+  <data name="btn_cambiar_filtros" xml:space="preserve">
+    <value>Filter ändern</value>
+  </data>
+  <data name="btn_cancelar_suscripcion" xml:space="preserve">
+    <value>Abonnement kündigen</value>
+  </data>
+  <data name="btn_confirmar_pago" xml:space="preserve">
+    <value>Zahlung bestätigen</value>
+  </data>
+  <data name="btn_confirmar_restore" xml:space="preserve">
+    <value>Wiederherstellung bestätigen</value>
+  </data>
+  <data name="btn_continuar" xml:space="preserve">
+    <value>Weiter</value>
+  </data>
+  <data name="btn_descartar_informe" xml:space="preserve">
+    <value>Bericht verwerfen</value>
+  </data>
+  <data name="btn_elegir_otro_paciente" xml:space="preserve">
+    <value>Anderen Patienten auswählen</value>
+  </data>
+  <data name="btn_entendido" xml:space="preserve">
+    <value>Verstanden</value>
+  </data>
+  <data name="btn_exportar_pdf" xml:space="preserve">
+    <value>📄 Als PDF exportieren</value>
+  </data>
+  <data name="btn_generar_backup" xml:space="preserve">
+    <value>Backup jetzt erstellen</value>
+  </data>
+  <data name="btn_generar_informe_ia" xml:space="preserve">
+    <value>Bericht mit KI erstellen</value>
+  </data>
+  <data name="btn_generar_perfil" xml:space="preserve">
+    <value>Profil erstellen</value>
+  </data>
+  <data name="btn_generar_resumen_ia" xml:space="preserve">
+    <value>Zusammenfassung mit KI erstellen</value>
+  </data>
+  <data name="btn_guardar_borrador" xml:space="preserve">
+    <value>Entwurf speichern</value>
+  </data>
+  <data name="btn_guardar_historial" xml:space="preserve">
+    <value>Krankenakte speichern</value>
+  </data>
+  <data name="btn_nuevo_perfil" xml:space="preserve">
+    <value>Neues Profil</value>
+  </data>
+  <data name="btn_nuevo_resumen" xml:space="preserve">
+    <value>Neue Zusammenfassung</value>
+  </data>
+  <data name="btn_plan_actual" xml:space="preserve">
+    <value>Aktueller Plan</value>
+  </data>
+  <data name="btn_plan_seleccionar" xml:space="preserve">
+    <value>Auswählen</value>
+  </data>
+  <data name="btn_reactivar_suscripcion" xml:space="preserve">
+    <value>Abonnement reaktivieren</value>
+  </data>
+  <data name="btn_revisar_firmar" xml:space="preserve">
+    <value>Überprüfen und unterzeichnen</value>
+  </data>
+  <data name="btn_seleccionar_y_restaurar" xml:space="preserve">
+    <value>Datei auswählen und wiederherstellen</value>
+  </data>
+  <data name="btn_validar_firmar_informe" xml:space="preserve">
+    <value>Bericht validieren und unterzeichnen</value>
+  </data>
+  <data name="btn_volver" xml:space="preserve">
+    <value>Zurück</value>
+  </data>
+  <data name="carga_subtitulo_backup_restore" xml:space="preserve">
+    <value>Dies kann je nach Größe der Datenbank einige Sekunden dauern. Schließen Sie dieses Fenster nicht.</value>
+  </data>
+  <data name="carga_subtitulo_informe_ia" xml:space="preserve">
+    <value>Klinische Informationen werden zusammengeführt und das Dokument wird erstellt</value>
+  </data>
+  <data name="carga_subtitulo_perfil_ia" xml:space="preserve">
+    <value>Klinische Informationen werden analysiert und mit dem ausgewählten Modell abgeglichen</value>
+  </data>
+  <data name="carga_subtitulo_resumen_ia" xml:space="preserve">
+    <value>Sitzungen werden analysiert und eine strukturierte Zusammenfassung wird erstellt</value>
+  </data>
+  <data name="carga_titulo_backup_restore" xml:space="preserve">
+    <value>Vorgang wird verarbeitet...</value>
+  </data>
+  <data name="carga_titulo_informe_ia" xml:space="preserve">
+    <value>Bericht wird mit KI erstellt...</value>
+  </data>
+  <data name="carga_titulo_perfil_ia" xml:space="preserve">
+    <value>Profil wird mit KI erstellt...</value>
+  </data>
+  <data name="carga_titulo_resumen_ia" xml:space="preserve">
+    <value>Verarbeitung durch unterstützende KI...</value>
+  </data>
+  <data name="confirm_cancelar_suscripcion" xml:space="preserve">
+    <value>Möchten Sie die Kündigung bestätigen? Das Abonnement bleibt bis zum Ende des laufenden Zeitraums aktiv.</value>
+  </data>
+  <data name="confirm_descartar_informe" xml:space="preserve">
+    <value>Verwerfen bestätigen? Dieser Vorgang kann nicht rückgängig gemacht werden.</value>
+  </data>
+  <data name="confirm_generar_backup" xml:space="preserve">
+    <value>Backup-Erstellung bestätigen? Es wird eine neue .bak-Datei im Backup-Ordner der Instanz erstellt.</value>
+  </data>
+  <data name="doc_informe_derivacion" xml:space="preserve">
+    <value>Überweisungsbericht</value>
+  </data>
+  <data name="doc_perfil_evolutivo" xml:space="preserve">
+    <value>Entwicklungsprofil</value>
+  </data>
+  <data name="doc_resumen_clinico" xml:space="preserve">
+    <value>Klinische KI-Zusammenfassung</value>
+  </data>
+  <data name="dvh_registro_inconsistente_bitacora" xml:space="preserve">
+    <value>Im Protokollereignis Nr. {0} (Benutzer {1}) wurde eine Manipulation festgestellt.</value>
+  </data>
+  <data name="dvh_registro_inconsistente_familia" xml:space="preserve">
+    <value>In der Berechtigungsgruppe „{0}“ wurde eine Manipulation festgestellt.</value>
+  </data>
+  <data name="dvh_registro_inconsistente_familia_familia" xml:space="preserve">
+    <value>In der Beziehung zwischen der Gruppe „{0}“ und der enthaltenen Untergruppe „{1}“ wurde eine Manipulation festgestellt.</value>
+  </data>
+  <data name="dvh_registro_inconsistente_historial" xml:space="preserve">
+    <value>Tabelle HistorialClinico: Die Krankenakte Nr. {0} des Patienten Nr. {1} weist eine Inkonsistenz auf (sie wurde direkt in der Datenbank geändert oder ohne Durchlauf durch das System eingefügt).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_idioma" xml:space="preserve">
+    <value>In der Sprache „{0}“ (Code {1}) wurde eine Manipulation festgestellt.</value>
+  </data>
+  <data name="dvh_registro_inconsistente_informe_derivacion" xml:space="preserve">
+    <value>Tabelle InformeDerivacion: Der Überweisungsbericht Nr. {0} des Patienten Nr. {1} weist eine Inkonsistenz auf (er wurde direkt in der Datenbank geändert oder ohne Durchlauf durch das System eingefügt).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_perfil" xml:space="preserve">
+    <value>Im Profil „{0}“ wurde eine Manipulation festgestellt.</value>
+  </data>
+  <data name="dvh_registro_inconsistente_perfil_familia" xml:space="preserve">
+    <value>In der Beziehung zwischen dem Profil „{0}“ und der Gruppe „{1}“ wurde eine Manipulation festgestellt.</value>
+  </data>
+  <data name="dvh_registro_inconsistente_perfil_paciente" xml:space="preserve">
+    <value>Tabelle PerfilPaciente: Das Profil Nr. {0} des Patienten Nr. {1} weist eine Inkonsistenz auf (es wurde direkt in der Datenbank geändert oder ohne Durchlauf durch das System eingefügt).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_permiso_simple" xml:space="preserve">
+    <value>In der Einzelberechtigung „{0}“ wurde eine Manipulation festgestellt.</value>
+  </data>
+  <data name="dvh_registro_inconsistente_permiso_simple_familia" xml:space="preserve">
+    <value>In der Beziehung zwischen der Gruppe „{0}“ und der Einzelberechtigung „{1}“ wurde eine Manipulation festgestellt.</value>
+  </data>
+  <data name="dvh_registro_inconsistente_permiso_simple_perfil" xml:space="preserve">
+    <value>In der Beziehung zwischen dem Profil „{0}“ und der Einzelberechtigung „{1}“ wurde eine Manipulation festgestellt.</value>
+  </data>
+  <data name="dvh_registro_inconsistente_resumen" xml:space="preserve">
+    <value>Tabelle ResumenClinico: Die klinische Zusammenfassung Nr. {0} des Patienten Nr. {1} weist eine Inkonsistenz auf (sie wurde direkt in der Datenbank geändert oder ohne Durchlauf durch das System eingefügt).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_suscripcion" xml:space="preserve">
+    <value>Im Abonnement Nr. {0} (Fachperson-ID {1}) wurde eine Manipulation festgestellt.</value>
+  </data>
+  <data name="dvh_registro_inconsistente_token" xml:space="preserve">
+    <value>Im Wiederherstellungstoken Nr. {0} (Fachperson-ID {1}) wurde eine Manipulation festgestellt.</value>
+  </data>
+  <data name="dvh_registro_inconsistente_traduccion" xml:space="preserve">
+    <value>In einer Übersetzung der Sprache {0} (Schlüssel „{1}“) wurde eine Manipulation festgestellt.</value>
+  </data>
+  <data name="error_backup_archivo_invalido" xml:space="preserve">
+    <value>Die ausgewählte Datei ist nicht mehr verfügbar. Aktualisieren Sie die Liste und versuchen Sie es erneut.</value>
+  </data>
+  <data name="error_backup_carpeta_no_configurada" xml:space="preserve">
+    <value>Der Backup-Ordner der SQL-Server-Instanz konnte nicht ermittelt werden.</value>
+  </data>
+  <data name="error_backup_fallo" xml:space="preserve">
+    <value>Das Backup konnte nicht erstellt werden. Details: {0}</value>
+  </data>
+  <data name="error_backup_inesperado" xml:space="preserve">
+    <value>Beim Erstellen des Backups ist ein unerwarteter Fehler aufgetreten. Versuchen Sie es in einigen Minuten erneut.</value>
+  </data>
+  <data name="error_backup_permiso_carpeta" xml:space="preserve">
+    <value>SQL Server hat keine Berechtigung, in den Backup-Ordner zu schreiben. Details: {0}</value>
+  </data>
+  <data name="error_campo_obligatorio" xml:space="preserve">
+    <value>Dieses Feld ist erforderlich.</value>
+  </data>
+  <data name="error_consulta_encriptacion" xml:space="preserve">
+    <value>Der Vorgang konnte aufgrund eines internen Fehlers bei der Verschlüsselung der Sitzung nicht abgeschlossen werden. Versuchen Sie es erneut.</value>
+  </data>
+  <data name="error_consulta_fuera_de_plazo_modificacion" xml:space="preserve">
+    <value>Die Frist von {0} Tagen zur Bearbeitung dieser Sitzung ist abgelaufen.</value>
+  </data>
+  <data name="error_consulta_ya_modificada" xml:space="preserve">
+    <value>Diese Sitzung wurde bereits geändert und kann nicht erneut bearbeitet werden.</value>
+  </data>
+  <data name="error_contacto_datos_invalidos" xml:space="preserve">
+    <value>Geben Sie vor dem Senden Ihren Namen, einen Betreff und eine Nachricht an.</value>
+  </data>
+  <data name="error_contacto_email_invalido" xml:space="preserve">
+    <value>Geben Sie eine gültige E-Mail-Adresse ein.</value>
+  </data>
+  <data name="error_dashboard_recalculo" xml:space="preserve">
+    <value>Die Kennzahlen für den ausgewählten Zeitraum konnten nicht neu berechnet werden.</value>
+  </data>
+  <data name="error_dashboard_recuperacion" xml:space="preserve">
+    <value>Die Dashboard-Kennzahlen konnten nicht abgerufen werden. Versuchen Sie es in Kürze erneut.</value>
+  </data>
+  <data name="error_dni_obligatorio" xml:space="preserve">
+    <value>Die Ausweisnummer ist erforderlich.</value>
+  </data>
+  <data name="error_documento_no_disponible" xml:space="preserve">
+    <value>Das ausgewählte Dokument ist für diesen Patienten noch nicht verfügbar.</value>
+  </data>
+  <data name="error_especialidad_obligatoria" xml:space="preserve">
+    <value>Wählen Sie das Fachgebiet aus.</value>
+  </data>
+  <data name="error_estado_civil_obligatorio" xml:space="preserve">
+    <value>Wählen Sie den Familienstand aus.</value>
+  </data>
+  <data name="error_fecha_desde_obligatoria" xml:space="preserve">
+    <value>Geben Sie das Startdatum ein.</value>
+  </data>
+  <data name="error_fecha_formato_invalido" xml:space="preserve">
+    <value>Die eingegebenen Daten sind ungültig.</value>
+  </data>
+  <data name="error_fecha_hasta_obligatoria" xml:space="preserve">
+    <value>Geben Sie das Enddatum ein.</value>
+  </data>
+  <data name="error_generacion_pdf" xml:space="preserve">
+    <value>Beim Erstellen des PDFs ist ein Fehler aufgetreten. Versuchen Sie es erneut.</value>
+  </data>
+  <data name="error_historial_campos_incompletos" xml:space="preserve">
+    <value>Füllen Sie alle 6 Abschnitte der Krankenakte aus, bevor Sie speichern.</value>
+  </data>
+  <data name="error_historial_encriptacion" xml:space="preserve">
+    <value>Der Vorgang konnte aufgrund eines internen Fehlers bei der Verschlüsselung der Krankenakte nicht abgeschlossen werden. Versuchen Sie es erneut.</value>
+  </data>
+  <data name="error_historial_ya_existe" xml:space="preserve">
+    <value>Für diesen Patienten liegt bereits eine Krankenakte vor. Die aktuellen Daten werden angezeigt, damit Sie sie bearbeiten können.</value>
+  </data>
+  <data name="error_ia_comunicacion" xml:space="preserve">
+    <value>Die Zusammenfassung konnte aufgrund eines Kommunikationsfehlers mit dem KI-Dienst nicht erstellt werden. Versuchen Sie es erneut.</value>
+  </data>
+  <data name="error_ia_respuesta_invalida" xml:space="preserve">
+    <value>Die Zusammenfassung konnte nicht erstellt werden, da der KI-Dienst eine ungültige Antwort geliefert hat. Versuchen Sie es erneut.</value>
+  </data>
+  <data name="error_ia_saturado" xml:space="preserve">
+    <value>Der KI-Dienst ist derzeit ausgelastet (Nutzungslimit erreicht). Warten Sie einige Sekunden und versuchen Sie es erneut.</value>
+  </data>
+  <data name="error_ia_timeout" xml:space="preserve">
+    <value>Das Zeitlimit des KI-Dienstes wurde überschritten. Versuchen Sie es erneut.</value>
+  </data>
+  <data name="error_informe_campos_incompletos" xml:space="preserve">
+    <value>Geben Sie das Überweisungsfachgebiet, die empfangende Fachperson und den Grund an, bevor Sie den Bericht erstellen.</value>
+  </data>
+  <data name="error_informe_encriptacion" xml:space="preserve">
+    <value>Beim Schutz der Berichtsdaten ist ein Fehler aufgetreten. Versuchen Sie es erneut.</value>
+  </data>
+  <data name="error_informe_firma_obligatoria" xml:space="preserve">
+    <value>Zur Validierung und Unterzeichnung des Berichts ist eine Unterschrift erforderlich.</value>
+  </data>
+  <data name="error_informe_informacion_insuficiente" xml:space="preserve">
+    <value>Die erfassten klinischen Informationen sind nicht aussagekräftig genug, um einen Überweisungsbericht zu erstellen. Überprüfen Sie die Krankenakte und die Sitzungen des Patienten, bevor Sie es erneut versuchen.</value>
+  </data>
+  <data name="error_informe_no_propio" xml:space="preserve">
+    <value>Der angeforderte Bericht existiert nicht oder gehört nicht zu einem Ihrer Patienten.</value>
+  </data>
+  <data name="error_informe_sin_informacion_clinica" xml:space="preserve">
+    <value>Für den Patienten liegen weder eine Krankenakte noch erfasste Sitzungen vor. Erfassen Sie klinische Informationen, bevor Sie einen Überweisungsbericht erstellen.</value>
+  </data>
+  <data name="error_informe_vacio" xml:space="preserve">
+    <value>Der Bericht darf nicht leer sein. Füllen Sie mindestens die diagnostische Zusammenfassung aus.</value>
+  </data>
+  <data name="error_motivo_derivacion_obligatorio" xml:space="preserve">
+    <value>Geben Sie den Überweisungsgrund ein.</value>
+  </data>
+  <data name="error_paciente_duplicado" xml:space="preserve">
+    <value>Es ist bereits ein Patient mit dieser Ausweisnummer registriert.</value>
+  </data>
+  <data name="error_paciente_email_duplicado" xml:space="preserve">
+    <value>Es ist bereits ein Patient mit dieser E-Mail-Adresse registriert.</value>
+  </data>
+  <data name="error_paciente_no_propio" xml:space="preserve">
+    <value>Der ausgewählte Patient ist nicht mit Ihrem Fachprofil verknüpft.</value>
+  </data>
+  <data name="error_pago_no_procesado" xml:space="preserve">
+    <value>Die Zahlung konnte nicht verarbeitet werden. Überprüfen Sie die Kartendaten und versuchen Sie es erneut.</value>
+  </data>
+  <data name="error_pago_rechazado" xml:space="preserve">
+    <value>Die Zahlung wurde abgelehnt ({0}). Überprüfen Sie die Kartendaten und versuchen Sie es erneut.</value>
+  </data>
+  <data name="error_pago_timeout" xml:space="preserve">
+    <value>Die Zahlung konnte aufgrund eines Kommunikationsfehlers mit dem Zahlungsdienstleister nicht verarbeitet werden. Versuchen Sie es in einigen Minuten erneut.</value>
+  </data>
+  <data name="error_perfil_encriptacion" xml:space="preserve">
+    <value>Beim Schutz der Profildaten ist ein Fehler aufgetreten. Versuchen Sie es erneut.</value>
+  </data>
+  <data name="error_perfil_informacion_insuficiente" xml:space="preserve">
+    <value>Die erfassten klinischen Informationen sind nicht aussagekräftig genug, um ein Profil nach dem gewählten Modell zu erstellen. Überprüfen Sie die Krankenakte und die Sitzungen des Patienten, bevor Sie es erneut versuchen.</value>
+  </data>
+  <data name="error_perfil_modelo_invalido" xml:space="preserve">
+    <value>Wählen Sie ein gültiges Bewertungsmodell aus, bevor Sie das Profil erstellen.</value>
+  </data>
+  <data name="error_perfil_sin_informacion_clinica" xml:space="preserve">
+    <value>Für den Patienten liegen weder eine Krankenakte noch erfasste Sitzungen vor. Erfassen Sie klinische Informationen, bevor Sie ein Profil erstellen.</value>
+  </data>
+  <data name="error_prof_destino_obligatorio" xml:space="preserve">
+    <value>Geben Sie die empfangende Fachperson ein.</value>
+  </data>
+  <data name="error_rango_fecha_invalido" xml:space="preserve">
+    <value>Der ausgewählte Datumsbereich ist ungültig: „Von“ darf nicht nach „Bis“ liegen.</value>
+  </data>
+  <data name="error_restore_fallo" xml:space="preserve">
+    <value>Die Wiederherstellung konnte nicht abgeschlossen werden. Details: {0}</value>
+  </data>
+  <data name="error_restore_inesperado" xml:space="preserve">
+    <value>Beim Wiederherstellen des Backups ist ein unerwarteter Fehler aufgetreten. Versuchen Sie es in einigen Minuten erneut oder wenden Sie sich an den technischen Support.</value>
+  </data>
+  <data name="error_restore_permiso_carpeta" xml:space="preserve">
+    <value>SQL Server hat keine Berechtigung, die ausgewählte Backup-Datei zu lesen. Details: {0}</value>
+  </data>
+  <data name="error_resumen_encriptacion" xml:space="preserve">
+    <value>Der Vorgang konnte aufgrund eines internen Fehlers bei der Verschlüsselung der Zusammenfassung nicht abgeschlossen werden. Versuchen Sie es erneut.</value>
+  </data>
+  <data name="error_resumen_informacion_insuficiente" xml:space="preserve">
+    <value>Die in den ausgewählten Sitzungen erfassten klinischen Informationen sind nicht aussagekräftig genug, um eine Zusammenfassung zu erstellen. Überprüfen Sie die Sitzungsfelder und ergänzen Sie sie mit tatsächlichen klinischen Informationen, bevor Sie es erneut versuchen.</value>
+  </data>
+  <data name="error_resumen_sin_consultas" xml:space="preserve">
+    <value>Für diesen Patienten wurden im ausgewählten Zeitraum keine erfassten Sitzungen gefunden.</value>
+  </data>
+  <data name="error_resumen_sin_consultas_seleccionadas" xml:space="preserve">
+    <value>Wählen Sie mindestens eine Sitzung aus, um die Zusammenfassung zu erstellen.</value>
+  </data>
+  <data name="error_seleccionar_archivo" xml:space="preserve">
+    <value>Wählen Sie vor dem Fortfahren eine Backup-Datei aus der Liste aus.</value>
+  </data>
+  <data name="error_seleccionar_paciente_perfil" xml:space="preserve">
+    <value>Wählen Sie einen Patienten aus, bevor Sie das Profil erstellen.</value>
+  </data>
+  <data name="error_sexo_obligatorio" xml:space="preserve">
+    <value>Wählen Sie das Geschlecht des Patienten aus.</value>
+  </data>
+  <data name="error_sin_consultas_editables" xml:space="preserve">
+    <value>Für diesen Patienten liegen keine Sitzungen innerhalb der zulässigen Bearbeitungsfrist von 3 Tagen vor.</value>
+  </data>
+  <data name="error_suscripcion_mismo_plan" xml:space="preserve">
+    <value>Sie haben dieses Abonnement bereits.</value>
+  </data>
+  <data name="error_suscripcion_no_activa" xml:space="preserve">
+    <value>Sie haben kein aktives Abonnement.</value>
+  </data>
+  <data name="error_suscripcion_no_cancelada" xml:space="preserve">
+    <value>Es gibt kein gekündigtes Abonnement, das reaktiviert werden könnte.</value>
+  </data>
+  <data name="error_suscripcion_periodo_vencido" xml:space="preserve">
+    <value>Der bezahlte Zeitraum dieses Abonnements ist bereits abgelaufen. Wählen Sie einen Plan, um sich erneut anzumelden.</value>
+  </data>
+  <data name="error_suscripcion_plan_invalido" xml:space="preserve">
+    <value>Der ausgewählte Abonnementplan ist ungültig.</value>
+  </data>
+  <data name="error_tarjeta_no_validada" xml:space="preserve">
+    <value>Die Kartendaten konnten nicht validiert werden. Laden Sie die Seite neu und versuchen Sie es erneut.</value>
+  </data>
+  <data name="error_tarjeta_obligatoria" xml:space="preserve">
+    <value>Geben Sie die Kartennummer ein.</value>
+  </data>
+  <data name="error_valoracion_puntuacion_invalida" xml:space="preserve">
+    <value>Wählen Sie eine Bewertung von 1 bis 5 Sternen.</value>
+  </data>
+  <data name="error_valoracion_sin_suscripcion_activa" xml:space="preserve">
+    <value>Sie benötigen ein aktives Abonnement, um den Dienst zu bewerten.</value>
+  </data>
+  <data name="esp_cardiologia" xml:space="preserve">
+    <value>Kardiologie</value>
+  </data>
+  <data name="esp_fisiatria" xml:space="preserve">
+    <value>Physikalische Medizin</value>
+  </data>
+  <data name="esp_medicina_general" xml:space="preserve">
+    <value>Allgemeinmedizin</value>
+  </data>
+  <data name="esp_neurologia" xml:space="preserve">
+    <value>Neurologie</value>
+  </data>
+  <data name="esp_nutricion" xml:space="preserve">
+    <value>Ernährungsmedizin</value>
+  </data>
+  <data name="esp_otra_especialidad" xml:space="preserve">
+    <value>Andere Fachrichtung</value>
+  </data>
+  <data name="esp_psiquiatria" xml:space="preserve">
+    <value>Psychiatrie</value>
+  </data>
+  <data name="esp_trabajo_social" xml:space="preserve">
+    <value>Sozialarbeit</value>
+  </data>
+  <data name="exito_borrador_guardado" xml:space="preserve">
+    <value>Entwurf gespeichert. Sie können die Überprüfung später im Bereich Überweisungen fortsetzen.</value>
+  </data>
+  <data name="exito_informe_descartado" xml:space="preserve">
+    <value>Der Bericht wurde erfolgreich verworfen.</value>
+  </data>
+  <data name="exito_informe_validado" xml:space="preserve">
+    <value>Bericht von {0} validiert und unterzeichnet. Das Dokument steht zum PDF-Export bereit.</value>
+  </data>
+  <data name="exito_medio_pago_actualizado" xml:space="preserve">
+    <value>Zahlungsmethode erfolgreich aktualisiert.</value>
+  </data>
+  <data name="exito_plan_actualizado" xml:space="preserve">
+    <value>Plan erfolgreich aktualisiert. Die Änderung ist bereits aktiv.</value>
+  </data>
+  <data name="exito_suscripcion_reactivada" xml:space="preserve">
+    <value>Ihr Abonnement wurde erfolgreich reaktiviert.</value>
+  </data>
+  <data name="eyebrow_plan_activo" xml:space="preserve">
+    <value>Aktiver Plan</value>
+  </data>
+  <data name="feature_consultas_historial" xml:space="preserve">
+    <value>Sitzungen und Krankenakte</value>
+  </data>
+  <data name="feature_exportaciones_avanzado" xml:space="preserve">
+    <value>Erweitert</value>
+  </data>
+  <data name="feature_exportaciones_pdf" xml:space="preserve">
+    <value>PDF-Exporte</value>
+  </data>
+  <data name="feature_informe_derivacion_ia" xml:space="preserve">
+    <value>KI-Überweisungsbericht</value>
+  </data>
+  <data name="feature_pacientes" xml:space="preserve">
+    <value>Patienten</value>
+  </data>
+  <data name="feature_pacientes_hasta20" xml:space="preserve">
+    <value>Bis zu 20</value>
+  </data>
+  <data name="feature_pacientes_ilimitados" xml:space="preserve">
+    <value>Unbegrenzt</value>
+  </data>
+  <data name="feature_perfilacion" xml:space="preserve">
+    <value>Patientenprofilierung</value>
+  </data>
+  <data name="feature_resumen_ia" xml:space="preserve">
+    <value>Klinische KI-Zusammenfassung</value>
+  </data>
+  <data name="feature_soporte" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="feature_soporte_email" xml:space="preserve">
+    <value>E-Mail</value>
+  </data>
+  <data name="feature_soporte_email_chat" xml:space="preserve">
+    <value>E-Mail + Chat</value>
+  </data>
+  <data name="feature_soporte_prioritario" xml:space="preserve">
+    <value>Priorität</value>
+  </data>
+  <data name="filtro_consultas" xml:space="preserve">
+    <value>Sitzung</value>
+  </data>
+  <data name="filtro_historial" xml:space="preserve">
+    <value>Krankenakte</value>
+  </data>
+  <data name="filtro_informe_derivacion" xml:space="preserve">
+    <value>Überweisungsbericht</value>
+  </data>
+  <data name="filtro_perfilacion" xml:space="preserve">
+    <value>Profilierung</value>
+  </data>
+  <data name="filtro_resumen_ia" xml:space="preserve">
+    <value>KI-Zusammenfassung</value>
+  </data>
+  <data name="filtro_todos" xml:space="preserve">
+    <value>Alle</value>
+  </data>
+  <data name="hint_historial_clinico" xml:space="preserve">
+    <value>Diese Informationen stammen nicht aus einer bestimmten Sitzung, sondern aus dem allgemeinen Kontext des Patienten. Klappen Sie jeden Abschnitt auf, um ihn auszufüllen.</value>
+  </data>
+  <data name="hint_seleccionar_consulta_modificar" xml:space="preserve">
+    <value>Es werden nur Sitzungen angezeigt, die innerhalb von 3 Tagen nach ihrer Erstellung liegen. Wählen Sie eine aus, um sie zu bearbeiten.</value>
+  </data>
+  <data name="hint_seleccionar_consultas" xml:space="preserve">
+    <value>Wählen Sie die Sitzungen aus, die in die Zusammenfassung aufgenommen werden sollen. Mit dem Kontrollkästchen in der Kopfzeile können Sie alle auswählen.</value>
+  </data>
+  <data name="hint_seleccionar_modelo" xml:space="preserve">
+    <value>Wählen Sie den für diesen Profilierungsprozess passenden Bewertungsrahmen aus. Sie können mehrere Profile mit unterschiedlichen Modellen erstellen.</value>
+  </data>
+  <data name="historial_sin_consultas" xml:space="preserve">
+    <value>Für diesen Patienten sind noch keine Sitzungen erfasst.</value>
+  </data>
+  <data name="ia_aviso_perfil" xml:space="preserve">
+    <value>Profile sind beschreibende, kontextuelle Darstellungen. Sie stellen keine klinischen Diagnosen dar und ersetzen nicht die fachliche Beurteilung.</value>
+  </data>
+  <data name="info_incluye_antecedentes" xml:space="preserve">
+    <value>Vorgeschichte aus der Krankenakte</value>
+  </data>
+  <data name="info_incluye_evolucion" xml:space="preserve">
+    <value>Im Behandlungsverlauf beobachtete Entwicklung</value>
+  </data>
+  <data name="info_incluye_intervenciones" xml:space="preserve">
+    <value>Durchgeführte Interventionen und Unterstützungsmaßnahmen</value>
+  </data>
+  <data name="js_procesando_pago" xml:space="preserve">
+    <value>Zahlung wird verarbeitet...</value>
+  </data>
+  <data name="js_tarjeta_invalida" xml:space="preserve">
+    <value>Die Kartendaten konnten nicht validiert werden. Überprüfen Sie die Nummer, das Ablaufdatum und den Sicherheitscode.</value>
+  </data>
+  <data name="js_tarjeta_no_identificada" xml:space="preserve">
+    <value>Die eingegebene Karte konnte nicht identifiziert werden. Überprüfen Sie die Nummer.</value>
+  </data>
+  <data name="js_tarjeta_no_reconocida" xml:space="preserve">
+    <value>Diese Karte wird nicht erkannt. Überprüfen Sie die eingegebene Nummer.</value>
+  </data>
+  <data name="kpi_consultas_realizadas" xml:space="preserve">
+    <value>Durchgeführte Sitzungen</value>
+  </data>
+  <data name="kpi_derivaciones" xml:space="preserve">
+    <value>Überweisungen</value>
+  </data>
+  <data name="kpi_informes_exportados" xml:space="preserve">
+    <value>Exportierte Berichte</value>
+  </data>
+  <data name="kpi_nuevos_pacientes" xml:space="preserve">
+    <value>Neu im Zeitraum</value>
+  </data>
+  <data name="kpi_perfilaciones" xml:space="preserve">
+    <value>Profilierungen</value>
+  </data>
+  <data name="kpi_resumenes_ia" xml:space="preserve">
+    <value>Erstellte KI-Zusammenfassungen</value>
+  </data>
+  <data name="kpi_total_pacientes" xml:space="preserve">
+    <value>Patienten insgesamt</value>
+  </data>
+  <data name="landing_btn_crear_cuenta" xml:space="preserve">
+    <value>Konto erstellen</value>
+  </data>
+  <data name="landing_btn_enviar_contacto" xml:space="preserve">
+    <value>Nachricht senden</value>
+  </data>
+  <data name="landing_btn_enviar_valoracion" xml:space="preserve">
+    <value>Bewertung veröffentlichen</value>
+  </data>
+  <data name="landing_btn_iniciar_sesion" xml:space="preserve">
+    <value>Anmelden</value>
+  </data>
+  <data name="landing_btn_ir_panel" xml:space="preserve">
+    <value>Zum Dashboard</value>
+  </data>
+  <data name="landing_contacto_enviado" xml:space="preserve">
+    <value>Vielen Dank! Wir haben Ihre Nachricht erhalten und werden uns in Kürze bei Ihnen melden.</value>
+  </data>
+  <data name="landing_contacto_lbl_asunto" xml:space="preserve">
+    <value>Betreff</value>
+  </data>
+  <data name="landing_contacto_lbl_email" xml:space="preserve">
+    <value>E-Mail</value>
+  </data>
+  <data name="landing_contacto_lbl_mensaje" xml:space="preserve">
+    <value>Nachricht</value>
+  </data>
+  <data name="landing_contacto_lbl_nombre" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="landing_contacto_texto" xml:space="preserve">
+    <value>Haben Sie Fragen zu Cambur oder möchten Sie uns von einem anderen Projekt erzählen? Schreiben Sie uns, wir antworten Ihnen umgehend.</value>
+  </data>
+  <data name="landing_contacto_titulo" xml:space="preserve">
+    <value>Sprechen wir</value>
+  </data>
+  <data name="landing_faq_pregunta_1" xml:space="preserve">
+    <value>Was ist Cambur?</value>
+  </data>
+  <data name="landing_faq_pregunta_2" xml:space="preserve">
+    <value>Ersetzt die KI die fachliche Beurteilung?</value>
+  </data>
+  <data name="landing_faq_pregunta_3" xml:space="preserve">
+    <value>Wie sicher sind die Daten meiner Patienten?</value>
+  </data>
+  <data name="landing_faq_pregunta_4" xml:space="preserve">
+    <value>Welche Abonnementpläne gibt es?</value>
+  </data>
+  <data name="landing_faq_pregunta_5" xml:space="preserve">
+    <value>Kann ich jederzeit kündigen?</value>
+  </data>
+  <data name="landing_faq_pregunta_6" xml:space="preserve">
+    <value>Entwickelt CZ Consulting ausschließlich Cambur?</value>
+  </data>
+  <data name="landing_faq_respuesta_1" xml:space="preserve">
+    <value>Es handelt sich um ein klinisches Verwaltungssystem für Psychologinnen und Psychologen: Es organisiert Patienten, Sitzungen und Krankenakten und nutzt künstliche Intelligenz, um bei der Erstellung klinischer Zusammenfassungen, Überweisungsberichte und Entwicklungsprofile zu unterstützen.</value>
+  </data>
+  <data name="landing_faq_respuesta_2" xml:space="preserve">
+    <value>Nein. Die KI unterstützt lediglich bei der Erstellung von Dokumenten auf Basis der von der Fachperson erfassten Informationen; jedes Ergebnis muss vor der Verwendung von ihr überprüft und freigegeben werden.</value>
+  </data>
+  <data name="landing_faq_respuesta_3" xml:space="preserve">
+    <value>Die klinischen Daten unterliegen Integritätsprüfungen und einem internen Prüfprotokoll, und der Zugriff auf jeden Bildschirm ist je nach Benutzerrolle im System eingeschränkt.</value>
+  </data>
+  <data name="landing_faq_respuesta_4" xml:space="preserve">
+    <value>Basic, Professional und Premium, mit unterschiedlichen monatlichen Nutzungslimits. Sie können den Plan oder die Zahlungsmethode jederzeit über Ihr Dashboard ändern.</value>
+  </data>
+  <data name="landing_faq_respuesta_5" xml:space="preserve">
+    <value>Ja, ohne Mindestlaufzeit. Wenn Sie kündigen, behalten Sie den Zugriff bis zum Ende des bereits bezahlten Zeitraums.</value>
+  </data>
+  <data name="landing_faq_respuesta_6" xml:space="preserve">
+    <value>Nein. Unsere Branche ist die Softwareentwicklung im Allgemeinen; Cambur ist eines unserer Produkte mit Fokus auf HealthTech, wir arbeiten aber auch an maßgeschneiderten Projekten für andere Organisationen.</value>
+  </data>
+  <data name="landing_faq_titulo" xml:space="preserve">
+    <value>Häufig gestellte Fragen</value>
+  </data>
+  <data name="landing_footer_texto" xml:space="preserve">
+    <value>CZ Consulting ist ein Softwareentwicklungsunternehmen. Cambur ist ein Produkt von CZ Consulting.</value>
+  </data>
+  <data name="landing_hero_cta_cambur" xml:space="preserve">
+    <value>Cambur entdecken</value>
+  </data>
+  <data name="landing_hero_cta_servicios" xml:space="preserve">
+    <value>Unsere Leistungen kennenlernen</value>
+  </data>
+  <data name="landing_hero_eyebrow" xml:space="preserve">
+    <value>CZ Consulting · Softwareentwicklung</value>
+  </data>
+  <data name="landing_hero_texto" xml:space="preserve">
+    <value>Wir sind ein Softwareentwicklungsunternehmen. Wir entwerfen und entwickeln maßgeschneiderte digitale Produkte für verschiedene Branchen. Cambur, unsere KI-gestützte klinische Verwaltungsplattform für Fachpersonen der psychischen Gesundheit, ist eines unserer eigenen Produkte, konzipiert und betreut vom selben Team, das Sie heute begleitet.</value>
+  </data>
+  <data name="landing_hero_titulo" xml:space="preserve">
+    <value>Wir entwickeln Software, die die Arbeit derer verbessert, die sich um Menschen kümmern</value>
+  </data>
+  <data name="landing_nav_contacto" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="landing_nav_faq" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+  <data name="landing_nav_inicio" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="landing_nav_nosotros" xml:space="preserve">
+    <value>Über uns</value>
+  </data>
+  <data name="landing_nav_rse" xml:space="preserve">
+    <value>CSR</value>
+  </data>
+  <data name="landing_nav_servicios" xml:space="preserve">
+    <value>Leistungen</value>
+  </data>
+  <data name="landing_nav_testimonios" xml:space="preserve">
+    <value>Erfahrungsberichte</value>
+  </data>
+  <data name="landing_nosotros_dato_1_num" xml:space="preserve">
+    <value>Software</value>
+  </data>
+  <data name="landing_nosotros_dato_1_texto" xml:space="preserve">
+    <value>Unsere Branche</value>
+  </data>
+  <data name="landing_nosotros_dato_2_num" xml:space="preserve">
+    <value>HealthTech</value>
+  </data>
+  <data name="landing_nosotros_dato_2_texto" xml:space="preserve">
+    <value>Fokus von Cambur</value>
+  </data>
+  <data name="landing_nosotros_dato_3_num" xml:space="preserve">
+    <value>KI</value>
+  </data>
+  <data name="landing_nosotros_dato_3_texto" xml:space="preserve">
+    <value>Als Unterstützung, nicht als Ersatz</value>
+  </data>
+  <data name="landing_nosotros_texto" xml:space="preserve">
+    <value>CZ Consulting ist ein Softwareentwicklungsunternehmen. Wir arbeiten mit Organisationen unterschiedlicher Branchen zusammen, um Prozesse in einfache, sichere und langfristig tragfähige digitale Produkte umzuwandeln. Unsere Branche ist Software, doch wir richten einen Großteil unserer Anstrengungen auf HealthTech: Wir glauben, dass Technologie die administrative Belastung derjenigen verringern kann, die sich der Gesundheit anderer widmen, ohne dabei jemals ihre fachliche Beurteilung zu ersetzen.</value>
+  </data>
+  <data name="landing_nosotros_titulo" xml:space="preserve">
+    <value>Über uns</value>
+  </data>
+  <data name="landing_rse_pilar_1_texto" xml:space="preserve">
+    <value>Verringerung der administrativen Belastung von Fachpersonen der psychischen Gesundheit, damit sie mehr Zeit für ihre Patienten haben.</value>
+  </data>
+  <data name="landing_rse_pilar_1_titulo" xml:space="preserve">
+    <value>Zugang zu psychischer Gesundheit</value>
+  </data>
+  <data name="landing_rse_pilar_2_texto" xml:space="preserve">
+    <value>Die von uns eingesetzte künstliche Intelligenz unterstützt, entscheidet aber niemals und ersetzt nicht die fachliche Beurteilung der Anwenderin oder des Anwenders.</value>
+  </data>
+  <data name="landing_rse_pilar_2_titulo" xml:space="preserve">
+    <value>Verantwortungsvoller Einsatz von KI</value>
+  </data>
+  <data name="landing_rse_pilar_3_texto" xml:space="preserve">
+    <value>Wir fördern die lokale Softwareentwicklung, bilden Talente aus und arbeiten mit Bildungseinrichtungen der Region zusammen.</value>
+  </data>
+  <data name="landing_rse_pilar_3_titulo" xml:space="preserve">
+    <value>Ausbildung und lokale Talente</value>
+  </data>
+  <data name="landing_rse_texto" xml:space="preserve">
+    <value>Als Technologieunternehmen wissen wir, dass das, was wir entwickeln, Auswirkungen hat, die über den Code hinausgehen. Dies sind die Grundsätze, die unsere tägliche Arbeit leiten.</value>
+  </data>
+  <data name="landing_rse_titulo" xml:space="preserve">
+    <value>Soziale Unternehmensverantwortung</value>
+  </data>
+  <data name="landing_servicio_1_texto" xml:space="preserve">
+    <value>Wir entwerfen und entwickeln eigene Systeme von Grund auf, angepasst an die tatsächliche Arbeitsweise jeder Organisation.</value>
+  </data>
+  <data name="landing_servicio_1_titulo" xml:space="preserve">
+    <value>Maßgeschneiderte Softwareentwicklung</value>
+  </data>
+  <data name="landing_servicio_2_texto" xml:space="preserve">
+    <value>Wir begleiten die Digitalisierung bestehender Prozesse: Analyse, Architektur, Informationssicherheit und Integration mit den bereits vorhandenen Systemen des Kunden.</value>
+  </data>
+  <data name="landing_servicio_2_titulo" xml:space="preserve">
+    <value>Technologieberatung und -implementierung</value>
+  </data>
+  <data name="landing_servicio_3_badge" xml:space="preserve">
+    <value>HealthTech</value>
+  </data>
+  <data name="landing_servicio_3_texto" xml:space="preserve">
+    <value>Unser eigenes Produkt: eine Plattform für Psychologinnen und Psychologen, die Patienten, Sitzungen und Krankenakten organisiert und KI nutzt, um Zusammenfassungen, Überweisungsberichte und Entwicklungsprofile zu erstellen – stets unter fachlicher Überprüfung.</value>
+  </data>
+  <data name="landing_servicio_3_titulo" xml:space="preserve">
+    <value>Cambur: KI-gestützte klinische Verwaltung</value>
+  </data>
+  <data name="landing_servicios_subtitulo" xml:space="preserve">
+    <value>Softwareentwicklungsdienstleistungen und ein eigenes Produkt, das bereits im Einsatz ist.</value>
+  </data>
+  <data name="landing_servicios_titulo" xml:space="preserve">
+    <value>Was wir tun</value>
+  </data>
+  <data name="landing_testimonios_cantidad_sufijo" xml:space="preserve">
+    <value>Bewertungen</value>
+  </data>
+  <data name="landing_testimonios_promedio_sufijo" xml:space="preserve">
+    <value>von 5</value>
+  </data>
+  <data name="landing_testimonios_sin_datos" xml:space="preserve">
+    <value>Es wurden noch keine Bewertungen veröffentlicht. Seien Sie die oder der Erste!</value>
+  </data>
+  <data name="landing_testimonios_titulo" xml:space="preserve">
+    <value>Was Fachpersonen sagen, die es bereits nutzen</value>
+  </data>
+  <data name="landing_valoracion_enviada" xml:space="preserve">
+    <value>Vielen Dank! Ihre Bewertung wurde veröffentlicht.</value>
+  </data>
+  <data name="landing_valorar_comentario_placeholder" xml:space="preserve">
+    <value>Erzählen Sie uns von Ihrer Erfahrung (optional)</value>
+  </data>
+  <data name="landing_valorar_plan_actual_prefijo" xml:space="preserve">
+    <value>Sie bewerten Ihren aktuellen Plan:</value>
+  </data>
+  <data name="landing_valorar_sin_suscripcion" xml:space="preserve">
+    <value>Sie benötigen ein aktives Abonnement, um eine Bewertung abzugeben. Sie können einen Plan über Ihr Dashboard auswählen.</value>
+  </data>
+  <data name="landing_valorar_texto" xml:space="preserve">
+    <value>Ihre Bewertung wird mit Ihrem Namen veröffentlicht und kann sich nur auf den aktuell gebuchten Plan beziehen, um authentische Erfahrungsberichte zu gewährleisten.</value>
+  </data>
+  <data name="landing_valorar_titulo" xml:space="preserve">
+    <value>Bewerten Sie Ihren Plan</value>
+  </data>
+  <data name="landing_valorar_ya_existente_aviso" xml:space="preserve">
+    <value>Sie haben Ihren aktuellen Plan bereits bewertet. Wenn Sie erneut veröffentlichen, wird Ihre vorherige Bewertung aktualisiert.</value>
+  </data>
+  <data name="lbl_activa_desde" xml:space="preserve">
+    <value>Aktiv seit</value>
+  </data>
+  <data name="lbl_activos" xml:space="preserve">
+    <value>aktiv</value>
+  </data>
+  <data name="lbl_al" xml:space="preserve">
+    <value>bis</value>
+  </data>
+  <data name="lbl_andamiajes_implementados" xml:space="preserve">
+    <value>Durchgeführte Unterstützungsmaßnahmen</value>
+  </data>
+  <data name="lbl_anios" xml:space="preserve">
+    <value>Jahre</value>
+  </data>
+  <data name="lbl_archivo_a_generar" xml:space="preserve">
+    <value>Zu erstellende Datei:</value>
+  </data>
+  <data name="lbl_archivo_seleccionado" xml:space="preserve">
+    <value>Ausgewählte Datei:</value>
+  </data>
+  <data name="lbl_archivos_disponibles" xml:space="preserve">
+    <value>Verfügbare Dateien</value>
+  </data>
+  <data name="lbl_bienvenida" xml:space="preserve">
+    <value>Willkommen, {0}.</value>
+  </data>
+  <data name="lbl_borrador_singular" xml:space="preserve">
+    <value>ausstehender Entwurf</value>
+  </data>
+  <data name="lbl_borradores_plural" xml:space="preserve">
+    <value>ausstehende Entwürfe</value>
+  </data>
+  <data name="lbl_carpeta_destino" xml:space="preserve">
+    <value>Zielordner</value>
+  </data>
+  <data name="lbl_config_backup" xml:space="preserve">
+    <value>Backup-Einstellungen</value>
+  </data>
+  <data name="lbl_consultas_analizadas" xml:space="preserve">
+    <value>Analysierte Sitzungen</value>
+  </data>
+  <data name="lbl_consultas_analizadas_valor" xml:space="preserve">
+    <value>analysierte Sitzungen</value>
+  </data>
+  <data name="lbl_consultas_plural" xml:space="preserve">
+    <value>Sitzungen</value>
+  </data>
+  <data name="lbl_consultas_totales" xml:space="preserve">
+    <value>Sitzungen insgesamt</value>
+  </data>
+  <data name="lbl_creada" xml:space="preserve">
+    <value>Erstellt</value>
+  </data>
+  <data name="lbl_cvv" xml:space="preserve">
+    <value>CVV-Code</value>
+  </data>
+  <data name="lbl_de" xml:space="preserve">
+    <value>von</value>
+  </data>
+  <data name="lbl_dias_restantes" xml:space="preserve">
+    <value>verbleibende Tage</value>
+  </data>
+  <data name="lbl_disponible" xml:space="preserve">
+    <value>✓ Verfügbar</value>
+  </data>
+  <data name="lbl_edad_anios" xml:space="preserve">
+    <value>{0} Jahre</value>
+  </data>
+  <data name="lbl_elegir_documento" xml:space="preserve">
+    <value>Wählen Sie die zu exportierende Version</value>
+  </data>
+  <data name="lbl_especialidad_derivacion" xml:space="preserve">
+    <value>Überweisungsfachgebiet</value>
+  </data>
+  <data name="lbl_especialidad_destino" xml:space="preserve">
+    <value>Zielfachgebiet</value>
+  </data>
+  <data name="lbl_fecha_desde" xml:space="preserve">
+    <value>Datum von</value>
+  </data>
+  <data name="lbl_fecha_hasta" xml:space="preserve">
+    <value>Datum bis</value>
+  </data>
+  <data name="lbl_firma_digital" xml:space="preserve">
+    <value>Digitale Signatur</value>
+  </data>
+  <data name="lbl_formato_archivo" xml:space="preserve">
+    <value>Dateiformat</value>
+  </data>
+  <data name="lbl_generado" xml:space="preserve">
+    <value>Erstellt</value>
+  </data>
+  <data name="lbl_generado_el" xml:space="preserve">
+    <value>Erstellt am {0}</value>
+  </data>
+  <data name="lbl_grafico_subtitulo" xml:space="preserve">
+    <value>Sitzungen pro Monat · letzte {0} Monate</value>
+  </data>
+  <data name="lbl_institucion_opcional" xml:space="preserve">
+    <value>Institution / Zentrum (optional)</value>
+  </data>
+  <data name="lbl_limite" xml:space="preserve">
+    <value>Limit</value>
+  </data>
+  <data name="lbl_medio_pago" xml:space="preserve">
+    <value>Zahlungsmethode</value>
+  </data>
+  <data name="lbl_meses_tratamiento" xml:space="preserve">
+    <value>Monate in Behandlung</value>
+  </data>
+  <data name="lbl_minutos" xml:space="preserve">
+    <value>Minuten</value>
+  </data>
+  <data name="lbl_modalidad_trabajo" xml:space="preserve">
+    <value>Arbeitsform</value>
+  </data>
+  <data name="lbl_modelo_utilizado" xml:space="preserve">
+    <value>Verwendetes Modell</value>
+  </data>
+  <data name="lbl_motivo_derivacion" xml:space="preserve">
+    <value>Überweisungsgrund</value>
+  </data>
+  <data name="lbl_no_disponible" xml:space="preserve">
+    <value>⚠ Nicht verfügbar</value>
+  </data>
+  <data name="lbl_numero_tarjeta" xml:space="preserve">
+    <value>Kartennummer</value>
+  </data>
+  <data name="lbl_objetivos_terapeuticos" xml:space="preserve">
+    <value>Therapeutische Ziele</value>
+  </data>
+  <data name="lbl_pendiente_auditoria" xml:space="preserve">
+    <value>Prüfung ausstehend</value>
+  </data>
+  <data name="lbl_periodo" xml:space="preserve">
+    <value>Zeitraum</value>
+  </data>
+  <data name="lbl_por_mes" xml:space="preserve">
+    <value>/Monat</value>
+  </data>
+  <data name="lbl_precio_mensual" xml:space="preserve">
+    <value>Monatspreis</value>
+  </data>
+  <data name="lbl_primera_sesion" xml:space="preserve">
+    <value>Erste Sitzung</value>
+  </data>
+  <data name="lbl_profesional_destinatario" xml:space="preserve">
+    <value>Empfangende Fachperson</value>
+  </data>
+  <data name="lbl_proximamente" xml:space="preserve">
+    <value>⏳ Demnächst</value>
+  </data>
+  <data name="lbl_proximamente_desc" xml:space="preserve">
+    <value>Demnächst verfügbar</value>
+  </data>
+  <data name="lbl_proximo_vencimiento" xml:space="preserve">
+    <value>Nächste Fälligkeit</value>
+  </data>
+  <data name="lbl_registro" xml:space="preserve">
+    <value>Eintrag</value>
+  </data>
+  <data name="lbl_registros" xml:space="preserve">
+    <value>Einträge</value>
+  </data>
+  <data name="lbl_secciones" xml:space="preserve">
+    <value>Abschnitte</value>
+  </data>
+  <data name="lbl_seleccionar_paciente" xml:space="preserve">
+    <value>Wählen Sie einen Patienten aus...</value>
+  </data>
+  <data name="lbl_sin_backups" xml:space="preserve">
+    <value>Es wurde noch kein Backup erstellt.</value>
+  </data>
+  <data name="lbl_sin_backups_disponibles" xml:space="preserve">
+    <value>Es sind keine Backups zur Wiederherstellung verfügbar.</value>
+  </data>
+  <data name="lbl_sin_documento" xml:space="preserve">
+    <value>Kein Dokument erstellt</value>
+  </data>
+  <data name="lbl_sin_modificaciones" xml:space="preserve">
+    <value>Keine vorherigen Änderungen</value>
+  </data>
+  <data name="lbl_sin_sesiones" xml:space="preserve">
+    <value>Keine Sitzungen erfasst</value>
+  </data>
+  <data name="lbl_sintesis_diagnostica" xml:space="preserve">
+    <value>Diagnostische Zusammenfassung</value>
+  </data>
+  <data name="lbl_tipo_backup" xml:space="preserve">
+    <value>Backup-Typ</value>
+  </data>
+  <data name="lbl_tipo_documento" xml:space="preserve">
+    <value>Dokumenttyp</value>
+  </data>
+  <data name="lbl_titular_tarjeta" xml:space="preserve">
+    <value>Karteninhaber</value>
+  </data>
+  <data name="lbl_total_consultas_paciente" xml:space="preserve">
+    <value>Sitzungen</value>
+  </data>
+  <data name="lbl_ult_sesion" xml:space="preserve">
+    <value>Letzte Sitzung</value>
+  </data>
+  <data name="lbl_ultima_modificacion" xml:space="preserve">
+    <value>Letzte Änderung</value>
+  </data>
+  <data name="lbl_ultima_sesion" xml:space="preserve">
+    <value>Letzte Sitzung</value>
+  </data>
+  <data name="lbl_ultima_sesion_paciente" xml:space="preserve">
+    <value>Letzte Sitzung</value>
+  </data>
+  <data name="lbl_ultimo_backup" xml:space="preserve">
+    <value>Letztes Backup</value>
+  </data>
+  <data name="lbl_uso_consultas" xml:space="preserve">
+    <value>Sitzungen diesen Monat</value>
+  </data>
+  <data name="lbl_uso_derivaciones" xml:space="preserve">
+    <value>Erstellte Überweisungen</value>
+  </data>
+  <data name="lbl_uso_perfiles" xml:space="preserve">
+    <value>Profilierungen</value>
+  </data>
+  <data name="lbl_uso_resumenes" xml:space="preserve">
+    <value>Erstellte KI-Zusammenfassungen</value>
+  </data>
+  <data name="lbl_vencimiento_tarjeta" xml:space="preserve">
+    <value>Ablaufdatum</value>
+  </data>
+  <data name="lbl_ver_todas" xml:space="preserve">
+    <value>Alle anzeigen</value>
+  </data>
+  <data name="lbl_ver_todos" xml:space="preserve">
+    <value>Alle anzeigen</value>
+  </data>
+  <data name="leyenda_eventos_ia" xml:space="preserve">
+    <value>KI-Ereignisse</value>
+  </data>
+  <data name="login_sesion_cerrada_por_restore" xml:space="preserve">
+    <value>Die Datenbank wurde auf einen früheren Zustand zurückgesetzt, und Ihre Sitzung ist in diesem Zustand nicht mehr gültig. Melden Sie sich erneut an.</value>
+  </data>
+  <data name="modelo_apego_desc" xml:space="preserve">
+    <value>Modell der Bindungsstile Erwachsener auf Basis verkürzter ECR-Versionen. Bewertet Angst und Vermeidung in Beziehungen.</value>
+  </data>
+  <data name="modelo_apego_nombre" xml:space="preserve">
+    <value>Bindungsstile (ECR)</value>
+  </data>
+  <data name="modelo_autoeficacia_desc" xml:space="preserve">
+    <value>Selbstkonzept und wahrgenommene Fähigkeiten des Patienten, Herausforderungen und belastende Situationen zu bewältigen.</value>
+  </data>
+  <data name="modelo_autoeficacia_nombre" xml:space="preserve">
+    <value>Selbstwirksamkeit nach Schwarzer</value>
+  </data>
+  <data name="modelo_bigfive_desc" xml:space="preserve">
+    <value>Analyse allgemeiner Persönlichkeitsmerkmale in fünf Dimensionen: Offenheit, Gewissenhaftigkeit, Extraversion, Verträglichkeit und Neurotizismus.</value>
+  </data>
+  <data name="modelo_bigfive_nombre" xml:space="preserve">
+    <value>Big Five (BFI)</value>
+  </data>
+  <data name="modelo_cope_desc" xml:space="preserve">
+    <value>Bewältigungsstile in Stresssituationen. Identifiziert aktive, vermeidende und sozial unterstützende Strategien.</value>
+  </data>
+  <data name="modelo_cope_nombre" xml:space="preserve">
+    <value>COPE (vereinfacht)</value>
+  </data>
+  <data name="modelo_valores_desc" xml:space="preserve">
+    <value>Modelle persönlicher Werte und Lebenssinn auf Basis des PVQ und logotherapeutischer Ansätze nach Frankl.</value>
+  </data>
+  <data name="modelo_valores_nombre" xml:space="preserve">
+    <value>Werte und Lebenssinn (PVQ)</value>
+  </data>
+  <data name="msg_backup_generado" xml:space="preserve">
+    <value>Backup erfolgreich erstellt</value>
+  </data>
+  <data name="msg_backup_restaurado" xml:space="preserve">
+    <value>Datenbank erfolgreich wiederhergestellt</value>
+  </data>
+  <data name="msg_consulta_plazo_vencido" xml:space="preserve">
+    <value>Die Sitzung vom {0} kann nicht mehr bearbeitet werden. Die Frist von {1} Tagen seit der Erstellung ist abgelaufen.</value>
+  </data>
+  <data name="msg_consulta_ya_modificada" xml:space="preserve">
+    <value>Die Sitzung vom {0} wurde bereits einmal geändert und kann nicht erneut bearbeitet werden.</value>
+  </data>
+  <data name="msg_historial_actualizado" xml:space="preserve">
+    <value>Krankenakte erfolgreich aktualisiert.</value>
+  </data>
+  <data name="msg_historial_guardado" xml:space="preserve">
+    <value>Krankenakte erfolgreich gespeichert. Die Daten wurden verschlüsselt.</value>
+  </data>
+  <data name="msg_seleccionar_modelo_alerta" xml:space="preserve">
+    <value>Wählen Sie ein Bewertungsmodell aus, bevor Sie das Profil erstellen.</value>
+  </data>
+  <data name="msg_sin_borradores_pendientes" xml:space="preserve">
+    <value>Es liegen keine Überweisungsberichte zur Unterzeichnung vor.</value>
+  </data>
+  <data name="msg_sin_consultas" xml:space="preserve">
+    <value>Es sind noch keine Sitzungen erfasst.</value>
+  </data>
+  <data name="msg_sin_exportaciones" xml:space="preserve">
+    <value>Sie haben noch keine Exporte durchgeführt.</value>
+  </data>
+  <data name="msg_sin_operaciones" xml:space="preserve">
+    <value>Es wurden noch keine Vorgänge erfasst.</value>
+  </data>
+  <data name="msg_sin_registros_temporal" xml:space="preserve">
+    <value>Für die ausgewählten Filter wurden keine klinischen Einträge gefunden.</value>
+  </data>
+  <data name="msg_sin_suscripcion_activa" xml:space="preserve">
+    <value>Sie haben kein aktives Abonnement. Wählen Sie unten einen Plan aus, um zu starten.</value>
+  </data>
+  <data name="msg_suscripcion_cancelada" xml:space="preserve">
+    <value>Ihr Abonnement wurde gekündigt. Es bleibt bis zum {0} aktiv. Sie können es vor diesem Datum auf diesem Bildschirm reaktivieren.</value>
+  </data>
+  <data name="nav_landing" xml:space="preserve">
+    <value>CZ Consulting / Cambur</value>
+  </data>
+  <data name="nota_pie_perfil" xml:space="preserve">
+    <value>Diese Profilierung dient nur der Orientierung und stellt keine klinische Diagnose dar. Die Fachperson trägt die alleinige Verantwortung für die Interpretation und Verwendung dieser Informationen.</value>
+  </data>
+  <data name="pago_aviso_seguro" xml:space="preserve">
+    <value>Die Zahlung wird sicher über Mercado Pago abgewickelt. Cambur speichert Ihre Kartennummer nicht.</value>
+  </data>
+  <data name="periodo_anio" xml:space="preserve">
+    <value>Dieses Jahr</value>
+  </data>
+  <data name="periodo_mes" xml:space="preserve">
+    <value>Diesen Monat</value>
+  </data>
+  <data name="periodo_semana" xml:space="preserve">
+    <value>Diese Woche</value>
+  </data>
+  <data name="periodo_trimestre" xml:space="preserve">
+    <value>Dieses Quartal</value>
+  </data>
+  <data name="placeholder_antecedentes_familiares" xml:space="preserve">
+    <value>Psychiatrische Vorgeschichte, chronische Erkrankungen, Suchterkrankungen in der Familie...</value>
+  </data>
+  <data name="placeholder_antecedentes_medicos" xml:space="preserve">
+    <value>Chronische Erkrankungen, aktuelle Medikation, Krankenhausaufenthalte, Operationen, Allergien...</value>
+  </data>
+  <data name="placeholder_contexto_familiar" xml:space="preserve">
+    <value>Familienzusammensetzung, Dynamik, Rollen, Konflikte, bedeutsame Beziehungen...</value>
+  </data>
+  <data name="placeholder_eventos_traumaticos" xml:space="preserve">
+    <value>Bedeutsame Verluste, Missbrauch, Unfälle, Gewalterfahrungen, unverarbeitete Trauer...</value>
+  </data>
+  <data name="placeholder_firma" xml:space="preserve">
+    <value>Vollständiger Name und Zulassungsnummer</value>
+  </data>
+  <data name="placeholder_habitos_nocivos" xml:space="preserve">
+    <value>Tabak, Alkohol, Substanzen, Bewegungsmangel, Schlafstörungen, Ernährung...</value>
+  </data>
+  <data name="placeholder_institucion" xml:space="preserve">
+    <value>Name des Zentrums oder der Institution</value>
+  </data>
+  <data name="placeholder_motivo_derivacion" xml:space="preserve">
+    <value>Beschreiben Sie den klinischen Grund für die Überweisung des Patienten...</value>
+  </data>
+  <data name="placeholder_prof_destino" xml:space="preserve">
+    <value>Name der empfangenden Fachperson</value>
+  </data>
+  <data name="placeholder_situacion_laboral" xml:space="preserve">
+    <value>Aktuelle Tätigkeit, berufliche Stabilität, Arbeitsumfeld, Konflikte, Zufriedenheit...</value>
+  </data>
+  <data name="plan_basico_nombre" xml:space="preserve">
+    <value>Basic</value>
+  </data>
+  <data name="plan_premium_nombre" xml:space="preserve">
+    <value>Premium</value>
+  </data>
+  <data name="plan_profesional_nombre" xml:space="preserve">
+    <value>Professional</value>
+  </data>
+  <data name="rol_psicologo_basico" xml:space="preserve">
+    <value>Psychologe (Basic-Plan)</value>
+  </data>
+  <data name="seccion_antecedentes_familiares" xml:space="preserve">
+    <value>Familiäre Vorgeschichte</value>
+  </data>
+  <data name="seccion_antecedentes_medicos" xml:space="preserve">
+    <value>Medizinische Vorgeschichte</value>
+  </data>
+  <data name="seccion_campos_editables" xml:space="preserve">
+    <value>Bearbeitbare Felder</value>
+  </data>
+  <data name="seccion_cierre_clinico" xml:space="preserve">
+    <value>Klinischer Abschluss</value>
+  </data>
+  <data name="seccion_consideraciones_tratamiento" xml:space="preserve">
+    <value>Überlegungen zur Behandlung</value>
+  </data>
+  <data name="seccion_contenido_informe" xml:space="preserve">
+    <value>Berichtsinhalt</value>
+  </data>
+  <data name="seccion_contexto_familiar" xml:space="preserve">
+    <value>Familiärer Kontext</value>
+  </data>
+  <data name="seccion_contexto_general" xml:space="preserve">
+    <value>Allgemeiner Kontext des Zeitraums</value>
+  </data>
+  <data name="seccion_datos_derivacion" xml:space="preserve">
+    <value>Überweisungsdaten</value>
+  </data>
+  <data name="seccion_descripcion_general_perfil" xml:space="preserve">
+    <value>Allgemeine Profilbeschreibung</value>
+  </data>
+  <data name="seccion_dimensiones_evaluadas" xml:space="preserve">
+    <value>Bewertete Dimensionen</value>
+  </data>
+  <data name="seccion_eventos_traumaticos" xml:space="preserve">
+    <value>Relevante traumatische Ereignisse</value>
+  </data>
+  <data name="seccion_evolucion_observada" xml:space="preserve">
+    <value>Beobachtete Entwicklung</value>
+  </data>
+  <data name="seccion_filtros_busqueda" xml:space="preserve">
+    <value>Suchfilter</value>
+  </data>
+  <data name="seccion_firma_profesional" xml:space="preserve">
+    <value>Unterschrift der Fachperson</value>
+  </data>
+  <data name="seccion_habitos_nocivos" xml:space="preserve">
+    <value>Schädliche Gewohnheiten</value>
+  </data>
+  <data name="seccion_info_clinica_persistente" xml:space="preserve">
+    <value>Dauerhafte klinische Informationen</value>
+  </data>
+  <data name="seccion_intervenciones_destacadas" xml:space="preserve">
+    <value>Wichtige Interventionen</value>
+  </data>
+  <data name="seccion_observaciones_periodo" xml:space="preserve">
+    <value>Beobachtungen des Zeitraums</value>
+  </data>
+  <data name="seccion_patrones_identificados" xml:space="preserve">
+    <value>Im klinischen Kontext identifizierte Muster</value>
+  </data>
+  <data name="seccion_perfilacion" xml:space="preserve">
+    <value>Profilierung</value>
+  </data>
+  <data name="seccion_seleccionar_modelo" xml:space="preserve">
+    <value>Wählen Sie das Bewertungsmodell aus</value>
+  </data>
+  <data name="seccion_situacion_laboral" xml:space="preserve">
+    <value>Berufliche Situation</value>
+  </data>
+  <data name="seccion_temas_recurrentes" xml:space="preserve">
+    <value>Wiederkehrende Themen</value>
+  </data>
+  <data name="sin_perfiles_anteriores" xml:space="preserve">
+    <value>Für diesen Patienten wurden noch keine Profile erstellt.</value>
+  </data>
+  <data name="sin_resumenes_anteriores" xml:space="preserve">
+    <value>Für diesen Patienten wurden noch keine Zusammenfassungen erstellt.</value>
+  </data>
+  <data name="subtitulo_cambiar_plan" xml:space="preserve">
+    <value>Vergleichen Sie die Funktionen der einzelnen Pläne und wählen Sie den, der am besten zu Ihrer Praxis passt.</value>
+  </data>
+  <data name="subtitulo_exportar_reporte" xml:space="preserve">
+    <value>Wählen Sie den Patienten und den Dokumenttyp aus, den Sie als PDF exportieren möchten.</value>
+  </data>
+  <data name="subtitulo_generar_backup" xml:space="preserve">
+    <value>Erstellt eine vollständige Kopie der Datenbank im .bak-Format.</value>
+  </data>
+  <data name="subtitulo_linea_temporal_seleccion" xml:space="preserve">
+    <value>Wählen Sie den Patienten aus, um dessen vollständigen klinischen Verlauf anzuzeigen.</value>
+  </data>
+  <data name="subtitulo_lista_borradores_informe" xml:space="preserve">
+    <value>Überprüfen und unterzeichnen Sie die vom KI-Modul erstellten Entwürfe.</value>
+  </data>
+  <data name="subtitulo_realizar_consulta" xml:space="preserve">
+    <value>Wählen Sie den Patienten aus und geben Sie die klinischen Daten der Sitzung ein.</value>
+  </data>
+  <data name="subtitulo_registrar_paciente" xml:space="preserve">
+    <value>Geben Sie die Daten ein, um einen neuen Patienten in Ihrer Praxisumgebung zu registrieren.</value>
+  </data>
+  <data name="subtitulo_restaurar_backup" xml:space="preserve">
+    <value>Stellt die Datenbank aus einer vorhandenen .bak-Datei wieder her.</value>
+  </data>
+  <data name="subtitulo_resumen_ia" xml:space="preserve">
+    <value>Wählen Sie den Patienten und den Zeitraum aus, um eine strukturierte Zusammenfassung seiner Sitzungen zu erstellen.</value>
+  </data>
+  <data name="subtitulo_seleccion_consulta" xml:space="preserve">
+    <value>Wählen Sie den Patienten aus, um dessen Sitzungen innerhalb der Bearbeitungsfrist anzuzeigen.</value>
+  </data>
+  <data name="subtitulo_seleccion_paciente_historial" xml:space="preserve">
+    <value>Wählen Sie den Patienten aus, um dessen Krankenakte zu erfassen oder zu bearbeiten.</value>
+  </data>
+  <data name="texto_aviso_formato_pdf" xml:space="preserve">
+    <value>Die Berichte werden als PDF mit professionellem Briefkopf und Patientendaten erstellt.</value>
+  </data>
+  <data name="texto_aviso_proteccion_datos" xml:space="preserve">
+    <value>Der Inhalt wird nur zum Zeitpunkt des Exports und ausschließlich für die authentifizierte Fachperson entschlüsselt. Es verbleibt keine unverschlüsselte Kopie.</value>
+  </data>
+  <data name="texto_pago_seguro" xml:space="preserve">
+    <value>Die Bankdaten werden verschlüsselt übertragen und nicht auf unseren Servern gespeichert.</value>
+  </data>
+  <data name="th_archivo" xml:space="preserve">
+    <value>Datei</value>
+  </data>
+  <data name="th_duracion" xml:space="preserve">
+    <value>Dauer</value>
+  </data>
+  <data name="th_fecha" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="th_fecha_hora" xml:space="preserve">
+    <value>Datum / Uhrzeit</value>
+  </data>
+  <data name="th_paciente" xml:space="preserve">
+    <value>Patient</value>
+  </data>
+  <data name="th_plazo_restante" xml:space="preserve">
+    <value>Verbleibende Frist</value>
+  </data>
+  <data name="th_resultado" xml:space="preserve">
+    <value>Ergebnis</value>
+  </data>
+  <data name="th_resumen_objetivos" xml:space="preserve">
+    <value>Zusammenfassung der Ziele</value>
+  </data>
+  <data name="th_tipo" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="titulo_acciones_relacionadas" xml:space="preserve">
+    <value>Zugehörige Aktionen</value>
+  </data>
+  <data name="titulo_actividad_mensual" xml:space="preserve">
+    <value>Monatliche Aktivität</value>
+  </data>
+  <data name="titulo_actualizar_medio_pago" xml:space="preserve">
+    <value>Zahlungsmethode aktualisieren</value>
+  </data>
+  <data name="titulo_aviso_formato_pdf" xml:space="preserve">
+    <value>PDF-Format</value>
+  </data>
+  <data name="titulo_aviso_proteccion_datos" xml:space="preserve">
+    <value>Datenschutz</value>
+  </data>
+  <data name="titulo_cambiar_a_plan" xml:space="preserve">
+    <value>Zu Plan {0} wechseln</value>
+  </data>
+  <data name="titulo_cambiar_plan" xml:space="preserve">
+    <value>Plan wechseln</value>
+  </data>
+  <data name="titulo_completitud_historial" xml:space="preserve">
+    <value>Vollständigkeit der Krankenakte</value>
+  </data>
+  <data name="titulo_consultas_editables" xml:space="preserve">
+    <value>Bearbeitbare Sitzungen</value>
+  </data>
+  <data name="titulo_consultas_encontradas" xml:space="preserve">
+    <value>Gefundene Sitzungen</value>
+  </data>
+  <data name="titulo_datos_encriptados" xml:space="preserve">
+    <value>Verschlüsselte Daten</value>
+  </data>
+  <data name="titulo_datos_informe" xml:space="preserve">
+    <value>Berichtsdaten</value>
+  </data>
+  <data name="titulo_detalles_perfil" xml:space="preserve">
+    <value>Profildetails</value>
+  </data>
+  <data name="titulo_detalles_resumen" xml:space="preserve">
+    <value>Details der Zusammenfassung</value>
+  </data>
+  <data name="titulo_exportaciones_recientes" xml:space="preserve">
+    <value>Letzte Exporte</value>
+  </data>
+  <data name="titulo_exportar_reporte" xml:space="preserve">
+    <value>Klinischen Bericht exportieren</value>
+  </data>
+  <data name="titulo_generar_backup" xml:space="preserve">
+    <value>Backup erstellen</value>
+  </data>
+  <data name="titulo_generar_historial" xml:space="preserve">
+    <value>Krankenakte erstellen</value>
+  </data>
+  <data name="titulo_historial_cambios" xml:space="preserve">
+    <value>Änderungsverlauf</value>
+  </data>
+  <data name="titulo_historial_clinico" xml:space="preserve">
+    <value>Krankenakte</value>
+  </data>
+  <data name="titulo_historial_operaciones" xml:space="preserve">
+    <value>Vorgangsverlauf</value>
+  </data>
+  <data name="titulo_info_incluida" xml:space="preserve">
+    <value>Einzuschließende Informationen</value>
+  </data>
+  <data name="titulo_informe_generado" xml:space="preserve">
+    <value>Erstellter Überweisungsbericht</value>
+  </data>
+  <data name="titulo_linea_temporal_seleccion" xml:space="preserve">
+    <value>Klinische Zeitleiste</value>
+  </data>
+  <data name="titulo_lista_borradores_informe" xml:space="preserve">
+    <value>Zur Unterzeichnung ausstehende Berichte</value>
+  </data>
+  <data name="titulo_modelo_seleccionado" xml:space="preserve">
+    <value>Ausgewähltes Modell</value>
+  </data>
+  <data name="titulo_modificar_consulta" xml:space="preserve">
+    <value>Sitzung bearbeiten</value>
+  </data>
+  <data name="titulo_modificar_historial" xml:space="preserve">
+    <value>Bestehende Krankenakte bearbeiten</value>
+  </data>
+  <data name="titulo_pacientes_activos" xml:space="preserve">
+    <value>Aktive Patienten</value>
+  </data>
+  <data name="titulo_pago_seguro" xml:space="preserve">
+    <value>Sichere Zahlung</value>
+  </data>
+  <data name="titulo_perfil_generado" xml:space="preserve">
+    <value>Erstelltes Profil</value>
+  </data>
+  <data name="titulo_perfiles_anteriores" xml:space="preserve">
+    <value>Frühere Profile</value>
+  </data>
+  <data name="titulo_plazo_edicion" xml:space="preserve">
+    <value>Bearbeitungsfrist</value>
+  </data>
+  <data name="titulo_plazo_vencido" xml:space="preserve">
+    <value>Bearbeitungsfrist abgelaufen</value>
+  </data>
+  <data name="titulo_restaurar_backup" xml:space="preserve">
+    <value>Backup wiederherstellen</value>
+  </data>
+  <data name="titulo_resumen_encriptado" xml:space="preserve">
+    <value>Verschlüsselte Zusammenfassung</value>
+  </data>
+  <data name="titulo_resumen_generado" xml:space="preserve">
+    <value>Erstellte klinische Zusammenfassung</value>
+  </data>
+  <data name="titulo_resumen_ia" xml:space="preserve">
+    <value>KI-gestützte klinische Zusammenfassung</value>
+  </data>
+  <data name="titulo_resumen_tratamiento" xml:space="preserve">
+    <value>Behandlungszusammenfassung</value>
+  </data>
+  <data name="titulo_resumenes_anteriores" xml:space="preserve">
+    <value>Frühere Zusammenfassungen</value>
+  </data>
+  <data name="titulo_suscripcion_cancelada" xml:space="preserve">
+    <value>Abonnement gekündigt</value>
+  </data>
+  <data name="titulo_ultimas_consultas" xml:space="preserve">
+    <value>Letzte Sitzungen</value>
+  </data>
+  <data name="titulo_uso_periodo" xml:space="preserve">
+    <value>Nutzung im Zeitraum</value>
+  </data>
+  <data name="txt_consulta_analizada_singular" xml:space="preserve">
+    <value>analysierte Sitzung</value>
+  </data>
+  <data name="txt_consulta_registrada_singular" xml:space="preserve">
+    <value>erfasste Sitzung</value>
+  </data>
+  <data name="txt_consultas_analizadas_plural" xml:space="preserve">
+    <value>analysierte Sitzungen</value>
+  </data>
+  <data name="txt_consultas_registradas_plural" xml:space="preserve">
+    <value>erfasste Sitzungen</value>
+  </data>
+  <data name="txt_evolucion_observada" xml:space="preserve">
+    <value>Beobachtete Entwicklung</value>
+  </data>
+  <data name="txt_historial_clinico_completo" xml:space="preserve">
+    <value>Vollständige Krankenakte</value>
+  </data>
+  <data name="txt_ningun_modelo_seleccionado" xml:space="preserve">
+    <value>Noch kein Modell ausgewählt.</value>
+  </data>
+  <data name="txt_sin_consultas_registradas" xml:space="preserve">
+    <value>Keine Sitzungen erfasst</value>
+  </data>
+  <data name="txt_sin_historial_clinico" xml:space="preserve">
+    <value>Keine Krankenakte</value>
+  </data>
+  <data name="valor_tipo_backup_completo" xml:space="preserve">
+    <value>Vollständig (Full Backup)</value>
   </data>
 </root>

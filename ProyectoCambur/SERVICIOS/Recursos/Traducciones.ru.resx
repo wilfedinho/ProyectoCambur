@@ -78,11 +78,7 @@
   </data>
   <data name="opt_seleccionar" xml:space="preserve">
     <value>Выберите...</value>
-  </data>
-  <data name="rol_psicologo_free" xml:space="preserve">
-    <value>Психолог — тариф Free</value>
-  </data>
-  <data name="rol_psicologo_profesional" xml:space="preserve">
+  </data>  <data name="rol_psicologo_profesional" xml:space="preserve">
     <value>Психолог — тариф Профессиональный</value>
   </data>
   <data name="rol_psicologo_premium" xml:space="preserve">
@@ -1137,5 +1133,1547 @@
   </data>
   <data name="login_clave_restablecida" xml:space="preserve">
     <value>Ваш пароль успешно восстановлен. Теперь вы можете войти в систему.</value>
+  </data>
+  <data name="acceso_exportar_pdf" xml:space="preserve">
+    <value>Экспорт в PDF</value>
+  </data>
+  <data name="acceso_generar_derivacion" xml:space="preserve">
+    <value>Формирование направления</value>
+  </data>
+  <data name="acceso_resumen_ia" xml:space="preserve">
+    <value>Резюме ИИ</value>
+  </data>
+  <data name="acceso_ver_linea_temporal" xml:space="preserve">
+    <value>Просмотр временной шкалы</value>
+  </data>
+  <data name="aviso_campos_no_editables" xml:space="preserve">
+    <value>Вы можете изменять только клинические поля. Дата, продолжительность и пациент не редактируются.</value>
+  </data>
+  <data name="aviso_consulta_reencriptada" xml:space="preserve">
+    <value>Изменения повторно шифруются алгоритмом AES при сохранении в соответствии с Законом № 25.326.</value>
+  </data>
+  <data name="aviso_critico_texto" xml:space="preserve">
+    <value>Операции резервного копирования и восстановления напрямую влияют на базу данных. Убедитесь, что у вас есть необходимые права, и уведомите команду перед выполнением восстановления.</value>
+  </data>
+  <data name="aviso_critico_titulo" xml:space="preserve">
+    <value>Критическая операция системы</value>
+  </data>
+  <data name="aviso_historial_encriptado" xml:space="preserve">
+    <value>История болезни шифруется алгоритмом AES перед сохранением в соответствии с Законом № 25.326.</value>
+  </data>
+  <data name="aviso_ia_badge_informe" xml:space="preserve">
+    <value>Сформировано вспомогательным ИИ · Проверьте и скорректируйте содержание перед подтверждением · Не является автоматическим диагнозом</value>
+  </data>
+  <data name="aviso_ia_badge_perfil" xml:space="preserve">
+    <value>Ориентировочный профиль, сформированный ИИ · Не является диагнозом · Только описательное контекстуальное представление · Рекомендуется профессиональная проверка</value>
+  </data>
+  <data name="aviso_ia_informe_titulo" xml:space="preserve">
+    <value>Для составления отчёта ИИ будет использовать:</value>
+  </data>
+  <data name="aviso_ia_resultado" xml:space="preserve">
+    <value>Сформировано вспомогательным ИИ · Только для организации данных · Не является диагнозом · Рекомендуется профессиональная проверка</value>
+  </data>
+  <data name="aviso_ia_resumen" xml:space="preserve">
+    <value>ИИ систематизирует и обобщает зарегистрированную информацию. Он не ставит диагнозы и не заменяет профессиональное суждение специалиста.</value>
+  </data>
+  <data name="aviso_restore_texto" xml:space="preserve">
+    <value>Внимание: восстановление заменит все текущие данные базы данных содержимым выбранного файла. Это действие невозможно отменить.</value>
+  </data>
+  <data name="aviso_resumen_encriptado" xml:space="preserve">
+    <value>Сформированное содержимое шифруется алгоритмом AES при сохранении в соответствии с Законом о защите персональных данных № 25.326.</value>
+  </data>
+  <data name="aviso_texto_datos_encriptados_perfil" xml:space="preserve">
+    <value>Сформированный профиль автоматически шифруется алгоритмом AES в соответствии с Законом № 25.326.</value>
+  </data>
+  <data name="aviso_texto_perfil_encriptado" xml:space="preserve">
+    <value>Этот профиль уже был сохранён и автоматически зашифрован алгоритмом AES при создании в соответствии с Законом № 25.326.</value>
+  </data>
+  <data name="aviso_texto_revision_obligatoria" xml:space="preserve">
+    <value>Сформированный отчёт должен быть проверен и утверждён специалистом перед использованием вне системы.</value>
+  </data>
+  <data name="aviso_texto_revision_profesional" xml:space="preserve">
+    <value>Проверьте и скорректируйте сформированное содержание перед подтверждением. Только вы можете подписать этот отчёт и разрешить его использование вне системы.</value>
+  </data>
+  <data name="aviso_titulo_datos_encriptados" xml:space="preserve">
+    <value>Данные зашифрованы</value>
+  </data>
+  <data name="aviso_titulo_perfil_encriptado" xml:space="preserve">
+    <value>Профиль зашифрован</value>
+  </data>
+  <data name="aviso_titulo_revision_obligatoria" xml:space="preserve">
+    <value>Обязательная проверка</value>
+  </data>
+  <data name="aviso_titulo_revision_profesional" xml:space="preserve">
+    <value>Профессиональная проверка</value>
+  </data>
+  <data name="badge_completado" xml:space="preserve">
+    <value>Завершено</value>
+  </data>
+  <data name="badge_editable_hasta" xml:space="preserve">
+    <value>Редактирование доступно до</value>
+  </data>
+  <data name="badge_historial_completo" xml:space="preserve">
+    <value>Полная история</value>
+  </data>
+  <data name="badge_mas_elegido" xml:space="preserve">
+    <value>Самый популярный</value>
+  </data>
+  <data name="badge_pendiente" xml:space="preserve">
+    <value>В ожидании</value>
+  </data>
+  <data name="badge_pendiente_revision" xml:space="preserve">
+    <value>Ожидает проверки</value>
+  </data>
+  <data name="badge_suscripcion_activa" xml:space="preserve">
+    <value>Активна</value>
+  </data>
+  <data name="badge_suscripcion_cancelada" xml:space="preserve">
+    <value>Отменена</value>
+  </data>
+  <data name="badge_suscripcion_vencida" xml:space="preserve">
+    <value>Истекла</value>
+  </data>
+  <data name="badge_ultimo_dia_editar" xml:space="preserve">
+    <value>Последний день для редактирования</value>
+  </data>
+  <data name="btn_actualizar_medio_pago" xml:space="preserve">
+    <value>Обновить способ оплаты</value>
+  </data>
+  <data name="btn_buscar_consultas" xml:space="preserve">
+    <value>Найти приёмы</value>
+  </data>
+  <data name="btn_cambiar_filtros" xml:space="preserve">
+    <value>Изменить фильтры</value>
+  </data>
+  <data name="btn_cancelar_suscripcion" xml:space="preserve">
+    <value>Отменить подписку</value>
+  </data>
+  <data name="btn_confirmar_pago" xml:space="preserve">
+    <value>Подтвердить оплату</value>
+  </data>
+  <data name="btn_confirmar_restore" xml:space="preserve">
+    <value>Подтвердить восстановление</value>
+  </data>
+  <data name="btn_continuar" xml:space="preserve">
+    <value>Продолжить</value>
+  </data>
+  <data name="btn_descartar_informe" xml:space="preserve">
+    <value>Отклонить отчёт</value>
+  </data>
+  <data name="btn_elegir_otro_paciente" xml:space="preserve">
+    <value>Выбрать другого пациента</value>
+  </data>
+  <data name="btn_entendido" xml:space="preserve">
+    <value>Понятно</value>
+  </data>
+  <data name="btn_exportar_pdf" xml:space="preserve">
+    <value>📄 Экспорт в PDF</value>
+  </data>
+  <data name="btn_generar_backup" xml:space="preserve">
+    <value>Создать резервную копию сейчас</value>
+  </data>
+  <data name="btn_generar_informe_ia" xml:space="preserve">
+    <value>Сформировать отчёт с помощью ИИ</value>
+  </data>
+  <data name="btn_generar_perfil" xml:space="preserve">
+    <value>Сформировать профиль</value>
+  </data>
+  <data name="btn_generar_resumen_ia" xml:space="preserve">
+    <value>Сформировать резюме с помощью ИИ</value>
+  </data>
+  <data name="btn_guardar_borrador" xml:space="preserve">
+    <value>Сохранить черновик</value>
+  </data>
+  <data name="btn_guardar_historial" xml:space="preserve">
+    <value>Сохранить историю болезни</value>
+  </data>
+  <data name="btn_nuevo_perfil" xml:space="preserve">
+    <value>Новый профиль</value>
+  </data>
+  <data name="btn_nuevo_resumen" xml:space="preserve">
+    <value>Новое резюме</value>
+  </data>
+  <data name="btn_plan_actual" xml:space="preserve">
+    <value>Текущий план</value>
+  </data>
+  <data name="btn_plan_seleccionar" xml:space="preserve">
+    <value>Выбрать</value>
+  </data>
+  <data name="btn_reactivar_suscripcion" xml:space="preserve">
+    <value>Возобновить подписку</value>
+  </data>
+  <data name="btn_revisar_firmar" xml:space="preserve">
+    <value>Проверить и подписать</value>
+  </data>
+  <data name="btn_seleccionar_y_restaurar" xml:space="preserve">
+    <value>Выбрать файл и восстановить</value>
+  </data>
+  <data name="btn_validar_firmar_informe" xml:space="preserve">
+    <value>Утвердить и подписать отчёт</value>
+  </data>
+  <data name="btn_volver" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="carga_subtitulo_backup_restore" xml:space="preserve">
+    <value>Это может занять несколько секунд в зависимости от размера базы данных. Не закрывайте это окно.</value>
+  </data>
+  <data name="carga_subtitulo_informe_ia" xml:space="preserve">
+    <value>Обобщение клинической информации и составление документа</value>
+  </data>
+  <data name="carga_subtitulo_perfil_ia" xml:space="preserve">
+    <value>Анализ клинической информации и сопоставление с выбранной моделью</value>
+  </data>
+  <data name="carga_subtitulo_resumen_ia" xml:space="preserve">
+    <value>Анализ приёмов и формирование структурированного резюме</value>
+  </data>
+  <data name="carga_titulo_backup_restore" xml:space="preserve">
+    <value>Выполняется операция...</value>
+  </data>
+  <data name="carga_titulo_informe_ia" xml:space="preserve">
+    <value>Формирование отчёта с помощью ИИ...</value>
+  </data>
+  <data name="carga_titulo_perfil_ia" xml:space="preserve">
+    <value>Формирование профиля с помощью ИИ...</value>
+  </data>
+  <data name="carga_titulo_resumen_ia" xml:space="preserve">
+    <value>Обработка вспомогательным ИИ...</value>
+  </data>
+  <data name="confirm_cancelar_suscripcion" xml:space="preserve">
+    <value>Подтверждаете отмену? Подписка останется активной до окончания текущего оплаченного периода.</value>
+  </data>
+  <data name="confirm_descartar_informe" xml:space="preserve">
+    <value>Подтвердить отклонение? Это действие необратимо.</value>
+  </data>
+  <data name="confirm_generar_backup" xml:space="preserve">
+    <value>Подтвердить создание резервной копии? Будет создан новый файл .bak в папке резервных копий данного экземпляра.</value>
+  </data>
+  <data name="doc_informe_derivacion" xml:space="preserve">
+    <value>Направление к специалисту</value>
+  </data>
+  <data name="doc_perfil_evolutivo" xml:space="preserve">
+    <value>Профиль динамики развития</value>
+  </data>
+  <data name="doc_resumen_clinico" xml:space="preserve">
+    <value>Клиническое резюме ИИ</value>
+  </data>
+  <data name="dvh_registro_inconsistente_bitacora" xml:space="preserve">
+    <value>Обнаружено изменение записи журнала аудита № {0} (пользователь {1}).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_familia" xml:space="preserve">
+    <value>Обнаружено изменение семейства разрешений «{0}».</value>
+  </data>
+  <data name="dvh_registro_inconsistente_familia_familia" xml:space="preserve">
+    <value>Обнаружено изменение связи между семейством «{0}» и включённым подсемейством «{1}».</value>
+  </data>
+  <data name="dvh_registro_inconsistente_historial" xml:space="preserve">
+    <value>Таблица HistorialClinico: история болезни № {0} пациента № {1} содержит несоответствие (была изменена напрямую в базе данных или добавлена в обход системы).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_idioma" xml:space="preserve">
+    <value>Обнаружено изменение языка «{0}» (код {1}).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_informe_derivacion" xml:space="preserve">
+    <value>Таблица InformeDerivacion: направление № {0} пациента № {1} содержит несоответствие (было изменено напрямую в базе данных или добавлено в обход системы).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_perfil" xml:space="preserve">
+    <value>Обнаружено изменение профиля «{0}».</value>
+  </data>
+  <data name="dvh_registro_inconsistente_perfil_familia" xml:space="preserve">
+    <value>Обнаружено изменение связи между профилем «{0}» и семейством «{1}».</value>
+  </data>
+  <data name="dvh_registro_inconsistente_perfil_paciente" xml:space="preserve">
+    <value>Таблица PerfilPaciente: профиль № {0} пациента № {1} содержит несоответствие (был изменён напрямую в базе данных или добавлен в обход системы).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_permiso_simple" xml:space="preserve">
+    <value>Обнаружено изменение простого разрешения «{0}».</value>
+  </data>
+  <data name="dvh_registro_inconsistente_permiso_simple_familia" xml:space="preserve">
+    <value>Обнаружено изменение связи между семейством «{0}» и простым разрешением «{1}».</value>
+  </data>
+  <data name="dvh_registro_inconsistente_permiso_simple_perfil" xml:space="preserve">
+    <value>Обнаружено изменение связи между профилем «{0}» и простым разрешением «{1}».</value>
+  </data>
+  <data name="dvh_registro_inconsistente_resumen" xml:space="preserve">
+    <value>Таблица ResumenClinico: клиническое резюме № {0} пациента № {1} содержит несоответствие (было изменено напрямую в базе данных или добавлено в обход системы).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_suscripcion" xml:space="preserve">
+    <value>Обнаружено изменение подписки № {0} (ID специалиста {1}).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_token" xml:space="preserve">
+    <value>Обнаружено изменение токена восстановления № {0} (ID специалиста {1}).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_traduccion" xml:space="preserve">
+    <value>Обнаружено изменение перевода на языке {0} (ключ «{1}»).</value>
+  </data>
+  <data name="error_backup_archivo_invalido" xml:space="preserve">
+    <value>Выбранный файл больше недоступен. Обновите список и повторите попытку.</value>
+  </data>
+  <data name="error_backup_carpeta_no_configurada" xml:space="preserve">
+    <value>Не удалось определить папку резервных копий экземпляра SQL Server.</value>
+  </data>
+  <data name="error_backup_fallo" xml:space="preserve">
+    <value>Не удалось создать резервную копию. Подробности: {0}</value>
+  </data>
+  <data name="error_backup_inesperado" xml:space="preserve">
+    <value>Произошла непредвиденная ошибка при создании резервной копии. Повторите попытку через несколько минут.</value>
+  </data>
+  <data name="error_backup_permiso_carpeta" xml:space="preserve">
+    <value>У SQL Server нет прав на запись в папку резервных копий. Подробности: {0}</value>
+  </data>
+  <data name="error_campo_obligatorio" xml:space="preserve">
+    <value>Это поле обязательно для заполнения.</value>
+  </data>
+  <data name="error_consulta_encriptacion" xml:space="preserve">
+    <value>Не удалось завершить операцию из-за внутренней ошибки шифрования приёма. Повторите попытку.</value>
+  </data>
+  <data name="error_consulta_fuera_de_plazo_modificacion" xml:space="preserve">
+    <value>Срок в {0} дн., отведённый для редактирования этого приёма, истёк.</value>
+  </data>
+  <data name="error_consulta_ya_modificada" xml:space="preserve">
+    <value>Этот приём уже был изменён и не может быть отредактирован повторно.</value>
+  </data>
+  <data name="error_contacto_datos_invalidos" xml:space="preserve">
+    <value>Заполните имя, тему и сообщение перед отправкой.</value>
+  </data>
+  <data name="error_contacto_email_invalido" xml:space="preserve">
+    <value>Введите действительный email.</value>
+  </data>
+  <data name="error_dashboard_recalculo" xml:space="preserve">
+    <value>Не удалось пересчитать показатели за выбранный период.</value>
+  </data>
+  <data name="error_dashboard_recuperacion" xml:space="preserve">
+    <value>Не удалось получить показатели панели управления. Повторите попытку через несколько секунд.</value>
+  </data>
+  <data name="error_dni_obligatorio" xml:space="preserve">
+    <value>Поле «Документ» обязательно для заполнения.</value>
+  </data>
+  <data name="error_documento_no_disponible" xml:space="preserve">
+    <value>Выбранный документ пока недоступен для этого пациента.</value>
+  </data>
+  <data name="error_especialidad_obligatoria" xml:space="preserve">
+    <value>Выберите специальность.</value>
+  </data>
+  <data name="error_estado_civil_obligatorio" xml:space="preserve">
+    <value>Выберите семейное положение.</value>
+  </data>
+  <data name="error_fecha_desde_obligatoria" xml:space="preserve">
+    <value>Укажите дату начала.</value>
+  </data>
+  <data name="error_fecha_formato_invalido" xml:space="preserve">
+    <value>Введённые даты недействительны.</value>
+  </data>
+  <data name="error_fecha_hasta_obligatoria" xml:space="preserve">
+    <value>Укажите дату окончания.</value>
+  </data>
+  <data name="error_generacion_pdf" xml:space="preserve">
+    <value>Произошла ошибка при формировании PDF. Повторите попытку.</value>
+  </data>
+  <data name="error_historial_campos_incompletos" xml:space="preserve">
+    <value>Заполните все 6 разделов истории болезни перед сохранением.</value>
+  </data>
+  <data name="error_historial_encriptacion" xml:space="preserve">
+    <value>Не удалось завершить операцию из-за внутренней ошибки шифрования истории болезни. Повторите попытку.</value>
+  </data>
+  <data name="error_historial_ya_existe" xml:space="preserve">
+    <value>У этого пациента уже есть зарегистрированная история болезни. Ниже показаны текущие данные, которые вы можете изменить.</value>
+  </data>
+  <data name="error_ia_comunicacion" xml:space="preserve">
+    <value>Не удалось сформировать резюме из-за ошибки связи со службой искусственного интеллекта. Повторите попытку.</value>
+  </data>
+  <data name="error_ia_respuesta_invalida" xml:space="preserve">
+    <value>Не удалось сформировать резюме, поскольку служба искусственного интеллекта вернула недействительный ответ. Повторите попытку.</value>
+  </data>
+  <data name="error_ia_saturado" xml:space="preserve">
+    <value>Служба искусственного интеллекта в данный момент перегружена (достигнут лимит использования). Подождите несколько секунд и повторите попытку.</value>
+  </data>
+  <data name="error_ia_timeout" xml:space="preserve">
+    <value>Превышено время ожидания ответа от службы искусственного интеллекта. Повторите попытку.</value>
+  </data>
+  <data name="error_informe_campos_incompletos" xml:space="preserve">
+    <value>Заполните специальность направления, принимающего специалиста и причину перед формированием отчёта.</value>
+  </data>
+  <data name="error_informe_encriptacion" xml:space="preserve">
+    <value>Произошла ошибка при защите информации отчёта. Повторите попытку.</value>
+  </data>
+  <data name="error_informe_firma_obligatoria" xml:space="preserve">
+    <value>Для утверждения и подписания отчёта необходима подпись.</value>
+  </data>
+  <data name="error_informe_informacion_insuficiente" xml:space="preserve">
+    <value>Загруженной клинической информации недостаточно для составления направления к специалисту. Проверьте историю болезни и приёмы пациента перед повторной попыткой.</value>
+  </data>
+  <data name="error_informe_no_propio" xml:space="preserve">
+    <value>Запрошенный отчёт не существует или не относится к пациенту, находящемуся под вашим наблюдением.</value>
+  </data>
+  <data name="error_informe_sin_informacion_clinica" xml:space="preserve">
+    <value>У пациента нет ни истории болезни, ни зарегистрированных приёмов. Загрузите клиническую информацию перед формированием направления.</value>
+  </data>
+  <data name="error_informe_vacio" xml:space="preserve">
+    <value>Отчёт не может быть пустым. Заполните хотя бы диагностическое резюме.</value>
+  </data>
+  <data name="error_motivo_derivacion_obligatorio" xml:space="preserve">
+    <value>Укажите причину направления.</value>
+  </data>
+  <data name="error_paciente_duplicado" xml:space="preserve">
+    <value>У вас уже зарегистрирован пациент с этим номером документа.</value>
+  </data>
+  <data name="error_paciente_email_duplicado" xml:space="preserve">
+    <value>У вас уже зарегистрирован пациент с этим email.</value>
+  </data>
+  <data name="error_paciente_no_propio" xml:space="preserve">
+    <value>Выбранный пациент не связан с вашим профилем специалиста.</value>
+  </data>
+  <data name="error_pago_no_procesado" xml:space="preserve">
+    <value>Не удалось обработать платёж. Проверьте данные карты и повторите попытку.</value>
+  </data>
+  <data name="error_pago_rechazado" xml:space="preserve">
+    <value>Платёж отклонён ({0}). Проверьте данные вашей карты и повторите попытку.</value>
+  </data>
+  <data name="error_pago_timeout" xml:space="preserve">
+    <value>Не удалось обработать платёж из-за ошибки связи с платёжным шлюзом. Повторите попытку через несколько минут.</value>
+  </data>
+  <data name="error_perfil_encriptacion" xml:space="preserve">
+    <value>Произошла ошибка при защите информации профиля. Повторите попытку.</value>
+  </data>
+  <data name="error_perfil_informacion_insuficiente" xml:space="preserve">
+    <value>Загруженной клинической информации недостаточно для составления профиля по выбранной модели. Проверьте историю болезни и приёмы пациента перед повторной попыткой.</value>
+  </data>
+  <data name="error_perfil_modelo_invalido" xml:space="preserve">
+    <value>Выберите допустимую модель оценки перед формированием профиля.</value>
+  </data>
+  <data name="error_perfil_sin_informacion_clinica" xml:space="preserve">
+    <value>У пациента нет ни истории болезни, ни зарегистрированных приёмов. Загрузите клиническую информацию перед формированием профиля.</value>
+  </data>
+  <data name="error_prof_destino_obligatorio" xml:space="preserve">
+    <value>Укажите принимающего специалиста.</value>
+  </data>
+  <data name="error_rango_fecha_invalido" xml:space="preserve">
+    <value>Выбранный диапазон дат недействителен: дата «с» не может быть позже даты «по».</value>
+  </data>
+  <data name="error_restore_fallo" xml:space="preserve">
+    <value>Не удалось выполнить восстановление. Подробности: {0}</value>
+  </data>
+  <data name="error_restore_inesperado" xml:space="preserve">
+    <value>Произошла непредвиденная ошибка при восстановлении резервной копии. Повторите попытку через несколько минут или обратитесь в техническую поддержку.</value>
+  </data>
+  <data name="error_restore_permiso_carpeta" xml:space="preserve">
+    <value>У SQL Server нет прав на чтение выбранного файла резервной копии. Подробности: {0}</value>
+  </data>
+  <data name="error_resumen_encriptacion" xml:space="preserve">
+    <value>Не удалось завершить операцию из-за внутренней ошибки шифрования резюме. Повторите попытку.</value>
+  </data>
+  <data name="error_resumen_informacion_insuficiente" xml:space="preserve">
+    <value>Клинической информации, загруженной в выбранных приёмах, недостаточно для формирования резюме. Проверьте поля приёма и заполните их реальной клинической информацией перед повторной попыткой.</value>
+  </data>
+  <data name="error_resumen_sin_consultas" xml:space="preserve">
+    <value>За выбранный период для этого пациента не найдено зарегистрированных приёмов.</value>
+  </data>
+  <data name="error_resumen_sin_consultas_seleccionadas" xml:space="preserve">
+    <value>Выберите хотя бы один приём для формирования резюме.</value>
+  </data>
+  <data name="error_seleccionar_archivo" xml:space="preserve">
+    <value>Выберите файл резервной копии из списка перед продолжением.</value>
+  </data>
+  <data name="error_seleccionar_paciente_perfil" xml:space="preserve">
+    <value>Выберите пациента перед формированием профиля.</value>
+  </data>
+  <data name="error_sexo_obligatorio" xml:space="preserve">
+    <value>Выберите пол пациента.</value>
+  </data>
+  <data name="error_sin_consultas_editables" xml:space="preserve">
+    <value>У этого пациента нет приёмов в пределах 3-дневного срока, отведённого для редактирования.</value>
+  </data>
+  <data name="error_suscripcion_mismo_plan" xml:space="preserve">
+    <value>Вы уже подписаны на этот план.</value>
+  </data>
+  <data name="error_suscripcion_no_activa" xml:space="preserve">
+    <value>У вас нет активной подписки.</value>
+  </data>
+  <data name="error_suscripcion_no_cancelada" xml:space="preserve">
+    <value>Нет отменённой подписки для возобновления.</value>
+  </data>
+  <data name="error_suscripcion_periodo_vencido" xml:space="preserve">
+    <value>Оплаченный период этой подписки уже истёк. Выберите план, чтобы подписаться заново.</value>
+  </data>
+  <data name="error_suscripcion_plan_invalido" xml:space="preserve">
+    <value>Выбранный план подписки недействителен.</value>
+  </data>
+  <data name="error_tarjeta_no_validada" xml:space="preserve">
+    <value>Не удалось проверить данные карты. Обновите страницу и повторите попытку.</value>
+  </data>
+  <data name="error_tarjeta_obligatoria" xml:space="preserve">
+    <value>Введите номер карты.</value>
+  </data>
+  <data name="error_valoracion_puntuacion_invalida" xml:space="preserve">
+    <value>Выберите оценку от 1 до 5 звёзд.</value>
+  </data>
+  <data name="error_valoracion_sin_suscripcion_activa" xml:space="preserve">
+    <value>Для оценки сервиса необходима активная подписка.</value>
+  </data>
+  <data name="esp_cardiologia" xml:space="preserve">
+    <value>Кардиология</value>
+  </data>
+  <data name="esp_fisiatria" xml:space="preserve">
+    <value>Физиотерапия и реабилитация</value>
+  </data>
+  <data name="esp_medicina_general" xml:space="preserve">
+    <value>Общая медицина</value>
+  </data>
+  <data name="esp_neurologia" xml:space="preserve">
+    <value>Неврология</value>
+  </data>
+  <data name="esp_nutricion" xml:space="preserve">
+    <value>Диетология</value>
+  </data>
+  <data name="esp_otra_especialidad" xml:space="preserve">
+    <value>Другая специальность</value>
+  </data>
+  <data name="esp_psiquiatria" xml:space="preserve">
+    <value>Психиатрия</value>
+  </data>
+  <data name="esp_trabajo_social" xml:space="preserve">
+    <value>Социальная работа</value>
+  </data>
+  <data name="exito_borrador_guardado" xml:space="preserve">
+    <value>Черновик сохранён. Вы можете продолжить проверку позже в разделе «Направления».</value>
+  </data>
+  <data name="exito_informe_descartado" xml:space="preserve">
+    <value>Отчёт успешно отклонён.</value>
+  </data>
+  <data name="exito_informe_validado" xml:space="preserve">
+    <value>Отчёт утверждён и подписан {0}. Документ доступен для экспорта в PDF.</value>
+  </data>
+  <data name="exito_medio_pago_actualizado" xml:space="preserve">
+    <value>Способ оплаты успешно обновлён.</value>
+  </data>
+  <data name="exito_plan_actualizado" xml:space="preserve">
+    <value>План успешно обновлён. Изменение уже вступило в силу.</value>
+  </data>
+  <data name="exito_suscripcion_reactivada" xml:space="preserve">
+    <value>Ваша подписка успешно возобновлена.</value>
+  </data>
+  <data name="eyebrow_plan_activo" xml:space="preserve">
+    <value>Активный план</value>
+  </data>
+  <data name="feature_consultas_historial" xml:space="preserve">
+    <value>Приёмы и история болезни</value>
+  </data>
+  <data name="feature_exportaciones_avanzado" xml:space="preserve">
+    <value>Расширенный</value>
+  </data>
+  <data name="feature_exportaciones_pdf" xml:space="preserve">
+    <value>Экспорт в PDF</value>
+  </data>
+  <data name="feature_informe_derivacion_ia" xml:space="preserve">
+    <value>Направление к специалисту с ИИ</value>
+  </data>
+  <data name="feature_pacientes" xml:space="preserve">
+    <value>Пациенты</value>
+  </data>
+  <data name="feature_pacientes_hasta20" xml:space="preserve">
+    <value>До 20</value>
+  </data>
+  <data name="feature_pacientes_ilimitados" xml:space="preserve">
+    <value>Без ограничений</value>
+  </data>
+  <data name="feature_perfilacion" xml:space="preserve">
+    <value>Профилирование пациента</value>
+  </data>
+  <data name="feature_resumen_ia" xml:space="preserve">
+    <value>Клиническое резюме ИИ</value>
+  </data>
+  <data name="feature_soporte" xml:space="preserve">
+    <value>Поддержка</value>
+  </data>
+  <data name="feature_soporte_email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="feature_soporte_email_chat" xml:space="preserve">
+    <value>Email + чат</value>
+  </data>
+  <data name="feature_soporte_prioritario" xml:space="preserve">
+    <value>Приоритетная</value>
+  </data>
+  <data name="filtro_consultas" xml:space="preserve">
+    <value>Приём</value>
+  </data>
+  <data name="filtro_historial" xml:space="preserve">
+    <value>История болезни</value>
+  </data>
+  <data name="filtro_informe_derivacion" xml:space="preserve">
+    <value>Направление к специалисту</value>
+  </data>
+  <data name="filtro_perfilacion" xml:space="preserve">
+    <value>Профилирование</value>
+  </data>
+  <data name="filtro_resumen_ia" xml:space="preserve">
+    <value>Резюме ИИ</value>
+  </data>
+  <data name="filtro_todos" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="hint_historial_clinico" xml:space="preserve">
+    <value>Эта информация относится не к конкретному приёму, а к общему контексту пациента. Разверните каждый раздел, чтобы заполнить его.</value>
+  </data>
+  <data name="hint_seleccionar_consulta_modificar" xml:space="preserve">
+    <value>Отображаются только приёмы в пределах 3-дневного срока с момента создания. Выберите приём, чтобы изменить его.</value>
+  </data>
+  <data name="hint_seleccionar_consultas" xml:space="preserve">
+    <value>Выберите приёмы, которые хотите включить в резюме. Вы можете использовать флажок в заголовке, чтобы выбрать все.</value>
+  </data>
+  <data name="hint_seleccionar_modelo" xml:space="preserve">
+    <value>Выберите модель оценки, подходящую для данного процесса профилирования. Вы можете сформировать несколько профилей с использованием разных моделей.</value>
+  </data>
+  <data name="historial_sin_consultas" xml:space="preserve">
+    <value>У этого пациента пока нет зарегистрированных приёмов.</value>
+  </data>
+  <data name="ia_aviso_perfil" xml:space="preserve">
+    <value>Профили представляют собой описательные и контекстуальные представления. Они не являются клиническими диагнозами и не заменяют профессиональное суждение специалиста.</value>
+  </data>
+  <data name="info_incluye_antecedentes" xml:space="preserve">
+    <value>Анамнез из истории болезни</value>
+  </data>
+  <data name="info_incluye_evolucion" xml:space="preserve">
+    <value>Динамика, наблюдаемая в ходе лечения</value>
+  </data>
+  <data name="info_incluye_intervenciones" xml:space="preserve">
+    <value>Проведённые вмешательства и меры поддержки</value>
+  </data>
+  <data name="js_procesando_pago" xml:space="preserve">
+    <value>Обработка платежа...</value>
+  </data>
+  <data name="js_tarjeta_invalida" xml:space="preserve">
+    <value>Не удалось проверить данные карты. Проверьте номер, срок действия и код безопасности.</value>
+  </data>
+  <data name="js_tarjeta_no_identificada" xml:space="preserve">
+    <value>Не удалось распознать введённую карту. Проверьте номер.</value>
+  </data>
+  <data name="js_tarjeta_no_reconocida" xml:space="preserve">
+    <value>Эта карта не распознана. Проверьте введённый номер.</value>
+  </data>
+  <data name="kpi_consultas_realizadas" xml:space="preserve">
+    <value>Проведено приёмов</value>
+  </data>
+  <data name="kpi_derivaciones" xml:space="preserve">
+    <value>Направления</value>
+  </data>
+  <data name="kpi_informes_exportados" xml:space="preserve">
+    <value>Экспортировано отчётов</value>
+  </data>
+  <data name="kpi_nuevos_pacientes" xml:space="preserve">
+    <value>Новых за период</value>
+  </data>
+  <data name="kpi_perfilaciones" xml:space="preserve">
+    <value>Профилирования</value>
+  </data>
+  <data name="kpi_resumenes_ia" xml:space="preserve">
+    <value>Сформировано резюме ИИ</value>
+  </data>
+  <data name="kpi_total_pacientes" xml:space="preserve">
+    <value>Всего пациентов</value>
+  </data>
+  <data name="landing_btn_crear_cuenta" xml:space="preserve">
+    <value>Создать аккаунт</value>
+  </data>
+  <data name="landing_btn_enviar_contacto" xml:space="preserve">
+    <value>Отправить сообщение</value>
+  </data>
+  <data name="landing_btn_enviar_valoracion" xml:space="preserve">
+    <value>Опубликовать отзыв</value>
+  </data>
+  <data name="landing_btn_iniciar_sesion" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="landing_btn_ir_panel" xml:space="preserve">
+    <value>Перейти в панель управления</value>
+  </data>
+  <data name="landing_contacto_enviado" xml:space="preserve">
+    <value>Спасибо! Мы получили ваше сообщение и ответим в ближайшее время.</value>
+  </data>
+  <data name="landing_contacto_lbl_asunto" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="landing_contacto_lbl_email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="landing_contacto_lbl_mensaje" xml:space="preserve">
+    <value>Сообщение</value>
+  </data>
+  <data name="landing_contacto_lbl_nombre" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="landing_contacto_texto" xml:space="preserve">
+    <value>Есть вопросы о Cambur или хотите рассказать нам о другом проекте? Напишите нам, и мы ответим в ближайшее время.</value>
+  </data>
+  <data name="landing_contacto_titulo" xml:space="preserve">
+    <value>Свяжитесь с нами</value>
+  </data>
+  <data name="landing_faq_pregunta_1" xml:space="preserve">
+    <value>Что такое Cambur?</value>
+  </data>
+  <data name="landing_faq_pregunta_2" xml:space="preserve">
+    <value>Заменяет ли ИИ профессиональное суждение специалиста?</value>
+  </data>
+  <data name="landing_faq_pregunta_3" xml:space="preserve">
+    <value>Насколько защищены данные моих пациентов?</value>
+  </data>
+  <data name="landing_faq_pregunta_4" xml:space="preserve">
+    <value>Какие есть тарифные планы?</value>
+  </data>
+  <data name="landing_faq_pregunta_5" xml:space="preserve">
+    <value>Могу ли я отменить подписку в любой момент?</value>
+  </data>
+  <data name="landing_faq_pregunta_6" xml:space="preserve">
+    <value>Занимается ли CZ Consulting только разработкой Cambur?</value>
+  </data>
+  <data name="landing_faq_respuesta_1" xml:space="preserve">
+    <value>Это система клинического управления, разработанная для психологов: она организует пациентов, приёмы и истории болезни, а также использует искусственный интеллект для помощи в составлении клинических резюме, направлений к специалистам и профилей динамики развития.</value>
+  </data>
+  <data name="landing_faq_respuesta_2" xml:space="preserve">
+    <value>Нет. ИИ только помогает в составлении документов на основе информации, загруженной специалистом; любой результат подлежит его проверке и утверждению перед использованием.</value>
+  </data>
+  <data name="landing_faq_respuesta_3" xml:space="preserve">
+    <value>Клиническая информация защищена механизмами контроля целостности и внутренним журналом аудита, а доступ к каждому экрану ограничен в зависимости от роли пользователя в системе.</value>
+  </data>
+  <data name="landing_faq_respuesta_4" xml:space="preserve">
+    <value>Базовый, Профессиональный и Премиум, с разными лимитами ежемесячного использования. Вы можете сменить план или способ оплаты в любой момент из своей панели управления.</value>
+  </data>
+  <data name="landing_faq_respuesta_5" xml:space="preserve">
+    <value>Да, без минимального срока обязательств. При отмене доступ сохраняется до конца уже оплаченного периода.</value>
+  </data>
+  <data name="landing_faq_respuesta_6" xml:space="preserve">
+    <value>Нет. Наша отрасль — разработка программного обеспечения в целом; Cambur — один из наших продуктов с фокусом на HealthTech, но мы также работаем над индивидуальными проектами для других организаций.</value>
+  </data>
+  <data name="landing_faq_titulo" xml:space="preserve">
+    <value>Часто задаваемые вопросы</value>
+  </data>
+  <data name="landing_footer_texto" xml:space="preserve">
+    <value>CZ Consulting — компания-разработчик программного обеспечения. Cambur — продукт CZ Consulting.</value>
+  </data>
+  <data name="landing_hero_cta_cambur" xml:space="preserve">
+    <value>Узнать о Cambur</value>
+  </data>
+  <data name="landing_hero_cta_servicios" xml:space="preserve">
+    <value>Узнать о наших услугах</value>
+  </data>
+  <data name="landing_hero_eyebrow" xml:space="preserve">
+    <value>CZ Consulting · Разработка программного обеспечения</value>
+  </data>
+  <data name="landing_hero_texto" xml:space="preserve">
+    <value>Мы — компания-разработчик программного обеспечения. Мы проектируем и создаём цифровые продукты на заказ для различных отраслей, а Cambur — наша платформа клинического управления с поддержкой ИИ для специалистов в области психического здоровья — один из наших собственных продуктов, разработанный и поддерживаемый той же командой, которая сегодня работает с вами.</value>
+  </data>
+  <data name="landing_hero_titulo" xml:space="preserve">
+    <value>Мы создаём программное обеспечение, которое облегчает работу тех, кто заботится о людях</value>
+  </data>
+  <data name="landing_nav_contacto" xml:space="preserve">
+    <value>Контакты</value>
+  </data>
+  <data name="landing_nav_faq" xml:space="preserve">
+    <value>Часто задаваемые вопросы</value>
+  </data>
+  <data name="landing_nav_inicio" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="landing_nav_nosotros" xml:space="preserve">
+    <value>О нас</value>
+  </data>
+  <data name="landing_nav_rse" xml:space="preserve">
+    <value>КСО</value>
+  </data>
+  <data name="landing_nav_servicios" xml:space="preserve">
+    <value>Услуги</value>
+  </data>
+  <data name="landing_nav_testimonios" xml:space="preserve">
+    <value>Отзывы</value>
+  </data>
+  <data name="landing_nosotros_dato_1_num" xml:space="preserve">
+    <value>Программное обеспечение</value>
+  </data>
+  <data name="landing_nosotros_dato_1_texto" xml:space="preserve">
+    <value>Наша отрасль</value>
+  </data>
+  <data name="landing_nosotros_dato_2_num" xml:space="preserve">
+    <value>HealthTech</value>
+  </data>
+  <data name="landing_nosotros_dato_2_texto" xml:space="preserve">
+    <value>Направление Cambur</value>
+  </data>
+  <data name="landing_nosotros_dato_3_num" xml:space="preserve">
+    <value>ИИ</value>
+  </data>
+  <data name="landing_nosotros_dato_3_texto" xml:space="preserve">
+    <value>Как помощник, а не замена</value>
+  </data>
+  <data name="landing_nosotros_texto" xml:space="preserve">
+    <value>CZ Consulting — компания-разработчик программного обеспечения. Мы работаем совместно с организациями из разных отраслей, превращая процессы в простые, безопасные и устойчивые цифровые продукты. Наша отрасль — программное обеспечение, но значительную часть усилий мы решили направить на HealthTech: мы верим, что технологии способны снизить административную нагрузку тех, кто заботится о здоровье других людей, никогда не заменяя их профессиональное суждение.</value>
+  </data>
+  <data name="landing_nosotros_titulo" xml:space="preserve">
+    <value>О нас</value>
+  </data>
+  <data name="landing_rse_pilar_1_texto" xml:space="preserve">
+    <value>Снижение административной нагрузки специалистов в области психического здоровья, чтобы они могли уделять больше времени своим пациентам.</value>
+  </data>
+  <data name="landing_rse_pilar_1_titulo" xml:space="preserve">
+    <value>Доступность психического здоровья</value>
+  </data>
+  <data name="landing_rse_pilar_2_texto" xml:space="preserve">
+    <value>Используемый нами искусственный интеллект помогает, но никогда не принимает решения и не заменяет профессиональное суждение того, кто его использует.</value>
+  </data>
+  <data name="landing_rse_pilar_2_titulo" xml:space="preserve">
+    <value>Ответственное использование ИИ</value>
+  </data>
+  <data name="landing_rse_pilar_3_texto" xml:space="preserve">
+    <value>Мы способствуем развитию местной разработки программного обеспечения, обучая специалистов и сотрудничая с образовательными учреждениями региона.</value>
+  </data>
+  <data name="landing_rse_pilar_3_titulo" xml:space="preserve">
+    <value>Обучение и развитие местных специалистов</value>
+  </data>
+  <data name="landing_rse_texto" xml:space="preserve">
+    <value>Как технологическая компания, мы понимаем, что то, что мы создаём, имеет влияние, выходящее за рамки кода. Вот принципы, которыми мы руководствуемся в повседневной работе.</value>
+  </data>
+  <data name="landing_rse_titulo" xml:space="preserve">
+    <value>Корпоративная социальная ответственность</value>
+  </data>
+  <data name="landing_servicio_1_texto" xml:space="preserve">
+    <value>Мы проектируем и создаём собственные системы «под ключ», адаптированные к реальной работе каждой организации.</value>
+  </data>
+  <data name="landing_servicio_1_titulo" xml:space="preserve">
+    <value>Разработка программного обеспечения на заказ</value>
+  </data>
+  <data name="landing_servicio_2_texto" xml:space="preserve">
+    <value>Мы сопровождаем цифровизацию существующих процессов: анализ, архитектура, информационная безопасность и интеграция с уже используемыми клиентом системами.</value>
+  </data>
+  <data name="landing_servicio_2_titulo" xml:space="preserve">
+    <value>Консалтинг и внедрение технологий</value>
+  </data>
+  <data name="landing_servicio_3_badge" xml:space="preserve">
+    <value>HealthTech</value>
+  </data>
+  <data name="landing_servicio_3_texto" xml:space="preserve">
+    <value>Наш собственный продукт: платформа для психологов, которая организует пациентов, приёмы и истории болезни и использует ИИ для формирования резюме, направлений к специалистам и профилей динамики развития — всегда под контролем специалиста.</value>
+  </data>
+  <data name="landing_servicio_3_titulo" xml:space="preserve">
+    <value>Cambur: клиническое управление с поддержкой ИИ</value>
+  </data>
+  <data name="landing_servicios_subtitulo" xml:space="preserve">
+    <value>Услуги разработки программного обеспечения и собственный продукт, уже находящийся в эксплуатации.</value>
+  </data>
+  <data name="landing_servicios_titulo" xml:space="preserve">
+    <value>Чем мы занимаемся</value>
+  </data>
+  <data name="landing_testimonios_cantidad_sufijo" xml:space="preserve">
+    <value>отзывов</value>
+  </data>
+  <data name="landing_testimonios_promedio_sufijo" xml:space="preserve">
+    <value>из 5</value>
+  </data>
+  <data name="landing_testimonios_sin_datos" xml:space="preserve">
+    <value>Опубликованных отзывов пока нет. Станьте первым, кто оставит свой!</value>
+  </data>
+  <data name="landing_testimonios_titulo" xml:space="preserve">
+    <value>Что говорят специалисты, которые уже пользуются системой</value>
+  </data>
+  <data name="landing_valoracion_enviada" xml:space="preserve">
+    <value>Спасибо! Ваш отзыв уже опубликован.</value>
+  </data>
+  <data name="landing_valorar_comentario_placeholder" xml:space="preserve">
+    <value>Расскажите о своём опыте (необязательно)</value>
+  </data>
+  <data name="landing_valorar_plan_actual_prefijo" xml:space="preserve">
+    <value>Вы оцениваете свой текущий план:</value>
+  </data>
+  <data name="landing_valorar_sin_suscripcion" xml:space="preserve">
+    <value>Для того чтобы оставить отзыв, необходима активная подписка. Вы можете выбрать план в своей панели управления.</value>
+  </data>
+  <data name="landing_valorar_texto" xml:space="preserve">
+    <value>Ваш отзыв публикуется с вашим именем и может относиться только к плану, на который вы в данный момент подписаны, — это гарантирует подлинность отзывов.</value>
+  </data>
+  <data name="landing_valorar_titulo" xml:space="preserve">
+    <value>Оцените свой план</value>
+  </data>
+  <data name="landing_valorar_ya_existente_aviso" xml:space="preserve">
+    <value>Вы уже оценивали свой текущий план. При повторной публикации ваш предыдущий отзыв будет обновлён.</value>
+  </data>
+  <data name="lbl_activa_desde" xml:space="preserve">
+    <value>Активна с</value>
+  </data>
+  <data name="lbl_activos" xml:space="preserve">
+    <value>активных</value>
+  </data>
+  <data name="lbl_al" xml:space="preserve">
+    <value>по</value>
+  </data>
+  <data name="lbl_andamiajes_implementados" xml:space="preserve">
+    <value>Применённые меры поддержки</value>
+  </data>
+  <data name="lbl_anios" xml:space="preserve">
+    <value>лет</value>
+  </data>
+  <data name="lbl_archivo_a_generar" xml:space="preserve">
+    <value>Файл, который будет создан:</value>
+  </data>
+  <data name="lbl_archivo_seleccionado" xml:space="preserve">
+    <value>Выбранный файл:</value>
+  </data>
+  <data name="lbl_archivos_disponibles" xml:space="preserve">
+    <value>Доступные файлы</value>
+  </data>
+  <data name="lbl_bienvenida" xml:space="preserve">
+    <value>Добро пожаловать, {0}.</value>
+  </data>
+  <data name="lbl_borrador_singular" xml:space="preserve">
+    <value>черновик в ожидании</value>
+  </data>
+  <data name="lbl_borradores_plural" xml:space="preserve">
+    <value>черновиков в ожидании</value>
+  </data>
+  <data name="lbl_carpeta_destino" xml:space="preserve">
+    <value>Папка назначения</value>
+  </data>
+  <data name="lbl_config_backup" xml:space="preserve">
+    <value>Настройки резервного копирования</value>
+  </data>
+  <data name="lbl_consultas_analizadas" xml:space="preserve">
+    <value>Проанализировано приёмов</value>
+  </data>
+  <data name="lbl_consultas_analizadas_valor" xml:space="preserve">
+    <value>проанализировано приёмов</value>
+  </data>
+  <data name="lbl_consultas_plural" xml:space="preserve">
+    <value>приёмов</value>
+  </data>
+  <data name="lbl_consultas_totales" xml:space="preserve">
+    <value>Всего приёмов</value>
+  </data>
+  <data name="lbl_creada" xml:space="preserve">
+    <value>Создано</value>
+  </data>
+  <data name="lbl_cvv" xml:space="preserve">
+    <value>Код CVV</value>
+  </data>
+  <data name="lbl_de" xml:space="preserve">
+    <value>из</value>
+  </data>
+  <data name="lbl_dias_restantes" xml:space="preserve">
+    <value>осталось дней</value>
+  </data>
+  <data name="lbl_disponible" xml:space="preserve">
+    <value>✓ Доступно</value>
+  </data>
+  <data name="lbl_edad_anios" xml:space="preserve">
+    <value>{0} лет</value>
+  </data>
+  <data name="lbl_elegir_documento" xml:space="preserve">
+    <value>Выберите версию для экспорта</value>
+  </data>
+  <data name="lbl_especialidad_derivacion" xml:space="preserve">
+    <value>Специальность направления</value>
+  </data>
+  <data name="lbl_especialidad_destino" xml:space="preserve">
+    <value>Специальность назначения</value>
+  </data>
+  <data name="lbl_fecha_desde" xml:space="preserve">
+    <value>Дата с</value>
+  </data>
+  <data name="lbl_fecha_hasta" xml:space="preserve">
+    <value>Дата по</value>
+  </data>
+  <data name="lbl_firma_digital" xml:space="preserve">
+    <value>Электронная подпись</value>
+  </data>
+  <data name="lbl_formato_archivo" xml:space="preserve">
+    <value>Формат файла</value>
+  </data>
+  <data name="lbl_generado" xml:space="preserve">
+    <value>Сформировано</value>
+  </data>
+  <data name="lbl_generado_el" xml:space="preserve">
+    <value>Сформировано {0}</value>
+  </data>
+  <data name="lbl_grafico_subtitulo" xml:space="preserve">
+    <value>Приёмы по месяцам · последние {0} мес.</value>
+  </data>
+  <data name="lbl_institucion_opcional" xml:space="preserve">
+    <value>Учреждение / Центр (необязательно)</value>
+  </data>
+  <data name="lbl_limite" xml:space="preserve">
+    <value>Лимит</value>
+  </data>
+  <data name="lbl_medio_pago" xml:space="preserve">
+    <value>Способ оплаты</value>
+  </data>
+  <data name="lbl_meses_tratamiento" xml:space="preserve">
+    <value>Месяцев в лечении</value>
+  </data>
+  <data name="lbl_minutos" xml:space="preserve">
+    <value>минут</value>
+  </data>
+  <data name="lbl_modalidad_trabajo" xml:space="preserve">
+    <value>Формат работы</value>
+  </data>
+  <data name="lbl_modelo_utilizado" xml:space="preserve">
+    <value>Использованная модель</value>
+  </data>
+  <data name="lbl_motivo_derivacion" xml:space="preserve">
+    <value>Причина направления</value>
+  </data>
+  <data name="lbl_no_disponible" xml:space="preserve">
+    <value>⚠ Недоступно</value>
+  </data>
+  <data name="lbl_numero_tarjeta" xml:space="preserve">
+    <value>Номер карты</value>
+  </data>
+  <data name="lbl_objetivos_terapeuticos" xml:space="preserve">
+    <value>Терапевтические цели</value>
+  </data>
+  <data name="lbl_pendiente_auditoria" xml:space="preserve">
+    <value>Ожидает проверки</value>
+  </data>
+  <data name="lbl_periodo" xml:space="preserve">
+    <value>Период</value>
+  </data>
+  <data name="lbl_por_mes" xml:space="preserve">
+    <value>/мес.</value>
+  </data>
+  <data name="lbl_precio_mensual" xml:space="preserve">
+    <value>Ежемесячная стоимость</value>
+  </data>
+  <data name="lbl_primera_sesion" xml:space="preserve">
+    <value>Первая сессия</value>
+  </data>
+  <data name="lbl_profesional_destinatario" xml:space="preserve">
+    <value>Принимающий специалист</value>
+  </data>
+  <data name="lbl_proximamente" xml:space="preserve">
+    <value>⏳ Скоро</value>
+  </data>
+  <data name="lbl_proximamente_desc" xml:space="preserve">
+    <value>Скоро будет доступно</value>
+  </data>
+  <data name="lbl_proximo_vencimiento" xml:space="preserve">
+    <value>Следующий срок оплаты</value>
+  </data>
+  <data name="lbl_registro" xml:space="preserve">
+    <value>запись</value>
+  </data>
+  <data name="lbl_registros" xml:space="preserve">
+    <value>записей</value>
+  </data>
+  <data name="lbl_secciones" xml:space="preserve">
+    <value>разделов</value>
+  </data>
+  <data name="lbl_seleccionar_paciente" xml:space="preserve">
+    <value>Выберите пациента...</value>
+  </data>
+  <data name="lbl_sin_backups" xml:space="preserve">
+    <value>Резервные копии ещё не создавались.</value>
+  </data>
+  <data name="lbl_sin_backups_disponibles" xml:space="preserve">
+    <value>Нет доступных резервных копий для восстановления.</value>
+  </data>
+  <data name="lbl_sin_documento" xml:space="preserve">
+    <value>Документ не сформирован</value>
+  </data>
+  <data name="lbl_sin_modificaciones" xml:space="preserve">
+    <value>Изменений ранее не было</value>
+  </data>
+  <data name="lbl_sin_sesiones" xml:space="preserve">
+    <value>Сессии не зарегистрированы</value>
+  </data>
+  <data name="lbl_sintesis_diagnostica" xml:space="preserve">
+    <value>Диагностическое резюме</value>
+  </data>
+  <data name="lbl_tipo_backup" xml:space="preserve">
+    <value>Тип резервной копии</value>
+  </data>
+  <data name="lbl_tipo_documento" xml:space="preserve">
+    <value>Тип документа</value>
+  </data>
+  <data name="lbl_titular_tarjeta" xml:space="preserve">
+    <value>Владелец карты</value>
+  </data>
+  <data name="lbl_total_consultas_paciente" xml:space="preserve">
+    <value>Приёмы</value>
+  </data>
+  <data name="lbl_ult_sesion" xml:space="preserve">
+    <value>Посл. сессия</value>
+  </data>
+  <data name="lbl_ultima_modificacion" xml:space="preserve">
+    <value>Последнее изменение</value>
+  </data>
+  <data name="lbl_ultima_sesion" xml:space="preserve">
+    <value>Последняя сессия</value>
+  </data>
+  <data name="lbl_ultima_sesion_paciente" xml:space="preserve">
+    <value>Последняя сессия</value>
+  </data>
+  <data name="lbl_ultimo_backup" xml:space="preserve">
+    <value>Последняя резервная копия</value>
+  </data>
+  <data name="lbl_uso_consultas" xml:space="preserve">
+    <value>Приёмов в этом месяце</value>
+  </data>
+  <data name="lbl_uso_derivaciones" xml:space="preserve">
+    <value>Сформировано направлений</value>
+  </data>
+  <data name="lbl_uso_perfiles" xml:space="preserve">
+    <value>Профилирования</value>
+  </data>
+  <data name="lbl_uso_resumenes" xml:space="preserve">
+    <value>Сформировано резюме ИИ</value>
+  </data>
+  <data name="lbl_vencimiento_tarjeta" xml:space="preserve">
+    <value>Срок действия</value>
+  </data>
+  <data name="lbl_ver_todas" xml:space="preserve">
+    <value>Смотреть все</value>
+  </data>
+  <data name="lbl_ver_todos" xml:space="preserve">
+    <value>Смотреть все</value>
+  </data>
+  <data name="leyenda_eventos_ia" xml:space="preserve">
+    <value>События ИИ</value>
+  </data>
+  <data name="login_sesion_cerrada_por_restore" xml:space="preserve">
+    <value>База данных была восстановлена до предыдущего состояния, и ваша сессия больше недействительна в этом состоянии. Войдите снова.</value>
+  </data>
+  <data name="modelo_apego_desc" xml:space="preserve">
+    <value>Модель стилей привязанности у взрослых на основе сокращённых версий опросника ECR. Оценивает тревожность и избегание в отношениях.</value>
+  </data>
+  <data name="modelo_apego_nombre" xml:space="preserve">
+    <value>Стили привязанности (ECR)</value>
+  </data>
+  <data name="modelo_autoeficacia_desc" xml:space="preserve">
+    <value>Самовосприятие и оценка собственных способностей пациента справляться с трудностями и стрессовыми ситуациями.</value>
+  </data>
+  <data name="modelo_autoeficacia_nombre" xml:space="preserve">
+    <value>Самоэффективность по Шварцеру</value>
+  </data>
+  <data name="modelo_bigfive_desc" xml:space="preserve">
+    <value>Анализ общих черт личности по пяти измерениям: открытость опыту, добросовестность, экстраверсия, доброжелательность и нейротизм.</value>
+  </data>
+  <data name="modelo_bigfive_nombre" xml:space="preserve">
+    <value>Большая пятёрка (BFI)</value>
+  </data>
+  <data name="modelo_cope_desc" xml:space="preserve">
+    <value>Стили совладания со стрессовыми ситуациями. Определяет активные, избегающие стратегии и стратегии поиска социальной поддержки.</value>
+  </data>
+  <data name="modelo_cope_nombre" xml:space="preserve">
+    <value>Упрощённый опросник COPE</value>
+  </data>
+  <data name="modelo_valores_desc" xml:space="preserve">
+    <value>Модели личных ценностей и смысла жизни на основе опросника PVQ и логотерапевтических подходов Франкла.</value>
+  </data>
+  <data name="modelo_valores_nombre" xml:space="preserve">
+    <value>Ценности и смысл жизни (PVQ)</value>
+  </data>
+  <data name="msg_backup_generado" xml:space="preserve">
+    <value>Резервная копия успешно создана</value>
+  </data>
+  <data name="msg_backup_restaurado" xml:space="preserve">
+    <value>База данных успешно восстановлена</value>
+  </data>
+  <data name="msg_consulta_plazo_vencido" xml:space="preserve">
+    <value>Приём от {0} больше не может быть отредактирован. Срок в {1} дн. с момента создания истёк.</value>
+  </data>
+  <data name="msg_consulta_ya_modificada" xml:space="preserve">
+    <value>Приём от {0} уже был изменён один раз и не может быть отредактирован повторно.</value>
+  </data>
+  <data name="msg_historial_actualizado" xml:space="preserve">
+    <value>История болезни успешно обновлена.</value>
+  </data>
+  <data name="msg_historial_guardado" xml:space="preserve">
+    <value>История болезни успешно сохранена. Данные были зашифрованы.</value>
+  </data>
+  <data name="msg_seleccionar_modelo_alerta" xml:space="preserve">
+    <value>Выберите модель оценки перед формированием профиля.</value>
+  </data>
+  <data name="msg_sin_borradores_pendientes" xml:space="preserve">
+    <value>Нет направлений, ожидающих подписи.</value>
+  </data>
+  <data name="msg_sin_consultas" xml:space="preserve">
+    <value>Пока нет зарегистрированных приёмов.</value>
+  </data>
+  <data name="msg_sin_exportaciones" xml:space="preserve">
+    <value>Вы ещё не выполняли экспорт.</value>
+  </data>
+  <data name="msg_sin_operaciones" xml:space="preserve">
+    <value>Операции пока не регистрировались.</value>
+  </data>
+  <data name="msg_sin_registros_temporal" xml:space="preserve">
+    <value>По выбранным фильтрам клинические записи не найдены.</value>
+  </data>
+  <data name="msg_sin_suscripcion_activa" xml:space="preserve">
+    <value>У вас нет активной подписки. Выберите план ниже, чтобы начать.</value>
+  </data>
+  <data name="msg_suscripcion_cancelada" xml:space="preserve">
+    <value>Ваша подписка отменена. Она останется активной до {0}. Вы можете возобновить её до этой даты на этом же экране.</value>
+  </data>
+  <data name="nav_landing" xml:space="preserve">
+    <value>CZ Consulting / Cambur</value>
+  </data>
+  <data name="nota_pie_perfil" xml:space="preserve">
+    <value>Это профилирование носит ориентировочный характер и не является клиническим диагнозом. Специалист несёт единоличную ответственность за интерпретацию и использование этой информации.</value>
+  </data>
+  <data name="pago_aviso_seguro" xml:space="preserve">
+    <value>Платёж безопасно обрабатывается через Mercado Pago. Cambur не хранит номер вашей карты.</value>
+  </data>
+  <data name="periodo_anio" xml:space="preserve">
+    <value>В этом году</value>
+  </data>
+  <data name="periodo_mes" xml:space="preserve">
+    <value>В этом месяце</value>
+  </data>
+  <data name="periodo_semana" xml:space="preserve">
+    <value>На этой неделе</value>
+  </data>
+  <data name="periodo_trimestre" xml:space="preserve">
+    <value>В этом квартале</value>
+  </data>
+  <data name="placeholder_antecedentes_familiares" xml:space="preserve">
+    <value>Психиатрический анамнез, хронические заболевания, зависимости в семье...</value>
+  </data>
+  <data name="placeholder_antecedentes_medicos" xml:space="preserve">
+    <value>Хронические заболевания, текущий приём препаратов, госпитализации, операции, аллергии...</value>
+  </data>
+  <data name="placeholder_contexto_familiar" xml:space="preserve">
+    <value>Состав семьи, динамика, роли, конфликты, значимые связи...</value>
+  </data>
+  <data name="placeholder_eventos_traumaticos" xml:space="preserve">
+    <value>Значимые утраты, насилие, несчастные случаи, ситуации насилия, непроработанное горе...</value>
+  </data>
+  <data name="placeholder_firma" xml:space="preserve">
+    <value>Полное имя и номер лицензии</value>
+  </data>
+  <data name="placeholder_habitos_nocivos" xml:space="preserve">
+    <value>Табак, алкоголь, психоактивные вещества, малоподвижный образ жизни, нарушения сна, питание...</value>
+  </data>
+  <data name="placeholder_institucion" xml:space="preserve">
+    <value>Название учреждения или центра</value>
+  </data>
+  <data name="placeholder_motivo_derivacion" xml:space="preserve">
+    <value>Опишите клиническую причину направления пациента...</value>
+  </data>
+  <data name="placeholder_prof_destino" xml:space="preserve">
+    <value>Имя принимающего специалиста</value>
+  </data>
+  <data name="placeholder_situacion_laboral" xml:space="preserve">
+    <value>Текущая занятость, стабильность работы, рабочая обстановка, конфликты, удовлетворённость...</value>
+  </data>
+  <data name="plan_basico_nombre" xml:space="preserve">
+    <value>Базовый</value>
+  </data>
+  <data name="plan_premium_nombre" xml:space="preserve">
+    <value>Премиум</value>
+  </data>
+  <data name="plan_profesional_nombre" xml:space="preserve">
+    <value>Профессиональный</value>
+  </data>
+  <data name="rol_psicologo_basico" xml:space="preserve">
+    <value>Психолог (базовый план)</value>
+  </data>
+  <data name="seccion_antecedentes_familiares" xml:space="preserve">
+    <value>Семейный анамнез</value>
+  </data>
+  <data name="seccion_antecedentes_medicos" xml:space="preserve">
+    <value>Медицинский анамнез</value>
+  </data>
+  <data name="seccion_campos_editables" xml:space="preserve">
+    <value>Редактируемые поля</value>
+  </data>
+  <data name="seccion_cierre_clinico" xml:space="preserve">
+    <value>Клиническое заключение</value>
+  </data>
+  <data name="seccion_consideraciones_tratamiento" xml:space="preserve">
+    <value>Рекомендации по лечению</value>
+  </data>
+  <data name="seccion_contenido_informe" xml:space="preserve">
+    <value>Содержание отчёта</value>
+  </data>
+  <data name="seccion_contexto_familiar" xml:space="preserve">
+    <value>Семейный контекст</value>
+  </data>
+  <data name="seccion_contexto_general" xml:space="preserve">
+    <value>Общий контекст периода</value>
+  </data>
+  <data name="seccion_datos_derivacion" xml:space="preserve">
+    <value>Данные направления</value>
+  </data>
+  <data name="seccion_descripcion_general_perfil" xml:space="preserve">
+    <value>Общее описание профиля</value>
+  </data>
+  <data name="seccion_dimensiones_evaluadas" xml:space="preserve">
+    <value>Оценённые параметры</value>
+  </data>
+  <data name="seccion_eventos_traumaticos" xml:space="preserve">
+    <value>Значимые травматические события</value>
+  </data>
+  <data name="seccion_evolucion_observada" xml:space="preserve">
+    <value>Наблюдаемая динамика</value>
+  </data>
+  <data name="seccion_filtros_busqueda" xml:space="preserve">
+    <value>Фильтры поиска</value>
+  </data>
+  <data name="seccion_firma_profesional" xml:space="preserve">
+    <value>Подпись специалиста</value>
+  </data>
+  <data name="seccion_habitos_nocivos" xml:space="preserve">
+    <value>Вредные привычки</value>
+  </data>
+  <data name="seccion_info_clinica_persistente" xml:space="preserve">
+    <value>Постоянная клиническая информация</value>
+  </data>
+  <data name="seccion_intervenciones_destacadas" xml:space="preserve">
+    <value>Основные вмешательства</value>
+  </data>
+  <data name="seccion_observaciones_periodo" xml:space="preserve">
+    <value>Наблюдения за период</value>
+  </data>
+  <data name="seccion_patrones_identificados" xml:space="preserve">
+    <value>Выявленные закономерности в клиническом контексте</value>
+  </data>
+  <data name="seccion_perfilacion" xml:space="preserve">
+    <value>Профилирование</value>
+  </data>
+  <data name="seccion_seleccionar_modelo" xml:space="preserve">
+    <value>Выберите модель оценки</value>
+  </data>
+  <data name="seccion_situacion_laboral" xml:space="preserve">
+    <value>Трудовая деятельность</value>
+  </data>
+  <data name="seccion_temas_recurrentes" xml:space="preserve">
+    <value>Повторяющиеся темы</value>
+  </data>
+  <data name="sin_perfiles_anteriores" xml:space="preserve">
+    <value>Для этого пациента пока не сформировано ни одного профиля.</value>
+  </data>
+  <data name="sin_resumenes_anteriores" xml:space="preserve">
+    <value>Для этого пациента пока не сформировано ни одного резюме.</value>
+  </data>
+  <data name="subtitulo_cambiar_plan" xml:space="preserve">
+    <value>Сравните возможности каждого плана и выберите наиболее подходящий для вашей практики.</value>
+  </data>
+  <data name="subtitulo_exportar_reporte" xml:space="preserve">
+    <value>Выберите пациента и тип документа для экспорта в PDF.</value>
+  </data>
+  <data name="subtitulo_generar_backup" xml:space="preserve">
+    <value>Создаёт полную копию базы данных в формате .bak.</value>
+  </data>
+  <data name="subtitulo_linea_temporal_seleccion" xml:space="preserve">
+    <value>Выберите пациента, чтобы увидеть полную историю его клинического пути.</value>
+  </data>
+  <data name="subtitulo_lista_borradores_informe" xml:space="preserve">
+    <value>Проверьте и подпишите черновики, сформированные модулем ИИ.</value>
+  </data>
+  <data name="subtitulo_realizar_consulta" xml:space="preserve">
+    <value>Выберите пациента и заполните клинические данные сессии.</value>
+  </data>
+  <data name="subtitulo_registrar_paciente" xml:space="preserve">
+    <value>Заполните данные для регистрации нового пациента в вашей клинической среде.</value>
+  </data>
+  <data name="subtitulo_restaurar_backup" xml:space="preserve">
+    <value>Восстанавливает базу данных из существующего файла .bak.</value>
+  </data>
+  <data name="subtitulo_resumen_ia" xml:space="preserve">
+    <value>Выберите пациента и период, чтобы сформировать структурированное резюме его приёмов.</value>
+  </data>
+  <data name="subtitulo_seleccion_consulta" xml:space="preserve">
+    <value>Выберите пациента, чтобы увидеть его приёмы в пределах срока редактирования.</value>
+  </data>
+  <data name="subtitulo_seleccion_paciente_historial" xml:space="preserve">
+    <value>Выберите пациента, чтобы загрузить или изменить его историю болезни.</value>
+  </data>
+  <data name="texto_aviso_formato_pdf" xml:space="preserve">
+    <value>Отчёты формируются в формате PDF с профессиональным бланком и данными пациента.</value>
+  </data>
+  <data name="texto_aviso_proteccion_datos" xml:space="preserve">
+    <value>Содержимое расшифровывается только в момент экспорта и только для авторизованного специалиста. Незашифрованная копия не сохраняется.</value>
+  </data>
+  <data name="texto_pago_seguro" xml:space="preserve">
+    <value>Банковские данные передаются в зашифрованном виде и не хранятся на наших серверах.</value>
+  </data>
+  <data name="th_archivo" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="th_duracion" xml:space="preserve">
+    <value>Продолжительность</value>
+  </data>
+  <data name="th_fecha" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="th_fecha_hora" xml:space="preserve">
+    <value>Дата / Время</value>
+  </data>
+  <data name="th_paciente" xml:space="preserve">
+    <value>Пациент</value>
+  </data>
+  <data name="th_plazo_restante" xml:space="preserve">
+    <value>Оставшийся срок</value>
+  </data>
+  <data name="th_resultado" xml:space="preserve">
+    <value>Результат</value>
+  </data>
+  <data name="th_resumen_objetivos" xml:space="preserve">
+    <value>Резюме целей</value>
+  </data>
+  <data name="th_tipo" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="titulo_acciones_relacionadas" xml:space="preserve">
+    <value>Связанные действия</value>
+  </data>
+  <data name="titulo_actividad_mensual" xml:space="preserve">
+    <value>Активность по месяцам</value>
+  </data>
+  <data name="titulo_actualizar_medio_pago" xml:space="preserve">
+    <value>Обновить способ оплаты</value>
+  </data>
+  <data name="titulo_aviso_formato_pdf" xml:space="preserve">
+    <value>Формат PDF</value>
+  </data>
+  <data name="titulo_aviso_proteccion_datos" xml:space="preserve">
+    <value>Защита данных</value>
+  </data>
+  <data name="titulo_cambiar_a_plan" xml:space="preserve">
+    <value>Перейти на план {0}</value>
+  </data>
+  <data name="titulo_cambiar_plan" xml:space="preserve">
+    <value>Смена плана</value>
+  </data>
+  <data name="titulo_completitud_historial" xml:space="preserve">
+    <value>Полнота истории болезни</value>
+  </data>
+  <data name="titulo_consultas_editables" xml:space="preserve">
+    <value>Редактируемые приёмы</value>
+  </data>
+  <data name="titulo_consultas_encontradas" xml:space="preserve">
+    <value>Найденные приёмы</value>
+  </data>
+  <data name="titulo_datos_encriptados" xml:space="preserve">
+    <value>Данные зашифрованы</value>
+  </data>
+  <data name="titulo_datos_informe" xml:space="preserve">
+    <value>Данные отчёта</value>
+  </data>
+  <data name="titulo_detalles_perfil" xml:space="preserve">
+    <value>Детали профиля</value>
+  </data>
+  <data name="titulo_detalles_resumen" xml:space="preserve">
+    <value>Детали резюме</value>
+  </data>
+  <data name="titulo_exportaciones_recientes" xml:space="preserve">
+    <value>Недавние экспорты</value>
+  </data>
+  <data name="titulo_exportar_reporte" xml:space="preserve">
+    <value>Экспорт клинического отчёта</value>
+  </data>
+  <data name="titulo_generar_backup" xml:space="preserve">
+    <value>Создание резервной копии</value>
+  </data>
+  <data name="titulo_generar_historial" xml:space="preserve">
+    <value>Создание истории болезни</value>
+  </data>
+  <data name="titulo_historial_cambios" xml:space="preserve">
+    <value>История изменений</value>
+  </data>
+  <data name="titulo_historial_clinico" xml:space="preserve">
+    <value>История болезни</value>
+  </data>
+  <data name="titulo_historial_operaciones" xml:space="preserve">
+    <value>История операций</value>
+  </data>
+  <data name="titulo_info_incluida" xml:space="preserve">
+    <value>Информация, которая будет включена</value>
+  </data>
+  <data name="titulo_informe_generado" xml:space="preserve">
+    <value>Направление к специалисту сформировано</value>
+  </data>
+  <data name="titulo_linea_temporal_seleccion" xml:space="preserve">
+    <value>Клиническая временная шкала</value>
+  </data>
+  <data name="titulo_lista_borradores_informe" xml:space="preserve">
+    <value>Отчёты, ожидающие подписи</value>
+  </data>
+  <data name="titulo_modelo_seleccionado" xml:space="preserve">
+    <value>Выбранная модель</value>
+  </data>
+  <data name="titulo_modificar_consulta" xml:space="preserve">
+    <value>Изменение приёма</value>
+  </data>
+  <data name="titulo_modificar_historial" xml:space="preserve">
+    <value>Изменение существующей истории болезни</value>
+  </data>
+  <data name="titulo_pacientes_activos" xml:space="preserve">
+    <value>Активные пациенты</value>
+  </data>
+  <data name="titulo_pago_seguro" xml:space="preserve">
+    <value>Безопасная оплата</value>
+  </data>
+  <data name="titulo_perfil_generado" xml:space="preserve">
+    <value>Профиль сформирован</value>
+  </data>
+  <data name="titulo_perfiles_anteriores" xml:space="preserve">
+    <value>Предыдущие профили</value>
+  </data>
+  <data name="titulo_plazo_edicion" xml:space="preserve">
+    <value>Срок редактирования</value>
+  </data>
+  <data name="titulo_plazo_vencido" xml:space="preserve">
+    <value>Срок редактирования истёк</value>
+  </data>
+  <data name="titulo_restaurar_backup" xml:space="preserve">
+    <value>Восстановление резервной копии</value>
+  </data>
+  <data name="titulo_resumen_encriptado" xml:space="preserve">
+    <value>Резюме зашифровано</value>
+  </data>
+  <data name="titulo_resumen_generado" xml:space="preserve">
+    <value>Клиническое резюме сформировано</value>
+  </data>
+  <data name="titulo_resumen_ia" xml:space="preserve">
+    <value>Клиническое резюме с поддержкой ИИ</value>
+  </data>
+  <data name="titulo_resumen_tratamiento" xml:space="preserve">
+    <value>Резюме лечения</value>
+  </data>
+  <data name="titulo_resumenes_anteriores" xml:space="preserve">
+    <value>Предыдущие резюме</value>
+  </data>
+  <data name="titulo_suscripcion_cancelada" xml:space="preserve">
+    <value>Подписка отменена</value>
+  </data>
+  <data name="titulo_ultimas_consultas" xml:space="preserve">
+    <value>Последние приёмы</value>
+  </data>
+  <data name="titulo_uso_periodo" xml:space="preserve">
+    <value>Использование за период</value>
+  </data>
+  <data name="txt_consulta_analizada_singular" xml:space="preserve">
+    <value>приём проанализирован</value>
+  </data>
+  <data name="txt_consulta_registrada_singular" xml:space="preserve">
+    <value>приём зарегистрирован</value>
+  </data>
+  <data name="txt_consultas_analizadas_plural" xml:space="preserve">
+    <value>приёмов проанализировано</value>
+  </data>
+  <data name="txt_consultas_registradas_plural" xml:space="preserve">
+    <value>приёмов зарегистрировано</value>
+  </data>
+  <data name="txt_evolucion_observada" xml:space="preserve">
+    <value>Наблюдаемая динамика</value>
+  </data>
+  <data name="txt_historial_clinico_completo" xml:space="preserve">
+    <value>Полная история болезни</value>
+  </data>
+  <data name="txt_ningun_modelo_seleccionado" xml:space="preserve">
+    <value>Модель пока не выбрана.</value>
+  </data>
+  <data name="txt_sin_consultas_registradas" xml:space="preserve">
+    <value>Нет зарегистрированных приёмов</value>
+  </data>
+  <data name="txt_sin_historial_clinico" xml:space="preserve">
+    <value>Нет истории болезни</value>
+  </data>
+  <data name="valor_tipo_backup_completo" xml:space="preserve">
+    <value>Полная (Full Backup)</value>
   </data>
 </root>

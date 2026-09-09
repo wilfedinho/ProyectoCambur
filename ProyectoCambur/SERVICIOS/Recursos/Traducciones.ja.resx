@@ -78,11 +78,7 @@
   </data>
   <data name="opt_seleccionar" xml:space="preserve">
     <value>選択してください…</value>
-  </data>
-  <data name="rol_psicologo_free" xml:space="preserve">
-    <value>心理士 — 無料プラン</value>
-  </data>
-  <data name="rol_psicologo_profesional" xml:space="preserve">
+  </data>  <data name="rol_psicologo_profesional" xml:space="preserve">
     <value>心理士 — プロフェッショナルプラン</value>
   </data>
   <data name="rol_psicologo_premium" xml:space="preserve">
@@ -1137,5 +1133,1547 @@
   </data>
   <data name="login_clave_restablecida" xml:space="preserve">
     <value>パスワードが正常に再設定されました。ログインできます。</value>
+  </data>
+  <data name="acceso_exportar_pdf" xml:space="preserve">
+    <value>PDFエクスポート</value>
+  </data>
+  <data name="acceso_generar_derivacion" xml:space="preserve">
+    <value>紹介状の作成</value>
+  </data>
+  <data name="acceso_resumen_ia" xml:space="preserve">
+    <value>AI要約</value>
+  </data>
+  <data name="acceso_ver_linea_temporal" xml:space="preserve">
+    <value>タイムラインを見る</value>
+  </data>
+  <data name="aviso_campos_no_editables" xml:space="preserve">
+    <value>臨床項目のみ編集できます。日付、所要時間、患者情報は編集できません。</value>
+  </data>
+  <data name="aviso_consulta_reencriptada" xml:space="preserve">
+    <value>変更内容は保存時にAESで再暗号化され、法律第25.326号(個人データ保護法)に準拠しています。</value>
+  </data>
+  <data name="aviso_critico_texto" xml:space="preserve">
+    <value>バックアップおよび復元操作はデータベースに直接影響します。復元を実行する前に、必要な権限があることを確認し、チームに周知してください。</value>
+  </data>
+  <data name="aviso_critico_titulo" xml:space="preserve">
+    <value>システムの重要操作</value>
+  </data>
+  <data name="aviso_historial_encriptado" xml:space="preserve">
+    <value>診療記録は保存前にAESで暗号化され、法律第25.326号に準拠しています。</value>
+  </data>
+  <data name="aviso_ia_badge_informe" xml:space="preserve">
+    <value>AIアシスト生成・承認前に内容を確認・修正してください・自動診断ではありません</value>
+  </data>
+  <data name="aviso_ia_badge_perfil" xml:space="preserve">
+    <value>AI生成の参考プロフィール・診断ではありません・状況を説明する目的のみ・専門家による確認を推奨します</value>
+  </data>
+  <data name="aviso_ia_informe_titulo" xml:space="preserve">
+    <value>AIが報告書作成に使用する情報:</value>
+  </data>
+  <data name="aviso_ia_resultado" xml:space="preserve">
+    <value>AIアシスト生成・整理目的のみ・診断ではありません・専門家による確認を推奨します</value>
+  </data>
+  <data name="aviso_ia_resumen" xml:space="preserve">
+    <value>AIは登録された情報を整理し要約します。診断を下すものではなく、専門家の判断に代わるものでもありません。</value>
+  </data>
+  <data name="aviso_restore_texto" xml:space="preserve">
+    <value>注意:復元を実行すると、現在のデータベースのすべてのデータが選択したファイルの内容に置き換えられます。この操作は取り消せません。</value>
+  </data>
+  <data name="aviso_resumen_encriptado" xml:space="preserve">
+    <value>生成された内容は保存時にAESで暗号化され、個人データ保護法第25.326号に準拠しています。</value>
+  </data>
+  <data name="aviso_texto_datos_encriptados_perfil" xml:space="preserve">
+    <value>生成されたプロフィールは自動的にAESで暗号化され、法律第25.326号に準拠しています。</value>
+  </data>
+  <data name="aviso_texto_perfil_encriptado" xml:space="preserve">
+    <value>このプロフィールは生成時に自動的にAESで暗号化され、法律第25.326号に準拠した状態で保存済みです。</value>
+  </data>
+  <data name="aviso_texto_revision_obligatoria" xml:space="preserve">
+    <value>生成された報告書は、外部利用の前に専門家による確認と承認が必要です。</value>
+  </data>
+  <data name="aviso_texto_revision_profesional" xml:space="preserve">
+    <value>承認する前に、生成された内容を確認・修正してください。この報告書に署名し外部利用を許可できるのはあなただけです。</value>
+  </data>
+  <data name="aviso_titulo_datos_encriptados" xml:space="preserve">
+    <value>暗号化されたデータ</value>
+  </data>
+  <data name="aviso_titulo_perfil_encriptado" xml:space="preserve">
+    <value>暗号化されたプロフィール</value>
+  </data>
+  <data name="aviso_titulo_revision_obligatoria" xml:space="preserve">
+    <value>確認必須</value>
+  </data>
+  <data name="aviso_titulo_revision_profesional" xml:space="preserve">
+    <value>専門家による確認</value>
+  </data>
+  <data name="badge_completado" xml:space="preserve">
+    <value>完了</value>
+  </data>
+  <data name="badge_editable_hasta" xml:space="preserve">
+    <value>編集可能期限:</value>
+  </data>
+  <data name="badge_historial_completo" xml:space="preserve">
+    <value>完全な診療記録</value>
+  </data>
+  <data name="badge_mas_elegido" xml:space="preserve">
+    <value>最も選ばれています</value>
+  </data>
+  <data name="badge_pendiente" xml:space="preserve">
+    <value>保留中</value>
+  </data>
+  <data name="badge_pendiente_revision" xml:space="preserve">
+    <value>確認待ち</value>
+  </data>
+  <data name="badge_suscripcion_activa" xml:space="preserve">
+    <value>有効</value>
+  </data>
+  <data name="badge_suscripcion_cancelada" xml:space="preserve">
+    <value>解約済み</value>
+  </data>
+  <data name="badge_suscripcion_vencida" xml:space="preserve">
+    <value>期限切れ</value>
+  </data>
+  <data name="badge_ultimo_dia_editar" xml:space="preserve">
+    <value>編集可能な最終日</value>
+  </data>
+  <data name="btn_actualizar_medio_pago" xml:space="preserve">
+    <value>支払い方法を更新</value>
+  </data>
+  <data name="btn_buscar_consultas" xml:space="preserve">
+    <value>診療記録を検索</value>
+  </data>
+  <data name="btn_cambiar_filtros" xml:space="preserve">
+    <value>フィルターを変更</value>
+  </data>
+  <data name="btn_cancelar_suscripcion" xml:space="preserve">
+    <value>サブスクリプションを解約</value>
+  </data>
+  <data name="btn_confirmar_pago" xml:space="preserve">
+    <value>支払いを確定</value>
+  </data>
+  <data name="btn_confirmar_restore" xml:space="preserve">
+    <value>復元を確定</value>
+  </data>
+  <data name="btn_continuar" xml:space="preserve">
+    <value>続ける</value>
+  </data>
+  <data name="btn_descartar_informe" xml:space="preserve">
+    <value>報告書を破棄</value>
+  </data>
+  <data name="btn_elegir_otro_paciente" xml:space="preserve">
+    <value>別の患者を選択</value>
+  </data>
+  <data name="btn_entendido" xml:space="preserve">
+    <value>了解しました</value>
+  </data>
+  <data name="btn_exportar_pdf" xml:space="preserve">
+    <value>📄 PDFでエクスポート</value>
+  </data>
+  <data name="btn_generar_backup" xml:space="preserve">
+    <value>今すぐバックアップを作成</value>
+  </data>
+  <data name="btn_generar_informe_ia" xml:space="preserve">
+    <value>AIで報告書を作成</value>
+  </data>
+  <data name="btn_generar_perfil" xml:space="preserve">
+    <value>プロフィールを作成</value>
+  </data>
+  <data name="btn_generar_resumen_ia" xml:space="preserve">
+    <value>AIで要約を作成</value>
+  </data>
+  <data name="btn_guardar_borrador" xml:space="preserve">
+    <value>下書きを保存</value>
+  </data>
+  <data name="btn_guardar_historial" xml:space="preserve">
+    <value>診療記録を保存</value>
+  </data>
+  <data name="btn_nuevo_perfil" xml:space="preserve">
+    <value>新規プロフィール</value>
+  </data>
+  <data name="btn_nuevo_resumen" xml:space="preserve">
+    <value>新規要約</value>
+  </data>
+  <data name="btn_plan_actual" xml:space="preserve">
+    <value>現在のプラン</value>
+  </data>
+  <data name="btn_plan_seleccionar" xml:space="preserve">
+    <value>選択する</value>
+  </data>
+  <data name="btn_reactivar_suscripcion" xml:space="preserve">
+    <value>サブスクリプションを再開</value>
+  </data>
+  <data name="btn_revisar_firmar" xml:space="preserve">
+    <value>確認して署名</value>
+  </data>
+  <data name="btn_seleccionar_y_restaurar" xml:space="preserve">
+    <value>ファイルを選択して復元</value>
+  </data>
+  <data name="btn_validar_firmar_informe" xml:space="preserve">
+    <value>報告書を承認して署名</value>
+  </data>
+  <data name="btn_volver" xml:space="preserve">
+    <value>戻る</value>
+  </data>
+  <data name="carga_subtitulo_backup_restore" xml:space="preserve">
+    <value>データベースのサイズによっては数秒かかる場合があります。このウィンドウを閉じないでください。</value>
+  </data>
+  <data name="carga_subtitulo_informe_ia" xml:space="preserve">
+    <value>臨床情報を統合し、文書を作成しています</value>
+  </data>
+  <data name="carga_subtitulo_perfil_ia" xml:space="preserve">
+    <value>臨床情報を分析し、選択したモデルと照合しています</value>
+  </data>
+  <data name="carga_subtitulo_resumen_ia" xml:space="preserve">
+    <value>診療記録を分析し、構造化された要約を生成しています</value>
+  </data>
+  <data name="carga_titulo_backup_restore" xml:space="preserve">
+    <value>処理を実行しています...</value>
+  </data>
+  <data name="carga_titulo_informe_ia" xml:space="preserve">
+    <value>AIで報告書を作成しています...</value>
+  </data>
+  <data name="carga_titulo_perfil_ia" xml:space="preserve">
+    <value>AIでプロフィールを作成しています...</value>
+  </data>
+  <data name="carga_titulo_resumen_ia" xml:space="preserve">
+    <value>AIアシストで処理しています...</value>
+  </data>
+  <data name="confirm_cancelar_suscripcion" xml:space="preserve">
+    <value>解約を確定しますか?サブスクリプションは現在の請求期間の終了日まで有効です。</value>
+  </data>
+  <data name="confirm_descartar_informe" xml:space="preserve">
+    <value>破棄を確定しますか?この操作は取り消せません。</value>
+  </data>
+  <data name="confirm_generar_backup" xml:space="preserve">
+    <value>バックアップの作成を確定しますか?インスタンスのバックアップフォルダに新しい.bakファイルが作成されます。</value>
+  </data>
+  <data name="doc_informe_derivacion" xml:space="preserve">
+    <value>紹介状</value>
+  </data>
+  <data name="doc_perfil_evolutivo" xml:space="preserve">
+    <value>経過プロフィール</value>
+  </data>
+  <data name="doc_resumen_clinico" xml:space="preserve">
+    <value>AI臨床要約</value>
+  </data>
+  <data name="dvh_registro_inconsistente_bitacora" xml:space="preserve">
+    <value>ログイベント No.{0}(ユーザー{1})に改ざんが検出されました。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_familia" xml:space="preserve">
+    <value>権限グループ「{0}」に改ざんが検出されました。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_familia_familia" xml:space="preserve">
+    <value>権限グループ「{0}」と、それに含まれるサブグループ「{1}」との関連に改ざんが検出されました。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_historial" xml:space="preserve">
+    <value>HistorialClinicoテーブル:患者No.{1}の診療記録No.{0}に不整合があります(データベースが直接変更されたか、システムを経由せずに挿入された可能性があります)。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_idioma" xml:space="preserve">
+    <value>言語「{0}」(コード{1})に改ざんが検出されました。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_informe_derivacion" xml:space="preserve">
+    <value>InformeDerivacionテーブル:患者No.{1}の紹介状No.{0}に不整合があります(データベースが直接変更されたか、システムを経由せずに挿入された可能性があります)。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_perfil" xml:space="preserve">
+    <value>プロフィール「{0}」に改ざんが検出されました。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_perfil_familia" xml:space="preserve">
+    <value>プロフィール「{0}」と権限グループ「{1}」との関連に改ざんが検出されました。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_perfil_paciente" xml:space="preserve">
+    <value>PerfilPacienteテーブル:患者No.{1}のプロフィールNo.{0}に不整合があります(データベースが直接変更されたか、システムを経由せずに挿入された可能性があります)。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_permiso_simple" xml:space="preserve">
+    <value>単一権限「{0}」に改ざんが検出されました。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_permiso_simple_familia" xml:space="preserve">
+    <value>権限グループ「{0}」と単一権限「{1}」との関連に改ざんが検出されました。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_permiso_simple_perfil" xml:space="preserve">
+    <value>プロフィール「{0}」と単一権限「{1}」との関連に改ざんが検出されました。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_resumen" xml:space="preserve">
+    <value>ResumenClinicoテーブル:患者No.{1}の臨床要約No.{0}に不整合があります(データベースが直接変更されたか、システムを経由せずに挿入された可能性があります)。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_suscripcion" xml:space="preserve">
+    <value>サブスクリプションNo.{0}(専門家ID {1})に改ざんが検出されました。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_token" xml:space="preserve">
+    <value>復旧トークンNo.{0}(専門家ID {1})に改ざんが検出されました。</value>
+  </data>
+  <data name="dvh_registro_inconsistente_traduccion" xml:space="preserve">
+    <value>言語{0}の翻訳(キー「{1}」)に改ざんが検出されました。</value>
+  </data>
+  <data name="error_backup_archivo_invalido" xml:space="preserve">
+    <value>選択したファイルは利用できなくなりました。一覧を更新してもう一度お試しください。</value>
+  </data>
+  <data name="error_backup_carpeta_no_configurada" xml:space="preserve">
+    <value>SQL Serverインスタンスのバックアップフォルダを特定できませんでした。</value>
+  </data>
+  <data name="error_backup_fallo" xml:space="preserve">
+    <value>バックアップを作成できませんでした。詳細:{0}</value>
+  </data>
+  <data name="error_backup_inesperado" xml:space="preserve">
+    <value>バックアップの作成中に予期しないエラーが発生しました。数分後にもう一度お試しください。</value>
+  </data>
+  <data name="error_backup_permiso_carpeta" xml:space="preserve">
+    <value>SQL Serverにバックアップフォルダへの書き込み権限がありません。詳細:{0}</value>
+  </data>
+  <data name="error_campo_obligatorio" xml:space="preserve">
+    <value>この項目は必須です。</value>
+  </data>
+  <data name="error_consulta_encriptacion" xml:space="preserve">
+    <value>診療記録の暗号化中に内部エラーが発生したため、処理を完了できませんでした。もう一度お試しください。</value>
+  </data>
+  <data name="error_consulta_fuera_de_plazo_modificacion" xml:space="preserve">
+    <value>この診療記録を編集できる期限({0}日間)は終了しました。</value>
+  </data>
+  <data name="error_consulta_ya_modificada" xml:space="preserve">
+    <value>この診療記録はすでに一度編集されているため、再度編集することはできません。</value>
+  </data>
+  <data name="error_contacto_datos_invalidos" xml:space="preserve">
+    <value>送信する前に、お名前・件名・メッセージを入力してください。</value>
+  </data>
+  <data name="error_contacto_email_invalido" xml:space="preserve">
+    <value>有効なメールアドレスを入力してください。</value>
+  </data>
+  <data name="error_dashboard_recalculo" xml:space="preserve">
+    <value>選択した期間の指標を再計算できませんでした。</value>
+  </data>
+  <data name="error_dashboard_recuperacion" xml:space="preserve">
+    <value>ダッシュボードの指標を取得できませんでした。しばらくしてからもう一度お試しください。</value>
+  </data>
+  <data name="error_dni_obligatorio" xml:space="preserve">
+    <value>身分証明書番号(DNI)は必須です。</value>
+  </data>
+  <data name="error_documento_no_disponible" xml:space="preserve">
+    <value>選択した文書は、この患者ではまだ利用できません。</value>
+  </data>
+  <data name="error_especialidad_obligatoria" xml:space="preserve">
+    <value>専門分野を選択してください。</value>
+  </data>
+  <data name="error_estado_civil_obligatorio" xml:space="preserve">
+    <value>婚姻状況を選択してください。</value>
+  </data>
+  <data name="error_fecha_desde_obligatoria" xml:space="preserve">
+    <value>開始日を入力してください。</value>
+  </data>
+  <data name="error_fecha_formato_invalido" xml:space="preserve">
+    <value>入力された日付が正しくありません。</value>
+  </data>
+  <data name="error_fecha_hasta_obligatoria" xml:space="preserve">
+    <value>終了日を入力してください。</value>
+  </data>
+  <data name="error_generacion_pdf" xml:space="preserve">
+    <value>PDFの生成中にエラーが発生しました。もう一度お試しください。</value>
+  </data>
+  <data name="error_historial_campos_incompletos" xml:space="preserve">
+    <value>保存する前に、診療記録の6つのセクションすべてを入力してください。</value>
+  </data>
+  <data name="error_historial_encriptacion" xml:space="preserve">
+    <value>診療記録の暗号化中に内部エラーが発生したため、処理を完了できませんでした。もう一度お試しください。</value>
+  </data>
+  <data name="error_historial_ya_existe" xml:space="preserve">
+    <value>この患者にはすでに登録済みの診療記録があります。編集できるよう現在のデータを表示しています。</value>
+  </data>
+  <data name="error_ia_comunicacion" xml:space="preserve">
+    <value>AIサービスとの通信エラーにより要約を生成できませんでした。もう一度お試しください。</value>
+  </data>
+  <data name="error_ia_respuesta_invalida" xml:space="preserve">
+    <value>AIサービスから無効な応答が返されたため、要約を生成できませんでした。もう一度お試しください。</value>
+  </data>
+  <data name="error_ia_saturado" xml:space="preserve">
+    <value>現在AIサービスが混雑しています(利用上限に達しました)。少し時間をおいてから、もう一度お試しください。</value>
+  </data>
+  <data name="error_ia_timeout" xml:space="preserve">
+    <value>AIサービスの応答がタイムアウトしました。もう一度お試しください。</value>
+  </data>
+  <data name="error_informe_campos_incompletos" xml:space="preserve">
+    <value>報告書を作成する前に、紹介先の専門分野・担当専門家・理由を入力してください。</value>
+  </data>
+  <data name="error_informe_encriptacion" xml:space="preserve">
+    <value>報告書の情報を保護する際にエラーが発生しました。もう一度お試しください。</value>
+  </data>
+  <data name="error_informe_firma_obligatoria" xml:space="preserve">
+    <value>報告書を承認・署名するには署名が必須です。</value>
+  </data>
+  <data name="error_informe_informacion_insuficiente" xml:space="preserve">
+    <value>登録されている臨床情報は紹介状を作成するには不十分です。患者の診療記録と診療内容を確認してから、もう一度お試しください。</value>
+  </data>
+  <data name="error_informe_no_propio" xml:space="preserve">
+    <value>要求された報告書は存在しないか、あなたが担当する患者のものではありません。</value>
+  </data>
+  <data name="error_informe_sin_informacion_clinica" xml:space="preserve">
+    <value>この患者には診療記録も診療内容も登録されていません。紹介状を作成する前に臨床情報を登録してください。</value>
+  </data>
+  <data name="error_informe_vacio" xml:space="preserve">
+    <value>報告書を空にすることはできません。少なくとも診断の要約は入力してください。</value>
+  </data>
+  <data name="error_motivo_derivacion_obligatorio" xml:space="preserve">
+    <value>紹介理由を入力してください。</value>
+  </data>
+  <data name="error_paciente_duplicado" xml:space="preserve">
+    <value>その身分証明書番号(DNI)で登録済みの患者がすでに存在します。</value>
+  </data>
+  <data name="error_paciente_email_duplicado" xml:space="preserve">
+    <value>そのメールアドレスで登録済みの患者がすでに存在します。</value>
+  </data>
+  <data name="error_paciente_no_propio" xml:space="preserve">
+    <value>選択した患者はあなたの専門家プロフィールに関連付けられていません。</value>
+  </data>
+  <data name="error_pago_no_procesado" xml:space="preserve">
+    <value>決済を処理できませんでした。カード情報をご確認のうえ、もう一度お試しください。</value>
+  </data>
+  <data name="error_pago_rechazado" xml:space="preserve">
+    <value>決済が拒否されました({0})。カード情報をご確認のうえ、もう一度お試しください。</value>
+  </data>
+  <data name="error_pago_timeout" xml:space="preserve">
+    <value>決済ゲートウェイとの通信エラーにより決済を処理できませんでした。数分後にもう一度お試しください。</value>
+  </data>
+  <data name="error_perfil_encriptacion" xml:space="preserve">
+    <value>プロフィールの情報を保護する際にエラーが発生しました。もう一度お試しください。</value>
+  </data>
+  <data name="error_perfil_informacion_insuficiente" xml:space="preserve">
+    <value>登録されている臨床情報は、選択したモデルに基づくプロフィール作成には不十分です。患者の診療記録と診療内容を確認してから、もう一度お試しください。</value>
+  </data>
+  <data name="error_perfil_modelo_invalido" xml:space="preserve">
+    <value>プロフィールを作成する前に、有効な評価モデルを選択してください。</value>
+  </data>
+  <data name="error_perfil_sin_informacion_clinica" xml:space="preserve">
+    <value>この患者には診療記録も診療内容も登録されていません。プロフィールを作成する前に臨床情報を登録してください。</value>
+  </data>
+  <data name="error_prof_destino_obligatorio" xml:space="preserve">
+    <value>紹介先の専門家を入力してください。</value>
+  </data>
+  <data name="error_rango_fecha_invalido" xml:space="preserve">
+    <value>選択した日付範囲が無効です。「開始日」は「終了日」より後にすることはできません。</value>
+  </data>
+  <data name="error_restore_fallo" xml:space="preserve">
+    <value>復元を完了できませんでした。詳細:{0}</value>
+  </data>
+  <data name="error_restore_inesperado" xml:space="preserve">
+    <value>バックアップの復元中に予期しないエラーが発生しました。数分後にもう一度お試しいただくか、テクニカルサポートにご連絡ください。</value>
+  </data>
+  <data name="error_restore_permiso_carpeta" xml:space="preserve">
+    <value>SQL Serverに選択したバックアップファイルへの読み取り権限がありません。詳細:{0}</value>
+  </data>
+  <data name="error_resumen_encriptacion" xml:space="preserve">
+    <value>要約の暗号化中に内部エラーが発生したため、処理を完了できませんでした。もう一度お試しください。</value>
+  </data>
+  <data name="error_resumen_informacion_insuficiente" xml:space="preserve">
+    <value>選択した診療記録に登録されている臨床情報は要約を生成するには不十分です。診療記録の項目を確認し、実際の臨床情報を入力してから、もう一度お試しください。</value>
+  </data>
+  <data name="error_resumen_sin_consultas" xml:space="preserve">
+    <value>選択した期間にその患者の診療記録が見つかりませんでした。</value>
+  </data>
+  <data name="error_resumen_sin_consultas_seleccionadas" xml:space="preserve">
+    <value>要約を生成するには、少なくとも1件の診療記録を選択してください。</value>
+  </data>
+  <data name="error_seleccionar_archivo" xml:space="preserve">
+    <value>続行する前に、一覧からバックアップファイルを選択してください。</value>
+  </data>
+  <data name="error_seleccionar_paciente_perfil" xml:space="preserve">
+    <value>プロフィールを作成する前に患者を選択してください。</value>
+  </data>
+  <data name="error_sexo_obligatorio" xml:space="preserve">
+    <value>患者の性別を選択してください。</value>
+  </data>
+  <data name="error_sin_consultas_editables" xml:space="preserve">
+    <value>この患者には編集可能な期限(3日間)内の診療記録がありません。</value>
+  </data>
+  <data name="error_suscripcion_mismo_plan" xml:space="preserve">
+    <value>すでにそのプランをご利用中です。</value>
+  </data>
+  <data name="error_suscripcion_no_activa" xml:space="preserve">
+    <value>有効なサブスクリプションがありません。</value>
+  </data>
+  <data name="error_suscripcion_no_cancelada" xml:space="preserve">
+    <value>再開できる解約済みのサブスクリプションがありません。</value>
+  </data>
+  <data name="error_suscripcion_periodo_vencido" xml:space="preserve">
+    <value>そのサブスクリプションの支払い期間はすでに終了しています。再度契約するにはプランを選択してください。</value>
+  </data>
+  <data name="error_suscripcion_plan_invalido" xml:space="preserve">
+    <value>選択したサブスクリプションプランは無効です。</value>
+  </data>
+  <data name="error_tarjeta_no_validada" xml:space="preserve">
+    <value>カード情報を確認できませんでした。ページを再読み込みしてもう一度お試しください。</value>
+  </data>
+  <data name="error_tarjeta_obligatoria" xml:space="preserve">
+    <value>カード番号を入力してください。</value>
+  </data>
+  <data name="error_valoracion_puntuacion_invalida" xml:space="preserve">
+    <value>1から5つ星の評価を選択してください。</value>
+  </data>
+  <data name="error_valoracion_sin_suscripcion_activa" xml:space="preserve">
+    <value>サービスを評価するには有効なサブスクリプションが必要です。</value>
+  </data>
+  <data name="esp_cardiologia" xml:space="preserve">
+    <value>循環器科</value>
+  </data>
+  <data name="esp_fisiatria" xml:space="preserve">
+    <value>リハビリテーション科</value>
+  </data>
+  <data name="esp_medicina_general" xml:space="preserve">
+    <value>一般内科</value>
+  </data>
+  <data name="esp_neurologia" xml:space="preserve">
+    <value>神経内科</value>
+  </data>
+  <data name="esp_nutricion" xml:space="preserve">
+    <value>栄養科</value>
+  </data>
+  <data name="esp_otra_especialidad" xml:space="preserve">
+    <value>その他の専門分野</value>
+  </data>
+  <data name="esp_psiquiatria" xml:space="preserve">
+    <value>精神科</value>
+  </data>
+  <data name="esp_trabajo_social" xml:space="preserve">
+    <value>ソーシャルワーク</value>
+  </data>
+  <data name="exito_borrador_guardado" xml:space="preserve">
+    <value>下書きを保存しました。「紹介状」セクションから後で確認を再開できます。</value>
+  </data>
+  <data name="exito_informe_descartado" xml:space="preserve">
+    <value>報告書は正常に破棄されました。</value>
+  </data>
+  <data name="exito_informe_validado" xml:space="preserve">
+    <value>{0}により報告書が承認・署名されました。この文書はPDFでエクスポートできます。</value>
+  </data>
+  <data name="exito_medio_pago_actualizado" xml:space="preserve">
+    <value>支払い方法が正常に更新されました。</value>
+  </data>
+  <data name="exito_plan_actualizado" xml:space="preserve">
+    <value>プランが正常に更新されました。変更はすでに適用されています。</value>
+  </data>
+  <data name="exito_suscripcion_reactivada" xml:space="preserve">
+    <value>サブスクリプションが正常に再開されました。</value>
+  </data>
+  <data name="eyebrow_plan_activo" xml:space="preserve">
+    <value>現在のプラン</value>
+  </data>
+  <data name="feature_consultas_historial" xml:space="preserve">
+    <value>診療記録と診療履歴</value>
+  </data>
+  <data name="feature_exportaciones_avanzado" xml:space="preserve">
+    <value>高度</value>
+  </data>
+  <data name="feature_exportaciones_pdf" xml:space="preserve">
+    <value>PDFエクスポート</value>
+  </data>
+  <data name="feature_informe_derivacion_ia" xml:space="preserve">
+    <value>AI紹介状</value>
+  </data>
+  <data name="feature_pacientes" xml:space="preserve">
+    <value>患者</value>
+  </data>
+  <data name="feature_pacientes_hasta20" xml:space="preserve">
+    <value>最大20名</value>
+  </data>
+  <data name="feature_pacientes_ilimitados" xml:space="preserve">
+    <value>無制限</value>
+  </data>
+  <data name="feature_perfilacion" xml:space="preserve">
+    <value>患者プロフィール作成</value>
+  </data>
+  <data name="feature_resumen_ia" xml:space="preserve">
+    <value>AI臨床要約</value>
+  </data>
+  <data name="feature_soporte" xml:space="preserve">
+    <value>サポート</value>
+  </data>
+  <data name="feature_soporte_email" xml:space="preserve">
+    <value>メール</value>
+  </data>
+  <data name="feature_soporte_email_chat" xml:space="preserve">
+    <value>メール+チャット</value>
+  </data>
+  <data name="feature_soporte_prioritario" xml:space="preserve">
+    <value>優先サポート</value>
+  </data>
+  <data name="filtro_consultas" xml:space="preserve">
+    <value>診療記録</value>
+  </data>
+  <data name="filtro_historial" xml:space="preserve">
+    <value>診療履歴</value>
+  </data>
+  <data name="filtro_informe_derivacion" xml:space="preserve">
+    <value>紹介状</value>
+  </data>
+  <data name="filtro_perfilacion" xml:space="preserve">
+    <value>プロフィール作成</value>
+  </data>
+  <data name="filtro_resumen_ia" xml:space="preserve">
+    <value>AI要約</value>
+  </data>
+  <data name="filtro_todos" xml:space="preserve">
+    <value>すべて</value>
+  </data>
+  <data name="hint_historial_clinico" xml:space="preserve">
+    <value>この情報は特定の診療記録ではなく、患者全体の状況に基づくものです。各セクションを展開して入力してください。</value>
+  </data>
+  <data name="hint_seleccionar_consulta_modificar" xml:space="preserve">
+    <value>作成から3日以内の診療記録のみ表示されています。編集する診療記録を選択してください。</value>
+  </data>
+  <data name="hint_seleccionar_consultas" xml:space="preserve">
+    <value>要約に含める診療記録を選択してください。ヘッダーのチェックボックスですべて選択することもできます。</value>
+  </data>
+  <data name="hint_seleccionar_modelo" xml:space="preserve">
+    <value>このプロフィール作成に適した評価モデルを選択してください。異なるモデルで複数のプロフィールを作成することもできます。</value>
+  </data>
+  <data name="historial_sin_consultas" xml:space="preserve">
+    <value>この患者にはまだ登録された診療記録がありません。</value>
+  </data>
+  <data name="ia_aviso_perfil" xml:space="preserve">
+    <value>プロフィールは状況を説明する参考情報です。臨床診断にはあたらず、専門家の判断に代わるものでもありません。</value>
+  </data>
+  <data name="info_incluye_antecedentes" xml:space="preserve">
+    <value>診療記録の既往歴</value>
+  </data>
+  <data name="info_incluye_evolucion" xml:space="preserve">
+    <value>治療における経過観察</value>
+  </data>
+  <data name="info_incluye_intervenciones" xml:space="preserve">
+    <value>実施した介入と支援策</value>
+  </data>
+  <data name="js_procesando_pago" xml:space="preserve">
+    <value>決済処理中...</value>
+  </data>
+  <data name="js_tarjeta_invalida" xml:space="preserve">
+    <value>カード情報を確認できませんでした。カード番号、有効期限、セキュリティコードをご確認ください。</value>
+  </data>
+  <data name="js_tarjeta_no_identificada" xml:space="preserve">
+    <value>入力されたカードを識別できませんでした。カード番号をご確認ください。</value>
+  </data>
+  <data name="js_tarjeta_no_reconocida" xml:space="preserve">
+    <value>このカードは認識されませんでした。入力したカード番号をご確認ください。</value>
+  </data>
+  <data name="kpi_consultas_realizadas" xml:space="preserve">
+    <value>実施した診療件数</value>
+  </data>
+  <data name="kpi_derivaciones" xml:space="preserve">
+    <value>紹介件数</value>
+  </data>
+  <data name="kpi_informes_exportados" xml:space="preserve">
+    <value>エクスポートした報告書数</value>
+  </data>
+  <data name="kpi_nuevos_pacientes" xml:space="preserve">
+    <value>期間内の新規患者数</value>
+  </data>
+  <data name="kpi_perfilaciones" xml:space="preserve">
+    <value>プロフィール作成件数</value>
+  </data>
+  <data name="kpi_resumenes_ia" xml:space="preserve">
+    <value>生成されたAI要約数</value>
+  </data>
+  <data name="kpi_total_pacientes" xml:space="preserve">
+    <value>患者総数</value>
+  </data>
+  <data name="landing_btn_crear_cuenta" xml:space="preserve">
+    <value>アカウントを作成</value>
+  </data>
+  <data name="landing_btn_enviar_contacto" xml:space="preserve">
+    <value>メッセージを送信</value>
+  </data>
+  <data name="landing_btn_enviar_valoracion" xml:space="preserve">
+    <value>評価を投稿</value>
+  </data>
+  <data name="landing_btn_iniciar_sesion" xml:space="preserve">
+    <value>ログイン</value>
+  </data>
+  <data name="landing_btn_ir_panel" xml:space="preserve">
+    <value>パネルへ移動</value>
+  </data>
+  <data name="landing_contacto_enviado" xml:space="preserve">
+    <value>ありがとうございます。メッセージを受け取りました。近日中にご返信いたします。</value>
+  </data>
+  <data name="landing_contacto_lbl_asunto" xml:space="preserve">
+    <value>件名</value>
+  </data>
+  <data name="landing_contacto_lbl_email" xml:space="preserve">
+    <value>メールアドレス</value>
+  </data>
+  <data name="landing_contacto_lbl_mensaje" xml:space="preserve">
+    <value>メッセージ</value>
+  </data>
+  <data name="landing_contacto_lbl_nombre" xml:space="preserve">
+    <value>お名前</value>
+  </data>
+  <data name="landing_contacto_texto" xml:space="preserve">
+    <value>Camburについてご質問がありますか?それとも他のプロジェクトについてお話ししたいですか?お気軽にご連絡ください。近日中にご返信いたします。</value>
+  </data>
+  <data name="landing_contacto_titulo" xml:space="preserve">
+    <value>お問い合わせ</value>
+  </data>
+  <data name="landing_faq_pregunta_1" xml:space="preserve">
+    <value>Camburとは何ですか?</value>
+  </data>
+  <data name="landing_faq_pregunta_2" xml:space="preserve">
+    <value>AIは専門家の判断に取って代わるのですか?</value>
+  </data>
+  <data name="landing_faq_pregunta_3" xml:space="preserve">
+    <value>患者データのセキュリティはどの程度確保されていますか?</value>
+  </data>
+  <data name="landing_faq_pregunta_4" xml:space="preserve">
+    <value>どのようなサブスクリプションプランがありますか?</value>
+  </data>
+  <data name="landing_faq_pregunta_5" xml:space="preserve">
+    <value>いつでも解約できますか?</value>
+  </data>
+  <data name="landing_faq_pregunta_6" xml:space="preserve">
+    <value>CZ ConsultingはCamburだけを開発しているのですか?</value>
+  </data>
+  <data name="landing_faq_respuesta_1" xml:space="preserve">
+    <value>心理士のために設計された臨床管理システムです。患者・診療記録・診療履歴を整理し、人工知能を活用して臨床要約、紹介状、経過プロフィールの作成を支援します。</value>
+  </data>
+  <data name="landing_faq_respuesta_2" xml:space="preserve">
+    <value>いいえ。AIは専門家が入力した情報をもとに文書の作成を支援するのみで、すべての結果は使用前に専門家の確認と承認を必要とします。</value>
+  </data>
+  <data name="landing_faq_respuesta_3" xml:space="preserve">
+    <value>臨床情報には整合性チェックと内部監査ログが備わっており、各画面へのアクセスはシステム内でのユーザーの役割に応じて制限されています。</value>
+  </data>
+  <data name="landing_faq_respuesta_4" xml:space="preserve">
+    <value>ベーシック、プロフェッショナル、プレミアムの3種類があり、それぞれ月間利用上限が異なります。プランや支払い方法はいつでもパネルから変更できます。</value>
+  </data>
+  <data name="landing_faq_respuesta_5" xml:space="preserve">
+    <value>はい、最低契約期間はありません。解約しても、すでに支払い済みの期間の終了まではご利用いただけます。</value>
+  </data>
+  <data name="landing_faq_respuesta_6" xml:space="preserve">
+    <value>いいえ。私たちの事業はソフトウェア開発全般です。CamburはヘルステックにフォーカスしたCZ Consultingの製品の一つですが、他の組織向けのオーダーメイドプロジェクトにも取り組んでいます。</value>
+  </data>
+  <data name="landing_faq_titulo" xml:space="preserve">
+    <value>よくある質問</value>
+  </data>
+  <data name="landing_footer_texto" xml:space="preserve">
+    <value>CZ Consultingはソフトウェア開発企業です。CamburはCZ Consultingの製品です。</value>
+  </data>
+  <data name="landing_hero_cta_cambur" xml:space="preserve">
+    <value>Camburを見る</value>
+  </data>
+  <data name="landing_hero_cta_servicios" xml:space="preserve">
+    <value>サービスを見る</value>
+  </data>
+  <data name="landing_hero_eyebrow" xml:space="preserve">
+    <value>CZ Consulting・ソフトウェア開発</value>
+  </data>
+  <data name="landing_hero_texto" xml:space="preserve">
+    <value>私たちはソフトウェア開発企業です。さまざまな業界向けにオーダーメイドのデジタル製品を設計・開発しています。メンタルヘルスの専門家向けAI支援臨床管理プラットフォーム「Cambur」は自社製品の一つであり、現在お問い合わせいただいているのと同じチームが企画・運用しています。</value>
+  </data>
+  <data name="landing_hero_titulo" xml:space="preserve">
+    <value>人々のケアに携わる方々の仕事をより良くするソフトウェアを作っています</value>
+  </data>
+  <data name="landing_nav_contacto" xml:space="preserve">
+    <value>お問い合わせ</value>
+  </data>
+  <data name="landing_nav_faq" xml:space="preserve">
+    <value>よくある質問</value>
+  </data>
+  <data name="landing_nav_inicio" xml:space="preserve">
+    <value>ホーム</value>
+  </data>
+  <data name="landing_nav_nosotros" xml:space="preserve">
+    <value>私たちについて</value>
+  </data>
+  <data name="landing_nav_rse" xml:space="preserve">
+    <value>CSR</value>
+  </data>
+  <data name="landing_nav_servicios" xml:space="preserve">
+    <value>サービス</value>
+  </data>
+  <data name="landing_nav_testimonios" xml:space="preserve">
+    <value>お客様の声</value>
+  </data>
+  <data name="landing_nosotros_dato_1_num" xml:space="preserve">
+    <value>ソフトウェア</value>
+  </data>
+  <data name="landing_nosotros_dato_1_texto" xml:space="preserve">
+    <value>私たちの事業分野</value>
+  </data>
+  <data name="landing_nosotros_dato_2_num" xml:space="preserve">
+    <value>ヘルステック</value>
+  </data>
+  <data name="landing_nosotros_dato_2_texto" xml:space="preserve">
+    <value>Camburの注力分野</value>
+  </data>
+  <data name="landing_nosotros_dato_3_num" xml:space="preserve">
+    <value>AI</value>
+  </data>
+  <data name="landing_nosotros_dato_3_texto" xml:space="preserve">
+    <value>代替ではなく支援として</value>
+  </data>
+  <data name="landing_nosotros_texto" xml:space="preserve">
+    <value>CZ Consultingはソフトウェア開発企業です。さまざまな業種の組織と協力し、業務プロセスをシンプルで安全、かつ長期的に持続可能なデジタル製品へと変えています。私たちの事業はソフトウェアですが、注力分野の多くをヘルステックに置いています。テクノロジーは、他者の健康を支える人々の事務的な負担を軽減できると信じている一方で、専門家の判断に取って代わることは決してないと考えています。</value>
+  </data>
+  <data name="landing_nosotros_titulo" xml:space="preserve">
+    <value>私たちについて</value>
+  </data>
+  <data name="landing_rse_pilar_1_texto" xml:space="preserve">
+    <value>メンタルヘルスの専門家の事務的な負担を軽減し、患者により多くの時間を割けるようにします。</value>
+  </data>
+  <data name="landing_rse_pilar_1_titulo" xml:space="preserve">
+    <value>メンタルヘルスへのアクセス</value>
+  </data>
+  <data name="landing_rse_pilar_2_texto" xml:space="preserve">
+    <value>私たちが使用する人工知能はあくまで支援するものであり、利用者である専門家の判断を決定したり、代替したりすることはありません。</value>
+  </data>
+  <data name="landing_rse_pilar_2_titulo" xml:space="preserve">
+    <value>AIの責任ある利用</value>
+  </data>
+  <data name="landing_rse_pilar_3_texto" xml:space="preserve">
+    <value>地域の教育機関と協力して人材を育成し、地元のソフトウェア開発を推進しています。</value>
+  </data>
+  <data name="landing_rse_pilar_3_titulo" xml:space="preserve">
+    <value>人材育成と地域人材の活用</value>
+  </data>
+  <data name="landing_rse_texto" xml:space="preserve">
+    <value>テクノロジー企業として、私たちが作るものはコードの範囲を超えて影響を与えると考えています。以下は、私たちの日々の業務を導く指針です。</value>
+  </data>
+  <data name="landing_rse_titulo" xml:space="preserve">
+    <value>企業の社会的責任</value>
+  </data>
+  <data name="landing_servicio_1_texto" xml:space="preserve">
+    <value>各組織の実際の業務に合わせて、独自のシステムを一貫して設計・開発します。</value>
+  </data>
+  <data name="landing_servicio_1_titulo" xml:space="preserve">
+    <value>オーダーメイドソフトウェア開発</value>
+  </data>
+  <data name="landing_servicio_2_texto" xml:space="preserve">
+    <value>現状調査、アーキテクチャ設計、情報セキュリティ、既存システムとの連携まで、既存プロセスのデジタル化を支援します。</value>
+  </data>
+  <data name="landing_servicio_2_titulo" xml:space="preserve">
+    <value>技術コンサルティングと導入支援</value>
+  </data>
+  <data name="landing_servicio_3_badge" xml:space="preserve">
+    <value>ヘルステック</value>
+  </data>
+  <data name="landing_servicio_3_texto" xml:space="preserve">
+    <value>私たちの自社製品:心理士のために、患者・診療記録・診療履歴を整理し、AIを活用して要約・紹介状・経過プロフィールを生成するプラットフォームです。すべて専門家の確認のもとで運用されます。</value>
+  </data>
+  <data name="landing_servicio_3_titulo" xml:space="preserve">
+    <value>Cambur:AI支援臨床管理</value>
+  </data>
+  <data name="landing_servicios_subtitulo" xml:space="preserve">
+    <value>ソフトウェア開発サービスと、すでに利用されている自社製品。</value>
+  </data>
+  <data name="landing_servicios_titulo" xml:space="preserve">
+    <value>私たちの事業内容</value>
+  </data>
+  <data name="landing_testimonios_cantidad_sufijo" xml:space="preserve">
+    <value>件の評価</value>
+  </data>
+  <data name="landing_testimonios_promedio_sufijo" xml:space="preserve">
+    <value>/ 5</value>
+  </data>
+  <data name="landing_testimonios_sin_datos" xml:space="preserve">
+    <value>まだ評価が投稿されていません。最初のレビューを投稿してみませんか?</value>
+  </data>
+  <data name="landing_testimonios_titulo" xml:space="preserve">
+    <value>ご利用中の専門家からの声</value>
+  </data>
+  <data name="landing_valoracion_enviada" xml:space="preserve">
+    <value>ありがとうございます。評価が公開されました。</value>
+  </data>
+  <data name="landing_valorar_comentario_placeholder" xml:space="preserve">
+    <value>ご利用の感想をお聞かせください(任意)</value>
+  </data>
+  <data name="landing_valorar_plan_actual_prefijo" xml:space="preserve">
+    <value>現在のプランを評価します:</value>
+  </data>
+  <data name="landing_valorar_sin_suscripcion" xml:space="preserve">
+    <value>評価を投稿するには有効なサブスクリプションが必要です。パネルからプランを選択できます。</value>
+  </data>
+  <data name="landing_valorar_texto" xml:space="preserve">
+    <value>レビューの信頼性を保つため、評価はお名前とともに公開され、現在契約中のプランに関するもののみ投稿できます。</value>
+  </data>
+  <data name="landing_valorar_titulo" xml:space="preserve">
+    <value>プランを評価する</value>
+  </data>
+  <data name="landing_valorar_ya_existente_aviso" xml:space="preserve">
+    <value>現在のプランはすでに評価済みです。再度投稿すると、以前の評価が更新されます。</value>
+  </data>
+  <data name="lbl_activa_desde" xml:space="preserve">
+    <value>有効開始日</value>
+  </data>
+  <data name="lbl_activos" xml:space="preserve">
+    <value>有効</value>
+  </data>
+  <data name="lbl_al" xml:space="preserve">
+    <value>まで</value>
+  </data>
+  <data name="lbl_andamiajes_implementados" xml:space="preserve">
+    <value>実施した支援策</value>
+  </data>
+  <data name="lbl_anios" xml:space="preserve">
+    <value>年</value>
+  </data>
+  <data name="lbl_archivo_a_generar" xml:space="preserve">
+    <value>生成されるファイル:</value>
+  </data>
+  <data name="lbl_archivo_seleccionado" xml:space="preserve">
+    <value>選択されたファイル:</value>
+  </data>
+  <data name="lbl_archivos_disponibles" xml:space="preserve">
+    <value>利用可能なファイル</value>
+  </data>
+  <data name="lbl_bienvenida" xml:space="preserve">
+    <value>ようこそ、{0}様。</value>
+  </data>
+  <data name="lbl_borrador_singular" xml:space="preserve">
+    <value>保留中の下書き</value>
+  </data>
+  <data name="lbl_borradores_plural" xml:space="preserve">
+    <value>保留中の下書き</value>
+  </data>
+  <data name="lbl_carpeta_destino" xml:space="preserve">
+    <value>保存先フォルダ</value>
+  </data>
+  <data name="lbl_config_backup" xml:space="preserve">
+    <value>バックアップの設定</value>
+  </data>
+  <data name="lbl_consultas_analizadas" xml:space="preserve">
+    <value>分析した診療記録数</value>
+  </data>
+  <data name="lbl_consultas_analizadas_valor" xml:space="preserve">
+    <value>分析済み診療記録</value>
+  </data>
+  <data name="lbl_consultas_plural" xml:space="preserve">
+    <value>診療記録</value>
+  </data>
+  <data name="lbl_consultas_totales" xml:space="preserve">
+    <value>診療記録の総数</value>
+  </data>
+  <data name="lbl_creada" xml:space="preserve">
+    <value>作成日</value>
+  </data>
+  <data name="lbl_cvv" xml:space="preserve">
+    <value>セキュリティコード(CVV)</value>
+  </data>
+  <data name="lbl_de" xml:space="preserve">
+    <value>から</value>
+  </data>
+  <data name="lbl_dias_restantes" xml:space="preserve">
+    <value>残り日数</value>
+  </data>
+  <data name="lbl_disponible" xml:space="preserve">
+    <value>✓ 利用可能</value>
+  </data>
+  <data name="lbl_edad_anios" xml:space="preserve">
+    <value>{0}歳</value>
+  </data>
+  <data name="lbl_elegir_documento" xml:space="preserve">
+    <value>エクスポートするバージョンを選択してください</value>
+  </data>
+  <data name="lbl_especialidad_derivacion" xml:space="preserve">
+    <value>紹介先の専門分野</value>
+  </data>
+  <data name="lbl_especialidad_destino" xml:space="preserve">
+    <value>紹介先の専門分野</value>
+  </data>
+  <data name="lbl_fecha_desde" xml:space="preserve">
+    <value>開始日</value>
+  </data>
+  <data name="lbl_fecha_hasta" xml:space="preserve">
+    <value>終了日</value>
+  </data>
+  <data name="lbl_firma_digital" xml:space="preserve">
+    <value>電子署名</value>
+  </data>
+  <data name="lbl_formato_archivo" xml:space="preserve">
+    <value>ファイル形式</value>
+  </data>
+  <data name="lbl_generado" xml:space="preserve">
+    <value>生成日</value>
+  </data>
+  <data name="lbl_generado_el" xml:space="preserve">
+    <value>{0}に生成</value>
+  </data>
+  <data name="lbl_grafico_subtitulo" xml:space="preserve">
+    <value>月別診療件数・過去{0}か月</value>
+  </data>
+  <data name="lbl_institucion_opcional" xml:space="preserve">
+    <value>施設・機関(任意)</value>
+  </data>
+  <data name="lbl_limite" xml:space="preserve">
+    <value>上限</value>
+  </data>
+  <data name="lbl_medio_pago" xml:space="preserve">
+    <value>支払い方法</value>
+  </data>
+  <data name="lbl_meses_tratamiento" xml:space="preserve">
+    <value>治療期間(か月)</value>
+  </data>
+  <data name="lbl_minutos" xml:space="preserve">
+    <value>分</value>
+  </data>
+  <data name="lbl_modalidad_trabajo" xml:space="preserve">
+    <value>勤務形態</value>
+  </data>
+  <data name="lbl_modelo_utilizado" xml:space="preserve">
+    <value>使用したモデル</value>
+  </data>
+  <data name="lbl_motivo_derivacion" xml:space="preserve">
+    <value>紹介理由</value>
+  </data>
+  <data name="lbl_no_disponible" xml:space="preserve">
+    <value>⚠ 利用不可</value>
+  </data>
+  <data name="lbl_numero_tarjeta" xml:space="preserve">
+    <value>カード番号</value>
+  </data>
+  <data name="lbl_objetivos_terapeuticos" xml:space="preserve">
+    <value>治療目標</value>
+  </data>
+  <data name="lbl_pendiente_auditoria" xml:space="preserve">
+    <value>監査待ち</value>
+  </data>
+  <data name="lbl_periodo" xml:space="preserve">
+    <value>期間</value>
+  </data>
+  <data name="lbl_por_mes" xml:space="preserve">
+    <value>/月</value>
+  </data>
+  <data name="lbl_precio_mensual" xml:space="preserve">
+    <value>月額料金</value>
+  </data>
+  <data name="lbl_primera_sesion" xml:space="preserve">
+    <value>初回セッション</value>
+  </data>
+  <data name="lbl_profesional_destinatario" xml:space="preserve">
+    <value>紹介先専門家</value>
+  </data>
+  <data name="lbl_proximamente" xml:space="preserve">
+    <value>⏳ 近日公開</value>
+  </data>
+  <data name="lbl_proximamente_desc" xml:space="preserve">
+    <value>近日公開予定</value>
+  </data>
+  <data name="lbl_proximo_vencimiento" xml:space="preserve">
+    <value>次回更新日</value>
+  </data>
+  <data name="lbl_registro" xml:space="preserve">
+    <value>件</value>
+  </data>
+  <data name="lbl_registros" xml:space="preserve">
+    <value>件</value>
+  </data>
+  <data name="lbl_secciones" xml:space="preserve">
+    <value>セクション</value>
+  </data>
+  <data name="lbl_seleccionar_paciente" xml:space="preserve">
+    <value>患者を選択してください...</value>
+  </data>
+  <data name="lbl_sin_backups" xml:space="preserve">
+    <value>まだバックアップは作成されていません。</value>
+  </data>
+  <data name="lbl_sin_backups_disponibles" xml:space="preserve">
+    <value>復元可能なバックアップがありません。</value>
+  </data>
+  <data name="lbl_sin_documento" xml:space="preserve">
+    <value>生成された文書はありません</value>
+  </data>
+  <data name="lbl_sin_modificaciones" xml:space="preserve">
+    <value>過去の変更履歴はありません</value>
+  </data>
+  <data name="lbl_sin_sesiones" xml:space="preserve">
+    <value>登録されたセッションはありません</value>
+  </data>
+  <data name="lbl_sintesis_diagnostica" xml:space="preserve">
+    <value>診断の要約</value>
+  </data>
+  <data name="lbl_tipo_backup" xml:space="preserve">
+    <value>バックアップの種類</value>
+  </data>
+  <data name="lbl_tipo_documento" xml:space="preserve">
+    <value>文書の種類</value>
+  </data>
+  <data name="lbl_titular_tarjeta" xml:space="preserve">
+    <value>カード名義人</value>
+  </data>
+  <data name="lbl_total_consultas_paciente" xml:space="preserve">
+    <value>診療件数</value>
+  </data>
+  <data name="lbl_ult_sesion" xml:space="preserve">
+    <value>最終セッション</value>
+  </data>
+  <data name="lbl_ultima_modificacion" xml:space="preserve">
+    <value>最終更新</value>
+  </data>
+  <data name="lbl_ultima_sesion" xml:space="preserve">
+    <value>最終セッション</value>
+  </data>
+  <data name="lbl_ultima_sesion_paciente" xml:space="preserve">
+    <value>最終セッション</value>
+  </data>
+  <data name="lbl_ultimo_backup" xml:space="preserve">
+    <value>最新のバックアップ</value>
+  </data>
+  <data name="lbl_uso_consultas" xml:space="preserve">
+    <value>今月の診療件数</value>
+  </data>
+  <data name="lbl_uso_derivaciones" xml:space="preserve">
+    <value>作成した紹介状数</value>
+  </data>
+  <data name="lbl_uso_perfiles" xml:space="preserve">
+    <value>プロフィール作成数</value>
+  </data>
+  <data name="lbl_uso_resumenes" xml:space="preserve">
+    <value>生成したAI要約数</value>
+  </data>
+  <data name="lbl_vencimiento_tarjeta" xml:space="preserve">
+    <value>有効期限</value>
+  </data>
+  <data name="lbl_ver_todas" xml:space="preserve">
+    <value>すべて表示</value>
+  </data>
+  <data name="lbl_ver_todos" xml:space="preserve">
+    <value>すべて表示</value>
+  </data>
+  <data name="leyenda_eventos_ia" xml:space="preserve">
+    <value>AIイベント</value>
+  </data>
+  <data name="login_sesion_cerrada_por_restore" xml:space="preserve">
+    <value>データベースが以前の状態に復元されたため、現在のセッションは無効になりました。再度ログインしてください。</value>
+  </data>
+  <data name="modelo_apego_desc" xml:space="preserve">
+    <value>ECRの簡易版に基づく成人アタッチメントスタイルのモデルです。対人関係における不安と回避を評価します。</value>
+  </data>
+  <data name="modelo_apego_nombre" xml:space="preserve">
+    <value>アタッチメントスタイル(ECR)</value>
+  </data>
+  <data name="modelo_autoeficacia_desc" xml:space="preserve">
+    <value>課題や困難な状況に立ち向かう患者自身の能力に対する自己概念と認識を評価します。</value>
+  </data>
+  <data name="modelo_autoeficacia_nombre" xml:space="preserve">
+    <value>シュワルツァー自己効力感尺度</value>
+  </data>
+  <data name="modelo_bigfive_desc" xml:space="preserve">
+    <value>開放性、誠実性、外向性、協調性、神経症的傾向の5つの次元でパーソナリティ特性を分析します。</value>
+  </data>
+  <data name="modelo_bigfive_nombre" xml:space="preserve">
+    <value>ビッグファイブ(BFI)</value>
+  </data>
+  <data name="modelo_cope_desc" xml:space="preserve">
+    <value>ストレス状況への対処スタイルを評価します。積極的対処、回避的対処、社会的支援の活用といった戦略を特定します。</value>
+  </data>
+  <data name="modelo_cope_nombre" xml:space="preserve">
+    <value>COPE簡易版</value>
+  </data>
+  <data name="modelo_valores_desc" xml:space="preserve">
+    <value>PVQおよびフランクルのロゴセラピーの考え方に基づく、個人的価値観と人生の意味に関するモデルです。</value>
+  </data>
+  <data name="modelo_valores_nombre" xml:space="preserve">
+    <value>価値観と人生の意味(PVQ)</value>
+  </data>
+  <data name="msg_backup_generado" xml:space="preserve">
+    <value>バックアップが正常に作成されました</value>
+  </data>
+  <data name="msg_backup_restaurado" xml:space="preserve">
+    <value>データベースが正常に復元されました</value>
+  </data>
+  <data name="msg_consulta_plazo_vencido" xml:space="preserve">
+    <value>{0}の診療記録は編集できません。作成から{1}日間の編集期限が終了しました。</value>
+  </data>
+  <data name="msg_consulta_ya_modificada" xml:space="preserve">
+    <value>{0}の診療記録はすでに一度編集されているため、再度編集することはできません。</value>
+  </data>
+  <data name="msg_historial_actualizado" xml:space="preserve">
+    <value>診療記録が正常に更新されました。</value>
+  </data>
+  <data name="msg_historial_guardado" xml:space="preserve">
+    <value>診療記録が正常に保存されました。データは暗号化されています。</value>
+  </data>
+  <data name="msg_seleccionar_modelo_alerta" xml:space="preserve">
+    <value>プロフィールを作成する前に評価モデルを選択してください。</value>
+  </data>
+  <data name="msg_sin_borradores_pendientes" xml:space="preserve">
+    <value>署名待ちの紹介状はありません。</value>
+  </data>
+  <data name="msg_sin_consultas" xml:space="preserve">
+    <value>まだ登録された診療記録がありません。</value>
+  </data>
+  <data name="msg_sin_exportaciones" xml:space="preserve">
+    <value>まだエクスポートを行っていません。</value>
+  </data>
+  <data name="msg_sin_operaciones" xml:space="preserve">
+    <value>まだ操作履歴がありません。</value>
+  </data>
+  <data name="msg_sin_registros_temporal" xml:space="preserve">
+    <value>選択したフィルター条件に該当する臨床記録が見つかりませんでした。</value>
+  </data>
+  <data name="msg_sin_suscripcion_activa" xml:space="preserve">
+    <value>有効なサブスクリプションがありません。下記からプランを選択して始めましょう。</value>
+  </data>
+  <data name="msg_suscripcion_cancelada" xml:space="preserve">
+    <value>サブスクリプションは解約されました。{0}まで引き続きご利用いただけます。この画面からその日までに再開することもできます。</value>
+  </data>
+  <data name="nav_landing" xml:space="preserve">
+    <value>CZ Consulting / Cambur</value>
+  </data>
+  <data name="nota_pie_perfil" xml:space="preserve">
+    <value>このプロフィールは参考情報であり、臨床診断にはあたりません。この情報の解釈および使用については専門家のみが責任を負います。</value>
+  </data>
+  <data name="pago_aviso_seguro" xml:space="preserve">
+    <value>お支払いはMercado Pagoにより安全に処理されます。Camburがカード番号を保存することはありません。</value>
+  </data>
+  <data name="periodo_anio" xml:space="preserve">
+    <value>今年</value>
+  </data>
+  <data name="periodo_mes" xml:space="preserve">
+    <value>今月</value>
+  </data>
+  <data name="periodo_semana" xml:space="preserve">
+    <value>今週</value>
+  </data>
+  <data name="periodo_trimestre" xml:space="preserve">
+    <value>今四半期</value>
+  </data>
+  <data name="placeholder_antecedentes_familiares" xml:space="preserve">
+    <value>家族の精神科既往歴、慢性疾患、依存症など...</value>
+  </data>
+  <data name="placeholder_antecedentes_medicos" xml:space="preserve">
+    <value>慢性疾患、現在の服薬状況、入院歴、手術歴、アレルギーなど...</value>
+  </data>
+  <data name="placeholder_contexto_familiar" xml:space="preserve">
+    <value>家族構成、力動、役割、葛藤、重要な関係性など...</value>
+  </data>
+  <data name="placeholder_eventos_traumaticos" xml:space="preserve">
+    <value>重要な喪失、虐待、事故、暴力的な状況、未解決の喪の作業など...</value>
+  </data>
+  <data name="placeholder_firma" xml:space="preserve">
+    <value>氏名および登録番号</value>
+  </data>
+  <data name="placeholder_habitos_nocivos" xml:space="preserve">
+    <value>喫煙、飲酒、薬物、運動不足、睡眠障害、食生活など...</value>
+  </data>
+  <data name="placeholder_institucion" xml:space="preserve">
+    <value>施設・機関名</value>
+  </data>
+  <data name="placeholder_motivo_derivacion" xml:space="preserve">
+    <value>患者を紹介する臨床的理由を記入してください...</value>
+  </data>
+  <data name="placeholder_prof_destino" xml:space="preserve">
+    <value>紹介先専門家の氏名</value>
+  </data>
+  <data name="placeholder_situacion_laboral" xml:space="preserve">
+    <value>現在の職業、雇用の安定性、職場環境、葛藤、満足度など...</value>
+  </data>
+  <data name="plan_basico_nombre" xml:space="preserve">
+    <value>ベーシック</value>
+  </data>
+  <data name="plan_premium_nombre" xml:space="preserve">
+    <value>プレミアム</value>
+  </data>
+  <data name="plan_profesional_nombre" xml:space="preserve">
+    <value>プロフェッショナル</value>
+  </data>
+  <data name="rol_psicologo_basico" xml:space="preserve">
+    <value>心理士(ベーシックプラン)</value>
+  </data>
+  <data name="seccion_antecedentes_familiares" xml:space="preserve">
+    <value>家族歴</value>
+  </data>
+  <data name="seccion_antecedentes_medicos" xml:space="preserve">
+    <value>既往歴</value>
+  </data>
+  <data name="seccion_campos_editables" xml:space="preserve">
+    <value>編集可能な項目</value>
+  </data>
+  <data name="seccion_cierre_clinico" xml:space="preserve">
+    <value>臨床的まとめ</value>
+  </data>
+  <data name="seccion_consideraciones_tratamiento" xml:space="preserve">
+    <value>治療に関する留意点</value>
+  </data>
+  <data name="seccion_contenido_informe" xml:space="preserve">
+    <value>報告書の内容</value>
+  </data>
+  <data name="seccion_contexto_familiar" xml:space="preserve">
+    <value>家族背景</value>
+  </data>
+  <data name="seccion_contexto_general" xml:space="preserve">
+    <value>期間全体の概況</value>
+  </data>
+  <data name="seccion_datos_derivacion" xml:space="preserve">
+    <value>紹介情報</value>
+  </data>
+  <data name="seccion_descripcion_general_perfil" xml:space="preserve">
+    <value>プロフィールの概要</value>
+  </data>
+  <data name="seccion_dimensiones_evaluadas" xml:space="preserve">
+    <value>評価した項目</value>
+  </data>
+  <data name="seccion_eventos_traumaticos" xml:space="preserve">
+    <value>重要なトラウマ体験</value>
+  </data>
+  <data name="seccion_evolucion_observada" xml:space="preserve">
+    <value>経過観察</value>
+  </data>
+  <data name="seccion_filtros_busqueda" xml:space="preserve">
+    <value>検索フィルター</value>
+  </data>
+  <data name="seccion_firma_profesional" xml:space="preserve">
+    <value>専門家の署名</value>
+  </data>
+  <data name="seccion_habitos_nocivos" xml:space="preserve">
+    <value>有害な習慣</value>
+  </data>
+  <data name="seccion_info_clinica_persistente" xml:space="preserve">
+    <value>継続的な臨床情報</value>
+  </data>
+  <data name="seccion_intervenciones_destacadas" xml:space="preserve">
+    <value>主な介入内容</value>
+  </data>
+  <data name="seccion_observaciones_periodo" xml:space="preserve">
+    <value>期間中の所見</value>
+  </data>
+  <data name="seccion_patrones_identificados" xml:space="preserve">
+    <value>臨床的文脈で確認されたパターン</value>
+  </data>
+  <data name="seccion_perfilacion" xml:space="preserve">
+    <value>プロフィール作成</value>
+  </data>
+  <data name="seccion_seleccionar_modelo" xml:space="preserve">
+    <value>評価モデルを選択してください</value>
+  </data>
+  <data name="seccion_situacion_laboral" xml:space="preserve">
+    <value>就労状況</value>
+  </data>
+  <data name="seccion_temas_recurrentes" xml:space="preserve">
+    <value>繰り返し現れるテーマ</value>
+  </data>
+  <data name="sin_perfiles_anteriores" xml:space="preserve">
+    <value>この患者のプロフィールはまだ作成されていません。</value>
+  </data>
+  <data name="sin_resumenes_anteriores" xml:space="preserve">
+    <value>この患者の要約はまだ作成されていません。</value>
+  </data>
+  <data name="subtitulo_cambiar_plan" xml:space="preserve">
+    <value>各プランの特徴を比較し、ご自身の診療スタイルに最も適したプランをお選びください。</value>
+  </data>
+  <data name="subtitulo_exportar_reporte" xml:space="preserve">
+    <value>PDFでエクスポートする患者と文書の種類を選択してください。</value>
+  </data>
+  <data name="subtitulo_generar_backup" xml:space="preserve">
+    <value>.bak形式でデータベースの完全なコピーを作成します。</value>
+  </data>
+  <data name="subtitulo_linea_temporal_seleccion" xml:space="preserve">
+    <value>患者の臨床経過をすべて確認するには、患者を選択してください。</value>
+  </data>
+  <data name="subtitulo_lista_borradores_informe" xml:space="preserve">
+    <value>AIモジュールが生成した下書きを確認し、署名してください。</value>
+  </data>
+  <data name="subtitulo_realizar_consulta" xml:space="preserve">
+    <value>患者を選択し、セッションの臨床情報を入力してください。</value>
+  </data>
+  <data name="subtitulo_registrar_paciente" xml:space="preserve">
+    <value>新しい患者を登録するための情報を入力してください。</value>
+  </data>
+  <data name="subtitulo_restaurar_backup" xml:space="preserve">
+    <value>既存の.bakファイルからデータベースを復元します。</value>
+  </data>
+  <data name="subtitulo_resumen_ia" xml:space="preserve">
+    <value>患者と期間を選択して、診療記録の構造化された要約を生成してください。</value>
+  </data>
+  <data name="subtitulo_seleccion_consulta" xml:space="preserve">
+    <value>編集期限内の診療記録を確認するには、患者を選択してください。</value>
+  </data>
+  <data name="subtitulo_seleccion_paciente_historial" xml:space="preserve">
+    <value>診療記録を登録・編集するには、患者を選択してください。</value>
+  </data>
+  <data name="texto_aviso_formato_pdf" xml:space="preserve">
+    <value>レポートは専門家のレターヘッドと患者情報を含むPDF形式で生成されます。</value>
+  </data>
+  <data name="texto_aviso_proteccion_datos" xml:space="preserve">
+    <value>内容はエクスポート時にのみ、認証された専門家に対して復号されます。暗号化されていないコピーは残りません。</value>
+  </data>
+  <data name="texto_pago_seguro" xml:space="preserve">
+    <value>銀行情報は暗号化して送信され、当社サーバーには保存されません。</value>
+  </data>
+  <data name="th_archivo" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="th_duracion" xml:space="preserve">
+    <value>所要時間</value>
+  </data>
+  <data name="th_fecha" xml:space="preserve">
+    <value>日付</value>
+  </data>
+  <data name="th_fecha_hora" xml:space="preserve">
+    <value>日付/時刻</value>
+  </data>
+  <data name="th_paciente" xml:space="preserve">
+    <value>患者</value>
+  </data>
+  <data name="th_plazo_restante" xml:space="preserve">
+    <value>残り期限</value>
+  </data>
+  <data name="th_resultado" xml:space="preserve">
+    <value>結果</value>
+  </data>
+  <data name="th_resumen_objetivos" xml:space="preserve">
+    <value>目標の要約</value>
+  </data>
+  <data name="th_tipo" xml:space="preserve">
+    <value>種類</value>
+  </data>
+  <data name="titulo_acciones_relacionadas" xml:space="preserve">
+    <value>関連する操作</value>
+  </data>
+  <data name="titulo_actividad_mensual" xml:space="preserve">
+    <value>月別アクティビティ</value>
+  </data>
+  <data name="titulo_actualizar_medio_pago" xml:space="preserve">
+    <value>支払い方法を更新</value>
+  </data>
+  <data name="titulo_aviso_formato_pdf" xml:space="preserve">
+    <value>PDF形式</value>
+  </data>
+  <data name="titulo_aviso_proteccion_datos" xml:space="preserve">
+    <value>データ保護</value>
+  </data>
+  <data name="titulo_cambiar_a_plan" xml:space="preserve">
+    <value>{0}プランに変更</value>
+  </data>
+  <data name="titulo_cambiar_plan" xml:space="preserve">
+    <value>プランを変更</value>
+  </data>
+  <data name="titulo_completitud_historial" xml:space="preserve">
+    <value>診療記録の入力状況</value>
+  </data>
+  <data name="titulo_consultas_editables" xml:space="preserve">
+    <value>編集可能な診療記録</value>
+  </data>
+  <data name="titulo_consultas_encontradas" xml:space="preserve">
+    <value>検索結果の診療記録</value>
+  </data>
+  <data name="titulo_datos_encriptados" xml:space="preserve">
+    <value>暗号化されたデータ</value>
+  </data>
+  <data name="titulo_datos_informe" xml:space="preserve">
+    <value>報告書の情報</value>
+  </data>
+  <data name="titulo_detalles_perfil" xml:space="preserve">
+    <value>プロフィールの詳細</value>
+  </data>
+  <data name="titulo_detalles_resumen" xml:space="preserve">
+    <value>要約の詳細</value>
+  </data>
+  <data name="titulo_exportaciones_recientes" xml:space="preserve">
+    <value>最近のエクスポート</value>
+  </data>
+  <data name="titulo_exportar_reporte" xml:space="preserve">
+    <value>臨床レポートをエクスポート</value>
+  </data>
+  <data name="titulo_generar_backup" xml:space="preserve">
+    <value>バックアップを作成</value>
+  </data>
+  <data name="titulo_generar_historial" xml:space="preserve">
+    <value>診療記録を作成</value>
+  </data>
+  <data name="titulo_historial_cambios" xml:space="preserve">
+    <value>変更履歴</value>
+  </data>
+  <data name="titulo_historial_clinico" xml:space="preserve">
+    <value>診療記録</value>
+  </data>
+  <data name="titulo_historial_operaciones" xml:space="preserve">
+    <value>操作履歴</value>
+  </data>
+  <data name="titulo_info_incluida" xml:space="preserve">
+    <value>含まれる情報</value>
+  </data>
+  <data name="titulo_informe_generado" xml:space="preserve">
+    <value>生成された紹介状</value>
+  </data>
+  <data name="titulo_linea_temporal_seleccion" xml:space="preserve">
+    <value>臨床タイムライン</value>
+  </data>
+  <data name="titulo_lista_borradores_informe" xml:space="preserve">
+    <value>署名待ちの報告書</value>
+  </data>
+  <data name="titulo_modelo_seleccionado" xml:space="preserve">
+    <value>選択したモデル</value>
+  </data>
+  <data name="titulo_modificar_consulta" xml:space="preserve">
+    <value>診療記録を編集</value>
+  </data>
+  <data name="titulo_modificar_historial" xml:space="preserve">
+    <value>既存の診療記録を編集</value>
+  </data>
+  <data name="titulo_pacientes_activos" xml:space="preserve">
+    <value>有効な患者数</value>
+  </data>
+  <data name="titulo_pago_seguro" xml:space="preserve">
+    <value>安全な決済</value>
+  </data>
+  <data name="titulo_perfil_generado" xml:space="preserve">
+    <value>生成されたプロフィール</value>
+  </data>
+  <data name="titulo_perfiles_anteriores" xml:space="preserve">
+    <value>過去のプロフィール</value>
+  </data>
+  <data name="titulo_plazo_edicion" xml:space="preserve">
+    <value>編集期限</value>
+  </data>
+  <data name="titulo_plazo_vencido" xml:space="preserve">
+    <value>編集期限切れ</value>
+  </data>
+  <data name="titulo_restaurar_backup" xml:space="preserve">
+    <value>バックアップを復元</value>
+  </data>
+  <data name="titulo_resumen_encriptado" xml:space="preserve">
+    <value>暗号化された要約</value>
+  </data>
+  <data name="titulo_resumen_generado" xml:space="preserve">
+    <value>生成された臨床要約</value>
+  </data>
+  <data name="titulo_resumen_ia" xml:space="preserve">
+    <value>AI支援臨床要約</value>
+  </data>
+  <data name="titulo_resumen_tratamiento" xml:space="preserve">
+    <value>治療の要約</value>
+  </data>
+  <data name="titulo_resumenes_anteriores" xml:space="preserve">
+    <value>過去の要約</value>
+  </data>
+  <data name="titulo_suscripcion_cancelada" xml:space="preserve">
+    <value>サブスクリプション解約済み</value>
+  </data>
+  <data name="titulo_ultimas_consultas" xml:space="preserve">
+    <value>最近の診療記録</value>
+  </data>
+  <data name="titulo_uso_periodo" xml:space="preserve">
+    <value>期間中の利用状況</value>
+  </data>
+  <data name="txt_consulta_analizada_singular" xml:space="preserve">
+    <value>分析済み診療記録</value>
+  </data>
+  <data name="txt_consulta_registrada_singular" xml:space="preserve">
+    <value>登録済み診療記録</value>
+  </data>
+  <data name="txt_consultas_analizadas_plural" xml:space="preserve">
+    <value>分析済み診療記録</value>
+  </data>
+  <data name="txt_consultas_registradas_plural" xml:space="preserve">
+    <value>登録済み診療記録</value>
+  </data>
+  <data name="txt_evolucion_observada" xml:space="preserve">
+    <value>経過観察</value>
+  </data>
+  <data name="txt_historial_clinico_completo" xml:space="preserve">
+    <value>完全な診療記録</value>
+  </data>
+  <data name="txt_ningun_modelo_seleccionado" xml:space="preserve">
+    <value>まだモデルが選択されていません。</value>
+  </data>
+  <data name="txt_sin_consultas_registradas" xml:space="preserve">
+    <value>登録された診療記録はありません</value>
+  </data>
+  <data name="txt_sin_historial_clinico" xml:space="preserve">
+    <value>診療記録なし</value>
+  </data>
+  <data name="valor_tipo_backup_completo" xml:space="preserve">
+    <value>完全(フルバックアップ)</value>
   </data>
 </root>

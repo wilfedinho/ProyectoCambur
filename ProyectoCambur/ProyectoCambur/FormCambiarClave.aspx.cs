@@ -25,7 +25,7 @@ public partial class FormCambiarClave : PaginaBase
     private void AplicarTraducciones()
     {
         lblTaglineSidebar.Text = Traducir("tagline_configuracion");
-        lblMenuCerrarSesion.Text = Traducir("menu_cerrar_sesion");
+        lblMenuLandingSidebar.Text = Traducir("nav_landing");
         lblHeaderSeccion.Text = Traducir("header_configuracion");
         lblHeaderPagina.Text = Traducir("header_cambiar_clave");
         lblTituloCard.Text = Traducir("titulo_cambiar_contrasena");

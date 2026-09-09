@@ -59,7 +59,7 @@ public partial class FormDashboard : PaginaBase
 
     private void AplicarTraducciones()
     {
-        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+        lblMenuLandingSidebar.Text = Traducir("nav_landing");
         lblHeaderPagina.Text = Traducir("nav_dashboard");
 
         btnSemana.Text = Traducir("periodo_semana");

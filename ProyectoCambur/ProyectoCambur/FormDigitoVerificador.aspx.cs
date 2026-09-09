@@ -34,7 +34,7 @@ public partial class FormDigitoVerificador : GUI.PaginaBase
     private void AplicarTraducciones()
     {
         lblTaglineSidebar.Text = Traducir("tagline_panel_tecnico");
-        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+        lblMenuLandingSidebar.Text = Traducir("nav_landing");
 
         lblTituloSinInconsistencias.Text = Traducir("titulo_sin_inconsistencias");
         lblSubtituloSinInconsistencias.Text = Traducir("subtitulo_sin_inconsistencias");

@@ -38,7 +38,7 @@ public partial class FormMenu : PaginaBase
     private void AplicarTraducciones(Psicologo psicologoActual)
     {
         lblTaglineSidebar.Text = Traducir("tagline_gestion_clinica");
-        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+        lblMenuLandingSidebar.Text = Traducir("nav_landing");
         lblHeaderSeccion.Text = Traducir("header_inicio");
         lblHeaderPagina.Text = Traducir("header_menu_principal");
         lblBienvenida.Text = string.Format(Traducir("msg_bienvenida"), psicologoActual.Nombre);

@@ -47,7 +47,7 @@ public partial class FormExportarReporte : PaginaBase
 
     private void AplicarTraducciones()
     {
-        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+        lblMenuLandingSidebar.Text = Traducir("nav_landing");
         lblHeaderTitulo.Text = Traducir("nav_exportar_reporte");
 
         lblCardTitulo.Text = Traducir("titulo_exportar_reporte");

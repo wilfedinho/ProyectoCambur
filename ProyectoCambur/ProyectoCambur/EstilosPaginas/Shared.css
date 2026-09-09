@@ -148,6 +148,16 @@ a {
         color: var(--accent);
     }
 
+.nav-landing {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+    .nav-landing:hover {
+        color: var(--bg-paper);
+        font-style: italic;
+    }
+
 
 .main-wrap {
     margin-left: var(--sidebar-w);

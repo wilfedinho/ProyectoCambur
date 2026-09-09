@@ -78,11 +78,7 @@
   </data>
   <data name="opt_seleccionar" xml:space="preserve">
     <value>اختر...</value>
-  </data>
-  <data name="rol_psicologo_free" xml:space="preserve">
-    <value>طبيب نفسي — باقة مجانية</value>
-  </data>
-  <data name="rol_psicologo_profesional" xml:space="preserve">
+  </data>  <data name="rol_psicologo_profesional" xml:space="preserve">
     <value>طبيب نفسي — باقة احترافية</value>
   </data>
   <data name="rol_psicologo_premium" xml:space="preserve">
@@ -1137,5 +1133,1547 @@
   </data>
   <data name="login_clave_restablecida" xml:space="preserve">
     <value>تمت إعادة تعيين كلمة مرورك بنجاح. يمكنك الآن تسجيل الدخول.</value>
+  </data>
+  <data name="acceso_exportar_pdf" xml:space="preserve">
+    <value>تصدير بصيغة PDF</value>
+  </data>
+  <data name="acceso_generar_derivacion" xml:space="preserve">
+    <value>إنشاء إحالة</value>
+  </data>
+  <data name="acceso_resumen_ia" xml:space="preserve">
+    <value>ملخص الذكاء الاصطناعي</value>
+  </data>
+  <data name="acceso_ver_linea_temporal" xml:space="preserve">
+    <value>عرض الخط الزمني</value>
+  </data>
+  <data name="aviso_campos_no_editables" xml:space="preserve">
+    <value>يمكنك تعديل الحقول السريرية فقط. لا يمكن تعديل التاريخ والمدة والمريض.</value>
+  </data>
+  <data name="aviso_consulta_reencriptada" xml:space="preserve">
+    <value>يتم إعادة تشفير التغييرات باستخدام AES عند الحفظ، امتثالاً للقانون رقم 25.326.</value>
+  </data>
+  <data name="aviso_critico_texto" xml:space="preserve">
+    <value>عمليات النسخ الاحتياطي والاستعادة تؤثر مباشرة على قاعدة البيانات. تأكد من امتلاكك الصلاحيات اللازمة ومن إبلاغ الفريق قبل تنفيذ عملية الاستعادة.</value>
+  </data>
+  <data name="aviso_critico_titulo" xml:space="preserve">
+    <value>عملية حساسة على مستوى النظام</value>
+  </data>
+  <data name="aviso_historial_encriptado" xml:space="preserve">
+    <value>يتم تشفير السجل السريري باستخدام AES قبل حفظه، امتثالاً للقانون رقم 25.326.</value>
+  </data>
+  <data name="aviso_ia_badge_informe" xml:space="preserve">
+    <value>تم إنشاؤه بواسطة الذكاء الاصطناعي المساعد · راجع المحتوى وعدّله قبل الاعتماد · ليس تشخيصاً آلياً</value>
+  </data>
+  <data name="aviso_ia_badge_perfil" xml:space="preserve">
+    <value>ملف تعريفي إرشادي تم إنشاؤه بواسطة الذكاء الاصطناعي · ليس تشخيصاً · تمثيل وصفي سياقي فقط · يُنصح بالمراجعة المهنية</value>
+  </data>
+  <data name="aviso_ia_informe_titulo" xml:space="preserve">
+    <value>سيستخدم الذكاء الاصطناعي ما يلي لصياغة التقرير:</value>
+  </data>
+  <data name="aviso_ia_resultado" xml:space="preserve">
+    <value>تم إنشاؤه بواسطة الذكاء الاصطناعي المساعد · لأغراض تنظيمية فقط · ليس تشخيصاً · يُنصح بالمراجعة المهنية</value>
+  </data>
+  <data name="aviso_ia_resumen" xml:space="preserve">
+    <value>ينظّم الذكاء الاصطناعي المعلومات المسجَّلة ويلخّصها. لا يصدر تشخيصات ولا يحل محل التقدير المهني.</value>
+  </data>
+  <data name="aviso_restore_texto" xml:space="preserve">
+    <value>تنبيه: ستستبدل عملية الاستعادة جميع البيانات الحالية في قاعدة البيانات بمحتوى الملف المحدد. لا يمكن التراجع عن هذا الإجراء.</value>
+  </data>
+  <data name="aviso_resumen_encriptado" xml:space="preserve">
+    <value>يتم تشفير المحتوى الذي يُنشأ باستخدام AES عند حفظه، امتثالاً لقانون حماية البيانات الشخصية رقم 25.326.</value>
+  </data>
+  <data name="aviso_texto_datos_encriptados_perfil" xml:space="preserve">
+    <value>يتم تشفير الملف التعريفي الذي يُنشأ تلقائياً باستخدام AES، امتثالاً للقانون رقم 25.326.</value>
+  </data>
+  <data name="aviso_texto_perfil_encriptado" xml:space="preserve">
+    <value>تم حفظ هذا الملف التعريفي وتشفيره تلقائياً باستخدام AES عند إنشائه، امتثالاً للقانون رقم 25.326.</value>
+  </data>
+  <data name="aviso_texto_revision_obligatoria" xml:space="preserve">
+    <value>يجب أن يراجع المختص التقرير الذي تم إنشاؤه ويعتمده قبل استخدامه خارجياً.</value>
+  </data>
+  <data name="aviso_texto_revision_profesional" xml:space="preserve">
+    <value>راجع المحتوى الذي تم إنشاؤه وعدّله قبل الاعتماد. أنت فقط من يمكنه التوقيع وتفعيل هذا التقرير للاستخدام الخارجي.</value>
+  </data>
+  <data name="aviso_titulo_datos_encriptados" xml:space="preserve">
+    <value>بيانات مشفّرة</value>
+  </data>
+  <data name="aviso_titulo_perfil_encriptado" xml:space="preserve">
+    <value>ملف تعريفي مشفّر</value>
+  </data>
+  <data name="aviso_titulo_revision_obligatoria" xml:space="preserve">
+    <value>مراجعة إلزامية</value>
+  </data>
+  <data name="aviso_titulo_revision_profesional" xml:space="preserve">
+    <value>مراجعة مهنية</value>
+  </data>
+  <data name="badge_completado" xml:space="preserve">
+    <value>مكتمل</value>
+  </data>
+  <data name="badge_editable_hasta" xml:space="preserve">
+    <value>قابل للتعديل حتى</value>
+  </data>
+  <data name="badge_historial_completo" xml:space="preserve">
+    <value>سجل كامل</value>
+  </data>
+  <data name="badge_mas_elegido" xml:space="preserve">
+    <value>الأكثر اختياراً</value>
+  </data>
+  <data name="badge_pendiente" xml:space="preserve">
+    <value>معلّق</value>
+  </data>
+  <data name="badge_pendiente_revision" xml:space="preserve">
+    <value>بانتظار المراجعة</value>
+  </data>
+  <data name="badge_suscripcion_activa" xml:space="preserve">
+    <value>نشطة</value>
+  </data>
+  <data name="badge_suscripcion_cancelada" xml:space="preserve">
+    <value>ملغاة</value>
+  </data>
+  <data name="badge_suscripcion_vencida" xml:space="preserve">
+    <value>منتهية</value>
+  </data>
+  <data name="badge_ultimo_dia_editar" xml:space="preserve">
+    <value>آخر يوم للتعديل</value>
+  </data>
+  <data name="btn_actualizar_medio_pago" xml:space="preserve">
+    <value>تحديث وسيلة الدفع</value>
+  </data>
+  <data name="btn_buscar_consultas" xml:space="preserve">
+    <value>البحث عن الجلسات</value>
+  </data>
+  <data name="btn_cambiar_filtros" xml:space="preserve">
+    <value>تغيير عوامل التصفية</value>
+  </data>
+  <data name="btn_cancelar_suscripcion" xml:space="preserve">
+    <value>إلغاء الاشتراك</value>
+  </data>
+  <data name="btn_confirmar_pago" xml:space="preserve">
+    <value>تأكيد الدفع</value>
+  </data>
+  <data name="btn_confirmar_restore" xml:space="preserve">
+    <value>تأكيد الاستعادة</value>
+  </data>
+  <data name="btn_continuar" xml:space="preserve">
+    <value>متابعة</value>
+  </data>
+  <data name="btn_descartar_informe" xml:space="preserve">
+    <value>تجاهل التقرير</value>
+  </data>
+  <data name="btn_elegir_otro_paciente" xml:space="preserve">
+    <value>اختيار مريض آخر</value>
+  </data>
+  <data name="btn_entendido" xml:space="preserve">
+    <value>فهمت</value>
+  </data>
+  <data name="btn_exportar_pdf" xml:space="preserve">
+    <value>📄 تصدير بصيغة PDF</value>
+  </data>
+  <data name="btn_generar_backup" xml:space="preserve">
+    <value>إنشاء نسخة احتياطية الآن</value>
+  </data>
+  <data name="btn_generar_informe_ia" xml:space="preserve">
+    <value>إنشاء تقرير بالذكاء الاصطناعي</value>
+  </data>
+  <data name="btn_generar_perfil" xml:space="preserve">
+    <value>إنشاء ملف تعريفي</value>
+  </data>
+  <data name="btn_generar_resumen_ia" xml:space="preserve">
+    <value>إنشاء ملخص بالذكاء الاصطناعي</value>
+  </data>
+  <data name="btn_guardar_borrador" xml:space="preserve">
+    <value>حفظ المسودة</value>
+  </data>
+  <data name="btn_guardar_historial" xml:space="preserve">
+    <value>حفظ السجل السريري</value>
+  </data>
+  <data name="btn_nuevo_perfil" xml:space="preserve">
+    <value>ملف تعريفي جديد</value>
+  </data>
+  <data name="btn_nuevo_resumen" xml:space="preserve">
+    <value>ملخص جديد</value>
+  </data>
+  <data name="btn_plan_actual" xml:space="preserve">
+    <value>الباقة الحالية</value>
+  </data>
+  <data name="btn_plan_seleccionar" xml:space="preserve">
+    <value>اختيار</value>
+  </data>
+  <data name="btn_reactivar_suscripcion" xml:space="preserve">
+    <value>إعادة تفعيل الاشتراك</value>
+  </data>
+  <data name="btn_revisar_firmar" xml:space="preserve">
+    <value>مراجعة وتوقيع</value>
+  </data>
+  <data name="btn_seleccionar_y_restaurar" xml:space="preserve">
+    <value>اختيار الملف والاستعادة</value>
+  </data>
+  <data name="btn_validar_firmar_informe" xml:space="preserve">
+    <value>اعتماد التقرير وتوقيعه</value>
+  </data>
+  <data name="btn_volver" xml:space="preserve">
+    <value>رجوع</value>
+  </data>
+  <data name="carga_subtitulo_backup_restore" xml:space="preserve">
+    <value>قد يستغرق هذا بضع ثوانٍ حسب حجم قاعدة البيانات. لا تُغلق هذه النافذة.</value>
+  </data>
+  <data name="carga_subtitulo_informe_ia" xml:space="preserve">
+    <value>جارٍ تجميع المعلومات السريرية وصياغة المستند</value>
+  </data>
+  <data name="carga_subtitulo_perfil_ia" xml:space="preserve">
+    <value>جارٍ تحليل المعلومات السريرية ومقارنتها بالنموذج المحدد</value>
+  </data>
+  <data name="carga_subtitulo_resumen_ia" xml:space="preserve">
+    <value>جارٍ تحليل الجلسات وإنشاء ملخص منظم</value>
+  </data>
+  <data name="carga_titulo_backup_restore" xml:space="preserve">
+    <value>جارٍ معالجة العملية...</value>
+  </data>
+  <data name="carga_titulo_informe_ia" xml:space="preserve">
+    <value>جارٍ إنشاء التقرير بالذكاء الاصطناعي...</value>
+  </data>
+  <data name="carga_titulo_perfil_ia" xml:space="preserve">
+    <value>جارٍ إنشاء الملف التعريفي بالذكاء الاصطناعي...</value>
+  </data>
+  <data name="carga_titulo_resumen_ia" xml:space="preserve">
+    <value>جارٍ المعالجة بالذكاء الاصطناعي المساعد...</value>
+  </data>
+  <data name="confirm_cancelar_suscripcion" xml:space="preserve">
+    <value>هل تؤكد الإلغاء؟ سيبقى الاشتراك نشطاً حتى نهاية الفترة الحالية المدفوعة.</value>
+  </data>
+  <data name="confirm_descartar_informe" xml:space="preserve">
+    <value>هل تؤكد التجاهل؟ هذا الإجراء لا يمكن التراجع عنه.</value>
+  </data>
+  <data name="confirm_generar_backup" xml:space="preserve">
+    <value>هل تؤكد إنشاء نسخة احتياطية؟ سيتم إنشاء ملف .bak جديد في مجلد النسخ الاحتياطية الخاص بالمثيل.</value>
+  </data>
+  <data name="doc_informe_derivacion" xml:space="preserve">
+    <value>تقرير الإحالة</value>
+  </data>
+  <data name="doc_perfil_evolutivo" xml:space="preserve">
+    <value>الملف التعريفي التطوري</value>
+  </data>
+  <data name="doc_resumen_clinico" xml:space="preserve">
+    <value>ملخص سريري بالذكاء الاصطناعي</value>
+  </data>
+  <data name="dvh_registro_inconsistente_bitacora" xml:space="preserve">
+    <value>تم اكتشاف تعديل في حدث سجل النشاط رقم {0} (المستخدم {1}).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_familia" xml:space="preserve">
+    <value>تم اكتشاف تعديل في مجموعة الصلاحيات "{0}".</value>
+  </data>
+  <data name="dvh_registro_inconsistente_familia_familia" xml:space="preserve">
+    <value>تم اكتشاف تعديل في العلاقة بين المجموعة "{0}" والمجموعة الفرعية المضمّنة "{1}".</value>
+  </data>
+  <data name="dvh_registro_inconsistente_historial" xml:space="preserve">
+    <value>جدول السجل السريري: السجل السريري رقم {0} للمريض رقم {1} يحتوي على تعارض (تم تعديله مباشرة في قاعدة البيانات، أو إدراجه دون المرور عبر النظام).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_idioma" xml:space="preserve">
+    <value>تم اكتشاف تعديل في اللغة "{0}" (الرمز {1}).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_informe_derivacion" xml:space="preserve">
+    <value>جدول تقرير الإحالة: تقرير الإحالة رقم {0} للمريض رقم {1} يحتوي على تعارض (تم تعديله مباشرة في قاعدة البيانات، أو إدراجه دون المرور عبر النظام).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_perfil" xml:space="preserve">
+    <value>تم اكتشاف تعديل في الملف التعريفي "{0}".</value>
+  </data>
+  <data name="dvh_registro_inconsistente_perfil_familia" xml:space="preserve">
+    <value>تم اكتشاف تعديل في العلاقة بين الملف التعريفي "{0}" والمجموعة "{1}".</value>
+  </data>
+  <data name="dvh_registro_inconsistente_perfil_paciente" xml:space="preserve">
+    <value>جدول الملف التعريفي للمريض: الملف التعريفي رقم {0} للمريض رقم {1} يحتوي على تعارض (تم تعديله مباشرة في قاعدة البيانات، أو إدراجه دون المرور عبر النظام).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_permiso_simple" xml:space="preserve">
+    <value>تم اكتشاف تعديل في الصلاحية البسيطة "{0}".</value>
+  </data>
+  <data name="dvh_registro_inconsistente_permiso_simple_familia" xml:space="preserve">
+    <value>تم اكتشاف تعديل في العلاقة بين المجموعة "{0}" والصلاحية البسيطة "{1}".</value>
+  </data>
+  <data name="dvh_registro_inconsistente_permiso_simple_perfil" xml:space="preserve">
+    <value>تم اكتشاف تعديل في العلاقة بين الملف التعريفي "{0}" والصلاحية البسيطة "{1}".</value>
+  </data>
+  <data name="dvh_registro_inconsistente_resumen" xml:space="preserve">
+    <value>جدول الملخص السريري: الملخص السريري رقم {0} للمريض رقم {1} يحتوي على تعارض (تم تعديله مباشرة في قاعدة البيانات، أو إدراجه دون المرور عبر النظام).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_suscripcion" xml:space="preserve">
+    <value>تم اكتشاف تعديل في الاشتراك رقم {0} (معرّف المختص {1}).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_token" xml:space="preserve">
+    <value>تم اكتشاف تعديل في رمز الاسترداد رقم {0} (معرّف المختص {1}).</value>
+  </data>
+  <data name="dvh_registro_inconsistente_traduccion" xml:space="preserve">
+    <value>تم اكتشاف تعديل في إحدى ترجمات اللغة {0} (المفتاح "{1}").</value>
+  </data>
+  <data name="error_backup_archivo_invalido" xml:space="preserve">
+    <value>الملف المحدد لم يعد متاحاً. حدّث القائمة وحاول مرة أخرى.</value>
+  </data>
+  <data name="error_backup_carpeta_no_configurada" xml:space="preserve">
+    <value>تعذّر تحديد مجلد النسخ الاحتياطية لمثيل SQL Server.</value>
+  </data>
+  <data name="error_backup_fallo" xml:space="preserve">
+    <value>تعذّر إنشاء النسخة الاحتياطية. التفاصيل: {0}</value>
+  </data>
+  <data name="error_backup_inesperado" xml:space="preserve">
+    <value>حدث خطأ غير متوقع أثناء إنشاء النسخة الاحتياطية. حاول مرة أخرى بعد بضع دقائق.</value>
+  </data>
+  <data name="error_backup_permiso_carpeta" xml:space="preserve">
+    <value>لا يملك SQL Server صلاحية الكتابة في مجلد النسخ الاحتياطية الخاص به. التفاصيل: {0}</value>
+  </data>
+  <data name="error_campo_obligatorio" xml:space="preserve">
+    <value>هذا الحقل إلزامي.</value>
+  </data>
+  <data name="error_consulta_encriptacion" xml:space="preserve">
+    <value>تعذّر إتمام العملية بسبب خطأ داخلي أثناء تشفير الجلسة. حاول مرة أخرى.</value>
+  </data>
+  <data name="error_consulta_fuera_de_plazo_modificacion" xml:space="preserve">
+    <value>انتهت المهلة المسموح بها، وهي {0} أيام، لتعديل هذه الجلسة.</value>
+  </data>
+  <data name="error_consulta_ya_modificada" xml:space="preserve">
+    <value>تم تعديل هذه الجلسة بالفعل ولا يمكن تعديلها مرة أخرى.</value>
+  </data>
+  <data name="error_contacto_datos_invalidos" xml:space="preserve">
+    <value>أكمل اسمك والموضوع والرسالة قبل الإرسال.</value>
+  </data>
+  <data name="error_contacto_email_invalido" xml:space="preserve">
+    <value>أدخل بريداً إلكترونياً صالحاً.</value>
+  </data>
+  <data name="error_dashboard_recalculo" xml:space="preserve">
+    <value>تعذّر إعادة احتساب المؤشرات للفترة المحددة.</value>
+  </data>
+  <data name="error_dashboard_recuperacion" xml:space="preserve">
+    <value>تعذّر استرجاع مؤشرات لوحة التحكم. حاول مرة أخرى بعد لحظات.</value>
+  </data>
+  <data name="error_dni_obligatorio" xml:space="preserve">
+    <value>رقم الهوية إلزامي.</value>
+  </data>
+  <data name="error_documento_no_disponible" xml:space="preserve">
+    <value>المستند المحدد غير متاح لهذا المريض حتى الآن.</value>
+  </data>
+  <data name="error_especialidad_obligatoria" xml:space="preserve">
+    <value>اختر التخصص.</value>
+  </data>
+  <data name="error_estado_civil_obligatorio" xml:space="preserve">
+    <value>اختر الحالة الاجتماعية.</value>
+  </data>
+  <data name="error_fecha_desde_obligatoria" xml:space="preserve">
+    <value>أدخل تاريخ البداية.</value>
+  </data>
+  <data name="error_fecha_formato_invalido" xml:space="preserve">
+    <value>التواريخ المدخلة غير صالحة.</value>
+  </data>
+  <data name="error_fecha_hasta_obligatoria" xml:space="preserve">
+    <value>أدخل تاريخ النهاية.</value>
+  </data>
+  <data name="error_generacion_pdf" xml:space="preserve">
+    <value>حدث خطأ أثناء إنشاء ملف PDF. حاول مرة أخرى.</value>
+  </data>
+  <data name="error_historial_campos_incompletos" xml:space="preserve">
+    <value>أكمل الأقسام الستة للسجل السريري قبل الحفظ.</value>
+  </data>
+  <data name="error_historial_encriptacion" xml:space="preserve">
+    <value>تعذّر إتمام العملية بسبب خطأ داخلي أثناء تشفير السجل السريري. حاول مرة أخرى.</value>
+  </data>
+  <data name="error_historial_ya_existe" xml:space="preserve">
+    <value>هذا المريض لديه بالفعل سجل سريري مسجَّل. تُعرض بياناته الحالية لتتمكن من تعديلها.</value>
+  </data>
+  <data name="error_ia_comunicacion" xml:space="preserve">
+    <value>تعذّر إنشاء الملخص بسبب خطأ في الاتصال بخدمة الذكاء الاصطناعي. حاول مرة أخرى.</value>
+  </data>
+  <data name="error_ia_respuesta_invalida" xml:space="preserve">
+    <value>تعذّر إنشاء الملخص لأن خدمة الذكاء الاصطناعي أعادت استجابة غير صالحة. حاول مرة أخرى.</value>
+  </data>
+  <data name="error_ia_saturado" xml:space="preserve">
+    <value>خدمة الذكاء الاصطناعي مثقلة حالياً (تم بلوغ حد الاستخدام). انتظر بضع ثوانٍ ثم حاول مرة أخرى.</value>
+  </data>
+  <data name="error_ia_timeout" xml:space="preserve">
+    <value>تم تجاوز مهلة الانتظار لخدمة الذكاء الاصطناعي. حاول مرة أخرى.</value>
+  </data>
+  <data name="error_informe_campos_incompletos" xml:space="preserve">
+    <value>أكمل تخصص الإحالة والمختص المستقبِل والسبب قبل إنشاء التقرير.</value>
+  </data>
+  <data name="error_informe_encriptacion" xml:space="preserve">
+    <value>حدث خطأ أثناء حماية معلومات التقرير. حاول مرة أخرى.</value>
+  </data>
+  <data name="error_informe_firma_obligatoria" xml:space="preserve">
+    <value>التوقيع إلزامي لاعتماد التقرير وتوقيعه.</value>
+  </data>
+  <data name="error_informe_informacion_insuficiente" xml:space="preserve">
+    <value>المعلومات السريرية المسجَّلة لا تحتوي على ما يكفي لصياغة تقرير إحالة. راجع السجل السريري وجلسات المريض قبل إعادة المحاولة.</value>
+  </data>
+  <data name="error_informe_no_propio" xml:space="preserve">
+    <value>التقرير المطلوب غير موجود أو لا يخص مريضاً تحت إشرافك.</value>
+  </data>
+  <data name="error_informe_sin_informacion_clinica" xml:space="preserve">
+    <value>لا يملك المريض سجلاً سريرياً ولا جلسات مسجَّلة. سجّل معلومات سريرية قبل إنشاء تقرير إحالة.</value>
+  </data>
+  <data name="error_informe_vacio" xml:space="preserve">
+    <value>لا يمكن أن يكون التقرير فارغاً. أكمل على الأقل الخلاصة التشخيصية.</value>
+  </data>
+  <data name="error_motivo_derivacion_obligatorio" xml:space="preserve">
+    <value>أدخل سبب الإحالة.</value>
+  </data>
+  <data name="error_paciente_duplicado" xml:space="preserve">
+    <value>لديك بالفعل مريض مسجَّل بهذا الرقم التعريفي.</value>
+  </data>
+  <data name="error_paciente_email_duplicado" xml:space="preserve">
+    <value>لديك بالفعل مريض مسجَّل بهذا البريد الإلكتروني.</value>
+  </data>
+  <data name="error_paciente_no_propio" xml:space="preserve">
+    <value>المريض المحدد غير مرتبط بملفك المهني.</value>
+  </data>
+  <data name="error_pago_no_procesado" xml:space="preserve">
+    <value>تعذّر معالجة الدفع. تحقق من بيانات البطاقة وحاول مرة أخرى.</value>
+  </data>
+  <data name="error_pago_rechazado" xml:space="preserve">
+    <value>تم رفض الدفع ({0}). تحقق من بيانات بطاقتك وحاول مرة أخرى.</value>
+  </data>
+  <data name="error_pago_timeout" xml:space="preserve">
+    <value>تعذّر معالجة الدفع بسبب خطأ في الاتصال ببوابة الدفع. حاول مرة أخرى بعد بضع دقائق.</value>
+  </data>
+  <data name="error_perfil_encriptacion" xml:space="preserve">
+    <value>حدث خطأ أثناء حماية معلومات الملف التعريفي. حاول مرة أخرى.</value>
+  </data>
+  <data name="error_perfil_informacion_insuficiente" xml:space="preserve">
+    <value>المعلومات السريرية المسجَّلة لا تحتوي على ما يكفي لإعداد ملف تعريفي وفق النموذج المختار. راجع السجل السريري وجلسات المريض قبل إعادة المحاولة.</value>
+  </data>
+  <data name="error_perfil_modelo_invalido" xml:space="preserve">
+    <value>اختر نموذج تقييم صالحاً قبل إنشاء الملف التعريفي.</value>
+  </data>
+  <data name="error_perfil_sin_informacion_clinica" xml:space="preserve">
+    <value>لا يملك المريض سجلاً سريرياً ولا جلسات مسجَّلة. سجّل معلومات سريرية قبل إنشاء ملف تعريفي.</value>
+  </data>
+  <data name="error_prof_destino_obligatorio" xml:space="preserve">
+    <value>أدخل المختص المستقبِل.</value>
+  </data>
+  <data name="error_rango_fecha_invalido" xml:space="preserve">
+    <value>نطاق التواريخ المحدد غير صالح: لا يمكن أن يكون تاريخ "من" لاحقاً لتاريخ "إلى".</value>
+  </data>
+  <data name="error_restore_fallo" xml:space="preserve">
+    <value>تعذّر إتمام الاستعادة. التفاصيل: {0}</value>
+  </data>
+  <data name="error_restore_inesperado" xml:space="preserve">
+    <value>حدث خطأ غير متوقع أثناء استعادة النسخة الاحتياطية. حاول مرة أخرى بعد بضع دقائق أو تواصل مع الدعم الفني.</value>
+  </data>
+  <data name="error_restore_permiso_carpeta" xml:space="preserve">
+    <value>لا يملك SQL Server صلاحية قراءة ملف النسخة الاحتياطية المحدد. التفاصيل: {0}</value>
+  </data>
+  <data name="error_resumen_encriptacion" xml:space="preserve">
+    <value>تعذّر إتمام العملية بسبب خطأ داخلي أثناء تشفير الملخص. حاول مرة أخرى.</value>
+  </data>
+  <data name="error_resumen_informacion_insuficiente" xml:space="preserve">
+    <value>المعلومات السريرية المسجَّلة في الجلسات المحددة لا تحتوي على ما يكفي لإنشاء ملخص. راجع حقول الجلسة وأكملها بمعلومات سريرية فعلية قبل إعادة المحاولة.</value>
+  </data>
+  <data name="error_resumen_sin_consultas" xml:space="preserve">
+    <value>لم يتم العثور على جلسات مسجَّلة لهذا المريض في الفترة المحددة.</value>
+  </data>
+  <data name="error_resumen_sin_consultas_seleccionadas" xml:space="preserve">
+    <value>اختر جلسة واحدة على الأقل لإنشاء الملخص.</value>
+  </data>
+  <data name="error_seleccionar_archivo" xml:space="preserve">
+    <value>اختر ملف نسخة احتياطية من القائمة قبل المتابعة.</value>
+  </data>
+  <data name="error_seleccionar_paciente_perfil" xml:space="preserve">
+    <value>اختر مريضاً قبل إنشاء الملف التعريفي.</value>
+  </data>
+  <data name="error_sexo_obligatorio" xml:space="preserve">
+    <value>اختر جنس المريض.</value>
+  </data>
+  <data name="error_sin_consultas_editables" xml:space="preserve">
+    <value>ليس لدى هذا المريض جلسات ضمن مهلة الثلاثة أيام المسموح بها للتعديل.</value>
+  </data>
+  <data name="error_suscripcion_mismo_plan" xml:space="preserve">
+    <value>أنت مشترك بالفعل في هذه الباقة.</value>
+  </data>
+  <data name="error_suscripcion_no_activa" xml:space="preserve">
+    <value>ليس لديك اشتراك نشط.</value>
+  </data>
+  <data name="error_suscripcion_no_cancelada" xml:space="preserve">
+    <value>لا يوجد اشتراك ملغى لإعادة تفعيله.</value>
+  </data>
+  <data name="error_suscripcion_periodo_vencido" xml:space="preserve">
+    <value>انتهت الفترة المدفوعة لهذا الاشتراك. اختر باقة للاشتراك من جديد.</value>
+  </data>
+  <data name="error_suscripcion_plan_invalido" xml:space="preserve">
+    <value>الباقة المحددة للاشتراك غير صالحة.</value>
+  </data>
+  <data name="error_tarjeta_no_validada" xml:space="preserve">
+    <value>تعذّر التحقق من بيانات البطاقة. أعد تحميل الصفحة وحاول مرة أخرى.</value>
+  </data>
+  <data name="error_tarjeta_obligatoria" xml:space="preserve">
+    <value>أدخل رقم البطاقة.</value>
+  </data>
+  <data name="error_valoracion_puntuacion_invalida" xml:space="preserve">
+    <value>اختر تقييماً من 1 إلى 5 نجوم.</value>
+  </data>
+  <data name="error_valoracion_sin_suscripcion_activa" xml:space="preserve">
+    <value>تحتاج إلى اشتراك نشط لتقييم الخدمة.</value>
+  </data>
+  <data name="esp_cardiologia" xml:space="preserve">
+    <value>أمراض القلب</value>
+  </data>
+  <data name="esp_fisiatria" xml:space="preserve">
+    <value>الطب الفيزيائي وإعادة التأهيل</value>
+  </data>
+  <data name="esp_medicina_general" xml:space="preserve">
+    <value>الطب العام</value>
+  </data>
+  <data name="esp_neurologia" xml:space="preserve">
+    <value>طب الأعصاب</value>
+  </data>
+  <data name="esp_nutricion" xml:space="preserve">
+    <value>التغذية</value>
+  </data>
+  <data name="esp_otra_especialidad" xml:space="preserve">
+    <value>تخصص آخر</value>
+  </data>
+  <data name="esp_psiquiatria" xml:space="preserve">
+    <value>الطب النفسي</value>
+  </data>
+  <data name="esp_trabajo_social" xml:space="preserve">
+    <value>العمل الاجتماعي</value>
+  </data>
+  <data name="exito_borrador_guardado" xml:space="preserve">
+    <value>تم حفظ المسودة. يمكنك متابعة المراجعة لاحقاً من قسم الإحالات.</value>
+  </data>
+  <data name="exito_informe_descartado" xml:space="preserve">
+    <value>تم تجاهل التقرير بنجاح.</value>
+  </data>
+  <data name="exito_informe_validado" xml:space="preserve">
+    <value>تم اعتماد التقرير وتوقيعه من قبل {0}. المستند متاح الآن للتصدير بصيغة PDF.</value>
+  </data>
+  <data name="exito_medio_pago_actualizado" xml:space="preserve">
+    <value>تم تحديث وسيلة الدفع بنجاح.</value>
+  </data>
+  <data name="exito_plan_actualizado" xml:space="preserve">
+    <value>تم تحديث الباقة بنجاح. التغيير فعّال الآن.</value>
+  </data>
+  <data name="exito_suscripcion_reactivada" xml:space="preserve">
+    <value>تمت إعادة تفعيل اشتراكك بنجاح.</value>
+  </data>
+  <data name="eyebrow_plan_activo" xml:space="preserve">
+    <value>الباقة النشطة</value>
+  </data>
+  <data name="feature_consultas_historial" xml:space="preserve">
+    <value>الجلسات والسجل السريري</value>
+  </data>
+  <data name="feature_exportaciones_avanzado" xml:space="preserve">
+    <value>متقدّم</value>
+  </data>
+  <data name="feature_exportaciones_pdf" xml:space="preserve">
+    <value>تصدير بصيغة PDF</value>
+  </data>
+  <data name="feature_informe_derivacion_ia" xml:space="preserve">
+    <value>تقرير الإحالة بالذكاء الاصطناعي</value>
+  </data>
+  <data name="feature_pacientes" xml:space="preserve">
+    <value>المرضى</value>
+  </data>
+  <data name="feature_pacientes_hasta20" xml:space="preserve">
+    <value>حتى 20</value>
+  </data>
+  <data name="feature_pacientes_ilimitados" xml:space="preserve">
+    <value>غير محدود</value>
+  </data>
+  <data name="feature_perfilacion" xml:space="preserve">
+    <value>تنميط المريض</value>
+  </data>
+  <data name="feature_resumen_ia" xml:space="preserve">
+    <value>ملخص سريري بالذكاء الاصطناعي</value>
+  </data>
+  <data name="feature_soporte" xml:space="preserve">
+    <value>الدعم</value>
+  </data>
+  <data name="feature_soporte_email" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="feature_soporte_email_chat" xml:space="preserve">
+    <value>البريد الإلكتروني + الدردشة</value>
+  </data>
+  <data name="feature_soporte_prioritario" xml:space="preserve">
+    <value>دعم ذو أولوية</value>
+  </data>
+  <data name="filtro_consultas" xml:space="preserve">
+    <value>الجلسة</value>
+  </data>
+  <data name="filtro_historial" xml:space="preserve">
+    <value>السجل</value>
+  </data>
+  <data name="filtro_informe_derivacion" xml:space="preserve">
+    <value>تقرير الإحالة</value>
+  </data>
+  <data name="filtro_perfilacion" xml:space="preserve">
+    <value>التنميط</value>
+  </data>
+  <data name="filtro_resumen_ia" xml:space="preserve">
+    <value>ملخص الذكاء الاصطناعي</value>
+  </data>
+  <data name="filtro_todos" xml:space="preserve">
+    <value>الكل</value>
+  </data>
+  <data name="hint_historial_clinico" xml:space="preserve">
+    <value>هذه المعلومات لا تنتمي إلى جلسة محددة، بل إلى السياق العام للمريض. وسّع كل قسم لإكماله.</value>
+  </data>
+  <data name="hint_seleccionar_consulta_modificar" xml:space="preserve">
+    <value>تُعرض فقط الجلسات ضمن مهلة الثلاثة أيام من إنشائها. اختر واحدة لتعديلها.</value>
+  </data>
+  <data name="hint_seleccionar_consultas" xml:space="preserve">
+    <value>اختر الجلسات التي تريد تضمينها في الملخص. يمكنك استخدام مربع الاختيار في الرأس لتحديد الكل.</value>
+  </data>
+  <data name="hint_seleccionar_modelo" xml:space="preserve">
+    <value>اختر إطار التقييم المناسب لعملية التنميط هذه. يمكنك إنشاء عدة ملفات تعريفية بنماذج مختلفة.</value>
+  </data>
+  <data name="historial_sin_consultas" xml:space="preserve">
+    <value>ليس لدى هذا المريض جلسات مسجَّلة بعد.</value>
+  </data>
+  <data name="ia_aviso_perfil" xml:space="preserve">
+    <value>الملفات التعريفية هي تمثيلات وصفية وسياقية. لا تشكّل تشخيصات سريرية ولا تحل محل التقدير المهني.</value>
+  </data>
+  <data name="info_incluye_antecedentes" xml:space="preserve">
+    <value>السوابق من السجل السريري</value>
+  </data>
+  <data name="info_incluye_evolucion" xml:space="preserve">
+    <value>التطور الملاحَظ في العلاج</value>
+  </data>
+  <data name="info_incluye_intervenciones" xml:space="preserve">
+    <value>التدخلات والدعائم التي تم تنفيذها</value>
+  </data>
+  <data name="js_procesando_pago" xml:space="preserve">
+    <value>جارٍ معالجة الدفع...</value>
+  </data>
+  <data name="js_tarjeta_invalida" xml:space="preserve">
+    <value>تعذّر التحقق من بيانات البطاقة. راجع الرقم وتاريخ الانتهاء ورمز الأمان.</value>
+  </data>
+  <data name="js_tarjeta_no_identificada" xml:space="preserve">
+    <value>تعذّر التعرّف على البطاقة المدخلة. تحقق من الرقم.</value>
+  </data>
+  <data name="js_tarjeta_no_reconocida" xml:space="preserve">
+    <value>لم نتعرّف على هذه البطاقة. تحقق من الرقم المدخل.</value>
+  </data>
+  <data name="kpi_consultas_realizadas" xml:space="preserve">
+    <value>الجلسات المنجزة</value>
+  </data>
+  <data name="kpi_derivaciones" xml:space="preserve">
+    <value>الإحالات</value>
+  </data>
+  <data name="kpi_informes_exportados" xml:space="preserve">
+    <value>التقارير المصدَّرة</value>
+  </data>
+  <data name="kpi_nuevos_pacientes" xml:space="preserve">
+    <value>جدد خلال الفترة</value>
+  </data>
+  <data name="kpi_perfilaciones" xml:space="preserve">
+    <value>عمليات التنميط</value>
+  </data>
+  <data name="kpi_resumenes_ia" xml:space="preserve">
+    <value>ملخصات الذكاء الاصطناعي المُنشأة</value>
+  </data>
+  <data name="kpi_total_pacientes" xml:space="preserve">
+    <value>إجمالي المرضى</value>
+  </data>
+  <data name="landing_btn_crear_cuenta" xml:space="preserve">
+    <value>إنشاء حساب</value>
+  </data>
+  <data name="landing_btn_enviar_contacto" xml:space="preserve">
+    <value>إرسال الرسالة</value>
+  </data>
+  <data name="landing_btn_enviar_valoracion" xml:space="preserve">
+    <value>نشر التقييم</value>
+  </data>
+  <data name="landing_btn_iniciar_sesion" xml:space="preserve">
+    <value>تسجيل الدخول</value>
+  </data>
+  <data name="landing_btn_ir_panel" xml:space="preserve">
+    <value>الذهاب إلى لوحة التحكم</value>
+  </data>
+  <data name="landing_contacto_enviado" xml:space="preserve">
+    <value>شكراً لك! استلمنا رسالتك وسنرد عليك في أقرب وقت.</value>
+  </data>
+  <data name="landing_contacto_lbl_asunto" xml:space="preserve">
+    <value>الموضوع</value>
+  </data>
+  <data name="landing_contacto_lbl_email" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="landing_contacto_lbl_mensaje" xml:space="preserve">
+    <value>الرسالة</value>
+  </data>
+  <data name="landing_contacto_lbl_nombre" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="landing_contacto_texto" xml:space="preserve">
+    <value>هل لديك أسئلة حول Cambur أو تريد إخبارنا عن مشروع آخر؟ راسلنا وسنرد عليك في أقرب وقت.</value>
+  </data>
+  <data name="landing_contacto_titulo" xml:space="preserve">
+    <value>تواصل معنا</value>
+  </data>
+  <data name="landing_faq_pregunta_1" xml:space="preserve">
+    <value>ما هو Cambur؟</value>
+  </data>
+  <data name="landing_faq_pregunta_2" xml:space="preserve">
+    <value>هل يحل الذكاء الاصطناعي محل تقدير المختص؟</value>
+  </data>
+  <data name="landing_faq_pregunta_3" xml:space="preserve">
+    <value>ما مدى أمان بيانات مرضاي؟</value>
+  </data>
+  <data name="landing_faq_pregunta_4" xml:space="preserve">
+    <value>ما هي باقات الاشتراك المتاحة؟</value>
+  </data>
+  <data name="landing_faq_pregunta_5" xml:space="preserve">
+    <value>هل يمكنني الإلغاء في أي وقت؟</value>
+  </data>
+  <data name="landing_faq_pregunta_6" xml:space="preserve">
+    <value>هل تقتصر CZ Consulting على تطوير Cambur فقط؟</value>
+  </data>
+  <data name="landing_faq_respuesta_1" xml:space="preserve">
+    <value>هو نظام لإدارة العيادات مصمم لأخصائيي علم النفس: ينظّم المرضى والجلسات والسجلات، ويستخدم الذكاء الاصطناعي للمساعدة في صياغة الملخصات السريرية وتقارير الإحالة والملفات التعريفية التطورية.</value>
+  </data>
+  <data name="landing_faq_respuesta_2" xml:space="preserve">
+    <value>لا. يقتصر دور الذكاء الاصطناعي على المساعدة في صياغة المستندات انطلاقاً من المعلومات التي يسجّلها المختص؛ وتبقى كل نتيجة خاضعة لمراجعته واعتماده قبل استخدامها.</value>
+  </data>
+  <data name="landing_faq_respuesta_3" xml:space="preserve">
+    <value>تخضع المعلومات السريرية لضوابط سلامة وسجل تدقيق داخلي، ويكون الوصول إلى كل شاشة محدوداً وفق دور كل مستخدم داخل النظام.</value>
+  </data>
+  <data name="landing_faq_respuesta_4" xml:space="preserve">
+    <value>أساسية ومهنية ومميزة، بحدود استخدام شهرية مختلفة. يمكنك تغيير الباقة أو وسيلة الدفع في أي وقت من لوحة التحكم الخاصة بك.</value>
+  </data>
+  <data name="landing_faq_respuesta_5" xml:space="preserve">
+    <value>نعم، بدون التزام بمدة دنيا. في حال الإلغاء، يبقى الوصول متاحاً حتى نهاية الفترة المدفوعة بالفعل.</value>
+  </data>
+  <data name="landing_faq_respuesta_6" xml:space="preserve">
+    <value>لا. مجالنا هو تطوير البرمجيات عموماً؛ Cambur هو أحد منتجاتنا ويركّز على قطاع التكنولوجيا الصحية، لكننا نعمل أيضاً على مشاريع مخصصة لمؤسسات أخرى.</value>
+  </data>
+  <data name="landing_faq_titulo" xml:space="preserve">
+    <value>الأسئلة الشائعة</value>
+  </data>
+  <data name="landing_footer_texto" xml:space="preserve">
+    <value>CZ Consulting هي شركة لتطوير البرمجيات. Cambur هو أحد منتجات CZ Consulting.</value>
+  </data>
+  <data name="landing_hero_cta_cambur" xml:space="preserve">
+    <value>اكتشف Cambur</value>
+  </data>
+  <data name="landing_hero_cta_servicios" xml:space="preserve">
+    <value>تعرّف على خدماتنا</value>
+  </data>
+  <data name="landing_hero_eyebrow" xml:space="preserve">
+    <value>CZ Consulting · تطوير البرمجيات</value>
+  </data>
+  <data name="landing_hero_texto" xml:space="preserve">
+    <value>نحن شركة لتطوير البرمجيات. نصمّم ونبني منتجات رقمية مخصصة لمختلف القطاعات، وCambur، منصتنا لإدارة العيادات بمساعدة الذكاء الاصطناعي لأخصائيي الصحة النفسية، هو أحد منتجاتنا الخاصة، صُمم ويُصان من قبل الفريق نفسه الذي يخدمك اليوم.</value>
+  </data>
+  <data name="landing_hero_titulo" xml:space="preserve">
+    <value>نبني برمجيات تجعل عمل من يعتنون بالآخرين أفضل</value>
+  </data>
+  <data name="landing_nav_contacto" xml:space="preserve">
+    <value>تواصل معنا</value>
+  </data>
+  <data name="landing_nav_faq" xml:space="preserve">
+    <value>الأسئلة الشائعة</value>
+  </data>
+  <data name="landing_nav_inicio" xml:space="preserve">
+    <value>الرئيسية</value>
+  </data>
+  <data name="landing_nav_nosotros" xml:space="preserve">
+    <value>من نحن</value>
+  </data>
+  <data name="landing_nav_rse" xml:space="preserve">
+    <value>المسؤولية الاجتماعية</value>
+  </data>
+  <data name="landing_nav_servicios" xml:space="preserve">
+    <value>الخدمات</value>
+  </data>
+  <data name="landing_nav_testimonios" xml:space="preserve">
+    <value>آراء العملاء</value>
+  </data>
+  <data name="landing_nosotros_dato_1_num" xml:space="preserve">
+    <value>البرمجيات</value>
+  </data>
+  <data name="landing_nosotros_dato_1_texto" xml:space="preserve">
+    <value>مجال عملنا</value>
+  </data>
+  <data name="landing_nosotros_dato_2_num" xml:space="preserve">
+    <value>التكنولوجيا الصحية</value>
+  </data>
+  <data name="landing_nosotros_dato_2_texto" xml:space="preserve">
+    <value>محور تركيز Cambur</value>
+  </data>
+  <data name="landing_nosotros_dato_3_num" xml:space="preserve">
+    <value>الذكاء الاصطناعي</value>
+  </data>
+  <data name="landing_nosotros_dato_3_texto" xml:space="preserve">
+    <value>كمساعد، لا كبديل</value>
+  </data>
+  <data name="landing_nosotros_texto" xml:space="preserve">
+    <value>CZ Consulting هي شركة لتطوير البرمجيات. نعمل جنباً إلى جنب مع مؤسسات من مختلف القطاعات لتحويل العمليات إلى منتجات رقمية بسيطة وآمنة ومستدامة عبر الزمن. مجالنا هو البرمجيات، لكننا اخترنا تركيز جزء كبير من جهدنا على التكنولوجيا الصحية: نؤمن بأن التكنولوجيا يمكن أن تخفف العبء الإداري عمن يكرّسون أنفسهم لرعاية صحة الآخرين، دون أن تحل أبداً محل تقديرهم المهني.</value>
+  </data>
+  <data name="landing_nosotros_titulo" xml:space="preserve">
+    <value>من نحن</value>
+  </data>
+  <data name="landing_rse_pilar_1_texto" xml:space="preserve">
+    <value>تقليل العبء الإداري عن أخصائيي الصحة النفسية ليتمكنوا من تخصيص وقت أكبر لمرضاهم.</value>
+  </data>
+  <data name="landing_rse_pilar_1_titulo" xml:space="preserve">
+    <value>الوصول إلى الصحة النفسية</value>
+  </data>
+  <data name="landing_rse_pilar_2_texto" xml:space="preserve">
+    <value>الذكاء الاصطناعي الذي نستخدمه يساعد فقط، ولا يتخذ القرار أو يحل محل تقدير المختص الذي يستخدمه.</value>
+  </data>
+  <data name="landing_rse_pilar_2_titulo" xml:space="preserve">
+    <value>الاستخدام المسؤول للذكاء الاصطناعي</value>
+  </data>
+  <data name="landing_rse_pilar_3_texto" xml:space="preserve">
+    <value>ندعم تطوير البرمجيات المحلية، من خلال تكوين المواهب والتعاون مع المؤسسات التعليمية في المنطقة.</value>
+  </data>
+  <data name="landing_rse_pilar_3_titulo" xml:space="preserve">
+    <value>تكوين المواهب المحلية</value>
+  </data>
+  <data name="landing_rse_texto" xml:space="preserve">
+    <value>بصفتنا شركة تكنولوجيا، ندرك أن ما نبنيه له أثر يتجاوز الشيفرة البرمجية. هذه هي المحاور التي توجّه عملنا اليومي.</value>
+  </data>
+  <data name="landing_rse_titulo" xml:space="preserve">
+    <value>المسؤولية الاجتماعية للشركة</value>
+  </data>
+  <data name="landing_servicio_1_texto" xml:space="preserve">
+    <value>نصمّم ونبني أنظمة خاصة من الألف إلى الياء، متكيّفة مع طريقة عمل كل مؤسسة فعلياً.</value>
+  </data>
+  <data name="landing_servicio_1_titulo" xml:space="preserve">
+    <value>تطوير برمجيات مخصصة</value>
+  </data>
+  <data name="landing_servicio_2_texto" xml:space="preserve">
+    <value>نرافق رقمنة العمليات القائمة: المسح والتحليل، والبنية التقنية، وأمن المعلومات، والتكامل مع الأنظمة التي يستخدمها العميل بالفعل.</value>
+  </data>
+  <data name="landing_servicio_2_titulo" xml:space="preserve">
+    <value>الاستشارات والتنفيذ التكنولوجي</value>
+  </data>
+  <data name="landing_servicio_3_badge" xml:space="preserve">
+    <value>التكنولوجيا الصحية</value>
+  </data>
+  <data name="landing_servicio_3_texto" xml:space="preserve">
+    <value>منتجنا الخاص: منصة لأخصائيي علم النفس تنظّم المرضى والجلسات والسجلات السريرية، وتستخدم الذكاء الاصطناعي لإنشاء الملخصات وتقارير الإحالة والملفات التعريفية التطورية، دائماً تحت مراجعة المختص.</value>
+  </data>
+  <data name="landing_servicio_3_titulo" xml:space="preserve">
+    <value>Cambur: إدارة عيادات بمساعدة الذكاء الاصطناعي</value>
+  </data>
+  <data name="landing_servicios_subtitulo" xml:space="preserve">
+    <value>خدمات تطوير البرمجيات، ومنتج خاص قيد الاستخدام بالفعل.</value>
+  </data>
+  <data name="landing_servicios_titulo" xml:space="preserve">
+    <value>ماذا نفعل</value>
+  </data>
+  <data name="landing_testimonios_cantidad_sufijo" xml:space="preserve">
+    <value>تقييماً</value>
+  </data>
+  <data name="landing_testimonios_promedio_sufijo" xml:space="preserve">
+    <value>من 5</value>
+  </data>
+  <data name="landing_testimonios_sin_datos" xml:space="preserve">
+    <value>لا توجد تقييمات منشورة بعد. كن أول من يترك تقييمه!</value>
+  </data>
+  <data name="landing_testimonios_titulo" xml:space="preserve">
+    <value>ما يقوله المختصون الذين يستخدمونه بالفعل</value>
+  </data>
+  <data name="landing_valoracion_enviada" xml:space="preserve">
+    <value>شكراً لك! تم نشر تقييمك بالفعل.</value>
+  </data>
+  <data name="landing_valorar_comentario_placeholder" xml:space="preserve">
+    <value>أخبرنا عن تجربتك (اختياري)</value>
+  </data>
+  <data name="landing_valorar_plan_actual_prefijo" xml:space="preserve">
+    <value>ستقيّم باقتك الحالية:</value>
+  </data>
+  <data name="landing_valorar_sin_suscripcion" xml:space="preserve">
+    <value>تحتاج إلى اشتراك نشط لترك تقييم. يمكنك اختيار باقة من لوحة التحكم الخاصة بك.</value>
+  </data>
+  <data name="landing_valorar_texto" xml:space="preserve">
+    <value>يُنشر تقييمك باسمك ولا يمكن أن يشير إلا إلى الباقة التي تشترك فيها حالياً، للحفاظ على مصداقية الآراء المنشورة.</value>
+  </data>
+  <data name="landing_valorar_titulo" xml:space="preserve">
+    <value>قيّم باقتك</value>
+  </data>
+  <data name="landing_valorar_ya_existente_aviso" xml:space="preserve">
+    <value>لقد سبق أن قيّمت باقتك الحالية. إذا نشرت تقييماً جديداً، سيتم تحديث تقييمك السابق.</value>
+  </data>
+  <data name="lbl_activa_desde" xml:space="preserve">
+    <value>نشطة منذ</value>
+  </data>
+  <data name="lbl_activos" xml:space="preserve">
+    <value>نشطون</value>
+  </data>
+  <data name="lbl_al" xml:space="preserve">
+    <value>إلى</value>
+  </data>
+  <data name="lbl_andamiajes_implementados" xml:space="preserve">
+    <value>الدعائم المطبَّقة</value>
+  </data>
+  <data name="lbl_anios" xml:space="preserve">
+    <value>سنوات</value>
+  </data>
+  <data name="lbl_archivo_a_generar" xml:space="preserve">
+    <value>الملف الذي سيتم إنشاؤه:</value>
+  </data>
+  <data name="lbl_archivo_seleccionado" xml:space="preserve">
+    <value>الملف المحدد:</value>
+  </data>
+  <data name="lbl_archivos_disponibles" xml:space="preserve">
+    <value>الملفات المتاحة</value>
+  </data>
+  <data name="lbl_bienvenida" xml:space="preserve">
+    <value>مرحباً بك، {0}.</value>
+  </data>
+  <data name="lbl_borrador_singular" xml:space="preserve">
+    <value>مسودة معلّقة</value>
+  </data>
+  <data name="lbl_borradores_plural" xml:space="preserve">
+    <value>مسودات معلّقة</value>
+  </data>
+  <data name="lbl_carpeta_destino" xml:space="preserve">
+    <value>المجلد الوجهة</value>
+  </data>
+  <data name="lbl_config_backup" xml:space="preserve">
+    <value>إعدادات النسخ الاحتياطي</value>
+  </data>
+  <data name="lbl_consultas_analizadas" xml:space="preserve">
+    <value>الجلسات التي تم تحليلها</value>
+  </data>
+  <data name="lbl_consultas_analizadas_valor" xml:space="preserve">
+    <value>جلسات تم تحليلها</value>
+  </data>
+  <data name="lbl_consultas_plural" xml:space="preserve">
+    <value>جلسات</value>
+  </data>
+  <data name="lbl_consultas_totales" xml:space="preserve">
+    <value>إجمالي الجلسات</value>
+  </data>
+  <data name="lbl_creada" xml:space="preserve">
+    <value>أُنشئت</value>
+  </data>
+  <data name="lbl_cvv" xml:space="preserve">
+    <value>رمز CVV</value>
+  </data>
+  <data name="lbl_de" xml:space="preserve">
+    <value>من</value>
+  </data>
+  <data name="lbl_dias_restantes" xml:space="preserve">
+    <value>أيام متبقية</value>
+  </data>
+  <data name="lbl_disponible" xml:space="preserve">
+    <value>✓ متاح</value>
+  </data>
+  <data name="lbl_edad_anios" xml:space="preserve">
+    <value>{0} سنة</value>
+  </data>
+  <data name="lbl_elegir_documento" xml:space="preserve">
+    <value>اختر النسخة المراد تصديرها</value>
+  </data>
+  <data name="lbl_especialidad_derivacion" xml:space="preserve">
+    <value>تخصص الإحالة</value>
+  </data>
+  <data name="lbl_especialidad_destino" xml:space="preserve">
+    <value>التخصص المستقبِل</value>
+  </data>
+  <data name="lbl_fecha_desde" xml:space="preserve">
+    <value>من تاريخ</value>
+  </data>
+  <data name="lbl_fecha_hasta" xml:space="preserve">
+    <value>إلى تاريخ</value>
+  </data>
+  <data name="lbl_firma_digital" xml:space="preserve">
+    <value>التوقيع الرقمي</value>
+  </data>
+  <data name="lbl_formato_archivo" xml:space="preserve">
+    <value>صيغة الملف</value>
+  </data>
+  <data name="lbl_generado" xml:space="preserve">
+    <value>تم الإنشاء</value>
+  </data>
+  <data name="lbl_generado_el" xml:space="preserve">
+    <value>تم الإنشاء في {0}</value>
+  </data>
+  <data name="lbl_grafico_subtitulo" xml:space="preserve">
+    <value>الجلسات حسب الشهر · آخر {0} أشهر</value>
+  </data>
+  <data name="lbl_institucion_opcional" xml:space="preserve">
+    <value>المؤسسة / المركز (اختياري)</value>
+  </data>
+  <data name="lbl_limite" xml:space="preserve">
+    <value>الحد الأقصى</value>
+  </data>
+  <data name="lbl_medio_pago" xml:space="preserve">
+    <value>وسيلة الدفع</value>
+  </data>
+  <data name="lbl_meses_tratamiento" xml:space="preserve">
+    <value>أشهر العلاج</value>
+  </data>
+  <data name="lbl_minutos" xml:space="preserve">
+    <value>دقائق</value>
+  </data>
+  <data name="lbl_modalidad_trabajo" xml:space="preserve">
+    <value>نمط العمل</value>
+  </data>
+  <data name="lbl_modelo_utilizado" xml:space="preserve">
+    <value>النموذج المستخدَم</value>
+  </data>
+  <data name="lbl_motivo_derivacion" xml:space="preserve">
+    <value>سبب الإحالة</value>
+  </data>
+  <data name="lbl_no_disponible" xml:space="preserve">
+    <value>⚠ غير متاح</value>
+  </data>
+  <data name="lbl_numero_tarjeta" xml:space="preserve">
+    <value>رقم البطاقة</value>
+  </data>
+  <data name="lbl_objetivos_terapeuticos" xml:space="preserve">
+    <value>الأهداف العلاجية</value>
+  </data>
+  <data name="lbl_pendiente_auditoria" xml:space="preserve">
+    <value>بانتظار التدقيق</value>
+  </data>
+  <data name="lbl_periodo" xml:space="preserve">
+    <value>الفترة</value>
+  </data>
+  <data name="lbl_por_mes" xml:space="preserve">
+    <value>/شهرياً</value>
+  </data>
+  <data name="lbl_precio_mensual" xml:space="preserve">
+    <value>السعر الشهري</value>
+  </data>
+  <data name="lbl_primera_sesion" xml:space="preserve">
+    <value>الجلسة الأولى</value>
+  </data>
+  <data name="lbl_profesional_destinatario" xml:space="preserve">
+    <value>المختص المستقبِل</value>
+  </data>
+  <data name="lbl_proximamente" xml:space="preserve">
+    <value>⏳ قريباً</value>
+  </data>
+  <data name="lbl_proximamente_desc" xml:space="preserve">
+    <value>سيكون متاحاً قريباً</value>
+  </data>
+  <data name="lbl_proximo_vencimiento" xml:space="preserve">
+    <value>تاريخ الاستحقاق القادم</value>
+  </data>
+  <data name="lbl_registro" xml:space="preserve">
+    <value>سجل</value>
+  </data>
+  <data name="lbl_registros" xml:space="preserve">
+    <value>سجلات</value>
+  </data>
+  <data name="lbl_secciones" xml:space="preserve">
+    <value>أقسام</value>
+  </data>
+  <data name="lbl_seleccionar_paciente" xml:space="preserve">
+    <value>اختر مريضاً...</value>
+  </data>
+  <data name="lbl_sin_backups" xml:space="preserve">
+    <value>لم يتم إنشاء أي نسخة احتياطية بعد.</value>
+  </data>
+  <data name="lbl_sin_backups_disponibles" xml:space="preserve">
+    <value>لا توجد نسخ احتياطية متاحة للاستعادة.</value>
+  </data>
+  <data name="lbl_sin_documento" xml:space="preserve">
+    <value>لا يوجد مستند تم إنشاؤه</value>
+  </data>
+  <data name="lbl_sin_modificaciones" xml:space="preserve">
+    <value>لا توجد تعديلات سابقة</value>
+  </data>
+  <data name="lbl_sin_sesiones" xml:space="preserve">
+    <value>لا توجد جلسات مسجَّلة</value>
+  </data>
+  <data name="lbl_sintesis_diagnostica" xml:space="preserve">
+    <value>الخلاصة التشخيصية</value>
+  </data>
+  <data name="lbl_tipo_backup" xml:space="preserve">
+    <value>نوع النسخة الاحتياطية</value>
+  </data>
+  <data name="lbl_tipo_documento" xml:space="preserve">
+    <value>نوع المستند</value>
+  </data>
+  <data name="lbl_titular_tarjeta" xml:space="preserve">
+    <value>صاحب البطاقة</value>
+  </data>
+  <data name="lbl_total_consultas_paciente" xml:space="preserve">
+    <value>الجلسات</value>
+  </data>
+  <data name="lbl_ult_sesion" xml:space="preserve">
+    <value>آخر جلسة</value>
+  </data>
+  <data name="lbl_ultima_modificacion" xml:space="preserve">
+    <value>آخر تعديل</value>
+  </data>
+  <data name="lbl_ultima_sesion" xml:space="preserve">
+    <value>آخر جلسة</value>
+  </data>
+  <data name="lbl_ultima_sesion_paciente" xml:space="preserve">
+    <value>آخر جلسة</value>
+  </data>
+  <data name="lbl_ultimo_backup" xml:space="preserve">
+    <value>آخر نسخة احتياطية</value>
+  </data>
+  <data name="lbl_uso_consultas" xml:space="preserve">
+    <value>الجلسات هذا الشهر</value>
+  </data>
+  <data name="lbl_uso_derivaciones" xml:space="preserve">
+    <value>الإحالات المُنشأة</value>
+  </data>
+  <data name="lbl_uso_perfiles" xml:space="preserve">
+    <value>عمليات التنميط</value>
+  </data>
+  <data name="lbl_uso_resumenes" xml:space="preserve">
+    <value>ملخصات الذكاء الاصطناعي المُنشأة</value>
+  </data>
+  <data name="lbl_vencimiento_tarjeta" xml:space="preserve">
+    <value>تاريخ الانتهاء</value>
+  </data>
+  <data name="lbl_ver_todas" xml:space="preserve">
+    <value>عرض الكل</value>
+  </data>
+  <data name="lbl_ver_todos" xml:space="preserve">
+    <value>عرض الكل</value>
+  </data>
+  <data name="leyenda_eventos_ia" xml:space="preserve">
+    <value>أحداث الذكاء الاصطناعي</value>
+  </data>
+  <data name="login_sesion_cerrada_por_restore" xml:space="preserve">
+    <value>تمت استعادة قاعدة البيانات إلى حالة سابقة، ولم تعد جلستك صالحة في تلك الحالة. سجّل الدخول من جديد.</value>
+  </data>
+  <data name="modelo_apego_desc" xml:space="preserve">
+    <value>نموذج أنماط التعلق لدى البالغين مبني على نسخ مختصرة من مقياس ECR. يقيّم القلق والتجنّب في العلاقات.</value>
+  </data>
+  <data name="modelo_apego_nombre" xml:space="preserve">
+    <value>أنماط التعلق (ECR)</value>
+  </data>
+  <data name="modelo_autoeficacia_desc" xml:space="preserve">
+    <value>المفهوم الذاتي وإدراك المريض لقدراته على مواجهة التحديات والمواقف الضاغطة.</value>
+  </data>
+  <data name="modelo_autoeficacia_nombre" xml:space="preserve">
+    <value>الكفاءة الذاتية لشوارتزر</value>
+  </data>
+  <data name="modelo_bigfive_desc" xml:space="preserve">
+    <value>تحليل سمات الشخصية العامة عبر خمسة أبعاد: الانفتاح، والضمير الحي، والانبساط، والقبول، والعصابية.</value>
+  </data>
+  <data name="modelo_bigfive_nombre" xml:space="preserve">
+    <value>العوامل الخمسة الكبرى (BFI)</value>
+  </data>
+  <data name="modelo_cope_desc" xml:space="preserve">
+    <value>أنماط المواجهة أمام مواقف الضغط. يحدد الاستراتيجيات النشطة والتجنبية واستراتيجيات الدعم الاجتماعي.</value>
+  </data>
+  <data name="modelo_cope_nombre" xml:space="preserve">
+    <value>COPE المبسّط</value>
+  </data>
+  <data name="modelo_valores_desc" xml:space="preserve">
+    <value>نماذج القيم الشخصية ومعنى الحياة مبنية على مقياس PVQ ومناهج العلاج بالمعنى لفرانكل.</value>
+  </data>
+  <data name="modelo_valores_nombre" xml:space="preserve">
+    <value>القيم ومعنى الحياة (PVQ)</value>
+  </data>
+  <data name="msg_backup_generado" xml:space="preserve">
+    <value>تم إنشاء النسخة الاحتياطية بنجاح</value>
+  </data>
+  <data name="msg_backup_restaurado" xml:space="preserve">
+    <value>تمت استعادة قاعدة البيانات بنجاح</value>
+  </data>
+  <data name="msg_consulta_plazo_vencido" xml:space="preserve">
+    <value>لم يعد بالإمكان تعديل جلسة {0}. انتهت مهلة {1} أيام من تاريخ إنشائها.</value>
+  </data>
+  <data name="msg_consulta_ya_modificada" xml:space="preserve">
+    <value>تم تعديل جلسة {0} مرة واحدة بالفعل ولا يمكن تعديلها مرة أخرى.</value>
+  </data>
+  <data name="msg_historial_actualizado" xml:space="preserve">
+    <value>تم تحديث السجل السريري بنجاح.</value>
+  </data>
+  <data name="msg_historial_guardado" xml:space="preserve">
+    <value>تم حفظ السجل السريري بنجاح. تم تشفير البيانات.</value>
+  </data>
+  <data name="msg_seleccionar_modelo_alerta" xml:space="preserve">
+    <value>اختر نموذج تقييم قبل إنشاء الملف التعريفي.</value>
+  </data>
+  <data name="msg_sin_borradores_pendientes" xml:space="preserve">
+    <value>لا توجد تقارير إحالة بانتظار التوقيع.</value>
+  </data>
+  <data name="msg_sin_consultas" xml:space="preserve">
+    <value>لا توجد جلسات مسجَّلة بعد.</value>
+  </data>
+  <data name="msg_sin_exportaciones" xml:space="preserve">
+    <value>لم تقم بأي عملية تصدير بعد.</value>
+  </data>
+  <data name="msg_sin_operaciones" xml:space="preserve">
+    <value>لم يتم تسجيل أي عمليات بعد.</value>
+  </data>
+  <data name="msg_sin_registros_temporal" xml:space="preserve">
+    <value>لم يتم العثور على سجلات سريرية للفلاتر المحددة.</value>
+  </data>
+  <data name="msg_sin_suscripcion_activa" xml:space="preserve">
+    <value>ليس لديك اشتراك نشط. اختر باقة أدناه للبدء.</value>
+  </data>
+  <data name="msg_suscripcion_cancelada" xml:space="preserve">
+    <value>تم إلغاء اشتراكك. سيبقى نشطاً حتى {0}. يمكنك إعادة تفعيله قبل ذلك التاريخ من هذه الشاشة نفسها.</value>
+  </data>
+  <data name="nav_landing" xml:space="preserve">
+    <value>CZ Consulting / Cambur</value>
+  </data>
+  <data name="nota_pie_perfil" xml:space="preserve">
+    <value>هذا التنميط إرشادي ولا يشكّل تشخيصاً سريرياً. المختص هو المسؤول الوحيد عن تفسير هذه المعلومات واستخدامها.</value>
+  </data>
+  <data name="pago_aviso_seguro" xml:space="preserve">
+    <value>تتم معالجة الدفع بشكل آمن عبر Mercado Pago. لا يخزّن Cambur رقم بطاقتك.</value>
+  </data>
+  <data name="periodo_anio" xml:space="preserve">
+    <value>هذا العام</value>
+  </data>
+  <data name="periodo_mes" xml:space="preserve">
+    <value>هذا الشهر</value>
+  </data>
+  <data name="periodo_semana" xml:space="preserve">
+    <value>هذا الأسبوع</value>
+  </data>
+  <data name="periodo_trimestre" xml:space="preserve">
+    <value>هذا الربع</value>
+  </data>
+  <data name="placeholder_antecedentes_familiares" xml:space="preserve">
+    <value>سوابق نفسية، أمراض مزمنة، إدمان في العائلة...</value>
+  </data>
+  <data name="placeholder_antecedentes_medicos" xml:space="preserve">
+    <value>أمراض مزمنة، الأدوية الحالية، حالات دخول المستشفى، عمليات جراحية، حساسية...</value>
+  </data>
+  <data name="placeholder_contexto_familiar" xml:space="preserve">
+    <value>التركيبة الأسرية، الديناميكية، الأدوار، النزاعات، الروابط المهمة...</value>
+  </data>
+  <data name="placeholder_eventos_traumaticos" xml:space="preserve">
+    <value>خسائر مهمة، تعرّض للإساءة، حوادث، مواقف عنف، حِداد لم يُعالَج...</value>
+  </data>
+  <data name="placeholder_firma" xml:space="preserve">
+    <value>الاسم الكامل ورقم الترخيص المهني</value>
+  </data>
+  <data name="placeholder_habitos_nocivos" xml:space="preserve">
+    <value>التبغ، الكحول، المواد، الخمول البدني، اضطرابات النوم، التغذية...</value>
+  </data>
+  <data name="placeholder_institucion" xml:space="preserve">
+    <value>اسم المركز أو المؤسسة</value>
+  </data>
+  <data name="placeholder_motivo_derivacion" xml:space="preserve">
+    <value>صف السبب السريري لإحالة المريض...</value>
+  </data>
+  <data name="placeholder_prof_destino" xml:space="preserve">
+    <value>اسم المختص المستقبِل</value>
+  </data>
+  <data name="placeholder_situacion_laboral" xml:space="preserve">
+    <value>المهنة الحالية، استقرار العمل، بيئة العمل، النزاعات، الرضا الوظيفي...</value>
+  </data>
+  <data name="plan_basico_nombre" xml:space="preserve">
+    <value>أساسية</value>
+  </data>
+  <data name="plan_premium_nombre" xml:space="preserve">
+    <value>مميزة</value>
+  </data>
+  <data name="plan_profesional_nombre" xml:space="preserve">
+    <value>مهنية</value>
+  </data>
+  <data name="rol_psicologo_basico" xml:space="preserve">
+    <value>أخصائي نفسي (الباقة الأساسية)</value>
+  </data>
+  <data name="seccion_antecedentes_familiares" xml:space="preserve">
+    <value>السوابق العائلية</value>
+  </data>
+  <data name="seccion_antecedentes_medicos" xml:space="preserve">
+    <value>السوابق الطبية</value>
+  </data>
+  <data name="seccion_campos_editables" xml:space="preserve">
+    <value>الحقول القابلة للتعديل</value>
+  </data>
+  <data name="seccion_cierre_clinico" xml:space="preserve">
+    <value>الخاتمة السريرية</value>
+  </data>
+  <data name="seccion_consideraciones_tratamiento" xml:space="preserve">
+    <value>اعتبارات العلاج</value>
+  </data>
+  <data name="seccion_contenido_informe" xml:space="preserve">
+    <value>محتوى التقرير</value>
+  </data>
+  <data name="seccion_contexto_familiar" xml:space="preserve">
+    <value>السياق الأسري</value>
+  </data>
+  <data name="seccion_contexto_general" xml:space="preserve">
+    <value>السياق العام للفترة</value>
+  </data>
+  <data name="seccion_datos_derivacion" xml:space="preserve">
+    <value>بيانات الإحالة</value>
+  </data>
+  <data name="seccion_descripcion_general_perfil" xml:space="preserve">
+    <value>الوصف العام للملف التعريفي</value>
+  </data>
+  <data name="seccion_dimensiones_evaluadas" xml:space="preserve">
+    <value>الأبعاد المُقيَّمة</value>
+  </data>
+  <data name="seccion_eventos_traumaticos" xml:space="preserve">
+    <value>الأحداث الصادمة ذات الصلة</value>
+  </data>
+  <data name="seccion_evolucion_observada" xml:space="preserve">
+    <value>التطور الملاحَظ</value>
+  </data>
+  <data name="seccion_filtros_busqueda" xml:space="preserve">
+    <value>عوامل تصفية البحث</value>
+  </data>
+  <data name="seccion_firma_profesional" xml:space="preserve">
+    <value>توقيع المختص</value>
+  </data>
+  <data name="seccion_habitos_nocivos" xml:space="preserve">
+    <value>العادات الضارة</value>
+  </data>
+  <data name="seccion_info_clinica_persistente" xml:space="preserve">
+    <value>معلومات سريرية دائمة</value>
+  </data>
+  <data name="seccion_intervenciones_destacadas" xml:space="preserve">
+    <value>التدخلات البارزة</value>
+  </data>
+  <data name="seccion_observaciones_periodo" xml:space="preserve">
+    <value>ملاحظات الفترة</value>
+  </data>
+  <data name="seccion_patrones_identificados" xml:space="preserve">
+    <value>الأنماط المحددة في السياق السريري</value>
+  </data>
+  <data name="seccion_perfilacion" xml:space="preserve">
+    <value>التنميط</value>
+  </data>
+  <data name="seccion_seleccionar_modelo" xml:space="preserve">
+    <value>اختر نموذج التقييم</value>
+  </data>
+  <data name="seccion_situacion_laboral" xml:space="preserve">
+    <value>الوضع الوظيفي</value>
+  </data>
+  <data name="seccion_temas_recurrentes" xml:space="preserve">
+    <value>المواضيع المتكررة</value>
+  </data>
+  <data name="sin_perfiles_anteriores" xml:space="preserve">
+    <value>لم يتم إنشاء أي ملفات تعريفية لهذا المريض بعد.</value>
+  </data>
+  <data name="sin_resumenes_anteriores" xml:space="preserve">
+    <value>لم يتم إنشاء أي ملخصات لهذا المريض بعد.</value>
+  </data>
+  <data name="subtitulo_cambiar_plan" xml:space="preserve">
+    <value>قارن بين خصائص كل باقة واختر الأنسب لممارستك المهنية.</value>
+  </data>
+  <data name="subtitulo_exportar_reporte" xml:space="preserve">
+    <value>اختر المريض ونوع المستند الذي تريد تصديره بصيغة PDF.</value>
+  </data>
+  <data name="subtitulo_generar_backup" xml:space="preserve">
+    <value>إنشاء نسخة كاملة من قاعدة البيانات بصيغة .bak.</value>
+  </data>
+  <data name="subtitulo_linea_temporal_seleccion" xml:space="preserve">
+    <value>اختر المريض لعرض مساره السريري الكامل.</value>
+  </data>
+  <data name="subtitulo_lista_borradores_informe" xml:space="preserve">
+    <value>راجع ووقّع المسودات التي أنشأتها وحدة الذكاء الاصطناعي.</value>
+  </data>
+  <data name="subtitulo_realizar_consulta" xml:space="preserve">
+    <value>اختر المريض وأكمل البيانات السريرية للجلسة.</value>
+  </data>
+  <data name="subtitulo_registrar_paciente" xml:space="preserve">
+    <value>أكمل البيانات لتسجيل مريض جديد في بيئتك السريرية.</value>
+  </data>
+  <data name="subtitulo_restaurar_backup" xml:space="preserve">
+    <value>استعادة قاعدة البيانات من ملف .bak موجود.</value>
+  </data>
+  <data name="subtitulo_resumen_ia" xml:space="preserve">
+    <value>اختر المريض والفترة لإنشاء ملخص منظم لجلساته.</value>
+  </data>
+  <data name="subtitulo_seleccion_consulta" xml:space="preserve">
+    <value>اختر المريض لعرض جلساته ضمن مهلة التعديل.</value>
+  </data>
+  <data name="subtitulo_seleccion_paciente_historial" xml:space="preserve">
+    <value>اختر المريض لتحميل سجله السريري أو تعديله.</value>
+  </data>
+  <data name="texto_aviso_formato_pdf" xml:space="preserve">
+    <value>تُنشأ التقارير بصيغة PDF مع ترويسة احترافية وبيانات المريض.</value>
+  </data>
+  <data name="texto_aviso_proteccion_datos" xml:space="preserve">
+    <value>يتم فك تشفير المحتوى وقت التصدير فقط، وحصراً للمختص المُصادَق عليه. لا تبقى نسخة غير مشفَّرة.</value>
+  </data>
+  <data name="texto_pago_seguro" xml:space="preserve">
+    <value>تُنقل البيانات المصرفية مشفَّرة ولا يتم تخزينها على خوادمنا.</value>
+  </data>
+  <data name="th_archivo" xml:space="preserve">
+    <value>الملف</value>
+  </data>
+  <data name="th_duracion" xml:space="preserve">
+    <value>المدة</value>
+  </data>
+  <data name="th_fecha" xml:space="preserve">
+    <value>التاريخ</value>
+  </data>
+  <data name="th_fecha_hora" xml:space="preserve">
+    <value>التاريخ / الوقت</value>
+  </data>
+  <data name="th_paciente" xml:space="preserve">
+    <value>المريض</value>
+  </data>
+  <data name="th_plazo_restante" xml:space="preserve">
+    <value>المهلة المتبقية</value>
+  </data>
+  <data name="th_resultado" xml:space="preserve">
+    <value>النتيجة</value>
+  </data>
+  <data name="th_resumen_objetivos" xml:space="preserve">
+    <value>ملخص الأهداف</value>
+  </data>
+  <data name="th_tipo" xml:space="preserve">
+    <value>النوع</value>
+  </data>
+  <data name="titulo_acciones_relacionadas" xml:space="preserve">
+    <value>إجراءات ذات صلة</value>
+  </data>
+  <data name="titulo_actividad_mensual" xml:space="preserve">
+    <value>النشاط الشهري</value>
+  </data>
+  <data name="titulo_actualizar_medio_pago" xml:space="preserve">
+    <value>تحديث وسيلة الدفع</value>
+  </data>
+  <data name="titulo_aviso_formato_pdf" xml:space="preserve">
+    <value>صيغة PDF</value>
+  </data>
+  <data name="titulo_aviso_proteccion_datos" xml:space="preserve">
+    <value>حماية البيانات</value>
+  </data>
+  <data name="titulo_cambiar_a_plan" xml:space="preserve">
+    <value>التغيير إلى باقة {0}</value>
+  </data>
+  <data name="titulo_cambiar_plan" xml:space="preserve">
+    <value>تغيير الباقة</value>
+  </data>
+  <data name="titulo_completitud_historial" xml:space="preserve">
+    <value>اكتمال السجل السريري</value>
+  </data>
+  <data name="titulo_consultas_editables" xml:space="preserve">
+    <value>الجلسات القابلة للتعديل</value>
+  </data>
+  <data name="titulo_consultas_encontradas" xml:space="preserve">
+    <value>الجلسات الموجودة</value>
+  </data>
+  <data name="titulo_datos_encriptados" xml:space="preserve">
+    <value>بيانات مشفّرة</value>
+  </data>
+  <data name="titulo_datos_informe" xml:space="preserve">
+    <value>بيانات التقرير</value>
+  </data>
+  <data name="titulo_detalles_perfil" xml:space="preserve">
+    <value>تفاصيل الملف التعريفي</value>
+  </data>
+  <data name="titulo_detalles_resumen" xml:space="preserve">
+    <value>تفاصيل الملخص</value>
+  </data>
+  <data name="titulo_exportaciones_recientes" xml:space="preserve">
+    <value>عمليات التصدير الأخيرة</value>
+  </data>
+  <data name="titulo_exportar_reporte" xml:space="preserve">
+    <value>تصدير تقرير سريري</value>
+  </data>
+  <data name="titulo_generar_backup" xml:space="preserve">
+    <value>إنشاء نسخة احتياطية</value>
+  </data>
+  <data name="titulo_generar_historial" xml:space="preserve">
+    <value>إنشاء سجل سريري</value>
+  </data>
+  <data name="titulo_historial_cambios" xml:space="preserve">
+    <value>سجل التغييرات</value>
+  </data>
+  <data name="titulo_historial_clinico" xml:space="preserve">
+    <value>السجل السريري</value>
+  </data>
+  <data name="titulo_historial_operaciones" xml:space="preserve">
+    <value>سجل العمليات</value>
+  </data>
+  <data name="titulo_info_incluida" xml:space="preserve">
+    <value>المعلومات التي سيتم تضمينها</value>
+  </data>
+  <data name="titulo_informe_generado" xml:space="preserve">
+    <value>تم إنشاء تقرير الإحالة</value>
+  </data>
+  <data name="titulo_linea_temporal_seleccion" xml:space="preserve">
+    <value>الخط الزمني السريري</value>
+  </data>
+  <data name="titulo_lista_borradores_informe" xml:space="preserve">
+    <value>التقارير بانتظار التوقيع</value>
+  </data>
+  <data name="titulo_modelo_seleccionado" xml:space="preserve">
+    <value>النموذج المحدد</value>
+  </data>
+  <data name="titulo_modificar_consulta" xml:space="preserve">
+    <value>تعديل الجلسة</value>
+  </data>
+  <data name="titulo_modificar_historial" xml:space="preserve">
+    <value>تعديل سجل سريري موجود</value>
+  </data>
+  <data name="titulo_pacientes_activos" xml:space="preserve">
+    <value>المرضى النشطون</value>
+  </data>
+  <data name="titulo_pago_seguro" xml:space="preserve">
+    <value>دفع آمن</value>
+  </data>
+  <data name="titulo_perfil_generado" xml:space="preserve">
+    <value>تم إنشاء الملف التعريفي</value>
+  </data>
+  <data name="titulo_perfiles_anteriores" xml:space="preserve">
+    <value>الملفات التعريفية السابقة</value>
+  </data>
+  <data name="titulo_plazo_edicion" xml:space="preserve">
+    <value>مهلة التعديل</value>
+  </data>
+  <data name="titulo_plazo_vencido" xml:space="preserve">
+    <value>انتهت مهلة التعديل</value>
+  </data>
+  <data name="titulo_restaurar_backup" xml:space="preserve">
+    <value>استعادة نسخة احتياطية</value>
+  </data>
+  <data name="titulo_resumen_encriptado" xml:space="preserve">
+    <value>ملخص مشفّر</value>
+  </data>
+  <data name="titulo_resumen_generado" xml:space="preserve">
+    <value>تم إنشاء الملخص السريري</value>
+  </data>
+  <data name="titulo_resumen_ia" xml:space="preserve">
+    <value>ملخص سريري بمساعدة الذكاء الاصطناعي</value>
+  </data>
+  <data name="titulo_resumen_tratamiento" xml:space="preserve">
+    <value>ملخص العلاج</value>
+  </data>
+  <data name="titulo_resumenes_anteriores" xml:space="preserve">
+    <value>الملخصات السابقة</value>
+  </data>
+  <data name="titulo_suscripcion_cancelada" xml:space="preserve">
+    <value>تم إلغاء الاشتراك</value>
+  </data>
+  <data name="titulo_ultimas_consultas" xml:space="preserve">
+    <value>آخر الجلسات</value>
+  </data>
+  <data name="titulo_uso_periodo" xml:space="preserve">
+    <value>استخدام الفترة</value>
+  </data>
+  <data name="txt_consulta_analizada_singular" xml:space="preserve">
+    <value>جلسة تم تحليلها</value>
+  </data>
+  <data name="txt_consulta_registrada_singular" xml:space="preserve">
+    <value>جلسة مسجَّلة</value>
+  </data>
+  <data name="txt_consultas_analizadas_plural" xml:space="preserve">
+    <value>جلسات تم تحليلها</value>
+  </data>
+  <data name="txt_consultas_registradas_plural" xml:space="preserve">
+    <value>جلسات مسجَّلة</value>
+  </data>
+  <data name="txt_evolucion_observada" xml:space="preserve">
+    <value>التطور الملاحَظ</value>
+  </data>
+  <data name="txt_historial_clinico_completo" xml:space="preserve">
+    <value>السجل السريري الكامل</value>
+  </data>
+  <data name="txt_ningun_modelo_seleccionado" xml:space="preserve">
+    <value>لم يتم اختيار أي نموذج بعد.</value>
+  </data>
+  <data name="txt_sin_consultas_registradas" xml:space="preserve">
+    <value>لا توجد جلسات مسجَّلة</value>
+  </data>
+  <data name="txt_sin_historial_clinico" xml:space="preserve">
+    <value>لا يوجد سجل سريري</value>
+  </data>
+  <data name="valor_tipo_backup_completo" xml:space="preserve">
+    <value>كامل (نسخة احتياطية شاملة)</value>
   </data>
 </root>

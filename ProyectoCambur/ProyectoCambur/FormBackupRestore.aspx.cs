@@ -47,7 +47,7 @@ public partial class FormBackupRestore : PaginaBase
     private void AplicarTraducciones()
     {
         lblTaglineSidebar.Text = Traducir("tagline_panel_tecnico");
-        lblMenuCerrarSesionSidebar.Text = Traducir("menu_cerrar_sesion");
+        lblMenuLandingSidebar.Text = Traducir("nav_landing");
         lblHeaderSeccion.Text = Traducir("header_administrador");
         lblHeaderTitulo.Text = Traducir("nav_backup_restore");
 
