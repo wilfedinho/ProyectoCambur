@@ -112,7 +112,7 @@
                                 <asp:ListItem Value=""              Text="Seleccioná..." />
                                 <asp:ListItem Value="Web Master"    Text="Web Master" />
                                 <asp:ListItem Value="Administrador" Text="Administrador" />
-                                <asp:ListItem Value="Free"          Text="Psicólogo — Plan Free" />
+                                <asp:ListItem Value="Basico"        Text="Psicólogo — Plan Básico" />
                                 <asp:ListItem Value="Profesional"   Text="Psicólogo — Plan Profesional" />
                                 <asp:ListItem Value="Premium"       Text="Psicólogo — Plan Premium" />
                             </asp:DropDownList>

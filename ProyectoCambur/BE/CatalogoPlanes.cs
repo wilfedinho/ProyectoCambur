@@ -7,7 +7,7 @@ namespace BE
     {
         public static readonly List<InfoPlan> Planes = new List<InfoPlan>
         {
-            new InfoPlan(1, PlanSuscripcion.Free,        "Free",        "Básico",      4.99m),
+            new InfoPlan(1, PlanSuscripcion.Basico,      "Basico",      "Básico",      4.99m),
             new InfoPlan(2, PlanSuscripcion.Profesional, "Profesional", "Profesional", 14.99m),
             new InfoPlan(3, PlanSuscripcion.Premium,     "Premium",     "Premium",     21.99m),
         };

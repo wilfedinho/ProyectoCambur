@@ -61,7 +61,7 @@ public partial class FormMaestroProfesional : PaginaBase
         gvProfesionales.Columns[7].HeaderText = Traducir("col_acciones");
         gvProfesionales.EmptyDataText = Traducir("empty_profesionales");
         ddlRol.Items.FindByValue("").Text = Traducir("opt_seleccionar");
-        ddlRol.Items.FindByValue("Free").Text = Traducir("rol_psicologo_free");
+        ddlRol.Items.FindByValue("Basico").Text = Traducir("rol_psicologo_basico");
         ddlRol.Items.FindByValue("Profesional").Text = Traducir("rol_psicologo_profesional");
         ddlRol.Items.FindByValue("Premium").Text = Traducir("rol_psicologo_premium");
     }

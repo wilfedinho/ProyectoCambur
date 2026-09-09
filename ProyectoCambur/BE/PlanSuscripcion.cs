@@ -2,7 +2,7 @@
 {
     public enum PlanSuscripcion
     {
-        Free,
+        Basico,
         Profesional,
         Premium
     }
