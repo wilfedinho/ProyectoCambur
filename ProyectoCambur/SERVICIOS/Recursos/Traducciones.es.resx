@@ -369,6 +369,15 @@
   <data name="menu_cambiar_clave" xml:space="preserve">
     <value>Cambiar clave</value>
   </data>
+  <data name="aviso_vinculo_bloqueado" xml:space="preserve">
+    <value>El profesional y el paciente asignados no se pueden modificar una vez registrada la consulta.</value>
+  </data>
+  <data name="aviso_psicologo_bloqueado" xml:space="preserve">
+    <value>El profesional asignado no se puede modificar una vez registrado el paciente.</value>
+  </data>
+  <data name="lbl_fuera_de_plazo_modificacion" xml:space="preserve">
+    <value>No modificable (plazo vencido)</value>
+  </data>
   <data name="header_administrador" xml:space="preserve">
     <value>Administrador</value>
   </data>

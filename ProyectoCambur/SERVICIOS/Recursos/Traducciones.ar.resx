@@ -369,6 +369,15 @@
   <data name="menu_cambiar_clave" xml:space="preserve">
     <value>تغيير كلمة المرور</value>
   </data>
+  <data name="aviso_vinculo_bloqueado" xml:space="preserve">
+    <value>لا يمكن تعديل الأخصائي والمريض المعينين بعد تسجيل الاستشارة.</value>
+  </data>
+  <data name="aviso_psicologo_bloqueado" xml:space="preserve">
+    <value>لا يمكن تعديل الأخصائي المعين بعد تسجيل المريض.</value>
+  </data>
+  <data name="lbl_fuera_de_plazo_modificacion" xml:space="preserve">
+    <value>غير قابل للتعديل (انتهت المهلة)</value>
+  </data>
   <data name="header_administrador" xml:space="preserve">
     <value>المسؤول</value>
   </data>

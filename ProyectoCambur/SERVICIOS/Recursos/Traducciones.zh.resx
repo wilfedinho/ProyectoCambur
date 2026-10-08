@@ -369,6 +369,15 @@
   <data name="menu_cambiar_clave" xml:space="preserve">
     <value>更改密码</value>
   </data>
+  <data name="aviso_vinculo_bloqueado" xml:space="preserve">
+    <value>咨询登记后，指定的专业人员和患者不能再修改。</value>
+  </data>
+  <data name="aviso_psicologo_bloqueado" xml:space="preserve">
+    <value>患者登记后，指定的专业人员不能再修改。</value>
+  </data>
+  <data name="lbl_fuera_de_plazo_modificacion" xml:space="preserve">
+    <value>不可修改（期限已过）</value>
+  </data>
   <data name="header_administrador" xml:space="preserve">
     <value>管理员</value>
   </data>

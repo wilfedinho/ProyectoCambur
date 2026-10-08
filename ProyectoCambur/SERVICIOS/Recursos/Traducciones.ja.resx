@@ -369,6 +369,15 @@
   <data name="menu_cambiar_clave" xml:space="preserve">
     <value>パスワードの変更</value>
   </data>
+  <data name="aviso_vinculo_bloqueado" xml:space="preserve">
+    <value>相談が登録された後は、割り当てられた専門家と患者を変更することはできません。</value>
+  </data>
+  <data name="aviso_psicologo_bloqueado" xml:space="preserve">
+    <value>患者が登録された後は、割り当てられた専門家を変更することはできません。</value>
+  </data>
+  <data name="lbl_fuera_de_plazo_modificacion" xml:space="preserve">
+    <value>変更不可（期限切れ）</value>
+  </data>
   <data name="header_administrador" xml:space="preserve">
     <value>管理者</value>
   </data>

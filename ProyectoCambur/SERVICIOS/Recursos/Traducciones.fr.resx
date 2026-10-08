@@ -369,6 +369,15 @@
   <data name="menu_cambiar_clave" xml:space="preserve">
     <value>Changer le mot de passe</value>
   </data>
+  <data name="aviso_vinculo_bloqueado" xml:space="preserve">
+    <value>Le professionnel et le patient assignés ne peuvent pas être modifiés une fois la consultation enregistrée.</value>
+  </data>
+  <data name="aviso_psicologo_bloqueado" xml:space="preserve">
+    <value>Le professionnel assigné ne peut pas être modifié une fois le patient enregistré.</value>
+  </data>
+  <data name="lbl_fuera_de_plazo_modificacion" xml:space="preserve">
+    <value>Non modifiable (délai expiré)</value>
+  </data>
   <data name="header_administrador" xml:space="preserve">
     <value>Administrateur</value>
   </data>

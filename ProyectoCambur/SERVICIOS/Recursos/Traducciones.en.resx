@@ -369,6 +369,15 @@
   <data name="menu_cambiar_clave" xml:space="preserve">
     <value>Change password</value>
   </data>
+  <data name="aviso_vinculo_bloqueado" xml:space="preserve">
+    <value>The assigned professional and patient cannot be changed once the session has been registered.</value>
+  </data>
+  <data name="aviso_psicologo_bloqueado" xml:space="preserve">
+    <value>The assigned professional cannot be changed once the patient has been registered.</value>
+  </data>
+  <data name="lbl_fuera_de_plazo_modificacion" xml:space="preserve">
+    <value>Not editable (deadline expired)</value>
+  </data>
   <data name="header_administrador" xml:space="preserve">
     <value>Administrator</value>
   </data>

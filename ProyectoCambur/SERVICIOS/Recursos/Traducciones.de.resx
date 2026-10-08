@@ -369,6 +369,15 @@
   <data name="menu_cambiar_clave" xml:space="preserve">
     <value>Passwort ändern</value>
   </data>
+  <data name="aviso_vinculo_bloqueado" xml:space="preserve">
+    <value>Der zugewiesene Fachmann und Patient können nach der Registrierung der Sitzung nicht mehr geändert werden.</value>
+  </data>
+  <data name="aviso_psicologo_bloqueado" xml:space="preserve">
+    <value>Der zugewiesene Fachmann kann nach der Registrierung des Patienten nicht mehr geändert werden.</value>
+  </data>
+  <data name="lbl_fuera_de_plazo_modificacion" xml:space="preserve">
+    <value>Nicht bearbeitbar (Frist abgelaufen)</value>
+  </data>
   <data name="header_administrador" xml:space="preserve">
     <value>Administrator</value>
   </data>

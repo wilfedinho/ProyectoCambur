@@ -369,6 +369,15 @@
   <data name="menu_cambiar_clave" xml:space="preserve">
     <value>Сменить пароль</value>
   </data>
+  <data name="aviso_vinculo_bloqueado" xml:space="preserve">
+    <value>Назначенного специалиста и пациента нельзя изменить после регистрации консультации.</value>
+  </data>
+  <data name="aviso_psicologo_bloqueado" xml:space="preserve">
+    <value>Назначенного специалиста нельзя изменить после регистрации пациента.</value>
+  </data>
+  <data name="lbl_fuera_de_plazo_modificacion" xml:space="preserve">
+    <value>Не редактируется (срок истёк)</value>
+  </data>
   <data name="header_administrador" xml:space="preserve">
     <value>Администратор</value>
   </data>
