@@ -58,6 +58,7 @@ public partial class FormMaestroPaciente : GUI.PaginaBase
         lblSeccionVinculo.Text = Traducir("seccion_vinculo_profesional");
         lblEtiquetaPsicologo.Text = Traducir("lbl_psicologo_asignado");
         lblHintPsicologo.Text = Traducir("hint_psicologo_asignado");
+        lblAvisoPsicologoBloqueado.Text = Traducir("aviso_psicologo_bloqueado");
         rfvPsicologo.ErrorMessage = Traducir("error_paciente_sin_profesional");
 
         lblSeccionDatos.Text = Traducir("seccion_datos_paciente");
@@ -148,8 +149,6 @@ public partial class FormMaestroPaciente : GUI.PaginaBase
                     CargarGrilla();
                     return;
                 }
-
-                pacienteModificado.IdPsicologo = Convert.ToInt32(ddlPsicologo.SelectedValue);
                 pacienteModificado.Nombre = txtNombre.Text.Trim();
                 pacienteModificado.Apellido = txtApellido.Text.Trim();
                 pacienteModificado.DNI = txtDni.Text.Trim();
@@ -293,6 +292,8 @@ public partial class FormMaestroPaciente : GUI.PaginaBase
         lblFormTitulo.Text = Traducir("titulo_nuevo_paciente");
         btnGuardar.Text = Traducir("btn_registrar_paciente_form");
         btnCancelarEdicion.Visible = false;
+        pAvisoPsicologoBloqueado.Visible = false;
+        ddlPsicologo.Enabled = true;
         ddlPsicologo.SelectedIndex = 0;
         txtNombre.Text = string.Empty;
         txtApellido.Text = string.Empty;
@@ -333,6 +334,8 @@ public partial class FormMaestroPaciente : GUI.PaginaBase
         }
 
         ddlPsicologo.SelectedValue = paciente.IdPsicologo.ToString();
+        ddlPsicologo.Enabled = false;
+        pAvisoPsicologoBloqueado.Visible = true;
         txtNombre.Text = paciente.Nombre;
         txtApellido.Text = paciente.Apellido;
         txtDni.Text = paciente.DNI;

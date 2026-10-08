@@ -23,6 +23,9 @@
             <uc:SidebarNavegacion ID="ucSidebarNavegacion" runat="server" PaginaActual="pacientes" />
             <div class="sidebar-footer">
                 <a href="FormLanding.aspx" class="nav-item nav-landing"><span>🏢</span> <asp:Label ID="lblMenuLandingSidebar" runat="server" Text="" /></a>
+                <a href="FormCambiarIdioma.aspx" class="nav-item"><span>🌐</span> <%= Traducir("menu_cambiar_idioma") %></a>
+                <a href="FormCambiarClave.aspx" class="nav-item"><span>🔑</span> <%= Traducir("menu_cambiar_clave") %></a>
+                <a href="FormLogout.aspx" class="nav-item nav-logout"><span>🚪</span> <%= Traducir("menu_cerrar_sesion") %></a>
             </div>
         </aside>
 
@@ -61,6 +64,10 @@
                         </div>
                     </div>
 
+                    <p class="aviso-bloqueo" id="pAvisoPsicologoBloqueado" runat="server" visible="false">
+                        🔒 <asp:Label ID="lblAvisoPsicologoBloqueado" runat="server" Text="" />
+                    </p>
+
                     <asp:Label ID="lblSeccionDatos" runat="server" CssClass="section-sep" Text="" />
 
                     <div class="grid-3">
@@ -82,7 +89,7 @@
 
                         <div class="field">
                             <asp:Label ID="lblEtiquetaDni" runat="server" AssociatedControlID="txtDni" Text="" />
-                            <asp:TextBox ID="txtDni" runat="server" MaxLength="10" ClientIDMode="Static" placeholder="12.345.678" />
+                            <asp:TextBox ID="txtDni" runat="server" MaxLength="10" ClientIDMode="Static" placeholder="Ej: 12.345.678" oninput="aplicarMascaraDni(this)" />
                             <asp:RegularExpressionValidator ID="revDni" runat="server"
                                 ControlToValidate="txtDni"
                                 ValidationExpression="^[0-9]{2}[.][0-9]{3}[.][0-9]{3}$"
@@ -136,7 +143,7 @@
 
                         <div class="field">
                             <asp:Label ID="lblEtiquetaTelefono" runat="server" AssociatedControlID="txtTelefono" Text="" />
-                            <asp:TextBox ID="txtTelefono" runat="server" MaxLength="30" ClientIDMode="Static" />
+                            <asp:TextBox ID="txtTelefono" runat="server" MaxLength="30" ClientIDMode="Static" placeholder="Ej: 11-2345-6789" oninput="aplicarMascaraTelefono(this)" />
                         </div>
                     </div>
 
@@ -234,5 +241,6 @@
         </div>
 
     </form>
+    <script src="Scripts/Mascaras.js"></script>
 </body>
 </html>

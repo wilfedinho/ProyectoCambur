@@ -67,7 +67,7 @@
 
                 <div class="field">
                     <label for="txtDNI">DNI <sup>*</sup></label>
-                    <asp:TextBox ID="txtDNI" runat="server" MaxLength="10" placeholder="Ej: 12.345.678" ClientIDMode="Static" />
+                    <asp:TextBox ID="txtDNI" runat="server" MaxLength="10" placeholder="Ej: 12.345.678" ClientIDMode="Static" oninput="aplicarMascaraDni(this)" />
                     <asp:RequiredFieldValidator ID="rfvDNI" runat="server"
                         ControlToValidate="txtDNI"
                         ErrorMessage="El DNI es obligatorio."
@@ -222,6 +222,7 @@
         <div class="toast" id="toastExito">Cuenta creada correctamente. Redirigiendo...</div>
 
     </form>
+    <script src="Scripts/Mascaras.js"></script>
 
     <script type="text/javascript">
         var stripe = Stripe('<%= ObtenerPublicKeyStripe() %>');

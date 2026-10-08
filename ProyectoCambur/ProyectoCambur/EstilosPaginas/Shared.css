@@ -628,6 +628,16 @@ input[type="submit"].btn-primary {
 }
 
 
+.tbl-badge-disabled {
+    display: inline-block;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: italic;
+    padding: 5px 11px;
+    white-space: nowrap;
+}
+
+
 .tbl-btn-baja {
     color: #993C1D;
     border-color: #F5C4B3;

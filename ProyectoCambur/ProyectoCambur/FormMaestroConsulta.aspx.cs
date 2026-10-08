@@ -61,6 +61,7 @@ public partial class FormMaestroConsulta : GUI.PaginaBase
         lblEtiquetaPaciente.Text = Traducir("lbl_paciente");
         rfvPaciente.ErrorMessage = Traducir("error_consulta_sin_paciente");
         lblHintPaciente.Text = Traducir("hint_paciente_por_psicologo");
+        lblAvisoVinculoBloqueado.Text = Traducir("aviso_vinculo_bloqueado");
 
         lblSeccionDatos.Text = Traducir("seccion_datos_consulta");
         lblEtiquetaFecha.Text = Traducir("lbl_fecha_consulta");
@@ -175,9 +176,6 @@ public partial class FormMaestroConsulta : GUI.PaginaBase
                     CargarGrilla();
                     return;
                 }
-
-                consultaModificada.IdPaciente = Convert.ToInt32(ddlPaciente.SelectedValue);
-                consultaModificada.IdPsicologo = Convert.ToInt32(ddlPsicologo.SelectedValue);
                 consultaModificada.FechaConsulta = fechaConsulta;
                 consultaModificada.TiempoConsulta = tiempoConsulta;
                 consultaModificada.Objetivos = txtObjetivos.Text.Trim();
@@ -229,16 +227,23 @@ public partial class FormMaestroConsulta : GUI.PaginaBase
 
         LinkButton lbModificar = e.Row.FindControl("lbModificar") as LinkButton;
         if (lbModificar == null) return;
+        Label lblFueraDePlazo = e.Row.FindControl("lblFueraDePlazo") as Label;
         bool dentroDePlazo = (DateTime.Now - fila.FechaRegistro).TotalDays <= GestorConsulta.DIAS_LIMITE_MODIFICACION;
 
         if (dentroDePlazo)
         {
             lbModificar.Text = "✏️ " + Traducir("btn_modificar");
             lbModificar.Visible = true;
+            if (lblFueraDePlazo != null) lblFueraDePlazo.Visible = false;
         }
         else
         {
             lbModificar.Visible = false;
+            if (lblFueraDePlazo != null)
+            {
+                lblFueraDePlazo.Text = "🔒 " + Traducir("lbl_fuera_de_plazo_modificacion");
+                lblFueraDePlazo.Visible = true;
+            }
         }
     }
     private void CargarGrilla()
@@ -271,7 +276,9 @@ public partial class FormMaestroConsulta : GUI.PaginaBase
         lblFormTitulo.Text = Traducir("titulo_nueva_consulta");
         btnGuardar.Text = Traducir("btn_registrar_consulta_form");
         btnCancelarEdicion.Visible = false;
+        pAvisoVinculoBloqueado.Visible = false;
 
+        ddlPsicologo.Enabled = true;
         ddlPsicologo.SelectedIndex = 0;
         CargarComboPacientes();
         txtFechaConsulta.Text = string.Empty;
@@ -326,6 +333,10 @@ public partial class FormMaestroConsulta : GUI.PaginaBase
             }
         }
         ddlPaciente.SelectedValue = consulta.IdPaciente.ToString();
+
+        ddlPsicologo.Enabled = false;
+        ddlPaciente.Enabled = false;
+        pAvisoVinculoBloqueado.Visible = true;
 
         txtFechaConsulta.Text = consulta.FechaConsulta.ToString("yyyy-MM-dd");
         txtTiempoConsulta.Text = consulta.TiempoConsulta.ToString();

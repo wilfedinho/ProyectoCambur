@@ -5,6 +5,16 @@
     margin-top: 4px;
 }
 
+.aviso-bloqueo {
+    font-size: 13px;
+    color: #8A5A00;
+    background: #FEF6E6;
+    border: 1px solid #F0D9A6;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: -8px 0 16px;
+}
+
 .filtro-estado {
     display: flex;
     align-items: center;

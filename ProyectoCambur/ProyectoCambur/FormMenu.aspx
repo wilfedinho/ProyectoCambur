@@ -1,17 +1,18 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FormMenu.aspx.cs" Inherits="FormMenu" %>
+
 <%@ Register Src="~/UserControls/HeaderUsuario.ascx" TagPrefix="uc" TagName="HeaderUsuario" %>
 <%@ Register Src="~/UserControls/SidebarNavegacion.ascx" TagPrefix="uc" TagName="SidebarNavegacion" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cambur — Menú</title>
-    <link href="EstilosPaginas/Shared.css"            rel="stylesheet" type="text/css"/>
-    <link href="EstilosPaginas/HeaderUsuario.css"     rel="stylesheet" type="text/css"/>
-    <link href="EstilosPaginas/SidebarNavegacion.css" rel="stylesheet" type="text/css"/>
-    <link href="EstilosPaginas/MenuRoles.css"         rel="stylesheet" type="text/css"/>
-    <link href="EstilosPaginas/FormMenu.css"          rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/Shared.css" rel="stylesheet" type="text/css" />
+    <link href="EstilosPaginas/HeaderUsuario.css" rel="stylesheet" type="text/css" />
+    <link href="EstilosPaginas/SidebarNavegacion.css" rel="stylesheet" type="text/css" />
+    <link href="EstilosPaginas/MenuRoles.css" rel="stylesheet" type="text/css" />
+    <link href="EstilosPaginas/FormMenu.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -23,7 +24,11 @@
             </div>
             <uc:SidebarNavegacion ID="ucSidebarNavegacion" runat="server" PaginaActual="inicio" />
             <div class="sidebar-footer">
-                <a href="FormLanding.aspx" class="nav-item nav-landing"><span>🏢</span> <asp:Label ID="lblMenuLandingSidebar" runat="server" Text="" /></a>
+                <a href="FormLanding.aspx" class="nav-item nav-landing"><span>🏢</span>
+                    <asp:Label ID="lblMenuLandingSidebar" runat="server" Text="" /></a>
+                <a href="FormCambiarIdioma.aspx" class="nav-item"><span>🌐</span> <%= Traducir("menu_cambiar_idioma") %></a>
+                <a href="FormCambiarClave.aspx" class="nav-item"><span>🔑</span> <%= Traducir("menu_cambiar_clave") %></a>
+                <a href="FormLogout.aspx" class="nav-item nav-logout"><span>🚪</span> <%= Traducir("menu_cerrar_sesion") %></a>
             </div>
         </aside>
 
@@ -49,7 +54,8 @@
                 <asp:PlaceHolder ID="phSecciones" runat="server" />
 
                 <asp:Panel ID="pnlSinPermisos" runat="server" Visible="false" CssClass="content-card mt-24">
-                    <p class="card-subtitle"><asp:Label ID="lblSinPermisos" runat="server" Text="" /></p>
+                    <p class="card-subtitle">
+                        <asp:Label ID="lblSinPermisos" runat="server" Text="" /></p>
                 </asp:Panel>
 
             </div>

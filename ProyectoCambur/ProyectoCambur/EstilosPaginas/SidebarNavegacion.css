@@ -10,3 +10,12 @@
     .nav-seccion-titulo:first-of-type {
         padding-top: 8px;
     }
+
+.nav-item-logout {
+    color: #B3261E;
+}
+
+.nav-separador-cuenta {
+    margin: 12px 20px;
+    border-top: 1px solid var(--border);
+}

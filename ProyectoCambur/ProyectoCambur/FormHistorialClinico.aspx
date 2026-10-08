@@ -23,6 +23,9 @@
             <uc:SidebarNavegacion ID="ucSidebarNavegacion" runat="server" PaginaActual="acceder_generar_historial" />
             <div class="sidebar-footer">
                 <a href="FormLanding.aspx" class="nav-item nav-landing"><span>🏢</span> <asp:Label ID="lblMenuLandingSidebar" runat="server" Text="" /></a>
+                <a href="FormCambiarIdioma.aspx" class="nav-item"><span>🌐</span> <%= Traducir("menu_cambiar_idioma") %></a>
+<a href="FormCambiarClave.aspx" class="nav-item"><span>🔑</span> <%= Traducir("menu_cambiar_clave") %></a>
+<a href="FormLogout.aspx" class="nav-item nav-logout"><span>🚪</span> <%= Traducir("menu_cerrar_sesion") %></a>
             </div>
         </aside>
 

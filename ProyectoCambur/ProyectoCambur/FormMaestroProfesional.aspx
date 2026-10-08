@@ -23,6 +23,9 @@
             <uc:SidebarNavegacion ID="ucSidebarNavegacion" runat="server" PaginaActual="profesionales" />
             <div class="sidebar-footer">
                 <a href="FormLanding.aspx" class="nav-item nav-landing"><span>🏢</span> <asp:Label ID="lblMenuLandingSidebar" runat="server" Text="" /></a>
+                <a href="FormCambiarIdioma.aspx" class="nav-item"><span>🌐</span> <%= Traducir("menu_cambiar_idioma") %></a>
+<a href="FormCambiarClave.aspx" class="nav-item"><span>🔑</span> <%= Traducir("menu_cambiar_clave") %></a>
+<a href="FormLogout.aspx" class="nav-item nav-logout"><span>🚪</span> <%= Traducir("menu_cerrar_sesion") %></a>
             </div>
         </aside>
 
@@ -82,7 +85,7 @@
 
                         <div class="field">
                             <label for="txtDni">DNI <sup>*</sup></label>
-                            <asp:TextBox ID="txtDni" runat="server" MaxLength="10" placeholder="Ej: 12.345.678" ClientIDMode="Static" />
+                            <asp:TextBox ID="txtDni" runat="server" MaxLength="10" placeholder="Ej: 12.345.678" ClientIDMode="Static" oninput="aplicarMascaraDni(this)" />
                             <asp:RequiredFieldValidator ID="rfvDni" runat="server"
                                 ControlToValidate="txtDni" ErrorMessage="El DNI es obligatorio."
                                 CssClass="field-error" Display="Dynamic" ValidationGroup="vgProfesional" />
@@ -405,5 +408,6 @@
         </div>
 
     </form>
+    <script src="Scripts/Mascaras.js"></script>
 </body>
 </html>
