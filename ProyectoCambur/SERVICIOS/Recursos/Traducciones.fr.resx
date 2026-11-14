@@ -507,6 +507,24 @@
   <data name="hint_nuevo_idioma" xml:space="preserve">
     <value>Seules les langues pas encore enregistrées dans le système sont affichées.</value>
   </data>
+  <data name="opt_idioma_personalizado" xml:space="preserve">
+    <value>➕ Autre langue (saisir le nom)</value>
+  </data>
+  <data name="lbl_nombre_idioma_personalizado" xml:space="preserve">
+    <value>Nom de la nouvelle langue</value>
+  </data>
+  <data name="placeholder_idioma_personalizado" xml:space="preserve">
+    <value>Ex. : Quechua, Catalan, Guarani…</value>
+  </data>
+  <data name="hint_idioma_personalizado" xml:space="preserve">
+    <value>Elle est créée en copiant les textes de la langue de référence (Espagnol). Vous pourrez relire et traduire chaque texte ensuite, depuis « Traductions ».</value>
+  </data>
+  <data name="error_idioma_personalizado_obligatorio" xml:space="preserve">
+    <value>Saisissez le nom de la nouvelle langue.</value>
+  </data>
+  <data name="confirm_alta_idioma_personalizado" xml:space="preserve">
+    <value>Cela va créer la langue en copiant les textes de « Espagnol ». Vous pourrez les traduire ensuite, un par un. Confirmer ?</value>
+  </data>
   <data name="overlay_generando_titulo" xml:space="preserve">
     <value>Génération de la langue...</value>
   </data>

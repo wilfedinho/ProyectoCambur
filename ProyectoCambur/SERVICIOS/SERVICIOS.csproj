@@ -66,6 +66,7 @@
     <Compile Include="PasarelaStripe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SujetoIdioma.cs" />
+    <Compile Include="TraductorIdentidad.cs" />
     <Compile Include="TraductorResx.cs" />
   </ItemGroup>
   <ItemGroup>

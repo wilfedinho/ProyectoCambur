@@ -507,6 +507,24 @@
   <data name="hint_nuevo_idioma" xml:space="preserve">
     <value>Solo se muestran los idiomas todavía no dados de alta en el sistema.</value>
   </data>
+  <data name="opt_idioma_personalizado" xml:space="preserve">
+    <value>➕ Otro idioma (escribir el nombre)</value>
+  </data>
+  <data name="lbl_nombre_idioma_personalizado" xml:space="preserve">
+    <value>Nombre del nuevo idioma</value>
+  </data>
+  <data name="placeholder_idioma_personalizado" xml:space="preserve">
+    <value>Ej: Quechua, Catalán, Guaraní…</value>
+  </data>
+  <data name="hint_idioma_personalizado" xml:space="preserve">
+    <value>Se crea copiando los textos del idioma de referencia (Español). Vas a poder revisar y traducir cada texto después, desde "Traducciones".</value>
+  </data>
+  <data name="error_idioma_personalizado_obligatorio" xml:space="preserve">
+    <value>Ingresá el nombre del nuevo idioma.</value>
+  </data>
+  <data name="confirm_alta_idioma_personalizado" xml:space="preserve">
+    <value>Esto va a crear el idioma copiando los textos de "Español". Vas a poder traducirlos después, uno por uno. ¿Confirmás?</value>
+  </data>
   <data name="overlay_generando_titulo" xml:space="preserve">
     <value>Generando idioma...</value>
   </data>

@@ -507,6 +507,24 @@
   <data name="hint_nuevo_idioma" xml:space="preserve">
     <value>システムにまだ登録されていない言語のみが表示されます。</value>
   </data>
+  <data name="opt_idioma_personalizado" xml:space="preserve">
+    <value>➕ その他の言語（名前を入力）</value>
+  </data>
+  <data name="lbl_nombre_idioma_personalizado" xml:space="preserve">
+    <value>新しい言語の名前</value>
+  </data>
+  <data name="placeholder_idioma_personalizado" xml:space="preserve">
+    <value>例：ケチュア語、カタルーニャ語、グアラニー語…</value>
+  </data>
+  <data name="hint_idioma_personalizado" xml:space="preserve">
+    <value>基準言語（スペイン語）のテキストをコピーして作成されます。後で「翻訳」から各テキストを確認・翻訳できます。</value>
+  </data>
+  <data name="error_idioma_personalizado_obligatorio" xml:space="preserve">
+    <value>新しい言語の名前を入力してください。</value>
+  </data>
+  <data name="confirm_alta_idioma_personalizado" xml:space="preserve">
+    <value>「スペイン語」のテキストをコピーして言語を作成します。後で1つずつ翻訳できます。よろしいですか？</value>
+  </data>
   <data name="overlay_generando_titulo" xml:space="preserve">
     <value>言語を生成中...</value>
   </data>

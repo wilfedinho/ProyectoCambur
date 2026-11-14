@@ -10,6 +10,7 @@ namespace SERVICIOS
     {
 
         private const string IDIOMA_REFERENCIA = "Español";
+        private const int LARGO_MAXIMO_CODIGO_ISO = 5;
 
         private readonly ITraductorAutomatico traductor;
 
@@ -27,6 +28,32 @@ namespace SERVICIOS
 
 
         public void Alta(Idioma nuevoIdioma)
+        {
+            AltaInterna(nuevoIdioma, traductor);
+        }
+
+        public void AltaPersonalizado(string nombreIdioma)
+        {
+            nombreIdioma = (nombreIdioma ?? string.Empty).Trim();
+
+            if (string.IsNullOrWhiteSpace(nombreIdioma))
+            {
+                throw new ExcepcionTraducible("error_nombre_idioma_obligatorio");
+            }
+
+            IdiomaDAL idiomaDAL = new IdiomaDAL();
+            if (idiomaDAL.ExisteIdioma(nombreIdioma))
+            {
+                throw new ExcepcionTraducible("error_idioma_duplicado");
+            }
+
+            string codigoIsoGenerado = GenerarCodigoIsoPersonalizado(nombreIdioma, idiomaDAL);
+            Idioma nuevoIdiomaPersonalizado = new Idioma(nombreIdioma, codigoIsoGenerado, true, false);
+
+            AltaInterna(nuevoIdiomaPersonalizado, new TraductorIdentidad());
+        }
+
+        private void AltaInterna(Idioma nuevoIdioma, ITraductorAutomatico traductorAUsar)
         {
             ValidarDatosIdioma(nuevoIdioma);
 
@@ -53,7 +80,7 @@ namespace SERVICIOS
             new DigitoVerificador().ActualizarDVH(nuevoIdioma, "Idioma");
 
             List<string> claves = clavesReferencia.Select(t => t.Clave).ToList();
-            Dictionary<string, string> traducciones = traductor.Traducir(claves, nuevoIdioma.CodigoIso);
+            Dictionary<string, string> traducciones = traductorAUsar.Traducir(claves, nuevoIdioma.CodigoIso);
 
             List<Traduccion> traduccionesNuevas = new List<Traduccion>();
             foreach (Traduccion original in clavesReferencia)
@@ -175,10 +202,50 @@ namespace SERVICIOS
                 throw new ExcepcionTraducible("error_nombre_idioma_obligatorio");
             }
 
-            if (string.IsNullOrWhiteSpace(idioma.CodigoIso) || idioma.CodigoIso.Length > 5)
+            if (string.IsNullOrWhiteSpace(idioma.CodigoIso) || idioma.CodigoIso.Length > LARGO_MAXIMO_CODIGO_ISO)
             {
                 throw new ExcepcionTraducible("error_codigo_iso_obligatorio");
             }
+        }
+        private string GenerarCodigoIsoPersonalizado(string nombreIdioma, IdiomaDAL idiomaDAL)
+        {
+            string baseCodigo = new string(nombreIdioma
+                .Where(char.IsLetterOrDigit)
+                .Select(char.ToLowerInvariant)
+                .ToArray());
+
+            if (string.IsNullOrEmpty(baseCodigo))
+            {
+                baseCodigo = "idm";
+            }
+
+            if (baseCodigo.Length > LARGO_MAXIMO_CODIGO_ISO)
+            {
+                baseCodigo = baseCodigo.Substring(0, LARGO_MAXIMO_CODIGO_ISO);
+            }
+
+            List<string> codigosExistentes = idiomaDAL.ObtenerTodos()
+                .Select(i => (i.CodigoIso ?? string.Empty).ToLowerInvariant())
+                .ToList();
+
+            if (!codigosExistentes.Contains(baseCodigo))
+            {
+                return baseCodigo;
+            }
+
+            string raiz = baseCodigo.Length >= LARGO_MAXIMO_CODIGO_ISO
+                ? baseCodigo.Substring(0, LARGO_MAXIMO_CODIGO_ISO - 1)
+                : baseCodigo;
+
+            for (int sufijo = 1; sufijo <= 9; sufijo++)
+            {
+                string candidato = raiz + sufijo;
+                if (!codigosExistentes.Contains(candidato))
+                {
+                    return candidato;
+                }
+            }
+            return raiz + new Random().Next(0, 10);
         }
 
         #endregion

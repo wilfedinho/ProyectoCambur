@@ -54,12 +54,19 @@
                     <div class="grid-3">
                         <div class="field">
                             <asp:Label ID="lblEtiquetaNuevoIdioma" runat="server" AssociatedControlID="ddlNuevoIdioma" Text="" />
-                            <asp:DropDownList ID="ddlNuevoIdioma" runat="server" ClientIDMode="Static" />
+                            <asp:DropDownList ID="ddlNuevoIdioma" runat="server" ClientIDMode="Static"
+                                onchange="alternarCampoIdiomaPersonalizado();" />
                             <asp:RequiredFieldValidator ID="rfvNuevoIdioma" runat="server"
                                 ControlToValidate="ddlNuevoIdioma" InitialValue=""
                                 ErrorMessage="."
                                 CssClass="field-error" Display="Dynamic" ValidationGroup="vgIdioma" />
                             <asp:Label ID="lblHintNuevoIdioma" runat="server" CssClass="hint-text" Text="" />
+                        </div>
+
+                        <div class="field" id="campoIdiomaPersonalizado" style="display:none;">
+                            <asp:Label ID="lblEtiquetaNombreIdiomaPersonalizado" runat="server" AssociatedControlID="txtNombreIdiomaPersonalizado" Text="" />
+                            <asp:TextBox ID="txtNombreIdiomaPersonalizado" runat="server" ClientIDMode="Static" MaxLength="50" />
+                            <asp:Label ID="lblHintIdiomaPersonalizado" runat="server" CssClass="hint-text" Text="" />
                         </div>
                     </div>
 
@@ -195,7 +202,17 @@
     </form>
 
     <script type="text/javascript">
+        var VALOR_IDIOMA_PERSONALIZADO = "__personalizado__";
         var CONFIRM_ALTA_IDIOMA_TEXTO = "<%= Traducir("confirm_alta_idioma").Replace("\"", "\\\"") %>";
+        var CONFIRM_ALTA_IDIOMA_PERSONALIZADO_TEXTO = "<%= Traducir("confirm_alta_idioma_personalizado").Replace("\"", "\\\"") %>";
+        var ERROR_NOMBRE_IDIOMA_PERSONALIZADO_OBLIGATORIO = "<%= Traducir("error_idioma_personalizado_obligatorio").Replace("\"", "\\\"") %>";
+
+        function alternarCampoIdiomaPersonalizado() {
+            var ddl = document.getElementById('ddlNuevoIdioma');
+            var campo = document.getElementById('campoIdiomaPersonalizado');
+            if (!ddl || !campo) return;
+            campo.style.display = (ddl.value === VALOR_IDIOMA_PERSONALIZADO) ? 'block' : 'none';
+        }
 
         function confirmarYMostrarOverlay() {
             if (typeof (Page_ClientValidate) === 'function') {
@@ -204,13 +221,26 @@
                 }
             }
 
-            if (!confirm(CONFIRM_ALTA_IDIOMA_TEXTO)) {
+            var ddl = document.getElementById('ddlNuevoIdioma');
+            var esPersonalizado = ddl && ddl.value === VALOR_IDIOMA_PERSONALIZADO;
+
+            if (esPersonalizado) {
+                var txt = document.getElementById('txtNombreIdiomaPersonalizado');
+                if (!txt || txt.value.trim() === '') {
+                    alert(ERROR_NOMBRE_IDIOMA_PERSONALIZADO_OBLIGATORIO);
+                    return false;
+                }
+            }
+
+            var textoConfirmacion = esPersonalizado ? CONFIRM_ALTA_IDIOMA_PERSONALIZADO_TEXTO : CONFIRM_ALTA_IDIOMA_TEXTO;
+            if (!confirm(textoConfirmacion)) {
                 return false;
             }
 
             document.getElementById('overlayGenerandoIdioma').style.display = 'flex';
             return true;
         }
+        document.addEventListener('DOMContentLoaded', alternarCampoIdiomaPersonalizado);
     </script>
 </body>
 </html>

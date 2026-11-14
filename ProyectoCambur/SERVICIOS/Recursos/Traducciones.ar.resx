@@ -507,6 +507,24 @@
   <data name="hint_nuevo_idioma" xml:space="preserve">
     <value>تُعرض فقط اللغات غير المُضافة بعد إلى النظام.</value>
   </data>
+  <data name="opt_idioma_personalizado" xml:space="preserve">
+    <value>➕ لغة أخرى (كتابة الاسم)</value>
+  </data>
+  <data name="lbl_nombre_idioma_personalizado" xml:space="preserve">
+    <value>اسم اللغة الجديدة</value>
+  </data>
+  <data name="placeholder_idioma_personalizado" xml:space="preserve">
+    <value>مثال: الكيتشوا، الكتالانية، الغواراني…</value>
+  </data>
+  <data name="hint_idioma_personalizado" xml:space="preserve">
+    <value>يتم إنشاؤها بنسخ نصوص اللغة المرجعية (الإسبانية). ستتمكن لاحقًا من مراجعة وترجمة كل نص من قسم "الترجمات".</value>
+  </data>
+  <data name="error_idioma_personalizado_obligatorio" xml:space="preserve">
+    <value>أدخل اسم اللغة الجديدة.</value>
+  </data>
+  <data name="confirm_alta_idioma_personalizado" xml:space="preserve">
+    <value>سيؤدي هذا إلى إنشاء اللغة بنسخ النصوص من "الإسبانية". ستتمكن من ترجمتها بعد ذلك واحدة تلو الأخرى. تأكيد؟</value>
+  </data>
   <data name="overlay_generando_titulo" xml:space="preserve">
     <value>جارٍ إنشاء اللغة...</value>
   </data>

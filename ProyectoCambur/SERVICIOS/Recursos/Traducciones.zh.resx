@@ -507,6 +507,24 @@
   <data name="hint_nuevo_idioma" xml:space="preserve">
     <value>此处仅显示尚未在系统中录入的语言。</value>
   </data>
+  <data name="opt_idioma_personalizado" xml:space="preserve">
+    <value>➕ 其他语言（输入名称）</value>
+  </data>
+  <data name="lbl_nombre_idioma_personalizado" xml:space="preserve">
+    <value>新语言名称</value>
+  </data>
+  <data name="placeholder_idioma_personalizado" xml:space="preserve">
+    <value>例如：克丘亚语、加泰罗尼亚语、瓜拉尼语…</value>
+  </data>
+  <data name="hint_idioma_personalizado" xml:space="preserve">
+    <value>系统会复制参考语言（西班牙语）的全部文本来创建该语言。之后你可以在“翻译”中逐条查看并翻译。</value>
+  </data>
+  <data name="error_idioma_personalizado_obligatorio" xml:space="preserve">
+    <value>请输入新语言的名称。</value>
+  </data>
+  <data name="confirm_alta_idioma_personalizado" xml:space="preserve">
+    <value>这将通过复制“西班牙语”的文本来创建该语言，之后你可以逐条翻译。确认吗？</value>
+  </data>
   <data name="overlay_generando_titulo" xml:space="preserve">
     <value>正在生成语言...</value>
   </data>

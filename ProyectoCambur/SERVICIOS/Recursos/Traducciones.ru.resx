@@ -507,6 +507,24 @@
   <data name="hint_nuevo_idioma" xml:space="preserve">
     <value>Отображаются только языки, ещё не добавленные в систему.</value>
   </data>
+  <data name="opt_idioma_personalizado" xml:space="preserve">
+    <value>➕ Другой язык (ввести название)</value>
+  </data>
+  <data name="lbl_nombre_idioma_personalizado" xml:space="preserve">
+    <value>Название нового языка</value>
+  </data>
+  <data name="placeholder_idioma_personalizado" xml:space="preserve">
+    <value>Напр.: кечуа, каталанский, гуарани…</value>
+  </data>
+  <data name="hint_idioma_personalizado" xml:space="preserve">
+    <value>Создаётся путём копирования текстов исходного языка (испанский). Позже вы сможете проверить и перевести каждый текст в разделе «Переводы».</value>
+  </data>
+  <data name="error_idioma_personalizado_obligatorio" xml:space="preserve">
+    <value>Введите название нового языка.</value>
+  </data>
+  <data name="confirm_alta_idioma_personalizado" xml:space="preserve">
+    <value>Это создаст язык, скопировав тексты из «испанский». Позже вы сможете перевести их по одному. Подтвердить?</value>
+  </data>
   <data name="overlay_generando_titulo" xml:space="preserve">
     <value>Создание языка...</value>
   </data>

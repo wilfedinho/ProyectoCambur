@@ -29,6 +29,9 @@ public partial class FormGestionIdiomas : PaginaBase
         new IdiomaCandidato("العربية (Árabe)", "ar"),
     };
 
+
+    private const string VALOR_IDIOMA_PERSONALIZADO = "__personalizado__";
+
     private string IdiomaSeleccionado
     {
         get { return ViewState["IdiomaSeleccionado"] as string; }
@@ -68,6 +71,9 @@ public partial class FormGestionIdiomas : PaginaBase
         lblEtiquetaNuevoIdioma.Text = Traducir("lbl_nuevo_idioma");
         rfvNuevoIdioma.ErrorMessage = Traducir("error_idioma_obligatorio_alta");
         lblHintNuevoIdioma.Text = Traducir("hint_nuevo_idioma");
+        lblEtiquetaNombreIdiomaPersonalizado.Text = Traducir("lbl_nombre_idioma_personalizado");
+        lblHintIdiomaPersonalizado.Text = Traducir("hint_idioma_personalizado");
+        txtNombreIdiomaPersonalizado.Attributes["placeholder"] = Traducir("placeholder_idioma_personalizado");
         btnAltaIdioma.Text = Traducir("btn_generar_idioma");
         lblOverlayTitulo.Text = Traducir("overlay_generando_titulo");
         lblOverlaySub.Text = Traducir("overlay_generando_sub");
@@ -101,6 +107,7 @@ public partial class FormGestionIdiomas : PaginaBase
                 ));
             }
         }
+        ddlNuevoIdioma.Items.Add(new ListItem(Traducir("opt_idioma_personalizado"), VALOR_IDIOMA_PERSONALIZADO));
     }
 
     protected void btnAltaIdioma_Click(object sender, EventArgs e)
@@ -109,14 +116,31 @@ public partial class FormGestionIdiomas : PaginaBase
 
         if (!Page.IsValid) return;
 
-        string[] partes = ddlNuevoIdioma.SelectedValue.Split('|');
-        Idioma nuevoIdioma = new Idioma(partes[0], partes[1], true, false);
-
         GestorIdioma gestorIdioma = new GestorIdioma();
         try
         {
-            gestorIdioma.Alta(nuevoIdioma);
-            MostrarExito(string.Format(Traducir("msg_idioma_generado"), nuevoIdioma.NombreIdioma));
+            if (ddlNuevoIdioma.SelectedValue == VALOR_IDIOMA_PERSONALIZADO)
+            {
+                string nombrePersonalizado = (txtNombreIdiomaPersonalizado.Text ?? string.Empty).Trim();
+                if (string.IsNullOrWhiteSpace(nombrePersonalizado))
+                {
+                    MostrarError(Traducir("error_idioma_personalizado_obligatorio"));
+                    CargarIdiomas();
+                    return;
+                }
+
+                gestorIdioma.AltaPersonalizado(nombrePersonalizado);
+                MostrarExito(string.Format(Traducir("msg_idioma_generado"), nombrePersonalizado));
+                txtNombreIdiomaPersonalizado.Text = string.Empty;
+            }
+            else
+            {
+                string[] partes = ddlNuevoIdioma.SelectedValue.Split('|');
+                Idioma nuevoIdioma = new Idioma(partes[0], partes[1], true, false);
+                gestorIdioma.Alta(nuevoIdioma);
+                MostrarExito(string.Format(Traducir("msg_idioma_generado"), nuevoIdioma.NombreIdioma));
+            }
+
             CargarComboIdiomasCandidatos();
         }
         catch (ExcepcionTraducible ex)
