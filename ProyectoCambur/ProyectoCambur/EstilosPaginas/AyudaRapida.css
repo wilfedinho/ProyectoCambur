@@ -83,3 +83,23 @@
     line-height: 1.6;
     white-space: pre-line;
 }
+
+
+@media (max-width: 767px) {
+    .btn-ayuda-rapida {
+        padding: 8px;
+        gap: 0;
+    }
+
+    .txt-ayuda-rapida {
+        display: none;
+    }
+
+    .overlay-ayuda-rapida {
+        padding: 16px;
+    }
+
+    .ayuda-rapida-card {
+        padding: 22px 20px;
+    }
+}

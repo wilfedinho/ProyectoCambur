@@ -2,7 +2,7 @@
 
 <asp:LinkButton ID="btnAbrirAyudaRapida" runat="server" CssClass="btn-ayuda-rapida" ClientIDMode="Static"
     CausesValidation="false" OnClientClick="return mostrarAyudaRapida();">
-    <span>❓</span> <asp:Label ID="lblBotonAyudaRapida" runat="server" Text="" />
+    <span>❓</span> <asp:Label ID="lblBotonAyudaRapida" runat="server" CssClass="txt-ayuda-rapida" Text="" />
 </asp:LinkButton>
 
 <div id="overlayAyudaRapida" class="overlay-ayuda-rapida" style="display:none;">
@@ -29,13 +29,13 @@
         var overlay = document.getElementById('overlayAyudaRapida');
         if (overlay) overlay.style.display = 'none';
     }
-
     document.addEventListener('click', function (evento) {
         var overlay = document.getElementById('overlayAyudaRapida');
         if (overlay && evento.target === overlay) {
             overlay.style.display = 'none';
         }
     });
+
     document.addEventListener('keydown', function (evento) {
         if (evento.key === 'Escape') cerrarAyudaRapida();
     });

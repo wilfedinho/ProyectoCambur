@@ -1,5 +1,4 @@
-﻿
-.dash-top-row {
+﻿.dash-top-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -387,4 +386,29 @@
     font-size: 10px;
     color: var(--text-muted);
     margin-top: 2px;
+}
+
+
+
+@media (max-width: 1024px) {
+    .dash-main-row {
+        grid-template-columns: 1fr;
+    }
+
+    .kpi-grid-4,
+    .kpi-grid-3 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 767px) {
+    .kpi-grid-4,
+    .kpi-grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .grafico-card,
+    .ultimas-card {
+        padding: 18px 16px;
+    }
 }
