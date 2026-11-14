@@ -1,5 +1,4 @@
-﻿
-.temporal-layout {
+﻿.temporal-layout {
     display: grid;
     grid-template-columns: 1fr 240px;
     gap: 20px;
@@ -221,14 +220,14 @@
     z-index: 1;
 }
 
-    
+
     .timeline-item.izq {
         flex-direction: row;
         justify-content: flex-end;
         padding-right: calc(50% + 28px);
     }
 
-    
+
     .timeline-item.der {
         flex-direction: row-reverse;
         justify-content: flex-end;
@@ -480,3 +479,14 @@
         background: var(--bg-paper);
         color: var(--text-main);
     }
+
+
+.temporal-layout > * {
+    min-width: 0;
+}
+
+@media (max-width: 1024px) {
+    .temporal-layout {
+        grid-template-columns: 1fr;
+    }
+}

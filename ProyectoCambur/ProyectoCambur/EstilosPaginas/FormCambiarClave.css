@@ -164,3 +164,14 @@
     font-weight: 500;
     margin-bottom: 10px;
 }
+
+
+.clave-layout > * {
+    min-width: 0;
+}
+
+@media (max-width: 1024px) {
+    .clave-layout {
+        grid-template-columns: 1fr;
+    }
+}

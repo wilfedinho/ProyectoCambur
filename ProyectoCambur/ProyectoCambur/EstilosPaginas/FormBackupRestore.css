@@ -428,3 +428,12 @@ input[type="submit"].btn-danger-solid {
     color: var(--text-muted);
     line-height: 1.6;
 }
+
+
+@media (max-width: 767px) {
+    .carga-card {
+        min-width: 0;
+        width: 100%;
+        max-width: 320px;
+    }
+}

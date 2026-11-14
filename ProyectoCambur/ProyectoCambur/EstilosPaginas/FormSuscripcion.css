@@ -412,3 +412,13 @@ input[type="submit"].btn-success {
     display: block;
     margin-bottom: 4px;
 }
+
+.suscripcion-layout > * {
+    min-width: 0;
+}
+
+@media (max-width: 1024px) {
+    .suscripcion-layout {
+        grid-template-columns: 1fr;
+    }
+}

@@ -19,6 +19,10 @@
 <body>
     <form id="form1" runat="server">
 
+        <input type="checkbox" id="chkMenuMovil" class="chk-menu-movil" />
+        <label for="chkMenuMovil" class="btn-menu-movil" aria-label='<%= Traducir("aria_abrir_menu") %>'>☰</label>
+        <label for="chkMenuMovil" class="overlay-menu-movil"></label>
+
         <aside class="sidebar">
             <div class="sidebar-logo">
                 <div class="logotype">CAM<span>BUR</span></div>

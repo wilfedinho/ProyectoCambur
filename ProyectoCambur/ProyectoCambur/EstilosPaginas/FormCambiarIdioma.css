@@ -1,5 +1,4 @@
-﻿
-.idioma-layout {
+﻿.idioma-layout {
     display: grid;
     grid-template-columns: 1fr 240px;
     gap: 20px;
@@ -227,4 +226,15 @@
     color: var(--text-light);
     font-weight: 500;
     margin-bottom: 10px;
+}
+
+
+.idioma-layout > * {
+    min-width: 0;
+}
+
+@media (max-width: 1024px) {
+    .idioma-layout {
+        grid-template-columns: 1fr;
+    }
 }

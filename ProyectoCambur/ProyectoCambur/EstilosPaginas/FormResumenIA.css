@@ -331,3 +331,23 @@
     display: block;
     padding: 6px 0;
 }
+
+
+.resumen-layout > * {
+    min-width: 0;
+}
+
+@media (max-width: 1024px) {
+    .resumen-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 767px) {
+    .carga-card {
+        min-width: 0;
+        width: 100%;
+        max-width: 320px;
+    }
+}

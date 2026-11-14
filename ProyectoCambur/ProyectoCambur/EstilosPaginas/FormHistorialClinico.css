@@ -108,6 +108,7 @@
     line-height: 1.6;
     font-style: italic;
 }
+
 .campo-historial {
     margin-bottom: 20px;
 }
@@ -294,3 +295,14 @@
     .acceso-item span {
         font-size: 13px;
     }
+
+
+.historial-layout > * {
+    min-width: 0;
+}
+
+@media (max-width: 1024px) {
+    .historial-layout {
+        grid-template-columns: 1fr;
+    }
+}

@@ -429,3 +429,13 @@
 .doc-version-item.seleccionado .doc-version-check {
     color: var(--text-main);
 }
+
+.exportar-layout > * {
+    min-width: 0;
+}
+
+@media (max-width: 1024px) {
+    .exportar-layout {
+        grid-template-columns: 1fr;
+    }
+}
