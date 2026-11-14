@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FormSuscripcion.aspx.cs" Inherits="FormSuscripcion" %>
 <%@ Register Src="~/UserControls/HeaderUsuario.ascx" TagPrefix="uc" TagName="HeaderUsuario" %>
+<%@ Register Src="~/UserControls/AyudaRapida.ascx" TagPrefix="uc" TagName="AyudaRapida" %>
 <%@ Register Src="~/UserControls/SidebarNavegacion.ascx" TagPrefix="uc" TagName="SidebarNavegacion" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -12,6 +13,7 @@
     <link href="EstilosPaginas/SidebarNavegacion.css" rel="stylesheet" type="text/css"/>
     <link href="EstilosPaginas/FormSuscripcion.css"  rel="stylesheet" type="text/css"/>
     <script src="https://js.stripe.com/v3/"></script>
+    <link href="EstilosPaginas/AyudaRapida.css"      rel="stylesheet" type="text/css"/>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -38,6 +40,7 @@
                     <span class="header-sep">/</span>
                     <asp:Label ID="lblHeaderTitulo" runat="server" CssClass="header-page" Text="" />
                 </div>
+                <uc:AyudaRapida ID="ucAyudaRapida" runat="server" ClaveAyuda="gestionar_suscripcion" />
                 <uc:HeaderUsuario ID="ucHeaderUsuario" runat="server" />
             </header>
 

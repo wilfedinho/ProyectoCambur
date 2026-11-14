@@ -2769,4 +2769,145 @@
   <data name="lbl_ningun_archivo_seleccionado" xml:space="preserve">
     <value>未选择文件</value>
   </data>
+  <data name="btn_ayuda_rapida" xml:space="preserve">
+    <value>快速帮助</value>
+  </data>
+  <data name="ayuda_auditoria_bitacora_titulo" xml:space="preserve">
+    <value>系统审计日志</value>
+  </data>
+  <data name="ayuda_auditoria_bitacora_texto" xml:space="preserve">
+    <value>在这里你可以查看系统记录的所有事件（新增、删除、修改、登录等）。使用日期、用户/邮箱、模块和严重程度筛选条件，点击“筛选”缩小范围，或点击“清除筛选”恢复显示全部。按邮箱搜索时还会显示对应专业人员的信息。</value>
+  </data>
+  <data name="ayuda_backup_restore_titulo" xml:space="preserve">
+    <value>数据库备份与恢复</value>
+  </data>
+  <data name="ayuda_backup_restore_texto" xml:space="preserve">
+    <value>点击“立即生成备份”创建数据库备份。要恢复之前的备份，从列表中选择一个文件并点击“选择文件并恢复”；系统会要求你点击“确认恢复”进行确认，因为该操作会替换当前所有数据。</value>
+  </data>
+  <data name="ayuda_cambiar_clave_titulo" xml:space="preserve">
+    <value>修改密码</value>
+  </data>
+  <data name="ayuda_cambiar_clave_texto" xml:space="preserve">
+    <value>输入当前密码和新密码（输入两次以确认），然后点击“确认修改”。如果改变主意，点击“取消”即可不保存退出。</value>
+  </data>
+  <data name="ayuda_cambiar_idioma_titulo" xml:space="preserve">
+    <value>更改系统语言</value>
+  </data>
+  <data name="ayuda_cambiar_idioma_texto" xml:space="preserve">
+    <value>点击你想使用的语言卡片（会出现实心圆点●标记），然后点击“确认更改语言”。更改会立即应用到你账户下的整个系统。</value>
+  </data>
+  <data name="ayuda_dashboard_titulo" xml:space="preserve">
+    <value>指标面板</value>
+  </data>
+  <data name="ayuda_dashboard_texto" xml:space="preserve">
+    <value>使用“本周”、“本月”、“本季度”或“本年”按钮切换显示的时间段。点击“查看全部”进入完整的就诊或患者列表。</value>
+  </data>
+  <data name="ayuda_digito_verificador_titulo" xml:space="preserve">
+    <value>系统完整性</value>
+  </data>
+  <data name="ayuda_digito_verificador_texto" xml:space="preserve">
+    <value>此页面用于检查关键表的数据是否在系统外部被修改过。如果在授权的数据库变更（例如修正脚本）之后，某个表显示为不一致，点击“重新计算并接受当前状态”即可重新同步。</value>
+  </data>
+  <data name="ayuda_exportar_reporte_titulo" xml:space="preserve">
+    <value>导出报表</value>
+  </data>
+  <data name="ayuda_exportar_reporte_texto" xml:space="preserve">
+    <value>选择所需的报表选项，然后点击“📄 导出为PDF”下载。点击“返回”可不导出直接退出。</value>
+  </data>
+  <data name="ayuda_gestionar_idiomas_titulo" xml:space="preserve">
+    <value>语言管理</value>
+  </data>
+  <data name="ayuda_gestionar_idiomas_texto" xml:space="preserve">
+    <value>要添加新语言，从下拉列表中选择（或选择“其他语言”并输入名称），然后点击“生成带翻译的语言”。在下方的表格中可以启用或停用每种语言，并点击“翻译”逐条查看并修正标记为“待处理”的文本。</value>
+  </data>
+  <data name="ayuda_gestionar_permisos_titulo" xml:space="preserve">
+    <value>权限与角色管理</value>
+  </data>
+  <data name="ayuda_gestionar_permisos_texto" xml:space="preserve">
+    <value>在这里定义系统中每个角色/套餐可以查看和执行的操作，按族和元素组织。使用“添加”按钮在权限树中创建新的族、新的配置或新的元素。</value>
+  </data>
+  <data name="ayuda_generar_historial_titulo" xml:space="preserve">
+    <value>患者临床病历</value>
+  </data>
+  <data name="ayuda_generar_historial_texto" xml:space="preserve">
+    <value>选择一名患者并点击“继续”查看其病历。之后可以点击“保存临床病历”或“保存更改”保留新增内容，或点击“选择其他患者”返回搜索。</value>
+  </data>
+  <data name="ayuda_informe_derivacion_titulo" xml:space="preserve">
+    <value>转诊报告</value>
+  </data>
+  <data name="ayuda_informe_derivacion_texto" xml:space="preserve">
+    <value>点击“使用AI生成报告”，系统会根据就诊记录生成草稿。你可以点击“保存草稿”暂存未完成的报告，点击“放弃报告”丢弃，或审核后点击“验证并签署报告”将其最终确定。</value>
+  </data>
+  <data name="ayuda_linea_temporal_titulo" xml:space="preserve">
+    <value>患者时间线</value>
+  </data>
+  <data name="ayuda_linea_temporal_texto" xml:space="preserve">
+    <value>使用日期筛选并点击“筛选”缩小显示的事件范围，或点击“全部”查看所有事件。点击“继续”以所选患者继续操作。</value>
+  </data>
+  <data name="ayuda_abm_consultas_titulo" xml:space="preserve">
+    <value>就诊管理</value>
+  </data>
+  <data name="ayuda_abm_consultas_texto" xml:space="preserve">
+    <value>要登记新的就诊记录，选择心理医生和患者后点击“登记就诊”。要修改已有记录，在表格对应行点击“✏️ 修改”（登记后仅3天内可用），并点击“保存更改”；就诊登记后，所分配的心理医生和患者将无法再更改。</value>
+  </data>
+  <data name="ayuda_abm_pacientes_titulo" xml:space="preserve">
+    <value>患者管理</value>
+  </data>
+  <data name="ayuda_abm_pacientes_texto" xml:space="preserve">
+    <value>要新增患者，填写其资料及负责的心理医生，然后点击“登记患者”。要修改已有患者，在表格中找到对应记录并点击“保存更改”；保存后，所分配的心理医生将无法再更改。</value>
+  </data>
+  <data name="ayuda_abm_profesionales_titulo" xml:space="preserve">
+    <value>专业人员管理</value>
+  </data>
+  <data name="ayuda_abm_profesionales_texto" xml:space="preserve">
+    <value>要新增专业人员，填写其资料后点击“登记专业人员”。要修改已有记录，在表格中找到对应记录，修改所需内容后点击“保存更改”。使用“返回管理”可退出而不丢失列表。</value>
+  </data>
+  <data name="ayuda_menu_titulo" xml:space="preserve">
+    <value>主菜单</value>
+  </data>
+  <data name="ayuda_menu_texto" xml:space="preserve">
+    <value>点击任意一个入口可直接进入系统对应的板块。你看到的选项取决于你的角色和套餐。</value>
+  </data>
+  <data name="ayuda_modificar_consulta_titulo" xml:space="preserve">
+    <value>修改就诊记录</value>
+  </data>
+  <data name="ayuda_modificar_consulta_texto" xml:space="preserve">
+    <value>点击“搜索就诊记录”查找要修改的记录。找到后编辑临床字段并点击“保存更改”。如果就诊记录已超过3天的修改期限，系统会提示你，且无法再编辑。</value>
+  </data>
+  <data name="ayuda_perfilacion_paciente_titulo" xml:space="preserve">
+    <value>AI患者画像</value>
+  </data>
+  <data name="ayuda_perfilacion_paciente_texto" xml:space="preserve">
+    <value>选择一名患者并点击“生成画像”，让AI根据其临床病历生成画像。使用“新建画像”可在之后生成更新的画像。</value>
+  </data>
+  <data name="ayuda_realizar_consulta_titulo" xml:space="preserve">
+    <value>登记就诊记录</value>
+  </data>
+  <data name="ayuda_realizar_consulta_texto" xml:space="preserve">
+    <value>填写就诊信息（心理医生、患者、日期、时长及临床字段），然后点击“登记就诊”保存。</value>
+  </data>
+  <data name="ayuda_registrar_paciente_titulo" xml:space="preserve">
+    <value>登记患者</value>
+  </data>
+  <data name="ayuda_registrar_paciente_texto" xml:space="preserve">
+    <value>填写患者的个人信息及负责的心理医生，然后点击“登记患者”保存。保存后，所分配的心理医生将无法更改。</value>
+  </data>
+  <data name="ayuda_resumen_ia_titulo" xml:space="preserve">
+    <value>AI临床摘要</value>
+  </data>
+  <data name="ayuda_resumen_ia_texto" xml:space="preserve">
+    <value>点击“搜索就诊记录”选择要生成摘要的记录，然后点击“使用AI生成摘要”。使用“新建摘要”生成另一份，或“更改筛选条件”重新选择就诊记录。</value>
+  </data>
+  <data name="ayuda_gestionar_suscripcion_titulo" xml:space="preserve">
+    <value>我的订阅</value>
+  </data>
+  <data name="ayuda_gestionar_suscripcion_texto" xml:space="preserve">
+    <value>在这里可以查看当前套餐状态，在对比表中选择其他套餐进行更换，点击“更新付款方式”更新付款方式，或点击“取消订阅”取消订阅。如果取消后改变主意，可以在已付费期限结束前点击“重新激活订阅”。</value>
+  </data>
+  <data name="ayuda_auditoria_informe_titulo" xml:space="preserve">
+    <value>转诊报告审核</value>
+  </data>
+  <data name="ayuda_auditoria_informe_texto" xml:space="preserve">
+    <value>在这里你可以看到待审核的转诊报告草稿列表。在对应行点击“审核并签署”打开草稿；之后可以点击“放弃报告”丢弃，或审核后点击“验证并签署报告”进行验证和签署。</value>
+  </data>
 </root>

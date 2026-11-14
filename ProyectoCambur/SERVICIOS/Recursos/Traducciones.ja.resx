@@ -2769,4 +2769,145 @@
   <data name="lbl_ningun_archivo_seleccionado" xml:space="preserve">
     <value>ファイルが選択されていません</value>
   </data>
+  <data name="btn_ayuda_rapida" xml:space="preserve">
+    <value>クイックヘルプ</value>
+  </data>
+  <data name="ayuda_auditoria_bitacora_titulo" xml:space="preserve">
+    <value>システム監査ログ</value>
+  </data>
+  <data name="ayuda_auditoria_bitacora_texto" xml:space="preserve">
+    <value>ここではシステムに記録されたすべてのイベント（作成、削除、変更、ログインなど）を確認できます。日付、ユーザー/メール、モジュール、重要度のフィルターを使い、「フィルター」をクリックして絞り込むか、「フィルターをクリア」ですべて表示に戻せます。メールで検索すると、該当する専門家の情報も表示されます。</value>
+  </data>
+  <data name="ayuda_backup_restore_titulo" xml:space="preserve">
+    <value>データベースのバックアップと復元</value>
+  </data>
+  <data name="ayuda_backup_restore_texto" xml:space="preserve">
+    <value>「今すぐバックアップを作成」をクリックしてデータベースのバックアップを作成します。以前のバックアップを復元するには、一覧からファイルを選び「ファイルを選択して復元」をクリックしてください。すべての現在のデータが置き換わるため、システムが「復元を確認」での確認を求めます。</value>
+  </data>
+  <data name="ayuda_cambiar_clave_titulo" xml:space="preserve">
+    <value>パスワードの変更</value>
+  </data>
+  <data name="ayuda_cambiar_clave_texto" xml:space="preserve">
+    <value>現在のパスワードと新しいパスワード（確認のため2回）を入力し、「変更を確認」をクリックします。やめる場合は「キャンセル」をクリックすると保存せずに戻れます。</value>
+  </data>
+  <data name="ayuda_cambiar_idioma_titulo" xml:space="preserve">
+    <value>システムの言語を変更</value>
+  </data>
+  <data name="ayuda_cambiar_idioma_texto" xml:space="preserve">
+    <value>使いたい言語のカードをクリックし（●が表示されます）、「言語変更を確認」をクリックします。変更はすぐにあなたのアカウントのシステム全体に反映されます。</value>
+  </data>
+  <data name="ayuda_dashboard_titulo" xml:space="preserve">
+    <value>指標パネル</value>
+  </data>
+  <data name="ayuda_dashboard_texto" xml:space="preserve">
+    <value>「今週」「今月」「今四半期」「今年」のボタンで表示期間を切り替えます。「すべて表示」をクリックすると、診療や患者の一覧全体に移動します。</value>
+  </data>
+  <data name="ayuda_digito_verificador_titulo" xml:space="preserve">
+    <value>システムの整合性</value>
+  </data>
+  <data name="ayuda_digito_verificador_texto" xml:space="preserve">
+    <value>この画面は、重要なテーブルのデータがシステム外で変更されていないかを確認します。承認されたデータベースの変更（修正スクリプトなど）の後にテーブルが不整合と表示された場合は、「再計算して現在の状態を承認」をクリックして再同期してください。</value>
+  </data>
+  <data name="ayuda_exportar_reporte_titulo" xml:space="preserve">
+    <value>レポートの書き出し</value>
+  </data>
+  <data name="ayuda_exportar_reporte_texto" xml:space="preserve">
+    <value>必要なレポートのオプションを選び、「📄 PDFで書き出す」をクリックしてダウンロードします。「戻る」で何も書き出さずに終了できます。</value>
+  </data>
+  <data name="ayuda_gestionar_idiomas_titulo" xml:space="preserve">
+    <value>言語管理</value>
+  </data>
+  <data name="ayuda_gestionar_idiomas_texto" xml:space="preserve">
+    <value>新しい言語を追加するには、一覧から選ぶか（または「その他の言語」を選んで名前を入力し）、「翻訳付きで言語を生成」をクリックします。下の表で各言語の有効・無効を切り替えられ、「翻訳」をクリックすると「未対応」のテキストを1つずつ確認・修正できます。</value>
+  </data>
+  <data name="ayuda_gestionar_permisos_titulo" xml:space="preserve">
+    <value>権限とロールの管理</value>
+  </data>
+  <data name="ayuda_gestionar_permisos_texto" xml:space="preserve">
+    <value>ここでは、各ロール/プランがシステムで何を見て何ができるかを、ファミリーと要素に分けて定義します。「追加」ボタンで新しいファミリー、プロファイル、権限ツリー内の要素を作成できます。</value>
+  </data>
+  <data name="ayuda_generar_historial_titulo" xml:space="preserve">
+    <value>患者の診療記録</value>
+  </data>
+  <data name="ayuda_generar_historial_texto" xml:space="preserve">
+    <value>患者を選び「続ける」をクリックして記録を表示します。そこから「診療記録を保存」または「変更を保存」で追加内容を保存するか、「別の患者を選ぶ」で検索に戻れます。</value>
+  </data>
+  <data name="ayuda_informe_derivacion_titulo" xml:space="preserve">
+    <value>紹介レポート</value>
+  </data>
+  <data name="ayuda_informe_derivacion_texto" xml:space="preserve">
+    <value>「AIでレポートを生成」をクリックすると、診療内容からドラフトが作成されます。「下書きを保存」で未完成のまま保存、「レポートを破棄」で破棄、確認後は「レポートを検証して署名」で確定できます。</value>
+  </data>
+  <data name="ayuda_linea_temporal_titulo" xml:space="preserve">
+    <value>患者のタイムライン</value>
+  </data>
+  <data name="ayuda_linea_temporal_texto" xml:space="preserve">
+    <value>日付フィルターを使い「フィルター」をクリックして表示イベントを絞り込むか、「すべて」で全件表示します。「続ける」で選択した患者のまま進めます。</value>
+  </data>
+  <data name="ayuda_abm_consultas_titulo" xml:space="preserve">
+    <value>診療の管理</value>
+  </data>
+  <data name="ayuda_abm_consultas_texto" xml:space="preserve">
+    <value>新しい診療を登録するには、心理士と患者を選び「診療を登録」をクリックします。既存の診療を変更するには、該当行の「✏️ 変更」をクリック（登録から3日以内のみ可能）し、「変更を保存」で保存します。登録後は割り当てられた心理士と患者を変更できません。</value>
+  </data>
+  <data name="ayuda_abm_pacientes_titulo" xml:space="preserve">
+    <value>患者の管理</value>
+  </data>
+  <data name="ayuda_abm_pacientes_texto" xml:space="preserve">
+    <value>患者を登録するには、情報と担当心理士を入力し「患者を登録」をクリックします。既存の患者を変更するには、表から探して「変更を保存」で保存します。保存後は担当心理士を変更できません。</value>
+  </data>
+  <data name="ayuda_abm_profesionales_titulo" xml:space="preserve">
+    <value>専門家の管理</value>
+  </data>
+  <data name="ayuda_abm_profesionales_texto" xml:space="preserve">
+    <value>専門家を登録するには情報を入力し「専門家を登録」をクリックします。既存の専門家を変更するには、表から探して必要な変更を行い「変更を保存」をクリックします。「管理に戻る」で一覧を保持したまま終了できます。</value>
+  </data>
+  <data name="ayuda_menu_titulo" xml:space="preserve">
+    <value>メインメニュー</value>
+  </data>
+  <data name="ayuda_menu_texto" xml:space="preserve">
+    <value>いずれかのタイルをクリックすると、そのセクションに直接移動します。表示される項目はあなたのロールとプランによって異なります。</value>
+  </data>
+  <data name="ayuda_modificar_consulta_titulo" xml:space="preserve">
+    <value>診療の変更</value>
+  </data>
+  <data name="ayuda_modificar_consulta_texto" xml:space="preserve">
+    <value>「診療を検索」をクリックして変更したい診療を見つけます。見つけたら臨床項目を編集し「変更を保存」をクリックします。登録から3日の期限を過ぎている場合、システムがその旨を表示し編集できません。</value>
+  </data>
+  <data name="ayuda_perfilacion_paciente_titulo" xml:space="preserve">
+    <value>AIによる患者プロファイリング</value>
+  </data>
+  <data name="ayuda_perfilacion_paciente_texto" xml:space="preserve">
+    <value>患者を選び「プロファイルを生成」をクリックすると、AIが診療記録からプロファイルを作成します。「新しいプロファイル」で後から更新版を生成できます。</value>
+  </data>
+  <data name="ayuda_realizar_consulta_titulo" xml:space="preserve">
+    <value>診療の登録</value>
+  </data>
+  <data name="ayuda_realizar_consulta_texto" xml:space="preserve">
+    <value>診療情報（心理士、患者、日付、時間、臨床項目）を入力し、「診療を登録」をクリックして保存します。</value>
+  </data>
+  <data name="ayuda_registrar_paciente_titulo" xml:space="preserve">
+    <value>患者の登録</value>
+  </data>
+  <data name="ayuda_registrar_paciente_texto" xml:space="preserve">
+    <value>患者の個人情報と担当心理士を入力し、「患者を登録」をクリックして保存します。保存後は担当心理士を変更できません。</value>
+  </data>
+  <data name="ayuda_resumen_ia_titulo" xml:space="preserve">
+    <value>AIによる臨床サマリー</value>
+  </data>
+  <data name="ayuda_resumen_ia_texto" xml:space="preserve">
+    <value>「診療を検索」をクリックしてサマリーを作成する診療を選び、「AIでサマリーを生成」をクリックします。「新しいサマリー」で別のサマリーを作成するか、「フィルターを変更」で別の診療を選べます。</value>
+  </data>
+  <data name="ayuda_gestionar_suscripcion_titulo" xml:space="preserve">
+    <value>マイサブスクリプション</value>
+  </data>
+  <data name="ayuda_gestionar_suscripcion_texto" xml:space="preserve">
+    <value>現在のプランの状態を確認し、比較表から別のプランに変更できます。「お支払い方法を更新」で支払い方法を更新、「サブスクリプションを解約」で解約できます。解約後に気が変わった場合は、支払い済み期間が終わる前に「サブスクリプションを再開」を使用できます。</value>
+  </data>
+  <data name="ayuda_auditoria_informe_titulo" xml:space="preserve">
+    <value>紹介レポートの監査</value>
+  </data>
+  <data name="ayuda_auditoria_informe_texto" xml:space="preserve">
+    <value>ここではレビュー待ちの紹介レポートの下書き一覧が表示されます。該当行の「レビューして署名」をクリックして下書きを開きます。そこから「レポートを破棄」で破棄するか、確認後に「レポートを検証して署名」で検証・署名できます。</value>
+  </data>
 </root>

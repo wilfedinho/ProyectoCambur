@@ -2769,4 +2769,145 @@
   <data name="lbl_ningun_archivo_seleccionado" xml:space="preserve">
     <value>Nenhum arquivo selecionado</value>
   </data>
+  <data name="btn_ayuda_rapida" xml:space="preserve">
+    <value>Ajuda rápida</value>
+  </data>
+  <data name="ayuda_auditoria_bitacora_titulo" xml:space="preserve">
+    <value>Auditoria e registro do sistema</value>
+  </data>
+  <data name="ayuda_auditoria_bitacora_texto" xml:space="preserve">
+    <value>Aqui você pode revisar todos os eventos registrados pelo sistema (criações, exclusões, alterações, logins, etc.). Use os filtros de data, usuário/e-mail, módulo e criticidade e clique em "Filtrar" para refinar a busca, ou em "Limpar filtros" para ver tudo de novo. Ao buscar por e-mail, você também verá os dados do profissional correspondente.</value>
+  </data>
+  <data name="ayuda_backup_restore_titulo" xml:space="preserve">
+    <value>Backup e restauração do banco de dados</value>
+  </data>
+  <data name="ayuda_backup_restore_texto" xml:space="preserve">
+    <value>Clique em "Gerar Backup agora" para criar uma cópia de segurança do banco. Para restaurar uma cópia anterior, escolha um arquivo da lista e clique em "Selecionar arquivo e restaurar"; o sistema vai pedir que você confirme em "Confirmar restauração" antes de aplicar a mudança, pois ela substitui todos os dados atuais.</value>
+  </data>
+  <data name="ayuda_cambiar_clave_titulo" xml:space="preserve">
+    <value>Alterar sua senha</value>
+  </data>
+  <data name="ayuda_cambiar_clave_texto" xml:space="preserve">
+    <value>Informe sua senha atual e a nova senha (duas vezes, para confirmar) e clique em "Confirmar alteração". Se mudar de ideia, clique em "Cancelar" para voltar sem salvar nada.</value>
+  </data>
+  <data name="ayuda_cambiar_idioma_titulo" xml:space="preserve">
+    <value>Alterar o idioma do sistema</value>
+  </data>
+  <data name="ayuda_cambiar_idioma_texto" xml:space="preserve">
+    <value>Clique no cartão do idioma que deseja usar (ele é marcado com um ponto preenchido ●) e depois em "Confirmar alteração de idioma". A mudança é aplicada imediatamente em todo o sistema para a sua conta.</value>
+  </data>
+  <data name="ayuda_dashboard_titulo" xml:space="preserve">
+    <value>Painel de indicadores</value>
+  </data>
+  <data name="ayuda_dashboard_texto" xml:space="preserve">
+    <value>Use os botões "Esta semana", "Este mês", "Este trimestre" ou "Este ano" para mudar o período exibido. Clique em "Ver todas" ou "Ver todos" para ir à lista completa de consultas ou pacientes.</value>
+  </data>
+  <data name="ayuda_digito_verificador_titulo" xml:space="preserve">
+    <value>Integridade do sistema</value>
+  </data>
+  <data name="ayuda_digito_verificador_texto" xml:space="preserve">
+    <value>Esta tela verifica se os dados das tabelas críticas não foram alterados fora do sistema. Se, após uma alteração autorizada no banco (por exemplo, um script de correção), alguma tabela aparecer como inconsistente, clique em "Recalcular e aceitar estado atual" para ressincronizá-la.</value>
+  </data>
+  <data name="ayuda_exportar_reporte_titulo" xml:space="preserve">
+    <value>Exportar relatório</value>
+  </data>
+  <data name="ayuda_exportar_reporte_texto" xml:space="preserve">
+    <value>Escolha as opções do relatório que você precisa e clique em "📄 Exportar em PDF" para baixá-lo. Use "Voltar" para sair sem exportar nada.</value>
+  </data>
+  <data name="ayuda_gestionar_idiomas_titulo" xml:space="preserve">
+    <value>Gestão de idiomas</value>
+  </data>
+  <data name="ayuda_gestionar_idiomas_texto" xml:space="preserve">
+    <value>Para adicionar um novo idioma, escolha-o na lista (ou escolha "Outro idioma" e digite o nome) e clique em "Gerar idioma com traduções". Na tabela abaixo você pode ativar ou desativar cada idioma, e clicar em "Traduções" para revisar e corrigir, um por um, os textos marcados como "Pendente".</value>
+  </data>
+  <data name="ayuda_gestionar_permisos_titulo" xml:space="preserve">
+    <value>Gestão de permissões e perfis</value>
+  </data>
+  <data name="ayuda_gestionar_permisos_texto" xml:space="preserve">
+    <value>Aqui se define o que cada perfil/plano do sistema pode ver e fazer, organizado em famílias e elementos. Use os botões "Adicionar" para criar uma nova família, um novo perfil ou um novo elemento na árvore de permissões.</value>
+  </data>
+  <data name="ayuda_generar_historial_titulo" xml:space="preserve">
+    <value>Histórico clínico do paciente</value>
+  </data>
+  <data name="ayuda_generar_historial_texto" xml:space="preserve">
+    <value>Escolha um paciente e clique em "Continuar" para ver o histórico dele. A partir daí você pode clicar em "Salvar histórico clínico" ou "Salvar alterações", ou em "Escolher outro paciente" para voltar à busca.</value>
+  </data>
+  <data name="ayuda_informe_derivacion_titulo" xml:space="preserve">
+    <value>Relatório de encaminhamento</value>
+  </data>
+  <data name="ayuda_informe_derivacion_texto" xml:space="preserve">
+    <value>Clique em "Gerar relatório com IA" para que o sistema redija um rascunho a partir da consulta. Você pode salvá-lo sem terminar em "Salvar rascunho", descartá-lo em "Descartar relatório", ou, depois de revisado, clicar em "Validar e assinar relatório" para finalizá-lo.</value>
+  </data>
+  <data name="ayuda_linea_temporal_titulo" xml:space="preserve">
+    <value>Linha do tempo do paciente</value>
+  </data>
+  <data name="ayuda_linea_temporal_texto" xml:space="preserve">
+    <value>Use o filtro de datas e clique em "Filtrar" para reduzir os eventos exibidos, ou em "Todos" para ver todos. Clique em "Continuar" para avançar com o paciente selecionado.</value>
+  </data>
+  <data name="ayuda_abm_consultas_titulo" xml:space="preserve">
+    <value>Gestão de consultas</value>
+  </data>
+  <data name="ayuda_abm_consultas_texto" xml:space="preserve">
+    <value>Para registrar uma nova consulta, escolha o psicólogo e o paciente e clique em "Registrar consulta". Para modificar uma já existente, clique em "✏️ Modificar" na linha correspondente (disponível só até 3 dias depois do registro) e salve com "Salvar alterações"; o psicólogo e o paciente não podem mais ser alterados após o registro.</value>
+  </data>
+  <data name="ayuda_abm_pacientes_titulo" xml:space="preserve">
+    <value>Gestão de pacientes</value>
+  </data>
+  <data name="ayuda_abm_pacientes_texto" xml:space="preserve">
+    <value>Para cadastrar um paciente, preencha seus dados e o psicólogo responsável, e clique em "Registrar paciente". Para modificar um existente, encontre-o na tabela e salve com "Salvar alterações"; depois de salvo, o psicólogo responsável não pode mais ser alterado.</value>
+  </data>
+  <data name="ayuda_abm_profesionales_titulo" xml:space="preserve">
+    <value>Gestão de profissionais</value>
+  </data>
+  <data name="ayuda_abm_profesionales_texto" xml:space="preserve">
+    <value>Para cadastrar um profissional, preencha seus dados e clique em "Registrar profissional". Para modificar um existente, encontre-o na tabela, edite o necessário e clique em "Salvar alterações". Use "Voltar à gestão" para sair sem perder a lista.</value>
+  </data>
+  <data name="ayuda_menu_titulo" xml:space="preserve">
+    <value>Menu principal</value>
+  </data>
+  <data name="ayuda_menu_texto" xml:space="preserve">
+    <value>Clique em qualquer um destes acessos para ir direto a essa seção do sistema. As opções exibidas dependem do seu perfil e do seu plano.</value>
+  </data>
+  <data name="ayuda_modificar_consulta_titulo" xml:space="preserve">
+    <value>Modificar uma consulta</value>
+  </data>
+  <data name="ayuda_modificar_consulta_texto" xml:space="preserve">
+    <value>Clique em "Buscar consultas" para encontrar a que deseja modificar. Depois de encontrá-la, edite os campos clínicos e clique em "Salvar alterações". Se a consulta já passou do prazo de 3 dias, o sistema vai avisar e não será possível editá-la.</value>
+  </data>
+  <data name="ayuda_perfilacion_paciente_titulo" xml:space="preserve">
+    <value>Perfilação de paciente com IA</value>
+  </data>
+  <data name="ayuda_perfilacion_paciente_texto" xml:space="preserve">
+    <value>Escolha um paciente e clique em "Gerar perfil" para que a IA elabore um perfil a partir do histórico clínico dele. Use "Novo perfil" para gerar um atualizado depois.</value>
+  </data>
+  <data name="ayuda_realizar_consulta_titulo" xml:space="preserve">
+    <value>Registrar uma consulta</value>
+  </data>
+  <data name="ayuda_realizar_consulta_texto" xml:space="preserve">
+    <value>Preencha os dados da consulta (psicólogo, paciente, data, duração e os campos clínicos) e clique em "Registrar consulta" para salvá-la.</value>
+  </data>
+  <data name="ayuda_registrar_paciente_titulo" xml:space="preserve">
+    <value>Registrar um paciente</value>
+  </data>
+  <data name="ayuda_registrar_paciente_texto" xml:space="preserve">
+    <value>Preencha os dados pessoais do paciente e o psicólogo responsável, e clique em "Registrar paciente" para salvá-lo. Depois de salvo, o psicólogo responsável não poderá mais ser alterado.</value>
+  </data>
+  <data name="ayuda_resumen_ia_titulo" xml:space="preserve">
+    <value>Resumo clínico com IA</value>
+  </data>
+  <data name="ayuda_resumen_ia_texto" xml:space="preserve">
+    <value>Clique em "Buscar consultas" para escolher sobre quais gerar o resumo, e depois em "Gerar resumo com IA". Use "Novo resumo" para gerar outro, ou "Alterar filtros" para escolher outras consultas.</value>
+  </data>
+  <data name="ayuda_gestionar_suscripcion_titulo" xml:space="preserve">
+    <value>Minha assinatura</value>
+  </data>
+  <data name="ayuda_gestionar_suscripcion_texto" xml:space="preserve">
+    <value>Aqui você vê o status do seu plano atual, pode trocá-lo escolhendo outro na tabela comparativa, atualizar sua forma de pagamento em "Atualizar forma de pagamento", ou cancelar sua assinatura em "Cancelar assinatura". Se cancelou e mudou de ideia, pode usar "Reativar assinatura" antes do fim do período já pago.</value>
+  </data>
+  <data name="ayuda_auditoria_informe_titulo" xml:space="preserve">
+    <value>Auditoria de relatórios de encaminhamento</value>
+  </data>
+  <data name="ayuda_auditoria_informe_texto" xml:space="preserve">
+    <value>Aqui você vê a lista de rascunhos de relatórios de encaminhamento pendentes de revisão. Clique em "Revisar e assinar" na linha correspondente para abrir um rascunho; a partir daí você pode descartá-lo em "Descartar relatório" ou, depois de revisado, validá-lo e assiná-lo em "Validar e assinar relatório".</value>
+  </data>
 </root>

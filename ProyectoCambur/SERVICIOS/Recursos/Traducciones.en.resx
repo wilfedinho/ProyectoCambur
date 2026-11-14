@@ -2769,4 +2769,145 @@
   <data name="lbl_ningun_archivo_seleccionado" xml:space="preserve">
     <value>No file selected</value>
   </data>
+  <data name="btn_ayuda_rapida" xml:space="preserve">
+    <value>Quick help</value>
+  </data>
+  <data name="ayuda_auditoria_bitacora_titulo" xml:space="preserve">
+    <value>System audit log</value>
+  </data>
+  <data name="ayuda_auditoria_bitacora_texto" xml:space="preserve">
+    <value>Here you can review every event logged by the system (creations, deletions, changes, logins, etc.). Use the date, user/email, module and severity filters and click "Filter" to narrow the search, or "Clear filters" to see everything again. If you search by email, you'll also see the matching professional's details.</value>
+  </data>
+  <data name="ayuda_backup_restore_titulo" xml:space="preserve">
+    <value>Database backup and restore</value>
+  </data>
+  <data name="ayuda_backup_restore_texto" xml:space="preserve">
+    <value>Click "Generate Backup now" to create a backup of the database. To restore a previous one, pick a file from the list and click "Select file and restore"; the system will ask you to confirm with "Confirm restore" before applying the change, since it replaces all current data.</value>
+  </data>
+  <data name="ayuda_cambiar_clave_titulo" xml:space="preserve">
+    <value>Change your password</value>
+  </data>
+  <data name="ayuda_cambiar_clave_texto" xml:space="preserve">
+    <value>Enter your current password and your new password (twice, to confirm it) and click "Confirm change". If you change your mind, click "Cancel" to go back without saving anything.</value>
+  </data>
+  <data name="ayuda_cambiar_idioma_titulo" xml:space="preserve">
+    <value>Change the system language</value>
+  </data>
+  <data name="ayuda_cambiar_idioma_texto" xml:space="preserve">
+    <value>Click the card of the language you want to use (it gets marked with a filled dot ●) and then click "Confirm language change". The change applies to the whole system for your account immediately.</value>
+  </data>
+  <data name="ayuda_dashboard_titulo" xml:space="preserve">
+    <value>Metrics panel</value>
+  </data>
+  <data name="ayuda_dashboard_texto" xml:space="preserve">
+    <value>Use the "This week", "This month", "This quarter" or "This year" buttons to change the period shown. Click "View all" to go to the full list of appointments or patients.</value>
+  </data>
+  <data name="ayuda_digito_verificador_titulo" xml:space="preserve">
+    <value>System integrity</value>
+  </data>
+  <data name="ayuda_digito_verificador_texto" xml:space="preserve">
+    <value>This screen checks that the data in the critical tables hasn't been changed outside the system. If, after an authorized database change (for example, a correction script), a table shows up as inconsistent, click "Recalculate and accept current state" to resync it.</value>
+  </data>
+  <data name="ayuda_exportar_reporte_titulo" xml:space="preserve">
+    <value>Export report</value>
+  </data>
+  <data name="ayuda_exportar_reporte_texto" xml:space="preserve">
+    <value>Choose the report options you need and click "📄 Export to PDF" to download it. Use "Back" to leave without exporting anything.</value>
+  </data>
+  <data name="ayuda_gestionar_idiomas_titulo" xml:space="preserve">
+    <value>Language management</value>
+  </data>
+  <data name="ayuda_gestionar_idiomas_texto" xml:space="preserve">
+    <value>To add a new language, pick it from the dropdown (or choose "Other language" and type the name) and click "Generate language with translations". In the table below you can enable or disable each language, and click "Translations" to review and fix, one by one, the texts marked "Pending".</value>
+  </data>
+  <data name="ayuda_gestionar_permisos_titulo" xml:space="preserve">
+    <value>Permissions and roles management</value>
+  </data>
+  <data name="ayuda_gestionar_permisos_texto" xml:space="preserve">
+    <value>This is where you define what each role/plan in the system can see and do, organized into families and elements. Use the "Add" buttons to create a new family, a new profile, or a new element within the permission tree.</value>
+  </data>
+  <data name="ayuda_generar_historial_titulo" xml:space="preserve">
+    <value>Patient clinical history</value>
+  </data>
+  <data name="ayuda_generar_historial_texto" xml:space="preserve">
+    <value>Pick a patient and click "Continue" to see their history. From there you can click "Save clinical history" or "Save changes" to keep what you added, or "Choose another patient" to go back to the search.</value>
+  </data>
+  <data name="ayuda_informe_derivacion_titulo" xml:space="preserve">
+    <value>Referral report</value>
+  </data>
+  <data name="ayuda_informe_derivacion_texto" xml:space="preserve">
+    <value>Click "Generate report with AI" to have the system draft one from the appointment. You can save it unfinished with "Save draft", discard it with "Discard report", or, once reviewed, click "Validate and sign report" to finalize it.</value>
+  </data>
+  <data name="ayuda_linea_temporal_titulo" xml:space="preserve">
+    <value>Patient timeline</value>
+  </data>
+  <data name="ayuda_linea_temporal_texto" xml:space="preserve">
+    <value>Use the date filter and click "Filter" to narrow down the events shown, or "All" to see all of them. Click "Continue" to move forward with the selected patient.</value>
+  </data>
+  <data name="ayuda_abm_consultas_titulo" xml:space="preserve">
+    <value>Appointment management</value>
+  </data>
+  <data name="ayuda_abm_consultas_texto" xml:space="preserve">
+    <value>To register a new appointment, pick a psychologist and a patient and click "Register session". To edit an existing one, click "✏️ Edit" on its row in the table (only available within 3 days of being registered) and save with "Save changes"; the assigned psychologist and patient can't be changed once the appointment is registered.</value>
+  </data>
+  <data name="ayuda_abm_pacientes_titulo" xml:space="preserve">
+    <value>Patient management</value>
+  </data>
+  <data name="ayuda_abm_pacientes_texto" xml:space="preserve">
+    <value>To register a patient, fill in their details and the psychologist in charge, and click "Register patient". To edit an existing one, find them in the table and save your changes with "Save changes"; once saved, the assigned psychologist can't be changed again.</value>
+  </data>
+  <data name="ayuda_abm_profesionales_titulo" xml:space="preserve">
+    <value>Professional management</value>
+  </data>
+  <data name="ayuda_abm_profesionales_texto" xml:space="preserve">
+    <value>To register a professional, fill in their details and click "Register professional". To edit an existing one, find them in the table, change what's needed and click "Save changes". Use "Back to management" to leave without losing the list.</value>
+  </data>
+  <data name="ayuda_menu_titulo" xml:space="preserve">
+    <value>Main menu</value>
+  </data>
+  <data name="ayuda_menu_texto" xml:space="preserve">
+    <value>Click any of these tiles to jump straight to that section of the system. The options you see here depend on your role and your plan.</value>
+  </data>
+  <data name="ayuda_modificar_consulta_titulo" xml:space="preserve">
+    <value>Edit an appointment</value>
+  </data>
+  <data name="ayuda_modificar_consulta_texto" xml:space="preserve">
+    <value>Click "Search appointments" to find the one you want to edit. Once you find it, update the clinical fields and click "Save changes". If the appointment is past the 3-day edit window, the system will tell you and you won't be able to edit it.</value>
+  </data>
+  <data name="ayuda_perfilacion_paciente_titulo" xml:space="preserve">
+    <value>AI patient profiling</value>
+  </data>
+  <data name="ayuda_perfilacion_paciente_texto" xml:space="preserve">
+    <value>Pick a patient and click "Generate profile" to have the AI build a profile from their clinical history. Use "New profile" to generate an updated one later.</value>
+  </data>
+  <data name="ayuda_realizar_consulta_titulo" xml:space="preserve">
+    <value>Register an appointment</value>
+  </data>
+  <data name="ayuda_realizar_consulta_texto" xml:space="preserve">
+    <value>Fill in the appointment details (psychologist, patient, date, duration and the clinical fields) and click "Register session" to save it.</value>
+  </data>
+  <data name="ayuda_registrar_paciente_titulo" xml:space="preserve">
+    <value>Register a patient</value>
+  </data>
+  <data name="ayuda_registrar_paciente_texto" xml:space="preserve">
+    <value>Fill in the patient's personal details and the psychologist in charge, and click "Register patient" to save it. Once saved, the assigned psychologist can't be changed.</value>
+  </data>
+  <data name="ayuda_resumen_ia_titulo" xml:space="preserve">
+    <value>AI clinical summary</value>
+  </data>
+  <data name="ayuda_resumen_ia_texto" xml:space="preserve">
+    <value>Click "Search appointments" to choose which ones to summarize, then click "Generate summary with AI". Use "New summary" to generate another one, or "Change filters" to pick different appointments.</value>
+  </data>
+  <data name="ayuda_gestionar_suscripcion_titulo" xml:space="preserve">
+    <value>My subscription</value>
+  </data>
+  <data name="ayuda_gestionar_suscripcion_texto" xml:space="preserve">
+    <value>Here you can see your current plan's status, switch it by picking another one in the comparison table, update your payment method with "Update payment method", or cancel your subscription with "Cancel subscription". If you cancelled and change your mind, you can use "Reactivate subscription" before the period you already paid for ends.</value>
+  </data>
+  <data name="ayuda_auditoria_informe_titulo" xml:space="preserve">
+    <value>Referral report audit</value>
+  </data>
+  <data name="ayuda_auditoria_informe_texto" xml:space="preserve">
+    <value>Here you'll see the list of referral report drafts pending review. Click "Review and sign" on the corresponding row to open a draft; from there you can discard it with "Discard report" or, once reviewed, validate and sign it with "Validate and sign report".</value>
+  </data>
 </root>

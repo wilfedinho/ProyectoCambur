@@ -2769,4 +2769,145 @@
   <data name="lbl_ningun_archivo_seleccionado" xml:space="preserve">
     <value>Aucun fichier sélectionné</value>
   </data>
+  <data name="btn_ayuda_rapida" xml:space="preserve">
+    <value>Aide rapide</value>
+  </data>
+  <data name="ayuda_auditoria_bitacora_titulo" xml:space="preserve">
+    <value>Audit et journal du système</value>
+  </data>
+  <data name="ayuda_auditoria_bitacora_texto" xml:space="preserve">
+    <value>Vous pouvez consulter ici tous les événements enregistrés par le système (créations, suppressions, modifications, connexions, etc.). Utilisez les filtres de date, d'utilisateur/email, de module et de criticité puis cliquez sur « Filtrer » pour affiner la recherche, ou sur « Effacer les filtres » pour tout revoir. Une recherche par email affiche aussi les données du professionnel correspondant.</value>
+  </data>
+  <data name="ayuda_backup_restore_titulo" xml:space="preserve">
+    <value>Sauvegarde et restauration de la base de données</value>
+  </data>
+  <data name="ayuda_backup_restore_texto" xml:space="preserve">
+    <value>Cliquez sur « Générer une sauvegarde maintenant » pour créer une sauvegarde. Pour restaurer une sauvegarde précédente, choisissez un fichier dans la liste et cliquez sur « Sélectionner le fichier et restaurer » ; le système vous demandera de confirmer avec « Confirmer la restauration » avant d'appliquer le changement, car cela remplace toutes les données actuelles.</value>
+  </data>
+  <data name="ayuda_cambiar_clave_titulo" xml:space="preserve">
+    <value>Changer votre mot de passe</value>
+  </data>
+  <data name="ayuda_cambiar_clave_texto" xml:space="preserve">
+    <value>Saisissez votre mot de passe actuel et le nouveau (deux fois, pour le confirmer) puis cliquez sur « Confirmer le changement ». Pour annuler, cliquez sur « Annuler ».</value>
+  </data>
+  <data name="ayuda_cambiar_idioma_titulo" xml:space="preserve">
+    <value>Changer la langue du système</value>
+  </data>
+  <data name="ayuda_cambiar_idioma_texto" xml:space="preserve">
+    <value>Cliquez sur la carte de la langue souhaitée (elle se marque d'un point plein ●) puis sur « Confirmer le changement de langue ». Le changement s'applique immédiatement à tout le système pour votre compte.</value>
+  </data>
+  <data name="ayuda_dashboard_titulo" xml:space="preserve">
+    <value>Tableau de bord</value>
+  </data>
+  <data name="ayuda_dashboard_texto" xml:space="preserve">
+    <value>Utilisez les boutons « Cette semaine », « Ce mois », « Ce trimestre » ou « Cette année » pour changer la période affichée. Cliquez sur « Voir tout » pour accéder à la liste complète des consultations ou des patients.</value>
+  </data>
+  <data name="ayuda_digito_verificador_titulo" xml:space="preserve">
+    <value>Intégrité du système</value>
+  </data>
+  <data name="ayuda_digito_verificador_texto" xml:space="preserve">
+    <value>Cet écran vérifie que les données des tables critiques n'ont pas été modifiées hors du système. Si, après un changement autorisé de la base (par exemple un script de correction), une table apparaît incohérente, cliquez sur « Recalculer et accepter l'état actuel » pour la resynchroniser.</value>
+  </data>
+  <data name="ayuda_exportar_reporte_titulo" xml:space="preserve">
+    <value>Exporter un rapport</value>
+  </data>
+  <data name="ayuda_exportar_reporte_texto" xml:space="preserve">
+    <value>Choisissez les options du rapport puis cliquez sur « 📄 Exporter en PDF » pour le télécharger. Utilisez « Retour » pour quitter sans rien exporter.</value>
+  </data>
+  <data name="ayuda_gestionar_idiomas_titulo" xml:space="preserve">
+    <value>Gestion des langues</value>
+  </data>
+  <data name="ayuda_gestionar_idiomas_texto" xml:space="preserve">
+    <value>Pour ajouter une langue, choisissez-la dans la liste (ou « Autre langue » pour taper son nom) puis cliquez sur « Générer la langue avec traductions ». Dans le tableau, vous pouvez activer/désactiver chaque langue et cliquer sur « Traductions » pour corriger un par un les textes marqués « En attente ».</value>
+  </data>
+  <data name="ayuda_gestionar_permisos_titulo" xml:space="preserve">
+    <value>Gestion des permissions et des rôles</value>
+  </data>
+  <data name="ayuda_gestionar_permisos_texto" xml:space="preserve">
+    <value>C'est ici que l'on définit ce que chaque rôle/plan peut voir et faire, organisé en familles et éléments. Utilisez les boutons « Ajouter » pour créer une nouvelle famille, un nouveau profil ou un nouvel élément dans l'arbre des permissions.</value>
+  </data>
+  <data name="ayuda_generar_historial_titulo" xml:space="preserve">
+    <value>Dossier clinique du patient</value>
+  </data>
+  <data name="ayuda_generar_historial_texto" xml:space="preserve">
+    <value>Choisissez un patient puis cliquez sur « Continuer » pour voir son dossier. Vous pouvez ensuite cliquer sur « Enregistrer le dossier clinique » ou « Enregistrer les modifications », ou sur « Choisir un autre patient » pour revenir à la recherche.</value>
+  </data>
+  <data name="ayuda_informe_derivacion_titulo" xml:space="preserve">
+    <value>Rapport d'orientation</value>
+  </data>
+  <data name="ayuda_informe_derivacion_texto" xml:space="preserve">
+    <value>Cliquez sur « Générer le rapport avec l'IA » pour obtenir un brouillon à partir de la consultation. Vous pouvez l'enregistrer en brouillon avec « Enregistrer le brouillon », l'abandonner avec « Abandonner le rapport », ou, une fois relu, cliquer sur « Valider et signer le rapport » pour le finaliser.</value>
+  </data>
+  <data name="ayuda_linea_temporal_titulo" xml:space="preserve">
+    <value>Chronologie du patient</value>
+  </data>
+  <data name="ayuda_linea_temporal_texto" xml:space="preserve">
+    <value>Utilisez le filtre de dates et cliquez sur « Filtrer » pour réduire les événements affichés, ou sur « Tous » pour tout voir. Cliquez sur « Continuer » pour avancer avec le patient sélectionné.</value>
+  </data>
+  <data name="ayuda_abm_consultas_titulo" xml:space="preserve">
+    <value>Gestion des consultations</value>
+  </data>
+  <data name="ayuda_abm_consultas_texto" xml:space="preserve">
+    <value>Pour enregistrer une nouvelle consultation, choisissez le psychologue et le patient puis cliquez sur « Enregistrer la consultation ». Pour modifier une consultation existante, cliquez sur « ✏️ Modifier » sur sa ligne (disponible seulement dans les 3 jours suivant son enregistrement) puis sur « Enregistrer les modifications » ; le psychologue et le patient ne peuvent plus être changés une fois la consultation enregistrée.</value>
+  </data>
+  <data name="ayuda_abm_pacientes_titulo" xml:space="preserve">
+    <value>Gestion des patients</value>
+  </data>
+  <data name="ayuda_abm_pacientes_texto" xml:space="preserve">
+    <value>Pour créer un patient, remplissez ses données et le psychologue responsable, puis cliquez sur « Enregistrer le patient ». Pour modifier un patient existant, retrouvez-le dans le tableau et enregistrez avec « Enregistrer les modifications » ; une fois enregistré, le psychologue assigné ne peut plus être changé.</value>
+  </data>
+  <data name="ayuda_abm_profesionales_titulo" xml:space="preserve">
+    <value>Gestion des professionnels</value>
+  </data>
+  <data name="ayuda_abm_profesionales_texto" xml:space="preserve">
+    <value>Pour créer un professionnel, remplissez ses données puis cliquez sur « Enregistrer le professionnel ». Pour en modifier un existant, retrouvez-le dans le tableau, modifiez ce qu'il faut et cliquez sur « Enregistrer les modifications ». Utilisez « Retour à la gestion » pour quitter sans perdre la liste.</value>
+  </data>
+  <data name="ayuda_menu_titulo" xml:space="preserve">
+    <value>Menu principal</value>
+  </data>
+  <data name="ayuda_menu_texto" xml:space="preserve">
+    <value>Cliquez sur l'une de ces tuiles pour aller directement à cette section du système. Les options affichées dépendent de votre rôle et de votre plan.</value>
+  </data>
+  <data name="ayuda_modificar_consulta_titulo" xml:space="preserve">
+    <value>Modifier une consultation</value>
+  </data>
+  <data name="ayuda_modificar_consulta_texto" xml:space="preserve">
+    <value>Cliquez sur « Rechercher des consultations » pour trouver celle à modifier. Une fois trouvée, modifiez les champs cliniques puis cliquez sur « Enregistrer les modifications ». Si le délai de 3 jours est dépassé, le système vous l'indiquera et vous ne pourrez pas la modifier.</value>
+  </data>
+  <data name="ayuda_perfilacion_paciente_titulo" xml:space="preserve">
+    <value>Profilage du patient par IA</value>
+  </data>
+  <data name="ayuda_perfilacion_paciente_texto" xml:space="preserve">
+    <value>Choisissez un patient puis cliquez sur « Générer le profil » pour que l'IA élabore un profil à partir de son dossier clinique. Utilisez « Nouveau profil » pour en générer un plus tard.</value>
+  </data>
+  <data name="ayuda_realizar_consulta_titulo" xml:space="preserve">
+    <value>Enregistrer une consultation</value>
+  </data>
+  <data name="ayuda_realizar_consulta_texto" xml:space="preserve">
+    <value>Remplissez les données de la consultation (psychologue, patient, date, durée et champs cliniques) puis cliquez sur « Enregistrer la consultation » pour la sauvegarder.</value>
+  </data>
+  <data name="ayuda_registrar_paciente_titulo" xml:space="preserve">
+    <value>Enregistrer un patient</value>
+  </data>
+  <data name="ayuda_registrar_paciente_texto" xml:space="preserve">
+    <value>Remplissez les données personnelles du patient et le psychologue responsable, puis cliquez sur « Enregistrer le patient ». Une fois enregistré, le psychologue assigné ne pourra plus être changé.</value>
+  </data>
+  <data name="ayuda_resumen_ia_titulo" xml:space="preserve">
+    <value>Résumé clinique par IA</value>
+  </data>
+  <data name="ayuda_resumen_ia_texto" xml:space="preserve">
+    <value>Cliquez sur « Rechercher des consultations » pour choisir celles à résumer, puis sur « Générer le résumé avec l'IA ». Utilisez « Nouveau résumé » pour en générer un autre, ou « Changer les filtres » pour choisir d'autres consultations.</value>
+  </data>
+  <data name="ayuda_gestionar_suscripcion_titulo" xml:space="preserve">
+    <value>Mon abonnement</value>
+  </data>
+  <data name="ayuda_gestionar_suscripcion_texto" xml:space="preserve">
+    <value>Vous pouvez voir ici l'état de votre plan actuel, en choisir un autre dans le tableau comparatif, mettre à jour votre moyen de paiement avec « Mettre à jour le moyen de paiement », ou annuler votre abonnement avec « Annuler l'abonnement ». Si vous changez d'avis après l'avoir annulé, utilisez « Réactiver l'abonnement » avant la fin de la période déjà payée.</value>
+  </data>
+  <data name="ayuda_auditoria_informe_titulo" xml:space="preserve">
+    <value>Audit des rapports d'orientation</value>
+  </data>
+  <data name="ayuda_auditoria_informe_texto" xml:space="preserve">
+    <value>Vous voyez ici la liste des brouillons de rapports d'orientation en attente de révision. Cliquez sur « Réviser et signer » sur la ligne correspondante pour ouvrir un brouillon ; de là, vous pouvez l'abandonner avec « Abandonner le rapport » ou, une fois relu, le valider et le signer avec « Valider et signer le rapport ».</value>
+  </data>
 </root>

@@ -2769,4 +2769,145 @@
   <data name="lbl_ningun_archivo_seleccionado" xml:space="preserve">
     <value>Keine Datei ausgewählt</value>
   </data>
+  <data name="btn_ayuda_rapida" xml:space="preserve">
+    <value>Kurzhilfe</value>
+  </data>
+  <data name="ayuda_auditoria_bitacora_titulo" xml:space="preserve">
+    <value>Systemprotokoll und Audit</value>
+  </data>
+  <data name="ayuda_auditoria_bitacora_texto" xml:space="preserve">
+    <value>Hier kannst du alle vom System erfassten Ereignisse einsehen (Anlagen, Löschungen, Änderungen, Anmeldungen usw.). Nutze die Filter nach Datum, Benutzer/E-Mail, Modul und Kritikalität und klicke auf „Filtern“, um die Suche einzugrenzen, oder auf „Filter zurücksetzen“, um wieder alles zu sehen. Bei einer Suche per E-Mail siehst du zusätzlich die Daten der jeweiligen Fachkraft.</value>
+  </data>
+  <data name="ayuda_backup_restore_titulo" xml:space="preserve">
+    <value>Datenbank-Backup und Wiederherstellung</value>
+  </data>
+  <data name="ayuda_backup_restore_texto" xml:space="preserve">
+    <value>Klicke auf „Jetzt Backup erstellen“, um eine Sicherung der Datenbank anzulegen. Um eine frühere Sicherung wiederherzustellen, wähle eine Datei aus der Liste und klicke auf „Datei auswählen und wiederherstellen“; das System bittet dich, mit „Wiederherstellung bestätigen“ zu bestätigen, bevor die Änderung angewendet wird, da dabei alle aktuellen Daten ersetzt werden.</value>
+  </data>
+  <data name="ayuda_cambiar_clave_titulo" xml:space="preserve">
+    <value>Passwort ändern</value>
+  </data>
+  <data name="ayuda_cambiar_clave_texto" xml:space="preserve">
+    <value>Gib dein aktuelles Passwort und das neue Passwort (zur Bestätigung zweimal) ein und klicke auf „Änderung bestätigen“. Wenn du es dir anders überlegst, klicke auf „Abbrechen“, um ohne Speichern zurückzugehen.</value>
+  </data>
+  <data name="ayuda_cambiar_idioma_titulo" xml:space="preserve">
+    <value>Systemsprache ändern</value>
+  </data>
+  <data name="ayuda_cambiar_idioma_texto" xml:space="preserve">
+    <value>Klicke auf die Karte der gewünschten Sprache (sie wird mit einem ausgefüllten Punkt ● markiert) und danach auf „Sprachänderung bestätigen“. Die Änderung gilt sofort für das gesamte System deines Kontos.</value>
+  </data>
+  <data name="ayuda_dashboard_titulo" xml:space="preserve">
+    <value>Kennzahlen-Übersicht</value>
+  </data>
+  <data name="ayuda_dashboard_texto" xml:space="preserve">
+    <value>Nutze die Schaltflächen „Diese Woche“, „Dieser Monat“, „Dieses Quartal“ oder „Dieses Jahr“, um den angezeigten Zeitraum zu ändern. Klicke auf „Alle anzeigen“, um zur vollständigen Liste der Konsultationen oder Patient*innen zu gelangen.</value>
+  </data>
+  <data name="ayuda_digito_verificador_titulo" xml:space="preserve">
+    <value>Systemintegrität</value>
+  </data>
+  <data name="ayuda_digito_verificador_texto" xml:space="preserve">
+    <value>Dieser Bildschirm prüft, ob die Daten der kritischen Tabellen außerhalb des Systems verändert wurden. Wenn nach einer autorisierten Datenbankänderung (z. B. einem Korrekturskript) eine Tabelle als inkonsistent angezeigt wird, klicke auf „Neu berechnen und aktuellen Stand übernehmen“, um sie neu zu synchronisieren.</value>
+  </data>
+  <data name="ayuda_exportar_reporte_titulo" xml:space="preserve">
+    <value>Bericht exportieren</value>
+  </data>
+  <data name="ayuda_exportar_reporte_texto" xml:space="preserve">
+    <value>Wähle die gewünschten Berichtsoptionen und klicke auf „📄 Als PDF exportieren“, um ihn herunterzuladen. Nutze „Zurück“, um ohne Export zu verlassen.</value>
+  </data>
+  <data name="ayuda_gestionar_idiomas_titulo" xml:space="preserve">
+    <value>Sprachverwaltung</value>
+  </data>
+  <data name="ayuda_gestionar_idiomas_texto" xml:space="preserve">
+    <value>Um eine neue Sprache hinzuzufügen, wähle sie aus der Liste aus (oder wähle „Andere Sprache“ und gib den Namen ein) und klicke auf „Sprache mit Übersetzungen erstellen“. In der Tabelle unten kannst du jede Sprache aktivieren oder deaktivieren und auf „Übersetzungen“ klicken, um die als „Ausstehend“ markierten Texte einzeln zu prüfen und zu korrigieren.</value>
+  </data>
+  <data name="ayuda_gestionar_permisos_titulo" xml:space="preserve">
+    <value>Berechtigungs- und Rollenverwaltung</value>
+  </data>
+  <data name="ayuda_gestionar_permisos_texto" xml:space="preserve">
+    <value>Hier wird festgelegt, was jede Rolle/jeder Plan im System sehen und tun darf, gegliedert in Familien und Elemente. Nutze die Schaltflächen „Hinzufügen“, um eine neue Familie, ein neues Profil oder ein neues Element im Berechtigungsbaum zu erstellen.</value>
+  </data>
+  <data name="ayuda_generar_historial_titulo" xml:space="preserve">
+    <value>Klinische Akte des Patienten</value>
+  </data>
+  <data name="ayuda_generar_historial_texto" xml:space="preserve">
+    <value>Wähle eine/n Patient*in aus und klicke auf „Weiter“, um die Akte zu sehen. Von dort aus kannst du auf „Klinische Akte speichern“ oder „Änderungen speichern“ klicken, oder auf „Andere/n Patient*in wählen“, um zur Suche zurückzukehren.</value>
+  </data>
+  <data name="ayuda_informe_derivacion_titulo" xml:space="preserve">
+    <value>Überweisungsbericht</value>
+  </data>
+  <data name="ayuda_informe_derivacion_texto" xml:space="preserve">
+    <value>Klicke auf „Bericht mit KI erstellen“, damit das System aus der Konsultation einen Entwurf erstellt. Du kannst ihn unfertig mit „Entwurf speichern“ sichern, mit „Bericht verwerfen“ löschen, oder nach der Prüfung auf „Bericht validieren und unterschreiben“ klicken, um ihn abzuschließen.</value>
+  </data>
+  <data name="ayuda_linea_temporal_titulo" xml:space="preserve">
+    <value>Zeitlinie des Patienten</value>
+  </data>
+  <data name="ayuda_linea_temporal_texto" xml:space="preserve">
+    <value>Nutze den Datumsfilter und klicke auf „Filtern“, um die angezeigten Ereignisse einzugrenzen, oder auf „Alle“, um alle zu sehen. Klicke auf „Weiter“, um mit der/dem ausgewählten Patient*in fortzufahren.</value>
+  </data>
+  <data name="ayuda_abm_consultas_titulo" xml:space="preserve">
+    <value>Verwaltung der Konsultationen</value>
+  </data>
+  <data name="ayuda_abm_consultas_texto" xml:space="preserve">
+    <value>Um eine neue Konsultation zu registrieren, wähle Fachkraft und Patient*in aus und klicke auf „Konsultation registrieren“. Um eine bestehende zu ändern, klicke in der entsprechenden Zeile auf „✏️ Bearbeiten“ (nur innerhalb von 3 Tagen nach der Registrierung möglich) und speichere mit „Änderungen speichern“; die zugewiesene Fachkraft und der/die Patient*in können nach der Registrierung nicht mehr geändert werden.</value>
+  </data>
+  <data name="ayuda_abm_pacientes_titulo" xml:space="preserve">
+    <value>Patientenverwaltung</value>
+  </data>
+  <data name="ayuda_abm_pacientes_texto" xml:space="preserve">
+    <value>Um eine/n Patient*in anzulegen, fülle die Daten und die zuständige Fachkraft aus und klicke auf „Patient*in registrieren“. Um eine/n bestehende/n zu bearbeiten, suche sie/ihn in der Tabelle und speichere mit „Änderungen speichern“; nach dem Speichern kann die zugewiesene Fachkraft nicht mehr geändert werden.</value>
+  </data>
+  <data name="ayuda_abm_profesionales_titulo" xml:space="preserve">
+    <value>Verwaltung der Fachkräfte</value>
+  </data>
+  <data name="ayuda_abm_profesionales_texto" xml:space="preserve">
+    <value>Um eine Fachkraft anzulegen, fülle die Daten aus und klicke auf „Fachkraft registrieren“. Um eine bestehende zu bearbeiten, suche sie in der Tabelle, ändere das Nötige und klicke auf „Änderungen speichern“. Nutze „Zurück zur Verwaltung“, um ohne Verlust der Liste zu verlassen.</value>
+  </data>
+  <data name="ayuda_menu_titulo" xml:space="preserve">
+    <value>Hauptmenü</value>
+  </data>
+  <data name="ayuda_menu_texto" xml:space="preserve">
+    <value>Klicke auf eine dieser Kacheln, um direkt zu diesem Bereich des Systems zu springen. Die angezeigten Optionen hängen von deiner Rolle und deinem Plan ab.</value>
+  </data>
+  <data name="ayuda_modificar_consulta_titulo" xml:space="preserve">
+    <value>Eine Konsultation bearbeiten</value>
+  </data>
+  <data name="ayuda_modificar_consulta_texto" xml:space="preserve">
+    <value>Klicke auf „Konsultationen suchen“, um die zu bearbeitende zu finden. Sobald du sie gefunden hast, bearbeite die klinischen Felder und klicke auf „Änderungen speichern“. Wenn die 3-Tage-Frist für die Bearbeitung bereits abgelaufen ist, zeigt das System dies an und eine Bearbeitung ist nicht mehr möglich.</value>
+  </data>
+  <data name="ayuda_perfilacion_paciente_titulo" xml:space="preserve">
+    <value>KI-Patientenprofilierung</value>
+  </data>
+  <data name="ayuda_perfilacion_paciente_texto" xml:space="preserve">
+    <value>Wähle eine/n Patient*in aus und klicke auf „Profil erstellen“, damit die KI anhand der klinischen Akte ein Profil erstellt. Nutze „Neues Profil“, um später ein aktualisiertes zu erstellen.</value>
+  </data>
+  <data name="ayuda_realizar_consulta_titulo" xml:space="preserve">
+    <value>Eine Konsultation registrieren</value>
+  </data>
+  <data name="ayuda_realizar_consulta_texto" xml:space="preserve">
+    <value>Fülle die Daten der Konsultation aus (Fachkraft, Patient*in, Datum, Dauer und die klinischen Felder) und klicke auf „Konsultation registrieren“, um sie zu speichern.</value>
+  </data>
+  <data name="ayuda_registrar_paciente_titulo" xml:space="preserve">
+    <value>Eine/n Patient*in registrieren</value>
+  </data>
+  <data name="ayuda_registrar_paciente_texto" xml:space="preserve">
+    <value>Fülle die persönlichen Daten der/des Patient*in und die zuständige Fachkraft aus und klicke auf „Patient*in registrieren“, um zu speichern. Nach dem Speichern kann die zugewiesene Fachkraft nicht mehr geändert werden.</value>
+  </data>
+  <data name="ayuda_resumen_ia_titulo" xml:space="preserve">
+    <value>Klinische Zusammenfassung mit KI</value>
+  </data>
+  <data name="ayuda_resumen_ia_texto" xml:space="preserve">
+    <value>Klicke auf „Konsultationen suchen“, um auszuwählen, für welche eine Zusammenfassung erstellt werden soll, und dann auf „Zusammenfassung mit KI erstellen“. Nutze „Neue Zusammenfassung“, um eine weitere zu erstellen, oder „Filter ändern“, um andere Konsultationen auszuwählen.</value>
+  </data>
+  <data name="ayuda_gestionar_suscripcion_titulo" xml:space="preserve">
+    <value>Mein Abonnement</value>
+  </data>
+  <data name="ayuda_gestionar_suscripcion_texto" xml:space="preserve">
+    <value>Hier siehst du den Status deines aktuellen Plans, kannst ihn über die Vergleichstabelle wechseln, deine Zahlungsmethode mit „Zahlungsmethode aktualisieren“ aktualisieren oder dein Abonnement mit „Abonnement kündigen“ kündigen. Wenn du es dir nach der Kündigung anders überlegst, kannst du „Abonnement reaktivieren“ nutzen, bevor der bereits bezahlte Zeitraum endet.</value>
+  </data>
+  <data name="ayuda_auditoria_informe_titulo" xml:space="preserve">
+    <value>Prüfung der Überweisungsberichte</value>
+  </data>
+  <data name="ayuda_auditoria_informe_texto" xml:space="preserve">
+    <value>Hier siehst du die Liste der Überweisungsbericht-Entwürfe, die noch geprüft werden müssen. Klicke in der entsprechenden Zeile auf „Prüfen und unterschreiben“, um einen Entwurf zu öffnen; von dort kannst du ihn mit „Bericht verwerfen“ verwerfen oder, nach der Prüfung, mit „Bericht validieren und unterschreiben“ validieren und unterschreiben.</value>
+  </data>
 </root>

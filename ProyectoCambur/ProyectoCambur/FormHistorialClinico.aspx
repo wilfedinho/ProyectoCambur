@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FormHistorialClinico.aspx.cs" Inherits="FormHistorialClinico" %>
 <%@ Register Src="~/UserControls/HeaderUsuario.ascx" TagPrefix="uc" TagName="HeaderUsuario" %>
+<%@ Register Src="~/UserControls/AyudaRapida.ascx" TagPrefix="uc" TagName="AyudaRapida" %>
 <%@ Register Src="~/UserControls/SidebarNavegacion.ascx" TagPrefix="uc" TagName="SidebarNavegacion" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,6 +12,7 @@
     <link href="EstilosPaginas/HeaderUsuario.css"        rel="stylesheet" type="text/css"/>
     <link href="EstilosPaginas/SidebarNavegacion.css"    rel="stylesheet" type="text/css"/>
     <link href="EstilosPaginas/FormHistorialClinico.css" rel="stylesheet" type="text/css"/>
+    <link href="EstilosPaginas/AyudaRapida.css"      rel="stylesheet" type="text/css"/>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -37,6 +39,7 @@
                     <span class="header-sep">/</span>
                     <asp:Label ID="lblHeaderPagina" runat="server" CssClass="header-page" Text="" />
                 </div>
+                <uc:AyudaRapida ID="ucAyudaRapida" runat="server" ClaveAyuda="generar_historial" />
                 <uc:HeaderUsuario ID="ucHeaderUsuario" runat="server" />
             </header>
 

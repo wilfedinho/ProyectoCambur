@@ -2769,4 +2769,145 @@
   <data name="lbl_ningun_archivo_seleccionado" xml:space="preserve">
     <value>Файл не выбран</value>
   </data>
+  <data name="btn_ayuda_rapida" xml:space="preserve">
+    <value>Быстрая справка</value>
+  </data>
+  <data name="ayuda_auditoria_bitacora_titulo" xml:space="preserve">
+    <value>Аудит и журнал системы</value>
+  </data>
+  <data name="ayuda_auditoria_bitacora_texto" xml:space="preserve">
+    <value>Здесь можно просмотреть все события, зафиксированные системой (создание, удаление, изменения, входы в систему и т. д.). Используйте фильтры по дате, пользователю/email, модулю и критичности и нажмите «Фильтровать», чтобы сузить поиск, или «Очистить фильтры», чтобы увидеть всё снова. При поиске по email также отображаются данные соответствующего специалиста.</value>
+  </data>
+  <data name="ayuda_backup_restore_titulo" xml:space="preserve">
+    <value>Резервное копирование и восстановление базы данных</value>
+  </data>
+  <data name="ayuda_backup_restore_texto" xml:space="preserve">
+    <value>Нажмите «Создать резервную копию сейчас», чтобы создать копию базы данных. Чтобы восстановить предыдущую копию, выберите файл из списка и нажмите «Выбрать файл и восстановить»; система попросит подтвердить действие кнопкой «Подтвердить восстановление», так как это заменит все текущие данные.</value>
+  </data>
+  <data name="ayuda_cambiar_clave_titulo" xml:space="preserve">
+    <value>Изменить пароль</value>
+  </data>
+  <data name="ayuda_cambiar_clave_texto" xml:space="preserve">
+    <value>Введите текущий пароль и новый пароль (два раза, для подтверждения) и нажмите «Подтвердить изменение». Если вы передумали, нажмите «Отмена», чтобы вернуться без сохранения.</value>
+  </data>
+  <data name="ayuda_cambiar_idioma_titulo" xml:space="preserve">
+    <value>Изменить язык системы</value>
+  </data>
+  <data name="ayuda_cambiar_idioma_texto" xml:space="preserve">
+    <value>Нажмите на карточку нужного языка (она отметится заполненной точкой ●), затем нажмите «Подтвердить смену языка». Изменение сразу применяется ко всей системе для вашей учётной записи.</value>
+  </data>
+  <data name="ayuda_dashboard_titulo" xml:space="preserve">
+    <value>Панель показателей</value>
+  </data>
+  <data name="ayuda_dashboard_texto" xml:space="preserve">
+    <value>Используйте кнопки «Эта неделя», «Этот месяц», «Этот квартал» или «Этот год», чтобы изменить отображаемый период. Нажмите «Показать все», чтобы перейти к полному списку консультаций или пациентов.</value>
+  </data>
+  <data name="ayuda_digito_verificador_titulo" xml:space="preserve">
+    <value>Целостность системы</value>
+  </data>
+  <data name="ayuda_digito_verificador_texto" xml:space="preserve">
+    <value>Этот экран проверяет, не были ли данные критических таблиц изменены вне системы. Если после разрешённого изменения базы данных (например, скрипта исправления) какая-то таблица отображается как несогласованная, нажмите «Пересчитать и принять текущее состояние», чтобы повторно синхронизировать её.</value>
+  </data>
+  <data name="ayuda_exportar_reporte_titulo" xml:space="preserve">
+    <value>Экспорт отчёта</value>
+  </data>
+  <data name="ayuda_exportar_reporte_texto" xml:space="preserve">
+    <value>Выберите нужные параметры отчёта и нажмите «📄 Экспортировать в PDF», чтобы скачать его. Используйте «Назад», чтобы выйти без экспорта.</value>
+  </data>
+  <data name="ayuda_gestionar_idiomas_titulo" xml:space="preserve">
+    <value>Управление языками</value>
+  </data>
+  <data name="ayuda_gestionar_idiomas_texto" xml:space="preserve">
+    <value>Чтобы добавить новый язык, выберите его из списка (или выберите «Другой язык» и введите название) и нажмите «Создать язык с переводами». В таблице ниже можно включать или отключать каждый язык, а также нажать «Переводы», чтобы по одному проверить и исправить тексты со статусом «Ожидает».</value>
+  </data>
+  <data name="ayuda_gestionar_permisos_titulo" xml:space="preserve">
+    <value>Управление правами и ролями</value>
+  </data>
+  <data name="ayuda_gestionar_permisos_texto" xml:space="preserve">
+    <value>Здесь определяется, что может видеть и делать каждая роль/план в системе, организованные по семействам и элементам. Используйте кнопки «Добавить», чтобы создать новое семейство, новый профиль или новый элемент в дереве прав.</value>
+  </data>
+  <data name="ayuda_generar_historial_titulo" xml:space="preserve">
+    <value>Клиническая карта пациента</value>
+  </data>
+  <data name="ayuda_generar_historial_texto" xml:space="preserve">
+    <value>Выберите пациента и нажмите «Продолжить», чтобы увидеть его карту. Далее можно нажать «Сохранить клиническую карту» или «Сохранить изменения», либо «Выбрать другого пациента», чтобы вернуться к поиску.</value>
+  </data>
+  <data name="ayuda_informe_derivacion_titulo" xml:space="preserve">
+    <value>Отчёт о направлении</value>
+  </data>
+  <data name="ayuda_informe_derivacion_texto" xml:space="preserve">
+    <value>Нажмите «Создать отчёт с помощью ИИ», чтобы система подготовила черновик на основе консультации. Можно сохранить его неготовым с помощью «Сохранить черновик», отказаться от него с «Отклонить отчёт», или, после проверки, нажать «Подтвердить и подписать отчёт», чтобы завершить его.</value>
+  </data>
+  <data name="ayuda_linea_temporal_titulo" xml:space="preserve">
+    <value>Хронология пациента</value>
+  </data>
+  <data name="ayuda_linea_temporal_texto" xml:space="preserve">
+    <value>Используйте фильтр по дате и нажмите «Фильтровать», чтобы сузить отображаемые события, или «Все», чтобы увидеть их все. Нажмите «Продолжить», чтобы перейти дальше с выбранным пациентом.</value>
+  </data>
+  <data name="ayuda_abm_consultas_titulo" xml:space="preserve">
+    <value>Управление консультациями</value>
+  </data>
+  <data name="ayuda_abm_consultas_texto" xml:space="preserve">
+    <value>Чтобы зарегистрировать новую консультацию, выберите психолога и пациента и нажмите «Зарегистрировать консультацию». Чтобы изменить существующую, нажмите «✏️ Изменить» в соответствующей строке (доступно только в течение 3 дней после регистрации) и сохраните с помощью «Сохранить изменения»; назначенные психолог и пациент не могут быть изменены после регистрации.</value>
+  </data>
+  <data name="ayuda_abm_pacientes_titulo" xml:space="preserve">
+    <value>Управление пациентами</value>
+  </data>
+  <data name="ayuda_abm_pacientes_texto" xml:space="preserve">
+    <value>Чтобы зарегистрировать пациента, заполните его данные и ответственного психолога и нажмите «Зарегистрировать пациента». Чтобы изменить существующего, найдите его в таблице и сохраните изменения с помощью «Сохранить изменения»; после сохранения назначенный психолог больше не может быть изменён.</value>
+  </data>
+  <data name="ayuda_abm_profesionales_titulo" xml:space="preserve">
+    <value>Управление специалистами</value>
+  </data>
+  <data name="ayuda_abm_profesionales_texto" xml:space="preserve">
+    <value>Чтобы зарегистрировать специалиста, заполните его данные и нажмите «Зарегистрировать специалиста». Чтобы изменить существующего, найдите его в таблице, измените нужное и нажмите «Сохранить изменения». Используйте «Вернуться к управлению», чтобы выйти, не потеряв список.</value>
+  </data>
+  <data name="ayuda_menu_titulo" xml:space="preserve">
+    <value>Главное меню</value>
+  </data>
+  <data name="ayuda_menu_texto" xml:space="preserve">
+    <value>Нажмите на любую из этих плиток, чтобы сразу перейти в соответствующий раздел системы. Доступные варианты зависят от вашей роли и плана.</value>
+  </data>
+  <data name="ayuda_modificar_consulta_titulo" xml:space="preserve">
+    <value>Изменить консультацию</value>
+  </data>
+  <data name="ayuda_modificar_consulta_texto" xml:space="preserve">
+    <value>Нажмите «Искать консультации», чтобы найти нужную для изменения. Найдя её, отредактируйте клинические поля и нажмите «Сохранить изменения». Если срок в 3 дня для изменения уже истёк, система сообщит об этом, и редактирование будет недоступно.</value>
+  </data>
+  <data name="ayuda_perfilacion_paciente_titulo" xml:space="preserve">
+    <value>Профилирование пациента с помощью ИИ</value>
+  </data>
+  <data name="ayuda_perfilacion_paciente_texto" xml:space="preserve">
+    <value>Выберите пациента и нажмите «Создать профиль», чтобы ИИ составил профиль на основе его клинической карты. Используйте «Новый профиль», чтобы позже создать обновлённый.</value>
+  </data>
+  <data name="ayuda_realizar_consulta_titulo" xml:space="preserve">
+    <value>Зарегистрировать консультацию</value>
+  </data>
+  <data name="ayuda_realizar_consulta_texto" xml:space="preserve">
+    <value>Заполните данные консультации (психолог, пациент, дата, продолжительность и клинические поля) и нажмите «Зарегистрировать консультацию», чтобы сохранить её.</value>
+  </data>
+  <data name="ayuda_registrar_paciente_titulo" xml:space="preserve">
+    <value>Зарегистрировать пациента</value>
+  </data>
+  <data name="ayuda_registrar_paciente_texto" xml:space="preserve">
+    <value>Заполните личные данные пациента и ответственного психолога и нажмите «Зарегистрировать пациента», чтобы сохранить. После сохранения назначенный психолог не может быть изменён.</value>
+  </data>
+  <data name="ayuda_resumen_ia_titulo" xml:space="preserve">
+    <value>Клиническое резюме с помощью ИИ</value>
+  </data>
+  <data name="ayuda_resumen_ia_texto" xml:space="preserve">
+    <value>Нажмите «Искать консультации», чтобы выбрать, по каким из них создать резюме, а затем «Создать резюме с помощью ИИ». Используйте «Новое резюме», чтобы создать ещё одно, или «Изменить фильтры», чтобы выбрать другие консультации.</value>
+  </data>
+  <data name="ayuda_gestionar_suscripcion_titulo" xml:space="preserve">
+    <value>Моя подписка</value>
+  </data>
+  <data name="ayuda_gestionar_suscripcion_texto" xml:space="preserve">
+    <value>Здесь можно увидеть статус текущего плана, сменить его, выбрав другой в таблице сравнения, обновить способ оплаты с помощью «Обновить способ оплаты» или отменить подписку с помощью «Отменить подписку». Если вы отменили подписку и передумали, можно использовать «Восстановить подписку» до окончания уже оплаченного периода.</value>
+  </data>
+  <data name="ayuda_auditoria_informe_titulo" xml:space="preserve">
+    <value>Проверка отчётов о направлении</value>
+  </data>
+  <data name="ayuda_auditoria_informe_texto" xml:space="preserve">
+    <value>Здесь отображается список черновиков отчётов о направлении, ожидающих проверки. Нажмите «Проверить и подписать» в соответствующей строке, чтобы открыть черновик; оттуда можно отклонить его кнопкой «Отклонить отчёт» или, после проверки, подтвердить и подписать его кнопкой «Подтвердить и подписать отчёт».</value>
+  </data>
 </root>

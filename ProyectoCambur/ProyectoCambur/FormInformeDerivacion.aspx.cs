@@ -150,6 +150,7 @@ public partial class FormInformeDerivacion : PaginaBase
         pnlFormulario.Visible = (estado == 1);
         pnlAuditoria.Visible = (estado == 2);
         lblHeaderTitulo.Text = estado == 1 ? Traducir("nav_informe_derivacion") : Traducir("nav_auditoria_informe");
+        ucAyudaRapida.ClaveAyuda = estado == 3 ? "auditoria_informe" : "informe_derivacion";
 
         ucSidebarNavegacion.PaginaActual = estado == 1 ? "acceder_informe_derivacion" : "acceder_auditoria_informe";
         ucSidebarNavegacion.RenderizarNavegacion();

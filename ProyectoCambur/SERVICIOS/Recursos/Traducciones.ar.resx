@@ -2769,4 +2769,145 @@
   <data name="lbl_ningun_archivo_seleccionado" xml:space="preserve">
     <value>لم يتم اختيار أي ملف</value>
   </data>
+  <data name="btn_ayuda_rapida" xml:space="preserve">
+    <value>مساعدة سريعة</value>
+  </data>
+  <data name="ayuda_auditoria_bitacora_titulo" xml:space="preserve">
+    <value>سجل تدقيق النظام</value>
+  </data>
+  <data name="ayuda_auditoria_bitacora_texto" xml:space="preserve">
+    <value>هنا يمكنك مراجعة جميع الأحداث التي سجّلها النظام (إضافات، حذف، تعديلات، تسجيلات دخول، إلخ). استخدم عوامل التصفية حسب التاريخ والمستخدم/البريد الإلكتروني والوحدة والخطورة، ثم اضغط على "تصفية" لتضييق نطاق البحث، أو "إزالة عوامل التصفية" لعرض الكل مرة أخرى. عند البحث بالبريد الإلكتروني، ستظهر أيضًا بيانات المتخصص المطابق.</value>
+  </data>
+  <data name="ayuda_backup_restore_titulo" xml:space="preserve">
+    <value>النسخ الاحتياطي واستعادة قاعدة البيانات</value>
+  </data>
+  <data name="ayuda_backup_restore_texto" xml:space="preserve">
+    <value>اضغط على "إنشاء نسخة احتياطية الآن" لإنشاء نسخة احتياطية من قاعدة البيانات. لاستعادة نسخة سابقة، اختر ملفًا من القائمة ثم اضغط على "تحديد الملف والاستعادة"؛ سيطلب منك النظام التأكيد عبر "تأكيد الاستعادة" قبل تطبيق التغيير، لأنه يستبدل جميع البيانات الحالية.</value>
+  </data>
+  <data name="ayuda_cambiar_clave_titulo" xml:space="preserve">
+    <value>تغيير كلمة المرور</value>
+  </data>
+  <data name="ayuda_cambiar_clave_texto" xml:space="preserve">
+    <value>أدخل كلمة المرور الحالية وكلمة المرور الجديدة (مرتين للتأكيد) ثم اضغط على "تأكيد التغيير". إذا غيّرت رأيك، اضغط على "إلغاء" للرجوع دون حفظ أي شيء.</value>
+  </data>
+  <data name="ayuda_cambiar_idioma_titulo" xml:space="preserve">
+    <value>تغيير لغة النظام</value>
+  </data>
+  <data name="ayuda_cambiar_idioma_texto" xml:space="preserve">
+    <value>اضغط على بطاقة اللغة التي تريد استخدامها (تُعلَّم بنقطة مملوءة ●) ثم اضغط على "تأكيد تغيير اللغة". يُطبَّق التغيير فورًا على النظام بالكامل لحسابك.</value>
+  </data>
+  <data name="ayuda_dashboard_titulo" xml:space="preserve">
+    <value>لوحة المؤشرات</value>
+  </data>
+  <data name="ayuda_dashboard_texto" xml:space="preserve">
+    <value>استخدم أزرار "هذا الأسبوع" أو "هذا الشهر" أو "هذا الفصل" أو "هذا العام" لتغيير الفترة المعروضة. اضغط على "عرض الكل" للانتقال إلى القائمة الكاملة للجلسات أو المرضى.</value>
+  </data>
+  <data name="ayuda_digito_verificador_titulo" xml:space="preserve">
+    <value>سلامة النظام</value>
+  </data>
+  <data name="ayuda_digito_verificador_texto" xml:space="preserve">
+    <value>تتحقق هذه الشاشة من أن بيانات الجداول الحساسة لم تُعدَّل من خارج النظام. إذا ظهر جدول غير متسق بعد تعديل مصرَّح به في قاعدة البيانات (مثل سكريبت تصحيح)، اضغط على "إعادة الحساب وقبول الحالة الحالية" لإعادة مزامنته.</value>
+  </data>
+  <data name="ayuda_exportar_reporte_titulo" xml:space="preserve">
+    <value>تصدير التقرير</value>
+  </data>
+  <data name="ayuda_exportar_reporte_texto" xml:space="preserve">
+    <value>اختر خيارات التقرير التي تحتاجها واضغط على "📄 تصدير إلى PDF" لتنزيله. استخدم "رجوع" للخروج دون تصدير أي شيء.</value>
+  </data>
+  <data name="ayuda_gestionar_idiomas_titulo" xml:space="preserve">
+    <value>إدارة اللغات</value>
+  </data>
+  <data name="ayuda_gestionar_idiomas_texto" xml:space="preserve">
+    <value>لإضافة لغة جديدة، اخترها من القائمة (أو اختر "لغة أخرى" واكتب الاسم) ثم اضغط على "إنشاء لغة مع الترجمات". في الجدول أدناه يمكنك تفعيل أو تعطيل كل لغة، والضغط على "الترجمات" لمراجعة وتصحيح النصوص المعلَّمة بـ "قيد الانتظار" واحدًا تلو الآخر.</value>
+  </data>
+  <data name="ayuda_gestionar_permisos_titulo" xml:space="preserve">
+    <value>إدارة الصلاحيات والأدوار</value>
+  </data>
+  <data name="ayuda_gestionar_permisos_texto" xml:space="preserve">
+    <value>هنا يتم تحديد ما يمكن لكل دور/خطة في النظام رؤيته والقيام به، منظّمًا في عائلات وعناصر. استخدم أزرار "إضافة" لإنشاء عائلة جديدة أو ملف تعريف جديد أو عنصر جديد داخل شجرة الصلاحيات.</value>
+  </data>
+  <data name="ayuda_generar_historial_titulo" xml:space="preserve">
+    <value>السجل السريري للمريض</value>
+  </data>
+  <data name="ayuda_generar_historial_texto" xml:space="preserve">
+    <value>اختر مريضًا واضغط على "استمرار" لعرض سجله. من هناك يمكنك الضغط على "حفظ السجل السريري" أو "حفظ التغييرات"، أو "اختيار مريض آخر" للرجوع إلى البحث.</value>
+  </data>
+  <data name="ayuda_informe_derivacion_titulo" xml:space="preserve">
+    <value>تقرير الإحالة</value>
+  </data>
+  <data name="ayuda_informe_derivacion_texto" xml:space="preserve">
+    <value>اضغط على "إنشاء تقرير بالذكاء الاصطناعي" ليقوم النظام بإعداد مسودة من الجلسة. يمكنك حفظه كمسودة غير مكتملة بالضغط على "حفظ المسودة"، أو تجاهله بالضغط على "تجاهل التقرير"، أو بعد مراجعته، الضغط على "التحقق من التقرير وتوقيعه" لإنهائه.</value>
+  </data>
+  <data name="ayuda_linea_temporal_titulo" xml:space="preserve">
+    <value>الخط الزمني للمريض</value>
+  </data>
+  <data name="ayuda_linea_temporal_texto" xml:space="preserve">
+    <value>استخدم مرشّح التاريخ واضغط على "تصفية" لتضييق الأحداث المعروضة، أو "الكل" لعرضها جميعًا. اضغط على "استمرار" للمتابعة مع المريض المحدد.</value>
+  </data>
+  <data name="ayuda_abm_consultas_titulo" xml:space="preserve">
+    <value>إدارة الجلسات</value>
+  </data>
+  <data name="ayuda_abm_consultas_texto" xml:space="preserve">
+    <value>لتسجيل جلسة جديدة، اختر المعالج النفسي والمريض واضغط على "تسجيل الجلسة". لتعديل جلسة موجودة، اضغط على "✏️ تعديل" في الصف المقابل (متاح فقط خلال 3 أيام من التسجيل) واحفظ بالضغط على "حفظ التغييرات"؛ لا يمكن تغيير المعالج النفسي والمريض المعيَّنين بعد تسجيل الجلسة.</value>
+  </data>
+  <data name="ayuda_abm_pacientes_titulo" xml:space="preserve">
+    <value>إدارة المرضى</value>
+  </data>
+  <data name="ayuda_abm_pacientes_texto" xml:space="preserve">
+    <value>لتسجيل مريض، أكمل بياناته والمعالج النفسي المسؤول، ثم اضغط على "تسجيل المريض". لتعديل مريض موجود، ابحث عنه في الجدول واحفظ التغييرات بالضغط على "حفظ التغييرات"؛ بعد الحفظ، لا يمكن تغيير المعالج النفسي المعيَّن مرة أخرى.</value>
+  </data>
+  <data name="ayuda_abm_profesionales_titulo" xml:space="preserve">
+    <value>إدارة المتخصصين</value>
+  </data>
+  <data name="ayuda_abm_profesionales_texto" xml:space="preserve">
+    <value>لتسجيل متخصص، أكمل بياناته واضغط على "تسجيل المتخصص". لتعديل متخصص موجود، ابحث عنه في الجدول، عدِّل ما يلزم واضغط على "حفظ التغييرات". استخدم "الرجوع إلى الإدارة" للخروج دون فقدان القائمة.</value>
+  </data>
+  <data name="ayuda_menu_titulo" xml:space="preserve">
+    <value>القائمة الرئيسية</value>
+  </data>
+  <data name="ayuda_menu_texto" xml:space="preserve">
+    <value>اضغط على أي من هذه البطاقات للانتقال مباشرة إلى ذلك القسم من النظام. تعتمد الخيارات المعروضة هنا على دورك وخطتك.</value>
+  </data>
+  <data name="ayuda_modificar_consulta_titulo" xml:space="preserve">
+    <value>تعديل جلسة</value>
+  </data>
+  <data name="ayuda_modificar_consulta_texto" xml:space="preserve">
+    <value>اضغط على "البحث عن الجلسات" للعثور على الجلسة التي تريد تعديلها. بعد العثور عليها، عدِّل الحقول السريرية واضغط على "حفظ التغييرات". إذا تجاوزت الجلسة فترة التعديل البالغة 3 أيام، سيوضح النظام ذلك ولن تتمكن من تعديلها.</value>
+  </data>
+  <data name="ayuda_perfilacion_paciente_titulo" xml:space="preserve">
+    <value>تنميط المريض بالذكاء الاصطناعي</value>
+  </data>
+  <data name="ayuda_perfilacion_paciente_texto" xml:space="preserve">
+    <value>اختر مريضًا واضغط على "إنشاء الملف التعريفي" ليُعدّ الذكاء الاصطناعي ملفًا تعريفيًا من سجله السريري. استخدم "ملف تعريفي جديد" لإنشاء نسخة محدَّثة لاحقًا.</value>
+  </data>
+  <data name="ayuda_realizar_consulta_titulo" xml:space="preserve">
+    <value>تسجيل جلسة</value>
+  </data>
+  <data name="ayuda_realizar_consulta_texto" xml:space="preserve">
+    <value>أكمل بيانات الجلسة (المعالج النفسي، المريض، التاريخ، المدة والحقول السريرية) واضغط على "تسجيل الجلسة" لحفظها.</value>
+  </data>
+  <data name="ayuda_registrar_paciente_titulo" xml:space="preserve">
+    <value>تسجيل مريض</value>
+  </data>
+  <data name="ayuda_registrar_paciente_texto" xml:space="preserve">
+    <value>أكمل البيانات الشخصية للمريض والمعالج النفسي المسؤول، ثم اضغط على "تسجيل المريض" لحفظه. بعد الحفظ، لن يمكن تغيير المعالج النفسي المعيَّن.</value>
+  </data>
+  <data name="ayuda_resumen_ia_titulo" xml:space="preserve">
+    <value>ملخص سريري بالذكاء الاصطناعي</value>
+  </data>
+  <data name="ayuda_resumen_ia_texto" xml:space="preserve">
+    <value>اضغط على "البحث عن الجلسات" لاختيار الجلسات التي تريد تلخيصها، ثم اضغط على "إنشاء ملخص بالذكاء الاصطناعي". استخدم "ملخص جديد" لإنشاء ملخص آخر، أو "تغيير عوامل التصفية" لاختيار جلسات أخرى.</value>
+  </data>
+  <data name="ayuda_gestionar_suscripcion_titulo" xml:space="preserve">
+    <value>اشتراكي</value>
+  </data>
+  <data name="ayuda_gestionar_suscripcion_texto" xml:space="preserve">
+    <value>هنا يمكنك رؤية حالة خطتك الحالية، وتغييرها باختيار خطة أخرى من جدول المقارنة، وتحديث وسيلة الدفع بالضغط على "تحديث وسيلة الدفع"، أو إلغاء اشتراكك بالضغط على "إلغاء الاشتراك". إذا ألغيت الاشتراك وغيّرت رأيك، يمكنك استخدام "إعادة تفعيل الاشتراك" قبل انتهاء الفترة المدفوعة مسبقًا.</value>
+  </data>
+  <data name="ayuda_auditoria_informe_titulo" xml:space="preserve">
+    <value>مراجعة تقارير الإحالة</value>
+  </data>
+  <data name="ayuda_auditoria_informe_texto" xml:space="preserve">
+    <value>هنا ترى قائمة مسودات تقارير الإحالة التي بانتظار المراجعة. اضغط على "مراجعة وتوقيع" في الصف المقابل لفتح مسودة؛ من هناك يمكنك تجاهلها بالضغط على "تجاهل التقرير"، أو بعد مراجعتها، التحقق منها وتوقيعها بالضغط على "التحقق من التقرير وتوقيعه".</value>
+  </data>
 </root>
