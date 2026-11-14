@@ -60,3 +60,15 @@
     display: inline-block;
     min-width: 18px;
 }
+
+
+@media (max-width: 767px) {
+    body.pagina-centrada form {
+        padding: 16px;
+    }
+
+    .denegado-card {
+        width: 100%;
+        padding: 32px 24px;
+    }
+}

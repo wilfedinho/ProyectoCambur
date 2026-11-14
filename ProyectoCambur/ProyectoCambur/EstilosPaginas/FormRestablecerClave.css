@@ -470,3 +470,69 @@ input[type="submit"].btn-login {
     .resultado-texto strong {
         color: var(--text-main);
     }
+
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .login-card {
+        max-width: 680px;
+    }
+
+    .card-brand {
+        width: 38%;
+        min-width: 220px;
+        padding: 32px 28px;
+    }
+
+    .brand-titulo {
+        font-size: 32px;
+    }
+
+    .card-form {
+        padding: 32px 32px;
+    }
+}
+
+@media (max-width: 767px) {
+    .login-bg {
+        padding: 20px 16px;
+    }
+
+    .login-card {
+        flex-direction: column;
+        max-width: 440px;
+        min-height: auto;
+        box-shadow: 0 12px 32px rgba(27, 42, 59, 0.16);
+    }
+
+    .card-brand {
+        width: 100%;
+        min-width: 0;
+        padding: 26px 24px;
+    }
+
+    .brand-titulo {
+        font-size: 26px;
+        margin-bottom: 8px;
+    }
+
+    .brand-desc {
+        font-size: 12px;
+    }
+
+    .deco-circle {
+        display: none;
+    }
+
+    .card-form {
+        padding: 28px 24px;
+    }
+
+    .form-title {
+        font-size: 24px;
+    }
+
+    .resultado-texto {
+        max-width: 100%;
+    }
+}

@@ -562,3 +562,78 @@ input[type="submit"].btn-register {
 	font-size: 12px;
 	min-height: 14px;
 }
+
+
+.col-form {
+	min-width: 0; 
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+	.col-brand {
+		width: 260px;
+		min-width: 220px;
+		padding: 36px 28px;
+	}
+
+	.brand-hero h2 {
+		font-size: 30px;
+	}
+
+	.col-form {
+		padding: 36px 32px;
+	}
+
+	.grid-3 {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.plan-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (max-width: 767px) {
+	#form1 {
+		flex-direction: column;
+		min-height: auto;
+	}
+
+	.col-brand {
+		width: 100%;
+		min-width: 0;
+		padding: 28px 24px;
+	}
+
+		.col-brand::before,
+		.col-brand::after {
+			display: none;
+		}
+
+	.brand-hero {
+		margin-top: 16px;
+		margin-bottom: 0;
+	}
+
+		.brand-hero h2 {
+			font-size: 26px;
+		}
+
+		.brand-hero p {
+			font-size: 13px;
+		}
+
+	.col-form {
+		padding: 28px 20px;
+		overflow-y: visible;
+	}
+
+	.form-title {
+		font-size: 26px;
+	}
+
+	.grid-2,
+	.grid-3,
+	.plan-grid {
+		grid-template-columns: 1fr;
+	}
+}

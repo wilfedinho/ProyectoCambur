@@ -144,3 +144,17 @@ body {
     .btn-ir-login:hover {
         opacity: 0.85;
     }
+
+
+@media (max-width: 767px) {
+    .logout-wrap {
+        padding: 16px;
+    }
+
+    .logout-card {
+        min-width: 0;
+        width: 100%;
+        max-width: 360px;
+        padding: 36px 28px;
+    }
+}

@@ -17,6 +17,9 @@
                     <div class="landing-tagline">CZ Consulting</div>
                 </div>
 
+                <input type="checkbox" id="chkMenuLanding" class="chk-menu-landing" />
+                <label for="chkMenuLanding" class="btn-menu-landing" aria-label='<%= Traducir("aria_abrir_menu") %>'>☰</label>
+
                 <nav class="landing-nav-links">
                     <a href="#hero"><asp:Label ID="lblNavInicio" runat="server" Text="" /></a>
                     <a href="#nosotros"><asp:Label ID="lblNavNosotros" runat="server" Text="" /></a>
