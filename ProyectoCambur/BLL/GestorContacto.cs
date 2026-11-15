@@ -41,6 +41,8 @@ namespace BLL
             };
 
             contactoDAL.Alta(nuevo);
+            new DigitoVerificador().ActualizarDVH(nuevo, "MensajeContacto");
+
             new GestorBitacora().RegistrarEvento(
                 email,
                 EventosBitacora.MOD_LANDING,

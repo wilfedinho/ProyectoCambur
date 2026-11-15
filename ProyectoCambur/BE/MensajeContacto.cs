@@ -10,5 +10,6 @@ namespace BE
         public string Asunto { get; set; }
         public string Mensaje { get; set; }
         public DateTime FechaEnvio { get; set; }
+        public string DigitoVerificador { get; set; }
     }
 }

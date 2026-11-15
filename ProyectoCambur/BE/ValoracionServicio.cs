@@ -12,5 +12,6 @@ namespace BE
         public int Puntuacion { get; set; }
         public string Comentario { get; set; }
         public DateTime FechaValoracion { get; set; }
+        public string DigitoVerificador { get; set; }
     }
 }

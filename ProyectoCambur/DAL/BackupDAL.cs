@@ -55,7 +55,7 @@ namespace DAL
 
                 using (SqlCommand comando = new SqlCommand(query, cone))
                 {
-                    comando.CommandTimeout = 0; 
+                    comando.CommandTimeout = 0;
                     comando.Parameters.AddWithValue("@ruta", rutaCompleta);
                     comando.ExecuteNonQuery();
                 }
@@ -166,14 +166,15 @@ namespace DAL
 
         #region Historial de operaciones (propio del módulo, no confundir con Bitacora general)
 
-        public void AltaHistorial(OperacionBackupRestore operacion)
+        public int AltaHistorial(OperacionBackupRestore operacion)
         {
             using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
             {
                 cone.Open();
                 string query = "INSERT INTO HistorialBackupRestore " +
-                               "(tipo_operacion, nombre_archivo, fecha_operacion, resultado, detalle_error, usuario) " +
-                               "VALUES (@tipo, @archivo, @fecha, @resultado, @detalle, @usuario)";
+                               "(tipo_operacion, nombre_archivo, fecha_operacion, resultado, detalle_error, usuario, digito_verificador) " +
+                               "VALUES (@tipo, @archivo, @fecha, @resultado, @detalle, @usuario, @digito_verificador); " +
+                               "SELECT CAST(SCOPE_IDENTITY() AS INT)";
 
                 using (SqlCommand comando = new SqlCommand(query, cone))
                 {
@@ -183,9 +184,71 @@ namespace DAL
                     comando.Parameters.AddWithValue("@resultado", operacion.Resultado);
                     comando.Parameters.AddWithValue("@detalle", (object)operacion.DetalleError ?? DBNull.Value);
                     comando.Parameters.AddWithValue("@usuario", (object)operacion.Usuario ?? DBNull.Value);
-                    comando.ExecuteNonQuery();
+                    comando.Parameters.AddWithValue("@digito_verificador", (object)operacion.DigitoVerificador ?? DBNull.Value);
+
+                    int idGenerado = Convert.ToInt32(comando.ExecuteScalar());
+                    operacion.IdHistorial = idGenerado;
+                    return idGenerado;
                 }
             }
+        }
+
+        public OperacionBackupRestore BuscarPorId(int idHistorial)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT * FROM HistorialBackupRestore WHERE id_historial = @id_historial";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_historial", idHistorial);
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return ArmarOperacion(reader);
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        public List<OperacionBackupRestore> ObtenerTodos()
+        {
+            List<OperacionBackupRestore> lista = new List<OperacionBackupRestore>();
+
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT * FROM HistorialBackupRestore ORDER BY id_historial";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                using (SqlDataReader reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(ArmarOperacion(reader));
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+        private OperacionBackupRestore ArmarOperacion(SqlDataReader reader)
+        {
+            return new OperacionBackupRestore
+            {
+                IdHistorial = Convert.ToInt32(reader["id_historial"]),
+                TipoOperacion = reader["tipo_operacion"].ToString(),
+                NombreArchivo = reader["nombre_archivo"].ToString(),
+                FechaOperacion = Convert.ToDateTime(reader["fecha_operacion"]),
+                Resultado = reader["resultado"].ToString(),
+                DetalleError = reader["detalle_error"] == DBNull.Value ? null : reader["detalle_error"].ToString(),
+                Usuario = reader["usuario"] == DBNull.Value ? null : reader["usuario"].ToString(),
+                DigitoVerificador = reader["digito_verificador"] == DBNull.Value ? null : reader["digito_verificador"].ToString()
+            };
         }
 
         public List<OperacionBackupRestore> ObtenerHistorial(int cantidad)
@@ -195,7 +258,7 @@ namespace DAL
             using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
             {
                 cone.Open();
-                string query = "SELECT TOP (@cantidad) id_historial, tipo_operacion, nombre_archivo, fecha_operacion, resultado, detalle_error, usuario " +
+                string query = "SELECT TOP (@cantidad) id_historial, tipo_operacion, nombre_archivo, fecha_operacion, resultado, detalle_error, usuario, digito_verificador " +
                                "FROM HistorialBackupRestore ORDER BY fecha_operacion DESC";
 
                 using (SqlCommand comando = new SqlCommand(query, cone))
@@ -205,22 +268,53 @@ namespace DAL
                     {
                         while (reader.Read())
                         {
-                            lista.Add(new OperacionBackupRestore
-                            {
-                                IdHistorial = Convert.ToInt32(reader["id_historial"]),
-                                TipoOperacion = reader["tipo_operacion"].ToString(),
-                                NombreArchivo = reader["nombre_archivo"].ToString(),
-                                FechaOperacion = Convert.ToDateTime(reader["fecha_operacion"]),
-                                Resultado = reader["resultado"].ToString(),
-                                DetalleError = reader["detalle_error"] == DBNull.Value ? null : reader["detalle_error"].ToString(),
-                                Usuario = reader["usuario"] == DBNull.Value ? null : reader["usuario"].ToString()
-                            });
+                            lista.Add(ArmarOperacion(reader));
                         }
                     }
                 }
             }
 
             return lista;
+        }
+
+        #endregion
+
+        #region Digito Verificador (DVH)
+
+        public List<string> ObtenerListaDVH()
+        {
+            List<string> lista = new List<string>();
+
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT digito_verificador FROM HistorialBackupRestore ORDER BY id_historial";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                using (SqlDataReader reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(reader["digito_verificador"] == DBNull.Value ? string.Empty : reader["digito_verificador"].ToString());
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+        public void ActualizarDVH(int idHistorial, string dvh)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "UPDATE HistorialBackupRestore SET digito_verificador = @digito_verificador WHERE id_historial = @id_historial";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_historial", idHistorial);
+                    comando.Parameters.AddWithValue("@digito_verificador", dvh);
+                    comando.ExecuteNonQuery();
+                }
+            }
         }
 
         #endregion

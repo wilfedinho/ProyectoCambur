@@ -11,6 +11,7 @@ namespace BE
         public string Resultado { get; set; }
         public string DetalleError { get; set; }
         public string Usuario { get; set; }
+        public string DigitoVerificador { get; set; }
 
         public OperacionBackupRestore()
         {

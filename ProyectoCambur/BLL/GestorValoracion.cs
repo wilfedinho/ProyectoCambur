@@ -52,6 +52,7 @@ namespace BLL
                 existente.Comentario = comentarioLimpio;
                 existente.FechaValoracion = DateTime.Now;
                 valoracionDAL.Actualizar(existente);
+                new DigitoVerificador().ActualizarDVH(existente, "ValoracionServicio");
 
                 RegistrarEvento();
                 return existente;
@@ -66,6 +67,7 @@ namespace BLL
                 FechaValoracion = DateTime.Now
             };
             valoracionDAL.Alta(nueva);
+            new DigitoVerificador().ActualizarDVH(nueva, "ValoracionServicio");
 
             RegistrarEvento();
             return nueva;

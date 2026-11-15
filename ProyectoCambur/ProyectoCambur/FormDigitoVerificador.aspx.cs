@@ -49,6 +49,9 @@ public partial class FormDigitoVerificador : GUI.PaginaBase
         lblAccionRecalcularTitulo.Text = Traducir("accion_recalcular_titulo");
         lblAccionRecalcularDesc.Text = Traducir("accion_recalcular_desc");
         btnRecalcular.Text = Traducir("btn_recalcular_digitos");
+
+        lblCargaTitulo.Text = Traducir("carga_titulo_recalculo_digitos");
+        lblCargaSubtitulo.Text = Traducir("carga_subtitulo_recalculo_digitos");
     }
 
     private void CargarInconsistencias()

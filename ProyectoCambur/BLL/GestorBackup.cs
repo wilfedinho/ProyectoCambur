@@ -131,7 +131,7 @@ namespace BLL
 
             try
             {
-                backupDAL.AltaHistorial(new OperacionBackupRestore
+                OperacionBackupRestore operacion = new OperacionBackupRestore
                 {
                     TipoOperacion = tipo,
                     NombreArchivo = nombreArchivo,
@@ -139,7 +139,9 @@ namespace BLL
                     Resultado = exitoso ? "Completado correctamente" : "Error: " + detalleError,
                     DetalleError = detalleError,
                     Usuario = usuario
-                });
+                };
+                backupDAL.AltaHistorial(operacion);
+                new DigitoVerificador().ActualizarDVH(operacion, "HistorialBackupRestore");
             }
             catch (Exception)
             {

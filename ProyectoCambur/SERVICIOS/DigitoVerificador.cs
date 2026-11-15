@@ -10,7 +10,8 @@ namespace SERVICIOS
     {
         private static readonly List<string> TablasControladas = new List<string> {
             "Profesional", "Paciente", "Consulta", "HistorialClinico", "ResumenClinico", "InformeDerivacion", "PerfilPaciente", "Suscripcion", "Traduccion", "TokenRecuperacion", "Bitacora", "Idioma",
-            "PermisoSimple", "Familia", "Perfil", "PermisoSimple_Familia", "Familia_Familia", "PermisoSimple_Perfil", "Perfil_Familia"
+            "PermisoSimple", "Familia", "Perfil", "PermisoSimple_Familia", "Familia_Familia", "PermisoSimple_Perfil", "Perfil_Familia",
+            "HistorialBackupRestore", "MensajeContacto", "ValoracionServicio", "ModeloEvaluacion"
         };
         private static readonly HashSet<string> TablasFamiliaPermiso = new HashSet<string> {
             "PermisoSimple", "Familia", "Perfil", "PermisoSimple_Familia", "Familia_Familia", "PermisoSimple_Perfil", "Perfil_Familia"
@@ -152,6 +153,40 @@ namespace SERVICIOS
                 sb.Append(idioma.IsDisponible);
             }
 
+            if (entidad is OperacionBackupRestore operacionBackupRestore)
+            {
+                sb.Append(operacionBackupRestore.TipoOperacion);
+                sb.Append(operacionBackupRestore.NombreArchivo);
+                sb.Append(operacionBackupRestore.FechaOperacion);
+                sb.Append(operacionBackupRestore.Resultado);
+                sb.Append(operacionBackupRestore.DetalleError);
+                sb.Append(operacionBackupRestore.Usuario);
+            }
+
+            if (entidad is MensajeContacto mensajeContacto)
+            {
+                sb.Append(mensajeContacto.Nombre);
+                sb.Append(mensajeContacto.Email);
+                sb.Append(mensajeContacto.Asunto);
+                sb.Append(mensajeContacto.Mensaje);
+                sb.Append(mensajeContacto.FechaEnvio);
+            }
+
+            if (entidad is ValoracionServicio valoracionServicio)
+            {
+                sb.Append(valoracionServicio.IdProfesional);
+                sb.Append(valoracionServicio.Plan);
+                sb.Append(valoracionServicio.Puntuacion);
+                sb.Append(valoracionServicio.Comentario);
+                sb.Append(valoracionServicio.FechaValoracion);
+            }
+
+            if (entidad is ModeloEvaluacion modeloEvaluacion)
+            {
+                sb.Append(modeloEvaluacion.Nombre);
+                sb.Append(modeloEvaluacion.Descripcion);
+            }
+
             return Cifrador.GestorCifrador.EncriptarIrreversible(sb.ToString());
         }
         public string CalcularDVHClave(string clave1, string clave2 = null)
@@ -276,6 +311,42 @@ namespace SERVICIOS
                 }
             }
 
+            if (nombreTabla == "HistorialBackupRestore")
+            {
+                BackupDAL backupDAL = new BackupDAL();
+                foreach (string dvh in backupDAL.ObtenerListaDVH())
+                {
+                    sb.Append(dvh);
+                }
+            }
+
+            if (nombreTabla == "MensajeContacto")
+            {
+                ContactoDAL contactoDAL = new ContactoDAL();
+                foreach (string dvh in contactoDAL.ObtenerListaDVH())
+                {
+                    sb.Append(dvh);
+                }
+            }
+
+            if (nombreTabla == "ValoracionServicio")
+            {
+                ValoracionDAL valoracionDAL = new ValoracionDAL();
+                foreach (string dvh in valoracionDAL.ObtenerListaDVH())
+                {
+                    sb.Append(dvh);
+                }
+            }
+
+            if (nombreTabla == "ModeloEvaluacion")
+            {
+                ModeloEvaluacionDAL modeloEvaluacionDAL = new ModeloEvaluacionDAL();
+                foreach (string dvh in modeloEvaluacionDAL.ObtenerListaDVH())
+                {
+                    sb.Append(dvh);
+                }
+            }
+
             if (TablasFamiliaPermiso.Contains(nombreTabla))
             {
                 PermisoDAL permisoDAL = new PermisoDAL();
@@ -380,6 +451,34 @@ namespace SERVICIOS
                 idiomaDAL.ActualizarDVH(idioma.NombreIdioma, dvh);
                 idioma.DigitoVerificador = dvh;
             }
+
+            if (nombreTabla == "HistorialBackupRestore" && entidad is OperacionBackupRestore operacionBackupRestore)
+            {
+                BackupDAL backupDAL = new BackupDAL();
+                backupDAL.ActualizarDVH(operacionBackupRestore.IdHistorial, dvh);
+                operacionBackupRestore.DigitoVerificador = dvh;
+            }
+
+            if (nombreTabla == "MensajeContacto" && entidad is MensajeContacto mensajeContacto)
+            {
+                ContactoDAL contactoDAL = new ContactoDAL();
+                contactoDAL.ActualizarDVH(mensajeContacto.IdMensaje, dvh);
+                mensajeContacto.DigitoVerificador = dvh;
+            }
+
+            if (nombreTabla == "ValoracionServicio" && entidad is ValoracionServicio valoracionServicio)
+            {
+                ValoracionDAL valoracionDAL = new ValoracionDAL();
+                valoracionDAL.ActualizarDVH(valoracionServicio.IdValoracion, dvh);
+                valoracionServicio.DigitoVerificador = dvh;
+            }
+
+            if (nombreTabla == "ModeloEvaluacion" && entidad is ModeloEvaluacion modeloEvaluacion)
+            {
+                ModeloEvaluacionDAL modeloEvaluacionDAL = new ModeloEvaluacionDAL();
+                modeloEvaluacionDAL.ActualizarDVH(modeloEvaluacion.IdModelo, dvh);
+                modeloEvaluacion.DigitoVerificador = dvh;
+            }
             ActualizarDVV(nombreTabla);
         }
         private object ReleerEntidadPersistida(object entidad, string nombreTabla)
@@ -444,6 +543,26 @@ namespace SERVICIOS
                 return new IdiomaDAL().BuscarPorNombre(idioma.NombreIdioma);
             }
 
+            if (nombreTabla == "HistorialBackupRestore" && entidad is OperacionBackupRestore operacionBackupRestore && operacionBackupRestore.IdHistorial > 0)
+            {
+                return new BackupDAL().BuscarPorId(operacionBackupRestore.IdHistorial);
+            }
+
+            if (nombreTabla == "MensajeContacto" && entidad is MensajeContacto mensajeContacto && mensajeContacto.IdMensaje > 0)
+            {
+                return new ContactoDAL().BuscarPorId(mensajeContacto.IdMensaje);
+            }
+
+            if (nombreTabla == "ValoracionServicio" && entidad is ValoracionServicio valoracionServicio && valoracionServicio.IdValoracion > 0)
+            {
+                return new ValoracionDAL().BuscarPorId(valoracionServicio.IdValoracion);
+            }
+
+            if (nombreTabla == "ModeloEvaluacion" && entidad is ModeloEvaluacion modeloEvaluacion && modeloEvaluacion.IdModelo > 0)
+            {
+                return new ModeloEvaluacionDAL().BuscarPorId(modeloEvaluacion.IdModelo);
+            }
+
             return null;
         }
 
@@ -472,7 +591,8 @@ namespace SERVICIOS
             if (entidad is Psicologo || entidad is Paciente || entidad is Consulta || entidad is HistorialClinico ||
                 entidad is ResumenClinico || entidad is InformeDerivacion || entidad is PerfilPaciente ||
                 entidad is Suscripcion || entidad is Traduccion || entidad is TokenRecuperacion ||
-                entidad is Bitacora || entidad is Idioma)
+                entidad is Bitacora || entidad is Idioma || entidad is OperacionBackupRestore ||
+                entidad is MensajeContacto || entidad is ValoracionServicio || entidad is ModeloEvaluacion)
             {
                 return CalcularDVH(entidad) == ObtenerDigitoVerificadorDe(entidad);
             }
@@ -494,6 +614,10 @@ namespace SERVICIOS
             if (entidad is TokenRecuperacion token) return token.DigitoVerificador;
             if (entidad is Bitacora bitacora) return bitacora.DigitoVerificador;
             if (entidad is Idioma idioma) return idioma.DigitoVerificador;
+            if (entidad is OperacionBackupRestore operacionBackupRestore) return operacionBackupRestore.DigitoVerificador;
+            if (entidad is MensajeContacto mensajeContacto) return mensajeContacto.DigitoVerificador;
+            if (entidad is ValoracionServicio valoracionServicio) return valoracionServicio.DigitoVerificador;
+            if (entidad is ModeloEvaluacion modeloEvaluacion) return modeloEvaluacion.DigitoVerificador;
             return null;
         }
 
@@ -785,6 +909,98 @@ namespace SERVICIOS
 
                     AgregarInconsistenciasDeConteo(inconsistencias, digitoVerificadorDAL, tabla, huboInconsistenciaDeRegistro);
                 }
+                if (tabla == "HistorialBackupRestore")
+                {
+                    BackupDAL backupDAL = new BackupDAL();
+                    List<OperacionBackupRestore> operaciones = backupDAL.ObtenerTodos();
+
+                    bool huboInconsistenciaDeRegistro = false;
+
+                    foreach (OperacionBackupRestore operacion in operaciones)
+                    {
+                        if (!VerificarIntegridadDVH(operacion))
+                        {
+                            huboInconsistenciaDeRegistro = true;
+                            inconsistencias.Add(new InconsistenciaDetectada(
+                                "dvh_registro_inconsistente_historial_backup",
+                                operacion.IdHistorial,
+                                operacion.NombreArchivo
+                            ));
+                        }
+                    }
+
+                    AgregarInconsistenciasDeConteo(inconsistencias, digitoVerificadorDAL, tabla, huboInconsistenciaDeRegistro);
+                }
+
+                if (tabla == "MensajeContacto")
+                {
+                    ContactoDAL contactoDAL = new ContactoDAL();
+                    List<MensajeContacto> mensajes = contactoDAL.ObtenerTodos();
+
+                    bool huboInconsistenciaDeRegistro = false;
+
+                    foreach (MensajeContacto mensaje in mensajes)
+                    {
+                        if (!VerificarIntegridadDVH(mensaje))
+                        {
+                            huboInconsistenciaDeRegistro = true;
+                            inconsistencias.Add(new InconsistenciaDetectada(
+                                "dvh_registro_inconsistente_mensaje_contacto",
+                                mensaje.Nombre,
+                                mensaje.Email
+                            ));
+                        }
+                    }
+
+                    AgregarInconsistenciasDeConteo(inconsistencias, digitoVerificadorDAL, tabla, huboInconsistenciaDeRegistro);
+                }
+
+                if (tabla == "ValoracionServicio")
+                {
+                    ValoracionDAL valoracionDAL = new ValoracionDAL();
+                    List<ValoracionServicio> valoraciones = valoracionDAL.ObtenerTodas();
+
+                    bool huboInconsistenciaDeRegistro = false;
+
+                    foreach (ValoracionServicio valoracion in valoraciones)
+                    {
+                        if (!VerificarIntegridadDVH(valoracion))
+                        {
+                            huboInconsistenciaDeRegistro = true;
+                            inconsistencias.Add(new InconsistenciaDetectada(
+                                "dvh_registro_inconsistente_valoracion",
+                                valoracion.IdValoracion,
+                                valoracion.IdProfesional
+                            ));
+                        }
+                    }
+
+                    AgregarInconsistenciasDeConteo(inconsistencias, digitoVerificadorDAL, tabla, huboInconsistenciaDeRegistro);
+                }
+
+                if (tabla == "ModeloEvaluacion")
+                {
+                    ModeloEvaluacionDAL modeloEvaluacionDAL = new ModeloEvaluacionDAL();
+                    List<ModeloEvaluacion> modelos = modeloEvaluacionDAL.ObtenerTodos();
+
+                    bool huboInconsistenciaDeRegistro = false;
+
+                    foreach (ModeloEvaluacion modelo in modelos)
+                    {
+                        if (!VerificarIntegridadDVH(modelo))
+                        {
+                            huboInconsistenciaDeRegistro = true;
+                            inconsistencias.Add(new InconsistenciaDetectada(
+                                "dvh_registro_inconsistente_modelo_evaluacion",
+                                modelo.IdModelo,
+                                modelo.Nombre
+                            ));
+                        }
+                    }
+
+                    AgregarInconsistenciasDeConteo(inconsistencias, digitoVerificadorDAL, tabla, huboInconsistenciaDeRegistro);
+                }
+
                 if (TablasFamiliaPermiso.Contains(tabla))
                 {
                     PermisoDAL permisoDAL = new PermisoDAL();
@@ -1049,6 +1265,70 @@ namespace SERVICIOS
                     foreach (Idioma idioma in idiomas)
                     {
                         ActualizarDVH(idioma, tabla);
+                    }
+                }
+
+                if (tabla == "HistorialBackupRestore")
+                {
+                    BackupDAL backupDAL = new BackupDAL();
+                    List<OperacionBackupRestore> operaciones = backupDAL.ObtenerTodos();
+
+                    if (operaciones.Count == 0)
+                    {
+                        ActualizarDVV(tabla);
+                    }
+
+                    foreach (OperacionBackupRestore operacion in operaciones)
+                    {
+                        ActualizarDVH(operacion, tabla);
+                    }
+                }
+
+                if (tabla == "MensajeContacto")
+                {
+                    ContactoDAL contactoDAL = new ContactoDAL();
+                    List<MensajeContacto> mensajes = contactoDAL.ObtenerTodos();
+
+                    if (mensajes.Count == 0)
+                    {
+                        ActualizarDVV(tabla);
+                    }
+
+                    foreach (MensajeContacto mensaje in mensajes)
+                    {
+                        ActualizarDVH(mensaje, tabla);
+                    }
+                }
+
+                if (tabla == "ValoracionServicio")
+                {
+                    ValoracionDAL valoracionDAL = new ValoracionDAL();
+                    List<ValoracionServicio> valoraciones = valoracionDAL.ObtenerTodas();
+
+                    if (valoraciones.Count == 0)
+                    {
+                        ActualizarDVV(tabla);
+                    }
+
+                    foreach (ValoracionServicio valoracion in valoraciones)
+                    {
+                        ActualizarDVH(valoracion, tabla);
+                    }
+                }
+
+                if (tabla == "ModeloEvaluacion")
+                {
+                    ModeloEvaluacionDAL modeloEvaluacionDAL = new ModeloEvaluacionDAL();
+                    List<ModeloEvaluacion> modelos = modeloEvaluacionDAL.ObtenerTodos();
+
+                    if (modelos.Count == 0)
+                    {
+                        ActualizarDVV(tabla);
+                    }
+
+                    foreach (ModeloEvaluacion modelo in modelos)
+                    {
+                        ActualizarDVH(modelo, tabla);
                     }
                 }
                 if (TablasFamiliaPermiso.Contains(tabla))

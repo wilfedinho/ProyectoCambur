@@ -51,6 +51,14 @@
 
                 <asp:Label ID="lblMensaje" runat="server" Visible="false" />
 
+                <div class="carga-overlay" id="cargaOverlay" style="display:none;">
+                    <div class="carga-card">
+                        <div class="carga-spinner"></div>
+                        <p class="carga-titulo"><asp:Label ID="lblCargaTitulo" runat="server" Text="" /></p>
+                        <p class="carga-subtitulo"><asp:Label ID="lblCargaSubtitulo" runat="server" Text="" /></p>
+                    </div>
+                </div>
+
                 <asp:Panel ID="pnlSinInconsistencias" runat="server" CssClass="estado-card estado-ok" Visible="false">
                     <span class="estado-icono">✅</span>
                     <div>
@@ -102,7 +110,7 @@
                                 Text="Recalcular y aceptar estado actual"
                                 CssClass="btn-secondary btn-peligro"
                                 OnClick="btnRecalcular_Click"
-                                OnClientClick="return confirm('Esto va a asumir el estado ACTUAL de la base como correcto, incluyendo cualquier inconsistencia detectada. ¿Confirmás que ya investigaste el origen del cambio?');" />
+                                OnClientClick="return confirmarYMostrarCargaRecalculo();" />
                         </div>
 
                     </div>
@@ -112,5 +120,22 @@
         </div>
 
     </form>
+
+    <script type="text/javascript">
+        function confirmarYMostrarCargaRecalculo() {
+            if (!confirm('Esto va a asumir el estado ACTUAL de la base como correcto, incluyendo cualquier inconsistencia detectada. ¿Confirmás que ya investigaste el origen del cambio?')) {
+                return false;
+            }
+
+            var overlay = document.getElementById('cargaOverlay');
+            if (overlay) overlay.style.display = 'flex';
+            return true;
+        }
+
+        window.addEventListener('DOMContentLoaded', function () {
+            var overlay = document.getElementById('cargaOverlay');
+            if (overlay) overlay.style.display = 'none';
+        });
+    </script>
 </body>
 </html>

@@ -34,8 +34,8 @@ namespace DAL
             using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
             {
                 cone.Open();
-                string query = "INSERT INTO ValoracionServicio (id_profesional, [plan], puntuacion, comentario, fecha_valoracion) " +
-                               "VALUES (@id_profesional, @plan, @puntuacion, @comentario, @fecha_valoracion); " +
+                string query = "INSERT INTO ValoracionServicio (id_profesional, [plan], puntuacion, comentario, fecha_valoracion, digito_verificador) " +
+                               "VALUES (@id_profesional, @plan, @puntuacion, @comentario, @fecha_valoracion, @digito_verificador); " +
                                "SELECT CAST(SCOPE_IDENTITY() AS INT)";
 
                 using (SqlCommand comando = new SqlCommand(query, cone))
@@ -45,6 +45,7 @@ namespace DAL
                     comando.Parameters.AddWithValue("@puntuacion", valoracion.Puntuacion);
                     comando.Parameters.AddWithValue("@comentario", (object)valoracion.Comentario ?? DBNull.Value);
                     comando.Parameters.AddWithValue("@fecha_valoracion", valoracion.FechaValoracion);
+                    comando.Parameters.AddWithValue("@digito_verificador", (object)valoracion.DigitoVerificador ?? DBNull.Value);
 
                     int idGenerado = Convert.ToInt32(comando.ExecuteScalar());
                     valoracion.IdValoracion = idGenerado;
@@ -71,6 +72,49 @@ namespace DAL
                     comando.ExecuteNonQuery();
                 }
             }
+        }
+
+        public ValoracionServicio BuscarPorId(int idValoracion)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT * FROM ValoracionServicio WHERE id_valoracion = @id_valoracion";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_valoracion", idValoracion);
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return ArmarValoracion(reader, conNombreProfesional: false);
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        public List<ValoracionServicio> ObtenerTodas()
+        {
+            List<ValoracionServicio> lista = new List<ValoracionServicio>();
+
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT * FROM ValoracionServicio ORDER BY id_valoracion";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                using (SqlDataReader reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(ArmarValoracion(reader, conNombreProfesional: false));
+                    }
+                }
+            }
+
+            return lista;
         }
         public List<ValoracionServicio> ObtenerTestimonios(int cantidad)
         {
@@ -133,7 +177,8 @@ namespace DAL
                 Plan = (PlanSuscripcion)Enum.Parse(typeof(PlanSuscripcion), reader["plan"].ToString()),
                 Puntuacion = Convert.ToInt32(reader["puntuacion"]),
                 Comentario = reader["comentario"] == DBNull.Value ? null : reader["comentario"].ToString(),
-                FechaValoracion = Convert.ToDateTime(reader["fecha_valoracion"])
+                FechaValoracion = Convert.ToDateTime(reader["fecha_valoracion"]),
+                DigitoVerificador = reader["digito_verificador"] == DBNull.Value ? null : reader["digito_verificador"].ToString()
             };
 
             if (conNombreProfesional)
@@ -144,5 +189,45 @@ namespace DAL
 
             return valoracion;
         }
+
+        #region Digito Verificador (DVH)
+
+        public List<string> ObtenerListaDVH()
+        {
+            List<string> lista = new List<string>();
+
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "SELECT digito_verificador FROM ValoracionServicio ORDER BY id_valoracion";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                using (SqlDataReader reader = comando.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lista.Add(reader["digito_verificador"] == DBNull.Value ? string.Empty : reader["digito_verificador"].ToString());
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+        public void ActualizarDVH(int idValoracion, string dvh)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
+            {
+                cone.Open();
+                string query = "UPDATE ValoracionServicio SET digito_verificador = @digito_verificador WHERE id_valoracion = @id_valoracion";
+                using (SqlCommand comando = new SqlCommand(query, cone))
+                {
+                    comando.Parameters.AddWithValue("@id_valoracion", idValoracion);
+                    comando.Parameters.AddWithValue("@digito_verificador", dvh);
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
+
+        #endregion
     }
 }
