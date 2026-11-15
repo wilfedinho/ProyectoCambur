@@ -274,6 +274,7 @@
     border-radius: 10px;
     padding: 14px 18px;
     width: 100%;
+    min-width: 0; 
     transition: border-color 0.12s;
 }
 
@@ -481,12 +482,44 @@
     }
 
 
+
 .temporal-layout > * {
     min-width: 0;
 }
 
+
 @media (max-width: 1024px) {
     .temporal-layout {
         grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 767px) {
+    .timeline-linea {
+        left: 15px;
+    }
+
+    .timeline-item.izq,
+    .timeline-item.der {
+        flex-direction: row;
+        justify-content: flex-start;
+        padding-left: 60px;
+        padding-right: 0;
+    }
+
+    .timeline-punto {
+        left: 15px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .timeline-punto-icono {
+        font-size: 13px;
+    }
+
+    .timeline-card-header {
+        flex-wrap: wrap;
+        row-gap: 6px;
     }
 }

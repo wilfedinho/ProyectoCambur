@@ -191,6 +191,8 @@
     padding: 12px 0;
 }
 
+
+
 .consulta-layout > * {
     min-width: 0;
 }
@@ -198,5 +200,9 @@
 @media (max-width: 1024px) {
     .consulta-layout {
         grid-template-columns: 1fr;
+    }
+
+    .consulta-info-col {
+        order: -1;
     }
 }
