@@ -49,6 +49,8 @@ public partial class FormMaestroProfesional : PaginaBase
     private void AplicarTraducciones()
     {
         lblMenuLandingSidebar.Text = Traducir("nav_landing");
+        lblHeaderSeccion.Text = Traducir("menu_profesionales");
+        lblHeaderPagina.Text = Traducir("nav_abm_profesionales");
         ddlFiltroEstado.Items.FindByValue("TODOS").Text = Traducir("opt_todos");
         ddlFiltroEstado.Items.FindByValue("ACTIVOS").Text = Traducir("opt_activos");
         ddlFiltroEstado.Items.FindByValue("INACTIVOS").Text = Traducir("opt_desactivados");
@@ -67,6 +69,24 @@ public partial class FormMaestroProfesional : PaginaBase
         ddlRol.Items.FindByValue("Basico").Text = Traducir("rol_psicologo_basico");
         ddlRol.Items.FindByValue("Profesional").Text = Traducir("rol_psicologo_profesional");
         ddlRol.Items.FindByValue("Premium").Text = Traducir("rol_psicologo_premium");
+
+        lblFormSubtitulo.Text = Traducir("subtitulo_nuevo_profesional");
+        lblSeccionDatosPersonales.Text = Traducir("seccion_datos_personales");
+        lblEtiquetaNombreProf.Text = Traducir("lbl_nombre");
+        rfvNombre.ErrorMessage = Traducir("error_nombre_obligatorio");
+        lblEtiquetaApellidoProf.Text = Traducir("lbl_apellido");
+        rfvApellido.ErrorMessage = Traducir("error_apellido_obligatorio");
+        lblEtiquetaDniProf.Text = Traducir("lbl_dni");
+        rfvDni.ErrorMessage = Traducir("error_dni_obligatorio");
+        revDni.ErrorMessage = Traducir("error_formato_dni");
+        lblSeccionAccesoSistema.Text = Traducir("seccion_acceso_sistema");
+        lblEtiquetaEmailProf.Text = Traducir("lbl_correo");
+        rfvEmail.ErrorMessage = Traducir("error_email_obligatorio");
+        revEmail.ErrorMessage = Traducir("error_formato_email");
+        lblEtiquetaIdiomaProf.Text = Traducir("lbl_idioma");
+        lblEtiquetaRolPlanProf.Text = Traducir("lbl_rol_plan");
+        rfvRol.ErrorMessage = Traducir("error_rol_obligatorio");
+        lblAvisoContrasena.Text = "🔑 " + Traducir("aviso_contrasena_inicial");
 
         btnModoGestion.Text = "👥 " + Traducir("modo_gestion");
         btnModoSerializar.Text = "🗄️ " + Traducir("modo_serializar_xml");

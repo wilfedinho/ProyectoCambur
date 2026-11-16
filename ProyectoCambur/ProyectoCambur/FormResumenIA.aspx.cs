@@ -87,6 +87,10 @@ public partial class FormResumenIA : PaginaBase
         lblAvisoEncriptadoTitulo.Text = Traducir("titulo_resumen_encriptado");
         lblAvisoEncriptadoTexto.Text = Traducir("aviso_resumen_encriptado");
 
+        lblAccesoExportarPdf.Text = Traducir("acceso_exportar_pdf");
+        lblAccesoGenerarDerivacion.Text = Traducir("acceso_generar_derivacion");
+        lblAccesoVerLineaTemporal.Text = Traducir("acceso_ver_linea_temporal");
+
         lblTituloResumenesAnteriores.Text = Traducir("titulo_resumenes_anteriores");
         lblSinResumenesAnteriores.Text = Traducir("sin_resumenes_anteriores");
     }

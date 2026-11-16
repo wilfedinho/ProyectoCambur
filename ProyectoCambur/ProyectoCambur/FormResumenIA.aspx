@@ -124,7 +124,7 @@
                                 </div>
                                 <asp:LinkButton runat="server" CssClass="btn-secondary"
                                     CommandName="VerResumen" CommandArgument='<%# Eval("IdResumen") %>'
-                                    Text="Ver" />
+                                    Text='<%# Traducir("btn_ver") %>' />
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>
@@ -300,9 +300,9 @@
                         </div>
 
                         <div class="content-card accesos-card">
-                            <a href="FormExportarReporte.aspx" class="acceso-item">💾 <span>Exportar en PDF</span></a>
-                            <a href="FormInformeDerivacion.aspx" class="acceso-item">📤 <span>Generar derivación</span></a>
-                            <a href="FormLineaTemporal.aspx" class="acceso-item">📅 <span>Ver línea temporal</span></a>
+                            <a href="FormExportarReporte.aspx"   class="acceso-item">💾 <span><asp:Label ID="lblAccesoExportarPdf" runat="server" Text="" /></span></a>
+                            <a href="FormInformeDerivacion.aspx" class="acceso-item">📤 <span><asp:Label ID="lblAccesoGenerarDerivacion" runat="server" Text="" /></span></a>
+                            <a href="FormLineaTemporal.aspx"     class="acceso-item">📅 <span><asp:Label ID="lblAccesoVerLineaTemporal" runat="server" Text="" /></span></a>
                         </div>
 
                     </div>

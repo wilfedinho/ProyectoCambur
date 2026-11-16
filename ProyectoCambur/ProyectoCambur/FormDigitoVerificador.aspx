@@ -39,9 +39,9 @@
 
             <header class="top-header">
                 <div class="header-title">
-                    <span class="header-section">Web Master</span>
+                    <asp:Label ID="lblHeaderSeccion" runat="server" CssClass="header-section" Text="" />
                     <span class="header-sep">/</span>
-                    <span class="header-page">Integridad del sistema</span>
+                    <asp:Label ID="lblHeaderPagina" runat="server" CssClass="header-page" Text="" />
                 </div>
                 <uc:AyudaRapida ID="ucAyudaRapida" runat="server" ClaveAyuda="digito_verificador" />
                 <uc:HeaderUsuario ID="ucHeaderUsuario" runat="server" />

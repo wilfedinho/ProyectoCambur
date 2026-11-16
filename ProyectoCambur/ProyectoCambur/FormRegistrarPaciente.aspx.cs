@@ -68,12 +68,23 @@ public partial class FormRegistrarPaciente : PaginaBase
         lblEtiquetaEstadoCivil.Text = Traducir("lbl_estado_civil");
         rfvEstado.ErrorMessage = Traducir("error_estado_civil_obligatorio");
         lblEtiquetaSexo.Text = Traducir("lbl_sexo");
+        rbMasculino.Text = Traducir("sexo_masculino");
+        rbFemenino.Text = Traducir("sexo_femenino");
+        rbNoEspecifica.Text = Traducir("sexo_no_especifica");
         lblEtiquetaEmail.Text = Traducir("lbl_correo");
         revEmail.ErrorMessage = Traducir("error_formato_email");
         lblEtiquetaTelefono.Text = Traducir("lbl_telefono");
 
         lblTituloListado.Text = Traducir("titulo_pacientes_registrados");
         gvPacientes.EmptyDataText = Traducir("empty_pacientes");
+
+        gvPacientes.Columns[0].HeaderText = Traducir("col_paciente");
+        gvPacientes.Columns[1].HeaderText = Traducir("col_dni");
+        gvPacientes.Columns[2].HeaderText = Traducir("col_edad");
+        gvPacientes.Columns[3].HeaderText = Traducir("lbl_estado_civil");
+        gvPacientes.Columns[4].HeaderText = Traducir("col_registrado");
+        gvPacientes.Columns[5].HeaderText = Traducir("col_estado");
+        gvPacientes.Columns[6].HeaderText = Traducir("col_acciones");
     }
 
     protected void btnRegistrar_Click(object sender, EventArgs e)

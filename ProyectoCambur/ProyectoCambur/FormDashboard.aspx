@@ -188,7 +188,7 @@
                                         ItemStyle-CssClass="td-acciones">
                                         <ItemTemplate>
                                             <a href='FormModificarConsulta.aspx?id=<%# Eval("IdConsulta") %>'
-                                               class="tbl-btn tbl-btn-ver">Ver</a>
+                                               class="tbl-btn tbl-btn-ver"><%# Traducir("btn_ver") %></a>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -217,7 +217,7 @@
                                         <span class="chip-nombre"><%# Eval("Nombre") %></span>
                                         <span class="chip-meta"><%# Eval("UltimaConsulta") %></span>
                                     </div>
-                                    <a href='FormLineaTemporal.aspx?id=<%# Eval("IdPaciente") %>' class="chip-btn">Ver</a>
+                                    <a href='FormLineaTemporal.aspx?id=<%# Eval("IdPaciente") %>' class="chip-btn"><%# Traducir("btn_ver") %></a>
                                 </div>
                             </ItemTemplate>
                         </asp:Repeater>

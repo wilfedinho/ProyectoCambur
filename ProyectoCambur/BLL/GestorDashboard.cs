@@ -39,9 +39,9 @@ namespace BLL
             datos.DeltaPacientes = ArmarDeltaAbsoluto(pacientes.Count, pacientes.Count - datos.NuevosPacientes + nuevosAnterior, "paciente", "pacientes");
             datos.DeltaNuevos = ArmarDeltaComparativo(datos.NuevosPacientes, nuevosAnterior, "nuevo", "nuevos", periodo, esAnterior: true);
             datos.DeltaConsultas = ArmarDeltaComparativo(datos.Consultas, consultasAnterior, "consulta", "consultas", periodo, esAnterior: false);
-            datos.DeltaDerivaciones = "Módulo de derivaciones en desarrollo";
+            datos.DeltaDerivaciones = null;
             datos.DeltaExportaciones = ArmarDeltaComparativo(datos.Exportaciones, exportacionesAnterior, "exportación", "exportaciones", periodo, esAnterior: false);
-            datos.NotaPerfilaciones = "Módulo de perfilación en desarrollo";
+            datos.NotaPerfilaciones = null;
 
             return datos;
         }

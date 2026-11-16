@@ -177,7 +177,7 @@
                                                         </div>
                                                         <button type="button" class="tc-btn-ver"
                                                             onclick='<%# "return toggleDetalle(\"" + Eval("Tipo") + "_" + Eval("IdEvento") + "\", this);" %>'>
-                                                            Ver detalle
+                                                            <%# Traducir("btn_ver_detalle") %>
                                                         </button>
                                                     </div>
                                                     <p class="tc-resumen"><%# Eval("Resumen") %></p>
@@ -226,9 +226,9 @@
 
                             <div class="content-card accesos-card">
                                 <p class="accesos-titulo"><asp:Label ID="lblAccesosTitulo" runat="server" Text="" /></p>
-                                <a href="FormRealizarConsulta.aspx" class="acceso-item">🗒️ <span>Nueva consulta</span></a>
-                                <a href="FormResumenIA.aspx" class="acceso-item">🤖 <span>Resumen IA</span></a>
-                                <a href="FormExportarReporte.aspx" class="acceso-item">💾 <span>Exportar reporte</span></a>
+                                <a href="FormRealizarConsulta.aspx" class="acceso-item">🗒️ <span><asp:Label ID="lblAccesoNuevaConsulta" runat="server" Text="" /></span></a>
+                                <a href="FormResumenIA.aspx" class="acceso-item">🤖 <span><asp:Label ID="lblAccesoResumenIA" runat="server" Text="" /></span></a>
+                                <a href="FormExportarReporte.aspx" class="acceso-item">💾 <span><asp:Label ID="lblAccesoExportarReporte" runat="server" Text="" /></span></a>
                             </div>
 
                         </div>
@@ -240,12 +240,15 @@
     </form>
 
     <script type="text/javascript">
+        var BTN_VER_DETALLE_TEXTO = "<%= Traducir("btn_ver_detalle").Replace("\"", "\\\"") %>";
+        var BTN_OCULTAR_DETALLE_TEXTO = "<%= Traducir("btn_ocultar_detalle").Replace("\"", "\\\"") %>";
+
         function toggleDetalle(clave, btn) {
             var panel = document.getElementById('detalle_' + clave);
             if (!panel) return false;
             var abierto = panel.style.display !== 'none';
             panel.style.display = abierto ? 'none' : 'block';
-            btn.textContent = abierto ? 'Ver detalle' : 'Ocultar';
+            btn.textContent = abierto ? BTN_VER_DETALLE_TEXTO : BTN_OCULTAR_DETALLE_TEXTO;
             return false;
         }
     </script>

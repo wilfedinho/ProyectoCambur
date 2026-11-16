@@ -207,8 +207,8 @@
                                 <asp:TemplateField HeaderText="Acciones" HeaderStyle-CssClass="th-centro" ItemStyle-CssClass="td-acciones">
                                     <ItemTemplate>
 
-                                        <a href='FormHistorialClinico.aspx?id=<%# Eval("IdPaciente") %>' class="tbl-btn tbl-btn-ver" title="Ver detalle">
-                                            👁️ Ver
+                                        <a href='FormHistorialClinico.aspx?id=<%# Eval("IdPaciente") %>' class="tbl-btn tbl-btn-ver" title='<%# Traducir("btn_ver_detalle") %>'>
+                                            👁️ <%# Traducir("btn_ver") %>
                                         </a>
 
                                         <asp:LinkButton ID="lbBaja" runat="server"

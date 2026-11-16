@@ -36,6 +36,9 @@ public partial class FormDigitoVerificador : GUI.PaginaBase
         lblTaglineSidebar.Text = Traducir("tagline_panel_tecnico");
         lblMenuLandingSidebar.Text = Traducir("nav_landing");
 
+        lblHeaderSeccion.Text = Traducir("header_web_master");
+        lblHeaderPagina.Text = Traducir("titulo_integridad_sistema");
+
         lblTituloSinInconsistencias.Text = Traducir("titulo_sin_inconsistencias");
         lblSubtituloSinInconsistencias.Text = Traducir("subtitulo_sin_inconsistencias");
         lblTituloConInconsistencias.Text = "⚠️ " + Traducir("titulo_inconsistencias_detectadas");

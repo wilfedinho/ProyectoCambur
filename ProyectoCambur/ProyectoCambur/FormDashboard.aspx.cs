@@ -104,12 +104,12 @@ public partial class FormDashboard : PaginaBase
         lblKpiDeltaPacientes.Text = datos.DeltaPacientes;
         lblKpiDeltaNuevos.Text = datos.DeltaNuevos;
         lblKpiDeltaConsultas.Text = datos.DeltaConsultas;
-        lblKpiDeltaDeriv.Text = datos.DeltaDerivaciones;
+        lblKpiDeltaDeriv.Text = Traducir("dashboard_modulo_derivaciones_desarrollo");
 
         lblKpiResumenes.Text = datos.ResumenesIA.ToString();
         lblKpiPerfilaciones.Text = datos.Perfilaciones.ToString();
         lblKpiExportaciones.Text = datos.Exportaciones.ToString();
-        lblNotaPerfilaciones.Text = datos.NotaPerfilaciones;
+        lblNotaPerfilaciones.Text = Traducir("dashboard_modulo_perfilacion_desarrollo");
         lblNotaPerfilaciones.Visible = true;
 
         lblGraficoSubtitulo.Text = string.Format(Traducir("lbl_grafico_subtitulo"), 6);

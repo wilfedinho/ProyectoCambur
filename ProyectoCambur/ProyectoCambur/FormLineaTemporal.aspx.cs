@@ -72,6 +72,9 @@ public partial class FormLineaTemporal : PaginaBase
         lblDescUltimaSesion.Text = Traducir("lbl_ultima_sesion");
 
         lblAccesosTitulo.Text = Traducir("titulo_acciones_relacionadas");
+        lblAccesoNuevaConsulta.Text = Traducir("acceso_nueva_consulta");
+        lblAccesoResumenIA.Text = Traducir("acceso_resumen_ia");
+        lblAccesoExportarReporte.Text = Traducir("acceso_exportar_reporte");
     }
 
     #region Estado / navegación entre pasos
@@ -162,7 +165,7 @@ public partial class FormLineaTemporal : PaginaBase
         List<EventoTimeline> eventos;
         try
         {
-            eventos = gestorLinea.ObtenerLineaTemporal(psicologoActual.IdPsicologo, IdPacienteActual, tipoFiltro, desde, hasta);
+            eventos = gestorLinea.ObtenerLineaTemporal(psicologoActual.IdPsicologo, IdPacienteActual, tipoFiltro, desde, hasta, Traducir);
         }
         catch (ExcepcionTraducible ex)
         {

@@ -39,9 +39,9 @@
 
             <header class="top-header">
                 <div class="header-title">
-                    <span class="header-section">Profesionales</span>
+                    <asp:Label ID="lblHeaderSeccion" runat="server" CssClass="header-section" Text="" />
                     <span class="header-sep">/</span>
-                    <span class="header-page">ABM de profesionales</span>
+                    <asp:Label ID="lblHeaderPagina" runat="server" CssClass="header-page" Text="" />
                 </div>
                 <uc:AyudaRapida ID="ucAyudaRapida" runat="server" ClaveAyuda="abm_profesionales" />
                 <uc:HeaderUsuario ID="ucHeaderUsuario" runat="server" />
@@ -68,60 +68,60 @@
                 <div class="content-card">
                     <div class="card-header">
                         <h2 class="card-title"><asp:Label ID="lblFormTitulo" runat="server" Text="Nuevo profesional" /></h2>
-                        <p class="card-subtitle">Completá los datos del profesional. El rol determina a qué menú accede al iniciar sesión.</p>
+                        <p class="card-subtitle"><asp:Label ID="lblFormSubtitulo" runat="server" Text="" /></p>
                     </div>
 
-                    <div class="section-sep">Datos personales</div>
+                    <div class="section-sep"><asp:Label ID="lblSeccionDatosPersonales" runat="server" Text="" /></div>
 
                     <div class="grid-3">
                         <div class="field">
-                            <label for="txtNombre">Nombre <sup>*</sup></label>
+                            <asp:Label ID="lblEtiquetaNombreProf" runat="server" AssociatedControlID="txtNombre" Text="" /> <sup>*</sup>
                             <asp:TextBox ID="txtNombre" runat="server" MaxLength="100" placeholder="Ej: Lucía" ClientIDMode="Static" />
                             <asp:RequiredFieldValidator ID="rfvNombre" runat="server"
-                                ControlToValidate="txtNombre" ErrorMessage="El nombre es obligatorio."
+                                ControlToValidate="txtNombre" ErrorMessage="."
                                 CssClass="field-error" Display="Dynamic" ValidationGroup="vgProfesional" />
                         </div>
 
                         <div class="field">
-                            <label for="txtApellido">Apellido <sup>*</sup></label>
+                            <asp:Label ID="lblEtiquetaApellidoProf" runat="server" AssociatedControlID="txtApellido" Text="" /> <sup>*</sup>
                             <asp:TextBox ID="txtApellido" runat="server" MaxLength="100" placeholder="Ej: Martínez" ClientIDMode="Static" />
                             <asp:RequiredFieldValidator ID="rfvApellido" runat="server"
-                                ControlToValidate="txtApellido" ErrorMessage="El apellido es obligatorio."
+                                ControlToValidate="txtApellido" ErrorMessage="."
                                 CssClass="field-error" Display="Dynamic" ValidationGroup="vgProfesional" />
                         </div>
 
                         <div class="field">
-                            <label for="txtDni">DNI <sup>*</sup></label>
+                            <asp:Label ID="lblEtiquetaDniProf" runat="server" AssociatedControlID="txtDni" Text="" /> <sup>*</sup>
                             <asp:TextBox ID="txtDni" runat="server" MaxLength="10" placeholder="Ej: 12.345.678" ClientIDMode="Static" oninput="aplicarMascaraDni(this)" />
                             <asp:RequiredFieldValidator ID="rfvDni" runat="server"
-                                ControlToValidate="txtDni" ErrorMessage="El DNI es obligatorio."
+                                ControlToValidate="txtDni" ErrorMessage="."
                                 CssClass="field-error" Display="Dynamic" ValidationGroup="vgProfesional" />
                             <asp:RegularExpressionValidator ID="revDni" runat="server"
                                 ControlToValidate="txtDni"
                                 ValidationExpression="^[0-9]{2}[.][0-9]{3}[.][0-9]{3}$"
-                                ErrorMessage="Formato esperado: 12.345.678"
+                                ErrorMessage="."
                                 CssClass="field-error" Display="Dynamic" ValidationGroup="vgProfesional" />
                         </div>
                     </div>
 
-                    <div class="section-sep">Acceso al sistema</div>
+                    <div class="section-sep"><asp:Label ID="lblSeccionAccesoSistema" runat="server" Text="" /></div>
 
                     <div class="grid-3">
                         <div class="field">
-                            <label for="txtEmail">Correo electrónico <sup>*</sup></label>
+                            <asp:Label ID="lblEtiquetaEmailProf" runat="server" AssociatedControlID="txtEmail" Text="" /> <sup>*</sup>
                             <asp:TextBox ID="txtEmail" runat="server" TextMode="Email" MaxLength="150" placeholder="lucia@cambur.com" ClientIDMode="Static" />
                             <asp:RequiredFieldValidator ID="rfvEmail" runat="server"
-                                ControlToValidate="txtEmail" ErrorMessage="El email es obligatorio."
+                                ControlToValidate="txtEmail" ErrorMessage="."
                                 CssClass="field-error" Display="Dynamic" ValidationGroup="vgProfesional" />
                             <asp:RegularExpressionValidator ID="revEmail" runat="server"
                                 ControlToValidate="txtEmail"
                                 ValidationExpression="^[\w\.\-]+@[\w\-]+\.[a-zA-Z]{2,}$"
-                                ErrorMessage="Formato de correo inválido."
+                                ErrorMessage="."
                                 CssClass="field-error" Display="Dynamic" ValidationGroup="vgProfesional" />
                         </div>
 
                         <div class="field">
-                            <label for="ddlIdioma">Idioma</label>
+                            <asp:Label ID="lblEtiquetaIdiomaProf" runat="server" AssociatedControlID="ddlIdioma" Text="" />
                             <asp:DropDownList ID="ddlIdioma" runat="server" ClientIDMode="Static">
                                 <asp:ListItem Value="Español" Text="Español" Selected="True" />
                                 <asp:ListItem Value="English" Text="English" />
@@ -129,7 +129,7 @@
                         </div>
 
                         <div class="field">
-                            <label for="ddlRol">Rol / Plan <sup>*</sup></label>
+                            <asp:Label ID="lblEtiquetaRolPlanProf" runat="server" AssociatedControlID="ddlRol" Text="" /> <sup>*</sup>
                             <asp:DropDownList ID="ddlRol" runat="server" ClientIDMode="Static">
                                 <asp:ListItem Value=""              Text="Seleccioná..." />
                                 <asp:ListItem Value="Web Master"    Text="Web Master" />
@@ -140,13 +140,13 @@
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="rfvRol" runat="server"
                                 ControlToValidate="ddlRol" InitialValue=""
-                                ErrorMessage="Seleccioná un rol."
+                                ErrorMessage="."
                                 CssClass="field-error" Display="Dynamic" ValidationGroup="vgProfesional" />
                         </div>
                     </div>
 
                     <asp:Panel ID="pnlAvisoContrasena" runat="server" Visible="false" CssClass="aviso-contrasena">
-                        🔑 La contraseña inicial se genera automáticamente como <strong>DNI+Email</strong>. Comunicásela al profesional para que la cambie en su primer ingreso.
+                        <asp:Label ID="lblAvisoContrasena" runat="server" Text="" />
                     </asp:Panel>
 
                     <div class="form-actions">
@@ -212,14 +212,14 @@
                                 <asp:TemplateField HeaderText="Estado" HeaderStyle-CssClass="th-centro" ItemStyle-CssClass="td-centro">
                                     <ItemTemplate>
                                         <span class='<%# (bool)Eval("Activo") ? "badge-estado activo" : "badge-estado inactivo" %>'>
-                                            <%# (bool)Eval("Activo") ? "Activo" : "Inactivo" %>
+                                            <%# (bool)Eval("Activo") ? Traducir("estado_activo") : Traducir("estado_inactivo") %>
                                         </span>
                                         <br />
                                         <span class='<%# (bool)Eval("IsHabilitado") ? "badge-estado activo" : "badge-estado inactivo" %>'>
-                                            <%# (bool)Eval("IsHabilitado") ? "Habilitado" : "Deshabilitado" %>
+                                            <%# (bool)Eval("IsHabilitado") ? Traducir("estado_habilitado") : Traducir("estado_deshabilitado") %>
                                         </span>
                                         <asp:Label runat="server" CssClass="badge-estado bloqueado"
-                                            Visible='<%# (bool)Eval("IsBloqueado") %>' Text="Bloqueado" />
+                                            Visible='<%# (bool)Eval("IsBloqueado") %>' Text='<%# Traducir("estado_bloqueado") %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
@@ -401,7 +401,7 @@
                                     <asp:TemplateField HeaderText="Estado" HeaderStyle-CssClass="th-centro" ItemStyle-CssClass="td-centro">
                                         <ItemTemplate>
                                             <span class='<%# (bool)Eval("Activo") ? "badge-estado activo" : "badge-estado inactivo" %>'>
-                                                <%# (bool)Eval("Activo") ? "Activo" : "Inactivo" %>
+                                                <%# (bool)Eval("Activo") ? Traducir("estado_activo") : Traducir("estado_inactivo") %>
                                             </span>
                                         </ItemTemplate>
                                     </asp:TemplateField>
