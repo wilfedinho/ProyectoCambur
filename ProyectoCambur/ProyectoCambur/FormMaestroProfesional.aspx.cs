@@ -70,6 +70,7 @@ public partial class FormMaestroProfesional : PaginaBase
         gvProfesionales.Columns[7].HeaderText = Traducir("col_acciones");
         gvProfesionales.EmptyDataText = Traducir("empty_profesionales");
         CargarRolesDisponibles();
+        CargarIdiomasDisponibles();
 
         lblFormSubtitulo.Text = Traducir("subtitulo_nuevo_profesional");
         lblSeccionDatosPersonales.Text = Traducir("seccion_datos_personales");
@@ -140,7 +141,6 @@ public partial class FormMaestroProfesional : PaginaBase
             ddlRol.SelectedValue = valorPrevio;
         }
     }
-
     private string TextoRol(string nombrePerfil)
     {
         switch (nombrePerfil)
@@ -153,6 +153,7 @@ public partial class FormMaestroProfesional : PaginaBase
             default: return nombrePerfil;
         }
     }
+
     private int OrdenRol(string nombrePerfil)
     {
         switch (nombrePerfil)
@@ -163,6 +164,31 @@ public partial class FormMaestroProfesional : PaginaBase
             case "Profesional": return 3;
             case "Premium": return 4;
             default: return 5;
+        }
+    }
+
+    private void CargarIdiomasDisponibles()
+    {
+        string valorPrevio = ddlIdioma.SelectedValue;
+
+        ddlIdioma.Items.Clear();
+
+        GestorIdioma gestorIdioma = new GestorIdioma();
+        foreach (Idioma idioma in gestorIdioma.ObtenerTodos()
+            .Where(i => i.IsDisponible)
+            .OrderBy(i => i.NombreIdioma == "Español" ? 0 : 1)
+            .ThenBy(i => i.NombreIdioma))
+        {
+            ddlIdioma.Items.Add(new ListItem(idioma.NombreIdioma, idioma.NombreIdioma));
+        }
+
+        if (!string.IsNullOrEmpty(valorPrevio) && ddlIdioma.Items.FindByValue(valorPrevio) != null)
+        {
+            ddlIdioma.SelectedValue = valorPrevio;
+        }
+        else if (ddlIdioma.Items.FindByValue("Español") != null)
+        {
+            ddlIdioma.SelectedValue = "Español";
         }
     }
 

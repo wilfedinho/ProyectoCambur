@@ -123,8 +123,6 @@
                         <div class="field">
                             <asp:Label ID="lblEtiquetaIdiomaProf" runat="server" AssociatedControlID="ddlIdioma" Text="" />
                             <asp:DropDownList ID="ddlIdioma" runat="server" ClientIDMode="Static">
-                                <asp:ListItem Value="Español" Text="Español" Selected="True" />
-                                <asp:ListItem Value="English" Text="English" />
                             </asp:DropDownList>
                         </div>
 
