@@ -53,9 +53,16 @@ namespace BLL
             string nombreBaseDatos = backupDAL.ObtenerNombreBaseDatos();
             string carpeta = ObtenerCarpetaOLanzarError();
 
-            return backupDAL.ListarDisponibles(nombreBaseDatos, carpeta)
-                .OrderByDescending(b => b.Fecha)
-                .ToList();
+            try
+            {
+                return backupDAL.ListarDisponibles(nombreBaseDatos, carpeta)
+                    .OrderByDescending(b => b.Fecha)
+                    .ToList();
+            }
+            catch (SqlException ex)
+            {
+                throw new ExcepcionTraducible(EsErrorDePermiso(ex) ? "error_backup_permiso_carpeta" : "error_backup_listado_fallo", ex.Message);
+            }
         }
 
         #endregion
@@ -117,7 +124,7 @@ namespace BLL
         }
         private bool EsErrorDePermiso(SqlException ex)
         {
-            if (ex.Number == 3201 || ex.Number == 3013)
+            if (ex.Number == 3201 || ex.Number == 3013 || ex.Number == 297)
             {
                 return true;
             }

@@ -99,6 +99,11 @@ namespace BLL
         {
             InformeDerivacion informe = ObtenerPropioOFallar(idPsicologo, idInforme);
 
+            if (informe.Estado == EstadoInforme.Auditado)
+            {
+                throw new ExcepcionTraducible("error_informe_ya_firmado");
+            }
+
             if (string.IsNullOrWhiteSpace(sintesisDiagnostica) && string.IsNullOrWhiteSpace(andamiajes))
             {
                 throw new ExcepcionTraducible("error_informe_campos_incompletos");
@@ -132,6 +137,12 @@ namespace BLL
         public void GuardarBorrador(int idPsicologo, int idInforme, string sintesisDiagnostica, string andamiajes, string objetivos, string modalidadTrabajo, string motivoDerivacion)
         {
             InformeDerivacion informe = ObtenerPropioOFallar(idPsicologo, idInforme);
+
+            if (informe.Estado == EstadoInforme.Auditado)
+            {
+                throw new ExcepcionTraducible("error_informe_ya_firmado");
+            }
+
             SeccionesInformeDerivacion secciones = ObtenerSecciones(informe) ?? new SeccionesInformeDerivacion();
             secciones.SintesisDiagnostica = sintesisDiagnostica;
             secciones.Andamiajes = andamiajes;
@@ -151,8 +162,29 @@ namespace BLL
         {
             InformeDerivacion informe = ObtenerPropioOFallar(idPsicologo, idInforme);
 
+            if (informe.Estado == EstadoInforme.Auditado)
+            {
+                throw new ExcepcionTraducible("error_informe_ya_firmado");
+            }
+            string contenidoReencriptado;
+            try
+            {
+                contenidoReencriptado = Cifrador.GestorCifrador.EncriptarReversible(informe.Contenido);
+            }
+            catch (Exception)
+            {
+                throw new ExcepcionTraducible("error_informe_encriptacion");
+            }
+
+            informe.Contenido = contenidoReencriptado;
+            informe.Estado = EstadoInforme.Borrador;
+            informe.FechaAuditoria = null;
+
             InformeDerivacionDAL informeDAL = new InformeDerivacionDAL();
-            informeDAL.Baja(informe.IdInforme);
+            informeDAL.ActualizarContenidoYEstado(informe.IdInforme, informe.Contenido, informe.Estado, informe.FechaAuditoria);
+
+            DigitoVerificador digitoVerificador = new DigitoVerificador();
+            digitoVerificador.ActualizarDVH(informe, TABLA);
 
             GestorBitacora gestorBitacora = new GestorBitacora();
             gestorBitacora.RegistrarEvento(EventosBitacora.MOD_MODULO_IA, EventosBitacora.DESC_DESCARTE_INFORME, EventosBitacora.CRIT_DESCARTE_INFORME);

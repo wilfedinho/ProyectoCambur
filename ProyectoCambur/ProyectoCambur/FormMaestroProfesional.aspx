@@ -75,7 +75,7 @@
 
                     <div class="grid-3">
                         <div class="field">
-                            <asp:Label ID="lblEtiquetaNombreProf" runat="server" AssociatedControlID="txtNombre" Text="" /> <sup>*</sup>
+                            <asp:Label ID="lblEtiquetaNombreProf" runat="server" AssociatedControlID="txtNombre" Text="" />
                             <asp:TextBox ID="txtNombre" runat="server" MaxLength="100" placeholder="Ej: Lucía" ClientIDMode="Static" />
                             <asp:RequiredFieldValidator ID="rfvNombre" runat="server"
                                 ControlToValidate="txtNombre" ErrorMessage="."
@@ -83,7 +83,7 @@
                         </div>
 
                         <div class="field">
-                            <asp:Label ID="lblEtiquetaApellidoProf" runat="server" AssociatedControlID="txtApellido" Text="" /> <sup>*</sup>
+                            <asp:Label ID="lblEtiquetaApellidoProf" runat="server" AssociatedControlID="txtApellido" Text="" />
                             <asp:TextBox ID="txtApellido" runat="server" MaxLength="100" placeholder="Ej: Martínez" ClientIDMode="Static" />
                             <asp:RequiredFieldValidator ID="rfvApellido" runat="server"
                                 ControlToValidate="txtApellido" ErrorMessage="."
@@ -91,7 +91,7 @@
                         </div>
 
                         <div class="field">
-                            <asp:Label ID="lblEtiquetaDniProf" runat="server" AssociatedControlID="txtDni" Text="" /> <sup>*</sup>
+                            <asp:Label ID="lblEtiquetaDniProf" runat="server" AssociatedControlID="txtDni" Text="" />
                             <asp:TextBox ID="txtDni" runat="server" MaxLength="10" placeholder="Ej: 12.345.678" ClientIDMode="Static" oninput="aplicarMascaraDni(this)" />
                             <asp:RequiredFieldValidator ID="rfvDni" runat="server"
                                 ControlToValidate="txtDni" ErrorMessage="."
@@ -106,9 +106,9 @@
 
                     <div class="section-sep"><asp:Label ID="lblSeccionAccesoSistema" runat="server" Text="" /></div>
 
-                    <div class="grid-3">
+                    <div class="grid-3 grid-acceso-sistema">
                         <div class="field">
-                            <asp:Label ID="lblEtiquetaEmailProf" runat="server" AssociatedControlID="txtEmail" Text="" /> <sup>*</sup>
+                            <asp:Label ID="lblEtiquetaEmailProf" runat="server" AssociatedControlID="txtEmail" Text="" />
                             <asp:TextBox ID="txtEmail" runat="server" TextMode="Email" MaxLength="150" placeholder="lucia@cambur.com" ClientIDMode="Static" />
                             <asp:RequiredFieldValidator ID="rfvEmail" runat="server"
                                 ControlToValidate="txtEmail" ErrorMessage="."
@@ -129,14 +129,8 @@
                         </div>
 
                         <div class="field">
-                            <asp:Label ID="lblEtiquetaRolPlanProf" runat="server" AssociatedControlID="ddlRol" Text="" /> <sup>*</sup>
+                            <asp:Label ID="lblEtiquetaRolPlanProf" runat="server" AssociatedControlID="ddlRol" Text="" />
                             <asp:DropDownList ID="ddlRol" runat="server" ClientIDMode="Static">
-                                <asp:ListItem Value=""              Text="Seleccioná..." />
-                                <asp:ListItem Value="Web Master"    Text="Web Master" />
-                                <asp:ListItem Value="Administrador" Text="Administrador" />
-                                <asp:ListItem Value="Basico"        Text="Psicólogo — Plan Básico" />
-                                <asp:ListItem Value="Profesional"   Text="Psicólogo — Plan Profesional" />
-                                <asp:ListItem Value="Premium"       Text="Psicólogo — Plan Premium" />
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="rfvRol" runat="server"
                                 ControlToValidate="ddlRol" InitialValue=""
@@ -172,6 +166,12 @@
                             </div>
                         </div>
                         <div class="filtro-estado">
+                            <asp:Label ID="lblEtiquetaCategoria" runat="server" AssociatedControlID="ddlFiltroCategoria" Text="" />
+                            <asp:DropDownList ID="ddlFiltroCategoria" runat="server" ClientIDMode="Static" AutoPostBack="true" OnSelectedIndexChanged="ddlFiltroCategoria_SelectedIndexChanged">
+                                <asp:ListItem Value="TODOS"     Text="Todos" />
+                                <asp:ListItem Value="NEGOCIO"   Text="Profesionales" />
+                                <asp:ListItem Value="SISTEMA"   Text="Sistema" />
+                            </asp:DropDownList>
                             <asp:Label ID="lblEtiquetaMostrar" runat="server" AssociatedControlID="ddlFiltroEstado" Text="Mostrar:" />
                             <asp:DropDownList ID="ddlFiltroEstado" runat="server" ClientIDMode="Static" AutoPostBack="true" OnSelectedIndexChanged="ddlFiltroEstado_SelectedIndexChanged">
                                 <asp:ListItem Value="TODOS"      Text="Todos" />

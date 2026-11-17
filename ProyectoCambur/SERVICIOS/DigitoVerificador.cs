@@ -2,12 +2,23 @@
 using DAL;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace SERVICIOS
 {
     public class DigitoVerificador
     {
+        private static string F(DateTime fecha)
+        {
+            return fecha.ToString("o", CultureInfo.InvariantCulture);
+        }
+
+        private static string F(DateTime? fecha)
+        {
+            return fecha.HasValue ? F(fecha.Value) : string.Empty;
+        }
+
         private static readonly List<string> TablasControladas = new List<string> {
             "Profesional", "Paciente", "Consulta", "HistorialClinico", "ResumenClinico", "InformeDerivacion", "PerfilPaciente", "Suscripcion", "Traduccion", "TokenRecuperacion", "Bitacora", "Idioma",
             "PermisoSimple", "Familia", "Perfil", "PermisoSimple_Familia", "Familia_Familia", "PermisoSimple_Perfil", "Perfil_Familia",
@@ -41,7 +52,7 @@ namespace SERVICIOS
                 sb.Append(paciente.Nombre);
                 sb.Append(paciente.Apellido);
                 sb.Append(paciente.DNI);
-                sb.Append(paciente.FechaNacimiento);
+                sb.Append(F(paciente.FechaNacimiento));
                 sb.Append(paciente.Ocupacion);
                 sb.Append(paciente.EstadoCivil);
                 sb.Append(paciente.Email);
@@ -55,9 +66,9 @@ namespace SERVICIOS
             {
                 sb.Append(consulta.IdPaciente);
                 sb.Append(consulta.IdPsicologo);
-                sb.Append(consulta.FechaConsulta);
+                sb.Append(F(consulta.FechaConsulta));
                 sb.Append(consulta.TiempoConsulta);
-                sb.Append(consulta.FechaRegistro);
+                sb.Append(F(consulta.FechaRegistro));
                 sb.Append(consulta.Objetivos);
                 sb.Append(consulta.Observaciones);
                 sb.Append(consulta.Hipotesis);
@@ -76,7 +87,7 @@ namespace SERVICIOS
                 sb.Append(historialClinico.AntecedentesMedicos);
                 sb.Append(historialClinico.SituacionLaboral);
                 sb.Append(historialClinico.EventosTraumaticos);
-                sb.Append(historialClinico.FechaRegistro);
+                sb.Append(F(historialClinico.FechaRegistro));
             }
 
             if (entidad is ResumenClinico resumenClinico)
@@ -84,9 +95,9 @@ namespace SERVICIOS
                 sb.Append(resumenClinico.IdPaciente);
                 sb.Append(resumenClinico.IdProfesional);
                 sb.Append(resumenClinico.Contenido);
-                sb.Append(resumenClinico.RangoDesde);
-                sb.Append(resumenClinico.RangoHasta);
-                sb.Append(resumenClinico.FechaGeneracion);
+                sb.Append(F(resumenClinico.RangoDesde));
+                sb.Append(F(resumenClinico.RangoHasta));
+                sb.Append(F(resumenClinico.FechaGeneracion));
             }
 
             if (entidad is InformeDerivacion informeDerivacion)
@@ -95,8 +106,8 @@ namespace SERVICIOS
                 sb.Append(informeDerivacion.IdProfesional);
                 sb.Append(informeDerivacion.Contenido);
                 sb.Append(informeDerivacion.Estado);
-                sb.Append(informeDerivacion.FechaGeneracion);
-                sb.Append(informeDerivacion.FechaAuditoria);
+                sb.Append(F(informeDerivacion.FechaGeneracion));
+                sb.Append(F(informeDerivacion.FechaAuditoria));
             }
 
             if (entidad is PerfilPaciente perfilPaciente)
@@ -105,7 +116,7 @@ namespace SERVICIOS
                 sb.Append(perfilPaciente.IdProfesional);
                 sb.Append(perfilPaciente.IdModelo);
                 sb.Append(perfilPaciente.Resultado);
-                sb.Append(perfilPaciente.FechaGeneracion);
+                sb.Append(F(perfilPaciente.FechaGeneracion));
             }
 
             if (entidad is Suscripcion suscripcion)
@@ -113,8 +124,8 @@ namespace SERVICIOS
                 sb.Append(suscripcion.IdProfesional);
                 sb.Append(suscripcion.Plan);
                 sb.Append(suscripcion.Estado);
-                sb.Append(suscripcion.FechaInicio);
-                sb.Append(suscripcion.FechaFin);
+                sb.Append(F(suscripcion.FechaInicio));
+                sb.Append(F(suscripcion.FechaFin));
                 sb.Append(suscripcion.Precio);
                 sb.Append(suscripcion.IdPagoExterno);
                 sb.Append(suscripcion.UltimosCuatroTarjeta);
@@ -132,8 +143,8 @@ namespace SERVICIOS
             {
                 sb.Append(token.IdProfesional);
                 sb.Append(token.TokenHash);
-                sb.Append(token.FechaGeneracion);
-                sb.Append(token.FechaExpiracion);
+                sb.Append(F(token.FechaGeneracion));
+                sb.Append(F(token.FechaExpiracion));
                 sb.Append(token.Usado);
             }
 
@@ -143,7 +154,7 @@ namespace SERVICIOS
                 sb.Append(bitacora.Modulo);
                 sb.Append(bitacora.Descripcion);
                 sb.Append(bitacora.Criticidad);
-                sb.Append(bitacora.FechaEvento);
+                sb.Append(F(bitacora.FechaEvento));
             }
 
             if (entidad is Idioma idioma)
@@ -157,7 +168,7 @@ namespace SERVICIOS
             {
                 sb.Append(operacionBackupRestore.TipoOperacion);
                 sb.Append(operacionBackupRestore.NombreArchivo);
-                sb.Append(operacionBackupRestore.FechaOperacion);
+                sb.Append(F(operacionBackupRestore.FechaOperacion));
                 sb.Append(operacionBackupRestore.Resultado);
                 sb.Append(operacionBackupRestore.DetalleError);
                 sb.Append(operacionBackupRestore.Usuario);
@@ -169,7 +180,7 @@ namespace SERVICIOS
                 sb.Append(mensajeContacto.Email);
                 sb.Append(mensajeContacto.Asunto);
                 sb.Append(mensajeContacto.Mensaje);
-                sb.Append(mensajeContacto.FechaEnvio);
+                sb.Append(F(mensajeContacto.FechaEnvio));
             }
 
             if (entidad is ValoracionServicio valoracionServicio)
@@ -178,7 +189,7 @@ namespace SERVICIOS
                 sb.Append(valoracionServicio.Plan);
                 sb.Append(valoracionServicio.Puntuacion);
                 sb.Append(valoracionServicio.Comentario);
-                sb.Append(valoracionServicio.FechaValoracion);
+                sb.Append(F(valoracionServicio.FechaValoracion));
             }
 
             if (entidad is ModeloEvaluacion modeloEvaluacion)

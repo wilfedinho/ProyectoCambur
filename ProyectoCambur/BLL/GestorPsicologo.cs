@@ -39,31 +39,30 @@ namespace BLL
         public int AltaPorAdministrador(Psicologo psicologoAlta)
         {
             ValidarDatosPsicologo(psicologoAlta);
-
             InfoPlan plan = CatalogoPlanes.ObtenerPorRolPermiso(psicologoAlta.RolPermiso);
-            if (plan == null)
-            {
-                throw new ExcepcionTraducible("error_suscripcion_plan_invalido");
-            }
 
             string contrasenaInicial = psicologoAlta.Dni + psicologoAlta.Email;
             psicologoAlta.Contrasena = Cifrador.GestorCifrador.EncriptarIrreversible(contrasenaInicial);
             int idPsicologo = RegistrarPsicologoValidado(psicologoAlta);
-            DateTime ahora = DateTime.Now;
-            Suscripcion nuevaSuscripcion = new Suscripcion
+
+            if (plan != null)
             {
-                IdProfesional = idPsicologo,
-                Plan = plan.Plan,
-                Estado = EstadoSuscripcion.Activa,
-                FechaInicio = ahora,
-                FechaFin = ahora.AddMonths(1),
-                Precio = plan.Precio,
-                IdPagoExterno = "ALTA_ADMINISTRADOR",
-                UltimosCuatroTarjeta = null
-            };
-            new SuscripcionDAL().Alta(nuevaSuscripcion);
-            new DigitoVerificador().ActualizarDVH(nuevaSuscripcion, "Suscripcion");
-            new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_SUSCRIPCION, EventosBitacora.DESC_ALTA_SUSCRIPCION_ADMINISTRADOR, EventosBitacora.CRIT_ALTA_SUSCRIPCION_ADMINISTRADOR);
+                DateTime ahora = DateTime.Now;
+                Suscripcion nuevaSuscripcion = new Suscripcion
+                {
+                    IdProfesional = idPsicologo,
+                    Plan = plan.Plan,
+                    Estado = EstadoSuscripcion.Activa,
+                    FechaInicio = ahora,
+                    FechaFin = ahora.AddMonths(1),
+                    Precio = plan.Precio,
+                    IdPagoExterno = "ALTA_ADMINISTRADOR",
+                    UltimosCuatroTarjeta = null
+                };
+                new SuscripcionDAL().Alta(nuevaSuscripcion);
+                new DigitoVerificador().ActualizarDVH(nuevaSuscripcion, "Suscripcion");
+                new GestorBitacora().RegistrarEvento(EventosBitacora.MOD_SUSCRIPCION, EventosBitacora.DESC_ALTA_SUSCRIPCION_ADMINISTRADOR, EventosBitacora.CRIT_ALTA_SUSCRIPCION_ADMINISTRADOR);
+            }
 
             return idPsicologo;
         }
@@ -260,6 +259,10 @@ namespace BLL
             InfoPlan plan = CatalogoPlanes.ObtenerPorRolPermiso(nuevoRolPermiso);
             if (plan == null)
             {
+                if (new SuscripcionDAL().BuscarActivaDe(idPsicologo) != null)
+                {
+                    new GestorSuscripcion().Cancelar(idPsicologo);
+                }
                 return;
             }
 

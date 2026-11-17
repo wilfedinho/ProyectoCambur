@@ -44,7 +44,7 @@ public partial class FormDashboard : PaginaBase
 
             CultureInfo cultura = new CultureInfo("es-AR");
             string fecha = DateTime.Today.ToString("dddd d 'de' MMMM 'de' yyyy", cultura);
-            lblFechaHoy.Text = char.ToUpper(fecha[0]) + fecha.Substring(1);
+            //lblFechaHoy.Text = char.ToUpper(fecha[0]) + fecha.Substring(1);
 
             try
             {
@@ -95,7 +95,7 @@ public partial class FormDashboard : PaginaBase
         Psicologo psicologoActual = GestorSesion.PsicologoActual;
         GestorDashboard gestorDashboard = new GestorDashboard();
 
-        DatosDashboard datos = gestorDashboard.ObtenerIndicadores(psicologoActual.IdPsicologo, periodo);
+        DatosDashboard datos = gestorDashboard.ObtenerIndicadores(psicologoActual.IdPsicologo, periodo, Traducir);
 
         lblKpiTotalPacientes.Text = datos.TotalPacientes.ToString();
         lblKpiNuevosPacientes.Text = datos.NuevosPacientes.ToString();

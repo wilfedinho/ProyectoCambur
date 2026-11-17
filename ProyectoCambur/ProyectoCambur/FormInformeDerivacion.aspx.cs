@@ -361,14 +361,7 @@ public partial class FormInformeDerivacion : PaginaBase
             gestorInforme.Auditar(idPsicologo, idInforme,
                 txtSintesisDiagnostica.Text.Trim(), txtAndamiajes.Text.Trim(), txtObjetivos.Text.Trim(),
                 txtModalidadTrabajo.Text.Trim(), txtMotivoDerivacion.Text.Trim(), firmante);
-
-            if (OrigenAuditoria == "lista")
-            {
-                CargarListaBorradores();
-                MostrarEstado(3);
-            }
-
-            MostrarExito(string.Format(Traducir("exito_informe_validado"), firmante));
+            Response.Redirect("FormMenu.aspx");
         }
         catch (ExcepcionTraducible ex)
         {

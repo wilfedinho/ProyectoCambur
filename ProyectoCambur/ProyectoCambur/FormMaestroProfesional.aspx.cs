@@ -54,6 +54,10 @@ public partial class FormMaestroProfesional : PaginaBase
         ddlFiltroEstado.Items.FindByValue("TODOS").Text = Traducir("opt_todos");
         ddlFiltroEstado.Items.FindByValue("ACTIVOS").Text = Traducir("opt_activos");
         ddlFiltroEstado.Items.FindByValue("INACTIVOS").Text = Traducir("opt_desactivados");
+        lblEtiquetaCategoria.Text = Traducir("lbl_categoria") + ":";
+        ddlFiltroCategoria.Items.FindByValue("TODOS").Text = Traducir("opt_todos");
+        ddlFiltroCategoria.Items.FindByValue("NEGOCIO").Text = Traducir("menu_profesionales");
+        ddlFiltroCategoria.Items.FindByValue("SISTEMA").Text = Traducir("categoria_sistema");
         lblTituloListado.Text = Traducir("titulo_profesionales_registrados");
         lblEtiquetaMostrar.Text = Traducir("lbl_mostrar");
         gvProfesionales.Columns[0].HeaderText = Traducir("col_profesional");
@@ -65,10 +69,7 @@ public partial class FormMaestroProfesional : PaginaBase
         gvProfesionales.Columns[6].HeaderText = Traducir("col_estado");
         gvProfesionales.Columns[7].HeaderText = Traducir("col_acciones");
         gvProfesionales.EmptyDataText = Traducir("empty_profesionales");
-        ddlRol.Items.FindByValue("").Text = Traducir("opt_seleccionar");
-        ddlRol.Items.FindByValue("Basico").Text = Traducir("rol_psicologo_basico");
-        ddlRol.Items.FindByValue("Profesional").Text = Traducir("rol_psicologo_profesional");
-        ddlRol.Items.FindByValue("Premium").Text = Traducir("rol_psicologo_premium");
+        CargarRolesDisponibles();
 
         lblFormSubtitulo.Text = Traducir("subtitulo_nuevo_profesional");
         lblSeccionDatosPersonales.Text = Traducir("seccion_datos_personales");
@@ -119,6 +120,50 @@ public partial class FormMaestroProfesional : PaginaBase
         gvProfesionalesXml.Columns[4].HeaderText = Traducir("col_registrado");
         gvProfesionalesXml.Columns[5].HeaderText = Traducir("col_estado");
         gvProfesionalesXml.EmptyDataText = Traducir("empty_vista_previa_xml");
+    }
+
+    private void CargarRolesDisponibles()
+    {
+        string valorPrevio = ddlRol.SelectedValue;
+
+        ddlRol.Items.Clear();
+        ddlRol.Items.Add(new ListItem(Traducir("opt_seleccionar"), ""));
+
+        GestorPermiso gestorPermiso = new GestorPermiso();
+        foreach (string nombrePerfil in gestorPermiso.ObtenerNombresPerfiles().OrderBy(OrdenRol).ThenBy(nombre => nombre))
+        {
+            ddlRol.Items.Add(new ListItem(TextoRol(nombrePerfil), nombrePerfil));
+        }
+
+        if (!string.IsNullOrEmpty(valorPrevio) && ddlRol.Items.FindByValue(valorPrevio) != null)
+        {
+            ddlRol.SelectedValue = valorPrevio;
+        }
+    }
+
+    private string TextoRol(string nombrePerfil)
+    {
+        switch (nombrePerfil)
+        {
+            case "Web Master": return Traducir("header_web_master");
+            case "Administrador": return Traducir("header_administrador");
+            case "Basico": return Traducir("rol_psicologo_basico");
+            case "Profesional": return Traducir("rol_psicologo_profesional");
+            case "Premium": return Traducir("rol_psicologo_premium");
+            default: return nombrePerfil;
+        }
+    }
+    private int OrdenRol(string nombrePerfil)
+    {
+        switch (nombrePerfil)
+        {
+            case "Web Master": return 0;
+            case "Administrador": return 1;
+            case "Basico": return 2;
+            case "Profesional": return 3;
+            case "Premium": return 4;
+            default: return 5;
+        }
     }
 
     private void CambiarModo(string modo)
@@ -303,6 +348,15 @@ public partial class FormMaestroProfesional : PaginaBase
         {
             todos = todos.Where(p => !p.Activo).ToList();
         }
+        string filtroCategoria = ddlFiltroCategoria.SelectedValue;
+        if (filtroCategoria == "NEGOCIO")
+        {
+            todos = todos.Where(p => EsRolDeNegocio(p.RolPermiso)).ToList();
+        }
+        else if (filtroCategoria == "SISTEMA")
+        {
+            todos = todos.Where(p => !EsRolDeNegocio(p.RolPermiso)).ToList();
+        }
         List<FilaProfesional> filas = todos.Select(p => new FilaProfesional
         {
             IdPsicologo = p.IdPsicologo,
@@ -404,6 +458,17 @@ public partial class FormMaestroProfesional : PaginaBase
     {
         CargarGrilla();
     }
+
+    protected void ddlFiltroCategoria_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        CargarGrilla();
+    }
+
+    private static bool EsRolDeNegocio(string nombreRol)
+    {
+        return Enum.TryParse(nombreRol, out PlanSuscripcion _);
+    }
+
     private static readonly Dictionary<string, IComandoAccion> ComandosProfesional =
         new Dictionary<string, IComandoAccion>
         {

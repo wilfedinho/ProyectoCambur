@@ -14,7 +14,7 @@ namespace BLL
         public const string PERIODO_TRIMESTRE = "TRIMESTRE";
         public const string PERIODO_ANIO = "ANIO";
 
-        public DatosDashboard ObtenerIndicadores(int idPsicologo, string periodo)
+        public DatosDashboard ObtenerIndicadores(int idPsicologo, string periodo, Func<string, string> traducir)
         {
             DateTime desdeActual, hastaActual, desdeAnterior, hastaAnterior;
             CalcularRango(periodo, out desdeActual, out hastaActual, out desdeAnterior, out hastaAnterior);
@@ -36,11 +36,12 @@ namespace BLL
             datos.Derivaciones = 0;
             datos.Perfilaciones = 0;
             datos.Exportaciones = exportacionesActual;
-            datos.DeltaPacientes = ArmarDeltaAbsoluto(pacientes.Count, pacientes.Count - datos.NuevosPacientes + nuevosAnterior, "paciente", "pacientes");
-            datos.DeltaNuevos = ArmarDeltaComparativo(datos.NuevosPacientes, nuevosAnterior, "nuevo", "nuevos", periodo, esAnterior: true);
-            datos.DeltaConsultas = ArmarDeltaComparativo(datos.Consultas, consultasAnterior, "consulta", "consultas", periodo, esAnterior: false);
+            datos.DeltaPacientes = ArmarDeltaAbsoluto(pacientes.Count, pacientes.Count - datos.NuevosPacientes + nuevosAnterior, "dashboard_palabra_paciente_singular", "dashboard_palabra_paciente_plural", traducir);
+            datos.DeltaNuevos = ArmarDeltaComparativo(datos.NuevosPacientes, nuevosAnterior, periodo, traducir);
+            datos.DeltaConsultas = ArmarDeltaComparativo(datos.Consultas, consultasAnterior, periodo, traducir);
+          
             datos.DeltaDerivaciones = null;
-            datos.DeltaExportaciones = ArmarDeltaComparativo(datos.Exportaciones, exportacionesAnterior, "exportación", "exportaciones", periodo, esAnterior: false);
+            datos.DeltaExportaciones = ArmarDeltaComparativo(datos.Exportaciones, exportacionesAnterior, periodo, traducir);
             datos.NotaPerfilaciones = null;
 
             return datos;
@@ -165,35 +166,35 @@ namespace BLL
             return fecha.Date >= desde.Date && fecha.Date <= hasta.Date;
         }
 
-        private string ArmarDeltaAbsoluto(int totalActual, int totalAnterior, string singular, string plural)
+        private string ArmarDeltaAbsoluto(int totalActual, int totalAnterior, string claveSingular, string clavePlural, Func<string, string> t)
         {
             int diferencia = totalActual - totalAnterior;
-            if (diferencia == 0) return "= Sin cambios";
-            string palabra = Math.Abs(diferencia) == 1 ? singular : plural;
+            if (diferencia == 0) return "= " + t("dashboard_delta_sin_cambios");
+            string palabra = Math.Abs(diferencia) == 1 ? t(claveSingular) : t(clavePlural);
             return (diferencia > 0 ? "↑ " : "↓ ") + Math.Abs(diferencia) + " " + palabra;
         }
 
-        private string ArmarDeltaComparativo(int actual, int anterior, string singular, string plural, string periodo, bool esAnterior)
+        private string ArmarDeltaComparativo(int actual, int anterior, string periodo, Func<string, string> t)
         {
-            string etiquetaPeriodo = EtiquetaPeriodoAnterior(periodo);
-            if (anterior == 0 && actual == 0) return "Sin actividad en " + etiquetaPeriodo;
-            if (anterior == 0) return "↑ vs. 0 en " + etiquetaPeriodo;
+            string etiquetaPeriodo = EtiquetaPeriodoAnterior(periodo, t);
+            if (anterior == 0 && actual == 0) return string.Format(t("dashboard_sin_actividad_en"), etiquetaPeriodo);
+            if (anterior == 0) return "↑ " + string.Format(t("dashboard_vs_cero_en"), etiquetaPeriodo);
 
             double variacionPct = ((double)(actual - anterior) / anterior) * 100;
-            if (Math.Abs(variacionPct) < 0.5) return "= igual que " + etiquetaPeriodo;
+            if (Math.Abs(variacionPct) < 0.5) return "= " + string.Format(t("dashboard_igual_que"), etiquetaPeriodo);
             string flecha = variacionPct > 0 ? "↑" : "↓";
-            return flecha + " " + Math.Abs((int)Math.Round(variacionPct)) + "% vs. " + etiquetaPeriodo;
+            return flecha + " " + string.Format(t("dashboard_pct_vs"), Math.Abs((int)Math.Round(variacionPct)), etiquetaPeriodo);
         }
 
-        private string EtiquetaPeriodoAnterior(string periodo)
+        private string EtiquetaPeriodoAnterior(string periodo, Func<string, string> t)
         {
             switch (periodo)
             {
-                case PERIODO_SEMANA: return "la semana anterior";
-                case PERIODO_TRIMESTRE: return "el trimestre anterior";
-                case PERIODO_ANIO: return "el año anterior";
+                case PERIODO_SEMANA: return t("dashboard_periodo_semana_anterior");
+                case PERIODO_TRIMESTRE: return t("dashboard_periodo_trimestre_anterior");
+                case PERIODO_ANIO: return t("dashboard_periodo_anio_anterior");
                 case PERIODO_MES:
-                default: return "el mes anterior";
+                default: return t("dashboard_periodo_mes_anterior");
             }
         }
 

@@ -55,7 +55,6 @@
                 <div class="dash-top-row">
                     <div class="dash-bienvenida">
                         <asp:Label ID="lblBienvenida" runat="server" CssClass="bienvenida-titulo" Text="" />
-                        <asp:Label ID="lblFechaHoy" runat="server" CssClass="bienvenida-fecha" Text="" />
                     </div>
                     <div class="dash-periodo-selector">
                         <asp:Button ID="btnSemana" runat="server" Text="Esta semana"
