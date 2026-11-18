@@ -20,7 +20,6 @@ namespace BLL
         {
             return backupDAL.ObtenerCarpetaBackups();
         }
-
         #region Generar backup
         public string GenerarBackup()
         {
