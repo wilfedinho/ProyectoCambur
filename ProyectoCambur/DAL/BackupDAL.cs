@@ -66,72 +66,67 @@ namespace DAL
 
         #region Listar backups disponibles
 
-        public List<BackupDisponible> ListarDisponibles(string nombreBaseDatos, string carpeta)
+        public List<OperacionBackupRestore> ObtenerBackupsRegistrados()
         {
-            List<string> nombresArchivo = new List<string>();
+            List<OperacionBackupRestore> lista = new List<OperacionBackupRestore>();
 
             using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
             {
                 cone.Open();
-
-                string query =
-                    "IF OBJECT_ID('tempdb..#archivosBackup') IS NOT NULL DROP TABLE #archivosBackup; " +
-                    "CREATE TABLE #archivosBackup (Subdirectory NVARCHAR(512), Depth INT, IsFile BIT); " +
-                    "INSERT INTO #archivosBackup EXEC master.dbo.xp_dirtree @carpeta, 1, 1; " +
-                    "SELECT Subdirectory FROM #archivosBackup WHERE IsFile = 1 " +
-                    "AND (Subdirectory LIKE 'SistemaCambur[_]%.bak' OR Subdirectory LIKE 'Backup[_]%.bak') " +
-                    "ORDER BY Subdirectory DESC;";
+                string query = "SELECT * FROM HistorialBackupRestore " +
+                               "WHERE tipo_operacion = @tipo AND resultado LIKE 'Completado%' " +
+                               "ORDER BY fecha_operacion DESC";
 
                 using (SqlCommand comando = new SqlCommand(query, cone))
                 {
-                    comando.Parameters.AddWithValue("@carpeta", carpeta);
+                    comando.Parameters.AddWithValue("@tipo", "BACKUP");
                     using (SqlDataReader reader = comando.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            nombresArchivo.Add(reader["Subdirectory"].ToString());
+                            lista.Add(ArmarOperacion(reader));
                         }
                     }
                 }
             }
 
-            List<BackupDisponible> disponibles = new List<BackupDisponible>();
+            return lista;
+        }
 
-            foreach (string nombreArchivo in nombresArchivo)
+        public bool ArchivoExiste(string rutaCompleta)
+        {
+            using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
             {
-                BackupDisponible info = LeerCabeceraBackup(carpeta + nombreArchivo, nombreArchivo);
-                if (info != null)
+                cone.Open();
+                using (SqlCommand comando = new SqlCommand(
+                    "SELECT file_exists FROM sys.dm_os_file_exists(@ruta)", cone))
                 {
-                    info.CoincideBaseDatos = string.Equals(info.NombreBaseDatosOrigen, nombreBaseDatos, StringComparison.OrdinalIgnoreCase);
-                    disponibles.Add(info);
+                    comando.Parameters.AddWithValue("@ruta", rutaCompleta);
+                    object resultado = comando.ExecuteScalar();
+                    return resultado != null && resultado != DBNull.Value && Convert.ToInt32(resultado) == 1;
                 }
             }
-
-            return disponibles;
         }
-        private BackupDisponible LeerCabeceraBackup(string rutaCompleta, string nombreArchivo)
+
+        public long? ObtenerTamanioBackup(string rutaCompleta)
         {
             try
             {
                 using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
                 {
                     cone.Open();
-                    using (SqlCommand comando = new SqlCommand("RESTORE HEADERONLY FROM DISK = @ruta", cone))
+                    string query = @"
+                        SELECT TOP 1 bs.backup_size
+                        FROM msdb.dbo.backupset bs
+                        JOIN msdb.dbo.backupmediafamily mf ON mf.media_set_id = bs.media_set_id
+                        WHERE mf.physical_device_name = @ruta
+                        ORDER BY bs.backup_finish_date DESC";
+
+                    using (SqlCommand comando = new SqlCommand(query, cone))
                     {
                         comando.Parameters.AddWithValue("@ruta", rutaCompleta);
-                        using (SqlDataReader reader = comando.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                return new BackupDisponible
-                                {
-                                    NombreArchivo = nombreArchivo,
-                                    Fecha = Convert.ToDateTime(reader["BackupStartDate"]),
-                                    TamanioBytes = Convert.ToInt64(Convert.ToDouble(reader["BackupSize"])),
-                                    NombreBaseDatosOrigen = reader["DatabaseName"].ToString()
-                                };
-                            }
-                        }
+                        object resultado = comando.ExecuteScalar();
+                        return resultado == null || resultado == DBNull.Value ? (long?)null : Convert.ToInt64(Convert.ToDouble(resultado));
                     }
                 }
             }
@@ -139,8 +134,6 @@ namespace DAL
             {
                 return null;
             }
-
-            return null;
         }
 
         #endregion
@@ -172,8 +165,8 @@ namespace DAL
             {
                 cone.Open();
                 string query = "INSERT INTO HistorialBackupRestore " +
-                               "(tipo_operacion, nombre_archivo, fecha_operacion, resultado, detalle_error, usuario, digito_verificador) " +
-                               "VALUES (@tipo, @archivo, @fecha, @resultado, @detalle, @usuario, @digito_verificador); " +
+                               "(tipo_operacion, nombre_archivo, fecha_operacion, resultado, detalle_error, usuario, digito_verificador, tamanio_bytes) " +
+                               "VALUES (@tipo, @archivo, @fecha, @resultado, @detalle, @usuario, @digito_verificador, @tamanio_bytes); " +
                                "SELECT CAST(SCOPE_IDENTITY() AS INT)";
 
                 using (SqlCommand comando = new SqlCommand(query, cone))
@@ -185,6 +178,7 @@ namespace DAL
                     comando.Parameters.AddWithValue("@detalle", (object)operacion.DetalleError ?? DBNull.Value);
                     comando.Parameters.AddWithValue("@usuario", (object)operacion.Usuario ?? DBNull.Value);
                     comando.Parameters.AddWithValue("@digito_verificador", (object)operacion.DigitoVerificador ?? DBNull.Value);
+                    comando.Parameters.AddWithValue("@tamanio_bytes", (object)operacion.TamanioBytes ?? DBNull.Value);
 
                     int idGenerado = Convert.ToInt32(comando.ExecuteScalar());
                     operacion.IdHistorial = idGenerado;
@@ -247,7 +241,8 @@ namespace DAL
                 Resultado = reader["resultado"].ToString(),
                 DetalleError = reader["detalle_error"] == DBNull.Value ? null : reader["detalle_error"].ToString(),
                 Usuario = reader["usuario"] == DBNull.Value ? null : reader["usuario"].ToString(),
-                DigitoVerificador = reader["digito_verificador"] == DBNull.Value ? null : reader["digito_verificador"].ToString()
+                DigitoVerificador = reader["digito_verificador"] == DBNull.Value ? null : reader["digito_verificador"].ToString(),
+                TamanioBytes = reader["tamanio_bytes"] == DBNull.Value ? (long?)null : Convert.ToInt64(reader["tamanio_bytes"])
             };
         }
 
@@ -258,7 +253,7 @@ namespace DAL
             using (SqlConnection cone = GestorConexion.GestorCone.DevolverConexion())
             {
                 cone.Open();
-                string query = "SELECT TOP (@cantidad) id_historial, tipo_operacion, nombre_archivo, fecha_operacion, resultado, detalle_error, usuario, digito_verificador " +
+                string query = "SELECT TOP (@cantidad) id_historial, tipo_operacion, nombre_archivo, fecha_operacion, resultado, detalle_error, usuario, digito_verificador, tamanio_bytes " +
                                "FROM HistorialBackupRestore ORDER BY fecha_operacion DESC";
 
                 using (SqlCommand comando = new SqlCommand(query, cone))

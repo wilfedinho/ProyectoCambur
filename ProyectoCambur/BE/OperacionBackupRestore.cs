@@ -12,6 +12,7 @@ namespace BE
         public string DetalleError { get; set; }
         public string Usuario { get; set; }
         public string DigitoVerificador { get; set; }
+        public long? TamanioBytes { get; set; }
 
         public OperacionBackupRestore()
         {
