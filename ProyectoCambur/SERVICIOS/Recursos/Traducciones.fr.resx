@@ -1252,13 +1252,13 @@
     <value>En attente de révision</value>
   </data>
   <data name="badge_suscripcion_activa" xml:space="preserve">
-    <value>Active</value>
+    <value>Actif</value>
   </data>
   <data name="badge_suscripcion_cancelada" xml:space="preserve">
-    <value>Annulée</value>
+    <value>Annulé</value>
   </data>
   <data name="badge_suscripcion_vencida" xml:space="preserve">
-    <value>Expirée</value>
+    <value>Expiré</value>
   </data>
   <data name="badge_ultimo_dia_editar" xml:space="preserve">
     <value>Dernier jour pour modifier</value>

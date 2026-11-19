@@ -1471,7 +1471,7 @@
     <value>Non è stato possibile recuperare gli indicatori della dashboard. Riprova tra qualche istante.</value>
   </data>
   <data name="error_dni_obligatorio" xml:space="preserve">
-    <value>Il codice fiscale è obbligatorio.</value>
+    <value>Il documento d'identità è obbligatorio.</value>
   </data>
   <data name="error_documento_no_disponible" xml:space="preserve">
     <value>Il documento selezionato non è ancora disponibile per questo paziente.</value>
@@ -1540,7 +1540,7 @@
     <value>Inserisci il motivo dell'invio.</value>
   </data>
   <data name="error_paciente_duplicado" xml:space="preserve">
-    <value>Hai già un paziente registrato con quel codice fiscale.</value>
+    <value>Hai già un paziente registrato con quel documento d'identità.</value>
   </data>
   <data name="error_paciente_email_duplicado" xml:space="preserve">
     <value>Hai già un paziente registrato con quell'indirizzo email.</value>
@@ -2071,7 +2071,7 @@
     <value>Sedute totali</value>
   </data>
   <data name="lbl_creada" xml:space="preserve">
-    <value>Creato</value>
+    <value>Creata</value>
   </data>
   <data name="lbl_cvv" xml:space="preserve">
     <value>Codice CVV</value>
@@ -2749,10 +2749,10 @@
     <value>Sono stati caricati {0} professionisti dal file.</value>
   </data>
   <data name="subtitulo_deserializar_profesionales" xml:space="preserve">
-    <value>Seleziona un file XML esportato da Cambur. Potrai visualizzare i professionisti in esso contenuti, con il codice fiscale e l'email decrittografati.</value>
+    <value>Seleziona un file XML esportato da Cambur. Potrai visualizzare i professionisti in esso contenuti, con il documento d'identità e l'email decrittografati.</value>
   </data>
   <data name="subtitulo_serializar_profesionales" xml:space="preserve">
-    <value>Seleziona i professionisti che desideri esportare. Il codice fiscale e l'email vengono salvati crittografati all'interno del file.</value>
+    <value>Seleziona i professionisti che desideri esportare. Il documento d'identità e l'email vengono salvati crittografati all'interno del file.</value>
   </data>
   <data name="titulo_deserializar_profesionales" xml:space="preserve">
     <value>Importa anteprima da XML</value>
@@ -2833,10 +2833,10 @@
     <value>Scegli un paziente e fai clic su "Continua" per vedere la sua cartella. Da lì puoi fare clic su "Salva cartella clinica" o "Salva modifiche", oppure su "Scegli un altro paziente" per tornare alla ricerca.</value>
   </data>
   <data name="ayuda_informe_derivacion_titulo" xml:space="preserve">
-    <value>Relazione di invio</value>
+    <value>Referto di invio</value>
   </data>
   <data name="ayuda_informe_derivacion_texto" xml:space="preserve">
-    <value>Fai clic su "Genera relazione con IA" per far redigere una bozza dal sistema a partire dal consulto. Puoi salvarla non finita con "Salva bozza", scartarla con "Scarta relazione", oppure, dopo averla revisionata, fare clic su "Valida e firma relazione" per finalizzarla.</value>
+    <value>Fai clic su "Genera referto con IA" per far redigere una bozza dal sistema a partire dal consulto. Puoi salvarla non finita con "Salva bozza", scartarla con "Elimina referto", oppure, dopo averla revisionata, fare clic su "Convalida e firma referto" per finalizzarla.</value>
   </data>
   <data name="ayuda_linea_temporal_titulo" xml:space="preserve">
     <value>Linea temporale del paziente</value>
@@ -2905,9 +2905,9 @@
     <value>Qui puoi vedere lo stato del tuo piano attuale, cambiarlo scegliendo un altro nella tabella comparativa, aggiornare il tuo metodo di pagamento con "Aggiorna metodo di pagamento", oppure annullare il tuo abbonamento con "Annulla abbonamento". Se lo annulli e cambi idea, puoi usare "Riattiva abbonamento" prima che termini il periodo già pagato.</value>
   </data>
   <data name="ayuda_auditoria_informe_titulo" xml:space="preserve">
-    <value>Verifica delle relazioni di invio</value>
+    <value>Controllo dei referti di invio</value>
   </data>
   <data name="ayuda_auditoria_informe_texto" xml:space="preserve">
-    <value>Qui vedi l'elenco delle bozze di relazioni di invio in attesa di revisione. Fai clic su "Rivedi e firma" nella riga corrispondente per aprire una bozza; da lì puoi scartarla con "Scarta relazione" oppure, dopo averla rivista, convalidarla e firmarla con "Valida e firma relazione".</value>
+    <value>Qui vedi l'elenco delle bozze di referti di invio in attesa di revisione. Fai clic su "Rivedi e firma" nella riga corrispondente per aprire una bozza; da lì puoi scartarla con "Elimina referto" oppure, dopo averla rivista, convalidarla e firmarla con "Convalida e firma referto".</value>
   </data>
 </root>

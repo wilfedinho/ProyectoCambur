@@ -1471,7 +1471,7 @@
     <value>Não foi possível recuperar os indicadores do painel. Tente novamente em alguns instantes.</value>
   </data>
   <data name="error_dni_obligatorio" xml:space="preserve">
-    <value>O CPF é obrigatório.</value>
+    <value>O DNI é obrigatório.</value>
   </data>
   <data name="error_documento_no_disponible" xml:space="preserve">
     <value>O documento selecionado ainda não está disponível para este paciente.</value>
@@ -1540,7 +1540,7 @@
     <value>Informe o motivo do encaminhamento.</value>
   </data>
   <data name="error_paciente_duplicado" xml:space="preserve">
-    <value>Você já tem um paciente registrado com esse CPF.</value>
+    <value>Você já tem um paciente registrado com esse DNI.</value>
   </data>
   <data name="error_paciente_email_duplicado" xml:space="preserve">
     <value>Você já tem um paciente registrado com esse e-mail.</value>
@@ -2749,10 +2749,10 @@
     <value>Foram carregados {0} profissionais do arquivo.</value>
   </data>
   <data name="subtitulo_deserializar_profesionales" xml:space="preserve">
-    <value>Selecione um arquivo XML exportado pelo Cambur. Você poderá visualizar os profissionais que ele contém, com o CPF e o e-mail descriptografados.</value>
+    <value>Selecione um arquivo XML exportado pelo Cambur. Você poderá visualizar os profissionais que ele contém, com o DNI e o e-mail descriptografados.</value>
   </data>
   <data name="subtitulo_serializar_profesionales" xml:space="preserve">
-    <value>Selecione os profissionais que deseja exportar. O CPF e o e-mail são salvos criptografados dentro do arquivo.</value>
+    <value>Selecione os profissionais que deseja exportar. O DNI e o e-mail são salvos criptografados dentro do arquivo.</value>
   </data>
   <data name="titulo_deserializar_profesionales" xml:space="preserve">
     <value>Importar visualização a partir de XML</value>
@@ -2902,7 +2902,7 @@
     <value>Minha assinatura</value>
   </data>
   <data name="ayuda_gestionar_suscripcion_texto" xml:space="preserve">
-    <value>Aqui você vê o status do seu plano atual, pode trocá-lo escolhendo outro na tabela comparativa, atualizar sua forma de pagamento em "Atualizar forma de pagamento", ou cancelar sua assinatura em "Cancelar assinatura". Se cancelou e mudou de ideia, pode usar "Reativar assinatura" antes do fim do período já pago.</value>
+    <value>Aqui você vê o status do seu plano atual, pode trocá-lo escolhendo outro na tabela comparativa, atualizar seu meio de pagamento em "Atualizar meio de pagamento", ou cancelar sua assinatura em "Cancelar assinatura". Se cancelou e mudou de ideia, pode usar "Reativar assinatura" antes do fim do período já pago.</value>
   </data>
   <data name="ayuda_auditoria_informe_titulo" xml:space="preserve">
     <value>Auditoria de relatórios de encaminhamento</value>
